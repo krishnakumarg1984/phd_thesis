@@ -12,3 +12,11 @@
 \renewcommand{\missingfigure}[2][]{\tikzexternaldisable\@missingfigure[#1]{#2}\tikzexternalenable}
 \makeatother
 
+\usepackage[english]{isodate}
+\usepackage[all,warning]{onlyamsmath}
+
+\usepackage{relsize}
+\usepackage{xparse}
+\DeclareDocumentCommand{\pder}{ O{} O{} m }{\frac{\partial^{#2}#1}{\partial#3^{#2}}}
+
+\RequirePackage[l2tabu, orthodox]{nag}
