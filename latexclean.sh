@@ -1,0 +1,1 @@
+/home/kg314/dotfiles/latexclean/latexclean.sh

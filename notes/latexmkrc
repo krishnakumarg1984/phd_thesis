@@ -1,0 +1,8 @@
+@cus_dep_list = (@cus_dep_list, "glo-abr gls-abr 0 makenomenclature");
+sub makenomenclature {
+   system("makeindex $_[0].glo-abr -s nomencl.ist -o $_[0].gls-abr"); }
+@generated_exts = (@generated_exts, 'glo-abr');
+
+push @file_not_found, '^Package .* No file `([^\\\']*)\\\'';
+
+$bibtex_use=1
