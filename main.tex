@@ -24,8 +24,11 @@
 %: ----------------------- generate glossary ------------------------
 \loadglsentries{0_frontmatter/glossary}
 \makeglossaries{}
+\usepackage[nameinlink]{cleveref}
+\includeonly{4/chapter4,7/discussion}
 \begin{document}
-
+\sisetup{range-phrase=--}
+\sisetup{range-units=single}
 
 
 %: ----------------------- generate cover page ------------------------
@@ -73,23 +76,28 @@
 % Glossary entries can also be defined in the main text. See glossary.tex
 \cleardoublepage
 %\chapter{Glossary}
-\begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-\ifCLASSINFOlangDE
-\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
-\else
-\printglossary[type=\acronymtype,title=Abbreviations]
-\fi
-%\printglossary
-%\printnomenclature[1.5cm] % [] = distance between entry and description
-%\printglossery
-\label{nom} % target name for links to glossary
-\end{footnotesize}
-\end{multicols}
+%\begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
+%\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
+%% \footnotesize
+%\ifCLASSINFOlangDE
+%\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
+%\else
+%\printglossary[type=\acronymtype,title=Abbreviations]
+%\fi
+%%\printglossary
+%%\printnomenclature[1.5cm] % [] = distance between entry and description
+%% \printglossary{}
+%\label{nom} % target name for links to glossary
+
+%\end{footnotesize}
+%\end{multicols}
+
+\printglossaries{}
 
 \begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
 \begin{footnotesize}
 \printglossary[type=symbolslist,title=Symbols]
+
 \end{footnotesize}
 \end{multicols}
 %: --------------------------------------------------------------
@@ -116,7 +124,7 @@
 \tikzsetexternalprefix{./6/TikzPictures/}
 \cfchapter{Asymptote\label{ch:chapter6}}{6}{chapter6}
 \tikzsetexternalprefix{./7/TikzPictures/}
-\cfchapter{Discussion\label{ch:chapter7}}{7}{discussion}
+\cfchapter{Discussion and Future Work\label{ch:chapter7}}{7}{discussion}
 \tikzsetexternalprefix{./8/TikzPictures/}
 \cfchapter{Materials and Methods}{8}{materials_methods}
 \cleardoublepage

@@ -615,7 +615,7 @@ supported!}
 %:-------------------------- Glossary/Abbrev./Symbols -----------------------
 
 %\RequirePackage[toc,acronym,nomain,indexonlyfirst]{glossaries}
-\RequirePackage[toc,abbreviations,nomain,indexonlyfirst]{glossaries-extra}
+\RequirePackage[toc,abbreviations,nomain,indexonlyfirst,acronym]{glossaries-extra}
 \glsdisablehyper
 \newglossary[slg]{symbolslist}{syi}{syg}{Symbols}
 %\renewcommand*{\acrshort}[1][]{\glsxtrshort[noindex,#1]}

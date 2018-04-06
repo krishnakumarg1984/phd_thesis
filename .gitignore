@@ -258,3 +258,6 @@ pulp
 output_pdf/main.pdf
 output_pdf/*
 output_pdf/
+
+*.slg
+*.glg-abr
