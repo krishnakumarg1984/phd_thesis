@@ -1,6 +1,6 @@
-% -*- root: ../thesis.tex -*-
-%!TEX root = ../thesis.tex
-% this file is called up by thesis.tex
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
 % content in this file will be fed into the main document
 
 %level followed %by section, subsection
@@ -34,7 +34,24 @@ The following successes were achieved.
 At the end of this chapter, we have a control oriented reduced order battery model amenable for use in real-time
 applications for SOC, SOH etc.\ estimations.
 
-\section{Control-Oriented Models}
+Control-Oriented models can be considered synonymous with the term `Reduced Order Models'. This is because the
+complexity of physics-based models inherently necessitates the use of a low order model. In this thesis, the two terms
+are used interchangeably.
+
+\section{Control-Oriented Time-domain Models}
+
+Physics-based Control-Oriented Models broadly fall into the following categories.
+
+\begin{itemize}
+    \item Models obtained through model order reduction of physics based models
+    \item Models motivated by physical principles,but formulated directly as reduced order models
+    \item A hybrid combination of the above
+\end{itemize}
+
+Furthermore, it becomes important to distinguish between models that are derived directly in the time domain versus
+those that are derived first in the frequency domain and later converted to time domain. Since the
+topic of interest is in online application of battery models, models that are entirely implemented
+in the frequency-domain is out of scope of this thesis.
 
 Smith et al \cite{Smith2007}
 
