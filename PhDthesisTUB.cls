@@ -1682,7 +1682,7 @@ supported!}
     \renewcommand{\cfchapter}[3]{}
     \renewcommand{\printglossary}[2][YYY]{}
     \renewcommand{\label}[1]{}
-    \renewcomman{\makeglossaries}{}
+    \renewcommand{\makeglossaries}{}
 \else
     \defineAbstractfalse
 \fi

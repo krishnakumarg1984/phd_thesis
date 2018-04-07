@@ -10,6 +10,17 @@ sub makenomenclature {
 sub makegls {
    system("makeindex $_[0].syg -s nomencl.ist -o $_[0].syi"); }
 
+add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
+
+sub run_makeglossaries {
+  if ( $silent ) {
+    system "makeglossaries -q '$_[0]'";
+  }
+  else {
+    system "makeglossaries '$_[0]'";
+  };
+}
+ 
 push @file_not_found, '^Package .* No file `([^\\\']*)\\\'';
 
 $bibtex_use=2

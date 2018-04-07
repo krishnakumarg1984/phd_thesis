@@ -22,10 +22,9 @@
 \fi
 
 %: ----------------------- generate glossary ------------------------
+\usepackage[nameinlink]{cleveref}
 \loadglsentries{0_frontmatter/glossary}
 \makeglossaries{}
-\usepackage[nameinlink]{cleveref}
-\includeonly{4/chapter4,7/discussion}
 \begin{document}
 \sisetup{range-phrase=--}
 \sisetup{range-units=single}
@@ -75,24 +74,24 @@
 % Tie in external source file for definitions: /0_frontmatter/glossary.tex
 % Glossary entries can also be defined in the main text. See glossary.tex
 \cleardoublepage
-%\chapter{Glossary}
-%\begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-%\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-%% \footnotesize
-%\ifCLASSINFOlangDE
-%\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
-%\else
-%\printglossary[type=\acronymtype,title=Abbreviations]
-%\fi
-%%\printglossary
-%%\printnomenclature[1.5cm] % [] = distance between entry and description
-%% \printglossary{}
-%\label{nom} % target name for links to glossary
+\chapter{Glossary}
+\begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
+\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
+% \footnotesize
+\ifCLASSINFOlangDE
+\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
+\else
+\printglossary[type=\acronymtype,title=Abbreviations]
+\fi
+%\printglossary
+%\printnomenclature[1.5cm] % [] = distance between entry and description
+% \printglossary{}
+\label{nom} % target name for links to glossary
 
-%\end{footnotesize}
-%\end{multicols}
+\end{footnotesize}
+\end{multicols}
 
-\printglossaries{}
+% \printglossaries{}
 
 \begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
 \begin{footnotesize}

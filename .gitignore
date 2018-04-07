@@ -261,3 +261,8 @@ output_pdf/
 
 *.slg
 *.glg-abr
+
+MWE*
+minivimrc
+
+9_backmatter/Control_Oriented_Batt_Modelling.bib
