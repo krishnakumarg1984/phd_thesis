@@ -12,11 +12,12 @@
 \graphicspath{{4/figures/}}
 % ----------------------- contents from here ------------------------
 
-Battery modellers face the classic conundrum of conjuring physics-based battery models that remain amenable for control
-applications. Firstly, the contrasting nature of this modelling objective is presented. Secondly, prior attempts by the
-research community to tackle this issue is briefly examined. A suitable family of models from the broad category of
-reduced-order models is identified as a promising candidate for implementation in controls applications. Next, the
-drawbacks of this family of models is discussed in detail. The state of the art implementation for tackling these
+Battery modellers face the classic conundrum of conjuring physics-based battery models that remain
+amenable for control applications. Firstly, the contrasting nature of this modelling objective is
+presented. Secondly, prior attempts by the research community to tackle this issue is briefly
+examined. A suitable family of models from the broad category of reduced-order models is identified
+as a promising candidate for implementation in controls applications. Next, the drawbacks of this
+family of models is discussed in detail. The state of the art implementation for tackling these
 drawbacks is presented and their inadequacies are discussed.
 
 \todo{write the chapter first. Come back to summarize this.}
@@ -31,12 +32,12 @@ The following successes were achieved.
     \item second attempt
 \end{itemize}
 
-At the end of this chapter, we have a control oriented reduced order battery model amenable for use in real-time
-applications for SOC, SOH etc.\ estimations.
+At the end of this chapter, we have a control oriented reduced order battery model amenable for use
+in real-time applications for SOC, SOH etc.\ estimations.
 
-Control-Oriented models can be considered synonymous with the term `Reduced Order Models'. This is because the
-complexity of physics-based models inherently necessitates the use of a low order model. In this thesis, the two terms
-are used interchangeably.
+Control-Oriented models can be considered synonymous with the term `Reduced Order Models'. This is
+because the complexity of physics-based models inherently necessitates the use of a low order model.
+In this thesis, the two terms are used interchangeably.
 
 \section{Control-Oriented Time-domain Models}
 
@@ -48,55 +49,76 @@ Physics-based Control-Oriented Models broadly fall into the following categories
     \item A hybrid combination of the above
 \end{itemize}
 
-Furthermore, it becomes important to distinguish between models that are derived directly in the time domain versus
-those that are derived first in the frequency domain and later converted to time domain. Since the topic of interest is
-in online application of battery models, models that are entirely implemented in the frequency-domain is out of scope of
-this thesis.
+Owing to the low entry-barrier for adoption,in a real-time controller that logs samples of
+measurement data at specific time intervals, this thesis focusses on models that are cast for
+implementation in the time domain. Such a decision implies the exclusion of those models that are
+derived and implemented entirely in the frequency-domain. For the interested reader wishing to
+peruse the sizeable literature in this field, the discussion here briefly alludes to a few popular
+frequency domain modelling techniques.
 
-Smith~\etal{}~\cite{Smith2007} introduced a 12th order state-space dynamic model capable of predicting the terminal
-voltage within 1\% of a full-order \gls{dfn} model. This frequency domain impedance-based model was derived for the
-frequency range of interest from \SIrange{0}{10}{\hertz} through Model order reduction of the \gls{dfn} model. The
-singular drawback of this model is its extreme complexity for an online implementation. Furthermore, extensive
-parametrisation efforts are required \todo{at the end, count and substitute the canonical number of parameters here} to
-render the model useful for practical applications. The difficulties associated with such extensive parametric
-requirements coupled with inherent uncertainties in such obtained values act as a deterrent to stakeholders outside
-academia to adopt this model for online \gls{bms} implementations. Nevertheless, this model was the first of its kind to
-provide a physics-based battery model in the classical state-space formulation
+The Padé approximation method has been widely adopted to yield low order battery
+models~\cite{Forman2011}\todo{add other relevant references here}. Based on a transfer function
+approach, such models are well-suited for controller design. However, they are typically limited to
+such offline applications owing to the trade-offs required in the Padé approximation order.
+Traditionally, models truncated to very low order exhibit poor fidelity and perform no better than
+classical equivalent circuit models, although recent research attempts have focussed to mitigate
+this drawback~\cite{Yuan2017a,Yuan2017}.
 
+\todo{write about equivalent circuit models here}
+
+It is important to distinguish between models that are derived directly in the
+time domain versus those that are derived first in the frequency domain and later converted to time
+domain.
+
+Smith~\etal{}~\cite{Smith2007} introduced a 12th order state-space dynamic model capable of
+predicting the terminal voltage within 1\% of a full-order \gls{dfn} model. This frequency domain
+impedance-based model was derived for the frequency range of interest from \SIrange{0}{10}{\hertz}
+through Model order reduction of the \gls{dfn} model. The singular drawback of this model is its
+extreme complexity for an online implementation. Furthermore, extensive parametrisation efforts are
+required \todo{at the end, count and substitute the canonical number of parameters here} to render
+the model useful for practical applications. The difficulties associated with such extensive
+parametric requirements coupled with inherent uncertainties in such obtained values act as a
+deterrent to stakeholders outside academia to adopt this model for online \gls{bms} implementations.
+Nevertheless, this model was the first of its kind to provide a physics-based battery model in the
+classical state-space formulation
 \begin{align}
     \dot{x} &= Ax + Bu \\\notag
     y &= Cx + Du
 \end{align}
 
-Although the matrices, $A, B, C$ and $D$ did not directly involve physical parameters of the \gls{dfn} model,
-computation of their numeric values through the model reduction procedure has a direct relationship with them. The
-presence of 12 states dilutes the effectiveness of state estimation algorithms. In the classical isothermal
-implementation of this model, with only output voltage being available to measure, the observablity of the model
-degrades. Although observablity analysis was proven in a noise-free context, the presence of process noise (via
-unmodelled phenomena and parameter uncertainty) and sensor noise makes this model unattractive for implementation in a
+Although the matrices $A, B, C$ and $D$ do not directly involve physical parameters of the
+\gls{dfn} model, computation of their numeric values through the model reduction procedure has a
+direct relationship with them. The presence of 12 states dilutes the effectiveness of state
+estimation algorithms. In the classical isothermal implementation of this model, with only output
+voltage being available to measure, the observablity of the model degrades. Although observablity
+analysis was proven in a noise-free context, the presence of process noise (via unmodelled phenomena
+and parameter uncertainty) and sensor noise makes this model unattractive for implementation in a
 vehicular \gls{bms} application.
 
-The identification of individual parameters of the \gls{dfn} model remains a key area in battery modelling that remains
-only partially explored, and is key to implementation of the advanced models and control algorithms.\todo{does this fit
-better in the introduction chapter?}. The state of the art in this area, the challenges involved and
-current efforts in this direction are explored in~\cref{ch:chapter7}. Although sensitivity analysis of the \gls{dfn}
-parameters has been performed in literature, \todo{citation here} the extent to which parameter uncertainties influence
-the numerical values in the $A, B, C$ and $D$ matrices has not yet been attempted. In continuation of this research
-aspect, the order of magnitude shift in eigen/singular values of the relevant system matrix also need to be quantified
-to enable an informed choice about stability of such models for realtime implementations.
+The identification of individual parameters of the \gls{dfn} model remains a key area in battery
+modelling that remains only partially explored, and is key to implementation of the advanced models
+and control algorithms.\todo{does this fit better in the introduction chapter?}. The state of the
+art in this area, the challenges involved and current efforts in this direction are explored
+in~\cref{ch:chapter7}. Although sensitivity analysis of the \gls{dfn} parameters has been performed
+in literature, \todo{citation here} the extent to which parameter uncertainties influence the
+numerical values in the $A, B, C$ and $D$ matrices has not yet been attempted. In continuation of
+this research aspect, the order of magnitude shift in eigen/singular values of the relevant system
+matrix also need to be quantified to enable an informed choice about stability of such models for
+realtime implementations.
 
-A key drawback of Smith~\etal{}~\cite{Smith007} is the requirement for linearisation at a specific \gls{soc}.
-In~\cite{Smith007}, the operating point was chosen to be 50\% for the derivation of the state-space model. This
-counteracts to a high degree, the usability of the model for state estimation tasks, wherein the \gls{soc} is itself the
-unknown quantity to be estimated. Furthermore, the need to interpolate between matrices from a look-up table
-pre-computed at different states of charge/temperature combinations is an ad-hoc approach to quantifying the model
-across the entire operating range of the battery. This renders the robustness of cross-over between models during
-state-estimation questionable, and demands the need for smoothing filters and other ad-hoc apparatus to obtain
-acceptable \gls{soc} estimations during online operation. The requirement of linearisation also renders the model usable
-only for a small range of \gls{soc}s.
+A key drawback of Smith~\etal{}~\cite{Smith2007} is the requirement for linearisation at a specific
+\gls{soc}. In~\cite{Smith2007}, the operating point was chosen to be 50\% for the derivation of the
+state-space model. This counteracts to a high degree, the usability of the model for state
+estimation tasks, wherein the \gls{soc} is itself the unknown quantity to be estimated. Furthermore,
+the need to interpolate between matrices from a look-up table pre-computed at different states of
+charge/temperature combinations is an ad-hoc approach to quantifying the model across the entire
+operating range of the battery. This renders the robustness of cross-over between models during
+state-estimation questionable, and demands the need for smoothing filters and other ad-hoc apparatus
+to obtain acceptable \gls{soc} estimations during online operation. The requirement of linearisation
+also renders the model usable only for a small range of \gls{soc}s.
 
-Several attempts have been undertaken, with varying degrees of success, to improve and extend this controls-oriented
-model from Smith~\etal{}~\cite{Smith2007}.
+Several attempts have been undertaken, with varying degrees of success, to improve and extend this
+controls-oriented model from Smith~\etal{}~\cite{Smith2007}.
 
 % \begin{figure}[htb]
 % \begin{algorithmic}[1]
