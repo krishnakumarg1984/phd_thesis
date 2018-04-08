@@ -41,7 +41,20 @@ In this thesis, the two terms are used interchangeably.
 
 \section{Control-Oriented Time-domain Models}
 
-Physics-based Control-Oriented Models broadly fall into the following categories.
+Jokar~\etal~\cite{Jokar2016} provide a comprehensive review of the various categories of reduced order physics based
+battery modelling. However, a notable omission in~\cite{Jokar2016} is the classification of models based upon model
+derivation as well as final implementation in the time-vs-frequency domains. Although in principle the transformation
+between these domains follows standard mathematical practices \todo{citation needed?}, availability of models for final
+implementation in the time domain models aids immediate uptake by industry for online adoption in \gls{bms}. This idea
+is so germane to the hypothesis of this chapter \todo{can we form a simple, time-domain model that will get the job
+done?}, that the author of this thesis feels compelled to undertake a simpler classification exercise within the context
+of adaptability. Furthermore, there is also a need to highlight the salient works among the more recent advances and
+extensions to then-prevailing models published since~\cite{Jokar2016}. Hence, the brief review of literature
+covered in this section intends to complement and not supplant~\cite{Jokar2016}. In particular, care has been taken to
+minimize repetition of background art from that reported in Jokar~\etal{}.
+
+In this work, the model order reduction Physics-based Control-Oriented Models can be classified as belonging to one of the
+following categories.
 
 \begin{itemize}
     \item Models obtained through model order reduction of physics based models
@@ -49,7 +62,16 @@ Physics-based Control-Oriented Models broadly fall into the following categories
     \item A hybrid combination of the above
 \end{itemize}
 
-Owing to the low entry-barrier for adoption,in a real-time controller that logs samples of
+In principle,a modelling method that yields a time-domain mathematical description of physical phenomena that is lower
+in computational complexity by an arbitrary magnitude than the original \gls{dfn} model can be considered for further
+investigation. In the absence of a quantitative definition of what can be considered as a true reduced order model, the
+number of candidate family of models to consider is large and overwhelming. In practice, the constraints of realtime
+implementation limits the choice of candidate modelling families. For instance, models employing the classical finite
+difference and Galerkin Finite Element~\cite{Dao2012} methods for transformation and order reduction of one or more field variables of
+the \gls{dfn} model are immediately excluded, owing to the impracticability of implementing them in a
+resource-constrained environment.
+
+Owing to the low entry-barrier for adoption in a real-time controller that logs samples of
 measurement data at specific time intervals, this thesis focusses on models that are cast for
 implementation in the time domain. Such a decision implies the exclusion of those models that are
 derived and implemented entirely in the frequency-domain. For the interested reader wishing to
@@ -64,7 +86,15 @@ Traditionally, models truncated to very low order exhibit poor fidelity and perf
 classical equivalent circuit models, although recent research attempts have focussed to mitigate
 this drawback~\cite{Yuan2017a,Yuan2017}.
 
-\todo{write about equivalent circuit models here}
+Yet another family of models, that have gained prominence since the publication of~\cite{Jokar2016} are physics-inspired
+equivalent circuit models. \todo{Cite a few important ones here including Yuri's latest work}. In these family of
+models, the classical equivalent circuit Randles model structure is retained. However, the values of the electrical
+circuit components such as series resistance and equivalent capacitance  are obtained through various mechanisms
+\todo{such as \ldots}. The biggest advantage of such models is that they serve as drop-in replacements to traditional
+equivalent circuit models whilst still having origins rooted in physical principles rather than empirical curve-fitting.
+For example,
+It should be emphasised that in these category of models, typically there is no direct
+link between the final value of the circuit components and the physical modelling parameters.
 
 It is important to distinguish between models that are derived directly in the
 time domain versus those that are derived first in the frequency domain and later converted to time
