@@ -19,8 +19,7 @@ reduced-order models is identified as a promising candidate for implementation i
 drawbacks of this family of models is discussed in detail. The state of the art implementation for tackling these
 drawbacks is presented and their inadequacies are discussed.
 
-\todo{write the chapter first. Come back to summarize this.}
-The following efforts/trials were done (failures)
+\todo{write the chapter first. Come back to summarize this.} The following efforts/trials were done (failures)
 \begin{itemize}
     \item first attempt
     \item second attempt
@@ -38,30 +37,34 @@ Control-Oriented models can be considered synonymous with the term `Reduced Orde
 complexity of physics-based models inherently necessitates the use of a low order model. In this thesis, the two terms
 are used interchangeably.
 
-\section{Control-Oriented Time-domain Models}
+\section{Introduction to Control-Oriented Models}
 
 Jokar~\etal~\cite{Jokar2016} provide a comprehensive review of the various categories of reduced order physics based
-battery modelling. However, a notable omission in~\cite{Jokar2016} is the classification of models based upon model
-derivation as well as final implementation in the time-vs-frequency domains. Although in principle the transformation
-between these domains follows standard mathematical practices \todo{citation needed?}, availability of models for final
-implementation in the time domain models aids immediate uptake by industry for online adoption in \gls{bms}. This idea
-is so germane to the hypothesis of this chapter \todo{can we form a simple, time-domain model that will get the job
-done?}, that the author of this thesis feels compelled to undertake a simpler classification exercise within the context
-of adaptability. Furthermore, there is also a need to highlight the salient works among the more recent advances and
-extensions to then-prevailing models published since~\cite{Jokar2016}. Hence, the brief review of literature covered in
-this section intends to complement and not supplant~\cite{Jokar2016}. In particular, care has been taken to minimize
-repetition of background art from that reported in Jokar~\etal{}.
+battery modelling. However, a notable omission in~\cite{Jokar2016} is that it does not distinguish between models based
+on time-vs-frequency domains. Fan~\etal{}~\cite{Fan2015} performed a similar review of reduced order battery models, but
+only provide a brief comparative overview of models derived and implemented in these dual domains.
+Unlike~\cite{Jokar2016}, this review did not aim to provide a classification of various reduced order models, but
+instead emphasises on a broad survey of relevant methodologies and tools towards obtaining such models. Hence,
+neither~\cite{Jokar2016} nor~\cite{Fan2015} provide specific emphasis on the rubrics and implication of the choice of
+modelling in either of these dual domains. Although in principle, the transformation between them follows standard
+mathematical practices,~\todo{citation(s) needed?} availability of models for final implementation in the time domain
+aids immediate uptake by industry for adoption in online \gls{bms}es. Treatment of reduced order models from this aspect
+is so germane to the central hypothesis of this chapter,\todo{can a simple time-domain model do the job?} that the
+author of this thesis feels compelled to undertake a simpler classification exercise within the context of
+implementation. In this discussion, the various modelling methodologies and the resulting models are viewed as a
+continuum and hence this thesis discusses them with a unified perspective. Furthermore, there is also a need to
+highlight the salient works among the more recent advances and extensions to then-prevailing models published
+since~\cite{Jokar2016} and~\cite{Fan2015}. Hence, the specialised review of reduced order modelling literature covered
+in this section intends to supplement ---  not supplant --- the breadth of modelling art covered between them. In
+particular, care has been taken to minimize repetition of background art analysed in these aforementioned review
+articles, ensuring that only a subset of prior research that is pertinent to illustrate the new classification scheme
+introduced here shall be discussed.
 
-In this work, the model order reduction Physics-based Control-Oriented Models can be classified as belonging to one of
-the following categories.
+Physics-based Control-Oriented Models can be classified as belonging to one of the following categories.\todo{just
+enumerate in-line here} It is important to distinguish between models that are derived directly in the time domain
+versus those that are derived first in the frequency domain and later converted to time domain.\todo{write this better}
 
-\begin{itemize}
-    \item Models obtained through model order reduction of physics based models
-    \item Models motivated by physical principles,but formulated directly as reduced order models
-    \item A hybrid combination of the above
-\end{itemize}
-
-In principle,a modelling method that yields a time-domain mathematical description of physical phenomena that is lower
+In principle, a modelling method that yields a time-domain mathematical description of physical phenomena that is lower
 in computational complexity by an arbitrary magnitude than the original \gls{dfn} model can be considered for further
 investigation. In the absence of a quantitative definition of what can be considered as a true reduced order model, the
 number of candidate family of models to consider is large and overwhelming. In practice, the constraints of realtime
@@ -76,61 +79,50 @@ implies the exclusion of those models that are derived and implemented entirely 
 interested reader wishing to peruse the sizeable literature in this field, the discussion here briefly alludes to a few
 popular frequency domain modelling techniques.
 
-The Padé approximation method has been widely adopted to yield low order battery models~\cite{Forman2011a}\todo{add other
-relevant references here}. Based on a transfer function approach, such models are well-suited for controller design.
-However, they are typically limited to such offline applications owing to the trade-offs required in the Padé
-approximation order. Traditionally, models truncated to very low order exhibit poor fidelity and perform no better than
-classical equivalent circuit models, although recent research attempts have focussed to mitigate this
-drawback~\cite{Yuan2017a,Yuan2017}.
+The transfer-function oriented Padé approximation method for low order physics-based battery modelling pioneered by
+Forman~\etal{}~\cite{Forman2011a} has gained widespread adoption in the areas of cell design~\cite{Marcicki2013}, charge
+trajectory optimisation~\cite{Bashash2010}, controller design~\cite{Perez2015} and state
+estimation~\cite{Marcicki2013,Moura2012,Bartlett2015}. Although online identification of a subset of aging parameters
+using a Padé model and a recursive least squares algorithm was presented in Prasad and Rahn~\cite{Prasad2013}, a
+detailed treatment was not given on the specific implementation details such as the transformation of the Padé reduced
+impedance to discrete-time difference equations. Padé models are typically limited to offline applications owing to the
+aggressive trade-offs required in the approximation order to maintain accuracy. Traditionally, models truncated to very
+low Padé order exhibit poor fidelity and perform no better than classical equivalent circuit models, although recent
+research attempts have focussed to mitigate this drawback~\cite{Yuan2017a,Yuan2017}.
 
-Yet another family of models that have gained prominence since the publication of~\cite{Jokar2016} are physics-inspired
-equivalent circuit models. \todo{Note that it is a hybrid model Cite a few important ones here including Yuri's latest work}. In these family of
-models, the classical equivalent circuit Randles model structure is retained. However, the values of the electrical
-circuit components such as series resistance and equivalent capacitance  are obtained through various mechanisms
-\todo{such as \ldots}. The biggest advantage of such models is that they serve as drop-in replacements to traditional
-equivalent circuit models whilst still retaining their origins in physical principles rather than empirical
-curve-fitting. Merla~\etal{}~\cite{Merla2018} introduced an equivalent circuit model that can be parameterised through a
-systematic decoupling of the kinetics and diffusion at both electrodes and in the electrolyte. Although these
-interacting phenomena can be complex to resolve over all length and time-scales, acceptable trade-offs in accuracy was
-demonstrated to be achievable from a system-level simulation perspective. A drawback of such models is that there exists
-an ad-hoc attribution of key model parameters such as the diffusion coefficients among the two electrodes through
-non-verifiable assumptions. Furthermore, in~\cite{Merla2018}, notable discrepancies exist in the values of parameters
-such as electrolyte conductivity (obtained through calculations from \gls{eis} measurements) to that typically reported
-in literature. \todo{make remark on intend use and purpose of this model and how Krishna's DRA inspired equivalent
-circuit model has a different focus} Yet another effort in this direction  is the author's own efforts based on the
-results from the improved DRA reported in~\cref{ch:chapter3}\todo{report future work simulations here}. It should be
-emphasised that in these category of models, there is no direct link between the final value of the circuit
-components and the physical parameters.
-
-It is important to distinguish between models that are derived directly in the time domain versus those that are derived
-first in the frequency domain and later converted to time domain.
-
-Smith~\etal{}~\cite{Smith2007} introduced a 12th order state-space dynamic model capable of predicting the terminal
-voltage within 1\% of a full-order \gls{dfn} model. This frequency domain impedance-based model was derived for the
-frequency range of interest from \SIrange{0}{10}{\hertz} through Model order reduction of the \gls{dfn} model. The
-singular drawback of this model is its extreme complexity for an online implementation. Furthermore, extensive
-parametrisation efforts are required \todo{at the end, count and substitute the canonical number of parameters here} to
-render the model useful for practical applications. The difficulties associated with such extensive parametric
-requirements coupled with inherent uncertainties in such obtained values act as a deterrent to stakeholders outside
-academia to adopt this model for online \gls{bms} implementations. Nevertheless, this model was the first of its kind to
-provide a physics-based battery model in the classical state-space formulation
+Smith~\etal{}~\cite{Smith2007} pioneered the possibility of a semi-hybrid modelling approach by obtaining independent
+closed form expressions for all electrochemical field variables in the frequency domain except electrolyte concentration
+and potential, which were separately solved with the classical finite difference discretization method.  This is the
+earliest published instance to the author's knowledge wherein the dynamics of the full order model were retained in the
+frequency domain, enabled through the innovative use of transcendental transfer functions without being forced to resort
+to truncation techniques such as Padé approximation. A composite impedance model was obtained which was then converted
+by residue grouping and truncation techniques to a 12th order state space model thereby introducing this hybrid
+modelling workflow. This model was capable of predicting the battery terminal voltage within 1\% of a full-order
+\gls{dfn} model. The frequency domain impedance-based model was derived for the frequency range of interest from
+\SIrange{0}{10}{\hertz} through Model order reduction of the \gls{dfn} model. The singular drawback of this model is its
+complexity for an online implementation. Furthermore, extensive parametrisation efforts are required \todo{at the end,
+count and substitute the canonical number of parameters here} to render the model useful for practical applications. The
+difficulties associated with such extensive parametric requirements coupled with inherent uncertainties in such obtained
+values act as a deterrent to stakeholders outside academia to adopt this model for online \gls{bms} implementations.
+Nevertheless, this model was the first of its kind to provide a physics-based battery model in the classical state-space
+formulation
 \begin{align}
     \dot{x} &= Ax + Bu \\\notag
     y &= Cx + Du
 \end{align}
 
-Although the matrices $A, B, C$ and $D$ do not directly involve physical parameters of the \gls{dfn} model, computation
-of their numeric values through the model reduction procedure has a direct relationship with them. The presence of 12
-states dilutes the effectiveness of state estimation algorithms. In the classical isothermal implementation of this
-model, with only output voltage being available to measure, the observablity of the model degrades. Although
-observablity analysis was proven in a noise-free context, the presence of process noise (via unmodelled phenomena and
-parameter uncertainty) and sensor noise makes this model unattractive for implementation in a vehicular \gls{bms}
-application.
+\todo{might have to re-write as being common with Plett and offer my comments to both as an informed researcher}Although
+the matrices $A, B, C$ and $D$ do not directly involve physical parameters of the \gls{dfn} model, computation of their
+numeric values through the model reduction procedure has a direct relationship with them. The presence of 12 states
+dilutes the effectiveness of state estimation algorithms. In the classical isothermal implementation of this model, with
+only output voltage being available to measure, the observablity of the model degrades. Although observablity analysis
+was proven in a noise-free context, the presence of process noise (via unmodelled phenomena and parameter uncertainty)
+and sensor noise makes this model unattractive for implementation in a vehicular \gls{bms} application.
 
 The identification of individual parameters of the \gls{dfn} model remains a key area in battery modelling that remains
 only partially explored, and is key to implementation of the advanced models and control algorithms.\todo{does this fit
 better in the introduction chapter?}. The state of the art in this area, the challenges involved and current efforts in
-this direction are explored in~\cref{ch:chapter7}. Although sensitivity analysis of the \gls{dfn} parameters has been
+this direction are explored in~\cref{ch:chapter6}. Although sensitivity analysis of the \gls{dfn} parameters has been
 performed in literature, \todo{citation here} the extent to which parameter uncertainties influence the numerical values
 in the $A, B, C$ and $D$ matrices has not yet been attempted. In continuation of this research aspect, the order of
 magnitude shift in eigen/singular values of the relevant system matrix also need to be quantified to enable an informed
@@ -147,7 +139,40 @@ acceptable \gls{soc} estimations during online operation. The requirement of lin
 only for a small range of \gls{soc}s.
 
 Several attempts have been undertaken, with varying degrees of success, to improve and extend this controls-oriented
-model from Smith~\etal{}~\cite{Smith2007}.
+model from Smith~\etal{}~\cite{Smith2007}.\todo{write plett's group work in the next couple of paragraphs explaining the
+    DRA. DRA was a way forward in bringing all the internal quantities closer to time-domain implementation rather than
+resorting to a lumped impedance parameter}
+
+Physics-inspired equivalent circuit models~\cite{Merla2018,Prasad2014,Zhang2017} are a class of hybrid models that have
+rapidly gained prominence since the publication of\cite{Jokar2016} and ~\cite{Fan2015}. Such models are first derived in
+the frequency domain and later converted to an equivalent circuit representation. Prasad and Rahn~\cite{Prasad2014}
+extended their Padé order reduced model first presented in~\cite{Prasad2013} to convert the impedance model into
+standard equivalent circuits. approximation or \gls{eis} measurements, and later on converted to equivalent circuit
+models. In these family of models, the classical Randles equivalent circuit model structure is retained. However, the
+values of the electrical circuit components such as series resistance and equivalent capacitance  are obtained through
+various mechanisms \todo{such as \ldots}. The biggest advantage of such models is that they serve as drop-in
+replacements to traditional equivalent circuit models whilst still retaining their origins in physical principles rather
+than empirical curve-fitting. Merla~\etal{}~\cite{Merla2018} introduced an equivalent circuit model that can be
+parameterised through a systematic decoupling of the kinetics and diffusion at both electrodes and in the electrolyte.
+Although these interacting phenomena can be complex to resolve over all length and time-scales, acceptable trade-offs in
+accuracy was demonstrated to be achievable from a system-level simulation perspective. A drawback of such models is that
+there exists an ad-hoc attribution of key model parameters such as the diffusion coefficients among the two electrodes
+through non-verifiable assumptions. Furthermore, in~\cite{Merla2018}, notable discrepancies exist in the values of
+parameters such as electrolyte conductivity (obtained through calculations from \gls{eis} measurements) to that
+typically reported in literature. \Cref{ch:chapter6} discusses the author's efforts towards obtaining a similar
+physics-informed equivalent circuit model based on the results from the improved DRA reported in
+Gopalakrishnan\etal{}~\cite{Gopalakrishnan2017} and detailed in~\cref{ch:chapter3}. This physics-inspired equivalent
+circuit model seeks to explore the present gap in impedance modelling by forming an equivalent composite impedance value
+as laid out in~\cite{Smith2007}. The preliminary work towards this hitherto unexplored direction is briefly presented in
+\cref{ch:chapter6}. This physics-informed impedance model can be extended to fit parameter values of components in an
+equivalent circuit model. The scope of this attempt differs from~\cite{Merla2018} in that, the author's efforts are
+focussed on suitability for online implementation for control applications as opposed to the objective of degradation
+diagnosis in Merla~\etal~\cite{Merla2018}. It should be emphasised that in these category of models, there exists no
+direct link between the final value of the circuit components and the physical parameters. Nevertheless, the author
+believes that these models have the potential to elicit interest from stakeholders owing to the need for minimal code
+changes, thereby facilitating instant adaptability to existing BMS control architectures.
+
+\todo{tikz picture here, showing a nice layout classifying various models}
 
 % \begin{figure}[htb]
 % \begin{algorithmic}[1]

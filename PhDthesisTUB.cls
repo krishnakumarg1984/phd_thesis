@@ -991,7 +991,7 @@ supported!}
    \ifCLASSINFObibnumbered
      \ifCLASSINFObiblatex
              \RequirePackage[backend=biber, style=numeric-comp,
-        citestyle=numeric, sorting=none, natbib=true]{biblatex}
+        citestyle=numeric-comp, sorting=none, natbib=true]{biblatex}
      \else
         \RequirePackage[numbers,compress]{natbib} % numbered citation
     \fi

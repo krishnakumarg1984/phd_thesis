@@ -266,3 +266,9 @@ MWE*
 minivimrc
 
 9_backmatter/Control_Oriented_Batt_Modelling.bib
+NetrwTreeListing*
+*.vim
+
+*.bib
+
+!thesis_refs.bib
