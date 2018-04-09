@@ -270,5 +270,7 @@ NetrwTreeListing*
 *.vim
 
 *.bib
+*.tar.gz
 
 !thesis_refs.bib
+
