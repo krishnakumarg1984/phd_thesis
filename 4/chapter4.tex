@@ -61,7 +61,7 @@ articles, ensuring that only a subset of prior research that is pertinent to ill
 introduced here shall be discussed.
 
 Physics-based Control-Oriented Models can be classified as belonging to one of the following categories.\todo{just
-enumerate in-line here} It is important to distinguish between models that are derived directly in the time domain
+enumerate my classification in-line here} It is important to distinguish between models that are derived directly in the time domain
 versus those that are derived first in the frequency domain and later converted to time domain.\todo{write this better}
 
 In principle, a modelling method that yields a time-domain mathematical description of physical phenomena that is lower
@@ -138,10 +138,16 @@ state-estimation questionable, and demands the need for smoothing filters and ot
 acceptable \gls{soc} estimations during online operation. The requirement of linearisation also renders the model usable
 only for a small range of \gls{soc}s.
 
-Several attempts have been undertaken, with varying degrees of success, to improve and extend this controls-oriented
-model from Smith~\etal{}~\cite{Smith2007}.\todo{write plett's group work in the next couple of paragraphs explaining the
-    DRA. DRA was a way forward in bringing all the internal quantities closer to time-domain implementation rather than
-resorting to a lumped impedance parameter}
+Several attempts have been undertaken to improve and extend the ideas pioneered in Smith~\etal{}~\cite{Smith2007}.
+Lee~\etal{}~addressed a critical missing aspect of~\cite{Smith2007}, \viz the derivation of transcendental transfer
+functions for electrolyte concentration and potential. These transfer functions were obtained by using a Sturm-Louiville
+approach and retaining the top 5 modes of the eigenfunction expansion, as detailed in~\cite{Lee2012} . To the author's
+best knowledge this is the first published work wherein all electrochemical field variables of the \gls{dfn} model were
+considered for inclusion in a deterministic model order order reduction procedure whilst remaining in the frequency
+domain. Furthermore, Lee~\etal devised the \gls{dra}, a novel algorithm to systematically transform all transcendental
+transfer functions to the time-domain so as to obtain a standard state-space model~\cite{Lee2012a}.
+
+\todo{write plett's group work in the next couple of paragraphs explaining the DRA. DRA was a way forward in bringing all the internal quantities closer to time-domain implementation rather than resorting to a lumped impedance parameter}
 
 Physics-inspired equivalent circuit models~\cite{Merla2018,Prasad2014,Zhang2017} are a class of hybrid models that have
 rapidly gained prominence since the publication of\cite{Jokar2016} and ~\cite{Fan2015}. Such models are first derived in
