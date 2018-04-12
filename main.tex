@@ -1,6 +1,6 @@
 %! TEX program = lualatex
 
-\documentclass[oneside,11pt,online,a4paper,pdfa1,numbered,biblatex,fontC]{PhDthesisTUB}
+\documentclass[oneside,12pt,online,a4paper,pdfa1,numbered,biblatex,fontC]{PhDthesisTUB}
 
 \include{Preamble/preamble}
 \include{thesis-info}
@@ -26,10 +26,6 @@
 \loadglsentries{0_frontmatter/glossary}
 \makeglossaries{}
 \begin{document}
-% \doclicenseIcon
-\includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}
-\doclicenseLongText
-% \doclicenseFullText
 
 \sisetup{range-phrase=--}
 \sisetup{range-units=single}
@@ -46,8 +42,8 @@
 
 %: ----------------------- Choose spacing ------------------------
 %\singlespacing
-\onehalfspacing
-% \doublespacing
+% \onehalfspacing
+\doublespacing
 
 %: ----------------------- abstract ------------------------
 
@@ -55,6 +51,8 @@
 
 \include{0_frontmatter/abstract}
 
+\includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}
+\doclicenseLongText
 
 %: ----------------------- tie in front matter ------------------------
 
