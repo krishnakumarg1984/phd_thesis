@@ -150,15 +150,15 @@ model for implementation in the classical state-space formulation
 that  is amenable  for  controller design  and  further system-level  simulation
 studies \eg{} as a component in a (hybrid) electric vehicle drivetrain.
 
-\todo{re-write the following as being common with Plett \& offer comments}
-
-The  presence  of  12  states  dilutes the  effectiveness  of  state  estimation
-algorithms. In the classical isothermal  implementation of this model, with only
-output  voltage  being the  only  measured  quantity,  the observablity  of  the
-model degrades  significantly. Although Smith~\etal{} performed  an observablity
-analysis of  the model in  a noise-free context,  the presence of  process noise
-(via unmodelled  electrochemical phenomena and parameter  uncertainties) coupled
-with sensor noise makes this model unattractive for state estimation purposes.
+The requirement of a relatively large  number of state variables to describe the
+system dynamics dilutes the effectiveness of state estimation algorithms. In the
+classical  isothermal implementation  of this  model, with  only output  voltage
+being  the  only measured  quantity,  the  observablity  of the  model  degrades
+significantly. Although Smith~\etal{} performed  an observablity analysis of the
+model in  a noise-free context,  the presence  of process noise  (via unmodelled
+electrochemical phenomena and parameter uncertainties) coupled with sensor noise
+makes this model  unattractive for state estimation tasks in  an online embedded
+application.
 
 Several attempts have been undertaken to  improve and extend the ideas pioneered
 in  Smith~\etal{}~\cite{Smith2007}.  Lee~\etal{}~addressed  a  critical  missing
@@ -169,8 +169,64 @@ first five modes of the eigenfunction expansion, as detailed in~\cite{Lee2012} .
 To the  author's best knowledge,  this is the  first published work  wherein all
 electrochemical  field variables  of  the \gls{dfn}  model  were considered  for
 inclusion in  a deterministic model  order reduction procedure  whilst remaining
-entirely within the frequency domain. \todo{mention how the electrolyte transfer
-functions are important in decoupling stuff}
+entirely within the frequency domain.
+
+Obtaining  closed form  expressions for  the electrolyte  variables achieved  in
+Lee\etal{} also has an important  computational implication. With these capstone
+derivations serving to completing the model description in the frequency domain,
+all  electrochemical  variables of  the  \gls{dfn}  model  could now  be  solved
+independently at any  desired spatial location, \eg{} at  the current collectors
+and separator  interfaces. Until  this point,  the state of  the art  in reduced
+order  modelling invariably  necessitated  the solution  of all  electrochemical
+quantities at  multiple node locations along  the thickness of each  cell layer,
+placing a computational burden. This is  a significant deterrent to the adoption
+of such  models if the intended  purpose of the  model is to simply  predict the
+cell's terminal voltage.  Furthermore, among methods that retain  the full order
+Fickian diffusion  for describing solid  phase diffusion within  each electrode,
+this further necessitates discretisation also along the radial direction thereby
+increasing  the overall  number  of  nodes by  an  order  of magnitude  directly
+impacting the computational efficiency of such models.
+
+The  impact of  high node  densities on  the computational  requirements of  the
+original  \gls{p2d}  model have  led  researchers  to adopt  various  mitigation
+strategies to  tackle this issue. In  contrast to the pure  frequency domain and
+the  semi-hybrid/hybrid approaches  discussed thus  far, these  attempts aim  to
+provided a simpler computational mesh,  whilst retaining high fidelity and hence
+can be  classified as  time domain methods.  It should be  noted that  high node
+densities are  mainly required near the  surface of the spherical  particles for
+the  pseudo  \engordnumber{2} dimension,  whilst  such  clustering of  nodes  is
+desirable near  the separator and  current collector interfaces along  the axial
+dimension.\todo{need to  define 'axial'  at the  start of  the thesis}.  Thus, a
+large number  of model  order reduction  strategies in the  time domain  seek to
+adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
+issues.
+
+Bizeray\etal{}~\cite{Bizeray2015}         performed          a         Chebyshev
+discretisation~\cite{Trefethen2000}  of   the  entire   \gls{p2d}  model   on  a
+global  scale,  \ie{}  along  both   the  axial  and  radial  directions.  Thus,
+a  spectral  scheme,   beyond  the  algebraic  orders   of  accuracy  achievable
+with  classical  Finite  Difference,  Finite Element  or  Finite  Volume  Scheme
+could  be  applied.  The reduced  number  of  nodes  as  well as  their  desired
+clustering  at  the  aforementioned  spatial  locations  ensures  a  significant
+lowering  of computational  burdens of  simulating a  physics-based cell  model.
+Gopalakrishnan\etal{}~\cite{Gopalakrishnan2018} undertook  a hybrid  approach by
+retaining a standard finite volume discretisation in the axial domain equations,
+whilst adopting the  Chebyshev discretisation only for the  critical solid phase
+diffusion component in the radial direction. Albeit in time domain, the standard
+\gls{p2d} equations, their boundary conditions and corresponding field variables
+are  mathematically transformed  to the  Chebyshev space  within which  they are
+solved.  The details  of this  transformation is  presented in  \cref{sec:hybrid
+fv-spectral} in  \cref{ch:chapter2} for  the case  of the  solid-phase diffusion
+equation.  Finally,   these  solved  quantities   are  converted  back   to  the
+physical  space through  a corresponding  inverse transformation.  Although this
+bi-directional transformation is algebraic in nature, the requirement of running
+a spatially resolved model coupled with  such overheads render these category of
+time domain models unsuitable for online implementation.
+
+\todo{make a  note in the introduction  chapter that the terms  cell and battery
+are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
+modelling and battery modelling}
+
 
 Furthermore,  Lee~\etal{}   also  devised  the  \gls{dra},   a  novel  algorithm
 to  systematically  transform  all  transcendental  transfer  functions  to  the
@@ -183,6 +239,7 @@ forming a lumped impedance and then truncating it suitably.
 \todo{Rest of the relevant works by Prof Plett's group work here.}
 
 \todo{revise the below paragraph to account for dra as well as smith's work}
+\todo{re-write the following as being common with Plett \& offer comments}
 
 A key  drawback of  both Smith~\etal{}~\cite{Smith2007}  is the  requirement for
 linearisation at a specific  \gls{soc}. In~\cite{Smith2007}, the operating point
