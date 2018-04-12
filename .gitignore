@@ -276,3 +276,6 @@ NetrwTreeListing*
 
 main.pdf
 main_vimtex.pdf
+
+*.ini
+notes/mkrctest
