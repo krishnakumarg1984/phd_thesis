@@ -222,25 +222,47 @@ equation.  Finally,   these  solved  quantities   are  converted  back   to  the
 physical  space through  a corresponding  inverse transformation.  Although this
 bi-directional transformation is algebraic in nature, the requirement of running
 a spatially resolved model coupled with  such overheads render these category of
-time domain models unsuitable for online implementation.
-
-\todo{make a  note in the introduction  chapter that the terms  cell and battery
-are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
-modelling and battery modelling}
-
+time domain models unsuitable for online implementation. In this context, the
+contribution of Lee~\etal{}, \ie{} the ability to solve for any electrochemical
+variable at an arbitrary spatial location by completely eliminating the need for
+spatial discretisation assumes special significance.
 
 Furthermore,  Lee~\etal{}   also  devised  the  \gls{dra},   a  novel  algorithm
 to  systematically  transform  all  transcendental  transfer  functions  to  the
 time-domain to  obtain the standard state-space  model given by~\cite{Lee2012a}.
-The  author of  this thesis  considers the  formulation of  the \gls{dra}  was a
-breakthrough that helped in bringing a physics-informed time-domain model closer
-to  implementation for  an online  application, without  the need  to resort  to
-forming a lumped impedance and then truncating it suitably.
+The  author of  this thesis  considers  the formulation  of the  \gls{dra} as  a
+breakthrough  contribution  that  has  helped  in  bringing  a  physics-informed
+time-domain  model  a  step  closer  to  online  implementation  without  having
+to  resort to  forming  a  lumped impedance  and  then  truncating it  suitably.
+Lee~\etal{}~\cite{Lee2014}  then  extended  this  work  for  a  wider  range  of
+operation  across  various  \gls{soc},  temperature and  C-rates.  Although  the
+final  state  space  model  is  simple to  implement,  the  classical  \gls{dra}
+scheme   proposed  by   Lee\etal{}   suffers   from  significant   computational
+bottlenecks  in   forming  the  required   block  Hankel  matrices   during  the
+model-derivation phase.  A memory-efficient version of  the \gls{dra} exploiting
+the   skew-symmetric   structure  of   these   Hankel   matrices  was   proposed
+in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017}  resulting  in  drastically
+reduced memory and processor requirements.
 
-\todo{Rest of the relevant works by Prof Plett's group work here.}
+In both the original  as well as the improved \gls{dra},  the computation of the
+EigenFunction modal expansion of electrolyte concentration transfer function was
+slow.  A less  severe disadvantage  with the  transcendental transfer  functions
+associated with the electrolyte concentration was that their derivation entailed
+mathematically cumbersome  symbolic manipulations  that dictated  the need  of a
+capable \gls{cas} package.  Albeit from a standalone  viewpoint this requirement
+does  not  seem to  be  critical,  the Ho-Kalman  algorithm  that  forms a  core
+component  of the  \gls{dra}  schemes  is steeped  in  numerical linear  algebra
+routines. Furthermore, for facilitating  state estimator and controller designs,
+it is  convenient to implement  the resultant  state-space model in  a classical
+numerical  computation environment  such as  \textsc{MATLAB}. Taking  these into
+consideration,  Rodriguez~\etal{}~\cite{Rodriguez2017}  introduced a  simplified
+computation of the  electrolyte concentration transfer function  by applying the
+variation of  parameters (VOP) scheme.  With this final improvement,  the hybrid
+scheme by Lee~\eta{}  can be considered feature-complete  with low computational
+requirements during both model derivation and implementation phase.
 
-\todo{revise the  below paragraph to  account for dra  as well as  smith's work}
-\todo{re-write the following as being common with Plett \& offer comments      }
+\todo{revise the  below paragraph as  drawbacks in both  dra as well  as smith's
+work}
 
 A key  drawback of  both Smith~\etal{}~\cite{Smith2007}  is the  requirement for
 linearisation at a specific  \gls{soc}. In~\cite{Smith2007}, the operating point
@@ -254,7 +276,8 @@ battery.  This  renders  the  robustness of  cross-over  between  models  during
 state-estimation questionable,  and demands the  need for smoothing  filters and
 other ad-hoc apparatus to obtain  acceptable \gls{soc} estimations during online
 operation. The requirement  of linearisation also renders the  model usable only
-for a small range of \gls{soc}s.
+for a small range of \gls{soc}s.Lee~\etal{}~\cite{Lee2014} overcame this through
+an ad-hoc approach (only masks the issue temporarily.....rewrite)
 
 Physics-inspired equivalent circuit models~\cite{Merla2018,Prasad2014,Zhang2017}
 are  a  class  of  hybrid  models that  have  rapidly  gained  prominence  since
@@ -342,6 +365,9 @@ matrices has  not yet been attempted.  In continuation of this  research aspect,
 the order  of magnitude shift  in eigen/singular  values of the  relevant system
 matrix also need  to be quantified to enable an  informed choice about stability
 of such models for real-time implementations.
+
+
+\todo{pending SPM and PP2D}
 
 \todo{Tikz picture  here, showing a nice  layout of various models  according to
 the new classification scheme}
