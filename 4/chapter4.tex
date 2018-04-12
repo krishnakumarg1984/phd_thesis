@@ -23,8 +23,9 @@ drawbacks of this family of models is  discussed in detail. The state of the art
 implementation for tackling these drawbacks  is presented and their inadequacies
 are discussed.
 
-\todo{write the chapter first. Come back to summarize this.} The following
-efforts/trials were done (failures)
+\todo{write the chapter first. Come back to summarize this.}
+
+The following efforts/trials were done (failures)
 \begin{itemize}
     \item first attempt
     \item second attempt
@@ -94,7 +95,7 @@ the  choice  of  candidate  modelling families.  For  instance,  models  relying
 primarily on  classical finite  difference~\cite{Smith2006} and  Galerkin Finite
 Element~\cite{Dao2012} methods for transformation and  order reduction of one or
 more field variables  of the \gls{dfn} model are immediately  excluded, owing to
-the impracticability of implementing them in a resource-constrained environment
+the impracticability of implementing  them in a resource-constrained environment
 such as an embedded \gls{bms} controller.
 
 Owing to  the low entry-barrier for  adoption in a real-time  controller logging
@@ -165,14 +166,14 @@ in  Smith~\etal{}~\cite{Smith2007}.  Lee~\etal{}~addressed  a  critical  missing
 aspect  of~\cite{Smith2007}, \viz{}  the derivation  of transcendental  transfer
 functions  for  both electrolyte  concentration  and  potential. These  transfer
 functions were  obtained by  using a Sturm-Louiville  approach by  retaining the
-first five modes of the eigenfunction expansion, as detailed in~\cite{Lee2012}.
+first five modes of the  eigenfunction expansion, as detailed in~\cite{Lee2012}.
 To the  author's best knowledge,  this is the  first published work  wherein all
 electrochemical  field variables  of  the \gls{dfn}  model  were considered  for
 inclusion in  a deterministic model  order reduction procedure  whilst remaining
 entirely within the frequency domain.
 
 Obtaining  closed form  expressions for  the electrolyte  variables achieved  in
-Lee\etal{} also has an important  computational implication. With these capstone
+Lee~\etal{} also has an important computational implication. With these capstone
 derivations serving to completing the model description in the frequency domain,
 all  electrochemical  variables of  the  \gls{dfn}  model  could now  be  solved
 independently at any  desired spatial location, \eg{} at  the current collectors
@@ -209,7 +210,7 @@ with  classical  Finite  Difference,  Finite Element  or  Finite  Volume  Scheme
 could  be  applied.  The reduced  number  of  nodes  as  well as  their  desired
 clustering  at  the  aforementioned  spatial  locations  ensures  a  significant
 lowering  of computational  burdens of  simulating a  physics-based cell  model.
-Gopalakrishnan\etal{}~\cite{Gopalakrishnan2018} undertook  a hybrid  approach by
+Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2018} undertook a  hybrid approach by
 retaining a standard finite volume discretisation in the axial domain equations,
 whilst adopting the  Chebyshev discretisation only for the  critical solid phase
 diffusion component in the radial direction. Albeit in time domain, the standard
@@ -238,8 +239,8 @@ forming a lumped impedance and then truncating it suitably.
 
 \todo{Rest of the relevant works by Prof Plett's group work here.}
 
-\todo{revise the below paragraph to account for dra as well as smith's work}
-\todo{re-write the following as being common with Plett \& offer comments}
+\todo{revise the  below paragraph to  account for dra  as well as  smith's work}
+\todo{re-write the following as being common with Plett \& offer comments      }
 
 A key  drawback of  both Smith~\etal{}~\cite{Smith2007}  is the  requirement for
 linearisation at a specific  \gls{soc}. In~\cite{Smith2007}, the operating point
@@ -263,36 +264,36 @@ domain representation  is then converted  to a form suitable  for implementation
 as  an  equivalent circuit.  Prasad  and  Rahn~\cite{Prasad2014} extended  their
 Padé order  reduced model first  presented in~\cite{Prasad2013} to  convert the
 impedance model into standard equivalent circuits. A key point to be highlighted
-is that these family of models do not necessarily strive to retain the classical
-Randles   structure~\cite{Randles1947}  for   their  equivalent   circuit  model
-representation. However, the values of the electrical circuit components such as
-series  resistance  and  equivalent  capacitance are  obtained  through  various
-mechanisms \todo{such as EIS measurements  and \ldots}. The biggest advantage of
-such models is that they serve as drop-in replacements to traditional equivalent
-circuit  models whilst  still  retaining their  origins  in physical  principles
-rather   than   on   empirical   curve-fitting.
+is  that  these  family of  models  do  not  necessarily  strive to  retain  the
+classical  Randles  structure~\cite{Randles1947}  for their  equivalent  circuit
+model representation. However,  the values of the  electrical circuit components
+such  as  series resistance  and  equivalent  capacitance are  obtained  through
+various  mechanisms \todo{such  as  EIS measurements  and  \ldots}. The  biggest
+advantage  of  such  models  is  that they  serve  as  drop-in  replacements  to
+traditional equivalent  circuit models whilst  still retaining their  origins in
+physical principles rather than on empirical curve-fitting.
 
 Merla~\etal{}~\cite{Merla2018} introduced  an equivalent circuit model  that can
 be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
 diffusion at  both electrodes  and the  electrolyte. Although  these interacting
-phenomena  can  be   complex  to  resolve  over  all   length  and  time-scales,
-acceptable  trade-offs in  accuracy was  demonstrated  to be  achievable from  a
-system-level  simulation perspective.  A drawback  of  such models  is that  key
-model  parameters  such as  solid  and  electrolyte diffusion  coefficients  are
-attributed  to the  two electrodes  through ad-hoc,  non-verifiable assumptions.
-Furthermore, in~\cite{Merla2018},  notable discrepancies exist in  the values of
-parameters  such  as  electrolyte conductivity  (obtained  through  calculations
-from  \gls{eis}   measurements)  to  that  typically   reported  in  literature.
+phenomena can be complex to resolve  over all length and time-scales, acceptable
+trade-offs in  accuracy was  demonstrated to be  achievable from  a system-level
+simulation perspective. A  drawback of such models is that  key model parameters
+such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
+the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
+in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
+such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
+measurements) to that typically reported in literature.
 
 \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
-results towards  obtaining a similar physics-informed  equivalent circuit model.
-This  modelling  effort is  a  direct  application  of  the gains  in  computing
-efficiency  through   the  application   of  the  improved   \gls{dra}  reported
-in  Gopalakrishnan\etal{}~\cite{Gopalakrishnan2017}  the  detailed  coverage  of
-which  is performed  in~\cref{ch:chapter3}.  This work  intends  to address  the
-hitherto  unexplored  gap  in  impedance  modelling, \ie{}  the  absence  of  an
-equivalent  impedance  model  that   accounts  for  the  impedance  contribution
-from   all   electrochemical  quantities   from   the   \gls{p2d}  model.   This
+results  towards   obtaining  a  similar  physics-informed   equivalent  circuit
+model.  This  modelling  effort  is  a   direct  application  of  the  gains  in
+computing  efficiency   through  the  application  of   the  improved  \gls{dra}
+reported   in   Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017}  the   detailed
+coverage  of  which  is   performed  in~\cref{ch:chapter3}.  This  work  intends
+to  address  the hitherto  unexplored  gap  in  impedance modelling,  \ie{}  the
+absence  of  an equivalent  impedance  model  that  accounts for  the  impedance
+contribution from all electrochemical quantities  from the \gls{p2d} model. This
 physics-informed  impedance  model  can  be extended  to  fit  parameter  values
 of  components  in an  equivalent  circuit  model,  \eg{} through  the  standard
 Levenberg-Marquardt~\cite{Levenberg1944, Marquardt1963} non-linear least squares
@@ -309,8 +310,8 @@ of the \gls{dfn} model. This limits the applicability of the model, sapping them
 of  the  powerful prediction  powers  that  are  inherently the  most  favorable
 characteristic of  physics based models.  Despite this,  owing to the  fact that
 their  final  implementation  dictates  only minimal  code  changes  for  online
-implementation, the author  believes that these models do have  the potential to
-elicit  interest  from  industry  stakeholders,  thereby  facilitating  instant
+implementation,  the author  believes that  these models  do have  the potential
+to  elicit interest  from  industry stakeholders,  thereby facilitating  instant
 adaptability to existing BMS control architectures.
 
 The  singular   drawback  of   \todo{everthing  thus   far}  is   the  extensive
@@ -342,7 +343,7 @@ the order  of magnitude shift  in eigen/singular  values of the  relevant system
 matrix also need  to be quantified to enable an  informed choice about stability
 of such models for real-time implementations.
 
-\todo{Tikz picture here, showing a nice layout of various models according to
+\todo{Tikz picture  here, showing a nice  layout of various models  according to
 the new classification scheme}
 
 % \begin{figure}[htb]
