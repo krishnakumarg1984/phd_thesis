@@ -1,3 +1,6 @@
+Pdfprivacy
+hyperxmp
+xurl
 academicons
 accsup
 aligned-overset
@@ -10,10 +13,11 @@ auto-pst-pdf-lua
 auxhook
 bib2gls
 biblatex-ext
-biblatex-publist 
+biblatex-publist
 bigintcalc
 blowup
 bmpsize
+bnumexpr
 bookmark
 centernot
 changebar?
@@ -35,10 +39,12 @@ grffile
 hypcap
 intopdf
 invoice2
+labelschanged
 lua-check-hyphen
 markdown
 mathfixs
 mathtools
+mwe
 pdflscape
 polexpr
 resizegather
@@ -55,8 +61,8 @@ tikz-sfc
 typewriter
 witharrows
 
-
 a2ping utility
 dvisvgm utility
 latexindent
 latexmk
+texdef
