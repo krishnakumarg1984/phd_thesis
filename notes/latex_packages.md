@@ -1,6 +1,4 @@
 Pdfprivacy
-hyperxmp
-xurl
 academicons
 accsup
 aligned-overset
@@ -37,6 +35,7 @@ footnotehyper
 glossaries-extra
 grffile
 hypcap
+hyperxmp
 intopdf
 invoice2
 labelschanged
@@ -51,6 +50,7 @@ resizegather
 sectionbreak
 spreadtab
 statmath
+subfiles
 systeme
 tabularht
 tcolorbox
@@ -60,6 +60,7 @@ tikz-relay
 tikz-sfc
 typewriter
 witharrows
+xurl
 
 a2ping utility
 dvisvgm utility

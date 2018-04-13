@@ -141,7 +141,7 @@ of a full-order \gls{dfn} model. This frequency domain impedance-based model was
 derived for the  frequency range of interest  from \SIrange{0}{10}{\hertz}. This
 modelling effort  was the first of  its kind to provide  a physics-based battery
 model for implementation in the classical state-space formulation
-\begin{equation}
+\begin{equation}\label{eq:statespace}
     \begin{aligned}
         \dot{x} &= Ax + Bu \\
         y &= Cx + Du
@@ -216,8 +216,8 @@ whilst adopting the  Chebyshev discretisation only for the  critical solid phase
 diffusion component in the radial direction. Albeit in time domain, the standard
 \gls{p2d} equations, their boundary conditions and corresponding field variables
 are  mathematically transformed  to the  Chebyshev space  within which  they are
-solved.  The details  of this  transformation is  presented in  \cref{sec:hybrid
-fv-spectral} in  \cref{ch:chapter2} for  the case  of the  solid-phase diffusion
+solved.  The details  of this  transformation is  presented in  \Cref{sec:hybrid
+fv-spectral} in  \Cref{ch:chapter2} for  the case  of the  solid-phase diffusion
 equation.  Finally,   these  solved  quantities   are  converted  back   to  the
 physical  space through  a corresponding  inverse transformation.  Although this
 bi-directional transformation is algebraic in nature, the requirement of running
@@ -237,7 +237,7 @@ to  resort to  forming  a  lumped impedance  and  then  truncating it  suitably.
 Lee~\etal{}~\cite{Lee2014}  then  extended  this  work  for  a  wider  range  of
 operation  across  various  \gls{soc},  temperature and  C-rates.  Although  the
 final  state  space  model  is  simple to  implement,  the  classical  \gls{dra}
-scheme   proposed  by   Lee\etal{}   suffers   from  significant   computational
+scheme   proposed  by   Lee~\etal{}   suffers   from  significant   computational
 bottlenecks  in   forming  the  required   block  Hankel  matrices   during  the
 model-derivation phase.  A memory-efficient version of  the \gls{dra} exploiting
 the   skew-symmetric   structure  of   these   Hankel   matrices  was   proposed
@@ -258,26 +258,40 @@ numerical  computation environment  such as  \textsc{MATLAB}. Taking  these into
 consideration,  Rodriguez~\etal{}~\cite{Rodriguez2017}  introduced a  simplified
 computation of the  electrolyte concentration transfer function  by applying the
 variation of  parameters (VOP) scheme.  With this final improvement,  the hybrid
-scheme by Lee~\eta{}  can be considered feature-complete  with low computational
+scheme by Lee~\etal{}  can be considered feature-complete  with low computational
 requirements during both model derivation and implementation phase.
 
-\todo{revise the  below paragraph as  drawbacks in both  dra as well  as smith's
-work}
-
-A key  drawback of  both Smith~\etal{}~\cite{Smith2007}  is the  requirement for
-linearisation at a specific  \gls{soc}. In~\cite{Smith2007}, the operating point
-was  chosen  to be  50\%  for  the derivation  of  the  state-space model.  This
-counteracts to  a high degree, the  usability of the model  for state estimation
-tasks, wherein  the \gls{soc} is  itself the  unknown quantity to  be estimated.
-Furthermore,  the need  to interpolate  between  matrices from  a look-up  table
-pre-computed at different states of charge/temperature combinations is an ad-hoc
-approach  to quantifying  the model  across the  entire operating  range of  the
-battery.  This  renders  the  robustness of  cross-over  between  models  during
-state-estimation questionable,  and demands the  need for smoothing  filters and
-other ad-hoc apparatus to obtain  acceptable \gls{soc} estimations during online
-operation. The requirement  of linearisation also renders the  model usable only
-for a small range of \gls{soc}s.Lee~\etal{}~\cite{Lee2014} overcame this through
-an ad-hoc approach (only masks the issue temporarily.....rewrite)
+A  key  drawback  of  the  transcendental  transfer  function  approach  is  the
+requirement for  linearisation at  a specific \gls{soc}.  This implies  that the
+entries in  the matrices of the  state space model depends  on the linearisation
+point.  In all  the  published  works employing  this  approach, these  transfer
+functions were obtained  by linearising the \gls{p2d} equations  at an operating
+point of  \SI{50}{\percent} \gls{soc}. The requirement  of linearisation renders
+the  model usable  only  in  a narrow  range  of  \gls{soc}s. Furthermore,  this
+adversely affects the usability of the model for state estimation tasks, wherein
+the  \gls{soc} is  in  fact the  unknown  quantity to  be  estimated. To  extend
+the  model's range  of  validity, Lee~\etal{}~\cite{Lee2014}  proposed a  simple
+model-blending  approach by  interpolating between  several pre-computed  linear
+models  at  different  \gls{soc}  and  temperature  combinations.  To  guarantee
+robustness during cross-over, a naive approach  is to incorporate a large number
+of break-points  in the look-up  table. Since the  model is intended  for online
+operation,  such  an approach  would  entail  significant requirements  of  both
+volatile  and  non-volatile memory.  An  alternative  approach  is to  retain  a
+coarse  break-point table;  but  this  demands careful  tuning  of the  blending
+parameters  and  gain values,  an  in-depth  treatment  of  which has  not  been
+given  in  Lee~\etal~\cite{Lee2014}.  Furthermore, employing  these  interpolated
+matrices---whose entries  are obtained from  matrices at various  \gls{soc}s and
+temperature---for state-estimation  creates a subtle cyclic  loop. The stability
+of  this feedback  loop introduced  by this  methodology has  not been  analysed
+and  proven in  literature.  This  renders the  idea  of state-estimation  using
+such  run-time  interpolated models  questionable.  The  author of  this  thesis
+hypothesises  that  any perceivable  drawbacks  such  as non-smooth  changes  in
+\gls{soc}  estimates could  be mitigated  by using  smoothing filters  and other
+ad-hoc  apparatus  estimations. However,  there  exist  no published  work  that
+discusses these engineering  aspects. Coupled with the absence  of a theoretical
+analysis of  loop stability, these models  are not deemed as  not being suitable
+for immediate  adoption by  industry, at least  until these  aforementioned gaps
+have been addressed satisfactorily.
 
 Physics-inspired equivalent circuit models~\cite{Merla2018,Prasad2014,Zhang2017}
 are  a  class  of  hybrid  models that  have  rapidly  gained  prominence  since
@@ -289,24 +303,12 @@ Padé order  reduced model first  presented in~\cite{Prasad2013} to  convert the
 impedance model into standard equivalent circuits. A key point to be highlighted
 is  that  these  family of  models  do  not  necessarily  strive to  retain  the
 classical  Randles  structure~\cite{Randles1947}  for their  equivalent  circuit
-model representation. However,  the values of the  electrical circuit components
-such  as  series resistance  and  equivalent  capacitance are  obtained  through
-various  mechanisms \todo{such  as  EIS measurements  and  \ldots}. The  biggest
-advantage  of  such  models  is  that they  serve  as  drop-in  replacements  to
-traditional equivalent  circuit models whilst  still retaining their  origins in
-physical principles rather than on empirical curve-fitting.
-
-Merla~\etal{}~\cite{Merla2018} introduced  an equivalent circuit model  that can
-be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
-diffusion at  both electrodes  and the  electrolyte. Although  these interacting
-phenomena can be complex to resolve  over all length and time-scales, acceptable
-trade-offs in  accuracy was  demonstrated to be  achievable from  a system-level
-simulation perspective. A  drawback of such models is that  key model parameters
-such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
-the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
-in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
-such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
-measurements) to that typically reported in literature.
+representation. Instead, the values of the electrical circuit components such as
+series  resistance  and  equivalent  capacitance are  obtained  through  various
+mechanisms \todo{such as EIS measurements  and \ldots}. The biggest advantage of
+such models is that they serve as drop-in replacements to traditional equivalent
+circuit  models whilst  still  retaining their  origins  in physical  principles
+rather than on empirical curve-fitting.
 
 \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
 results  towards   obtaining  a  similar  physics-informed   equivalent  circuit
@@ -320,58 +322,78 @@ contribution from all electrochemical quantities  from the \gls{p2d} model. This
 physics-informed  impedance  model  can  be extended  to  fit  parameter  values
 of  components  in an  equivalent  circuit  model,  \eg{} through  the  standard
 Levenberg-Marquardt~\cite{Levenberg1944, Marquardt1963} non-linear least squares
-fitting algorithm.  The scope of  this attempt differs  from~\cite{Merla2018} in
-that, the author's efforts are focussed on suitability for online implementation
-for control applications as opposed to the objective of degradation diagnosis in
-Merla~\etal~\cite{Merla2018}.
+fitting algorithm.
 
-Finally, it should  be emphasised that, for  physics-inspired equivalent circuit
-models, akin to the pseudo-hybrid model  of Smith~\etal{} as well as the various
-derivative models employing  the \gls{dra}, there exists no  direct link between
-the final value  of the circuit components and the  original physical parameters
-of the \gls{dfn} model. This limits the applicability of the model, sapping them
-of  the  powerful prediction  powers  that  are  inherently the  most  favorable
-characteristic of  physics based models.  Despite this,  owing to the  fact that
-their  final  implementation  dictates  only minimal  code  changes  for  online
-implementation,  the author  believes that  these models  do have  the potential
-to  elicit interest  from  industry stakeholders,  thereby facilitating  instant
-adaptability to existing BMS control architectures.
+A common characteristic of all hybrid models  is the lack of physical meaning of
+their model parameters. This severely limits the insights offered by such models
+into electrochemical phenomena  internal to the cell. The  biggest attraction of
+using  physics-based models  is  the possibility  of  predicting phenomena  such
+as  cell degradation,  \eg{}  through  computation of  the  solid phase  surface
+concentration and potentials in a  vehicular application, since their exact load
+profile  cannot be  simulated a-priori.  In this  scenario, a  model capable  of
+implying a direct and causal relationship between a group of physical parameters
+and internal overpotentials at various  spatial locations within the cell serves
+as a  powerful tool in  in-situ lifetime  estimation of batteries.  Although the
+circuit  components  of  physics-informed  equivalent  circuit  models  and  the
+state-space models discussed here trace their origins to the original parameters
+of  the  \gls{dfn} model,  their  final  numerical values  do  not  bear even  a
+semblance of  this relationship.
 
-The  singular   drawback  of   \todo{everthing  thus   far}  is   the  extensive
-parametrisation efforts are required \todo{at  the end, count and substitute the
-canonical number  of parameters here} to  render the model useful  for practical
-applications. The  difficulties associated  with such  extensive parametrisation
-requirements coupled with inherent uncertainties  in such obtained values act as
-a deterrent  to stakeholders  outside academia  to adopt  this model  for online
-\gls{bms} implementations.Among the various family of models presented thus far,
-the lack of  physical meaning of the final model  parameters limits the insights
-offered by these  models in the following important ways.  Although the matrices
-$A, B, C$ and  $D$ do not directly involve physical  parameters of the \gls{dfn}
-model, computation of their numeric values through the model reduction procedure
-has a direct relationship with them.
+Merla~\etal{}~\cite{Merla2018} introduced  an equivalent circuit model  that can
+be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
+diffusion at  both electrodes  and the  electrolyte. Although  these interacting
+phenomena can be complex to resolve  over all length and time-scales, acceptable
+trade-offs in  accuracy was  demonstrated to be  achievable from  a system-level
+simulation perspective. A  drawback of such models is that  key model parameters
+such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
+the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
+in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
+such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
+measurements) to that typically reported in literature.
 
-\todo{\eg{}directly impacts the cell designer \ldots}
+It must be acknowledged that presently  there exists no modelling candidate that
+provides  all desirable  characteristics of  a reduced  order model.\todo{Should
+have enumerated in the beginning  \ldots graphically (spider drawing)}. However,
+it is  strongly desirable  that the  majority of the  final model  values retain
+their physical meaning, yielding system  engineers and cell designers alike with
+a  direct  and  causal  relationship  between groups  of  parameters  and  their
+influence  on  the  cell's  operational performance.  Since  this  thesis  seeks
+to  provide a  readily  usable  model that  satisfies  all  \todo{give a  number
+here} criterion  for online implementation  from \todo{cite figure},  the author
+concludes  that  at present,  the  benefits  offered  by  hybrid models  do  not
+decisively outweigh this drawback.
 
-\todo{Where  does this  paragraph  go?  End of  this  section  or chapter?}  The
-identification of  individual parameters  of the \gls{dfn}  model remains  a key
-area in  battery modelling that remains  only partially explored, and  is key to
-implementation of the advanced models and control algorithms.\todo{does this fit
-better  in the  introduction  chapter?}. The  state  of the  art  in this  area,
-the  challenges involved  and current  efforts  in this  direction are  explored
-in~\cref{ch:chapter6}. Although sensitivity analysis of the \gls{dfn} parameters
-has  been performed  in literature,  \todo{citation  here} the  extent to  which
-parameter uncertainties influence the numerical values  in the $A, B, C$ and $D$
-matrices has  not yet been attempted.  In continuation of this  research aspect,
-the order  of magnitude shift  in eigen/singular  values of the  relevant system
-matrix also need  to be quantified to enable an  informed choice about stability
-of such models for real-time implementations.
+\todo{introduce PP2D now}
 
-Need to test everything out
+The drawback of all physics-based models  discussed thus far is that they entail
+extensive parametrisation  efforts \todo{at  the end,  count and  substitute the
+canonical number  of parameters here}  to render  them useful for  any practical
+application. The difficulties associated with such parametrisation, coupled with
+inherent  uncertainties  in  the  obtained  parameter values  act  as  a  strong
+deterrent to  stakeholders outside  academia to  adopt physics-based  models for
+online implementation in a \gls{bms}.
 
-\todo{pending SPM and PP2D}
+\todo{introduce SPM now}
 
 \todo{Tikz picture  here, showing a nice  layout of various models  according to
-the new classification scheme}
+the new classification scheme. Show spider web drawing?}
+
+
+\todo{Where does this  paragraph go? End of this section/end  of chapter or even
+last  chapter?} The  identification of  individual parameters  of the  \gls{dfn}
+model  remains a  key  area in  battery modelling  that  remains only  partially
+explored. Nevertheless, this effort is critical  to ensure rapid adoption of any
+physics-based model and  sophisticated control algorithms. The state  of the art
+in this area, the challenges involved  and current efforts in this direction are
+explored in~\cref{ch:chapter6}.  Although sensitivity analysis of  the \gls{dfn}
+parameters has been performed in  literature, \todo{citation here} the extent to
+which  parameter uncertainties  influence the  numerical  values in  the $A,  B,
+C$  and  $D$  matrices  of~\Cref{eq:statespace} has  not  yet  been  attempted.
+In  continuation of  this  research  aspect, the  order  of  magnitude shift  in
+eigen/singular values of  the relevant system matrix also need  to be quantified
+to  enable an  informed  choice about  stability of  such  models for  real-time
+implementations.
+
 
 % \begin{figure}[htb]
 % \begin{algorithmic}[1]
