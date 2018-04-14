@@ -20,7 +20,7 @@ sub run_makeglossaries {
     system "makeglossaries '$_[0]'";
   };
 }
- 
+
 push @file_not_found, '^Package .* No file `([^\\\']*)\\\'';
 
-$bibtex_use=1
+$bibtex_use=2
