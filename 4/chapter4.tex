@@ -333,11 +333,17 @@ concentration and potentials in a  vehicular application, since their exact load
 profile  cannot be  simulated a-priori.  In this  scenario, a  model capable  of
 implying a direct and causal relationship between a group of physical parameters
 and internal overpotentials at various  spatial locations within the cell serves
-as a  powerful tool in  in-situ lifetime  estimation of batteries.  Although the
-circuit  components  of  physics-informed  equivalent  circuit  models  and  the
-state-space models discussed here trace their origins to the original parameters
-of  the  \gls{dfn} model,  their  final  numerical values  do  not  bear even  a
-semblance of  this relationship.
+as  a  powerful tool  in  in-situ  lifetime  estimation of  batteries.  Although
+the  circuit  components  of  physics-informed  equivalent  circuit  models  and
+the  state-space models  discussed  here  trace their  origins  to the  original
+parameters of  the \gls{dfn}  model, their  final numerical  values do  not bear
+even a  semblance of this relationship.  Although Zhang~\etal{}~\cite{Zhang2017}
+presented a  lumped equivalent  circuit model based  on Padé  approximation and
+model truncation  with a  view of translating  physical parameters  into circuit
+components, the sensitivity  of the final model values owing  to perturbation in
+the original model parameters is not evaluated. Consequently, there is a lack of
+clarity in the relative importance of physical parameters and their influence on
+circuit component values
 
 Merla~\etal{}~\cite{Merla2018} introduced  an equivalent circuit model  that can
 be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
@@ -349,7 +355,7 @@ such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
 the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
 in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
 such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
-measurements) to that typically reported in literature.
+measurements)  to that  typically reported  in literature.
 
 It must be acknowledged that presently  there exists no modelling candidate that
 provides  all desirable  characteristics of  a reduced  order model.\todo{Should
@@ -363,17 +369,35 @@ here} criterion  for online implementation  from \todo{cite figure},  the author
 concludes  that  at present,  the  benefits  offered  by  hybrid models  do  not
 decisively outweigh this drawback.
 
-\todo{introduce PP2D now}
+The working rubric of all time-domain reduced  order models is that they seek to
+directly reformulate  the original \gls{p2d}  model equations with  the ultimate
+goal  of simplifying  them. In  contrast to  the hybrid  models, both  the model
+derivation and  final implementation tasks  are carried out entirely  within the
+time domain. Whilst a subset of  prior research has focussed only on simplifying
+certain aspects  of the  cell dynamics, \eg{}  solid diffusion,  other published
+works  have aimed  at  providing  a simplified  description  of the  time-domain
+evolution of  all physical  quantities of  the cell. A  brief evaluation  of the
+salient literature from both these approaches is performed here.
 
-The drawback of all physics-based models  discussed thus far is that they entail
-extensive parametrisation  efforts \todo{at  the end,  count and  substitute the
-canonical number  of parameters here}  to render  them useful for  any practical
-application. The difficulties associated with such parametrisation, coupled with
-inherent  uncertainties  in  the  obtained  parameter values  act  as  a  strong
-deterrent to  stakeholders outside  academia to  adopt physics-based  models for
-online implementation in a \gls{bms}.
+Subramanian~\etal~\cite{Subramanian2004}  pioneered  the  concept  of  employing
+polynomial  approximations  of  the  Fickian diffusion  equation  to  solve  for
+the  Lithium concentrations  within the  porous  electrodes. In  this work,  the
+surface concentrations  of Lithium  at the  solid interface  was expressed  as a
+correction term applied to their average concentrations, through a second degree
+polynomial.
 
 \todo{introduce SPM now}
+\todo{introduce PP2D now}
+
+Referring  to  \todo{spider figure  reference},  it  is  clear that  except  for
+the  \gls{spm},   all  physics-based  reduced  order   models  entail  extensive
+parametrisation efforts  \todo{at the  end, count  and substitute  the canonical
+number of  parameters here} to render  them useful for a  practical application.
+The  difficulties associated  with such  parametrisation, coupled  with inherent
+uncertainties  in  the obtained  parameter  values  act  as a  strong  deterrent
+to  stakeholders  outside academia  to  adopt  physics-based models  for  online
+implementation in a \gls{bms}.
+
 
 \todo{Tikz picture  here, showing a nice  layout of various models  according to
 the new classification scheme. Show spider web drawing?}
