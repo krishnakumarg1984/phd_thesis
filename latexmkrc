@@ -23,8 +23,4 @@ sub run_makeglossaries {
  
 push @file_not_found, '^Package .* No file `([^\\\']*)\\\'';
 
-$bibtex_use=2
-
-
-
-
+$bibtex_use=1
