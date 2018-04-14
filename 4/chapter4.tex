@@ -182,50 +182,8 @@ order  modelling invariably  necessitated  the solution  of all  electrochemical
 quantities at  multiple node locations along  the thickness of each  cell layer,
 placing a computational burden. This is  a significant deterrent to the adoption
 of such  models if the intended  purpose of the  model is to simply  predict the
-cell's terminal voltage.  Furthermore, among methods that retain  the full order
-Fickian diffusion  for describing solid  phase diffusion within  each electrode,
-this further necessitates discretisation also along the radial direction thereby
-increasing  the overall  number  of  nodes by  an  order  of magnitude  directly
-impacting the computational efficiency of such models.
+cell's terminal voltage.
 
-The  impact of  high node  densities on  the computational  requirements of  the
-original  \gls{p2d}  model have  led  researchers  to adopt  various  mitigation
-strategies to  tackle this issue. In  contrast to the pure  frequency domain and
-the  semi-hybrid/hybrid approaches  discussed thus  far, these  attempts aim  to
-provided a simpler computational mesh,  whilst retaining high fidelity and hence
-can be  classified as  time domain methods.  It should be  noted that  high node
-densities are  mainly required near the  surface of the spherical  particles for
-the  pseudo  \engordnumber{2} dimension,  whilst  such  clustering of  nodes  is
-desirable near  the separator and  current collector interfaces along  the axial
-dimension.\todo{need to  define `axial'  at the  start of  the thesis}.  Thus, a
-large number  of model  order reduction  strategies in the  time domain  seek to
-adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
-issues.
-
-Bizeray~\etal{}~\cite{Bizeray2015}         performed         a         Chebyshev
-discretisation~\cite{Trefethen2000}  of   the  entire   \gls{p2d}  model   on  a
-global  scale,  \ie{}  along  both   the  axial  and  radial  directions.  Thus,
-a  spectral  scheme,   beyond  the  algebraic  orders   of  accuracy  achievable
-with  classical  Finite  Difference,  Finite Element  or  Finite  Volume  Scheme
-could  be  applied.  The reduced  number  of  nodes  as  well as  their  desired
-clustering  at  the  aforementioned  spatial  locations  ensures  a  significant
-lowering  of computational  burdens of  simulating a  physics-based cell  model.
-Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2018} undertook a  hybrid approach by
-retaining a standard finite volume discretisation in the axial domain equations,
-whilst adopting the  Chebyshev discretisation only for the  critical solid phase
-diffusion component in the radial direction. Albeit in time domain, the standard
-\gls{p2d} equations, their boundary conditions and corresponding field variables
-are  mathematically transformed  to the  Chebyshev space  within which  they are
-solved.  The details  of this  transformation is  presented in  \Cref{sec:hybrid
-fv-spectral} in  \Cref{ch:chapter2} for  the case  of the  solid-phase diffusion
-equation.  Finally,   these  solved  quantities   are  converted  back   to  the
-physical  space through  a corresponding  inverse transformation.  Although this
-bi-directional transformation is algebraic in nature, the requirement of running
-a spatially resolved model coupled with  such overheads render these category of
-time domain models unsuitable for online implementation. In this context, the
-contribution of Lee~\etal{}, \ie{} the ability to solve for any electrochemical
-variable at an arbitrary spatial location by completely eliminating the need for
-spatial discretisation assumes special significance.
 
 Furthermore,  Lee~\etal{}   also  devised  the  \gls{dra},   a  novel  algorithm
 to  systematically  transform  all  transcendental  transfer  functions  to  the
@@ -379,12 +337,72 @@ works  have aimed  at  providing  a simplified  description  of the  time-domain
 evolution of  all physical  quantities of  the cell. A  brief evaluation  of the
 salient literature from both these approaches is performed here.
 
-Subramanian~\etal~\cite{Subramanian2004}  pioneered  the  concept  of  employing
-polynomial  approximations  of  the  Fickian diffusion  equation  to  solve  for
-the  Lithium concentrations  within the  porous  electrodes. In  this work,  the
-surface concentrations  of Lithium  at the  solid interface  was expressed  as a
-correction term applied to their average concentrations, through a second degree
-polynomial.
+In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
+by the classical  Fick's second law~\cite{Fick1995}. In order to  solve for this
+concentration  profile,  it  is  required to  discretise  every  spherical  node
+(represented by the placement of a node in the axial direction) along its radial
+direction (pseudo dimension). This dramatically  increases the overall number of
+discretisatio  nodes,  adversely  impacting the  computational  efficiency.  The
+impact of high node densities on  the computational requirements of the original
+\gls{p2d}  model have  led researchers  to adopt  various mitigation  strategies
+to  tackle  this  issue. In  contrast  to  the  pure  frequency domain  and  the
+semi-hybrid/hybrid approaches discussed thus far, these attempts aim to provided
+a  simpler computational  mesh, whilst  retaining  high fidelity  and hence  can
+be  classified  as time  domain  methods.  It should  be  noted  that high  node
+densities are  mainly required near the  surface of the spherical  particles for
+the  pseudo  \engordnumber{2} dimension,  whilst  such  clustering of  nodes  is
+desirable near  the separator and  current collector interfaces along  the axial
+dimension.\todo{need to  define `axial'  at the  start of  the thesis}.  Thus, a
+number  of  model  order  reduction  strategies  in  the  time  domain  seek  to
+adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
+issues\todo{citations needed}.
+
+Bizeray~\etal{}~\cite{Bizeray2015}         performed         a         Chebyshev
+discretisation~\cite{Trefethen2000}  of   the  entire   \gls{p2d}  model   on  a
+global  scale,  \ie{}  along  both   the  axial  and  radial  directions.  Thus,
+a  spectral  scheme,   beyond  the  algebraic  orders   of  accuracy  achievable
+with  classical  Finite  Difference,  Finite Element  or  Finite  Volume  Scheme
+could  be  applied.  The reduced  number  of  nodes  as  well as  their  desired
+clustering  at  the  aforementioned  spatial  locations  ensures  a  significant
+lowering  of computational  burdens of  simulating a  physics-based cell  model.
+Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2018} undertook a  hybrid approach by
+retaining a standard finite volume discretisation in the axial domain equations,
+whilst adopting the  Chebyshev discretisation only for the  critical solid phase
+diffusion component in the radial direction. Albeit in time domain, the standard
+\gls{p2d} equations, their boundary conditions and corresponding field variables
+are  mathematically transformed  to the  Chebyshev space  within which  they are
+solved.  The details  of this  transformation is  presented in  \Cref{sec:hybrid
+fv-spectral} in  \Cref{ch:chapter2} for  the case  of the  solid-phase diffusion
+equation.  Finally,   these  solved  quantities   are  converted  back   to  the
+physical  space through  a corresponding  inverse transformation.  Although this
+bi-directional transformation is algebraic in nature, the requirement of running
+a spatially resolved model coupled with  such overheads render these category of
+time domain  models unsuitable for  online implementation. In this  context, the
+contribution of Lee~\etal{}, \ie{} the  ability to solve for any electrochemical
+variable at an arbitrary spatial location by completely eliminating the need for
+spatial discretisation assumes special significance.
+
+The  computational  bottlenecks arising  due  to  discretisation in  the  radial
+direction has motivated researchers to explore mesh-free approaches to solve for
+solid  phase concentrations.  Subramanian~\etal~\cite{Subramanian2004} pioneered
+the  concept of  employing polynomial  approximations of  the Fickian  diffusion
+equation to solve for the Lithium concentrations in the porous electrodes. Here,
+the  solid-phase  surface concentrations  was  expressed  as a  correction  term
+applied  to their  average concentrations  which  was described  using a  second
+degree  polynomial.  In  a follow-on  study~\cite{Subramanian2005},  these  same
+authors  presented  a  solution  using  higher  order  polynomials  as  well  as
+performed  a dimensionless  analysis  of their  proposed  reformulation. In  the
+\engordnumber{2} and  \engordnumber{3} order solutions, the  polynomial equation
+for  surface concentration  was  accompanied by  a  corresponding \gls{ode}  for
+describing the temporal evolution of average concentration, thereby leading to a
+system  of  \gls{dae}s. Furthermore,  Subramanian~\etal{}~\cite{Subramanian2007}
+demonstrated  the  application  of   polynomial  approximation  of  solid  phase
+diffusion  by simulating  a  complete \gls{dfn}  model.  Using these  polynomial
+approximations  resulted in  a drastic  reduction  in the  number of  \gls{dae}s
+needed to solve the full model, that  now needs to be discretised only along the
+axial  direction. The  computational benefits  thus achieved  has motivated  the
+widespread adoption of  this polynomial approximation approach  in other reduced
+order time-domain methods.
 
 \todo{introduce SPM now}
 \todo{introduce PP2D now}
