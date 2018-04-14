@@ -11,6 +11,7 @@
 *.cb
 *.cb2
 .*.lb
+*.lb
 
 ## Intermediate documents:
 *.dvi
@@ -279,3 +280,10 @@ main_vimtex.pdf
 
 *.ini
 notes/mkrctest
+
+# build scripts
+*.sh
+
+# unneeded files
+beamercolorthemeC*.sty
+*.xcf
