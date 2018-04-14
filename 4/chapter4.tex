@@ -23,7 +23,9 @@ drawbacks of this family of models is  discussed in detail. The state of the art
 implementation for tackling these drawbacks  is presented and their inadequacies
 are discussed.
 
+
 \todo{write the chapter first. Come back to summarize this.}
+
 
 The following efforts/trials were done (failures)
 \begin{itemize}
@@ -36,13 +38,16 @@ The following successes were achieved.
     \item second attempt
 \end{itemize}
 
+
 At the  end of this  chapter, we have a  control oriented reduced  order battery
 model amenable for use in real-time applications for SOC, SOH etc.\ estimations.
+
 
 Control-Oriented  models can  be considered  synonymous with  the term  `Reduced
 Order Models'. This is because the complexity of physics-based models inherently
 necessitates the  use of a low  order model. In  this thesis, the two  terms are
 used interchangeably.
+
 
 \section{A new classification scheme for control-oriented models}
 
@@ -77,11 +82,13 @@ analysed in these aforementioned review articles, ensuring that only a subset of
 prior research  that is  pertinent to illustrate  the new  classification scheme
 introduced here shall be discussed.
 
+
 Physics-based control-oriented Models  can be classified as belonging  to one of
 the following categories.\todo{just enumerate my classification in-line here} It
 is important to distinguish between models that are derived directly in the time
 domain versus  those that are  derived first in  the frequency domain  and later
 converted to time domain.\todo{Need to write this better}
+
 
 In  principle,  a  modelling  method  that  yields  a  time-domain  mathematical
 description of physical  phenomena that is lower in  computational complexity by
@@ -98,6 +105,7 @@ more field variables  of the \gls{dfn} model are immediately  excluded, owing to
 the impracticability of implementing  them in a resource-constrained environment
 such as an embedded \gls{bms} controller.
 
+
 Owing to  the low entry-barrier for  adoption in a real-time  controller logging
 data samples at specific time intervals, this thesis focusses on models that are
 cast in a form for final implementation  in the time domain. This choice implies
@@ -105,6 +113,7 @@ the exclusion of  those models that are derived and  implemented entirely in the
 frequency domain.  For the interested reader  who wishes to peruse  the sizeable
 literature in  this field, the  discussion here  briefly alludes to  the salient
 frequency domain modelling techniques.
+
 
 The     transfer     function     oriented    Padé     approximation     method
 for    low    order    physics-based     battery    modelling    pioneered    by
@@ -122,6 +131,7 @@ to  very low  Padé  order exhibit  poor  fidelity and  perform  no better  than
 classical  equivalent circuit  models,  although recent  research attempts  have
 focussed  to  mitigate  this  drawback~\cite{Yuan2017a,Yuan2017}.\todo{Should  I
 discuss how?}
+
 
 Smith~\etal{}~\cite{Smith2007}  pioneered   a  semi-hybrid   modelling  approach
 to  reduced  order  modelling  and  obtained closed  form  expressions  for  all
@@ -147,9 +157,9 @@ model for implementation in the classical state-space formulation
         y &= Cx + Du
     \end{aligned}
 \end{equation}
-
 that  is amenable  for  controller design  and  further system-level  simulation
 studies \eg{} as a component in a (hybrid) electric vehicle drivetrain.
+
 
 The requirement of a relatively large  number of state variables to describe the
 system dynamics dilutes the effectiveness of state estimation algorithms. In the
@@ -161,6 +171,7 @@ electrochemical phenomena and parameter uncertainties) coupled with sensor noise
 makes this model  unattractive for state estimation tasks in  an online embedded
 application.
 
+
 Several attempts have been undertaken to  improve and extend the ideas pioneered
 in  Smith~\etal{}~\cite{Smith2007}.  Lee~\etal{}~addressed  a  critical  missing
 aspect  of~\cite{Smith2007}, \viz{}  the derivation  of transcendental  transfer
@@ -171,6 +182,7 @@ To the  author's best knowledge,  this is the  first published work  wherein all
 electrochemical  field variables  of  the \gls{dfn}  model  were considered  for
 inclusion in  a deterministic model  order reduction procedure  whilst remaining
 entirely within the frequency domain.
+
 
 Obtaining  closed form  expressions for  the electrolyte  variables achieved  in
 Lee~\etal{} also has an important computational implication. With these capstone
@@ -202,6 +214,7 @@ the   skew-symmetric   structure  of   these   Hankel   matrices  was   proposed
 in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017}  resulting  in  drastically
 reduced memory and processor requirements.
 
+
 In both the original  as well as the improved \gls{dra},  the computation of the
 EigenFunction modal expansion of electrolyte concentration transfer function was
 slow.  A less  severe disadvantage  with the  transcendental transfer  functions
@@ -218,6 +231,7 @@ computation of the  electrolyte concentration transfer function  by applying the
 variation of  parameters (VOP) scheme.  With this final improvement,  the hybrid
 scheme by Lee~\etal{}  can be considered feature-complete  with low computational
 requirements during both model derivation and implementation phase.
+
 
 A  key  drawback  of  the  transcendental  transfer  function  approach  is  the
 requirement for  linearisation at  a specific \gls{soc}.  This implies  that the
@@ -251,6 +265,7 @@ analysis of  loop stability, these models  are not deemed as  not being suitable
 for immediate  adoption by  industry, at least  until these  aforementioned gaps
 have been addressed satisfactorily.
 
+
 Physics-inspired equivalent circuit models~\cite{Merla2018,Prasad2014,Zhang2017}
 are  a  class  of  hybrid  models that  have  rapidly  gained  prominence  since
 the publication  of~\cite{Jokar2016} and~\cite{Fan2015}.  The derivation  of the
@@ -268,6 +283,7 @@ such models is that they serve as drop-in replacements to traditional equivalent
 circuit  models whilst  still  retaining their  origins  in physical  principles
 rather than on empirical curve-fitting.
 
+
 \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
 results  towards   obtaining  a  similar  physics-informed   equivalent  circuit
 model.  This  modelling  effort  is  a   direct  application  of  the  gains  in
@@ -281,6 +297,7 @@ physics-informed  impedance  model  can  be extended  to  fit  parameter  values
 of  components  in an  equivalent  circuit  model,  \eg{} through  the  standard
 Levenberg-Marquardt~\cite{Levenberg1944, Marquardt1963} non-linear least squares
 fitting algorithm.
+
 
 A common characteristic of all hybrid models  is the lack of physical meaning of
 their model parameters. This severely limits the insights offered by such models
@@ -303,6 +320,7 @@ the original model parameters is not evaluated. Consequently, there is a lack of
 clarity in the relative importance of physical parameters and their influence on
 circuit component values
 
+
 Merla~\etal{}~\cite{Merla2018} introduced  an equivalent circuit model  that can
 be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
 diffusion at  both electrodes  and the  electrolyte. Although  these interacting
@@ -314,6 +332,7 @@ the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
 in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
 such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
 measurements)  to that  typically reported  in literature.
+
 
 It must be acknowledged that presently  there exists no modelling candidate that
 provides  all desirable  characteristics of  a reduced  order model.\todo{Should
@@ -327,6 +346,7 @@ here} criterion  for online implementation  from \todo{cite figure},  the author
 concludes  that  at present,  the  benefits  offered  by  hybrid models  do  not
 decisively outweigh this drawback.
 
+
 The working rubric of all time-domain reduced  order models is that they seek to
 directly reformulate  the original \gls{p2d}  model equations with  the ultimate
 goal  of simplifying  them. In  contrast to  the hybrid  models, both  the model
@@ -336,6 +356,7 @@ certain aspects  of the  cell dynamics, \eg{}  solid diffusion,  other published
 works  have aimed  at  providing  a simplified  description  of the  time-domain
 evolution of  all physical  quantities of  the cell. A  brief evaluation  of the
 salient literature from both these approaches is performed here.
+
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
 by the classical  Fick's second law~\cite{Fick1995}. In order to  solve for this
@@ -356,6 +377,7 @@ dimension.\todo{need to  define `axial'  at the  start of  the thesis}.  Thus, a
 number  of  model  order  reduction  strategies  in  the  time  domain  seek  to
 adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
 issues\todo{citations needed}.
+
 
 Bizeray~\etal{}~\cite{Bizeray2015}         performed         a         Chebyshev
 discretisation~\cite{Trefethen2000}  of   the  entire   \gls{p2d}  model   on  a
@@ -382,6 +404,7 @@ contribution of Lee~\etal{}, \ie{} the  ability to solve for any electrochemical
 variable at an arbitrary spatial location by completely eliminating the need for
 spatial discretisation assumes special significance.
 
+
 The  computational  bottlenecks arising  due  to  discretisation in  the  radial
 direction has motivated researchers to explore mesh-free approaches to solve for
 solid  phase concentrations.  Subramanian~\etal~\cite{Subramanian2004} pioneered
@@ -397,12 +420,16 @@ for  surface concentration  was  accompanied by  a  corresponding \gls{ode}  for
 describing the temporal evolution of average concentration, thereby leading to a
 system  of  \gls{dae}s. Furthermore,  Subramanian~\etal{}~\cite{Subramanian2007}
 demonstrated  the  application  of   polynomial  approximation  of  solid  phase
-diffusion  by simulating  a  complete \gls{dfn}  model.  Using these  polynomial
-approximations  resulted in  a drastic  reduction  in the  number of  \gls{dae}s
-needed to solve the full model, that  now needs to be discretised only along the
-axial  direction. The  computational benefits  thus achieved  has motivated  the
-widespread adoption of  this polynomial approximation approach  in other reduced
-order time-domain methods.
+diffusion  by  simulating a  complete  \gls{dfn}  model. Using  such  polynomial
+approximations results in a drastic reduction in the number of \gls{dae}s needed
+to  solve the  full model  that now  needs discretisation  only along  the axial
+direction.
+
+
+The computational  speed-up facilitated  by using polynomial  approximations for
+the  solid  phase diffusion  has  motivated  other  researchers to  extend  this
+approach on  for the  entire \gls{p2d} model.  Such time-domain  models adopting
+this approach on a global basis are appropriately termed \gls{pp2d} models.
 
 \todo{introduce SPM now}
 \todo{introduce PP2D now}
