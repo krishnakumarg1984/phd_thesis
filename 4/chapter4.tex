@@ -347,15 +347,21 @@ concludes  that  at present,  the  benefits  offered  by  hybrid models  do  not
 decisively outweigh this drawback.
 
 
-The working rubric of all time-domain reduced  order models is that they seek to
-directly reformulate  the original \gls{p2d}  model equations with  the ultimate
+The working  rubric of  all time-domain reduced  order models  typically entails
+attempts to reformulate the original \gls{p2d} model equations with the ultimate
 goal  of simplifying  them. In  contrast to  the hybrid  models, both  the model
 derivation and  final implementation tasks  are carried out entirely  within the
 time domain. Whilst a subset of  prior research has focussed only on simplifying
 certain aspects  of the  cell dynamics, \eg{}  solid diffusion,  other published
 works  have aimed  at  providing  a simplified  description  of the  time-domain
 evolution of  all physical  quantities of  the cell. A  brief evaluation  of the
-salient literature from both these approaches is performed here.
+salient literature  from both these approaches  is performed here. The  focus of
+the  rest of  this  section is  to  discuss popular  time-domain  models and  to
+identify  targeted  solutions to  address  the  gaps  among the  most  promising
+ones  capable of  facilitating  their faster  adoption  in online  applications.
+Consequently,  models  that  entail computations  involving  medium-sized  dense
+matrices~\cite{Li2016}  or those  involving  concepts such  as fractional  order
+differentiation~\cite{Sabatier2015, Li2017} shall not be discussed.
 
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
@@ -379,30 +385,54 @@ adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
 issues\todo{citations needed}.
 
 
-Bizeray~\etal{}~\cite{Bizeray2015}         performed         a         Chebyshev
-discretisation~\cite{Trefethen2000}  of   the  entire   \gls{p2d}  model   on  a
-global  scale,  \ie{}  along  both   the  axial  and  radial  directions.  Thus,
-a  spectral  scheme,   beyond  the  algebraic  orders   of  accuracy  achievable
-with  classical  Finite  Difference,  Finite Element  or  Finite  Volume  Scheme
-could  be  applied.  The reduced  number  of  nodes  as  well as  their  desired
-clustering  at  the  aforementioned  spatial  locations  ensures  a  significant
-lowering  of computational  burdens of  simulating a  physics-based cell  model.
+Computationally    efficient     pseudo-spectral    schemes     for    numerical
+solution   of   \gls{pde}s   can be employed    by   choosing   discretisation
+nodes    at    orthogonal    collocation     points    obtained    by    solving
+for     the    zeros     of    certain     classes    of     polynomial    basis
+functions~\cite{Ferguson1971,Trefethen2000,Boyd2001,Shizgal2015,Dutykh2016}.
+Their accuracy extend beyond  the  algebraic  orders of that achievable with
+classical  Finite  Difference,  Finite Element  or Finite Volume Schemes.
+Northrop~\etal{}~\cite{Northrop2011} pioneered their application in battery
+modelling by employing the Jacobi polynomials as underlying basis functions.
+Suthar\etal{}~\cite{Suthar2014} replaced the Jacobi polynomials with Chebyshev
+polynomials to extend the applicability of the model to higher C-rates.
+Bizeray~\etal{}~\cite{Bizeray2015}    provided   a detailed treatment of the
+usage of Chebyshev discretisation  for   the  full   \gls{p2d} model   on  a
+global  scale,  \ie{}  along  both   the  axial  and  radial directions.  The
+reduced  number  of  nodes  as  well as  their  desired clustering  at  the
+aforementioned  spatial  locations  ensures  a  significant lowering  of
+computational  burdens of  simulating a  physics-based cell  model.
 Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2018} undertook a  hybrid approach by
 retaining a standard finite volume discretisation in the axial domain equations,
 whilst adopting the  Chebyshev discretisation only for the  critical solid phase
 diffusion component in the radial direction. Albeit in time domain, the standard
 \gls{p2d} equations, their boundary conditions and corresponding field variables
 are  mathematically transformed  to the  Chebyshev space  within which  they are
-solved.  The details  of this  transformation is  presented in  \Cref{sec:hybrid
-fv-spectral} in  \Cref{ch:chapter2} for  the case  of the  solid-phase diffusion
-equation.  Finally,   these  solved  quantities   are  converted  back   to  the
-physical  space through  a corresponding  inverse transformation.  Although this
+solved.  The details  of this  transformation is  presented in  \cref{sec:hybrid
+fv-spectral} in  \cref{ch:chapter2} for  the solid-phase diffusion equation.
+Finally,   these  solved  quantities   are  converted  back   to  the physical
+space through  a corresponding  inverse transformation.  Although this
 bi-directional transformation is algebraic in nature, the requirement of running
-a spatially resolved model coupled with  such overheads render these category of
-time domain  models unsuitable for  online implementation. In this  context, the
+a spatially resolved model coupled with  such variable-transformation overheads
+render these class  of models unsuitable for  online implementation. The
 contribution of Lee~\etal{}, \ie{} the  ability to solve for any electrochemical
 variable at an arbitrary spatial location by completely eliminating the need for
-spatial discretisation assumes special significance.
+spatial discretisation assumes particular significance in this  context.
+
+
+In all  non-uniform discretisation schemes  discussed here, the  implications of
+using  a non-adaptive  support mesh  obtained by  the placement  of nodes  whose
+locations are optimised a-priori, must be considered carefully. For instance, in
+the long-term  usage of the cell  \eg{} in an electric  vehicle application, the
+reaction  front  drifts from  separator  back  towards the  current  collectors.
+This  is  due  to  the  exhaustion  of  Lithium  at  the  surface  of  particles
+near  the separator  interfaces. In  this  scenario, the  solutions produced  by
+these  models could  be worse  than models  with uniform  mesh-density. Although
+adaptive meshing strategies can be  employed for desktop simulation with minimal
+effort,  it remains  to  be seen  if  this  can be  deployed  successfully in  a
+resource-constrained environment  such as an embedded  \gls{bms} controller, and
+warrants  further  research in  this  area.\todo{does  this  fit better  in  the
+conclusion chapter?}
 
 
 The  computational  bottlenecks arising  due  to  discretisation in  the  radial
@@ -428,11 +458,31 @@ direction.
 
 The computational  speed-up facilitated  by using polynomial  approximations for
 the  solid  phase diffusion  has  motivated  other  researchers to  extend  this
-approach on  for the  entire \gls{p2d} model.  Such time-domain  models adopting
-this approach on a global basis are appropriately termed \gls{pp2d} models.
+approach on  for representing other  electrochemical variables of  the \gls{dfn}
+model.  Rahimian~\etal{}~\cite{KhaleghiRahimian2013}  discuss  the  usage  of  a
+polynomial approximation for electrolyte  concentration and potentials. However,
+no restriction was  imposed on the order of the  polynomials chosen to represent
+the  electrolyte  concentration within  each  porous  electrode region.  In  the
+standard \gls{dfn}  model, the  number of  equations and  corresponding boundary
+conditions describing electrolyte  charge and mass transport within  the cell is
+insufficient to  uniquely solve for  all unknown coefficients of  the polynomial
+approximation. This  challenges posed due  to this equation deficiency  shall be
+discussed  in  prompted~\cref{temp:eqndeficiency}.  Rahimian~\etal{}  adopted  a
+cubic polynomial approximation for electrolyte concentration. Hence, to overcome
+the issue of  equation deficiency, they adapted a scheme  wherein one additional
+spatial location in the  interior of the cell was used.  The coefficients of the
+polynomial approximation were then obtained  by iteratively solving a relatively
+large  coupled  system  of  algebraic  equations,  within  which  the  equations
+evaluated at the  interior point are embedded. An  additional complicating issue
+is  the  specific positioning  of  this  additional  interior point.  An  online
+optimisation scheme  was used to obtain  the optimal placement of  this interior
+node. Although it serves as a proof of concept towards implementing higher order
+polynomial approximations,  the author of this  thesis deems this method  as too
+complex for an online implementation.
+
 
 \todo{introduce SPM now}
-\todo{introduce PP2D now}
+
 
 Referring  to  \todo{spider figure  reference},  it  is  clear that  except  for
 the  \gls{spm},   all  physics-based  reduced  order   models  entail  extensive
@@ -463,6 +513,7 @@ eigen/singular values of  the relevant system matrix also need  to be quantified
 to  enable an  informed  choice about  stability of  such  models for  real-time
 implementations.
 
+\subsection{equation deficiency \dots}\label{temp:eqndeficiency}
 
 % \begin{figure}[htb]
 % \begin{algorithmic}[1]
@@ -487,4 +538,5 @@ implementations.
 % ---------------------------------------------------------------------------
 %: ----------------------- end of thesis sub-document ------------------------
 % ---------------------------------------------------------------------------
+
 
