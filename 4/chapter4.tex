@@ -69,18 +69,24 @@ adoption  in online  \gls{bms}s. Treatment  of  reduced order  models from  this
 aspect  is  so germane  to  the  central  hypothesis of  this  chapter,\todo{can
 a  simple  time-domain  model do  the  job?}  that  the  author of  this  thesis
 feels  compelled  to undertake  a  simpler  classification exercise  within  the
-context  of  suitability for  online  implementation.  In this  discussion,  the
-various  modelling  methodologies and  the  resulting  models  are viewed  as  a
-continuum  and hence  this thesis  discusses  them from  a unified  perspective.
-Furthermore,  there  is  also  a  need to  highlight  the  salient  works  among
-the  more recent  advances and  extensions to  then-prevailing models  published
-since~\cite{Jokar2016}  and~\cite{Fan2015}.  Hence,  the specialised  review  of
-reduced order modelling literature covered in this section intends to supplement
----  not supplant  --- the  breadth of  modelling art  covered between  them. In
-particular,  care  has been  taken  to  minimize  repetition of  background  art
-analysed in these aforementioned review articles, ensuring that only a subset of
-prior research  that is  pertinent to illustrate  the new  classification scheme
-introduced here shall be discussed.
+context  of  suitability for  online  implementation.
+
+
+In this discussion, various modelling methodologies and the resulting models are
+viewed as a continuum and consequently this thesis discusses them from a unified
+perspective. Furthermore,  there is also a  need to highlight the  salient works
+among  the  more  recent  advances  and  extensions  to  then-prevailing  models
+published  since~\cite{Jokar2016}  and~\cite{Fan2015}.  Hence,  the  specialised
+review of reduced order modelling literature  covered in this section intends to
+supplement ---  not supplant ---  the breadth  of modelling art  covered between
+them. In  particular, care has been  taken to minimize repetition  of background
+art  analysed in  these aforementioned  review  articles, ensuring  that only  a
+subset of prior research that is  pertinent to illustrate the new classification
+scheme introduced here shall be discussed. The  author does not aim to adhere to
+a chronological presentation of background  art. Instead, salient model families
+are  introduced  in  the  context  of discussing  their  significance  within  a
+particular modelling method.
+
 
 
 Physics-based control-oriented Models  can be classified as belonging  to one of
@@ -95,15 +101,15 @@ description of physical  phenomena that is lower in  computational complexity by
 an arbitrary magnitude  than the original \gls{dfn} model can  be considered for
 further investigation. In  the absence of a quantitative definition  of what can
 be considered as a  true reduced order model, the number  of candidate family of
-models  to  consider  is  overwhelmingly large\todo{is  it  appropriate  to  use
-such  language?}. In  practice, the  constraints and  challenges imposed  by the
-scope  of this  work, \viz{}  suitability for  real-time implementation,  limits
-the  choice  of  candidate  modelling families.  For  instance,  models  relying
-primarily on  classical finite  difference~\cite{Smith2006} and  Galerkin Finite
-Element~\cite{Dao2012} methods for transformation and  order reduction of one or
-more field variables  of the \gls{dfn} model are immediately  excluded, owing to
-the impracticability of implementing  them in a resource-constrained environment
-such as an embedded \gls{bms} controller.
+models to  consider is overwhelmingly  large\todo{is it appropriate to  use such
+language?}. In  practice, the  constraints and challenges  imposed by  the scope
+of  this  work, \viz{}  suitability  for  real-time implementation,  limits  the
+choice of candidate  modelling families. For instance,  models relying primarily
+on  classical  finite difference~\cite{Smith2006}  or  Galerkin's~\cite{Dao2012}
+methods for transformation and order reduction of one or more field variables of
+the \gls{dfn} model are excluded,  owing to the impracticability of implementing
+them  in  a  resource-constrained  environment such  as  an  embedded  \gls{bms}
+controller.
 
 
 Owing to  the low entry-barrier for  adoption in a real-time  controller logging
@@ -478,10 +484,38 @@ is  the  specific positioning  of  this  additional  interior point.  An  online
 optimisation scheme  was used to obtain  the optimal placement of  this interior
 node. Although it serves as a proof of concept towards implementing higher order
 polynomial approximations,  the author of this  thesis deems this method  as too
-complex for an online implementation.
+complex for online implementation.
 
 
-\todo{introduce SPM now}
+Deng~\etal{}~\cite{Deng2018} presented  a polynomial  approximation of  the full
+\gls{p2d}  model,  whose  notable  contribution is  in  providing  a  polynomial
+approximation for  the molar flux  density along the  thickness of the  cell. To
+the  author's knowledge,  this  is  the first  attempt  to  provide a  spatially
+dependent  simplified  approximation  of  the  interfacial  flux  density.  This
+presents a well-balanced choice between the  need to use the strongly non-linear
+Butler-Volmer kinetics or having to resort to a lumped representation of average
+kinetic  behavior. Hence,  this model  is particularly  suited to  reduced order
+modelling  of  cells  with  medium  electrode  thicknesses  wherein  the  lumped
+representation is particularly  ill-suited. In this work, the  issue of equation
+deficiency  in polynomial  representation of  the electrolyte  concentration was
+avoided in  a trivial manner by  simply using a quadratic  polynomial within the
+porous electrode regions. However, one serious  drawback in this approach is the
+use of Finite Difference approximation for computing the spatial gradient of the
+\gls{ocp}, which adversely  affects computational speed and is  not suitable for
+online implementation.
+
+
+Haran~\etal{}~\cite{Haran1998} proposed  a highly simplified  representation of
+porous electrodes  for the metal  hydride cell chemistry.  In this work,  each porous
+electrode  was represented  as a  single  spherical particle. This concept  was
+adopted for Lithium ion batteries by Ning and Popov~\cite{Ning2004} and has
+since become highly popular. Models employing this lumped representation of
+electrodes are referred to as \gls{spm}s. The polynomial approximation of the
+single
+
+The original \gls{spm} model is, there
+is no electrolyte phase.
+The polynomial approximation of solid
 
 
 Referring  to  \todo{spider figure  reference},  it  is  clear that  except  for
