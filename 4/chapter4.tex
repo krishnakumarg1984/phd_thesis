@@ -384,7 +384,7 @@ identify  targeted  solutions to  address  the  gaps  among the  most  promising
 ones  capable of  facilitating  their faster  adoption  in online  applications.
 Consequently,  models  that  entail computations  involving  medium-sized  dense
 matrices~\cite{Li2016}  or those  involving  concepts such  as fractional  order
-differentiation~\cite{Sabatier2015, Li2017} shall not be discussed.
+differentiation~\cite{Sabatier2015, Li2017, Mu2017} shall not be discussed.
 
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
@@ -481,45 +481,21 @@ full model that now needs discretisation only along the axial direction.
 
 The computational  speed-up facilitated  by using polynomial  approximations for
 the  solid  phase diffusion  has  motivated  other  researchers to  extend  this
-approach  for  representing other  electrochemical  variables  of the  \gls{dfn}
-model.  Rahimian~\etal{}~\cite{KhaleghiRahimian2013}  discuss  the  usage  of  a
-polynomial approximation for electrolyte  concentration and potentials. However,
-no restriction was  imposed on the order of the  polynomials chosen to represent
-the  electrolyte  concentration within  each  porous  electrode region.  In  the
-standard \gls{dfn}  model, the  number of  equations and  corresponding boundary
-conditions describing electrolyte  charge and mass transport within  the cell is
-insufficient to  uniquely solve for  all unknown coefficients of  the polynomial
-approximation.  The  challenges posed  due  to  this equation  deficiency  shall
-be  discussed  in~\cref{temp:eqndeficiency}.
-
-
-Rahimian~\etal{} adopted  a cubic  polynomial for approximating  the electrolyte
-concentration within  the porous electrodes.  To overcome the issue  of equation
-deficiency, they adapted a scheme wherein one additional spatial location in the
-interior  of  each  electrode  was  used. The  coefficients  of  the  polynomial
-approximation  were then  obtained  by iteratively  solving  a relatively  large
-coupled  system of  algebraic equations,  embedding within  them the  additional
-equations evaluated at  the interior point. An additional  complicating issue is
-the specific positioning of this  additional interior point. An online numerical
-optimisation  was performed  to obtain  the optimal  placement of  this interior
-node. Although it serves as a proof of concept towards implementing higher order
-polynomial approximations,  the author of this  thesis deems this method  as too
-complex for online implementations.
-
-
-Deng~\etal{}~\cite{Deng2018} presented  a polynomial  approximation of  the full
-\gls{p2d}  model,  whose  notable  contribution is  in  providing  a  polynomial
+approach for representing  all other electrochemical variables  of the \gls{dfn}
+model. Deng~\etal{}~\cite{Deng2018} presented a  polynomial approximation of the
+full \gls{p2d}  model, whose notable  contribution is in providing  a polynomial
 approximation for  the molar flux  density along the  thickness of the  cell. To
 the  author's knowledge,  this  is  the first  attempt  to  provide a  spatially
 dependent  simplified  approximation  of  the  interfacial  flux  density.  This
 presents a well-balanced choice between the  need to use the strongly non-linear
-Butler-Volmer  kinetics  or having  to  resort  to  a lumped  representation  of
-average kinetic  behavior. Hence, this  model is particularly suited  to reduced
-order  modelling  of  cells  with   medium  electrode  thicknesses  wherein  the
-lumped  representation of  flux density  is not  applicable. In  this work,  the
-issue of  equation deficiency  in polynomial  representation of  the electrolyte
-concentration was  avoided by  using a simpler  quadratic polynomial  within the
-porous electrode regions.
+Butler-Volmer kinetics or having to resort to a lumped representation of average
+kinetic behaviour.  Hence, this  model is particularly  suited to  reduced order
+modelling  of  cells  with  medium  electrode  thicknesses  wherein  the  lumped
+representation of flux density is not applicable.
+
+% In this work, the issue of equation deficiency in polynomial representation of
+% the  electrolyte  concentration  was  avoided by  using  a  simpler  quadratic
+% polynomial within the porous electrode regions.
 
 
 One  serious  drawback in  Deng~\etal{}~\cite{Deng2018}  is  the use  of  Finite
@@ -594,9 +570,37 @@ finishing up everything}
 % implementations.
 
 \section{Finally a new section}
+\section{Electrolyte Inclusion}
 
+Rahimian~\etal{}~\cite{KhaleghiRahimian2013}  discuss  the  usage  of  a
+polynomial approximation for electrolyte  concentration and potentials. However,
+no restriction was  imposed on the order of the  polynomials chosen to represent
+the  electrolyte  concentration within  each  porous  electrode region.  In  the
+standard \gls{dfn}  model, the  number of  equations and  corresponding boundary
+conditions describing electrolyte  charge and mass transport within  the cell is
+insufficient to  uniquely solve for  all unknown coefficients of  the polynomial
+approximation.  The  challenges posed  due  to  this equation  deficiency  shall
+be  discussed  in~\cref{temp:eqndeficiency}.
 Although  the original  \gls{spm} did  not involve  solving for  the electrolyte
 concentrations or potentials, The polynomial approximation of the single
+
+
+Rahimian~\etal{} adopted  a cubic  polynomial for approximating  the electrolyte
+concentration within  the porous electrodes.  To overcome the issue  of equation
+deficiency, they adapted a scheme wherein one additional spatial location in the
+interior  of  each  electrode  was  used. The  coefficients  of  the  polynomial
+approximation  were then  obtained  by iteratively  solving  a relatively  large
+coupled  system of  algebraic equations,  embedding within  them the  additional
+equations evaluated at  the interior point. An additional  complicating issue is
+the specific positioning of this  additional interior point. An online numerical
+optimisation  was performed  to obtain  the optimal  placement of  this interior
+node. Although it serves as a proof of concept towards implementing higher order
+polynomial approximations,  the author of this  thesis deems this method  as too
+complex for online implementations.
+
+
+
+
 \subsection{equation deficiency \dots}\label{temp:eqndeficiency}
 
 % \begin{figure}[htb]
