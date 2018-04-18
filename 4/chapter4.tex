@@ -281,13 +281,22 @@ interpolated models  questionable.
 
 
 The author  of this thesis hypothesises  that any perceivable drawbacks  such as
-non-smooth changes in  \gls{soc} estimates arising from  using blendeed matrices
+non-smooth changes  in \gls{soc} estimates  arising from using  blended matrices
 could  be potentially  mitigated by  using  smoothing filters  and other  ad-hoc
 apparatus.  However,  there  exists  no  published  work  that  discusses  these
 engineering aspects. Coupled with the absence  of a theoretical analysis of loop
-stability, these models are deemed as  not being suitable for immediate adoption
-by  industry, at  least  until  these aforementioned  gaps  have been  addressed
-satisfactorily.
+stability,  these  models  are  deemed  as  not  being  suitable  for  immediate
+adoption  by  industry, at  least  until  these  aforementioned gaps  have  been
+addressed  satisfactorily.  The non-linear  state  variable  model presented  by
+Guo~\etal{}~\cite{Guo2017} aims to  address this issue by  formulating a reduced
+order model in  the frequency domain by eliminating  linearisation. However, the
+online solution of the model entails an complex prediction-refinement procedure,
+loosely defined as implicit and explicit solution methods, for each subsystem of
+the  \gls{dfn}  model.  The  formulation  of the  final  model  is  not  clearly
+illustrated and  in the views of  this author, is not  easily comprehensible. In
+the absence  of actual source  code, a numerical  example or pseudo-code  of the
+model reduction workflow could have immensely helped with the reproducibility of
+the results claimed in the work.
 
 
 Physics-inspired                        equivalent                       circuit
@@ -362,32 +371,33 @@ measurements)  to that  typically reported  in literature.
 
 
 It must be acknowledged that presently  there exists no modelling candidate that
-provides all desirable characteristics of  a reduced order model for time-domain
-implementation. However, it is strongly desirable that the majority of the final
-model values retain  their physical meaning, yielding system  engineers and cell
-designers  alike  with  a  direct  and causal  relationship  between  groups  of
-parameters and their influence on the cell's operational performance. Since this
-chapter seeks to provide a readily  usable model that satisfies all \todo{give a
-number  here} criterion  for online  implementation from,\todo{cite  figure} the
-author concludes that  at present, the benefits offered by  hybrid models do not
-decisively outweigh this drawback.
+provides  all desirable  characteristics  of  a reduced  order  model for  final
+implementation in  the time-domain. However,  it is strongly desirable  that the
+majority  of the  final model  values  retain their  physical meaning,  yielding
+system engineers and cell designers alike  with a direct and causal relationship
+between  groups of  parameters and  their  influence on  the cell's  operational
+performance. Since  this chapter seeks  to provide  a readily usable  model that
+satisfies  all \todo{give  a number  here} criterion  for online  implementation
+from,\todo{cite  figure} the  author  concludes that  at  present, the  benefits
+offered by hybrid models do not decisively outweigh this drawback.
 
 
 The working rubric of all time  domain reduced order models typically consist of
 attempts to reformulate the original \gls{p2d}  model equations with the goal of
 simplifying them.  In contrast to the  hybrid models, both the  model derivation
-and final implementation tasks are carried  out entirely within the time domain.
-Whilst  a subset  of prior  research has  focussed only  on simplifying  certain
-aspects of the cell dynamics, \eg{}  solid diffusion, other published works have
-aimed at providing a simplified description  of the time domain evolution of all
-physical quantities  of the cell. An  evaluation of the salient  literature from
-both these approaches is  performed here. The focus of the  rest of this section
-is to discuss  popular time domain models and to  identify targeted solutions to
-address the  gaps among the  most promising  ones capable of  facilitating their
-faster  adoption  in  online  applications.  Consequently,  models  that  entail
-computations involving medium-sized dense matrices~\cite{Li2016,Xu2016} or those
-involving concepts such  as fractional order differentiation~\cite{Sabatier2015,
-Li2017, Mu2017} shall not be discussed.
+and  final  implementation  tasks  are  carried out  entirely  within  the  time
+domain.  Whilst a  subset of  prior research  has focussed  only on  simplifying
+certain aspects  of the  cell dynamics, \eg{}  solid diffusion,  other published
+works  have aimed  at  providing a  simplified description  of  the time  domain
+evolution of all  physical quantities of the cell. An  evaluation of the salient
+literature  from both  these  approaches is  performed here.  The  focus of  the
+rest  of  this  section  is  to  discuss  popular  time  domain  models  and  to
+identify  targeted  solutions to  address  the  gaps  among the  most  promising
+ones  capable of  facilitating  their faster  adoption  in online  applications.
+Consequently, models  that entail computations  involving medium or  large dense
+matrices~\cite{Li2016,Xu2016,Corno2015}  or  those  involving concepts  such  as
+fractional order  differentiation~\cite{Sabatier2015, Li2017, Mu2017}  shall not
+be discussed.
 
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
