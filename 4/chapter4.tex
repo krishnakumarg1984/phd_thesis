@@ -289,22 +289,23 @@ by  industry, at  least  until  these aforementioned  gaps  have been  addressed
 satisfactorily.
 
 
-Physics-inspired equivalent circuit models~\cite{Merla2018,Prasad2014,Zhang2017}
-are  a  class  of  hybrid  models that  have  rapidly  gained  prominence  since
-the publication  of~\cite{Jokar2016} and~\cite{Fan2015}.  The derivation  of the
-relevant model  equations is performed  in the frequency domain.  This frequency
-domain representation  is then converted  to a form suitable  for implementation
-as  an  equivalent circuit.  Prasad  and  Rahn~\cite{Prasad2014} extended  their
-Padé order  reduced model first  presented in~\cite{Prasad2013} to  convert the
-impedance model into standard equivalent circuits. A key point to be highlighted
-is  that  these  family of  models  do  not  necessarily  strive to  retain  the
-classical  Randles  structure~\cite{Randles1947}  for their  equivalent  circuit
-representation. Instead, the values of the electrical circuit components such as
-series  resistance  and  equivalent  capacitance are  obtained  through  various
-mechanisms such as  \gls{eis} measurements under load. The  biggest advantage of
-such models is that they serve as drop-in replacements to traditional equivalent
-circuit  models whilst  still  retaining their  origins  in physical  principles
-rather than on empirical curve-fitting.
+Physics-inspired                        equivalent                       circuit
+models~\cite{Prasad2014,Zhang2017,Cheng2017,Merla2018}  are  a class  of  hybrid
+models   that   have   rapidly   gained   prominence   since   the   publication
+of~\cite{Jokar2016}  and~\cite{Fan2015}. The  derivation of  the relevant  model
+equations  is  performed   in  the  frequency  domain.   This  frequency  domain
+representation is  then converted to  a form  suitable for implementation  as an
+equivalent circuit. Prasad and Rahn~\cite{Prasad2014} extended their Padé order
+reduced  model first  presented  in~\cite{Prasad2013} to  convert the  impedance
+model into standard  equivalent circuits. A key point to  be highlighted is that
+these family of models do not necessarily strive to retain the classical Randles
+structure~\cite{Randles1947}  for   their  equivalent   circuit  representation.
+Instead,  the  values  of  the  electrical circuit  components  such  as  series
+resistance and  equivalent capacitance  are obtained through  various mechanisms
+such as \gls{eis} measurements under load.  The biggest advantage of such models
+is that  they serve  as drop-in replacements  to traditional  equivalent circuit
+models whilst still  retaining their origins in physical  principles rather than
+on empirical curve-fitting.
 
 
 \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
@@ -461,13 +462,13 @@ chapter?}
 
 
 The  computational  bottlenecks arising  due  to  discretisation in  the  radial
-direction has motivated researchers to explore mesh-free approaches to solve for
-solid  phase concentrations.  Subramanian~\etal~\cite{Subramanian2004} pioneered
-the  concept of  employing polynomial  approximations of  the Fickian  diffusion
-equation to  solve for  Lithium concentrations in  the porous  electrodes. Here,
-the  solid-phase  surface concentrations  was  expressed  as a  correction  term
-applied  to their  average concentrations  which  was described  using a  second
-degree  polynomial.  In  a   follow-on  study~\cite{Subramanian2005},  the  same
+direction  have  motivated  researchers   to  explore  mesh-free  approaches  to
+solve for  solid phase  concentrations. Subramanian~\etal~\cite{Subramanian2004}
+pioneered  the concept  of employing  polynomial approximations  of the  Fickian
+diffusion equation to solve for Lithium concentrations in the porous electrodes.
+Here,  the solid-phase  surface  concentrations was  expressed  as a  correction
+term  applied  to their  average  concentrations  which  was described  using  a
+second degree polynomial. In  a follow-on study~\cite{Subramanian2005}, the same
 authors  presented a  solution using  higher order  polynomials and  performed a
 dimensionless analysis of their  proposed reformulation. In the \engordnumber{2}
 and  \engordnumber{3}  order  solutions,  the polynomial  equation  for  surface
@@ -511,6 +512,24 @@ available physics-based models to identify  the most apropos first candidate for
 adoption in real-time \gls{bms} environments.
 
 
+Farag~\etal{}~\cite{Farag2017}  proposed  a  piecewise linear  approximation  of
+all  governing  equations  of  the  electrochemical  model.  Given  that  linear
+approximations are simplistic  in nature, the authors acknowledged  that a naive
+implementation shall  result in a  crude approximation of the  model's dynamics.
+Hence,  an optimal  knot-placement  scheme  was proposed  and  solved through  a
+genetic  algorithm. Since  this Computationally  intensive step  occurs offline,
+this does not adversely affect the real-time performance of the model. The final
+model is  implemented using standard  state-space matrices. However,  this model
+also suffers  from the  drawbacks of  the hybrid  modelling approaches,  \ie{} a
+complete lack  of physical interpretation of  its parameters. As with  any other
+model involving \gls{soc} based linearisation points, the stability of the model
+to uncertainties in physical parameters  is questionable. A detailed sensitivity
+analysis of the  knot placement scheme's output to such  parametric variation is
+to  be performed,  establishing  confidence in  the  model's robustness,  before
+such  piecewise  linear approaches  can  gain  widespread acceptance  in  online
+applications.
+
+
 \todo{Tikz  picture  here, showing  a  nice  layout of  various  models
 according to the new classification scheme.}
 
@@ -545,14 +564,15 @@ parameters in the \gls{spm} retain their physical character, aiding in a direct
 and intuitive understanding of physical parameters on the cell's operation.
 
 
-The overarching simplicity of \gls{spm}s  and their immediate potential to bring
-the power  of physics-based prediction  to an  embedded environment is  a strong
-motivation  to pursue  in-depth explorations  in this  direction. The  equations
-describing  the single  particle  model  is introduced  in  \ldots. An  in-depth
-analysis of their drawbacks is presented in \ldots. Various attempts to fix this
-issue is presented in \ldots.  The electrolyte concentration and potential fixes
-is presented  in \ldots.  Finally, results  and discussion.  \todo{REWRITE after
-finishing up everything}
+Prima Facie, based  on a preliminary comparison of the  strengths and weaknesses
+of  the  modelling  families  in  the  literature  considered,  the  overarching
+simplicity of  \gls{spm}s and their  immediate potential  to bring the  power of
+physics-based prediction  to an embedded  environment is a strong  motivation to
+pursue their in-depth exploration. The  equations describing the single particle
+model  is introduced  in  \ldots. An  in-depth analysis  of  their drawbacks  is
+presented in \ldots. Various attempts to  fix this issue is presented in \ldots.
+The  electrolyte  concentration and  potential  fixes  is presented  in  \ldots.
+Finally, results and discussion. \todo{REWRITE after finishing up everything}
 
 
 % \todo{Where does this  paragraph go? End of this section/end  of chapter or even
