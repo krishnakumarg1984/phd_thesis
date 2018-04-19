@@ -393,21 +393,35 @@ evolution of all  physical quantities of the cell. An  evaluation of the salient
 literature  from both  these  approaches is  performed here.
 
 
-The  rest  of  this  section  discusses  popular  time-domain  models.  After  a
-high-level evaluation of their relative merits  and weaknesses, the rest of this
-chapter  discusses methodologies  and solutions  that  aim to  address the  gaps
-identified in the most promising candidate among these models with the potential
-to facilitate  faster adoption of  physics based models in  online applications.
-Consequently, models  that entail computations  involving medium or  large dense
-matrices~\cite{Li2016,Xu2016,Corno2015}  or  those  involving concepts  such  as
-fractional  order  derivatives~\cite{Sabatier2015,   Li2017,  Mu2017,  Wang2017}
-shall  not  be  discussed.  Other time-domain  simplification  techniques,  such
-as  Hilbert-Space representation  and  singular perturbation  were presented  in
-Manzie~\eta{}~\cite{Manzie2015}. However,  these authors provide only  a cursory
-overview  of  the  art  and  their  presentation  lacks  any  expository  visual
-information such as plots of time-domain  evolution of the internal and terminal
-variables.  These methods  have  not seen  uptake in  academia  or industry  and
-consequently, they shall not be discussed here.
+In this discussion,  those models that entail computations with  medium or large
+dense  matrices~\cite{Li2016,Xu2016,Corno2015}  or  involving concepts  such  as
+fractional order derivatives~\cite{Sabatier2015, Li2017, Mu2017, Wang2017} shall
+not be  discussed. To this  author, it appears  that the academic  community has
+implicitly considered these models to be so abstruse that there has not yet been
+a comparative  study pitting these  models against  the prevalent art.  Based on
+published  work, it  is  not clear  on how  such  models distinguish  themselves
+uniquely in the larger realm of reduced order battery.
+
+
+A  few  \gls{pde}  simplification  techniques   in  the  time  domain,  such  as
+Hilbert-Space  representation  and  singular   perturbation  were  presented  in
+Manzie~\eta{}~\cite{Manzie2015}.  However, their  presentation lacks  expository
+visual information  such as plots of  time-domain evolution of the  internal and
+terminal variables for dynamic load profiles. Furthermore, the authors failed to
+provide a tabulated set of physical  parameters of the cell being simulated that
+adversely affects the reproducibility of this  work. These methods have not seen
+uptake  in academia  or  industry.  The author  of  this  thesis considers  this
+presentation  to be  of a  cursory nature  and consequently,  they shall  not be
+discussed here.
+
+
+The  rest of  this section  discusses  several popular  families of  time-domain
+models. In  this section, a high-level  evaluation of their relative  merits and
+weaknesses is  presented. The next section  presents a detailed analysis  of the
+most promising  candidate among  these models with  the potential  to facilitate
+faster adoption of physics based models in online applications. Further sections
+discuss methodologies and  solutions that aim to address the  gaps identified in
+this family of models. \todo{does this fit better at the end of this section}
 
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
