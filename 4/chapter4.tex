@@ -127,6 +127,11 @@ Padé  approximation method  that serves  as  a backbone  of a  wide variety  of
 frequency domain models.
 
 
+\todo{can  mention  that  most  frequency domain  models  are  impedance  models
+suitable for offline simulation eg An electrochemistry-based impedance model for
+lithium-ion batteries}
+
+
 The     transfer     function     oriented    Padé     approximation     method
 for    low    order    physics-based     battery    modelling    pioneered    by
 Forman~\etal{}~\cite{Forman2011a}    has   gained    widespread   adoption    in
@@ -316,6 +321,10 @@ such as \gls{eis} measurements under load.  The biggest advantage of such models
 is that  they serve  as drop-in replacements  to traditional  equivalent circuit
 models whilst still  retaining their origins in physical  principles rather than
 on empirical curve-fitting.
+
+
+\todo{can perhaps  talk about SPM converted  to equivalent circuit by  Prasad in
+the IEEE conference paper}
 
 
 \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
@@ -516,31 +525,40 @@ simulating  a complete  \gls{dfn}  model.
 
 
 Using polynomial  approximation for the  solid phase concentration results  in a
-drastic  reduction  in  the  number  of \gls{dae}s  needed  to  solve  the  full
-model  since now  discretisation  needs to  be performed  only  along the  axial
-direction.  The  polynomial approximation  solution  applied  to solve  for  the
-surface concentration  in the  solid phase  can hence be  viewed as  a dimension
-reduction  approach,  as  it  removes  the  model's  dependence  in  the  radial
-direction.  The textbook  by Carslaw  and Jaeger~\cite{Carslaw1947}  details the
-derivations  for obtaining  the standard  analytical solution  to Fick's  law of
-diffusion  in the  context  of heat  conduction  in solids.  Liu~\cite{Liu2006a}
-derived this  analytical solution for  the Lithium intercalation process  in the
-solid  phase,  taking into  account  the  idiosyncrasies of  porous  electrodes.
-However, this expression involves an infinite  sum expansion of eigen modes. Guo
-and White~\cite{Guo2012} formulate an  expression for truncated approximation of
-this solution to  arbitrary number of terms. Furthermore,  they demonstrated the
-validity  of  this  solution  by comparing  the  analytical  solution  truncated
-to  the  first 5  terms  with  that obtained  from  a  classical finite  element
-solution.  However,  this  truncated analytical  solution  involves  exponential
-and  trigonometric terms  and is  non-trivial  to implement  on \gls{bms}  chips
-lacking support  for floating  point computations. Moreover,  there has  been no
-extensive study  comparing the analytical  solution to the  polynomial approach.
-Consequently,  this approach  has not  yet gained  widespread popularity  in the
-inherent elimination  of the radial dimension  embedded as a core  aspect of the
-cell-level model order reduction  approaches discussed here.\todo{another method
-of solving  this diffusion is the  integral method analysis used  by Tanim etal.
-Should I mention that?. There is also a comprehensive review by Romero etal}
+drastic reduction  in the number  of \gls{dae}s needed  to solve the  full model
+since now discretisation  needs to be performed only along  the axial direction.
+The  polynomial  approximation  solution  applied   to  solve  for  the  surface
+concentration in  the solid phase can  hence be viewed as  a dimension reduction
+approach, as  it removes  the model's  dependence in  the radial  direction. The
+textbook by  Carslaw and  Jaeger~\cite{Carslaw1947} details the  derivations for
+obtaining  the  standard analytical  solution  to  Fick's  law of  diffusion  in
+the  context of  heat  conduction in  solids.  Liu~\cite{Liu2006a} derived  this
+analytical solution  for the Lithium  intercalation process in the  solid phase,
+taking into  account the idiosyncrasies of  porous electrodes\todo{explain about
+Olcer's  pseudo-steady  state  stuff}.  However,  this  expression  involves  an
+infinite sum expansion of eigen modes. Guo and White~\cite{Guo2012} formulate an
+expression for truncated  approximation of this solution to  arbitrary number of
+terms. Furthermore, they demonstrated the validity of this solution by comparing
+the analytical solution truncated to the first 5 terms with that obtained from a
+classical finite  element solution. However, this  truncated analytical solution
+involves exponential and trigonometric terms  and is non-trivial to implement on
+\gls{bms} chips lacking support for floating point computations. Moreover, there
+has been no extensive study comparing  the analytical solution to the polynomial
+approach. Consequently, this  approach has not yet  gained widespread popularity
+in the inherent elimination of the radial dimension embedded as a core aspect of
+the  cell-level model  order reduction  approaches discussed  here.\todo{another
+method of solving  this diffusion is the integral method  analysis used by Tanim
+etal. Should  I mention that?.  There is also  a comprehensive review  by Romero
+etal. Furthermore, there is a specific review by Zhang and White}
 
+\todo{In the words of  Zhang and White, ``The usage of the  PSS method is mainly
+affected by the num- ber of summation  terms included. If no summation terms are
+used, the  method degrades to  the low  order polynomial method.  Increasing the
+number of summation terms improves the accu- racy of the method, mostly at short
+times. Our simulation shows that PSS method with two or three summation terms is
+able to  provide accurate results  under a  wide range of  operating conditions.
+More summation  terms require solving  more differ- ential equations  (Eq. (9b))
+and could pose numerical difficulties because of the exponential terms.''}
 
 \todo{There are way too many models that use the proper orthogonal decomposition
 technique. Should I review these?}
