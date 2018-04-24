@@ -377,7 +377,8 @@ the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
 in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
 such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
 measurements) to  that typically reported  in literature. \todo{have  not talked
-about SPM inspired eq circuit model. Is it necessary to do so?}
+about SPM  inspired eq circuit model.  Is it necessary  to do so?. How  to frame
+this. There are a few references that belongs to this kind}
 
 
 It must be acknowledged that presently  there exists no modelling candidate that
@@ -687,47 +688,55 @@ Li-ion   cells~\cite{Ning2004},  represents   the  canonical   apogee  of   such
 dimension-reduction strategies.
 
 
-% The conventional  \gls{spm} is the  simplest of all time  domain physics-based
-% models and the rest of this section discusses them in detail.
-
-
-During     the    initial     years     succeeding     its    inception,     the
-formulation     of     the     basic    \gls{spm}     has     been     discussed
-extensively    within     application-specific    contexts    such     as    for
-\gls{soc}  estimation~\cite{Santhanagopalan2006a,Santhanagopalan2008}, parameter
-estimation   studies~\cite{Santhanagopalan2007},    life   cycle    and   ageing
+During the initial  years following its inception, the formulation  of the basic
+\gls{spm} has  been discussed  extensively within  application-specific contexts
+such  as  \gls{soc}  estimation~\cite{Santhanagopalan2006a,Santhanagopalan2008},
+parameter   estimation~\cite{Santhanagopalan2007},   life   cycle   and   ageing
 predictions~\cite{Santhanagopalan2008a,Safari2009}.   There   have   also   been
-detailed stand-alone presentations  of various facets of the model,  such as its
-assumptions  and governing  equations~\cite{Santhanagopalan2006,Chaturvedi2010}.
-Owing   to   the    limitations   of   the   basic    \gls{spm}   as   discussed
-in~\cref{subsec:basicspmlimitations}, since the turn  of the decade, researchers
-have  focussed on  presenting  their  solutions to  these  issues  of the  basic
-\gls{spm}.
+detailed    stand-alone    presentations    of    various    facets    of    the
+basic   \gls{spm},   such   as    its   inherent   assumptions   and   governing
+equations~\cite{Santhanagopalan2006,Chaturvedi2010}.    The   basic    \gls{spm}
+suffers    from    certain    major     limitations    which    are    discussed
+in~\cref{subsec:basicspmlimitations}. Since the turn  of the decade, researchers
+have attempted to tackle many of these  issues and such efforts are discussed in
+\cref{sec:electrolyteinclusion}.
 
 
-A   survey  of   recent  literature   in  time   domain  reduced   order  models
-indicates  a  declining  interest  in  the  \gls{spm}  family  of  models.  This
-trend  could  be   attributed  to  a  general  consensus   within  the  research
-community  that  these  models  may  be  too  simplistic  and  not  of  suitable
-accuracy   to   warrant  further   studies.   Other   than  a   small   minority
-of   papers  that   propose  core   modelling  improvements   to  tackle   their
-modelling   inaccuracies   or   add  new   enhancements~\cite{Li2017a},   recent
-literature  in  this  family  of  models   only  discuss  the  topics  of  state
-estimation~\cite{Chaochun2018}, cycling  performance~\cite{Maia2017} sensitivity
-analysis~\cite{} and  parametrisation~\cite{Li2018,Rajabloo2017} rather  than on
-and to facilitate online implementation. might be an indicator that the proposed
-solutions
+A  survey of  the  most recent  literature  in all  \gls{spm}  family of  models
+reveals a  diminishing rate of  advancement in quantifiable improvements  to the
+underlying  plant model.  This  nearly-static  trend can  be  attributed to  the
+general consensus  within the research  community that  these models may  be too
+simplistic and not  of suitable accuracy to warrant further  studies. Other than
+a  small  minority  of  papers  that  propose  core  modelling  improvements  to
+tackle  their modelling  inaccuracies  or  add new  enhancements~\cite{Li2017a},
+latest  work in  this  family of  models predominantly  pertains  to the  topics
+of    state   estimation~\cite{Chaochun2018,Lin2017,Tran2017,Moura2017,Zou2016},
+optimal    charging~\cite{Perez2015},    cycling    performance~\cite{Maia2017},
+conversion           to            equivalent           circuits~\cite{Li2017b},
+parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017}  and observer  design for
+joint  state--parameter estimation~\cite{Ascencio2016}.  The \gls{spm}  approach
+was  also extended  to the  case  of composite  electrodes, leading  to a  state
+estimator design after basic observablity analysis~\cite{Bartlett2015b}.
 
-The author of this thesis seeks to re
 
-This main innovation proposed by
-this thesis,
+Owing  to  their simplicity,  this  author  believes  that \gls{spm}s  hold  the
+highest  potential  to bring  a  physics  based  model to  embedded  \gls{bms}s.
+With  this   goal  in  view,  this   thesis  seeks  to  resurrect   interest  in
+this  field.  The main  contribution  of  this  chapter  shall be  discussed  in
+~\cref{sec:newelectrolytemodel}. However,  in order  to establish a  context for
+discussing this work, it is imperative to provide a holistic presentation of the
+basic \gls{spm} modelling art.
+
+
+The  conventional \gls{spm}  is the  simplest of  all time  domain physics-based
+models and  the rest  of this  section provides an  expository treatment  of its
+rubrics.
+
 
 
 \subsection{Model Development --- Background and Assumptions}
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
-
 
 The modelling foundations of the \gls{spm} have been
 
@@ -736,7 +745,7 @@ The modelling foundations of the \gls{spm} have been
 
 
 
-\section{Electrolyte Inclusion}
+\section{Electrolyte Inclusion}\label{sec:electrolyteinclusion}
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013}  discuss  the  usage  of  a
 polynomial approximation for electrolyte  concentration and potentials. However,
@@ -764,6 +773,7 @@ node. Although it serves as a proof of concept towards implementing higher order
 polynomial approximations,  the author of this  thesis deems this method  as too
 complex for online implementations.
 
+\section{New Electrolyte Model}\label{sec:newelectrolytemodel}
 
 
 
