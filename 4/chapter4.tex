@@ -51,7 +51,7 @@ necessitates the  use of a low  order model. In  this thesis, the two  terms are
 used interchangeably.
 
 
-\section{Reduced Order Models: A New Classification Scheme}
+\section{Reduced Order Models: A New Classification Scheme}{sec:classificationscheme}
 
 Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
 categories  of  reduced  order  physics  based  battery  models.  However,  this
@@ -69,7 +69,7 @@ mathematical  practices, ~\todo{citation(s) needed?}availability of  models for
 final implementation  in the time domain  aids immediate uptake by  industry for
 adoption  in online  \gls{bms}s. Treatment  of  reduced order  models from  this
 aspect  is so  germane to  the central  hypothesis of  this chapter,\todo{can  a
-simple  time-domain model  do the  job?} that  the author  of this  thesis feels
+simple  time domain model  do the  job?} that  the author  of this  thesis feels
 compelled to undertake  a simpler classification exercise within  the context of
 suitability for online implementation.
 
@@ -100,7 +100,7 @@ converted to time domain.
 models are to be evaluated}
 
 
-In  principle,  any modelling  method  that  yields a  time-domain  mathematical
+In  principle,  any modelling  method  that  yields a  time domain  mathematical
 description of physical  phenomena that is lower in  computational complexity by
 an arbitrary magnitude  than the original \gls{dfn} model can  be considered for
 further investigation. In the absence of a canonical, quantitative definition of
@@ -220,10 +220,10 @@ predict the cell's terminal voltage.
 
 Furthermore,  Lee~\etal{}~\cite{Lee2012a} also  devised the  \gls{dra}, a  novel
 algorithm  to systematically  transform  all  transcendental transfer  functions
-to  the  time-domain   to  obtain  the  standard  state-space   model  given  by
+to  the  time domain   to  obtain  the  standard  state-space   model  given  by
 \cref{eq:statespace}. The  author of  this thesis  considers the  formulation of
 the  \gls{dra}  as a  breakthrough  contribution  that  has helped  in  bringing
-physics-informed  time-domain  models a  step  closer  to online  implementation
+physics-informed  time domain  models a  step  closer  to online  implementation
 without   having  to   resort   to   forming  a   lumped   impedance  and   then
 truncating  it  suitably.  Lee~\etal{}~\cite{Lee2014} then  extended  this  work
 for  a  wider range  of  operation  across  various \gls{soc},  temperature  and
@@ -382,7 +382,7 @@ about SPM inspired eq circuit model. Is it necessary to do so?}
 
 It must be acknowledged that presently  there exists no modelling candidate that
 provides  all desirable  characteristics  of  a reduced  order  model for  final
-implementation in  the time-domain. However,  it is strongly desirable  that the
+implementation in  the time domain. However,  it is strongly desirable  that the
 majority  of the  final model  values  retain their  physical meaning,  yielding
 system engineers and cell designers alike  with a direct and causal relationship
 between  groups of  parameters and  their  influence on  the cell's  operational
@@ -416,7 +416,7 @@ themselves uniquely in the larger realm of reduced order battery.
 A  few  \gls{pde}  simplification  techniques   in  the  time  domain,  such  as
 Hilbert-Space  representation  and  singular   perturbation  were  presented  in
 Manzie~\eta{}~\cite{Manzie2015}.  However, their  presentation lacks  expository
-visual information  such as plots of  time-domain evolution of the  internal and
+visual information  such as plots of  time domain evolution of the  internal and
 terminal variables for dynamic load profiles. Furthermore, the authors failed to
 provide a tabulated set of physical  parameters of the cell being simulated that
 adversely affects the reproducibility of this  work. These methods have not seen
@@ -425,7 +425,7 @@ presentation  to be  of a  cursory nature  and consequently,  they shall  not be
 discussed here.
 
 
-The  rest of  this section  discusses  several popular  families of  time-domain
+The  rest of  this section  discusses  several popular  families of  time domain
 models. In  this section, a high-level  evaluation of their relative  merits and
 weaknesses is  presented. The next section  presents a detailed analysis  of the
 most promising  candidate among  these models with  the potential  to facilitate
@@ -672,7 +672,70 @@ Finally, results and discussion. \todo{REWRITE after finishing up everything}
 % to  enable an  informed  choice about  stability of  such  models for  real-time
 % implementations.
 
-\section{Finally a new section}
+
+\section{The Single Particle Model}
+
+% As  discussed in  \cref{sec:classificationscheme},\todo{may need  to cross-ref
+% the relevant subsection}
+
+
+Reducing  the   number  of   computational  dimensions   in  a   physical  model
+helps  in  formulating  their  low order  approximations,  thereby  facilitating
+fast   computations.   The  \gls{spm},   originally   used   in  modelling   the
+Metal-Hydride    chemistry~\cite{Haran1998}   and    later   on    adapted   for
+Li-ion   cells~\cite{Ning2004},  represents   the  canonical   apogee  of   such
+dimension-reduction strategies.
+
+
+% The conventional  \gls{spm} is the  simplest of all time  domain physics-based
+% models and the rest of this section discusses them in detail.
+
+
+During     the    initial     years     succeeding     its    inception,     the
+formulation     of     the     basic    \gls{spm}     has     been     discussed
+extensively    within     application-specific    contexts    such     as    for
+\gls{soc}  estimation~\cite{Santhanagopalan2006a,Santhanagopalan2008}, parameter
+estimation   studies~\cite{Santhanagopalan2007},    life   cycle    and   ageing
+predictions~\cite{Santhanagopalan2008a,Safari2009}.   There   have   also   been
+detailed stand-alone presentations  of various facets of the model,  such as its
+assumptions  and governing  equations~\cite{Santhanagopalan2006,Chaturvedi2010}.
+Owing   to   the    limitations   of   the   basic    \gls{spm}   as   discussed
+in~\cref{subsec:basicspmlimitations}, since the turn  of the decade, researchers
+have  focussed on  presenting  their  solutions to  these  issues  of the  basic
+\gls{spm}.
+
+
+A   survey  of   recent  literature   in  time   domain  reduced   order  models
+indicates  a  declining  interest  in  the  \gls{spm}  family  of  models.  This
+trend  could  be   attributed  to  a  general  consensus   within  the  research
+community  that  these  models  may  be  too  simplistic  and  not  of  suitable
+accuracy   to   warrant  further   studies.   Other   than  a   small   minority
+of   papers  that   propose  core   modelling  improvements   to  tackle   their
+modelling   inaccuracies   or   add  new   enhancements~\cite{Li2017a},   recent
+literature  in  this  family  of  models   only  discuss  the  topics  of  state
+estimation~\cite{Chaochun2018}, cycling  performance~\cite{Maia2017} sensitivity
+analysis~\cite{} and  parametrisation~\cite{Li2018,Rajabloo2017} rather  than on
+and to facilitate online implementation. might be an indicator that the proposed
+solutions
+
+The author of this thesis seeks to re
+
+This main innovation proposed by
+this thesis,
+
+
+\subsection{Model Development --- Background and Assumptions}
+
+\subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
+
+
+The modelling foundations of the \gls{spm} have been
+
+
+
+
+
+
 \section{Electrolyte Inclusion}
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013}  discuss  the  usage  of  a
