@@ -616,7 +616,7 @@ applications.
 \todo{Tikz  picture  here, showing  a  nice  layout of  various  models
 according to the new classification scheme.}
 
-\todo{spider drawing on 5 counts. simplicity, parametrisation, online
+\todo{spider  drawing   on  5  counts---  simplicity,   parametrisation,  online
 implementation, state estimation, physical insight}
 
 
@@ -732,7 +732,7 @@ models and  the rest  of this  section provides an  expository treatment  of its
 rubrics.
 
 
-\subsection{Model Geometry}
+\subsection{Model Development --- Geometry}
 
 \begin{figure}[h]
     \centering
@@ -743,9 +743,9 @@ rubrics.
 \end{figure}
 
 
-Figure~\cref{fig:sandwichtospm}  shows the  arrangement  of one  electrochemical
-layer within a typical Li-ion pouch cell. A description of the working principle
-of the  cell was presented in~\cref{ch:chapter1}  and is not repeated  here. The
+\Cref{fig:sandwichtospm}  shows the  arrangement  of  one electrochemical  layer
+within a  typical Li-ion pouch cell.  A description of the  working principle of
+the  cell was  presented in~\cref{ch:chapter1}  and  is not  repeated here.  The
 \gls{spm}, as the name suggests,  models the electrochemical phenomena along the
 thickness  $l_j$, \jinnegpos{}  of  each porous  electrode  by a  representative
 spherical particle.  Thus the two  distinct solid-phase porous materials  of the
@@ -781,12 +781,12 @@ physics,  \viz{} reaction  kinetics and  solid-phase transport  phenomena, \ie{}
 diffusion dynamics.
 
 
-The gls{spm} assumes that charge transfer happens throughout the surface of each
-representative  spherical particle  where intercalation  occurs. The  electronic
-conductivity  of the  solid-phase is  assumed to  be high  enough to  ignore the
-spatial distribution  of charge, \ie{}  the local volumetric current  density is
-assumed  to be  uniform  along  the thickness  of  each  porous electrode.  This
-assumption  is motivated  by  the  early calculations  performed  by Newman  and
+The  \gls{spm}  assumes that  charge  transfer  happens throughout  the  surface
+of  each  representative  spherical  particle where  intercalation  occurs.  The
+electronic  conductivity of  the solid-phase  is assumed  to be  high enough  to
+ignore the  spatial distribution of  charge, \ie{} the local  volumetric current
+density is assumed  to be uniform along the thickness  of each porous electrode.
+This assumption is  motivated by the early calculations performed  by Newman and
 Tobias~\cite{Newman1962} in their stand-alone  analysis of current distributions
 in porous electrodes, wherein a volume-averaged molar flux is deemed sufficient.
 This uniform current density assumption implies that all of the particles in the
@@ -799,6 +799,40 @@ Wang~\cite{Smith2006b},  it  is  reported  that, soon  after  the  beginning  of
 discharge, solid-phase concentration and ionic flux become nearly independent of
 spatial position, and  Lithium diffusion in solid particles may  be driven by an
 averaged molar flux at the surface.
+
+
+Based  on the  discussion thus  far, it  is clear  that the  \gls{spm} does  not
+attempt  to model  all physical  processes within  the cell.  The model  assumes
+instantaneous  charge transport  from one  electrode  to the  other through  the
+solution phase.  This implies that  electrolytic diffusion is  sufficiently fast
+(relative to  diffusion in the solid  phase). Thus, mass transport  phenomena in
+the  electrolyte  are  not  considered.
+
+
+During the  operation of the  cell, the  \gls{spm} assumes that  the electrolyte
+concentration  $c_\text{e}$ remains  constant at  its equilibrium  initial value
+$c_{\text{e},0}$ throughout  the cell thickness. Neglecting  local concentration
+gradients  in the  solution phase,  together  with ignoring  its mass  transport
+phenomena implies that  the current in the electrolyte does  not vary over space
+and time. Hence,  in the conventional \gls{spm} there is  no contribution of the
+solution  phase  to internal  overpotentials  and  electroyte dynamics  have  no
+influence on the cell's terminal voltage.
+
+
+Finally,  the  \gls{spm}  ignores  any   variations  in  material  porosity  and
+ionic-flow tortuosity  along the axial  direction of the cell.  This facilitates
+the  usage of  a constant  effective diffusion  coefficient for  the electrolyte
+phase. Furthermore,  the solid-phase diffusion  and kinetic parameters  are held
+constant. Thermal effects are assumed to be negligible and no degradation
+effects are attempted to be modelled.
+
+
+These simplifying  assumptions are  made so  as to enable  the formulation  of a
+physics-based model without incurring a  heavy computational cost. The impact of
+these  assumptions shall  be  examined in~\cref{subsec:basicspmlimitations}  and
+later  sections presents  research that  strives  to straddle  the fine  balance
+between model sophistication and computational complexity.
+
 
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
