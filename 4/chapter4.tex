@@ -136,8 +136,8 @@ The     transfer     function     oriented    Padé     approximation     method
 for    low    order    physics-based     battery    modelling    pioneered    by
 Forman~\etal{}~\cite{Forman2011a}    has   gained    widespread   adoption    in
 the    areas     of    cell     design~\cite{Marcicki2013},    charge-trajectory
-optimisation~\cite{Bashash2010},  controller  design~\cite{Perez2015} and  state
-estimation~\cite{Marcicki2013,Moura2012,Bartlett2015}.   Although   Prasad   and
+optimisation~\cite{Bashash2010},    controller    design~\cite{Perez2015}    and
+state    estimation~\cite{Marcicki2013,Moura2012}.     Although    Prasad    and
 Rahn~\cite{Prasad2013} present  an online identification  of a subset  of ageing
 parameters using a Padé model and a recursive least squares algorithm, specific
 implementation details such as the transformation of the Padé reduced impedance
@@ -522,7 +522,7 @@ concentration was  accompanied by a  corresponding \gls{ode} for  describing the
 temporal  evolution of  average concentration,  thereby leading  to a  system of
 \gls{dae}s. Furthermore, Subramanian~\etal{}~\cite{Subramanian2007} demonstrated
 the  application  of  polynomial  approximation  of  solid  phase  diffusion  by
-simulating  a complete  \gls{dfn}  model.
+simulating a complete \gls{dfn} model.
 
 
 Using polynomial  approximation for the  solid phase concentration results  in a
@@ -532,15 +532,15 @@ The  polynomial  approximation  solution  applied   to  solve  for  the  surface
 concentration in  the solid phase can  hence be viewed as  a dimension reduction
 approach, as  it removes  the model's  dependence in  the radial  direction. The
 textbook by  Carslaw and  Jaeger~\cite{Carslaw1947} details the  derivations for
-obtaining  the  standard analytical  solution  to  Fick's  law of  diffusion  in
-the  context of  heat  conduction in  solids.  Liu~\cite{Liu2006a} derived  this
-analytical solution  for the Lithium  intercalation process in the  solid phase,
-taking into  account the idiosyncrasies of  porous electrodes\todo{explain about
-Olcer's  pseudo-steady  state  stuff}.  However,  this  expression  involves  an
-infinite sum expansion of eigen modes. Guo and White~\cite{Guo2012} formulate an
-expression for truncated  approximation of this solution to  arbitrary number of
-terms. Furthermore, they demonstrated the validity of this solution by comparing
-the analytical solution truncated to the first 5 terms with that obtained from a
+obtaining the  standard analytical solution  to Fick's  law of diffusion  in the
+context of heat conduction in solids. Liu~\cite{Liu2006} derived this analytical
+solution for the  Lithium intercalation process in the solid  phase, taking into
+account  the  idiosyncrasies  of porous  electrodes\todo{explain  about  Olcer's
+pseudo-steady state  stuff}. However, this  expression involves an  infinite sum
+expansion of eigen  modes. Guo and White~\cite{Guo2012}  formulate an expression
+for  truncated approximation  of this  solution  to arbitrary  number of  terms.
+Furthermore, they  demonstrated the validity  of this solution by  comparing the
+analytical solution  truncated to the  first 5 terms  with that obtained  from a
 classical finite  element solution. However, this  truncated analytical solution
 involves exponential and trigonometric terms  and is non-trivial to implement on
 \gls{bms} chips lacking support for floating point computations. Moreover, there
@@ -716,7 +716,7 @@ conversion           to            equivalent           circuits~\cite{Li2017b},
 parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017,Namor2017}   and  observer
 design for joint  state--parameter estimation~\cite{Ascencio2016}. The \gls{spm}
 approach was  also extended to  the case of  composite electrodes, leading  to a
-state estimator  design after basic  observablity analysis~\cite{Bartlett2015b}.
+state  estimator design  after basic  observablity analysis~\cite{Bartlett2015}.
 Owing to their simplicity, this author believes that \gls{spm}s hold the highest
 potential to bring a physics based  model to embedded \gls{bms}s. With this goal
 in view,  this thesis seeks  to resurrect interest  in this field  by addressing
@@ -732,10 +732,73 @@ models and  the rest  of this  section provides an  expository treatment  of its
 rubrics.
 
 
-\subsection{Model Development --- Background and Assumptions}
+\subsection{Model Geometry}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{example-image-golden}
+    \caption[Schematic illustration depicting geometrical origins of the \gls{spm}]
+    {Schematic illustration depicting the geometrical origins of the \gls{spm}. The \gls{spm} is obtained through a degenerate spatial discretisation of one electrochemical layer within a typical Li-ion pouch cell. The axial direction along the cell's thickness is denoted by $x(t)$, whilst the pseudo-dimension along the radial depth of each electrode particle is denoted by $r(t)$. In the basic \gls{spm}, the active material of each porous electrode is represented by one representative spherical particle, thus entirely eliminating the spatial dimension along the axial direction.}
+    \label{fig:sandwichtospm}
+\end{figure}
+
+Figure~\cref{fig:sandwichtospm}  shows the  arrangement  of one  electrochemical
+layer within a typical Li-ion pouch cell. A description of the working principle
+of the cell  was presented in ~\cref{ch:chapter1} and is  not repeated here. The
+\gls{spm}, as the name suggests,  models the electrochemical phenomena along the
+thickness,  $l_j \,  j  \in  {\text{neg,pos}}$ of  each  porous  electrode by  a
+representative  spherical particle.  Thus  the two  distinct solid-phase  porous
+materials of the cell, \ie{} the negative and positive electrodes, are idealised
+as two spheres of radii $r_\text{neg}$ and $r_\text{pos}$ respectively.
 
 
-% \missingfigure[figwidth=6cm]{Testing a long text string}
+In  this  reformulated  arrangement,  the  spatial  dimension  along  the  axial
+thickness  of  each  electrode  degenerates   to  a  single  point.  Hence,  the
+concentration  of  Lithium  within  each   electrode,  $c_\text{s}_j  \,  j  \in
+{\text{neg,pos}}$ is only a function of  the radial position, $r_j\, j \in {neg,
+pos}$ along the depth of their representative spherical particle, and time, $t$.
+The surface  area of  each representative sphere  is scaled  appropriately, such
+that  they  are equivalent  to  the  active  area  of the  corresponding  porous
+electrodes. Thus the \gls{spm} accounts  for the reduced volume-fraction arising
+due to the microporous structure  of the solid-phase. The overarching assumption
+of the \gls{spm} modelling philosophy is that the electrochemical performance of
+these representative  electrodes are  sufficient to model  the behaviour  of the
+cell at its terminals. The \gls{spm}  thus employs the coarsest possible spatial
+discretisation of the cell's thickness with the goal of minimising computational
+burden.
+
+
+\subsection{Model Development --- Scope and Assumptions}
+
+Having established the geometrical representation of the model, it is imperative
+to establish its  aims and scope. This section discusses  the subset of physical
+phenomena that can captured by the model and enumerates the inherent assumptions
+in  model derivation.The  validity of  these  assumptions and  their effects  is
+discussed  in  ~\cref{subsec:basicspmlimitation}.  As  a broad  outline  of  the
+\gls{spm}s scope,  the model  attributes the cell  polarisation to  two dominant
+physics,  \viz{} reaction  kinetics and  solid-phase transport  phenomena, \ie{}
+diffusion dynamics.
+
+
+The gls{spm} assumes that charge transfer happens throughout the surface of each
+representative  spherical particle  where intercalation  occurs. The  electronic
+conductivity  of the  solid-phase is  assumed to  be high  enough to  ignore the
+spatial distribution  of charge, \ie{}  the local volumetric current  density is
+assumed  to be  uniform  along  the thickness  of  each  porous electrode.  This
+assumption  is motivated  by  the  early calculations  performed  by Newman  and
+Tobias~\cite{Newman1962} in their stand-alone  analysis of current distributions
+in porous electrodes, wherein a volume-averaged molar flux is deemed sufficient.
+This uniform current density assumption implies that all of the particles in the
+electrode active material are in parallel.
+
+
+In the  ~gls{spm}, solid-phase  diffusion dynamics are  solved by  assuming this
+averaged electrochemical  reaction rate.  In the simulation  study by  Smith and
+Wang~\cite{Smith2006b},  it  is  reported  that, soon  after  the  beginning  of
+discharge, solid-phase concentration and ionic flux become nearly independent of
+spatial position, and  Lithium diffusion in solid particles may  be driven by an
+averaged molar flux at the surface.
+
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
