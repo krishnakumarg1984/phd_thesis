@@ -761,12 +761,13 @@ their  representative  spherical  particle,  and time,  $t$.  The  surface  area
 of  each representative  sphere  is  scaled appropriately,  such  that they  are
 equivalent  to the  active area  of  the corresponding  porous electrodes.  Thus
 the  \gls{spm} accounts  for  the  reduced volume-fraction  arising  due to  the
-microporous  structure of  the solid-phase.  The overarching  assumption of  the
-\gls{spm} modelling philosophy is that  the electrochemical performance of these
-representative electrodes are  sufficient to model the behaviour of  the cell at
-its  terminals.  The  \gls{spm}  thus  employs  the  coarsest  possible  spatial
-discretisation of the cell's thickness with the goal of minimising computational
-burden.
+microporous structure of  the solid-phase. However, the storage  capacity of the
+representative  particles  match  that  of  the  corresponding  electrodes.  The
+overarching  assumption  of  the  \gls{spm} modelling  philosophy  is  that  the
+electrochemical performance of these representative electrodes are sufficient to
+model the behaviour of the cell at its terminals. The \gls{spm} thus employs the
+coarsest possible spatial  discretisation of the cell's thickness  with the goal
+of minimising computational burden.
 
 
 \subsection{Model Development --- Scope and Assumptions}
@@ -834,6 +835,39 @@ later  sections presents  research that  strives  to straddle  the fine  balance
 between model sophistication and computational complexity.
 
 
+\subsection{Model Development --- Chemistry}
+
+This section  provides a  brief overview of  the essential  chemistry principles
+that helps to provide a background context for the governing equations presented
+in~\cref{subsec:basicspmgoverningeqns}.
+
+
+In  a Li-ion  cell,  the  positive electrode  consists  of  porous particles  of
+Lithium--Transition Metal  Compounds. The  negative electrode  typically employs
+some  variant of  microporous  graphite.  The porous  nature  of the  electrodes
+provide  interstitial  sites  which  act  as  intercalation  spots  for  Lithium
+shuttling  between  the two  electrodes.  The  electrolyte, whose  dynamics  are
+ignored  in the  \gls{spm},  helps  in the  conduction  of  \ce{Li^+} ions.  The
+separator membrane allows the passage of  these ions between the two electrodes,
+but prevents internal short-circuit  by inhibiting electronic conduction through
+it. The current collectors facilitate  passage of electrons generated during the
+charge transfer reaction  at particle surface to the external  circuit. With the
+help of~\cref{fig:chargetransferprocess}  the steps involved in  this process is
+detailed next.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption
+    {Simplified representation of charge-transfer process and illustration of
+    basic working mechanism of a Li-ion cell}
+    \label{fig:chargetransferprocess}
+\end{figure}
+
+During discharge, \ce{Li^0} atoms diffuse  out of deep interstitial sites within
+the negative electrode. A charge-transfer process
+
+\subsection{Model Development --- Governing Equations}\label{subsec:basicspmgoverningeqns}
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
