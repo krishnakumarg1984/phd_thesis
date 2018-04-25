@@ -843,11 +843,11 @@ in~\cref{subsec:basicspmgoverningeqns}.
 
 
 In  a Li-ion  cell,  the  positive electrode  consists  of  porous particles  of
-Lithium--Transition Metal  Compounds. The  negative electrode  typically employs
-some  variant of  microporous  graphite.  The porous  nature  of the  electrodes
-provide  interstitial  sites  which  act  as  intercalation  spots  for  Lithium
-shuttling  between  the two  electrodes.  The  electrolyte, whose  dynamics  are
-ignored  in the  \gls{spm},  helps  in the  conduction  of  \ce{Li^+} ions.  The
+Lithium--Transition Metal Oxide (MO) compounds. The negative electrode typically
+employs  some  variant  of  microporous  graphite.  The  porous  nature  of  the
+electrodes  provide interstitial  sites  which act  as  intercalation spots  for
+Lithium shuttling  between the two  electrodes. The electrolyte,  whose dynamics
+are ignored  in the \gls{spm},  helps in the  conduction of \ce{Li^+}  ions. The
 separator membrane allows the passage of  these ions between the two electrodes,
 but prevents internal short-circuit  by inhibiting electronic conduction through
 it. The current collectors facilitate  passage of electrons generated during the
@@ -864,18 +864,50 @@ detailed next.
     \label{fig:chargetransferprocess}
 \end{figure}
 
-During discharge, \ce{Li^0} atoms diffuse  out of deep interstitial sites within
-the negative electrode. A charge-transfer process
+At fully charged  condition, majority of Lithium in the  system is packed within
+the negative electrode microstructure. During discharge, \ce{Li^0} atoms diffuse
+out  of  deep  interstitial  sites  towards the  surface  of  the  particles  in
+the  negative electrode.  At  the surface  (electrode-electrolyte interface),  a
+charge-transfer process takes place according to Butler-Volmer kinetics, leading
+to  the formation  of \ce{Li^+}  ions and  electrons. The  electrons are  passed
+to  the external  circuit  through  \ce{Cu} current  collectors  onto which  the
+conductive matrix  composed of  the negative electrode  material and  binders is
+coated. The  \ce{Li^+} ions travel  through the electrolyte phase,  crossing the
+separator membrane  to the positive  electrode where they encounter  an electron
+influx from the external circuit. A  charge transfer reaction takes place at the
+surface of the positive electrode particles, leading to the formation of neutral
+\ce{Li^0} atoms that diffuse into the positive electrode microstructure.
 
-\subsection{Model Development --- Governing Equations}\label{subsec:basicspmgoverningeqns}
+During  the   charging  process,  the   reverse  phenomena  occur.   Lithium  is
+de-intercalated  from  the  positive  electrode and  a  similar  charge-transfer
+occurs  at  the surface,  leading  to  the  formation  of \ce{Li^+}  ions  which
+reach  the  negative  electrode  by   passing  through  the  separator.  At  the
+surface  of  the  negative  electrode particles,  these  ions  absorb  electrons
+from  the  external circuit,  leading  to  the  formation of  neutral  \ce{Li^0}
+that   diffuses  into   interior   vacant  spaces   in   the  layered   graphite
+electrode. The  charge-transfer mechanism  and sequence  of events  are depicted
+in~\cref{fig:chargetransferprocess}.
+
+\begin{align}
+    \ce{Li_${x}$ C &<-->[discharge] C + x Li + xe^-} \\
+\end{align}
+
+Equations summarise the reactions during the charging and discharging process at
+the surfaces of both electrode materials. Assuming no loss of cycleable Lithium
+due to parasitic side reactions or other mechanisms, the entire process is
+reversible.
+
+
+The potential of each electrode is  dependent upon the extent of its lithiation.
+An empirical relationship of each electrode's potential as a function of its
+stoichiometry can be obtained, and is dependent upon the specific design and
+material properties of each active material under consideration. Finally, the
+\gls{ocv} of the cell is obtained by subtracting the negative electrode
+potential from its positive electrode counterpart.
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
 The modelling foundations of the \gls{spm} have been
-
-
-
-
 
 
 \section{Electrolyte Inclusion}\label{sec:electrolyteinclusion}
