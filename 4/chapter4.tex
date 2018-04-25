@@ -65,11 +65,11 @@ broad survey of relevant methodologies  and tools towards obtaining such models.
 Hence,  neither~\cite{Jokar2016}  nor~\cite{Fan2015}  provide insight  into  the
 rubrics and  implications of  the choice  of modelling in  either of  these dual
 domains. Although in principle, the transformation between them follows standard
-mathematical  practices, ~\todo{citation(s) needed?}availability of  models for
+mathematical  practices,\todo{citation(s)  needed?}availability  of  models  for
 final implementation  in the time domain  aids immediate uptake by  industry for
 adoption  in online  \gls{bms}s. Treatment  of  reduced order  models from  this
 aspect  is so  germane to  the central  hypothesis of  this chapter,\todo{can  a
-simple  time domain model  do the  job?} that  the author  of this  thesis feels
+simple time  domain model  do the  job?} that  the author  of this  thesis feels
 compelled to undertake  a simpler classification exercise within  the context of
 suitability for online implementation.
 
@@ -736,15 +736,16 @@ rubrics.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{example-image-golden}
+    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
     \caption[Schematic illustration depicting geometrical origins of the \gls{spm}]
     {Schematic illustration depicting the geometrical origins of the \gls{spm}. The \gls{spm} is obtained through a degenerate spatial discretisation of one electrochemical layer within a typical Li-ion pouch cell. The axial direction along the cell's thickness is denoted by $x(t)$, whilst the pseudo-dimension along the radial depth of each electrode particle is denoted by $r(t)$. In the basic \gls{spm}, the active material of each porous electrode is represented by one representative spherical particle, thus entirely eliminating the spatial dimension along the axial direction.}
     \label{fig:sandwichtospm}
 \end{figure}
 
+
 Figure~\cref{fig:sandwichtospm}  shows the  arrangement  of one  electrochemical
 layer within a typical Li-ion pouch cell. A description of the working principle
-of the cell  was presented in ~\cref{ch:chapter1} and is  not repeated here. The
+of the  cell was presented in~\cref{ch:chapter1}  and is not repeated  here. The
 \gls{spm}, as the name suggests,  models the electrochemical phenomena along the
 thickness,  $l_j \,  j  \in  {\text{neg,pos}}$ of  each  porous  electrode by  a
 representative  spherical particle.  Thus  the two  distinct solid-phase  porous
@@ -754,7 +755,7 @@ as two spheres of radii $r_\text{neg}$ and $r_\text{pos}$ respectively.
 
 In  this  reformulated  arrangement,  the  spatial  dimension  along  the  axial
 thickness  of  each  electrode  degenerates   to  a  single  point.  Hence,  the
-concentration  of  Lithium  within  each   electrode,  $c_\text{s}_j  \,  j  \in
+concentration  of  Lithium  within  each electrode,  $c_{\text{s}_j}  \,  j  \in
 {\text{neg,pos}}$ is only a function of  the radial position, $r_j\, j \in {neg,
 pos}$ along the depth of their representative spherical particle, and time, $t$.
 The surface  area of  each representative sphere  is scaled  appropriately, such
@@ -774,7 +775,7 @@ Having established the geometrical representation of the model, it is imperative
 to establish its  aims and scope. This section discusses  the subset of physical
 phenomena that can captured by the model and enumerates the inherent assumptions
 in  model derivation.The  validity of  these  assumptions and  their effects  is
-discussed  in  ~\cref{subsec:basicspmlimitation}.  As  a broad  outline  of  the
+discussed  in~\cref{subsec:basicspmlimitations}.  As  a  broad  outline  of  the
 \gls{spm}s scope,  the model  attributes the cell  polarisation to  two dominant
 physics,  \viz{} reaction  kinetics and  solid-phase transport  phenomena, \ie{}
 diffusion dynamics.
@@ -792,7 +793,7 @@ This uniform current density assumption implies that all of the particles in the
 electrode active material are in parallel.
 
 
-In the  ~gls{spm}, solid-phase  diffusion dynamics are  solved by  assuming this
+In the  \gls{spm}, solid-phase  diffusion dynamics are  solved by  assuming this
 averaged electrochemical  reaction rate.  In the simulation  study by  Smith and
 Wang~\cite{Smith2006b},  it  is  reported  that, soon  after  the  beginning  of
 discharge, solid-phase concentration and ionic flux become nearly independent of
@@ -811,17 +812,17 @@ The modelling foundations of the \gls{spm} have been
 
 \section{Electrolyte Inclusion}\label{sec:electrolyteinclusion}
 
-Rahimian~\etal{}~\cite{KhaleghiRahimian2013}  discuss  the  usage  of  a
-polynomial approximation for electrolyte  concentration and potentials. However,
-no restriction was  imposed on the order of the  polynomials chosen to represent
-the  electrolyte  concentration within  each  porous  electrode region.  In  the
-standard \gls{dfn}  model, the  number of  equations and  corresponding boundary
-conditions describing electrolyte  charge and mass transport within  the cell is
-insufficient to  uniquely solve for  all unknown coefficients of  the polynomial
-approximation.  The  challenges posed  due  to  this equation  deficiency  shall
-be  discussed  in~\cref{temp:eqndeficiency}.
-Although  the original  \gls{spm} did  not involve  solving for  the electrolyte
-concentrations or potentials, The polynomial approximation of the single
+Rahimian~\etal{}~\cite{KhaleghiRahimian2013} discuss  the usage of  a polynomial
+approximation  for   electrolyte  concentration  and  potentials.   However,  no
+restriction was imposed on the order  of the polynomials chosen to represent the
+electrolyte concentration within  each porous electrode region.  In the standard
+\gls{dfn} model, the  number of equations and  corresponding boundary conditions
+describing electrolyte charge and mass transport within the cell is insufficient
+to uniquely solve for all  unknown coefficients of the polynomial approximation.
+The  challenges  posed  due  to  this equation  deficiency  shall  be  discussed
+in~\cref{temp:eqndeficiency}. Although  the original  \gls{spm} did  not involve
+solving  for  the  electrolyte  concentrations  or  potentials,  The  polynomial
+approximation of the single
 
 
 Rahimian~\etal{} adopted  a cubic  polynomial for approximating  the electrolyte
