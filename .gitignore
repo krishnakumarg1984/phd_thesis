@@ -274,6 +274,9 @@ NetrwTreeListing*
 *.tar.gz
 
 !thesis_refs.bib
+!references.bib
+
+notes/references.bib
 
 main.pdf
 main_vimtex.pdf
