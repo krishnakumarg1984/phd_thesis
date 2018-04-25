@@ -1,4 +1,4 @@
-$pdflatex = 'lualatex %O %S --shell-escape';
+$pdflatex = 'lualatex %O %S --shell-escape --bibtex';
 $pdf_mode = 1;
 $postscript_mode = $dvi_mode = 0;
 
