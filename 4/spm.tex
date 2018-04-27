@@ -1,0 +1,237 @@
+% As  discussed in  \cref{sec:classificationscheme},\todo{may need  to cross-ref
+% the relevant subsection}
+
+
+Reducing  the   number  of   computational  dimensions   in  a   physical  model
+helps  in  formulating  their  low order  approximations,  thereby  facilitating
+fast   computations.   The  \gls{spm},   originally   used   in  modelling   the
+Metal-Hydride    chemistry~\cite{Haran1998}   and    later   on    adapted   for
+Li-ion   cells~\cite{Ning2004},  represents   the  canonical   apogee  of   such
+dimension-reduction strategies.
+
+
+During the initial  years following its inception, the formulation  of the basic
+\gls{spm} has  been discussed  extensively within  application-specific contexts
+such  as  \gls{soc}  estimation~\cite{Santhanagopalan2006a,Santhanagopalan2008},
+parameter   estimation~\cite{Santhanagopalan2007},   life   cycle   and   ageing
+predictions~\cite{Santhanagopalan2008a,Safari2009}.   There   have   also   been
+detailed    stand-alone    presentations    of    various    facets    of    the
+basic   \gls{spm},   such   as    its   inherent   assumptions   and   governing
+equations~\cite{Santhanagopalan2006,Chaturvedi2010}.    The   basic    \gls{spm}
+suffers    from    certain    major     limitations    which    are    discussed
+in~\cref{subsec:basicspmlimitations}. Since the turn  of the decade, researchers
+have attempted to tackle many of these  issues and such efforts are discussed in
+\cref{sec:electrolyteinclusion}.
+
+
+A  survey of  the  most recent  literature  in all  \gls{spm}  family of  models
+reveals a  diminishing rate of  advancement in quantifiable improvements  to the
+underlying  plant model.  This  nearly-static  trend can  be  attributed to  the
+general consensus  within the research  community that  these models may  be too
+simplistic and not  of suitable accuracy to warrant further  studies. Other than
+a  small  minority  of  papers  that  propose  core  modelling  improvements  to
+tackle  their modelling  inaccuracies  or  add new  enhancements~\cite{Li2017a},
+latest  work in  this  family of  models predominantly  pertains  to the  topics
+of    state   estimation~\cite{Chaochun2018,Lin2017,Tran2017,Moura2017,Zou2016},
+optimal    charging~\cite{Perez2015},    cycling    performance~\cite{Maia2017},
+conversion           to            equivalent           circuits~\cite{Li2017b},
+parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017,Namor2017}   and  observer
+design for joint  state--parameter estimation~\cite{Ascencio2016}. The \gls{spm}
+approach was  also extended to  the case of  composite electrodes, leading  to a
+state  estimator design  after basic  observablity analysis~\cite{Bartlett2015}.
+Owing to their simplicity, this author believes that \gls{spm}s hold the highest
+potential to bring a physics based  model to embedded \gls{bms}s. With this goal
+in view,  this thesis seeks  to resurrect interest  in this field  by addressing
+this paucity  in fundamental model  improvements. A proposed enhancement  to the
+basic \gls{spm} is the main contribution  of this chapter and shall be discussed
+in~\cref{sec:newelectrolytemodel}.
+
+
+In  order  to establish  a  context  for discussing  the  author's  work, it  is
+imperative to provide  a holistic presentation of the  basic \gls{spm} modelling
+art. The conventional \gls{spm} is the simplest of all time domain physics-based
+models and  the rest  of this  section provides an  expository treatment  of its
+rubrics.
+
+
+\subsection{Model Development --- Geometry}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption[Schematic illustration depicting geometrical origins of the \gls{spm}]
+    {Schematic illustration depicting the geometrical origins of the \gls{spm}. The \gls{spm} is obtained through a degenerate spatial discretisation of one electrochemical layer within a typical Li-ion pouch cell. The axial direction along the cell's thickness is denoted by $x(t)$, whilst the pseudo-dimension along the radial depth of each electrode particle is denoted by $r(t)$. In the basic \gls{spm}, the active material of each porous electrode is represented by one representative spherical particle, thus entirely eliminating the spatial dimension along the axial direction.}
+    \label{fig:sandwichtospm}
+\end{figure}
+
+
+\Cref{fig:sandwichtospm}  shows the  arrangement  of  one electrochemical  layer
+within a  typical Li-ion pouch cell.  A description of the  working principle of
+the  cell was  presented in~\cref{ch:chapter1}  and  is not  repeated here.  The
+\gls{spm}, as the name suggests,  models the electrochemical phenomena along the
+thickness  $l_j$, \jinnegpos{}  of  each porous  electrode  by a  representative
+spherical particle.  Thus the two  distinct solid-phase porous materials  of the
+cell, \ie{} the  negative and positive electrodes, are idealised  as two spheres
+of radii $r_\text{neg}$ and $r_\text{pos}$ respectively.
+
+
+In  this  reformulated  arrangement,  the  spatial  dimension  along  the  axial
+thickness  of  each  electrode  degenerates   to  a  single  point.  Hence,  the
+concentration of Lithium within each electrode $c_{\text{s}_j}$, \jinnegpos{} is
+only a  function of the radial  position $r_j$, \jinnegpos{} along  the depth of
+their  representative  spherical  particle,  and time,  $t$.  The  surface  area
+of  each representative  sphere  is  scaled appropriately,  such  that they  are
+equivalent  to the  active area  of  the corresponding  porous electrodes.  Thus
+the  \gls{spm} accounts  for  the  reduced volume-fraction  arising  due to  the
+microporous structure of  the solid-phase. However, the storage  capacity of the
+representative  particles  match  that  of  the  corresponding  electrodes.  The
+overarching  assumption  of  the  \gls{spm} modelling  philosophy  is  that  the
+electrochemical performance of these representative electrodes are sufficient to
+model the behaviour of the cell at its terminals. The \gls{spm} thus employs the
+coarsest possible spatial  discretisation of the cell's thickness  with the goal
+of minimising computational burden.
+
+
+\subsection{Model Development --- Scope and Assumptions}
+
+Having established the geometrical representation of the model, it is imperative
+to establish its  aims and scope. This section discusses  the subset of physical
+phenomena that can captured by the model and enumerates the inherent assumptions
+in  model derivation.The  validity of  these  assumptions and  their effects  is
+discussed  in~\cref{subsec:basicspmlimitations}.  As  a  broad  outline  of  the
+\gls{spm}s scope,  the model  attributes the cell  polarisation to  two dominant
+physics,  \viz{} reaction  kinetics and  solid-phase transport  phenomena, \ie{}
+diffusion dynamics.
+
+
+The  \gls{spm}  assumes that  charge  transfer  happens throughout  the  surface
+of  each  representative  spherical  particle where  intercalation  occurs.  The
+electronic  conductivity of  the solid-phase  is assumed  to be  high enough  to
+ignore the  spatial distribution of  charge, \ie{} the local  volumetric current
+density is assumed  to be uniform along the thickness  of each porous electrode.
+This assumption is  motivated by the early calculations performed  by Newman and
+Tobias~\cite{Newman1962} in their stand-alone  analysis of current distributions
+in porous electrodes, wherein a volume-averaged molar flux is deemed sufficient.
+This uniform current density assumption implies that all of the particles in the
+electrode active material are in parallel.
+
+
+In the  \gls{spm}, solid-phase  diffusion dynamics are  solved by  assuming this
+averaged electrochemical  reaction rate.  In the simulation  study by  Smith and
+Wang~\cite{Smith2006b},  it  is  reported  that, soon  after  the  beginning  of
+discharge, solid-phase concentration and ionic flux become nearly independent of
+spatial position, and  Lithium diffusion in solid particles may  be driven by an
+averaged molar flux at the surface.
+
+
+Based  on the  discussion thus  far, it  is clear  that the  \gls{spm} does  not
+attempt  to model  all physical  processes within  the cell.  The model  assumes
+instantaneous  charge transport  from one  electrode  to the  other through  the
+solution phase.  This implies that  electrolytic diffusion is  sufficiently fast
+(relative to  diffusion in the solid  phase). Thus, mass transport  phenomena in
+the  electrolyte  are  not  considered.
+
+
+During the  operation of the  cell, the  \gls{spm} assumes that  the electrolyte
+concentration  $c_\text{e}$ remains  constant at  its equilibrium  initial value
+$c_{\text{e},0}$ throughout  the cell thickness. Neglecting  local concentration
+gradients  in the  solution phase,  together  with ignoring  its mass  transport
+phenomena implies that  the current in the electrolyte does  not vary over space
+and time. Hence,  in the conventional \gls{spm} there is  no contribution of the
+solution  phase  to internal  overpotentials  and  electroyte dynamics  have  no
+influence on the cell's terminal voltage.
+
+
+Finally,  the  \gls{spm}  ignores  any   variations  in  material  porosity  and
+ionic-flow tortuosity  along the axial  direction of the cell.  This facilitates
+the  usage of  a constant  effective diffusion  coefficient for  the electrolyte
+phase. Furthermore,  the solid-phase diffusion  and kinetic parameters  are held
+constant. Thermal effects are assumed to be negligible and no degradation
+effects are attempted to be modelled.
+
+
+These simplifying  assumptions are  made so  as to enable  the formulation  of a
+physics-based model without incurring a  heavy computational cost. The impact of
+these  assumptions shall  be  examined in~\cref{subsec:basicspmlimitations}  and
+later  sections presents  research that  strives  to straddle  the fine  balance
+between model sophistication and computational complexity.
+
+
+\subsection{Model Development --- Chemistry}
+
+This section  provides a  brief overview of  the essential  chemistry principles
+that helps to provide a background context for the governing equations presented
+in~\cref{subsec:basicspmgoverningeqns}.
+
+
+In  a Li-ion  cell,  the  positive electrode  consists  of  porous particles  of
+Lithium--Transition Metal Oxide (MO) compounds. The negative electrode typically
+employs  some  variant  of  microporous  graphite.  The  porous  nature  of  the
+electrodes  provide interstitial  sites  which act  as  intercalation spots  for
+Lithium shuttling  between the two  electrodes. The electrolyte,  whose dynamics
+are ignored  in the \gls{spm},  helps in the  conduction of \ch{Li^+}  ions. The
+separator membrane allows the passage of  these ions between the two electrodes,
+but prevents internal short-circuit  by inhibiting electronic conduction through
+it. The current collectors facilitate  passage of electrons generated during the
+charge transfer reaction  at particle surface to the external  circuit. With the
+help of~\cref{fig:chargetransferprocess}  the steps involved in  this process is
+detailed next.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption
+    {Simplified representation of charge-transfer process and illustration of
+    basic working mechanism of a Li-ion cell}
+    \label{fig:chargetransferprocess}
+\end{figure}
+
+At fully charged  condition, majority of Lithium in the  system is packed within
+the negative electrode microstructure. During discharge, \ch{Li^0} atoms diffuse
+out  of  deep  interstitial  sites  towards the  surface  of  the  particles  in
+the  negative electrode.  At  the surface  (electrode-electrolyte interface),  a
+charge-transfer process takes place according to Butler-Volmer kinetics, leading
+to  the formation  of \ch{Li^+}  ions and  electrons. The  electrons are  passed
+to  the external  circuit  through  \ch{Cu} current  collectors  onto which  the
+conductive matrix  composed of  the negative electrode  material and  binders is
+coated. The  \ch{Li^+} ions travel  through the electrolyte phase,  crossing the
+separator membrane  to the positive  electrode where they encounter  an electron
+influx from the external circuit. A  charge transfer reaction takes place at the
+surface of the positive electrode particles, leading to the formation of neutral
+\ch{Li^0} atoms that diffuse into the positive electrode microstructure.
+
+During  the   charging  process,  the   reverse  phenomena  occur.   Lithium  is
+de-intercalated  from  the  positive  electrode and  a  similar  charge-transfer
+happens  at the  surface,  leading  to the  formation  of  \ch{Li^+} ions  which
+reach  the  negative  electrode  by   passing  through  the  separator.  At  the
+surface  of  the  negative  electrode particles,  these  ions  absorb  electrons
+from  the  external circuit,  leading  to  the  formation of  neutral  \ch{Li^0}
+that   diffuses  into   interior   vacant  spaces   in   the  layered   graphite
+electrode. The  charge-transfer mechanism  and sequence  of events  are depicted
+in~\cref{fig:chargetransferprocess}.
+~\Cref{eq:NegElectrodeRxn,eq:PosElectrodeRxn} summarise the reactions during the
+charging and discharging process at the surfaces of both electrode materials.
+\tikzexternaldisable
+\begin{align}
+    \ch{Li_{$x$} C &<=>[\tiny{discharge}][\tiny{charge}] C + $x$ Li^+ + $x$ e^-}\label{eq:NegElectrodeRxn}\\
+    \ch{Li_{1-$x$} M O2 + $x$ Li^+  + $x$ e^- &<=>[\tiny{discharge}][\tiny{charge}] LiMO2}\label{eq:PosElectrodeRxn}
+\end{align}
+\tikzexternalenable
+where \ch{M} represents a transition metal compound such as
+\ch{Ni_{1/3}Co_{1/3}Mn_{1/3}} (NMC), \ch{Ni_{0.8}Co_{0.15}Al_{0.05}} (NCA)
+amongst other choices~\cite{Reddy2011}. Assuming no loss  of cycleable Lithium
+due to parasitic side reactions or through other mechanisms, the process is
+fully reversible.
+
+
+The potential of each electrode is  dependent upon the extent of its lithiation.
+An empirical relationship of each electrode's potential as a function of its
+stoichiometry can be obtained, and is dependent upon the specific design and
+material properties of each active material under consideration. Finally, the
+\gls{ocv} of the cell is obtained by subtracting the negative electrode
+potential from its positive electrode counterpart.
+
+\subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
+
+The modelling foundations of the \gls{spm} have been
+
