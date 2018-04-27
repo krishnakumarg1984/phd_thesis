@@ -7,9 +7,9 @@
 
 %: ----------------------- set languange ------------------------
 \ifCLASSINFOlangDE
-\selectlanguage{german}
+    \selectlanguage{german}
 \else
-\selectlanguage{english}
+    \selectlanguage{english}
 \fi
 % ***************************** Abstract Separate ******************************
 % To printout only the titlepage and the abstract with the PhD title and the
@@ -17,8 +17,8 @@
 % the document class.
 
 \ifdefineAbstract
- \pagestyle{empty}
- \includeonly{0_frontmatter/abstract}
+    \pagestyle{empty}
+    \includeonly{0_frontmatter/abstract}
 \fi
 
 %: ----------------------- generate glossary ------------------------
@@ -79,28 +79,28 @@
 \cleardoublepage
 \chapter{Glossary}
 \begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-% \footnotesize
-\ifCLASSINFOlangDE
-\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
-\else
-\printglossary[type=\acronymtype,title=Abbreviations]
-\fi
-%\printglossary
-%\printnomenclature[1.5cm] % [] = distance between entry and description
-% \printglossary{}
-\label{nom} % target name for links to glossary
+    \begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
+        % \footnotesize
+        \ifCLASSINFOlangDE
+            \printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
+        \else
+            \printglossary[type=\acronymtype,title=Abbreviations]
+        \fi
+        %\printglossary
+        %\printnomenclature[1.5cm] % [] = distance between entry and description
+        % \printglossary{}
+        \label{nom} % target name for links to glossary
 
-\end{footnotesize}
+    \end{footnotesize}
 \end{multicols}
 
 % \printglossaries{}
 
 \begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-\begin{footnotesize}
-\printglossary[type=symbolslist,title=Symbols]
+    \begin{footnotesize}
+        \printglossary[type=symbolslist,title=Symbols]
 
-\end{footnotesize}
+    \end{footnotesize}
 \end{multicols}
 %: --------------------------------------------------------------
 %:                  MAIN DOCUMENT SECTION
@@ -130,7 +130,7 @@
 % \tikzsetexternalprefix{./8/TikzPictures/}
 % \cfchapter{Materials and Methods}{8}{materials_methods}
 \cleardoublepage
-       % description of lab methods
+% description of lab methods
 
 
 
@@ -149,10 +149,10 @@
 
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
 
-\ifCLASSINFOlangDE
-%\renewcommand{\bibname}{References}
+    \ifCLASSINFOlangDE
+        %\renewcommand{\bibname}{References}
 \else
-\renewcommand{\bibname}{References} % changes the header; default: Bibliography
+    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
 \fi
 % add bib to toc
 \cleardoublepage
@@ -160,12 +160,12 @@
 \addcontentsline{toc}{chapter}{\bibname}
 
 \ifCLASSINFObiblatex
-\printbibliography
+    \printbibliography
 \else
-% PhDbiblio-url2 = names small caps, title bold & hyperlinked, link to page
-\bibliographystyle{Classes/PhDbiblio-url2} % Title is link if provided
-%\bibliographystyle{apalike}
-\bibliography{9_backmatter/references} % adjust this to fit your BibTex file
+    % PhDbiblio-url2 = names small caps, title bold & hyperlinked, link to page
+    \bibliographystyle{Classes/PhDbiblio-url2} % Title is link if provided
+    %\bibliographystyle{apalike}
+    \bibliography{9_backmatter/references} % adjust this to fit your BibTex file
 \fi
 \end{footnotesize}
 
@@ -173,8 +173,8 @@
 % ********************************** Appendices ********************************
 
 \begin{appendices} % Using appendices environment for more functionality
-\tikzsetexternalprefix{./Appendix1/TikzPictures/}
-\include{Appendix1/appendix1}
+    \tikzsetexternalprefix{./Appendix1/TikzPictures/}
+    \include{Appendix1/appendix1}
 \end{appendices}
 
 \end{document}
