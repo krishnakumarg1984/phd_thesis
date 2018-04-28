@@ -1,3 +1,9 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
 Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
 categories  of  reduced  order  physics  based  battery  models.  However,  this
 work  does  not aim  to  classify  models  based on  time-vs-frequency  domains.
@@ -117,6 +123,7 @@ This modelling effort  by Smith~\etal{} was the  first of its kind  to provide a
 physics-based  battery model  for  implementation in  the classical  state-space
 formulation
 \begin{equation}\label{eq:statespace}
+    % \SwapAboveDisplaySkip
     \begin{aligned}
         \dot{x} &= Ax + Bu \\
         y &= Cx + Du

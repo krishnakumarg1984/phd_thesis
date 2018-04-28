@@ -21,8 +21,6 @@
 \usepackage[all,warning]{onlyamsmath}
 
 \usepackage{relsize}
-\usepackage{xparse}
-\DeclareDocumentCommand{\pder}{ O{} O{} m }{\frac{\partial^{#2}#1}{\partial#3^{#2}}}
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
@@ -37,3 +35,5 @@
 
 % \usepackage[version=4]{mhchem}
 \usepackage{chemformula}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
