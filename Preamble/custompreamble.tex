@@ -32,8 +32,17 @@
 \usepackage{labelschanged}
 
 \newcommand{\jinnegpos}{\ensuremath{j  \in  \left\{\text{neg, pos}\right\}}}
+\newcommand{\sj}{\ensuremath{{\text{s}_j}}}
 
 % \usepackage[version=4]{mhchem}
 \usepackage{chemformula}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\usepackage{diffcoeff}
+\diffset[p-delims = . |, p-nudge = 0]
+
+\renewcommand{\footnoterule}{%
+    \kern -3pt
+    \hrule width 0.25\textwidth height 0.5pt
+    \kern 2pt
+}
