@@ -87,17 +87,17 @@ In  this  reformulated  arrangement,  the  spatial  dimension  along  the  axial
 thickness  of  each  electrode  degenerates   to  a  single  point.  Hence,  the
 concentration of Lithium within each electrode $c_{\text{s}_j}$, \jinnegpos{} is
 only a  function of the radial  position $r_j$, \jinnegpos{} along  the depth of
-their  representative  spherical  particle,  and time,  $t$.  The  surface  area
-of  each representative  sphere  is  scaled appropriately,  such  that they  are
-equivalent  to the  active area  of  the corresponding  porous electrodes.  Thus
-the  \gls{spm} accounts  for  the  reduced volume-fraction  arising  due to  the
-microporous structure of  the solid-phase. However, the storage  capacity of the
-representative  particles  match  that  of  the  corresponding  electrodes.  The
-overarching  assumption  of  the  \gls{spm} modelling  philosophy  is  that  the
-electrochemical performance of these representative electrodes are sufficient to
-model the behaviour of the cell at its terminals. The \gls{spm} thus employs the
-coarsest possible spatial  discretisation of the cell's thickness  with the goal
-of minimising computational burden.
+their representative spherical particle, and time, $t$. The surface area of each
+representative sphere is scaled appropriately,  such that they are equivalent to
+the  active area  of the  corresponding  porous electrodes.  Thus the  \gls{spm}
+accounts  for  the  reduced  volume-fraction  arising  due  to  the  microporous
+structure of the solid-phase. Hence,  the storage capacity of the representative
+particles match that of the corresponding electrodes. The overarching assumption
+of the \gls{spm} modelling philosophy is that the electrochemical performance of
+these representative  electrodes are  sufficient to model  the behaviour  of the
+cell at its terminals. The \gls{spm}  thus employs the coarsest possible spatial
+discretisation of the cell's thickness with the goal of minimising computational
+burden.
 
 
 \subsection{Model Development --- Scope and Assumptions}
@@ -289,11 +289,31 @@ in~\cref{eq:cartesiandiffusion} yields
     \diffp{c_\sj}{t} = \frac{1}{r^2}\diffp*{r^2 \left(D_\sj\, \nabla c_\sj \right)}{r}
 \end{equation}
 \Cref{eq:csdiffusioneqn} represents the mass-balance equation describing solid
-phase diffusion in each electrode.
+phase diffusion in each electrode. The potential at each electrode depends on
+the solid-phase surface concentration~$c_\sjsurf$ \ie{}  the \ch{Li^0}
+concentration $c_\sj(r,t)$ evaluated at $r=R_\pj$, \jinnegpos{} where
+$R_\text{p}$ represents the equivalent radius of each representative spherical
+particle. Diffusion in the solid phase is driven by concentration gradients
+induced due to intercalation flux density at the particle surface, which is
+examined next.
 
-The mass-balance equation of~\cref{eq:csdiffusioneqn} is driven by the
-intercalation flux density at the particle surface, $j_p(x,t)$ which is examined
-next.
+Due to spherical symmetry, flux at the centre of the particle is considered
+to be zero
+\begin{equation}\label{eq:csfluxcentre}
+    \diffp{c_\sj}{r}{r=0} = 0
+\end{equation}
+The surface of each particle experiences a pore-wall flux density driven by
+reaction kinetics. Based on the \gls{spm} geometry discussed
+in~\cref{subsec:basicspmgeometry} the spatial dependence of this molar flux
+density $j_n(x,t)$ is eliminated, thus possessing only temporal dependence and
+denoted by $j_n(t)$. Hence, at the particle surface
+\begin{equation}\label{eq:csfluxsurface}
+    \diffp{c_\sj}{r}{r=R_\pj} = -j_\jn(t)
+\end{equation}
+The sign convention chosen here indicates that pore-wall flux leaving the
+particle surface is considered to be positive.
+
+
 
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
