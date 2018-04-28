@@ -43,7 +43,7 @@ of    state   estimation~\cite{Chaochun2018,Lin2017,Tran2017,Moura2017,Zou2016},
 optimal    charging~\cite{Perez2015},    cycling    performance~\cite{Maia2017},
 conversion           to            equivalent           circuits~\cite{Li2017b},
 parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017,Namor2017}, pack-balancing
-studies~\cite{Docimo2018}  and   observer  design  for   joint  state--parameter
+studies~\cite{Docimo2018}   and  observer   design  for   joint  state-parameter
 estimation~\cite{Ascencio2016}. The \gls{spm} approach  was also extended to the
 case  of  composite  electrodes,  leading  to a  state  estimator  design  after
 basic  observablity  analysis~\cite{Bartlett2015}.  Owing to  their  simplicity,
@@ -100,7 +100,7 @@ discretisation of the cell's thickness with the goal of minimising computational
 burden.
 
 
-\subsection{Model Development --- Scope and Assumptions}
+\subsection{Model Development --- Scope and Assumptions}\label{subsec:basicspmassumptions}
 
 Having established the geometrical representation of the model, it is imperative
 to establish its  aims and scope. This section discusses  the subset of physical
@@ -146,7 +146,7 @@ $c_{\text{e},0}$ throughout  the cell thickness. Neglecting  local concentration
 gradients  in the  solution phase,  together  with ignoring  its mass  transport
 phenomena implies that  the current in the electrolyte does  not vary over space
 and time. Hence,  in the conventional \gls{spm} there is  no contribution of the
-solution  phase  to internal  overpotentials  and  electroyte dynamics  have  no
+solution  phase to  internal  overpotentials and  electrolyte  dynamics have  no
 influence on the cell's terminal voltage.
 
 
@@ -173,7 +173,7 @@ in~\cref{subsec:basicspmgoverningeqns}.
 
 
 In  a Li-ion  cell,  the  positive electrode  consists  of  porous particles  of
-Lithium--Transition Metal Oxide (MO) compounds. The negative electrode typically
+Lithium-Transition Metal Oxide (MO)  compounds. The negative electrode typically
 employs  some  variant  of  microporous  graphite.  The  porous  nature  of  the
 electrodes  provide interstitial  sites  which act  as  intercalation spots  for
 Lithium shuttling  between the two  electrodes. The electrolyte,  whose dynamics
@@ -188,8 +188,7 @@ detailed next.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{placeholder_images/example-image-golden.pdf}
-    \caption
-    {Simplified representation of charge-transfer process and illustration of
+    \caption{Simplified representation of charge-transfer process and illustration of
     basic working mechanism of a Li-ion cell}
     \label{fig:chargetransferprocess}
 \end{figure}
@@ -217,7 +216,7 @@ from  the  external circuit,  leading  to  the  formation of  neutral  \ch{Li^0}
 that   diffuses  into   interior   vacant  spaces   in   the  layered   graphite
 electrode. The  charge-transfer mechanism  and sequence  of events  are depicted
 in~\cref{fig:chargetransferprocess}.
-~\Cref{eq:NegElectrodeRxn,eq:PosElectrodeRxn} summarise the reactions during the
+\Cref{eq:NegElectrodeRxn,eq:PosElectrodeRxn} summarise the reactions during the
 charging and discharging process at the surfaces of both electrode materials.
 \tikzexternaldisable
 \begin{align}
@@ -310,9 +309,13 @@ denoted by $j_n(t)$. Hence, at the particle surface
 \begin{equation}\label{eq:csfluxsurface}
     \diffp{c_\sj}{r}{r=R_\pj} = -j_\jn(t)
 \end{equation}
-The sign convention chosen here indicates that pore-wall flux leaving the
-particle surface is considered to be positive.
+The sign convention chosen here is such that pore-wall flux leaving the particle
+surface is considered to be positive.
 
+Charge  conservation  in  solid  phase  is applied  in  order  to  evaluate  the
+\gls{rhs}  in~\cref{eq:csfluxsurface}.  The  detailed derivation  which  employs
+the  assumptions listed  in~\cref{subsec:basicspmassumptions},  is presented  in
+Domenico~\etal~\cite{DiDomenico2010}.
 
 
 
