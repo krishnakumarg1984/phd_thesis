@@ -290,3 +290,6 @@ notes/mkrctest
 # unneeded files
 beamercolorthemeC*.sty
 *.xcf
+
+*.ttf
+*.otf
