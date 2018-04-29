@@ -323,7 +323,7 @@ density $j_\nj(x,t)$ is eliminated and can be represented as $j_\nj(t)$,
 omitted resulting in a simplified notation $j_\nj$. Hence, at the particle
 surface
 \begin{equation}\label{eq:csfluxsurface}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} = \frac{-j_\nj}{a_\sj F}
+    D_\sj\diffp{c_\sj}{r}{r=R_\pj} = -j_\nj
 \end{equation}
 The sign convention chosen here is such that pore-wall flux leaving the particle
 surface is considered to be positive.
@@ -335,11 +335,9 @@ a uniform   charge   density   throughout   the  thickness   of   each
 electrode (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface}
 becomes
 \begin{align}
-    j_\nj(t) &= \frac{I(t)}{l_j
-        A}\label{eq:uniformcurrdensity}\shortintertext{Substituting~\cref{eq:uniformcurrdensity}
-    in~\cref{eq:csfluxsurface},}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \frac{I}{A l_j a_\sj
-    F}\label{eq:csfluxsurfacefinal}
+    j_\nj(t) &= \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}
+    \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
+    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal}
 \end{align}
 In~\cref{eq:csfluxsurfacefinal}, the explicit time-dependence of the load current $I(t)$
 has been omitted for the sake of brevity.
@@ -350,12 +348,13 @@ concentration of \ch{Li^0} in the two individual electrodes can be computed as
     c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(\theta_\maxj - \theta_\minj \right) + \theta_\minj \bigg]
 \end{equation}
 
-\Cref{eq:csdiffusionfinal},   its  boundary   conditions~\eqref{eq:csfluxcentre}
-\&~\eqref{eq:csfluxsurfacefinal}           along          with           initial
-condition~\eqref{eq:csfluxinitialcondition}  provide  the  complete  description
-of  time-domain  evolution  of  lithium  in the  conventional  \gls{spm}  for  a
-given applied  current profile  $I(t)$. Certain  aspects of  efficient numerical
-simulation of this system is presented next in~\cref{subsec:basicspmgeometry}
+\Cref{eq:csdiffusionfinal},          its         corresponding          boundary
+conditions~\eqref{eq:csfluxcentre}  \&~\eqref{eq:csfluxsurfacefinal} along  with
+initial   condition~\eqref{eq:csfluxinitialcondition}   provide   the   complete
+description   of  time-domain   evolution   of  lithium   in  the   conventional
+\gls{spm}   for  a   given  applied   current  profile   $I(t)$.  Considerations
+for  efficient   numerical  simulation   of  this   system  is   presented  next
+in~\cref{subsec:basicspmgeometry}.
 
 \subsection{Model Formulation --- Further Reductions in Dimensionality}\label{subsec:furtherdimensionalityreduction}
 
