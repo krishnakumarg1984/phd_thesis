@@ -295,14 +295,12 @@ in~\cref{eq:cartesiandiffusion} yields
 \end{equation}
 As per the assumption of uniform diffusivity in the solid-phase
 (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csdiffusioneqn} becomes
-\begin{equation}\label{eq:csdiffusionconstdiffusivity}
-    \diffp{c_\sj}{t} = \frac{D_\sj}{r^2}\diffp*{\left(r^2 \nabla c_\sj \right)}{r}
-\end{equation}
-Applying the gradient operator of~\cref{eq:csdiffusionconstdiffusivity} along
-the radial direction $r$ results in
-\begin{equation}\label{eq:csdiffusionfinal}
-    \diffp{c_\sj}{t} = \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}
-\end{equation}
+\begin{align}
+    \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \nabla c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
+    \intertext{Applying the gradient operator of~\cref{eq:csdiffusionconstdiffusivity} along
+    the radial direction $r$ results in}
+    \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
+\end{align}
 \Cref{eq:csdiffusionfinal} represents the mass-balance equation describing solid
 phase diffusion in each electrode. The potential at each electrode depends on
 the solid-phase surface concentration~$c_\sjsurf$ \ie{}  the \ch{Li^0}
@@ -339,14 +337,27 @@ becomes
 \begin{align}
     j_\nj(t) &= \frac{I(t)}{l_j
         A}\label{eq:uniformcurrdensity}\shortintertext{Substituting~\cref{eq:uniformcurrdensity}
-    in~\cref{eq:csfluxsurface} yields}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \frac{I}{A l_j a_\sj F}
+    in~\cref{eq:csfluxsurface},}
+    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \frac{I}{A l_j a_\sj
+    F}\label{eq:csfluxsurfacefinal}
 \end{align}
-% \begin{equation}\label{eq:csfluxsurfacefinal}
-%     D_\sj\diffp{c_\sj}{r}{r=R_\pj} = \frac{-j_\nj(t)}{a_s F}
-% \end{equation}
+In~\cref{eq:csfluxsurfacefinal}, the explicit time-dependence of the load current $I(t)$
+has been omitted for the sake of brevity.
 
+Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
+concentration of \ch{Li^0} in the two individual electrodes can be computed as
+\begin{equation}\label{eq:csfluxinitialcondition}
+    c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(\theta_\maxj - \theta_\minj \right) + \theta_\minj \bigg]
+\end{equation}
 
+\Cref{eq:csdiffusionfinal},   its  boundary   conditions~\eqref{eq:csfluxcentre}
+\&~\eqref{eq:csfluxsurfacefinal}           along          with           initial
+condition~\eqref{eq:csfluxinitialcondition}  provide  the  complete  description
+of  time-domain  evolution  of  lithium  in the  conventional  \gls{spm}  for  a
+given applied  current profile  $I(t)$. Certain  aspects of  efficient numerical
+simulation of this system is presented next in~\cref{subsec:basicspmgeometry}
+
+\subsection{Model Formulation --- Further Reductions in Dimensionality}\label{subsec:furtherdimensionalityreduction}
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
