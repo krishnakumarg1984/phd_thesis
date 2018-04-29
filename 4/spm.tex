@@ -357,19 +357,43 @@ description   of  time-domain   evolution   of  lithium   in  the   conventional
 for  efficient   numerical  simulation   of  this   system  is   presented  next
 in~\cref{subsec:basicspmgeometry}.
 
-\subsection{Model Formulation --- Further Reductions in Dimensionality}\label{subsec:furtherdimensionalityreduction}
 
-A   naive   approach   to    numerically   solving   the   solid-phase diffusion
-equation~(\ref{eq:csdiffusionfinal})   is  to   discretise  each   of the   two
-representative  particles in  the  radial direction as shown
-in~\cref{fig:radialdiscretisation}.
-thus obtaining concentric
-shells (\ie{} rings in 1 dimension)
+\subsection{Model Formulation --- Further Reduction in Dimensionality}\label{subsec:furtherdimensionalityreduction}
+
+A  naive approach  to  numerically solving  the  solid-phase diffusion  equation
+is  to  discretise each  of  the  two  representative  particles in  the  radial
+direction  as  shown   in~\cref{fig:radialdiscretisation}.  A  three-dimensional
+cut-away view  of the division  of the solid  particle into sub-shells  is shown
+in~\cref{subfig:radialdisc3d}. Whilst  this schematic conforms to  the \gls{spm}
+geometry presented in~\cref{subsec:basicspmgeometry}, it is easier to provide an
+annotated illustration using the 2D visualisation of~\cref{subfig:radialdisc2d}.
+However, it should  be noted that the actual numerical  computation is performed
+using a  one-dimensional mesh, congruent  with the 1D radial  diffusion equation
+of~\cref{eq:csdiffusionfinal}.  \Cref{subfig:radialdisc1d}   shows  a  schematic
+illustration of this computational domain.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{placeholder_images/example-image-golden.pdf}
-    \caption{Radial discretisation of each spherical particle yielding
-    concentric shells}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+        \caption{cutaway view depicting spherical shells}
+        \label{subfig:radialdisc3d}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+        \caption{2D view wherein shells are depicted as concentric rings}
+        \label{subfig:radialdisc2d}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+        \caption{schematic of 1D computational domain }
+        \label{subfig:radialdisc1d}
+    \end{subfigure}
+    \caption{Radial discretisation scheme for solid-phase diffusion}
     \label{fig:radialdiscretisation}
 \end{figure}
 
