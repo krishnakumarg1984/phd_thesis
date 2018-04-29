@@ -335,12 +335,13 @@ a uniform   charge   density   throughout   the  thickness   of   each
 electrode (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface}
 becomes
 \begin{align}
-    j_\nj(t) &= \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}
+    j_\nj(t) &= \pm \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}
     \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal}
+    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \mp \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal}
 \end{align}
-In~\cref{eq:csfluxsurfacefinal}, the explicit time-dependence of the load current $I(t)$
-has been omitted for the sake of brevity.
+wherein the load current $I(t) > 0$ for discharge, whose  explicit
+time-dependence has been omitted in~\cref{eq:csfluxsurfacefinal} for consistent
+notation with the \gls{lhs}.
 
 Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
