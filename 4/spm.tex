@@ -397,6 +397,22 @@ illustration of this computational domain.
     \label{fig:radialdiscretisation}
 \end{figure}
 
+Given  the   elaborate  simplifications   made  to  remove   spatial  resolution
+from  the  axial  direction,  the  efficacy of  using  a  radial  discretisation
+is  rendered  questionable,  particularly  within the  scope  of  embedding  the
+model  in an  online  simulation and  state-estimation  environment. Given  that
+diffusion  in  each  spherical  particle   is  modelled  by  well-known  Fickian
+dynamics,   several  attempts   have  been   made  to   obtain  an   approximate
+analytical  solution  for the  solid  phase  concentration in  both  electrodes.
+In  the  context  of  \gls{spm}  modelling, the  earliest  such  work,  \ie{}  a
+comparison of  the discretised version  with an approximate  analytical solution
+was  performed  by Santhanagopalan~\etal~\cite{Santhanagopalan2006}.  Zhang  and
+White~\cite{Zhang2007}  provide   a  comparative   evaluation  of   the  various
+approximation methods in  a dimensionless analysis study, a summary  of which is
+presented in~\cref{tbl:solidphaseapprox}
+
+\input{4/solid_phase_approx_table}
+
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
 The modelling foundations of the \gls{spm} have been
