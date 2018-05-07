@@ -43,7 +43,7 @@ of    state   estimation~\cite{Chaochun2018,Lin2017,Tran2017,Moura2017,Zou2016},
 optimal    charging~\cite{Perez2015},    cycling    performance~\cite{Maia2017},
 conversion           to            equivalent           circuits~\cite{Li2017b},
 parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017,Namor2017}, pack-balancing
-studies~\cite{Docimo2018}   and  observer   design  for   joint  state-parameter
+studies~\cite{Docimo2014}   and  observer   design  for   joint  state-parameter
 estimation~\cite{Ascencio2016}. The \gls{spm} approach  was also extended to the
 case  of  composite  electrodes,  leading  to a  state  estimator  design  after
 basic  observablity  analysis~\cite{Bartlett2015}.  Owing to  their  simplicity,
@@ -489,14 +489,26 @@ system         of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
 
 \subsubsection*{Thermodynamics and Kinetics}\label{subsec:thermkinetics}
 
-The \gls{ocp}  of a porous  electrode is  a thermodynamic property  that depends
+The equilibrium potential  of a porous  electrode is  a thermodynamic property  that depends
 on  the extent  of  lithiation  in the  outermost  interstitial  sites near  the
 solid-electrolyte interface. This surface stoichiometry $\theta_j$ is obtained
 by computing the surface concentration (see~\cref{eq:csurffromcsavg}) and
 dividing by the maximum lithiation capacity of that electrode.
 \begin{equation}
-    \theta_j = \frac{c_\sj}{c_\sjmax}
+    \theta_j(t) = \frac{c_\sj(t)}{c_\sjmax}
 \end{equation}
+
+Although based upon the theoretical foundation  laid out by the Nernst equation,
+owing  to a  multitude of  complex phase  transitions, the  potential of  porous
+electrodes  (with respect  to metallic  lithium) is  usually given  as empirical
+functions of its surface stoichiometry.
+\begin{equation}
+    U_j(t) = \mathcal{U}_j\left(\theta_j(t)\right)
+\end{equation}
+where  the  empirical relationships  $\mathcal{U}_j$  are  typically high  order
+polynomials  or rational  functions fitted  to relaxation  data from  \gls{gitt}
+experiments on half-cells~\cite{Birkl2015a,Ecker2015}.
+
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
