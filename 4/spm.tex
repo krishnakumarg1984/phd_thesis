@@ -54,6 +54,7 @@ paucity in fundamental  model improvements. A proposed enhancement  to the basic
 \gls{spm}  is the  main  contribution of  this chapter  and  shall be  discussed
 in~\cref{sec:newelectrolytemodel}.
 
+\section{Model Development}\label{subsec:basicspmgeometry}
 
 In  order  to establish  a  context  for discussing  the  author's  work, it  is
 imperative to provide  a holistic presentation of the  basic \gls{spm} modelling
@@ -62,7 +63,7 @@ models and  the rest  of this  section provides an  expository treatment  of its
 rubrics.
 
 
-\subsection{Model Development --- Geometry}\label{subsec:basicspmgeometry}
+\subsection{Geometry}\label{subsec:basicspmgeometry}
 
 \begin{figure}[h]
     \centering
@@ -78,7 +79,7 @@ within a  typical Li-ion pouch cell.  A description of the  working principle of
 the  cell was  presented in~\cref{ch:chapter1}  and  is not  repeated here.  The
 \gls{spm}, as the name suggests,  models the electrochemical phenomena along the
 thickness  $l_j$, \jinnegpos{}  of  each porous  electrode  by a  representative
-spherical particle.  Thus the two  distinct solid-phase porous materials  of the
+spherical particle.  Thus the two  distinct solid phase porous materials  of the
 cell, \ie{} the  negative and positive electrodes, are idealised  as two spheres
 of radii $r_\text{neg}$ and $r_\text{pos}$ respectively.
 
@@ -91,7 +92,7 @@ their representative spherical particle, and time, $t$. The surface area of each
 representative sphere is scaled appropriately,  such that they are equivalent to
 the  active area  of the  corresponding  porous electrodes.  Thus the  \gls{spm}
 accounts  for  the  reduced  volume-fraction  arising  due  to  the  microporous
-structure of the solid-phase. Hence,  the storage capacity of the representative
+structure of the solid phase. Hence,  the storage capacity of the representative
 particles match that of the corresponding electrodes. The overarching assumption
 of the \gls{spm} modelling philosophy is that the electrochemical performance of
 these representative  electrodes are  sufficient to model  the behaviour  of the
@@ -100,7 +101,7 @@ discretisation of the cell's thickness with the goal of minimising computational
 burden.
 
 
-\subsection{Model Development --- Scope and Assumptions}\label{subsec:basicspmassumptions}
+\subsection{Scope and Assumptions}\label{subsec:basicspmassumptions}
 
 Having established the geometrical representation of the model, it is imperative
 to establish its  aims and scope. This section discusses  the subset of physical
@@ -108,13 +109,13 @@ phenomena that can captured by the model and enumerates the inherent assumptions
 in  model derivation.The  validity of  these  assumptions and  their effects  is
 discussed  in~\cref{subsec:basicspmlimitations}.  As  a  broad  outline  of  the
 \gls{spm}s scope,  the model  attributes the cell  polarisation to  two dominant
-physics,  \viz{} reaction  kinetics and  solid-phase transport  phenomena, \ie{}
+physics,  \viz{} reaction  kinetics and  solid phase transport  phenomena, \ie{}
 diffusion dynamics.
 
 
 The  \gls{spm}  assumes that  charge  transfer  happens throughout  the  surface
 of  each  representative  spherical  particle where  intercalation  occurs.  The
-electronic  conductivity of  the solid-phase  is assumed  to be  high enough  to
+electronic  conductivity of  the solid phase  is assumed  to be  high enough  to
 ignore the  spatial distribution of  charge, \ie{} the local  volumetric current
 density is assumed  to be uniform along the thickness  of each porous electrode.
 This assumption is  motivated by the early calculations performed  by Newman and
@@ -124,10 +125,10 @@ This uniform current density assumption implies that all of the particles in the
 electrode active material are in parallel.
 
 
-In the  \gls{spm}, solid-phase  diffusion dynamics are  solved by  assuming this
+In the  \gls{spm}, solid phase  diffusion dynamics are  solved by  assuming this
 averaged electrochemical  reaction rate.  In the simulation  study by  Smith and
 Wang~\cite{Smith2006b},  it  is  reported  that, soon  after  the  beginning  of
-discharge, solid-phase concentration and ionic flux become nearly independent of
+discharge, solid phase concentration and ionic flux become nearly independent of
 spatial position, and  Lithium diffusion in solid particles may  be driven by an
 averaged molar flux at the surface.
 
@@ -153,7 +154,7 @@ influence on the cell's terminal voltage.
 Finally,  the  \gls{spm}  ignores  any   variations  in  material  porosity  and
 ionic-flow tortuosity  along the axial  direction of the cell.  This facilitates
 the  usage of  a constant  effective diffusion  coefficient for  the electrolyte
-phase.  Furthermore, all  solid-phase diffusivities  and kinetic  parameters are
+phase.  Furthermore, all  solid phase diffusivities  and kinetic  parameters are
 held constant. Thermal  effects are assumed to be negligible  and no degradation
 effects are attempted to be modelled.
 
@@ -165,7 +166,7 @@ later  sections presents  research that  strives  to straddle  the fine  balance
 between model sophistication and computational complexity.
 
 
-\subsection{Model Development --- Chemistry}
+\subsection{Chemistry}
 
 This section  provides a  brief overview of  the essential  chemistry principles
 that helps to provide a background context for the governing equations presented
@@ -238,22 +239,25 @@ the  specific design  and  material  properties of  each  active material  under
 consideration. Finally, the \gls{ocv} of the cell is obtained by subtracting the
 negative electrode potential from its positive electrode counterpart.
 
-\subsection[Model   Development  ---   Governing  Equations]{Model   Development
----   Governing   Equations\protect\footnote{In   this   section,   only   those
-simplifications to  mathematical notations arising due  to assumptions discussed
-in~\cref{subsec:basicspmassumptions}   shall  be   introduced  in-line.   For  a
-comprehensive  reference to  the notations  used, please  refer to  nomenclature
-list in the~\nameref{ch:glossary} chapter.  Notations introduced solely for
-this section are also covered here.}}\label{subsec:basicspmgoverningeqns}
+\subsection[Governing  Equations]{Governing  Equations\protect\footnote{In  this
+section,   only  those   simplifications  to   mathematical  notations   arising
+due  to  assumptions  discussed  in~\cref{subsec:basicspmassumptions}  shall  be
+introduced   in-line.   For  a   comprehensive   reference   to  the   notations
+used,   please  refer   to   nomenclature   list  in   the~\nameref{ch:glossary}
+chapter.  Notations  introduced  solely  for   this  section  are  also  covered
+here.}}\label{subsec:basicspmgoverningeqns}
+
 
 As discussed  in~\cref{subsec:basicspmgeometry}, the \gls{spm}  primarily models
-the phenomena of solid-phase diffusion and reaction kinetics.
+the phenomena of solid phase diffusion and reaction kinetics.
+
+\subsubsection*{Solid Phase Diffusion}
 
 Conservation of  \ch{Li^0} in the  electrodes can  be obtained by  treating that
 the  movement of  neutral  atoms within  the  solid phase  is  primarily due  to
 diffusion  within  particles. This  diffusion  phenomena  is  induced due  to  a
 concentration gradient that exists between  the surface and interior/core of the
-solid-phase particles. Based on the  geometrical assumptions of the \gls{spm} as
+solid phase particles. Based on the  geometrical assumptions of the \gls{spm} as
 discussed in~\cref{subsec:basicspmgeometry}, \ie{} owing  to the lack of spatial
 discretisation in the axial direction $x$, the concentration of \ch{Li^0} in the
 two electrodes $c_\sj(x,r,t)$,  reduces to a function of  the radial co-ordinate
@@ -293,7 +297,7 @@ in~\cref{eq:cartesiandiffusion} yields
 \begin{equation}\label{eq:csdiffusioneqn}
     \diffp{c_\sj}{t} = \frac{1}{r^2}\diffp*{\left(r^2 D_\sj\, \nabla c_\sj \right)}{r}
 \end{equation}
-As per the assumption of uniform diffusivity in the solid-phase
+As per the assumption of uniform diffusivity in the solid phase
 (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csdiffusioneqn} becomes
 \begin{align}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \nabla c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
@@ -303,7 +307,7 @@ As per the assumption of uniform diffusivity in the solid-phase
 \end{align}
 \Cref{eq:csdiffusionfinal} represents the mass-balance equation describing solid
 phase diffusion in each electrode. The potential at each electrode depends on
-the solid-phase surface concentration~$c_\sjsurf$ \ie{}  the \ch{Li^0}
+the solid phase surface concentration~$c_\sjsurf$ \ie{}  the \ch{Li^0}
 concentration $c_\sj(r,t)$ evaluated at $r=R_\pj$, \jinnegpos{} where
 $R_\text{p}$ represents the equivalent radius of each representative spherical
 particle. Diffusion in the solid phase is driven by concentration gradients
@@ -358,9 +362,9 @@ for  efficient   numerical  simulation   of  this   system  is   presented  next
 in~\cref{subsec:basicspmgeometry}.
 
 
-\subsection{Model Development --- Further Reduction in Dimensionality}\label{subsec:furtherdimensionalityreduction}
+\subsubsection*{Further Reduction in Dimensionality}\label{subsec:furtherdimensionalityreduction}
 
-A  naive approach  to  numerically solving  the  solid-phase diffusion  equation
+A  naive approach  to  numerically solving  the  solid phase diffusion  equation
 is  to  discretise each  of  the  two  representative  particles in  the  radial
 direction  as  shown   in~\cref{fig:radialdiscretisation}.  A  three-dimensional
 cut-away view  of the division  of the solid  particle into sub-shells  is shown
@@ -393,7 +397,7 @@ illustration of this computational domain.
         \caption{schematic of 1D computational domain }
         \label{subfig:radialdisc1d}
     \end{subfigure}
-    \caption{Radial discretisation scheme for solid-phase diffusion}
+    \caption{Radial discretisation scheme for solid phase diffusion}
     \label{fig:radialdiscretisation}
 \end{figure}
 
@@ -480,10 +484,19 @@ At   the   end   of    this   dimension-reduction   step,   spatial   dependence
 is    completely    eliminated,    yielding     a    zero-order    (in    space)
 physical    model   whose    dynamics   are    described   by    the   \gls{dae}
 system         of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
-Thermodynamics, kinetics and state-space formulation  of the model are presented
-next in~\cref{subsec:thermkinetics}.
+% Thermodynamics, kinetics and state-space formulation  of the model are presented
+% next in~\cref{subsec:thermkinetics}.
 
-\subsection{Model Development --- Thermodynamics and Kinetics}\label{subsec:thermkinetics}
+\subsubsection*{Thermodynamics and Kinetics}\label{subsec:thermkinetics}
+
+The \gls{ocp}  of a porous  electrode is  a thermodynamic property  that depends
+on  the extent  of  lithiation  in the  outermost  interstitial  sites near  the
+solid-electrolyte interface. This surface stoichiometry $\theta_j$ is obtained
+by computing the surface concentration (see~\cref{eq:csurffromcsavg}) and
+dividing by the maximum lithiation capacity of that electrode.
+\begin{equation}
+    \theta_j = \frac{c_\sj}{c_\sjmax}
+\end{equation}
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
