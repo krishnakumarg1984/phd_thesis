@@ -249,7 +249,8 @@ here.}}\label{subsec:basicspmgoverningeqns}
 
 
 As discussed  in~\cref{subsec:basicspmgeometry}, the \gls{spm}  primarily models
-the phenomena of solid phase diffusion and reaction kinetics.
+the  cell's dynamics  due to  solid phase  diffusion and  reaction kinetics,  in
+addition to embedding the contribution of equilibrium thermodynamics.
 
 \subsubsection*{Solid Phase Diffusion}
 
@@ -487,7 +488,7 @@ system         of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
 % Thermodynamics, kinetics and state-space formulation  of the model are presented
 % next in~\cref{subsec:thermkinetics}.
 
-\subsubsection*{Thermodynamics and Kinetics}\label{subsec:thermkinetics}
+\subsubsection*{Equilibrium Thermodynamics and Kinetics}\label{subsec:thermkinetics}
 
 The equilibrium potential  of a porous  electrode is  a thermodynamic property  that depends
 on  the extent  of  lithiation  in the  outermost  interstitial  sites near  the
@@ -509,6 +510,30 @@ where  the  empirical relationships  $\mathcal{U}_j$  are  typically high  order
 polynomials  or rational  functions fitted  to relaxation  data from  \gls{gitt}
 experiments on half-cells~\cite{Birkl2015a,Ecker2015}.
 
+In the \gls{spm},  the cell's \gls{ocp} is obtained by  subtracting the negative
+electrode potential $U_\text{neg}$ from  $U_\text{pos}$.
+\begin{equation}
+    U_\text{ocp} = U_\text{pos} - U_\text{neg}
+\end{equation}
+Even though the  concept of \gls{ocp} is defined only  in equilibrium conditions
+when no  current flows,  the individual electrode  potentials themselves  form a
+significant component of the cell's terminal voltage $V(t)$.
+
+\subsubsection*{Reaction Kinetics}
+
+In the \gls{spm}, the reaction kinetics in each spherical electrode is modelled
+using the Butler-Volmer expression
+\begin{align}
+    j_\nj &= j_{0_j} \left[ \exp\left( \frac{\left(1-\alpha\right) F \eta_j}{R T}\right) -  \exp\left( \frac{-\alpha F \eta_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
+    \shortintertext{where}
+    j_{0_j} &= k_\jeff c_\text{e}^{1-\alpha} c_\sjsurf^{\alpha} \left(c_\sjmax - c_\sjsurf\right)^{1-\alpha}
+\end{align}
+
+The rate of the forward and backward reactions at both electrodes is
+assumed to be equal. With $\alpha = 0.5$,~\cref{eq:bvwithalpha} simplifies to
+\begin{equation}
+    j_\nj = k_\jeff \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F \eta_j}{2 R T}\right)
+\end{equation}
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
