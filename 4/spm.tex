@@ -350,6 +350,12 @@ notation  with the  \gls{lhs}.  The positive  and negative  signs  apply to  the
 negative and  positive electrode respectively  as indicated by the  ordered pair
 \jinnegposordered.
 
+The \gls{soc} of the cell can be obtained from the bulk concentration of lithium
+in either the negative or positive electrode. By convention, negative electrode
+is used in computations.
+\begin{equation}
+    z(t) = \frac{3}{c_\snegmax}\int_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
+\end{equation}
 Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
