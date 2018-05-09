@@ -1,4 +1,5 @@
 % -*- root: ../main.tex -*-
+% vim:nospell
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                            %%
 %% Class ``PhD Thesis TUB''                                                   %%
@@ -434,6 +435,7 @@ supported!}
 \RequirePackage{ifluatex} %luatex
 \RequirePackage{etoolbox}
 \RequirePackage{needspace}
+
 % ********************************* book class *********************************
 
 \newif\ifsetDVI\setDVIfalse
@@ -1111,20 +1113,22 @@ supported!}
                  bookmarksnumbered = true,
                  breaklinks = true,
                  linktocpage,
-                 colorlinks = false,  % was true
-                 linkcolor = blue,
-                 urlcolor  = blue,
-                 citecolor = red,
-                 anchorcolor = green,
+                 colorlinks = true,  % was true
+                 linkcolor = [RGB]{0,62,116}, % imperialblue
+                 urlcolor  = [RGB]{0,62,116}, % imperialblue
+                 % citecolor = [RGB]{157,157,157}, % coolgray
+                 % citecolor = [RGB]{0,33,71}, % imperialnavy
+                 citecolor = [RGB]{0,62,116}, % imperialblue
+                 anchorcolor = black,
                  pdflang=Englisch,
                  pdfborderstyle={/S/U/W 1},
-                 %bookmarks=true,
-                 %pdfpagelabels,
+                 bookmarks=true,
+                 pdfpagelabels,
                  %pagebackref,
                  %hyperindex = true,
                  %hyperfigures,
                  pdfpagelayout = OneColumn
-                 %pdfpagemode = UseOutlines,
+                 pdfpagemode = UseOutlines,
                  %pdfencoding=unicode
 }
 
