@@ -353,7 +353,7 @@ negative and  positive electrode respectively  as indicated by the  ordered pair
 The \gls{soc} of the cell can be obtained from the bulk concentration of lithium
 in either the negative or positive electrode. By convention, negative electrode
 is used in computations.
-\begin{equation}
+\begin{equation}\label{eq:socinitialdefn}
     z(t) = \frac{3}{c_\snegmax}\int_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
 \end{equation}
 Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
@@ -483,16 +483,25 @@ proportional to  the applied current. Hence~\cref{eq:csmeanevolution}  implies a
 simple linear  relationship between the  rate evolution of evolution  of average
 \ch{Li^0} concentration within each spherical  particle and the applied current.
 This further implies that the \gls{soc} of the cell has a linear rate-dependence
-on the externally applied current.
+on the externally applied current. Furthermore, due to the elimination of radial
+discretisation, the  computation of \gls{soc}  given by~\cref{eq:socinitialdefn}
+reduces  to  simply  the  ratio  of  bulk  (average)  concentration  to  surface
+concentration and is given by
+\begin{equation}
+    z = \frac{\mean{c}_\sneg}{c_\snegmax}
+\end{equation}
+where $\mean{c}_\sneg$ is obtained by solving~\cref{eq:csmeanevolution} for the
+negative electrode.
 
 The \engordnumber{4}~order  polynomial approximation  strikes a  balance between
 the three modelling pivots---computational complexity, mathematical tractability
 and numerical accuracy, and has been adopted in this work.
 
 At   the   end   of    this   dimension-reduction   step,   spatial   dependence
-is    completely    eliminated,    yielding     a    zero-order    (in    space)
-physical    model   whose    dynamics   are    described   by    the   \gls{dae}
-system         of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
+is   completely  eliminated,   yielding   a  zero-order   (in  space)   physical
+model    whose    dynamics   are    described    by    the   \gls{dae}    system
+of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
+
 % Thermodynamics, kinetics and state-space formulation  of the model are presented
 % next in~\cref{subsec:basicspmthermodynamics}.
 
@@ -504,7 +513,7 @@ the  solid-electrolyte  interface.  This  surface  stoichiometry  $\theta_j$  is
 obtained by  computing the surface  concentration (see~\cref{eq:csurffromcsavg})
 and dividing by the maximum lithiation capacity of that electrode.
 \begin{equation}
-    \theta_j(t) = \frac{c_\sj(t)}{c_\sjmax}
+    \theta_j = \frac{c_\sjsurf}{c_\sjmax}
 \end{equation}
 
 Although based upon the theoretical foundation  laid out by the Nernst equation,
