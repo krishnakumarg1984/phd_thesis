@@ -590,6 +590,28 @@ in~\cref{eq:cellterminalvoltagebasic} are functions of time.
 
 \subsubsection*{State Space Representation}\label{subsec:basicspmstatespace}
 
+The total number of moles of lithium in the system is given by
+\begin{equation}\label{eq:totallithiummoles}
+    n_\text{Li} = \frac{\varepsilon_\spos \, l_\text{pos}\, A}{\frac{4}{3} \pi R_\ppos^3} \int_0^{R_\ppos} 4 \pi r^2 c_\spos(r,t) \, dr
+    +  \frac{\varepsilon_\sneg \, l_\text{neg}\, A}{\frac{4}{3} \pi R_\pneg^3} \int_0^{R_\pneg} 4 \pi r^2 c_\sneg(r,t) \, dr
+\end{equation}
+Upon considering only the bulk concentration as per the dimensionality reduction
+procedure    outlined   in~\cref{subsec:basicspmfurtherdimensionalityreduction},
+\cref{eq:totallithiummoles} reduces to
+\begin{align}\label{eq:totallithiumsimplified}
+    n_\text{Li} &= \frac{\varepsilon_\spos \, l_\text{pos}\, A}{\frac{4}{3} \pi R_\ppos^3}\mean{c}_\spos \int_0^{R_\ppos} 4 \pi r^2  \, dr
+    + \frac{\varepsilon_\sneg \, l_\text{neg}\, A}{\frac{4}{3} \pi R_\pneg^3}\mean{c}_\sneg \int_0^{R_\pneg} 4 \pi r^2  \, dr
+    \\
+    &= \varepsilon_\spos \, l_\text{pos}\, A \, \mean{c}_\spos + \varepsilon_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg
+\end{align}
+The  total   number  of   moles  of   lithium  in   the  system   is  conserved,
+\ie{}    $\diff{n_\text{Li}}{t}    =    0$.    Substituting    this    condition
+in~\cref{eq:totallithiumsimplified}
+\begin{align}
+    0 &= \phantom{+} \diff*{\varepsilon_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{\varepsilon_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t}
+    \\
+    \diff*{\mean{c}_\spos}{t} &= -\diff*{\mean{c}_\spos}{t}
+\end{align}
 
 
 
