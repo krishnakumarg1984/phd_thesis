@@ -32,13 +32,18 @@
 \usepackage{labelschanged}
 
 \newcommand{\jinnegpos}{\ensuremath{j  \in  \left\{\text{neg, pos}\right\}}}
+\newcommand{\jinnegposordered}{\ensuremath{j  \in  \left(\text{neg, pos}\right)}}
 \newcommand{\sj}{\ensuremath{{\text{s}_j}}}
 \newcommand{\pj}{\ensuremath{{\text{p}_j}}}
 \newcommand{\nj}{\ensuremath{{\text{n}_j}}}
 \newcommand{\sjsurf}{\ensuremath{{\text{s,surf}_j}}}
 \newcommand{\sjmax}{\ensuremath{{\text{s,max}_j}}}
 \newcommand{\sjavg}{\ensuremath{{\text{s,avg}_j}}}
-\newcommand{\jeff}{\ensuremath{{\text{eff}_j}}}
+\newcommand{\spos}{\ensuremath{\text{s,pos}}}
+\newcommand{\epos}{\ensuremath{\text{e,pos}}}
+\newcommand{\sneg}{\ensuremath{\text{s,neg}}}
+\newcommand{\eneg}{\ensuremath{\text{e,neg}}}
+\newcommand{\jr}{\ensuremath{{\text{r}_j}}}
 \newcommand{\maxj}{\ensuremath{{\text{max}_j}}}
 \newcommand{\minj}{\ensuremath{{\text{min}_j}}}
 \newcommand*\mean[1]{\overline{#1}}
@@ -90,5 +95,11 @@ un-err-ing-ly white-space wide-spread wing-spread wretch-ed
 wretch-ed-ly Eng-lish Euler-ian Feb-ru-ary Gauss-ian
 Hamil-ton-ian Her-mit-ian Jan-u-ary Japan-ese Kor-te-weg
 Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
+
+\definecolor{imperialbrick}{RGB}{165,25,0}
+
+
+\usepackage[ makeroom]{cancel}
+\renewcommand{\CancelColor}{\color{imperialbrick}}
 
 

@@ -54,7 +54,7 @@ paucity in fundamental  model improvements. A proposed enhancement  to the basic
 \gls{spm}  is the  main  contribution of  this chapter  and  shall be  discussed
 in~\cref{sec:newelectrolytemodel}.
 
-\section{Model Development}\label{subsec:basicspmgeometry}
+\section{Model Development}\label{sec:spmmodeldevelopment}
 
 In  order  to establish  a  context  for discussing  the  author's  work, it  is
 imperative to provide  a holistic presentation of the  basic \gls{spm} modelling
@@ -340,13 +340,15 @@ a uniform   charge   density   throughout   the  thickness   of   each
 electrode (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface}
 becomes
 \begin{align}
-    j_\nj(t) &= \pm \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}
+    j_\nj(t) &= \pm \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
     \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \mp \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal}
+    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= \mp \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
-wherein the load current $I(t) > 0$ for discharge, whose  explicit
-time-dependence has been omitted in~\cref{eq:csfluxsurfacefinal} for consistent
-notation with the \gls{lhs}.
+wherein   the  load   current  $I(t)   >  0$   for  discharge,   whose  explicit
+time-dependence has been  omitted in~\cref{eq:csfluxsurfacefinal} for consistent
+notation  with the  \gls{lhs}.  The positive  and negative  signs  apply to  the
+negative and  positive electrode respectively  as indicated by the  ordered pair
+\jinnegposordered.
 
 Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
@@ -363,7 +365,7 @@ for  efficient   numerical  simulation   of  this   system  is   presented  next
 in~\cref{subsec:basicspmgeometry}.
 
 
-\subsubsection*{Further Reduction in Dimensionality}\label{subsec:furtherdimensionalityreduction}
+\subsubsection*{Further Reduction in Dimensionality}\label{subsec:basicspmfurtherdimensionalityreduction}
 
 A  naive approach  to  numerically solving  the  solid phase diffusion  equation
 is  to  discretise each  of  the  two  representative  particles in  the  radial
@@ -486,15 +488,15 @@ is    completely    eliminated,    yielding     a    zero-order    (in    space)
 physical    model   whose    dynamics   are    described   by    the   \gls{dae}
 system         of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
 % Thermodynamics, kinetics and state-space formulation  of the model are presented
-% next in~\cref{subsec:thermkinetics}.
+% next in~\cref{subsec:basicspmthermodynamics}.
 
-\subsubsection*{Equilibrium Thermodynamics and Kinetics}\label{subsec:thermkinetics}
+\subsubsection*{Equilibrium Thermodynamics}\label{subsec:basicspmthermodynamics}
 
-The equilibrium potential  of a porous  electrode is  a thermodynamic property  that depends
-on  the extent  of  lithiation  in the  outermost  interstitial  sites near  the
-solid-electrolyte interface. This surface stoichiometry $\theta_j$ is obtained
-by computing the surface concentration (see~\cref{eq:csurffromcsavg}) and
-dividing by the maximum lithiation capacity of that electrode.
+The equilibrium potential of a porous electrode is a thermodynamic property that
+depends on  the extent of  lithiation in  the outermost interstitial  sites near
+the  solid-electrolyte  interface.  This  surface  stoichiometry  $\theta_j$  is
+obtained by  computing the surface  concentration (see~\cref{eq:csurffromcsavg})
+and dividing by the maximum lithiation capacity of that electrode.
 \begin{equation}
     \theta_j(t) = \frac{c_\sj(t)}{c_\sjmax}
 \end{equation}
@@ -503,7 +505,7 @@ Although based upon the theoretical foundation  laid out by the Nernst equation,
 owing  to a  multitude of  complex phase  transitions, the  potential of  porous
 electrodes  (with respect  to metallic  lithium) is  usually given  as empirical
 functions of its surface stoichiometry.
-\begin{equation}
+\begin{equation}\label{eq:ocpstoichiometry}
     U_j(t) = \mathcal{U}_j\left(\theta_j(t)\right)
 \end{equation}
 where  the  empirical relationships  $\mathcal{U}_j$  are  typically high  order
@@ -511,8 +513,9 @@ polynomials  or rational  functions fitted  to relaxation  data from  \gls{gitt}
 experiments on half-cells~\cite{Birkl2015a,Ecker2015}.
 
 In the \gls{spm},  the cell's \gls{ocp} is obtained by  subtracting the negative
-electrode potential $U_\text{neg}$ from  $U_\text{pos}$.
-\begin{equation}
+electrode  equilibrium  potential  $U_\text{neg}$ from  its  positive  electrode
+counterpart $U_\text{pos}$.
+\begin{equation}\label{eq:ocpdefinition}
     U_\text{ocp} = U_\text{pos} - U_\text{neg}
 \end{equation}
 Even though the  concept of \gls{ocp} is defined only  in equilibrium conditions
@@ -526,15 +529,54 @@ using the Butler-Volmer expression
 \begin{align}
     j_\nj &= j_{0_j} \left[ \exp\left( \frac{\left(1-\alpha\right) F \eta_j}{R T}\right) -  \exp\left( \frac{-\alpha F \eta_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
     \shortintertext{where}
-    j_{0_j} &= k_\jeff c_\text{e}^{1-\alpha} c_\sjsurf^{\alpha} \left(c_\sjmax - c_\sjsurf\right)^{1-\alpha}
+    j_{0_j} &= k_\jr c_\text{e}^{1-\alpha} c_\sjsurf^{\alpha} \left(c_\sjmax - c_\sjsurf\right)^{1-\alpha}
 \end{align}
 
 The equilibrium rate of forward and backward reactions at both electrodes is
 assumed to be equal. With charge transfer coefficient $\alpha = 0.5$,
 \cref{eq:bvwithalpha} simplifies to
-\begin{equation}
-    j_\nj = k_\jeff \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F \eta_j}{2 R T}\right)
+\begin{equation}\label{eq:BVwithalphahalf}
+    j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F \eta_j}{2 R T}\right)
 \end{equation}
+
+The    expression   for    overpotential   $\eta_j$    can   be    obtained   by
+rearranging~\cref{eq:BVwithalphahalf}    whilst    substituting   for    $j_\nj$
+from~\cref{eq:uniformcurrdensity} and is given by
+\begin{equation}\label{eq:overpotential_j}
+    \eta_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{\pm I(t)}{2 A l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
+\end{equation}
+
+\subsubsection*{Cell Terminal Voltage}\label{subsec:basicspmcellterminalvoltage}
+The terminal voltage  of the cell under applied load  is obtained by subtracting
+the potential of its negative electrode from its positive counterpart.
+
+Starting from the definition of the overpotential of each electrode
+\begin{align}
+    \eta_\text{pos} &= \phi_\spos - \cancelto{0}{\phi_\epos} - U_\text{pos} \label{eq:posoverpotential} \\
+    \eta_\text{neg} &= \phi_\sneg - \cancelto{0}{\phi_\eneg} - U_\text{neg} \label{eq:negoverpotential}
+\end{align}
+Within      each      electrode       domain,      the      contribution      of
+electrolyte     potential     to      the     overpotential     is     neglected
+(see~\cref{subsec:basicspmgeometry,subsec:basicspmassumptions} for  exclusion of
+electrolyte dynamics).
+
+Subtracting~\cref{eq:negoverpotential}   from~\cref{eq:posoverpotential}
+% whilst substituting for $U_j$ from~\cref{eq:ocpstoichiometry}
+\begin{align}
+    \eta_\text{pos} - \eta_\text{neg}  &= \underbrace{\phi_\spos - \phi_\sneg}_{V_\text{cell}} - U_\text{pos} - U_\text{neg}\\
+\shortintertext{whose rearrangement yields}
+    V_\text{cell} &= \eta_\text{pos} - \eta_\text{neg} - U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
+\end{align}
+% \mathcal{U}_\text{pos}\left(\theta_\text{pos}\right) - \mathcal{U}_\text{neg}\left(\theta_\text{neg}\right)
+In the  basic \gls{spm},  \cref{eq:cellterminalvoltagebasic} is used  to compute
+the   cell's  terminal   voltage  under   load.  Although   the  time-dependence
+notation  is  omitted  here,  it   is  worth  reiterating  that  all  quantities
+in~\cref{eq:cellterminalvoltagebasic} are functions of time.
+
+\subsubsection*{State Space Representation}\label{subsec:basicspmstatespace}
+
+
+
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
