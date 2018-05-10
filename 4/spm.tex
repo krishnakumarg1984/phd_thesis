@@ -542,7 +542,7 @@ significant component of the cell's terminal voltage $V(t)$.
 In the \gls{spm}, the reaction kinetics in each spherical electrode is modelled
 using the Butler-Volmer expression
 \begin{align}
-    j_\nj &= j_{0_j} \left[ \exp\left( \frac{\left(1-\alpha\right) F \eta_j}{R T}\right) -  \exp\left( \frac{-\alpha F \eta_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
+    j_\nj &= j_{0_j} \left[ \exp\left( \frac{\left(1-\alpha\right) F η_j}{R T}\right) -  \exp\left( \frac{-\alpha F η_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
     \shortintertext{where}
     j_{0_j} &= k_\jr c_\text{e}^{1-\alpha} c_\sjsurf^{\alpha} \left(c_\sjmax - c_\sjsurf\right)^{1-\alpha}
 \end{align}
@@ -551,14 +551,14 @@ The equilibrium rate of forward and backward reactions at both electrodes is
 assumed to be equal. With charge transfer coefficient $\alpha = 0.5$,
 \cref{eq:bvwithalpha} simplifies to
 \begin{equation}\label{eq:BVwithalphahalf}
-    j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F \eta_j}{2 R T}\right)
+    j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F η_j}{2 R T}\right)
 \end{equation}
 
-The    expression   for    overpotential   $\eta_j$    can   be    obtained   by
+The    expression   for    overpotential   $η_j$    can   be    obtained   by
 rearranging~\cref{eq:BVwithalphahalf}    whilst    substituting   for    $j_\nj$
 from~\cref{eq:uniformcurrdensity} and is given by
 \begin{equation}\label{eq:overpotential_j}
-    \eta_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{\pm I(t)}{2 A l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
+    η_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{\pm I(t)}{2 A l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
 \end{equation}
 
 \subsubsection*{Cell Terminal Voltage}\label{subsec:basicspmcellterminalvoltage}
@@ -567,8 +567,8 @@ the potential of the negative electrode from its positive counterpart.
 
 Starting from the definition of the overpotential of each electrode
 \begin{align}
-    \eta_\text{pos} &= \phi_\spos - \cancelto{0}{\phi_\epos} - U_\text{pos} \label{eq:posoverpotential} \\
-    \eta_\text{neg} &= \phi_\sneg - \cancelto{0}{\phi_\eneg} - U_\text{neg} \label{eq:negoverpotential}
+    η_\text{pos} &= \phi_\spos - \cancelto{0}{\phi_\epos} - U_\text{pos} \label{eq:posoverpotential} \\
+    η_\text{neg} &= \phi_\sneg - \cancelto{0}{\phi_\eneg} - U_\text{neg} \label{eq:negoverpotential}
 \end{align}
 Within      each      electrode       domain,      the      contribution      of
 electrolyte     potential     to      the     overpotential     is     neglected
@@ -578,9 +578,9 @@ electrolyte dynamics).
 Subtracting~\cref{eq:negoverpotential}   from~\cref{eq:posoverpotential}
 % whilst substituting for $U_j$ from~\cref{eq:ocpstoichiometry}
 \begin{align}
-    \eta_\text{pos} - \eta_\text{neg}  &= \underbrace{\phi_\spos - \phi_\sneg}_{V_\text{cell}} - U_\text{pos} - U_\text{neg}\\
+    η_\text{pos} - η_\text{neg}  &= \underbrace{\phi_\spos - \phi_\sneg}_{V_\text{cell}} - U_\text{pos} - U_\text{neg}\\
 \shortintertext{whose rearrangement yields}
-    V_\text{cell} &= \eta_\text{pos} - \eta_\text{neg} - U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
+    V_\text{cell} &= η_\text{pos} - η_\text{neg} - U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
 \end{align}
 % \mathcal{U}_\text{pos}\left(\theta_\text{pos}\right) - \mathcal{U}_\text{neg}\left(\theta_\text{neg}\right)
 In the  basic \gls{spm},  \cref{eq:cellterminalvoltagebasic} is used  to compute
