@@ -275,15 +275,15 @@ Fickian dynamics given by
     the explicit definition for each subsequent occurrence of the subscripted
     variable $j$ shall be omitted. It is implied that \jinnegpos{} since these
     equations describe solid phase diffusion in the negative and positive
-electrodes.} The divergence of a vector field $\mathbf{F}(r,\theta, \phi)$ can
+electrodes.} The divergence of a vector field $\mathbf{F}(r,\theta, ϕ)$ can
 be expressed in spherical co-ordinates as
 \begin{equation}\label{eq:fullsphericaldiv}
     \nabla \cdot \mathbf{F} = \frac{1}{r^2}\diffp{\left(r^2 F_r\right)}{r} +
     \frac{1}{r \sin \theta}\diffp{\left(\sin \theta\:  F_\theta\right)}{\theta}
-    + \frac{1}{r \sin \theta}\diffp{F_\phi}{\phi}
+    + \frac{1}{r \sin \theta}\diffp{F_ϕ}{ϕ}
 \end{equation}
-where $r$ denotes the radial magnitude, $\theta$ the polar angle and $\phi$, the
-azimuthal angle. $F_r, F_\theta$ and $F_\phi$ denote the corresponding
+where $r$ denotes the radial magnitude, $\theta$ the polar angle and $ϕ$, the
+azimuthal angle. $F_r, F_\theta$ and $F_ϕ$ denote the corresponding
 components of the vector field $\mathbf{F}$.
 
 The centre  of the  co-ordinate system  for each electrode  is aligned  with the
@@ -567,8 +567,8 @@ the potential of the negative electrode from its positive counterpart.
 
 Starting from the definition of the overpotential of each electrode
 \begin{align}
-    η_\text{pos} &= \phi_\spos - \cancelto{0}{\phi_\epos} - U_\text{pos} \label{eq:posoverpotential} \\
-    η_\text{neg} &= \phi_\sneg - \cancelto{0}{\phi_\eneg} - U_\text{neg} \label{eq:negoverpotential}
+    η_\text{pos} &= ϕ_\spos - \cancelto{0}{ϕ_\epos} - U_\text{pos} \label{eq:posoverpotential} \\
+    η_\text{neg} &= ϕ_\sneg - \cancelto{0}{ϕ_\eneg} - U_\text{neg} \label{eq:negoverpotential}
 \end{align}
 Within      each      electrode       domain,      the      contribution      of
 electrolyte     potential     to      the     overpotential     is     neglected
@@ -578,7 +578,7 @@ electrolyte dynamics).
 Subtracting~\cref{eq:negoverpotential}   from~\cref{eq:posoverpotential}
 % whilst substituting for $U_j$ from~\cref{eq:ocpstoichiometry}
 \begin{align}
-    η_\text{pos} - η_\text{neg}  &= \underbrace{\phi_\spos - \phi_\sneg}_{V_\text{cell}} - U_\text{pos} - U_\text{neg}\\
+    η_\text{pos} - η_\text{neg}  &= \underbrace{ϕ_\spos - ϕ_\sneg}_{V_\text{cell}} - U_\text{pos} - U_\text{neg}\\
 \shortintertext{whose rearrangement yields}
     V_\text{cell} &= η_\text{pos} - η_\text{neg} - U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
 \end{align}
