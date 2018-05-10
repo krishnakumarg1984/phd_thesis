@@ -79,7 +79,7 @@ within a  typical Li-ion pouch cell.  A description of the  working principle of
 the  cell was  presented in~\cref{ch:chapter1}  and  is not  repeated here.  The
 \gls{spm}, as the name suggests,  models the electrochemical phenomena along the
 thickness  $l_j$, \jinnegpos{}  of  each porous  electrode  by a  representative
-spherical particle.  Thus the two  distinct solid phase porous materials  of the
+spherical particle.  Thus the two distinct  solid phase porous materials  of the
 cell, \ie{} the  negative and positive electrodes, are idealised  as two spheres
 of radii $r_\text{neg}$ and $r_\text{pos}$ respectively.
 
@@ -109,13 +109,13 @@ phenomena that can captured by the model and enumerates the inherent assumptions
 in  model derivation.The  validity of  these  assumptions and  their effects  is
 discussed  in~\cref{subsec:basicspmlimitations}.  As  a  broad  outline  of  the
 \gls{spm}s scope,  the model  attributes the cell  polarisation to  two dominant
-physics,  \viz{} reaction  kinetics and  solid phase transport  phenomena, \ie{}
+physics, \viz{}  reaction kinetics  and solid  phase transport  phenomena, \ie{}
 diffusion dynamics.
 
 
 The  \gls{spm}  assumes that  charge  transfer  happens throughout  the  surface
 of  each  representative  spherical  particle where  intercalation  occurs.  The
-electronic  conductivity of  the solid phase  is assumed  to be  high enough  to
+electronic  conductivity of  the solid  phase is  assumed to  be high  enough to
 ignore the  spatial distribution of  charge, \ie{} the local  volumetric current
 density is assumed  to be uniform along the thickness  of each porous electrode.
 This assumption is  motivated by the early calculations performed  by Newman and
@@ -125,7 +125,7 @@ This uniform current density assumption implies that all of the particles in the
 electrode active material are in parallel.
 
 
-In the  \gls{spm}, solid phase  diffusion dynamics are  solved by  assuming this
+In the  \gls{spm}, solid phase  diffusion dynamics  are solved by  assuming this
 averaged electrochemical  reaction rate.  In the simulation  study by  Smith and
 Wang~\cite{Smith2006b},  it  is  reported  that, soon  after  the  beginning  of
 discharge, solid phase concentration and ionic flux become nearly independent of
@@ -138,7 +138,7 @@ attempt  to model  all physical  processes within  the cell.  The model  assumes
 instantaneous  charge transport  from one  electrode  to the  other through  the
 solution phase.  This implies that  electrolytic diffusion is  sufficiently fast
 (relative to  diffusion in the solid  phase). Thus, mass transport  phenomena in
-the  electrolyte  are  not  considered.
+the electrolyte are not considered.
 
 
 During the  operation of the  cell, the  \gls{spm} assumes that  the electrolyte
@@ -154,7 +154,7 @@ influence on the cell's terminal voltage.
 Finally,  the  \gls{spm}  ignores  any   variations  in  material  porosity  and
 ionic-flow tortuosity  along the axial  direction of the cell.  This facilitates
 the  usage of  a constant  effective diffusion  coefficient for  the electrolyte
-phase.  Furthermore, all  solid phase diffusivities  and kinetic  parameters are
+phase. Furthermore,  all solid  phase diffusivities  and kinetic  parameters are
 held constant. Thermal  effects are assumed to be negligible  and no degradation
 effects are attempted to be modelled.
 
@@ -225,10 +225,10 @@ charging and discharging process at the surfaces of both electrode materials.
     \ch{Li_{1-$x$} M O2 + $x$ Li^+  + $x$ e^- &<=>[\tiny{discharge}][\tiny{charge}] LiMO2}\label{eq:PosElectrodeRxn}
 \end{align}
 \tikzexternalenable
-where \ch{M} represents a transition metal compound such as
-\ch{Ni_{1/3}Co_{1/3}Mn_{1/3}} (NMC), \ch{Ni_{0.8}Co_{0.15}Al_{0.05}} (NCA)
-amongst other choices~\cite{Reddy2011}. Assuming no loss  of cycleable Lithium
-due to parasitic side reactions or through other mechanisms, the process is
+where    \ch{M}   represents    a    transition   metal    compound   such    as
+\ch{Ni_{1/3}Co_{1/3}Mn_{1/3}}   (NMC),   \ch{Ni_{0.8}Co_{0.15}Al_{0.05}}   (NCA)
+amongst other  choices~\cite{Reddy2011}. Assuming  no loss of  cycleable Lithium
+due to  parasitic side  reactions or  through other  mechanisms, the  process is
 fully reversible.
 
 
@@ -254,11 +254,11 @@ addition to embedding the contribution of equilibrium thermodynamics.
 
 \subsubsection*{Solid Phase Diffusion}
 
-Conservation of  \ch{Li^0} in the  electrodes can  be obtained by  treating that
-the  movement of  neutral  atoms within  the  solid phase  is  primarily due  to
-diffusion  within  particles. This  diffusion  phenomena  is  induced due  to  a
-concentration gradient that exists between  the surface and interior/core of the
-solid phase particles. Based on the  geometrical assumptions of the \gls{spm} as
+Conservation of \ch{Li^0} in the electrodes can be obtained by treating that the
+movement of neutral  atoms within the solid phase is  primarily due to diffusion
+within particles.  This diffusion  phenomena is induced  due to  a concentration
+gradient  that  exists  between  the  surface and  interior/core  of  the  solid
+phase  particles. Based  on  the  geometrical assumptions  of  the \gls{spm}  as
 discussed in~\cref{subsec:basicspmgeometry}, \ie{} owing  to the lack of spatial
 discretisation in the axial direction $x$, the concentration of \ch{Li^0} in the
 two electrodes $c_\sj(x,r,t)$,  reduces to a function of  the radial co-ordinate
@@ -298,7 +298,7 @@ in~\cref{eq:cartesiandiffusion} yields
 \begin{equation}\label{eq:csdiffusioneqn}
     \diffp{c_\sj}{t} = \frac{1}{r^2}\diffp*{\left(r^2 D_\sj\, ∇ c_\sj \right)}{r}
 \end{equation}
-As per the assumption of uniform diffusivity in the solid phase
+As   per  the   assumption   of   uniform  diffusivity   in   the  solid   phase
 (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csdiffusioneqn} becomes
 \begin{align}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 ∇ c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
@@ -306,26 +306,26 @@ As per the assumption of uniform diffusivity in the solid phase
     the radial direction $r$ results in}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
 \end{align}
-\Cref{eq:csdiffusionfinal} represents the mass-balance equation describing solid
-phase diffusion in each electrode. The potential at each electrode depends on
-the solid phase surface concentration~$c_\sjsurf$ \ie{}  the \ch{Li^0}
-concentration $c_\sj(r,t)$ evaluated at $r=R_\pj$, \jinnegpos{} where
-$R_\text{p}$ represents the equivalent radius of each representative spherical
-particle. Diffusion in the solid phase is driven by concentration gradients
-induced due to intercalation flux density at the particle surface, which is
+\Cref{eq:csdiffusionfinal}  represents  the   mass-balance  equation  describing
+solid  phase  diffusion in  each  electrode.  The  potential at  each  electrode
+depends  on   the  solid  phase  surface   concentration~$c_\sjsurf$  \ie{}  the
+\ch{Li^0} concentration $c_\sj(r,t)$ evaluated  at $r=R_\pj$, \jinnegpos{} where
+$R_\text{p}$ represents  the equivalent radius of  each representative spherical
+particle.  Diffusion in  the solid  phase is  driven by  concentration gradients
+induced due  to intercalation  flux density  at the  particle surface,  which is
 examined next.
 
-Due to spherical symmetry, flux at the centre of the particle is considered
-to be zero
+Due to spherical symmetry,  flux at the centre of the  particle is considered to
+be zero
 \begin{equation}\label{eq:csfluxcentre}
     \diffp{c_\sj}{r}{r=0} = 0
 \end{equation}
-The surface of each particle experiences a pore-wall flux density driven by
-reaction kinetics. Based on the \gls{spm} geometry discussed
-in~\cref{subsec:basicspmgeometry} the spatial dependence of this molar flux
-density $j_\nj(x,t)$ is eliminated and can be represented as $j_\nj(t)$,
-\jinnegpos{}. For the sake of brevity, the explicit temporal dependence is also
-omitted resulting in a simplified notation $j_\nj$. Hence, at the particle
+The   surface  of   each   particle  experiences   a   pore-wall  flux   density
+driven  by  reaction  kinetics.  Based   on  the  \gls{spm}  geometry  discussed
+in~\cref{subsec:basicspmgeometry}  the spatial  dependence  of  this molar  flux
+density  $j_\nj(x,t)$  is  eliminated  and can  be  represented  as  $j_\nj(t)$,
+\jinnegpos{}. For the sake of brevity,  the explicit temporal dependence is also
+omitted  resulting in  a simplified  notation  $j_\nj$. Hence,  at the  particle
 surface
 \begin{equation}\label{eq:csfluxsurface}
     D_\sj\diffp{c_\sj}{r}{r=R_\pj} = -j_\nj
@@ -335,10 +335,9 @@ surface is considered to be positive.
 
 Charge   conservation   in   solid   phase    is   applied   to   evaluate   the
 \gls{rhs}  in~\cref{eq:csfluxsurface},   a  detailed  derivation  of   which  is
-presented  in  Domenico~\etal~\cite{DiDomenico2010}.   In  summary,  by assuming
-a uniform   charge   density   throughout   the  thickness   of   each
-electrode (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface}
-becomes
+presented  in  Domenico~\etal~\cite{DiDomenico2010}.  In  summary,  by  assuming
+a  uniform   charge  density   throughout  the   thickness  of   each  electrode
+(see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface} becomes
 \begin{align}
     j_\nj(t) &= \pm \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
     \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
@@ -356,7 +355,7 @@ is used in computations.
 \begin{equation}\label{eq:socinitialdefn}
     z(t) = \frac{3}{c_\snegmax}\int_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
 \end{equation}
-Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
+Given  an  initial  cell  \gls{soc}  $z(0)  =  z_0$  at  rest,  the  equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
     c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(θ_\maxj - θ_\minj \right) + θ_\minj \bigg]
@@ -373,7 +372,7 @@ in~\cref{subsec:basicspmgeometry}.
 
 \subsubsection*{Further Reduction in Dimensionality}\label{subsec:basicspmfurtherdimensionalityreduction}
 
-A  naive approach  to  numerically solving  the  solid phase diffusion  equation
+A  naive approach  to numerically  solving  the solid  phase diffusion  equation
 is  to  discretise each  of  the  two  representative  particles in  the  radial
 direction  as  shown   in~\cref{fig:radialdiscretisation}.  A  three-dimensional
 cut-away view  of the division  of the solid  particle into sub-shells  is shown
@@ -453,8 +452,8 @@ the  volume  averaged concentration
 \begin{equation}
     c_\sjavg(t)  = \frac{1}{\Omega}  \int\limits_\Omega c_\sj(r,t)\,  d\Omega
 \end{equation}
-as  a function of the applied load current $I(t)$. Here, $\Omega$ represents the
-volume of the spherical particle. For notational brevity, $c_\sjavg(t)$ is
+as a function of the applied  load current $I(t)$. Here, $\Omega$ represents the
+volume  of the  spherical  particle. For  notational  brevity, $c_\sjavg(t)$  is
 shortened to $\mean{c}_\sj$ whilst dropping its explicit time dependence.
 
 The \engordnumber{4}~order polynomial approximation assumes that the solid phase
@@ -463,20 +462,20 @@ concentration $c_\sj(r,t)$ is a quartic function of the radial co-ordinate $r$
     c_\sj(r,t) = a(t) + b(t)\left(\frac{r}{R_\pj}\right)^2 + d(t) \left(\frac{r}{R_\pj}\right)^4
 \end{equation}
 
-The  derivation of  the  coefficients $a(t),  b(t)$ and  $c(t)$  is provided  in
-Subramanian~\etal{}~\cite{Subramanian2005}.
-\Cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg} summarise the
-governing equations obtained by applying the \engordnumber{4}~order polynomial
-approximation to the system given
+The     derivation     of     the      coefficients     $a(t),     b(t)$     and
+$c(t)$     is     provided    in     Subramanian~\etal{}~\cite{Subramanian2005}.
+\Cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}    summarise   the
+governing   equations   obtained    by   applying   the   \engordnumber{4}~order
+polynomial        approximation        to         the        system        given
 by~\cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
 \begin{align}
     \diff*{\mean{c}_\sj}{t} + 3\frac{j_\nj}{R_\pj} &=0 \label{eq:csmeanevolution} \\
     \diff*{\mean{q}_j}{t} + 30\frac{D_\sj}{R_\pj^2} + \frac{45}{2}\frac{j_\nj}{R_\pj^2} &=0 \label{eq:qmeanevolution}\\
     35\frac{D_\sj}{R_\pj}\left(c_\sjsurf - \mean{c}_\sj\right) - 8D_\sj \mean{q}_j &= -j_\nj \label{eq:csurffromcsavg}
 \end{align}
-where $\mean{q}_j(t)$ represents the volume averaged concentration flux, that
-defines the average change of concentration with respect to the radial
-position $r$.
+where $\mean{q}_j(t)$  represents the  volume averaged concentration  flux, that
+defines the average change of concentration  with respect to the radial position
+$r$.
 
 As   per~\cref{eq:uniformcurrdensity},   the   interfacial   flux   density   is
 proportional to  the applied current. Hence~\cref{eq:csmeanevolution}  implies a
@@ -508,10 +507,10 @@ of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
 \subsubsection*{Equilibrium Thermodynamics}\label{subsec:basicspmthermodynamics}
 
 The equilibrium potential of a porous electrode is a thermodynamic property that
-depends on  the extent of  lithiation in  the outermost interstitial  sites near
-the  solid-electrolyte  interface.  This  surface  stoichiometry  $θ_j$  is
-obtained by  computing the surface  concentration (see~\cref{eq:csurffromcsavg})
-and dividing by the maximum lithiation capacity of that electrode.
+depends on the extent of lithiation in the outermost interstitial sites near the
+solid-electrolyte interface.  This surface  stoichiometry $θ_j$ is  obtained by
+computing the surface  concentration (see~\cref{eq:csurffromcsavg}) and dividing
+by the maximum lithiation capacity of that electrode.
 \begin{equation}
     θ_j = \frac{c_\sjsurf}{c_\sjmax}
 \end{equation}
@@ -547,14 +546,14 @@ using the Butler-Volmer expression
     j_{0_j} &= k_\jr c_\text{e}^{1-α} c_\sjsurf^{α} \left(c_\sjmax - c_\sjsurf\right)^{1-α}
 \end{align}
 
-The equilibrium rate of forward and backward reactions at both electrodes is
-assumed to be equal. With charge transfer coefficient $α = 0.5$,
+The  equilibrium rate  of  forward  and backward  reactions  at both  electrodes
+is  assumed  to  be  equal.  With   charge  transfer  coefficient  $α  =  0.5$,
 \cref{eq:bvwithalpha} simplifies to
 \begin{equation}\label{eq:BVwithalphahalf}
     j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F η_j}{2 R T}\right)
 \end{equation}
 
-The    expression   for    overpotential   $η_j$    can   be    obtained   by
+The    expression    for   overpotential    $η_j$    can    be   obtained    by
 rearranging~\cref{eq:BVwithalphahalf}    whilst    substituting   for    $j_\nj$
 from~\cref{eq:uniformcurrdensity} and is given by
 \begin{equation}\label{eq:overpotential_j}
@@ -562,6 +561,7 @@ from~\cref{eq:uniformcurrdensity} and is given by
 \end{equation}
 
 \subsubsection*{Cell Terminal Voltage}\label{subsec:basicspmcellterminalvoltage}
+
 The terminal voltage  of the cell under applied load  is obtained by subtracting
 the potential of the negative electrode from its positive counterpart.
 
