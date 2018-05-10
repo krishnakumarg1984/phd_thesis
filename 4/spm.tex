@@ -275,15 +275,15 @@ Fickian dynamics given by
     the explicit definition for each subsequent occurrence of the subscripted
     variable $j$ shall be omitted. It is implied that \jinnegpos{} since these
     equations describe solid phase diffusion in the negative and positive
-electrodes.} The divergence of a vector field $\mathbf{F}(r,θ, ϕ)$ can
+electrodes.} The divergence of a vector field $\mathbf{F}(r,\theta, ϕ)$ can
 be expressed in spherical co-ordinates as
 \begin{equation}\label{eq:fullsphericaldiv}
     \nabla \cdot \mathbf{F} = \frac{1}{r^2}\diffp{\left(r^2 F_r\right)}{r} +
-    \frac{1}{r \sin θ}\diffp{\left(\sin θ\:  F_θ\right)}{θ}
-    + \frac{1}{r \sin θ}\diffp{F_ϕ}{ϕ}
+    \frac{1}{r \sin \theta}\diffp{\left(\sin \theta\:  F_\theta\right)}{\theta}
+    + \frac{1}{r \sin \theta}\diffp{F_ϕ}{ϕ}
 \end{equation}
-where $r$ denotes the radial magnitude, $θ$ the polar angle and $ϕ$, the
-azimuthal angle. $F_r, F_θ$ and $F_ϕ$ denote the corresponding
+where $r$ denotes the radial magnitude, $\theta$ the polar angle and $ϕ$, the
+azimuthal angle. $F_r, F_\theta$ and $F_ϕ$ denote the corresponding
 components of the vector field $\mathbf{F}$.
 
 The centre  of the  co-ordinate system  for each electrode  is aligned  with the
@@ -359,7 +359,7 @@ is used in computations.
 Given an initial cell \gls{soc} $z(0) = z_0$ at rest, the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
-    c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(θ_\maxj - θ_\minj \right) + θ_\minj \bigg]
+    c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(\theta_\maxj - \theta_\minj \right) + \theta_\minj \bigg]
 \end{equation}
 
 \Cref{eq:csdiffusionfinal},          its         corresponding          boundary
@@ -509,11 +509,11 @@ of~\cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
 
 The equilibrium potential of a porous electrode is a thermodynamic property that
 depends on  the extent of  lithiation in  the outermost interstitial  sites near
-the  solid-electrolyte  interface.  This  surface  stoichiometry  $θ_j$  is
+the  solid-electrolyte  interface.  This  surface  stoichiometry  $\theta_j$  is
 obtained by  computing the surface  concentration (see~\cref{eq:csurffromcsavg})
 and dividing by the maximum lithiation capacity of that electrode.
 \begin{equation}
-    θ_j = \frac{c_\sjsurf}{c_\sjmax}
+    \theta_j = \frac{c_\sjsurf}{c_\sjmax}
 \end{equation}
 
 Although based upon the theoretical foundation  laid out by the Nernst equation,
@@ -582,7 +582,7 @@ Subtracting~\cref{eq:negoverpotential}   from~\cref{eq:posoverpotential}
 \shortintertext{whose rearrangement yields}
     V_\text{cell} &= η_\text{pos} - η_\text{neg} - U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
 \end{align}
-% 𝒰_\text{pos}\left(θ_\text{pos}\right) - 𝒰_\text{neg}\left(θ_\text{neg}\right)
+% 𝒰_\text{pos}\left(\theta_\text{pos}\right) - 𝒰_\text{neg}\left(\theta_\text{neg}\right)
 In the  basic \gls{spm},  \cref{eq:cellterminalvoltagebasic} is used  to compute
 the   cell's  terminal   voltage  under   load.  Although   the  time-dependence
 notation  is  omitted  here,  it   is  worth  reiterating  that  all  quantities
