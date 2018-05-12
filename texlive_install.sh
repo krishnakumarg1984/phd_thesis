@@ -134,6 +134,7 @@ tlmgr install   \
     relsize \
     setspace \
     siunitx \
+    stackengine \
     stix \
     subfig \
     subfloat \
