@@ -97,6 +97,7 @@ tlmgr install   \
     libertinus \
     libertinus-otf \
     libertinust1math \
+    listofitems \
     lm \
     lm-math \
     logreq \
