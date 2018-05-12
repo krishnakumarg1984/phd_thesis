@@ -221,7 +221,7 @@ in~\cref{fig:chargetransferprocess}.
 charging and discharging process at the surfaces of both electrode materials.
 \tikzexternaldisable
 \begin{align}
-    \ch{Li_{$x$} C &<=>[\tiny{discharge}][\tiny{charge}] C + $x$ Li^+ + $x$ e^-}\label{eq:NegElectrodeRxn}\\
+    \ch{Li_{$x$} C                            &<=>[\tiny{discharge}][\tiny{charge}] C + $x$ Li^+ + $x$ e^-}\label{eq:NegElectrodeRxn}\\
     \ch{Li_{1-$x$} M O2 + $x$ Li^+  + $x$ e^- &<=>[\tiny{discharge}][\tiny{charge}] LiMO2}\label{eq:PosElectrodeRxn}
 \end{align}
 \tikzexternalenable
@@ -339,7 +339,7 @@ presented  in  Domenico~\etal~\cite{DiDomenico2010}.  In  summary,  by  assuming
 a  uniform   charge  density   throughout  the   thickness  of   each  electrode
 (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface} becomes
 \begin{align}
-    j_\nj(t) &= ± \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
+    j_\nj(t)                       &= ± \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
     \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
     D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= ∓ \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
@@ -474,9 +474,9 @@ governing   equations   obtained    by   applying   the   \engordnumber{4}~order
 polynomial        approximation        to         the        system        given
 by~\cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
 \begin{align}
-    \diff*{\mean{c}_\sj}{t} + 3\frac{j_\nj}{R_\pj} &=0 \label{eq:csmeanevolution} \\
-    \diff*{\mean{q}_j}{t} + 30\frac{D_\sj}{R_\pj^2} + \frac{45}{2}\frac{j_\nj}{R_\pj^2} &=0 \label{eq:qmeanevolution}\\
-    35\frac{D_\sj}{R_\pj}\left(c_\sjsurf - \mean{c}_\sj\right) - 8D_\sj \mean{q}_j &= -j_\nj \label{eq:csurffromcsavg}
+    \diff*{\mean{c}_\sj}{t} + 3\frac{j_\nj}{R_\pj}                                                &=0 \label{eq:csmeanevolution} \\
+    \diff*{\mean{q}_j}{t} + 30\frac{D_\sj}{R_\pj^2}\mean{q}_j + \frac{45}{2}\frac{j_\nj}{R_\pj^2} &=0 \label{eq:qmeanevolution}\\
+    35\frac{D_\sj}{R_\pj}\left(c_\sjsurf - \mean{c}_\sj\right) - 8D_\sj \mean{q}_j                &= -j_\nj \label{eq:csurffromcsavg}
 \end{align}
 where $\mean{q}_j(t)$  represents the  volume averaged concentration  flux, that
 defines the average change of concentration  with respect to the radial position
@@ -546,7 +546,7 @@ significant component of the cell's terminal voltage $V(t)$.
 In the \gls{spm}, the reaction kinetics in each spherical electrode is modelled
 using the Butler-Volmer expression
 \begin{align}
-    j_\nj &= j_{0_j} \left[ \exp\left( \frac{\left(1-α\right) F η_j}{R T}\right) -  \exp\left( \frac{-α F η_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
+    j_\nj   &= j_{0_j} \left[ \exp\left( \frac{\left(1-α\right) F η_j}{R T}\right) -  \exp\left( \frac{-α F η_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
     \shortintertext{where}
     j_{0_j} &= k_\jr c_\text{e}^{1-α} c_\sjsurf^{α} \left(c_\sjmax - c_\sjsurf\right)^{1-α}
 \end{align}
@@ -583,9 +583,9 @@ electrolyte dynamics).
 Subtracting~\cref{eq:negoverpotential}   from~\cref{eq:posoverpotential}
 % whilst substituting for $U_j$ from~\cref{eq:ocpstoichiometry}
 \begin{align}
-    η_\text{pos} - η_\text{neg}  &= \underbrace{ϕ_\spos - ϕ_\sneg}_{V_\text{cell}} - U_\text{pos} + U_\text{neg}\\
+    η_\text{pos} - η_\text{neg} &= \underbrace{ϕ_\spos - ϕ_\sneg}_{V_\text{cell}} - U_\text{pos} + U_\text{neg}\\
 \shortintertext{whose rearrangement yields}
-    V_\text{cell} &= η_\text{pos} - η_\text{neg} + U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
+    V_\text{cell}               &= η_\text{pos} - η_\text{neg} + U_\text{pos} - U_\text{neg}\label{eq:cellterminalvoltagebasic}
 \end{align}
 % \mathcal{U}_\text{pos}\left(θ_\text{pos}\right) - \mathcal{U}_\text{neg}\left(θ_\text{neg}\right)
 In the  basic \gls{spm},  \cref{eq:cellterminalvoltagebasic} is used  to compute
@@ -595,14 +595,54 @@ in~\cref{eq:cellterminalvoltagebasic} are functions of time.
 
 \subsubsection*{State Space Representation}\label{subsec:basicspmstatespace}
 
-For control  oriented applications,  it is  imperative to write  the model  in a
-classical  state  representation  along  the  lines  of~\cref{eq:LTIstatespace}.
-However,   the   non-linearities   in   the  equation   for   terminal   voltage
-(see~\cref{eq:cellterminalvoltagebasic})  imply  that  it  is  not  possible  to
-represent the \gls{spm} as  the classical LTI system of~\cref{eq:LTIstatespace}.
-Instead, the system is  represented by a system of state  equations along with a
-single output equation.
+For control  oriented applications, it is  imperative to have a  classical state
+space representation  that collates  all intermediate equations  and definitions
+presented  thus  far into  a  single  system  of  equations that  describes  the
+evolution of solid concentration and terminal voltage over time as a function of
+the  external load  current. However,  the non-linearities  in the  equation for
+terminal  voltage  (see~\cref{eq:cellterminalvoltagebasic})  imply  that  it  is
+not  possible to  represent  the  \gls{spm} as  the  classical \gls{lti}  system
+of~\cref{eq:LTIstatespace}. Instead, the \gls{spm} can be summarised by a system
+of linear state equations together with the single non-linear output equation.
 
+The state equation is
+
+\begin{equation}
+    \setstackgap{L}{1.2\baselineskip}
+    \fixTABwidth{T}
+    \diff*{\parenMatrixstack{
+            \vphantom{\frac{D_\spos}{R_\ppos^2}}
+            \mean{q}_\text{pos} \\
+            \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+            \mean{q}_\text{neg} \\
+            \vphantom{\frac{D_\spos}{R_\ppos^2}}
+            \mean{c}_\spos \\
+            \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+            \mean{c}_\sneg
+        }
+    }{t}
+    = \parenMatrixstack{
+        -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 & 0 \\
+        0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 & 0 \\
+        \vphantom{\frac{D_\spos}{R_\ppos^2}}
+        0                            & 0                            & 0 & 0 \\
+        \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+        0                            & 0                            & 0 & 0
+    }
+    \parenMatrixstack{
+        \vphantom{\frac{D_\spos}{R_\ppos^2}}
+        \mean{q}_\text{pos} \\
+        \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+        \mean{q}_\text{neg} \\
+        \vphantom{\frac{D_\spos}{R_\ppos^2}}
+        \mean{c}_\spos \\
+        \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+        \mean{c}_\sneg
+    }
+\end{equation}
+
+% \diff*{\mean{q}_j}{t}   = - 30\frac{D_\sj}{R_\pj^2} - \frac{45}{2}\frac{j_\nj}{R_\pj^2} \\
+% \diff*{\mean{c}_\sj}{t} = -3\frac{j_\nj}{R_\pj}
 The total number of moles of lithium in the system is given by
 \begin{equation}\label{eq:totallithiummoles}
     n_\text{Li} = \frac{ε_\spos \, l_\text{pos}\, A}{\frac{4}{3} π R_\ppos^3} ∫_0^{R_\ppos} 4 π r^2 c_\spos(r,t) \, dr
@@ -612,18 +652,18 @@ Upon considering only the bulk concentration as per the dimensionality reduction
 procedure    outlined   in~\cref{subsec:basicspmfurtherdimensionalityreduction},
 \cref{eq:totallithiummoles} reduces to
 \begin{align}\label{eq:totallithiumsimplified}
-    n_\text{Li} &= \frac{ε_\spos \, l_\text{pos}\, A}{\frac{4}{3} π R_\ppos^3}\mean{c}_\spos ∫_0^{R_\ppos} 4 π r^2  \, dr
+    n_\text{Li}  &= \frac{ε_\spos \, l_\text{pos}\, A}{\frac{4}{3} π R_\ppos^3}\mean{c}_\spos ∫_0^{R_\ppos} 4 π r^2  \, dr
     + \frac{ε_\sneg \, l_\text{neg}\, A}{\frac{4}{3} π R_\pneg^3}\mean{c}_\sneg ∫_0^{R_\pneg} 4 π r^2  \, dr
-    \\
-    &= ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos + ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg
+                \\
+                 &= ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos + ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg
 \end{align}
 The  total   number  of   moles  of   lithium  in   the  system   is  conserved,
 \ie{}    $\diff{n_\text{Li}}{t}    =    0$.    Substituting    this    condition
 in~\cref{eq:totallithiumsimplified}
 \begin{align}
-    0 &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t}
-    \\
-    \diff*{\mean{c}_\spos}{t} &= -\diff*{\mean{c}_\spos}{t}
+    0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t}
+                              \\
+    \diff*{\mean{c}_\spos}{t}  &= -\diff*{\mean{c}_\spos}{t}
 \end{align}
 
 

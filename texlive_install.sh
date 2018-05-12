@@ -140,6 +140,7 @@ tlmgr install   \
     substr \
     supertabular \
     svg \
+    tabstackengine \
     tex-gyre \
     tex-gyre-math \
     textcase \
