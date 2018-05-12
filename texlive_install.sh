@@ -32,8 +32,6 @@ tlmgr install   \
     aleph \
     algorithmicx \
     algorithms \
-    amsfonts \
-    amsmath \
     antt \
     anyfontsize \
     apalike2 \
@@ -42,7 +40,6 @@ tlmgr install   \
     arydshln \
     auto-pst-pdf \
     auto-pst-pdf-lua \
-    babel \
     babel-german \
     belleek \
     biber \
@@ -56,7 +53,6 @@ tlmgr install   \
     chemformula \
     cleveref \
     cmbright \
-    colortbl \
     csquotes \
     datatool \
     diffcoeff \
@@ -65,13 +61,10 @@ tlmgr install   \
     epstopdf \
     eso-pic \
     esstix \
-    etex \
-    etex-pkg \
     etextools \
     etoolbox \
     eulervm \
     excludeonly \
-    fancyhdr \
     filehook \
     float \
     fontloader-luaotfload \
@@ -80,21 +73,16 @@ tlmgr install   \
     fourier \
     fouriernc \
     fp \
-    geometry \
     glossaries \
     glossaries-extra \
-    graphics \
-    hyperref \
     ifetex \
     iffont \
-    ifluatex \
     ifmtarg \
     ifoddpage \
     ifplatform \
     ifsym \
     iftex \
     ifthenx \
-    ifxetex \
     import \
     isodate \
     iwona \
@@ -104,7 +92,6 @@ tlmgr install   \
     l3kernel \
     l3packages \
     labelschanged \
-    latex \
     latexmk \
     libertine \
     libertinus \
@@ -119,7 +106,6 @@ tlmgr install   \
     luatex \
     luatex85 \
     luatodonotes \
-    makeindex \
     mathdesign \
     mathfixs \
     mathpazo \
@@ -131,21 +117,17 @@ tlmgr install   \
     mtgreek \
     multirow \
     nag \
-    natbib \
     needspace \
     newtx \
     newtxsf \
     nowidow \
     ntheorem \
-    oberdiek \
     omega \
     onlyamsmath \
-    pdftex \
     pdfx \
     pgf \
     pgfplots \
     placeins \
-    psnfss \
     pstricks \
     pxfonts \
     realscripts \
@@ -165,13 +147,11 @@ tlmgr install   \
     titlesec \
     tocbibind \
     todonotes \
-    tools \
     tracklang \
     txfonts \
     ucharcat \
     unicode-math \
     units \
-    url \
     was \
     wrapfig \
     xcolor \
