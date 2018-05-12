@@ -236,10 +236,11 @@ TSWLatexianTemp*
 # standalone packages
 *.sta
 
-*.yml
+*.yml_old
 
 .tags
 tags
+.tags.lock
 
 *.syg
 *.syi
@@ -285,7 +286,7 @@ main_vimtex.pdf
 notes/mkrctest
 
 # build scripts
-*.sh
+# *.sh
 
 # unneeded files
 beamercolorthemeC*.sty

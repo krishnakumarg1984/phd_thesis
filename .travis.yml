@@ -1,0 +1,14 @@
+email: false
+before_install:
+  - openssl aes-256-cbc -K $encrypted_7891f68be5e5_key -iv $encrypted_7891f68be5e5_iv -in .dropbox_uploader.enc -out ~/.dropbox_uploader -d
+install:
+  - source ./texlive_install.sh
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+script:
+  # Prefix command with travis_wait x so it times out after x mins
+  - latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=nonstopmode main.tex
+  - ./dropbox_uploader.sh upload main.pdf ${TRAVIS_BRANCH}/main-latest.pdf
+  - ./dropbox_uploader.sh upload main.pdf ${TRAVIS_BRANCH}/historic_versions/main-${TRAVIS_COMMIT}.pdf
