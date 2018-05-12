@@ -555,7 +555,8 @@ supported!}
 % Font Selection
 \ifXeOrLua
   \usepackage{fontspec}
-   \usepackage[warnings-off={mathtools-colon}]{unicode-math}
+  \let\mathbbalt\mathbb
+  \usepackage[warnings-off={mathtools-colon}]{unicode-math}
 \else
   \RequirePackage[utf8]{inputenc}
   %\inputencoding{utf8}

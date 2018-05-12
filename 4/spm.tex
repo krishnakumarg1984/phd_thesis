@@ -595,6 +595,14 @@ in~\cref{eq:cellterminalvoltagebasic} are functions of time.
 
 \subsubsection*{State Space Representation}\label{subsec:basicspmstatespace}
 
+For control  oriented applications,  it is  imperative to write  the model  in a
+classical  state  representation  along  the  lines  of~\cref{eq:LTIstatespace}.
+However,   the   non-linearities   in   the  equation   for   terminal   voltage
+(see~\cref{eq:cellterminalvoltagebasic})  imply  that  it  is  not  possible  to
+represent the \gls{spm} as  the classical LTI system of~\cref{eq:LTIstatespace}.
+Instead, the system is  represented by a system of state  equations along with a
+single output equation.
+
 The total number of moles of lithium in the system is given by
 \begin{equation}\label{eq:totallithiummoles}
     n_\text{Li} = \frac{ε_\spos \, l_\text{pos}\, A}{\frac{4}{3} π R_\ppos^3} ∫_0^{R_\ppos} 4 π r^2 c_\spos(r,t) \, dr

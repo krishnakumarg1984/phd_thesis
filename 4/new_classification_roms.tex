@@ -120,17 +120,25 @@ lumped impedance  model was  derived for  the frequency  range of  interest from
 \SIrange{0}{10}{\hertz}.
 
 This modelling effort  by Smith~\etal{} was the  first of its kind  to provide a
-physics-based  battery model  for  implementation in  the classical  state-space
-formulation
-\begin{equation}\label{eq:statespace}
+physics-based  battery  model  for  implementation in  the  classical  \gls{lti}
+state-space formulation
+\begin{equation}\label{eq:LTIstatespace}
     % \SwapAboveDisplaySkip
     \begin{aligned}
-        \dot{x} &= Ax + Bu \\
-        y &= Cx + Du
+        \dot{\mathbf{x}} &= A\,\mathbf{x} + B\,\mathbf{u} \\
+        \mathbf{y} &= C \, \mathbf{x} + D\, \mathbf{u},
     \end{aligned}
 \end{equation}
-that is amenable for controller  design and  further system-level simulation
-studies \eg{}  as a component in a (hybrid) electric vehicle drivetrain.
+\begin{flalign}
+    \SwapAboveDisplaySkip
+    \text{where   }    \mathbf{x}   \in   \mathbb{R}^{n\times   1},\:    A   \in
+    \mathbb{R}^{n\times   n},\:   B  \in   \mathbb{R}^{n\times   m},\:\mathbf{y}
+    \in  \mathbb{R}^{p\times  1},\:  C   \in  \mathbb{R}^{p\times  n},\:  D  \in
+    \mathbb{R}^{p\times m}\: \text{and }  \mathbf{u} \in \mathbb{R}^{m \times 1}
+    && \notag
+\end{flalign}
+that  is amenable  for  controller design  and  further system-level  simulation
+studies \eg{} as a component in a (hybrid) electric vehicle drivetrain.
 
 
 The requirement of a relatively large number of state variables (12) to describe
@@ -172,8 +180,8 @@ predict the cell's terminal voltage.
 
 Furthermore,  Lee~\etal{}~\cite{Lee2012a} also  devised the  \gls{dra}, a  novel
 algorithm  to systematically  transform  all  transcendental transfer  functions
-to  the  time domain   to  obtain  the  standard  state-space   model  given  by
-\cref{eq:statespace}. The  author of  this thesis  considers the  formulation of
+to  the  time domain   to  obtain  an \gls{lti}  state-space   model  given  by
+\cref{eq:LTIstatespace}. The  author of  this thesis  considers the  formulation of
 the  \gls{dra}  as a  breakthrough  contribution  that  has helped  in  bringing
 physics-informed  time domain  models a  step  closer  to online  implementation
 without   having  to   resort   to   forming  a   lumped   impedance  and   then
@@ -619,7 +627,7 @@ Finally, results and discussion. \todo{REWRITE after finishing up everything}
 % explored in~\cref{ch:chapter6}.  Although sensitivity analysis of  the \gls{dfn}
 % parameters has been performed in  literature, \todo{citation here} the extent to
 % which  parameter uncertainties  influence the  numerical  values in  the $A,  B,
-% C$  and  $D$  matrices  of~\Cref{eq:statespace} has  not  yet  been  attempted.
+% C$  and  $D$  matrices  of~\Cref{eq:LTIstatespace} has  not  yet  been  attempted.
 % In  continuation of  this  research  aspect, the  order  of  magnitude shift  in
 % eigen/singular values of  the relevant system matrix also need  to be quantified
 % to  enable an  informed  choice about  stability of  such  models for  real-time
