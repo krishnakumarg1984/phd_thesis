@@ -702,10 +702,54 @@ can be directly related through their stoichiometric factors as
 
 Hence,  it is  possible to  eliminate the  bulk concentration  of either  of the
 electrodes from the state-equation to arrive at a three-state description of the
-model dynamics. In extant lithium-ion chemistries, the negative electrode is considered to be the limiting
-electrode and is hence used in \gls{soc} estimations. Hence, it is retained in
-the state vector. The positive electrode
+model dynamics.  In extant  lithium-ion chemistries,  the negative  electrode is
+considered  to  be  the  limiting  electrode and  is  hence  used  in  \gls{soc}
+estimations. Thus, it is retained in the state vector leading to the final form
+of the state dynamics of the conventional \gls{spm}
+\begin{equation}\label{eq:threestatesmatrixvec}
+    \setstackgap{L}{1.5\baselineskip}
+    \fixTABwidth{T}
+    \diff*{\parenMatrixstack{
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \mean{q}_\text{pos} \\
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \mean{q}_\text{neg} \\
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \mean{c}_\spos
+        }
+    }{t}
+    = \underbrace{\parenMatrixstack{
+            -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0  \\
+            0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0  \\
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            0                            & 0                            & 0
+    }}_{A}
+    \parenMatrixstack{
+        \vphantom{\frac{D_\spos}{R_\ppos^2}}
+        \mean{q}_\text{pos} \\
+        \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+        \mean{q}_\text{neg} \\
+        \vphantom{\frac{D_\spos}{R_\ppos^2}}
+        \mean{c}_\spos
+    }
+    +
+    \underbrace{\parenMatrixstack{
+            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A l_\text{pos} a_\spos F} \\
+            \frac{45}{2} \frac{-1}{R_\pneg^2 A l_\text{neg} a_\sneg F} \\
+            \hphantom{\frac{45}{2}} \frac{\hphantom{-}3}{R_\ppos  A l_\text{pos} a_\spos F}
+    }}_{B}
+    I(t)
+\end{equation}
 
+The measured variable $y ∈ \mathbb{R}$ is the cell's terminal voltage
+$V(t)$ and is expressed as a non-linear  scalar function of the state vector and
+the load current.
+\begin{equation}\label{eq:spmoutputeqn}
+    y = h(\mathbf{x},u)
+\end{equation}
+The output  equation given by~\cref{eq:spmoutputeqn} includes  a non-zero direct
+feedthrough  dependency  of the  voltage  on  the  input current  modelling  the
+resistive component of the cell's impedance. The full output voltage is given by
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
