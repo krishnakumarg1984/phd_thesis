@@ -661,6 +661,12 @@ is  the  applied  current  $I(t)$.  The  system  matrix,  $A  ∈  \mathbb{R}^{4
 \times  4}$  and  input  matrix,  $B ∈  \mathbb{R}^{4  \times  1}$  are  shown
 in~\cref{eq:fourstatesmatrixvec}.
 
+For  state  estimation  purposes,  it  is   important  to  keep  the  number  of
+elements  in the  state vector  as small  as possible  by eliminating  redundant
+variables.  Di~Dominico~\etal{}~\cite{DiDomenico2010}  noted  that  with  output
+voltage as the only measured quantity,  the observablity of the four-state model
+of~\cref{eq:fourstatesmatrixvec} is adversely affected. Consequently, the
+following state-reduction approach is proposed.
 
 The total number of moles of lithium in the system is given by
 \begin{equation}\label{eq:totallithiummoles}
@@ -676,15 +682,29 @@ procedure    outlined   in~\cref{subsec:basicspmfurtherdimensionalityreduction},
                 \\
                  &= ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos + ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg
 \end{align}
-The  total   number  of   moles  of   lithium  in   the  system   is  conserved,
+Assuming  no  loss  of  cycleable   lithium  or  other  degradation  mechanisms,
+the  total   number  of   moles  of   lithium  in   the  system   is  conserved,
 \ie{}    $\diff{n_\text{Li}}{t}    =    0$.    Substituting    this    condition
 in~\cref{eq:totallithiumsimplified}
 \begin{align}
-    0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t}
-                              \\
-    \diff*{\mean{c}_\spos}{t}  &= -\diff*{\mean{c}_\spos}{t}
+    0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t} \\
+    \diff*{\mean{c}_\spos}{t}  &= -\diff*{\mean{c}_\spos}{t} \label{eq:bulkconcrelationship}
 \end{align}
 
+As   per~\cref{eq:bulkconcrelationship},  the   time  evolution   of  the   bulk
+concentration  of one  electrode can  be obtained  as a  function of  the other.
+Furthermore, Di~Domenico~\etal{} show that the bulk concentrations themselves
+can be directly related through their stoichiometric factors as
+\begin{equation}\label{eq:csfluxinitialcondition}
+    \mean{c}_\spos(t) = c_\sposmax \, \bigg[\frac{\mean{c}_\sneg(t)- θ_\minneg
+    c_\snegmax}{\left(θ_\maxneg - θ_\minneg\right)c_\snegmax} \left(θ_\maxpos - θ_\minpos \right) + θ_\minpos \bigg]
+\end{equation}
+
+Hence,  it is  possible to  eliminate the  bulk concentration  of either  of the
+electrodes from the state-equation to arrive at a three-state description of the
+model dynamics. In extant lithium-ion chemistries, the negative electrode is considered to be the limiting
+electrode and is hence used in \gls{soc} estimations. Hence, it is retained in
+the state vector. The positive electrode
 
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
