@@ -750,6 +750,14 @@ the load current.
 The output  equation given by~\cref{eq:spmoutputeqn} includes  a non-zero direct
 feedthrough  dependency  of the  voltage  on  the  input current  modelling  the
 resistive component of the cell's impedance. The full output voltage is given by
+\begin{align}
+    \begin{autobreak}
+        V_\text{cell} = \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
+        - \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
+        + U_\text{pos}
+        - U_\text{neg}
+    \end{autobreak}
+\end{align}
 
 \subsection{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
