@@ -605,30 +605,32 @@ not  possible to  represent  the  \gls{spm} as  the  classical \gls{lti}  system
 of~\cref{eq:LTIstatespace}. Instead, the \gls{spm} can be summarised by a system
 of linear state equations together with the single non-linear output equation.
 
-The state equation is
-
-\begin{equation}
-    \setstackgap{L}{1.2\baselineskip}
+The state equation is given by
+\begin{equation}\label{eq:fourstatesmatrixvec}
+    \setstackgap{L}{1.5\baselineskip}
     \fixTABwidth{T}
     \diff*{\parenMatrixstack{
-            \vphantom{\frac{D_\spos}{R_\ppos^2}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
             \mean{q}_\text{pos} \\
-            \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            % \vphantom{\frac{D_\sneg}{R_\pneg^2}}
             \mean{q}_\text{neg} \\
-            \vphantom{\frac{D_\spos}{R_\ppos^2}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            % \vphantom{\frac{D_\spos}{R_\ppos^2}}
             \mean{c}_\spos \\
-            \vphantom{\frac{D_\sneg}{R_\pneg^2}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            % \vphantom{\frac{D_\sneg}{R_\pneg^2}}
             \mean{c}_\sneg
         }
     }{t}
-    = \parenMatrixstack{
-        -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 & 0 \\
-        0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 & 0 \\
-        \vphantom{\frac{D_\spos}{R_\ppos^2}}
-        0                            & 0                            & 0 & 0 \\
-        \vphantom{\frac{D_\sneg}{R_\pneg^2}}
-        0                            & 0                            & 0 & 0
-    }
+    = \underbrace{\parenMatrixstack{
+            -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 & 0 \\
+            0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 & 0 \\
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            0                            & 0                            & 0 & 0 \\
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            0                            & 0                            & 0 & 0
+    }}_{A}
     \parenMatrixstack{
         \vphantom{\frac{D_\spos}{R_\ppos^2}}
         \mean{q}_\text{pos} \\
@@ -639,10 +641,27 @@ The state equation is
         \vphantom{\frac{D_\sneg}{R_\pneg^2}}
         \mean{c}_\sneg
     }
+    +
+    \underbrace{\parenMatrixstack{
+            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A l_\text{pos} a_\spos F} \\
+            \frac{45}{2} \frac{-1}{R_\pneg^2 A l_\text{neg} a_\sneg F} \\
+            \hphantom{\frac{45}{2}} \frac{\hphantom{-}3}{R_\ppos  A l_\text{pos} a_\spos F} \\
+            \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A l_\text{neg} a_\sneg F}
+    }}_{B}
+    I(t)
 \end{equation}
+which corresponds to the classical \gls{lti} form
+\begin{equation}
+    \dot{\mathbf{x}} = A\,\mathbf{x} + B\,\mathbf{u} \\
+\end{equation}
+where      $\mathbf{x}     =      \vect{\mean{q}_\text{pos},\mean{q}_\text{neg},
+\mean{c}_\spos,  \mean{c}_\sneg},   \,  x   ∈  \mathbb{R}^{4  \times   1}$  is
+the  state  vector.  The  scalar   system  input,  $\mathbf{u}  ∈  \mathbb{R}$
+is  the  applied  current  $I(t)$.  The  system  matrix,  $A  ∈  \mathbb{R}^{4
+\times  4}$  and  input  matrix,  $B ∈  \mathbb{R}^{4  \times  1}$  are  shown
+in~\cref{eq:fourstatesmatrixvec}.
 
-% \diff*{\mean{q}_j}{t}   = - 30\frac{D_\sj}{R_\pj^2} - \frac{45}{2}\frac{j_\nj}{R_\pj^2} \\
-% \diff*{\mean{c}_\sj}{t} = -3\frac{j_\nj}{R_\pj}
+
 The total number of moles of lithium in the system is given by
 \begin{equation}\label{eq:totallithiummoles}
     n_\text{Li} = \frac{ε_\spos \, l_\text{pos}\, A}{\frac{4}{3} π R_\ppos^3} ∫_0^{R_\ppos} 4 π r^2 c_\spos(r,t) \, dr

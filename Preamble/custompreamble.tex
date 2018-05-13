@@ -39,6 +39,8 @@
 \newcommand{\pneg}{\ensuremath{{\text{p}_\text{neg}}}}
 \newcommand{\ppos}{\ensuremath{{\text{p}_\text{pos}}}}
 \newcommand{\nj}{\ensuremath{{\text{n}_j}}}
+\newcommand{\npos}{\ensuremath{{\text{n}_\text{pos}}}}
+\newcommand{\nneg}{\ensuremath{{\text{n}_\text{neg}}}}
 \newcommand{\sjsurf}{\ensuremath{{\text{s,surf}_j}}}
 \newcommand{\sjmax}{\ensuremath{{\text{s,max}_j}}}
 \newcommand{\snegmax}{\ensuremath{{\text{s,max}_\text{neg}}}}
@@ -109,3 +111,22 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \usepackage{tabstackengine}
 \stackMath
 
+\ExplSyntaxOn
+
+\NewDocumentCommand \vect { s o m }
+{
+    \IfBooleanTF {#1}
+    { \vectaux*{#3} }
+    { \IfValueTF {#2} { \vectaux[#2]{#3} } { \vectaux{#3} } }
+    ^T
+}
+
+\DeclarePairedDelimiterX \vectaux [1] {\lbrack} {\rbrack}
+{ \, \dbacc_vect:n { #1 } \, }
+
+\cs_new_protected:Npn \dbacc_vect:n #1
+{
+    \seq_set_split:Nnn \l_tmpa_seq { , } { #1 }
+    \seq_use:Nn \l_tmpa_seq { \enspace }
+}
+\ExplSyntaxOff
