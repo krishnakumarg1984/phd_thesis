@@ -430,10 +430,12 @@ simple linear  relationship between the  rate evolution of evolution  of average
 This further implies that the \gls{soc} of the cell has a linear rate-dependence
 on the externally applied current. Furthermore, due to the elimination of radial
 discretisation, the  computation of \gls{soc}  given by~\cref{eq:socinitialdefn}
-reduces  to  simply  the  ratio  of  bulk  (average)  concentration  to  surface
-concentration and is given by
+reduces  to  the   tasks  of  first  computing  the  ratio   of  bulk  (average)
+concentration to surface concentration and then  adjusting it to account for the
+useable  stoichiometry limits  for that  electrode. Thus,  the \gls{soc}  of the
+\gls{spm} can be computed as
 \begin{equation}
-    z = \frac{\mean{c}_\sneg}{c_\snegmax}
+    z = \frac{\tfrac{\mean{c}_\sneg}{c_\snegmax} - θ_\minneg}{θ_\maxneg - θ_\minneg}
 \end{equation}
 where $\mean{c}_\sneg$ is obtained by solving~\cref{eq:csmeanevolution} for the
 negative electrode.
