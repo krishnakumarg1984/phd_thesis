@@ -38,7 +38,6 @@ tlmgr install   \
     appendix \
     arev \
     arydshln \
-    autobreak \
     auto-pst-pdf \
     auto-pst-pdf-lua \
     babel-german \
