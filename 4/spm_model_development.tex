@@ -280,9 +280,9 @@ presented  in  Domenico~\etal~\cite{DiDomenico2010}.  In  summary,  by  assuming
 a  uniform   charge  density   throughout  the   thickness  of   each  electrode
 (see~\cref{subsec:basicspmassumptions}),~\cref{eq:csfluxsurface} becomes
 \begin{align}
-    j_\nj(t)                       &= ± \frac{I(t)}{A l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
+    j_\nj(t)                       &= ± \frac{I(t)}{A \, l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
     \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= ∓ \frac{I}{A l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
+    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= ∓ \frac{I}{A \, l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
 wherein   the  load   current  $I(t)   >  0$   for  discharge,   whose  explicit
 time-dependence has been  omitted in~\cref{eq:csfluxsurfacefinal} for consistent
@@ -505,7 +505,7 @@ The    expression    for   overpotential    $η_j$    can    be   obtained    by
 rearranging~\cref{eq:BVwithalphahalf}    whilst    substituting   for    $j_\nj$
 from~\cref{eq:uniformcurrdensity} and is given by
 \begin{equation}\label{eq:overpotential_j}
-    η_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
+    η_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A \, l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
 \end{equation}
 
 \subsubsection*{Cell Terminal Voltage}\label{subsec:basicspmcellterminalvoltage}
@@ -553,15 +553,15 @@ The state equation is given by
     \setstackgap{L}{1.5\baselineskip}
     \fixTABwidth{T}
     \diff*{\parenMatrixstack{
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             \mean{q}_\text{pos} \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             % \vphantom{\frac{D_\sneg}{R_\pneg^2}}
             \mean{q}_\text{neg} \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             % \vphantom{\frac{D_\spos}{R_\ppos^2}}
             \mean{c}_\spos \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             % \vphantom{\frac{D_\sneg}{R_\pneg^2}}
             \mean{c}_\sneg
         }
@@ -569,9 +569,9 @@ The state equation is given by
     = \underbrace{\parenMatrixstack{
             -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 & 0 \\
             0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 & 0 \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             0                            & 0                            & 0 & 0 \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             0                            & 0                            & 0 & 0
     }}_{A}
     \parenMatrixstack{
@@ -586,10 +586,10 @@ The state equation is given by
     }
     +
     \underbrace{\parenMatrixstack{
-            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A l_\text{pos} a_\spos F} \\
-            \frac{45}{2} \frac{-1}{R_\pneg^2 A l_\text{neg} a_\sneg F} \\
-            \hphantom{\frac{45}{2}} \frac{\hphantom{-}3}{R_\ppos  A l_\text{pos} a_\spos F} \\
-            \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A l_\text{neg} a_\sneg F}
+            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A \, l_\text{pos} a_\spos F} \\
+            \frac{45}{2} \frac{-1}{R_\pneg^2 A \, l_\text{neg} a_\sneg F} \\
+            \hphantom{\frac{45}{2}} \frac{\hphantom{-}3}{R_\ppos  A \, l_\text{pos} a_\spos F} \\
+            \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A \, l_\text{neg} a_\sneg F}
     }}_{B}
     I(t)
 \end{equation}
@@ -653,18 +653,18 @@ of the state dynamics of the conventional \gls{spm}
     \setstackgap{L}{1.5\baselineskip}
     \fixTABwidth{T}
     \diff*{\parenMatrixstack{
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             \mean{q}_\text{pos} \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             \mean{q}_\text{neg} \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
-            \mean{c}_\spos
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
+            \mean{c}_\sneg
         }
     }{t}
     = \underbrace{\parenMatrixstack{
             -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0  \\
             0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0  \\
-            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A l_\text{pos} a_\spos F}}
+            \vphantom{\frac{45}{2} \frac{1}{R_\ppos^2 A \, l_\text{pos} a_\spos F}}
             0                            & 0                            & 0
     }}_{A}
     \parenMatrixstack{
@@ -673,13 +673,13 @@ of the state dynamics of the conventional \gls{spm}
         \vphantom{\frac{D_\sneg}{R_\pneg^2}}
         \mean{q}_\text{neg} \\
         \vphantom{\frac{D_\spos}{R_\ppos^2}}
-        \mean{c}_\spos
+        \mean{c}_\sneg
     }
     +
     \underbrace{\parenMatrixstack{
-            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A l_\text{pos} a_\spos F} \\
-            \frac{45}{2} \frac{-1}{R_\pneg^2 A l_\text{neg} a_\sneg F} \\
-            \hphantom{\frac{45}{2}} \frac{\hphantom{-}3}{R_\ppos  A l_\text{pos} a_\spos F}
+            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A \, l_\text{pos} a_\spos F} \\
+            \frac{45}{2} \frac{-1}{R_\pneg^2 A \, l_\text{neg} a_\sneg F} \\
+            \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A \, l_\text{neg} a_\sneg F}
     }}_{B}
     I(t)
 \end{equation}
@@ -698,7 +698,7 @@ voltage is given by
     V_\text{cell}(t) = \frac{2 R T}{F }\sinh^{-1} \left( \frac{- I(t)}{2 A
     l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e} c_\spossurf(t)
     \left(c_\sposmax - c_\spossurf(t)\right)}}\right) \\
-    - \frac{2 R T}{F }\sinh^{-1} \left( \frac{I(t)}{2 A l_\text{neg} a_\sneg F
+    - \frac{2 R T}{F }\sinh^{-1} \left( \frac{I(t)}{2 A \, l_\text{neg} a_\sneg F
     k_\negr \sqrt{c_\text{e} c_\snegsurf(t) \left(c_\snegmax - c_\snegsurf(t)\right)}}\right) \\
     + \mathcal{U}_\text{pos}\left(c_\spossurf(t)\right) -
     \mathcal{U}_\text{neg}\left(c_\snegsurf(t)\right)
@@ -707,9 +707,10 @@ wherein  the solid  phase surface  concentration at  each electrode  $c_\sjsurf$
 is   obtained  from   its   corresponding  bulk   concentration  $c_\sjavg$   by
 rearranging~\cref{eq:csurffromcsavg} and is given by
 \begin{align}
-    c_\spossurf &= \mean{c}_\spos  + \frac{8R_\ppos}{35} \mean{q}_\text{pos} -\frac{R_\ppos}{35 D_\spos A l_\text{pos} a_\spos F} I(t) \\
-    c_\snegsurf &= \mean{c}_\sneg  + \frac{8R_\pneg}{35} \mean{q}_\text{neg} -\frac{R_\pneg}{35 D_\sneg A l_\text{neg} a_\sneg F} I(t)\label{eq:csurfnegfromcavgneg}
+    c_\spossurf &= \mean{c}_\spos  + \frac{8R_\ppos}{35} \mean{q}_\text{pos} -\frac{R_\ppos}{35 D_\spos A \, l_\text{pos} a_\spos F} I(t) \\
+    c_\snegsurf &= \mean{c}_\sneg  + \frac{8R_\pneg}{35} \mean{q}_\text{neg} -\frac{R_\pneg}{35 D_\sneg A \, l_\text{neg} a_\sneg F} I(t)\label{eq:csurfnegfromcavgneg}
 \end{align}
+where $I(t) > 0 $ for discharge.
 
 Given   the    initial   \gls{soc}   of    the   cell   $z(0)$,    the   initial
 bulk    concentration    of    the    negative    electrode    at    equilibrium
