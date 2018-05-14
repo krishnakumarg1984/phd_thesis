@@ -604,11 +604,11 @@ is  the  applied  current  $I(t)$.  The  system  matrix,  $A  ∈  \mathbb{R}^{4
 \times  4}$  and  input  matrix,  $B ∈  \mathbb{R}^{4  \times  1}$  are  shown
 in~\cref{eq:fourstatesmatrixvec}.
 
-For  state  estimation  purposes,  it  is   important  to  keep  the  number  of
-elements  in the  state vector  as small  as possible  by eliminating  redundant
-variables.  Di~Dominico~\etal{}~\cite{DiDomenico2010}  noted  that  with  output
-voltage as the only measured quantity,  the observablity of the four-state model
-of~\cref{eq:fourstatesmatrixvec} is adversely affected. Consequently, the
+For state estimation and controller design purposes, it is important to keep the
+number  of elements  in the  state vector  as small  as possible  by eliminating
+redundant variables.  Di~Dominico~\etal{}~\cite{DiDomenico2010} noted  that with
+output voltage as the only measured quantity, the observablity of the four-state
+model of~\cref{eq:fourstatesmatrixvec} is  adversely affected. Consequently, the
 following state-reduction approach is proposed.
 
 The total number of moles of lithium in the system is given by
@@ -636,8 +636,9 @@ in~\cref{eq:totallithiumsimplified}
 
 As   per~\cref{eq:bulkconcrelationship},  the   time  evolution   of  the   bulk
 concentration  of one  electrode can  be obtained  as a  function of  the other.
-Furthermore, Di~Domenico~\etal{} show that the bulk concentrations themselves
-can be directly related through their stoichiometric factors as
+Furthermore, Di~Domenico~\etal{}  show that the  diffusion dynamics of  the bulk
+concentrations can be algebraically related through their stoichiometric factors
+as
 \begin{equation}\label{eq:csposbulkfromcsnegbulk}
     \mean{c}_\spos(t) = c_\sposmax \, \bigg[\frac{\mean{c}_\sneg(t)- θ_\minneg
     c_\snegmax}{\left(θ_\maxneg - θ_\minneg\right)c_\snegmax} \left(θ_\maxpos - θ_\minpos \right) + θ_\minpos \bigg]
