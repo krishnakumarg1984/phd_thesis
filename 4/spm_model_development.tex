@@ -638,7 +638,7 @@ As   per~\cref{eq:bulkconcrelationship},  the   time  evolution   of  the   bulk
 concentration  of one  electrode can  be obtained  as a  function of  the other.
 Furthermore, Di~Domenico~\etal{} show that the bulk concentrations themselves
 can be directly related through their stoichiometric factors as
-\begin{equation}\label{eq:csfluxinitialcondition}
+\begin{equation}\label{eq:csposbulkfromcsnegbulk}
     \mean{c}_\spos(t) = c_\sposmax \, \bigg[\frac{\mean{c}_\sneg(t)- θ_\minneg
     c_\snegmax}{\left(θ_\maxneg - θ_\minneg\right)c_\snegmax} \left(θ_\maxpos - θ_\minpos \right) + θ_\minpos \bigg]
 \end{equation}
@@ -708,7 +708,13 @@ is   obtained  from   its   corresponding  bulk   concentration  $c_\sjavg$   by
 rearranging~\cref{eq:csurffromcsavg} and is given by
 \begin{align}
     c_\spossurf &= \mean{c}_\spos  + \frac{8R_\ppos}{35} \mean{q}_\text{pos} -\frac{R_\ppos}{35 D_\spos A l_\text{pos} a_\spos F} I(t) \\
-    c_\snegsurf &= \mean{c}_\sneg  + \frac{8R_\pneg}{35} \mean{q}_\text{neg} -\frac{R_\pneg}{35 D_\sneg A l_\text{neg} a_\sneg F} I(t)
+    c_\snegsurf &= \mean{c}_\sneg  + \frac{8R_\pneg}{35} \mean{q}_\text{neg} -\frac{R_\pneg}{35 D_\sneg A l_\text{neg} a_\sneg F} I(t)\label{eq:csurfnegfromcavgneg}
 \end{align}
 
-
+Given   the    initial   \gls{soc}   of    the   cell   $z(0)$,    the   initial
+bulk    concentration    of    the    negative    electrode    at    equilibrium
+$c_\sneg(0)$  is  obtained  by~\cref{eq:csfluxinitialcondition}. The  system  of
+equations~\crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}  form  a
+state-space representation of the conventional \gls{spm}. This state-space model
+can be simulated as an~\gls{ivp} or  used as the plant model in control-oriented
+applications such as for dynamic state estimation.
