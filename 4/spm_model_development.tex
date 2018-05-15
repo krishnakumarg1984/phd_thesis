@@ -713,9 +713,11 @@ rearranging~\cref{eq:csurffromcsavg} and is given by
 \end{align}
 where $I(t) > 0 $ for discharge.
 
-Given   the    initial   \gls{soc}   of    the   cell   $z(0)$,    the   initial
-bulk    concentration    of    the    negative    electrode    at    equilibrium
-$c_\sneg(0)$  is  obtained  by~\cref{eq:csfluxinitialcondition}. The  system  of
+Given   the  initial   \gls{soc}  of   the   cell  $z(0)$,   the  initial   bulk
+concentration  of   the  negative  electrode  at   equilibrium  $c_\sneg(0)$  is
+obtained  by~\cref{eq:csfluxinitialcondition}. The  initial  value  of the  mean
+radial  concentration  flux   in  both  electrodes  $q_j(0)   =  0$.  Therefore,
+the  initial  state  vector  is $\vect{0,0,c_\sneg(0)}$.  Thus,  the  system  of
 equations~\crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}  form  a
 state-space representation of the conventional \gls{spm}. This state-space model
 can be simulated as an~\gls{ivp} or  used as the plant model in control-oriented
