@@ -2,13 +2,30 @@
 % vim:nospell
 \documentclass{article}
 \usepackage[most,minted]{tcolorbox}
-\newtcbinputlisting[auto counter,number within=section]{\mylisting}[2][]{%
-listing engine=minted,minted language=java,minted style=colorful, listing file={#2}, title=Listing (\thetcbcounter): {#1}, listing only, breakable}
+\newtcbinputlisting[auto counter,number within=section,list inside=mypyg]{\sourcecodelisting}[2][]{%
+    listing engine=minted,
+    minted language=java,
+    minted style=colorful,
+    listing file={#2},
+    title=Listing (\thetcbcounter): {#1},
+    fonttitle=\bfseries,
+    listing only,
+    list entry={\protect\numberline{\thetcbcounter}},
+    enhanced,
+    breakable,
+    drop fuzzy shadow,
+    minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm},
+    left=5mm,
+    overlay={\begin{tcbclipinterior}
+            \fill[red!20!blue!20!white] (frame.south west) rectangle ([xshift=5mm]frame.north west);
+        \end{tcbclipinterior}
+    },
+}
 
 \begin{document}
 \section{Test}
 
-\mylisting[Hello world]{hello_world.java}
+\sourcecodelisting[Hello world]{hello_world.java}
 
 
 \end{document}
