@@ -133,7 +133,7 @@ acs-*.bib
 # listings
 *.lol
 *.listing
-*.*pyg
+*.*pyg*
 
 # makeidx
 *.idx

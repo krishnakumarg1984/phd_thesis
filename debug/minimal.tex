@@ -1,31 +1,57 @@
 % !TEX-program = lualatex
 % vim:nospell
 \documentclass{article}
+\newcounter{filePrg}
 \usepackage[most,minted]{tcolorbox}
-\newtcbinputlisting[auto counter,number within=section,list inside=mypyg]{\sourcecodelisting}[2][]{%
+\usepackage{xcolor}
+% \definecolor{bg}{rgb}{0.95,0.95,0.95}
+\definecolor{imperiallightgray}{RGB}{235,238,238}
+\definecolor{imperialnavy}{RGB}{0,33,71}
+% \definecolor{imperiallightblue}{RGB}{212,239,252}
+\definecolor{imperialcoolgray}{RGB}{157,157,157}
+\definecolor{offwhite}{RGB}{255,255,244}
+
+\usepackage{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+\newtcbinputlisting[use counter=filePrg,number within=section,list inside=mypyg]{\matlabcodelisting}[3][]{%
     listing engine=minted,
-    minted language=java,
-    minted style=colorful,
+    minted language=matlab,
+    % minted style=algol_nu, % xcode,emacs, perldoc, pastie, borland, vs, vim, tango
     listing file={#2},
     title=Listing (\thetcbcounter): {#1},
     fonttitle=\bfseries,
     listing only,
-    list entry={\protect\numberline{\thetcbcounter}},
-    enhanced,
+    list entry={\protect\numberline{\thetcbcounter} #1},
+    enhanced jigsaw,
     breakable,
     drop fuzzy shadow,
-    minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm},
+    minted options={fontsize=\footnotesize,breaklines,autogobble,linenos,numbersep=3mm,mathescape,breakanywhere=true},
+    % colback=offwhite,
+    colback=white,
+    colframe=imperialnavy,
+    % colframe=black,
+    % coltitle=white,
+    % boxrule=0.2mm,
     left=5mm,
     overlay={\begin{tcbclipinterior}
-            \fill[red!20!blue!20!white] (frame.south west) rectangle ([xshift=5mm]frame.north west);
+            \fill[imperiallightgray] (frame.south west) rectangle ([xshift=5mm]frame.north west);
         \end{tcbclipinterior}
     },
+    label=#3
 }
 
+\crefname{filePrg}{listing}{listings}
+\Crefname{filePrg}{Listing}{Listings}
+
 \begin{document}
+\tcblistof{mypyg}{My Listings}
 \section{Test}
 
-\sourcecodelisting[Hello world]{hello_world.java}
+\matlabcodelisting[SPM Implementation Example in MATLAB]{cts_time_spm_simulation.m}{sc:spm}
 
+From~\cref{sc:spm}, we see a code.
+
+\Cref{sc:spm} shows a lot of info
 
 \end{document}
