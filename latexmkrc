@@ -24,6 +24,8 @@ push @generated_exts, "synctex.gz";
 push @generated_exts, "tar.gz";
 push @generated_exts, "tdo";
 push @generated_exts, "thm";
+push @generated_exts, "listing";
+push @generated_exts, "mypyg";
 
 
 $pdflatex = 'lualatex %O %S --shell-escape --bibtex';
