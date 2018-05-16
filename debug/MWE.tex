@@ -1,16 +1,18 @@
 % !TEX-program = lualatex
-\documentclass{book}
-\usepackage[newfloat=true,chapter]{minted}
-\SetupFloatingEnvironment{listing}{placement=htp}
-\SetupFloatingEnvironment{listing}{name=Program code}
-\SetupFloatingEnvironment{listing}{listname=List of Program code}
+% vim:set nospell
+\documentclass{article}
 \usepackage{xcolor}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
+% \usepackage[newfloat=true,chapter]{minted}
+% \SetupFloatingEnvironment{listing}{placement=htp}
+% \SetupFloatingEnvironment{listing}{name=Program code}
+% \SetupFloatingEnvironment{listing}{listname=List of Program code}
 % \usepackage{mdframed}
 % \surroundwithmdframed{minted}
-\usepackage[many]{tcolorbox}
-\tcbuselibrary{minted}
-\newtcblisting{myjava}{listing engine=minted,
+\usepackage[most,minted]{tcolorbox}
+\newtcblisting[auto counter,,number within=section,list inside=mypyg]{myjava}{listing engine=minted,
+    title={Listing \thetcbcounter},fonttitle=\bfseries,
+    list entry={\protect\numberline{\thetcbcounter}}
     minted style=colorful,
     minted language=java,
     minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm},
@@ -20,20 +22,10 @@
 rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
 
 
-
 \begin{document}
-\listoflistings
-\begin{tcblisting}{minted style=trac, listing only,
-        title=Example of a listing.,fonttitle=\bfseries,
-        minted language=c,
-        minted options={autogobble,fontsize=\small}
-    }
-    int main() {
-        printf("hello, world");
-        return 0;
-    }
-    % \label{lst:example}
-\end{tcblisting}
+% \listoflistings
+\tcblistof{mypyg}{My Listings}
+\section{Test}
 
 \begin{myjava}
     public class HelloWorld {
@@ -44,5 +36,6 @@ rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
     }
 \end{myjava}
 
-Listing \ref{sc:firstlisting} contains an example of a listing.
+% Listing \ref{sc:firstlisting} contains an example of a listing.
+
 \end{document}
