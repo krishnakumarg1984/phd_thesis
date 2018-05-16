@@ -1,0 +1,23 @@
+% !TEX-program = lualatex
+\documentclass{book}
+\usepackage[newfloat=true,chapter]{minted}
+\SetupFloatingEnvironment{listing}{placement=htp}
+\SetupFloatingEnvironment{listing}{name=Program code}
+\SetupFloatingEnvironment{listing}{listname=List of Program code}
+\usepackage{xcolor}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+% \usepackage{mdframed}
+% \surroundwithmdframed{minted}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted}
+
+\begin{document}
+\listoflistings
+\begin{tcblisting}{listing engine=minted,
+        minted language=c,
+        minted options={}
+    }
+\end{document}
+
+Listing \ref{sc:firstlisting} contains an example of a listing.
+\end{document}
