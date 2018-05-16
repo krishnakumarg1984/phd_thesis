@@ -27,6 +27,8 @@
 \usepackage{lualatex-math}
 \usepackage{subcaption}
 \usepackage[nameinlink]{cleveref}
+\crefname{filePrg}{listing}{listings}
+\Crefname{filePrg}{Listing}{Listings}
 \newcommand{\crefrangeconjunction}{--}
 \DeclareSIUnit{\amphours}{Ah}
 \loadglsentries{0_frontmatter/glossary}
@@ -83,7 +85,7 @@ researchers must make clear to others the licence terms of this work
 \listoffigures	% print list of figures
 \cleardoublepage
 \listoftables  % print list of tables
-
+\tcblistof{mypyg}{My Listings} % list of listings
 
 %: ----------------------- glossary ------------------------
 
