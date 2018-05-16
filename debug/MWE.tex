@@ -8,16 +8,41 @@
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 % \usepackage{mdframed}
 % \surroundwithmdframed{minted}
-\usepackage{tcolorbox}
+\usepackage[many]{tcolorbox}
 \tcbuselibrary{minted}
+\newtcblisting{myjava}{listing engine=minted,
+    minted style=colorful,
+    minted language=java,
+    minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm},
+    colback=blue!5!white,colframe=blue!75!black,listing only,
+    left=5mm,enhanced,
+    overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
+
+
 
 \begin{document}
 \listoflistings
-\begin{tcblisting}{listing engine=minted,
+\begin{tcblisting}{minted style=trac, listing only,
+        title=Example of a listing.,fonttitle=\bfseries,
         minted language=c,
-        minted options={}
+        minted options={autogobble,fontsize=\small}
     }
-\end{document}
+    int main() {
+        printf("hello, world");
+        return 0;
+    }
+    % \label{lst:example}
+\end{tcblisting}
+
+\begin{myjava}
+    public class HelloWorld {
+        // A 'Hello World' in Java
+        public static void main(String[] args) {
+            System.out.println("Hello World!");
+        }
+    }
+\end{myjava}
 
 Listing \ref{sc:firstlisting} contains an example of a listing.
 \end{document}
