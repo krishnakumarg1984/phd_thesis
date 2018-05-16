@@ -1,5 +1,5 @@
 % !TEX-program = lualatex
-% vim:set nospell
+% vim:nospell
 \documentclass{article}
 \usepackage{xcolor}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
@@ -10,32 +10,35 @@
 % \usepackage{mdframed}
 % \surroundwithmdframed{minted}
 \usepackage[most,minted]{tcolorbox}
-\newtcblisting[auto counter,,number within=section,list inside=mypyg]{myjava}{listing engine=minted,
-    title={Listing \thetcbcounter},fonttitle=\bfseries,
-    list entry={\protect\numberline{\thetcbcounter}}
-    minted style=colorful,
-    minted language=java,
-    minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm},
-    colback=blue!5!white,colframe=blue!75!black,listing only,
-    left=5mm,enhanced,
-    overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
-rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
-
+% \NewTCBInputListing[auto counter,,number within=section,list inside=mypyg]{\myincludedjava}[2][]{%
+%     listing engine=minted,
+%     listing file = {#2},
+%     title={Listing~\thetcbcounter: #2},fonttitle=\bfseries,
+%     list entry={\protect\numberline{\thetcbcounter}},enhanced,breakable,
+%     minted style=colorful,
+%     minted language=java,
+%     minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm},
+%     colback=blue!5!white,colframe=blue!75!black,listing only, drop fuzzy shadow,
+%     left=5mm,enhanced,
+%     overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+% rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
+\newtcbinputlisting{\mylisting}[2][]{%
+    listing engine=minted,minted language=java,minted style=colorful,
+    listing file={#2},
+    title=Listing (\thetcbcounter) of \texttt{#2},
+    colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,
+listing only,breakable,#1}
 
 \begin{document}
 % \listoflistings
-\tcblistof{mypyg}{My Listings}
+% \tcblistof{mypyg}{My Listings}
 \section{Test}
 
-\begin{myjava}
-    public class HelloWorld {
-        // A 'Hello World' in Java
-        public static void main(String[] args) {
-            System.out.println("Hello World!");
-        }
-    }
-\end{myjava}
+% \myincludedjava[demo]{hello_world.java}
+% \begin{myincludedjava}{A long title}{filename}
+% \end{myincludedjava}
 
+\mylisting[]{hello_world.java}
 % Listing \ref{sc:firstlisting} contains an example of a listing.
 
 \end{document}
