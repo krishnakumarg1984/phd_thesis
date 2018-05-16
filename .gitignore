@@ -132,6 +132,8 @@ acs-*.bib
 
 # listings
 *.lol
+*.listing
+*.*pyg
 
 # makeidx
 *.idx
@@ -295,3 +297,4 @@ beamercolorthemeC*.sty
 *.otf
 
 MWE.pdf
+minimal.pdf

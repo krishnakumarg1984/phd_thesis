@@ -1,0 +1,14 @@
+% !TEX-program = lualatex
+% vim:nospell
+\documentclass{article}
+\usepackage[most,minted]{tcolorbox}
+\newtcbinputlisting[auto counter,number within=section]{\mylisting}[2][]{%
+listing engine=minted,minted language=java,minted style=colorful, listing file={#2}, title=Listing (\thetcbcounter): {#1}, listing only, breakable}
+
+\begin{document}
+\section{Test}
+
+\mylisting[Hello world]{hello_world.java}
+
+
+\end{document}
