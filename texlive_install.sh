@@ -160,6 +160,7 @@ tlmgr install   \
     tocbibind \
     todonotes \
     tracklang \
+    trimspaces \
     txfonts \
     ucharcat \
     unicode-math \
