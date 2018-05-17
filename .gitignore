@@ -297,4 +297,4 @@ beamercolorthemeC*.sty
 *.otf
 
 MWE.pdf
-minimal.pdf
+*minimal.pdf
