@@ -55,6 +55,7 @@ tlmgr install   \
     cmbright \
     csquotes \
     datatool \
+    dehyph-exptl \
     diffcoeff \
     doclicense \
     enumitem \
@@ -78,7 +79,10 @@ tlmgr install   \
     framed \
     fvextra \
     glossaries \
+    glossaries-english \
     glossaries-extra \
+    glossaries-german \
+    hyphen-german \
     ifetex \
     iffont \
     ifmtarg \
