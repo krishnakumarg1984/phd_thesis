@@ -58,6 +58,7 @@ tlmgr install   \
     diffcoeff \
     doclicense \
     enumitem \
+    environ \
     epstopdf \
     eso-pic \
     esstix \
