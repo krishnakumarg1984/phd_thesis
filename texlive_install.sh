@@ -136,6 +136,7 @@ tlmgr install   \
     pgf \
     pgfplots \
     placeins \
+    plex \
     plex-otf \
     pstricks \
     pxfonts \
