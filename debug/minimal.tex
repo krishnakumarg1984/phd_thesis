@@ -1,6 +1,24 @@
 % !TEX-program = lualatex
 % vim:nospell
 \documentclass{article}
+\usepackage[T1]{fontenc}
+% \usepackage[scale=0.95,ttdefault]{AnonymousPro}
+% \usepackage{bera}
+% \usepackage{lmodern}
+\usepackage{fontspec}
+\usepackage[usefilenames,% Important for xelatex
+            RM={Scale=0.94},
+            SS={Scale=0.94},
+            SScon={Scale=0.94},
+            TT={Scale=MatchLowercase,FakeStretch=0.9},
+            DefaultFeatures={Ligatures=Common}]{plex-otf}
+% \usepackage[usefilenames,% Important for xelatex
+%             RM={Scale=0.94},
+%             SS={Scale=0.94},
+%             SScon={Scale=0.94},
+%             TT={Scale=MatchLowercase,FakeStretch=0.9},
+%             DefaultFeatures={Ligatures=Common}]{AnonymousPro}
+\usepackage{plex-otf}
 \newcounter{filePrg}
 \usepackage[most,minted]{tcolorbox}
 \usepackage{xcolor}
