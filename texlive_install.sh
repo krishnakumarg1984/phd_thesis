@@ -65,6 +65,7 @@ tlmgr install   \
     etoolbox \
     eulervm \
     excludeonly \
+    fancyvrb \
     filehook \
     float \
     fontloader-luaotfload \
@@ -73,6 +74,8 @@ tlmgr install   \
     fourier \
     fouriernc \
     fp \
+    framed \
+    fvextra \
     glossaries \
     glossaries-extra \
     ifetex \
@@ -97,6 +100,7 @@ tlmgr install   \
     libertinus \
     libertinus-otf \
     libertinust1math \
+    lineno \
     listofitems \
     lm \
     lm-math \
@@ -130,11 +134,13 @@ tlmgr install   \
     pgf \
     pgfplots \
     placeins \
+    plex-otf \
     pstricks \
     pxfonts \
     realscripts \
     relsize \
     setspace \
+    shellesc \
     siunitx \
     stackengine \
     stix \
@@ -144,6 +150,7 @@ tlmgr install   \
     supertabular \
     svg \
     tabstackengine \
+    tcolorbox \
     tex-gyre \
     tex-gyre-math \
     textcase \
@@ -156,6 +163,7 @@ tlmgr install   \
     ucharcat \
     unicode-math \
     units \
+    upquote \
     was \
     wrapfig \
     xcolor \
@@ -167,6 +175,7 @@ tlmgr install   \
     xmpincl \
     xstring \
     xunicode
+
 
 
 # Keep no backups (not required, simply makes cache bigger)
