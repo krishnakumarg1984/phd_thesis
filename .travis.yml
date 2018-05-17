@@ -14,7 +14,7 @@ cache:
     - $HOME/.cache/pip
 script:
   # Prefix command with travis_wait x so it times out after x mins
-  # - latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=nonstopmode main.tex
-  - latexmk --shell-escape --bibtex -pdf # for debug purposes in travis CI  online
+  - latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=nonstopmode main.tex
+  # - latexmk --shell-escape --bibtex -pdf # for debug purposes in travis CI  online
   - ./dropbox_uploader.sh upload main.pdf ${TRAVIS_BRANCH}/main-latest.pdf
   - ./dropbox_uploader.sh upload main.pdf ${TRAVIS_BRANCH}/historic_versions/main-${TRAVIS_COMMIT}.pdf

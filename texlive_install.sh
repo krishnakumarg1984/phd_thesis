@@ -53,6 +53,7 @@ tlmgr install   \
     chemformula \
     cleveref \
     cmbright \
+    colortbl \
     csquotes \
     datatool \
     dehyph-exptl \
@@ -67,6 +68,7 @@ tlmgr install   \
     etoolbox \
     eulervm \
     excludeonly \
+    fancyhdr \
     fancyvrb \
     filehook \
     float \
@@ -78,10 +80,12 @@ tlmgr install   \
     fp \
     framed \
     fvextra \
+    geometry \
     glossaries \
     glossaries-english \
     glossaries-extra \
     glossaries-german \
+    graphics \
     hyphen-german \
     ifetex \
     iffont \
@@ -160,17 +164,20 @@ tlmgr install   \
     tex-gyre \
     tex-gyre-math \
     textcase \
+    tikz \
     tikzscale \
     titlesec \
     tocbibind \
     todonotes \
     tracklang \
+    translator \
     trimspaces \
     txfonts \
     ucharcat \
     unicode-math \
     units \
     upquote \
+    url \
     was \
     wrapfig \
     xcolor \
