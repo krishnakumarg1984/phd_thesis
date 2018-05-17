@@ -1,3 +1,7 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% vim:nospell
+
 \usepackage{mathtools}
 \usepackage{lualatex-math}
 \usepackage{subcaption}
@@ -6,3 +10,48 @@
 \Crefname{filePrg}{Listing}{Listings}
 \newcommand{\crefrangeconjunction}{--}
 \DeclareSIUnit{\amphours}{Ah}
+
+% Patches for algorithmicx with vertical lines
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% https://tex.stackexchange.com/questions/292815/how-can-i-create-vertical-lines-indentation-in-algorithm-pseudo-code-correctly-w?noredirect=1&lq=1
+\usepackage{etoolbox}
+
+\makeatletter
+% start with some helper code
+% This is the vertical rule that is inserted
+\newcommand*{\algrule}[1][\algorithmicindent]{%
+    \makebox[#1][l]{%
+        \hspace*{.2em}% <------------- This is where the rule starts from
+        \color{imperialcoolgray} \vrule height .75\baselineskip depth .25\baselineskip
+        % \vrule height .75\baselineskip depth .3\baselineskip % https://tex.stackexchange.com/questions/301462/why-are-vertical-rules-dashed-sometimes-with-algorithmic-package
+    }
+}
+
+\newcount\ALG@printindent@tempcnta
+\def\ALG@printindent{%
+    \ifnum \theALG@nested>0% is there anything to print
+        \ifx\ALG@text\ALG@x@notext% is this an end group without any text?
+            % do nothing
+    \else
+        \unskip
+        % draw a rule for each indent level
+        \ALG@printindent@tempcnta=1
+        \loop
+        \algrule[\csname ALG@ind@\the\ALG@printindent@tempcnta\endcsname]%
+        \advance \ALG@printindent@tempcnta 1
+        \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax
+            \repeat
+        \fi
+    \fi
+}
+% the following line injects our new indent handling code in place of the default spacing
+\patchcmd{\ALG@doentity}{\noindent\hskip\ALG@tlm}{\ALG@printindent}{}{\errmessage{failed to patch}}
+\patchcmd{\ALG@doentity}{\item[]\nointerlineskip}{}{}{} % no spurious vertical space
+% end vertical rule patch for algorithmicx
+\makeatother
+
+% https://tex.stackexchange.com/questions/292815/how-can-i-create-vertical-lines-indentation-in-algorithm-pseudo-code-correctly-w?noredirect=1&lq=1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+
