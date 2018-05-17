@@ -148,8 +148,17 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 }
 \ExplSyntaxOff
 
-\setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
-% \setmonofont[Scale=MatchLowercase]{SourceCodePro}
+% \setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
+\setmonofont[%
+            Extension = .otf,
+            UprightFont = *-Text,
+            BoldFont = *-Bold,
+            ItalicFont = *-TextItalic,
+            BoldItalicFont = *-BoldItalic,
+            Scale = MatchLowercase,
+            FakeStretch = 0.9,
+            ]{IBMPlexMono}
+
 
 % \usepackage{autobreak}
 \newtcbinputlisting[use counter=filePrg,number within=chapter,list inside=mypyg]{\matlabcodelisting}[3][]{%
@@ -165,7 +174,7 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     breakable,
     drop fuzzy shadow,
     minted options={
-        fontsize=\footnotesize,
+        fontsize=\scriptsize,
         breaklines,
         autogobble,
         linenos,
