@@ -102,6 +102,7 @@ tlmgr install   \
     libertinus-otf \
     libertinust1math \
     lineno \
+    listings \
     listofitems \
     lm \
     lm-math \
@@ -141,7 +142,6 @@ tlmgr install   \
     realscripts \
     relsize \
     setspace \
-    shellesc \
     siunitx \
     stackengine \
     stix \
