@@ -114,6 +114,7 @@ tlmgr install   \
     metalogo \
     mfirstuc \
     microtype \
+    minted \
     ms \
     mtgreek \
     multirow \
