@@ -49,6 +49,7 @@ tlmgr install   \
     caption \
     ccfonts \
     ccicons \
+    changepage \
     chapterfolder \
     chemformula \
     cleveref \
@@ -121,6 +122,8 @@ tlmgr install   \
     luatex \
     luatex85 \
     luatodonotes \
+    marginnote \
+    marvosym \
     mathdesign \
     mathfixs \
     mathpazo \
@@ -129,6 +132,7 @@ tlmgr install   \
     mfirstuc \
     microtype \
     minted \
+    moreverb \
     ms \
     mtgreek \
     multirow \
@@ -140,12 +144,14 @@ tlmgr install   \
     ntheorem \
     omega \
     onlyamsmath \
+    paracol \
     pdfx \
     pgf \
     pgfplots \
     placeins \
     plex \
     plex-otf \
+    psnfss \
     pstricks \
     pxfonts \
     realscripts \
@@ -164,7 +170,6 @@ tlmgr install   \
     tex-gyre \
     tex-gyre-math \
     textcase \
-    tikz \
     tikzscale \
     titlesec \
     tocbibind \
