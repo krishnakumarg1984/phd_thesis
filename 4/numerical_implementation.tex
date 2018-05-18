@@ -1,0 +1,87 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+The  equations   presented  in~\cref{sec:spmmodeldevelopment}   are  well-known,
+self-sufficient and  fully descriptive so  as to implement  the basic~\gls{spm}.
+Although  numerical implementation  of  circuit-oriented cell  models have  been
+considered~\cite{Plett2004,Plett2004a,Plett2004b,Plett2006}, there  has yet been
+no treatment  of this critical  aspect in \gls{spm} modelling  literature. Since
+this thesis has a strong focus  towards enabling the use of physics-based models
+in an embedded environment, at least the numerical aspects of implementing these
+equations needs to be discussed. The  finer details of real-time programming, in
+particular the integration  of the cell model into the  pack and its interaction
+with other elements and aspects of  a typical vehicular drivetrain controller is
+beyond the scope  of this academic work. Nevertheless, the  discussion here aims
+to lower the barrier to real-time implementation and is a unique contribution of
+this work in the context of the cell modelling art.
+
+
+The equations  in~\cref{sec:spmmodeldevelopment} are derived  in continuous-time
+form. In particular, the  state equation given by~\cref{eq:threestatesmatrixvec}
+describes  the  continuous   time  dynamic  evolution  of   quantities  such  as
+the  bulk  concentration   and  mean  radial  flux  rate.   However,  a  typical
+embedded  controller such  as that  used in  a vehicular  \gls{bms} operates  in
+discrete-time~\cite{Andrea2010}.  This implies  that \emph{samples}  of voltage,
+current  and temperature  measurements  are obtained  at  specific intervals  of
+time,~$T_s$. The  computations of the  model equations and updating  of solution
+variables  (such as  bulk  concentrations and  terminal  voltage) are  performed
+between two successive data acquisition events from the sensors.
+
+
+% Figure from Steve Southward or from plett. Ignore the computational delay
+% analytical solution (but not really applicable in state-estimation tasks)
+% decoupled
+% basic discretisation
+% System transition matrix (matrix exponential)
+% frequency range
+% EPA
+% Power input (lack of measurements in current)
+% Parameter estimation
+% Sampling/quantisation/z-domain/fourier analysis/Pre-conditioning/ZOH
+% Sampled systems are also essential in considering Kalman versions
+% Can talk in depth about Fwd Euler, Tustin vs matrix exponential approach
+% better to perform a vector-update (although certainly it is easy to do scalar
+% update)
+% Block diagram and stuff
+
+% \begin{figure}[htb]
+%     \begin{algorithmic}[1]
+
+%         \Procedure{SUM}{ $\{x\}$}
+
+%         \State $y\gets0$
+%         \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
+%         \State $y\gets y+x(i)$ \Comment{Summing up.}
+%         \EndFor
+
+%         \State \textbf{return}  $y$
+%         \EndProcedure
+%     \end{algorithmic}
+%     \caption[Implementation of a algorithm for calculating a sum.]{Implementation of a algorithm for calculating a sum.}
+%     \label{fig:algorithm1}
+% \end{figure}
+
+% The \textproc{Sum} algorithm shows blah blah blah
+% % inside algorithm,
+% % cases environment, displayed equations, chapter wise algorithm numbering
+% % referencing function names in small caps
+
+% % https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
+
+% % https://tex.stackexchange.com/questions/110412/numbering-in-algorithmicx
+% % https://tex.stackexchange.com/questions/65993/algorithm-numbering
+
+% % https://tex.stackexchange.com/questions/203713/how-can-i-typeset-function-names-as-they-appear-in-algorithmic-environments
+% % https://tex.stackexchange.com/questions/100346/typesetting-listofalgorithms-like-listoffigures-and-listoftables-using-titletoc
+% % https://tex.stackexchange.com/questions/30363/how-do-i-define-a-new-command-in-algorithmicx
+
+% % https://tex.stackexchange.com/questions/67908/customizing-the-algorithmic-package-break-and-loop-labels
+
+% % https://tex.stackexchange.com/questions/69449/avoid-putting-statements-on-the-same-line-with-algorithmicx
+
+% % \usepackage{float}
+% % \newfloat{algorithm}{t}{lop}
+% % Add \floatname{algorithm}{Algorithm} to capitalise the float name

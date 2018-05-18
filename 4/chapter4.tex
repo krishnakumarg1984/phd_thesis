@@ -23,52 +23,16 @@
 \section{\gls{spm} model development}\label{sec:spmmodeldevelopment}
 \input{4/spm_model_development}
 
-\begin{figure}[htb]
-    \begin{algorithmic}[1]
+\section{Numerical Implementation}\label{sec:numericalimplementation}
+\input{4/numerical_implementation}
 
-        \Procedure{SUM}{ $\{x\}$}
+\section{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 
-        \State $y\gets0$
-        \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
-        \State $y\gets y+x(i)$ \Comment{Summing up.}
-        \EndFor
-
-        \State \textbf{return}  $y$
-        \EndProcedure
-    \end{algorithmic}
-    \caption[Implementation of a algorithm for calculating a sum.]{Implementation of a algorithm for calculating a sum.}
-    \label{fig:algorithm1}
-\end{figure}
-
-The \textproc{Sum} algorithm shows blah blah blah
-% inside algorithm,
-% cases environment, displayed equations, chapter wise algorithm numbering
-% referencing function names in small caps
-
-% https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
-
-% https://tex.stackexchange.com/questions/110412/numbering-in-algorithmicx
-% https://tex.stackexchange.com/questions/65993/algorithm-numbering
-
-% https://tex.stackexchange.com/questions/203713/how-can-i-typeset-function-names-as-they-appear-in-algorithmic-environments
-% https://tex.stackexchange.com/questions/100346/typesetting-listofalgorithms-like-listoffigures-and-listoftables-using-titletoc
-% https://tex.stackexchange.com/questions/30363/how-do-i-define-a-new-command-in-algorithmicx
-
-% https://tex.stackexchange.com/questions/67908/customizing-the-algorithmic-package-break-and-loop-labels
-
-% https://tex.stackexchange.com/questions/69449/avoid-putting-statements-on-the-same-line-with-algorithmicx
-
-% \usepackage{float}
-% \newfloat{algorithm}{t}{lop}
-% Add \floatname{algorithm}{Algorithm} to capitalise the float name
-
-% \section{Limitations and Drawbacks}\label{subsec:basicspmlimitations}
 \section{Electrolyte Inclusion}\label{sec:electrolyteinclusion}
 \input{4/electrolyte_inclusion.tex}
 
 \section{New Electrolyte Model}\label{sec:newelectrolytemodel}
 \input{4/new_electrolye_model.tex}
-
 
 
 % ---------------------------------------------------------------------------
