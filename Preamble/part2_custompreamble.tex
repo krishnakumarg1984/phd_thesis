@@ -55,3 +55,14 @@
 
 \newcommand*\Let[2]{\State #1 $\gets$ #2}
 
+\algnewcommand\algorithmicinput{\textbf{Initialise:}}
+\algnewcommand\Initialise{\item[\algorithmicinput]}
+
+\makeatletter
+\algrenewcommand\ALG@beginalgorithmic{\footnotesize}
+\algrenewcommand\algorithmiccomment[2][\normalsize]{{#1\hfill\(\triangleright\) #2}}
+\makeatother
+
+\algblockdefx[NAME]{ISR}{END}%
+[2][Unknown]{\textproc{Interrupt Service Routine} #1(#2)}%
+{\textbf{end}}

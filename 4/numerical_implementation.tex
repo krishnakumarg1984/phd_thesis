@@ -5,30 +5,124 @@
 % vim:textwidth=80 fo=cqt
 
 The  equations   presented  in~\cref{sec:spmmodeldevelopment}   are  well-known,
-self-sufficient and  fully descriptive so  as to implement  the basic~\gls{spm}.
+self-sufficient and  fully descriptive so  as to implement the  basic \gls{spm}.
 Although  numerical implementation  of  circuit-oriented cell  models have  been
 considered~\cite{Plett2004,Plett2004a,Plett2004b,Plett2006}, there  has yet been
 no treatment  of this critical  aspect in \gls{spm} modelling  literature. Since
 this thesis has a strong focus  towards enabling the use of physics-based models
 in an embedded environment, at least the numerical aspects of implementing these
-equations needs to be discussed. The  finer details of real-time programming, in
-particular the integration  of the cell model into the  pack and its interaction
-with other elements and aspects of  a typical vehicular drivetrain controller is
-beyond the scope  of this academic work. Nevertheless, the  discussion here aims
-to lower the barrier to real-time implementation and is a unique contribution of
-this work in the context of the cell modelling art.
+equations needs  to be  discussed. The finer  details and  practical engineering
+consideration of  real-time programming,  in particular  the integration  of the
+cell model into the pack and its  interaction with other elements and aspects of
+a typical vehicular  drivetrain controller is beyond the scope  of this academic
+work. Nevertheless, the  discussion here aims to lower the  barrier to real-time
+implementation and is a  unique contribution of this work in  the context of the
+cell modelling art.
 
+\subsection{Conceptual Overview of Real-Time Processing}
 
 The equations  in~\cref{sec:spmmodeldevelopment} are derived  in continuous-time
 form. In particular, the  state equation given by~\cref{eq:threestatesmatrixvec}
 describes  the  continuous   time  dynamic  evolution  of   quantities  such  as
 the  bulk  concentration   and  mean  radial  flux  rate.   However,  a  typical
-embedded  controller such  as that  used in  a vehicular  \gls{bms} operates  in
-discrete-time~\cite{Andrea2010}.  This implies  that \emph{samples}  of voltage,
-current  and temperature  measurements  are obtained  at  specific intervals  of
-time,~$T_s$. The  computations of the  model equations and updating  of solution
+embedded  controller  such  as  that  used in  a  vehicular  \gls{bms}  operates
+in   discrete-time~\cite{Andrea2010}.  This   implies  that   \emph{samples}  of
+voltage,  current and  temperature measurements  are obtained  at a  period time
+interval~$T_s$. The computations of the model equations and updating of solution
 variables  (such as  bulk  concentrations and  terminal  voltage) are  performed
 between two successive data acquisition events from the sensors.
+
+
+Control-oriented  physics-based cell  models  such as  the  \gls{spm} and  their
+associated  computations can  be  considered  as a  modular  subsystem within  a
+\gls{bms}. A  single \gls{bms} often  provides a  whole host of  other auxiliary
+functionality such as cell  balancing, protection, diagnostics and data-logging.
+Although  thermal   management  tasks  are  typically   delegated  to  dedicated
+controllers,  the  \gls{bms} software  routines  handle  data exchanged  between
+various controllers  on the  vehicular communication bus.  Whilst some  of these
+tasks such  as book-keeping and  diagnostics can be done  at a low  rate, others
+such as  those involving measurements  from cell and  model-related computations
+need to be performed with high priority.
+
+
+\begin{figure}[h]
+    \centering
+    \fbox{
+        \begin{subfigure}[c]{0.50\textwidth}
+            % \centering
+            \begin{algorithmic}[0]
+
+                \Initialise \gls{soc} \& other global variables
+                \Ensure voltage, current \& temperature limits
+                \Procedure{Main}{}
+
+                \State configure interrupts
+                \State enable timers
+                \State $\vdots$
+                \While{\textproc{True}} \Comment[\scriptsize]{until ``key off" or shutdown}
+                \State background task \#1 \Comment[\scriptsize]{diagnostics/protection}
+                \State background task \#2 \Comment[\scriptsize]{\textproc{canbus} communication}
+                \State $\vdots$
+                \If{Needs Balancing}
+                \Function{PackBalance}{$n_\text{cells}$,$\text{\gls{soc}}_i$,$v_i$}
+                \State subroutine for pack balancing
+                \State $\vdots$
+                \EndFunction
+                \EndIf
+                \State $\vdots$
+                \State background task \#$n$ \Comment[\scriptsize]{supervisory reporting}
+                \EndWhile
+                \EndProcedure
+            \end{algorithmic}
+            \caption{background processes (low priority)}
+            \label{subfig:bgRTprocess}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[c]{0.47\textwidth}
+            \centering
+            \begin{algorithmic}[0]
+                \ISR[]{}
+                \State write prior control output to DAC
+                \vfill
+                \State read new sensor data from ADC
+                \vfill
+                \Function{ComputeSPM}{$I[k-1]$}
+                \State evaluate spm model equations
+                \State $\vdots$
+                \State compute model output voltage
+                \Function{SOCEstimator}{$v_\text{model}$,$v_\text{meas}$}
+                \State state estimation code
+                \State $\vdots$
+                \EndFunction
+                \State $\vdots$
+                \EndFunction
+                \END
+            \end{algorithmic}
+            \caption{foreground processes (high priority)}
+            \label{subfig:fgRTprocess}
+        \end{subfigure}
+    }
+    \caption[Overview of the real-time software implementation of a typical
+    \gls{bms}]{Overview of the real-time software implementation of a typical
+        \gls{bms}. Through an interrupt-driven architecture for time-critical tasks as
+        as state estimation and control, the same processor can be
+        efficiently utilised by employing its idle CPU cycles for background tasks as
+    as diagnostics, fault logging and book-keeping.}
+    \label{fig:basicRTCsoftwarearch}
+\end{figure}
+
+\Cref{fig:timingdiagramBig} depicts  the timing diagram of  a real-time software
+loop suitable for implementation in typical \gls{bms} controllers.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption[Timing diagram of a real-time software loop of a \gls{bms}]
+    {Timing diagram of a real-time software loop of a \gls{bms}. The integration  of the  \gls{bms} within  the larger  scope of  a master  vehicular controller is not shown.}
+    \label{fig:timingdiagramBig}
+\end{figure}
+
+
 
 
 % Figure from Steve Southward or from plett. Ignore the computational delay
@@ -46,6 +140,11 @@ between two successive data acquisition events from the sensors.
 % better to perform a vector-update (although certainly it is easy to do scalar
 % update)
 % Block diagram and stuff
+% comparison of approximations
+% show some inline minted code, ode45, Ac vs A discrete etc
+% modes are decoupled
+
+
 
 % \begin{figure}[htb]
 %     \begin{algorithmic}[1]
