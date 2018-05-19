@@ -46,12 +46,12 @@ need to be performed with high priority.
 
 \begin{figure}[htb]
     \savebox{\algboxA}{%
-        \begin{minipage}[b]{0.48\linewidth}
+        \begin{minipage}[b]{0.50\linewidth}
             \begin{algorithmic}[0]
 
                 \Initialise \gls{soc} \& other global variables
                 \Ensure voltage, current \& temperature limits
-                \Procedure{Main}{}
+                \Procedure{Main}{$ $}
 
                 \State configure interrupts
                 \State enable timers
@@ -60,9 +60,9 @@ need to be performed with high priority.
                 \State background task \#1 \Comment[\scriptsize]{diagnostics/protection}
                 \State background task \#2 \Comment[\scriptsize]{\textproc{canbus} communication}
                 \State $\vdots$
-                \If{Needs Balancing}
+                \If{\texttt{needs balancing == 1}}
                 \Function{PackBalance}{$n_\text{cells}$,$\text{\gls{soc}}_i$,$v_i$}
-                \State subroutine for pack balancing
+                \State \textit{subroutine for pack balancing}
                 \State $\vdots$
                 \EndFunction
                 \EndIf
@@ -74,20 +74,22 @@ need to be performed with high priority.
         \end{minipage}%
     }%
     \savebox{\algboxB}{%
-        \begin{minipage}[b]{0.48\linewidth}
+        \begin{minipage}[b]{0.45\linewidth}
             \begin{algorithmic}[0]
                 \ISR[]{}
                 \State read new sensor data from ADC
-                \Function{ComputeSPM}{$I[k-1]$}
+                \Function{ComputeSPM}{$i_{k-1}$, params}
                 \State evaluate spm model equations
                 \State $\vdots$
                 \State compute model output voltage
                 \Function{SOCEstimator}{$v_\text{model}$,$v_\text{meas}$}
-                \State state estimation code
+                \State \textit{state estimation subroutine}
                 \State $\vdots$
                 \EndFunction
-                \State write control output to DAC
+                \Function{ICEControl}{$ $}
                 \State $\vdots$
+                \State write control outputs to DACs
+                \EndFunction
                 \EndFunction
                 \END
             \end{algorithmic}
@@ -95,13 +97,13 @@ need to be performed with high priority.
     }
     \centering
     \fbox{
-        \begin{subfigure}[b]{0.48\textwidth}
+        \begin{subfigure}[b]{0.50\textwidth}
             \usebox{\algboxA}
             \caption{background processes (low priority)}
             \label{subfig:bgRTprocess}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[b]{0.48\textwidth}
+        \begin{subfigure}[b]{0.45\textwidth}
             \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
                 \usebox{\algboxB}%
             }
