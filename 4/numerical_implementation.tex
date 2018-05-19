@@ -44,12 +44,13 @@ tasks such  as book-keeping and  diagnostics can be done  at a low  rate, others
 such as  those involving measurements  from cell and  model-related computations
 need to be performed with high priority.
 
-
 \begin{figure}[h]
     \centering
     \fbox{
-        \begin{subfigure}[c]{0.50\textwidth}
+        \begin{subfigure}[b]{0.50\textwidth}
             % \centering
+            % Store largest image in a box
+            % \usebox{\largestimage}
             \begin{algorithmic}[0]
 
                 \Initialise \gls{soc} \& other global variables
@@ -78,7 +79,7 @@ need to be performed with high priority.
             \label{subfig:bgRTprocess}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[c]{0.47\textwidth}
+        \begin{subfigure}[b]{0.47\textwidth}
             \centering
             \begin{algorithmic}[0]
                 \ISR[]{}
