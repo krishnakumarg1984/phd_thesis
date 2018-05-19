@@ -39,7 +39,7 @@ associated  computations can  be  considered  as a  modular  subsystem within  a
 functionality such as cell  balancing, protection, diagnostics and data-logging.
 Although  thermal   management  tasks  are  typically   delegated  to  dedicated
 controllers,  the  \gls{bms} software  routines  handle  data exchanged  between
-various controllers  on the  vehicular communication bus.  Whilst some  of these
+various  controllers on  the vehicular  communication bus.  While some  of these
 tasks such  as book-keeping and  diagnostics can be done  at a low  rate, others
 such as  those involving measurements  from cell and  model-related computations
 need to be performed with high priority.
@@ -108,7 +108,7 @@ need to be performed with high priority.
         \gls{bms}. Through an interrupt-driven architecture for time-critical tasks as
         as state estimation and control, the same processor can be
         efficiently utilised by employing its idle CPU cycles for background tasks as
-    as diagnostics, fault logging and book-keeping.}
+    as diagnostics, fault logging and book-keeping}
     \label{fig:basicRTCsoftwarearch}
 \end{figure}
 
@@ -119,7 +119,7 @@ loop suitable for implementation in typical \gls{bms} controllers.
     \centering
     \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
     \caption[Timing diagram of a real-time software loop of a \gls{bms}]
-    {Timing diagram of a real-time software loop of a \gls{bms}. The integration  of the  \gls{bms} within  the larger  scope of  a master  vehicular controller is not shown.}
+    {Timing diagram of a real-time software loop of a \gls{bms}. The integration  of the  \gls{bms} within  the larger  scope of  a master  vehicular controller is not shown}
     \label{fig:timingdiagramBig}
 \end{figure}
 
