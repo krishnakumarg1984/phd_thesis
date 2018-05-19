@@ -1,62 +1,73 @@
 \documentclass{article}
+
 \usepackage{subcaption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[margin=1cm]{geometry}
 
+\newsavebox{\algboxA}
+\newsavebox{\algboxB}
+
 \begin{document}
 
-\begin{figure}[h]
-    \centering
-    \fbox{
-        \begin{subfigure}[c]{0.50\textwidth}
-            \begin{algorithmic}[0]
-                \Procedure{Main}{}
-                    \State configure interrupts
-                    \State enable timers
-                    \State $\vdots$
-                    \While{\textproc{True}} \Comment{until shutdown}
-                        \State background task \#1 \Comment{safety checks}
-                        \State background task \#2
-                        \State $\vdots$
-                        \If{Calibrate}
-                            \Function{doCalibration}{$x$}
-                                \State subroutine for calibration
-                                \State $\vdots$
-                            \EndFunction
-                        \EndIf
-                        \State $\vdots$
-                        \State background task \#$n$ \Comment{serial comm.}
-                    \EndWhile
-                \EndProcedure
-            \end{algorithmic}
-            \caption{background processes}
-            \label{subfig:bgRTprocess}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[c]{0.47\textwidth}
-            % \centering
-            \raggedright
-            \begin{algorithmic}[0]
-                \Function{ISR}{$ $}
-                    \State read sensor data from ADC
-                    \State $\vdots$
-                    \State initialise model
-                    \Function{computeControl}{$x$}
-                        \State evalute modeleqns
-                        \State $\vdots$
-                    \EndFunction
-                    \State $\vdots$
-                    \State write control output to DAC
-                    \vfill
-                \EndFunction
-            \end{algorithmic}
-            \caption{foreground process}
-            \label{subfig:fgRTprocess}
-        \end{subfigure}
-    }
-    \caption{RT software architecture of a microcontroller}
-    \label{fig:basicRTCsoftwarearch}
+\begin{figure}
+
+  \savebox{\algboxA}{%
+    \begin{minipage}[b]{0.48\linewidth}
+      \begin{algorithmic}[0]
+        \Procedure{Main}{}
+          \State configure interrupts
+          \State enable timers
+          \State $\vdots$
+          \While{\textproc{True}} \Comment{until shutdown}
+            \State background task \#1 \Comment{safety checks}
+            \State background task \#2
+            \State $\vdots$
+            \If{Calibrate}
+              \Function{doCalibration}{$x$}
+                \State subroutine for calibration
+                \State $\vdots$
+              \EndFunction
+            \EndIf
+            \State $\vdots$
+            \State background task \#$n$ \Comment{serial comm.}
+          \EndWhile
+        \EndProcedure
+      \end{algorithmic}
+    \end{minipage}%
+  }%
+  \savebox{\algboxB}{%
+    \begin{minipage}[b]{0.48\linewidth}
+      \begin{algorithmic}[0]
+        \Function{ISR}{$ $}
+          \State read sensor data from ADC
+          \State $\vdots$
+          \State initialise model
+          \Function{computeControl}{$x$}
+            \State evalute modeleqns
+            \State $\vdots$
+          \EndFunction
+          \State $\vdots$
+          \State write control output to DAC
+        \EndFunction
+      \end{algorithmic}
+    \end{minipage}%
+  }
+
+  \fbox{%
+    \begin{subfigure}[b]{0.48\textwidth}
+      \usebox{\algboxA}
+      \caption{background processes}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+      \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
+        \usebox{\algboxB}%
+      }
+      \caption{foreground process}
+    \end{subfigure}
+  }
+  \caption{RT software architecture of a microcontroller}
 \end{figure}
 
 \end{document}
