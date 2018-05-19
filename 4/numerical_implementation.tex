@@ -45,12 +45,8 @@ such as  those involving measurements  from cell and  model-related computations
 need to be performed with high priority.
 
 \begin{figure}[htb]
-    \centering
-    \fbox{
-        \begin{subfigure}[b]{0.50\textwidth}
-            % \centering
-            % Store largest image in a box
-            % \usebox{\largestimage}
+    \savebox{\algboxA}{%
+        \begin{minipage}[b]{0.48\linewidth}
             \begin{algorithmic}[0]
 
                 \Initialise \gls{soc} \& other global variables
@@ -75,12 +71,10 @@ need to be performed with high priority.
                 \EndWhile
                 \EndProcedure
             \end{algorithmic}
-            \caption{background processes (low priority)}
-            \label{subfig:bgRTprocess}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.47\textwidth}
-            \centering
+        \end{minipage}%
+    }%
+    \savebox{\algboxB}{%
+        \begin{minipage}[b]{0.48\linewidth}
             \begin{algorithmic}[0]
                 \ISR[]{}
                 \State read new sensor data from ADC
@@ -97,6 +91,20 @@ need to be performed with high priority.
                 \EndFunction
                 \END
             \end{algorithmic}
+        \end{minipage}%
+    }
+    \centering
+    \fbox{
+        \begin{subfigure}[b]{0.48\textwidth}
+            \usebox{\algboxA}
+            \caption{background processes (low priority)}
+            \label{subfig:bgRTprocess}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.48\textwidth}
+            \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
+                \usebox{\algboxB}%
+            }
             \caption{foreground processes (high priority)}
             \label{subfig:fgRTprocess}
         \end{subfigure}
