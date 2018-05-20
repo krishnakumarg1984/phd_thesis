@@ -44,7 +44,7 @@ tasks such  as book-keeping and  diagnostics can be done  at a low  rate, others
 such as  those involving measurements  from cell and  model-related computations
 need to be performed with high priority.
 
-\begin{figure}[htb]
+\begin{figure}[tbh]
     \savebox{\algboxA}{%
         \begin{varwidth}[b]{0.65\linewidth}
             \begin{flushleft}
@@ -115,7 +115,7 @@ need to be performed with high priority.
         \gls{bms}. Through an interrupt-driven architecture for time-critical tasks as
         as state estimation and control, the same processor can be
         efficiently utilised by employing its idle CPU cycles for background tasks as
-    as diagnostics, fault logging and book-keeping}
+    as diagnostics, fault logging and book-keeping.}
     \label{fig:basicRTCsoftwarearch}
 \end{figure}
 
@@ -135,7 +135,17 @@ typical  example of  such  an  interrupt driven  process  is  the evaluation  of
 the  \gls{spm} model  equations  and  computation of  control  outputs as  shown
 in~\cref{subfig:fgRTprocess} and is discussed further.
 
-\Cref{fig:timingdiagramBig} depicts an exploded outline of the timing aspects of
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption[Timing diagram of a real-time software loop of a \gls{bms}]
+    {Timing diagram of a real-time software loop of a \gls{bms}. The integration
+    of the  \gls{bms} within  the larger  scope of  a master  vehicular
+controller is not shown.}
+    \label{fig:timingdiagramBig}
+\end{figure}
+
+\Cref{fig:timingdiagramBig} depicts  an exploded view  of the timing  aspects of
 the \textsc{Interrupt  Service Routine}  presented in~\cref{subfig:fgRTprocess}.
 Upon   the  expiry   of  an   on-chip  timer   calibrated  against   a  baseline
 precision-clock,  hardware  interrupts are  raised  by  one or  more  \gls{adc}s
@@ -145,18 +155,11 @@ software. At  the end of this  process, the \gls{isr} rearms  the interrupts and
 simultaneously sends and acknowledgement to the appropriate sensor which reloads
 its timer.  The \gls{spm}  model equations  are then  evaluated in  software and
 resulting computational variables such as  voltage and concentrations is used in
-other activities  such as state estimator.  If the \gls{bms} also performs  control
-tasks, \eg{} controlling coolant-flow rate or \gls{ice} state-toggling
-such as in the hysteresis control of a series hybrid, these control outputs are written
+other activities such as state estimator. If the \gls{bms} also performs control
+tasks, \eg{} controlling  coolant-flow rate or \gls{ice}  state-toggling such as
+in the hysteresis control of a  series hybrid, these control outputs are written
 to the relevant \gls{dac}s.
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
-    \caption[Timing diagram of a real-time software loop of a \gls{bms}]
-    {Timing diagram of a real-time software loop of a \gls{bms}. The integration  of the  \gls{bms} within  the larger  scope of  a master  vehicular controller is not shown}
-    \label{fig:timingdiagramBig}
-\end{figure}
 
 
 
