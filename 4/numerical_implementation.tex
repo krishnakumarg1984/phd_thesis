@@ -139,9 +139,13 @@ in~\cref{subfig:fgRTprocess} and is discussed further.
     \centering
     \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
     \caption[Timing diagram of a real-time software loop of a \gls{bms}]
-    {Timing diagram of a real-time software loop of a \gls{bms}. The integration
-    of the  \gls{bms} within  the larger  scope of  a master  vehicular
-controller is not shown.}
+    {Timing diagram of a real-time software loop of a \gls{bms}. The sequence of events within one sample period $T_s$ in relation
+        to the base clock of the controller is shown. Particular emphasis is
+        placed on depicting the handling of \gls{isr} requests pertinent to cell
+        models. Other background tasks performed by the CPU is de-emphasised.
+        Moreover, the integration
+        of the  \gls{bms} software loop within  the larger  scope of  a master  vehicular
+    controller is not shown.}
     \label{fig:timingdiagramBig}
 \end{figure}
 
@@ -156,15 +160,48 @@ simultaneously sends and acknowledgement to the appropriate sensor which reloads
 its timer.  The \gls{spm}  model equations  are then  evaluated in  software and
 resulting computational variables such as  voltage and concentrations is used in
 other activities such as state estimator. If the \gls{bms} also performs control
-tasks, \eg{} controlling  coolant-flow rate or \gls{ice}  state-toggling such as
-in the hysteresis control of a  series hybrid, these control outputs are written
-to the relevant \gls{dac}s.
+tasks, \eg{} regulating  the coolant-flow rate or  \gls{ice} state-toggling such
+as  in the  hysteresis control  of a  series hybrid,  these control  outputs are
+written to the relevant \gls{dac}s.
+
+\subsection{Discrete-Time \gls{spm} formulation}
+
+\begin{figure}[htb]
+    \centering
+    \hrulefill
+    \caption{A timeline view of CPU activities within each sample time depicting
+        the repeating blocks of the execution sequence is shown over a larger
+        horizon. The vast majority of the CPU cycle is spent in idling or
+    background tasks. The servicing of \gls{isr} occupies a relatively small fraction.}
+    \label{fig:timingdiagramSmall}
+\end{figure}
+
+\Cref{fig:timingdiagramSmall} shows a timeline view of all CPU activities across
+a larger  time horizon.  The CPU's  load factor is  the ratio  of time  spent in
+foreground requests to  its idling time. While a high  load factor is beneficial
+in  terms of  efficient  usage  of resources,  it  adversely  affects the  power
+efficiency of the chip.
+
+For  Li-ion  cell  modelling,  a  sampling interval  of  $T_s  =  1$\si{\second}
+is   commonly  used,   thus  aiming   to   capture  the   cell  dynamics   below
+\SI{1}{\hertz}\footnote{In  the ideal  case, according  to the  Nyquist sampling
+theorem. However, in practice the frequency  range is lower.}. The CPUs clock is
+several \si{\MHz}, a vast  majority of which is spent in  background tasks or in
+sleep mode. Furthermore,  a low-latency \gls{isr} code is employed  in the tasks
+of reading the  \gls{adc} value, evaluating the model equations  and writing any
+control outputs to the \gls{dac}.
+
+The overall implication of such a scheme is that any \emph{control delays} owing
+to the sample and hold process at  the model input and outputs can be neglected.
+In  conventional  sampled-data  systems,  control  delays  may  be  analysed  by
+considering a multiplicative factor of $e^{-sλ}$ in the Laplace domain transfer
+function of the system.  Delay parameters of $λ = 0.5 T_s$ or  $λ = 1 T_s$ are
+commonly employed  as conservative  estimates. However,  owing to  the extremely
+small  CPU load  factor considered  as established  here, this  delay factor  is
+omitted in this thesis for discrete-time formulation of the \gls{spm} model.
 
 
 
-
-
-% Figure from Steve Southward or from plett. Ignore the computational delay
 % analytical solution (but not really applicable in state-estimation tasks)
 % decoupled
 % basic discretisation
