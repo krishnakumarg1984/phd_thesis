@@ -191,14 +191,14 @@ sleep mode. Furthermore,  a low-latency \gls{isr} code is employed  in the tasks
 of reading the  \gls{adc} value, evaluating the model equations  and writing any
 control outputs to the \gls{dac}.
 
-The overall implication of such a scheme is that any \emph{control delays} owing
-to the sample and hold process at  the model input and outputs can be neglected.
-In  conventional  sampled-data  systems,  control  delays  may  be  analysed  by
-considering a multiplicative factor of $e^{-sλ}$ in the Laplace domain transfer
-function of the system.  Delay parameters of $λ = 0.5 T_s$ or  $λ = 1 T_s$ are
-commonly employed  as conservative  estimates. However,  owing to  the extremely
-small  CPU load  factor considered  as established  here, this  delay factor  is
-omitted in this thesis for discrete-time formulation of the \gls{spm} model.
+The overall implication of such a scheme  is that any \emph{delays} owing to the
+sample and  hold process  at the model  input and outputs  can be  neglected. In
+conventional sampled-data systems, control delays may be analysed by considering
+a multiplicative factor of $e^{-sλ}$ in the Laplace domain transfer function of
+the system.  Delay parameters of  $λ = 0.5  T_s$ or $λ  = 1 T_s$  are commonly
+employed as  conservative estimates. However,  owing to the extremely  small CPU
+load factor considered as established here, this delay factor is omitted in this
+thesis for discrete-time formulation of the \gls{spm} model.
 
 
 
