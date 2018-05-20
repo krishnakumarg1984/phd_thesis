@@ -14,7 +14,7 @@ soc_col            = 1; % The starting SOC is in this column of top row
 % simulation.
 
 % string describing load profile (time vs current through external circuit)
-load_profile_name = 'cnst_dischg'; % a) 'cnst_dischg'
+load_profile_name = 'cnst_dischg'; % a) 'cnst_dischg' b) 'cnst_chg' c) 'udds' etc
 profile_filename  = [load_profile_name,'.csv'];
 
 % Note: a positive C-rate implies discharge and vice-versa for charge

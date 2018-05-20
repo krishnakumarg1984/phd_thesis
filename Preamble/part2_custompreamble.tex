@@ -62,7 +62,7 @@
 
 \makeatletter
 \algrenewcommand\ALG@beginalgorithmic{\footnotesize}
-\algrenewcommand\algorithmiccomment[2][\normalsize]{{#1\hfill\(\triangleright\) #2}}
+\algrenewcommand\algorithmiccomment[2][\footnotesize]{{#1\hfill\(\triangleright\) #2}}
 \makeatother
 
 \algblockdefx[NAME]{ISR}{END}%
@@ -83,3 +83,9 @@
 
 \allowdisplaybreaks
 
+\makeatletter
+\@addtoreset{algorithm}{chapter}% algorithm counter resets every chapter
+\makeatother
+\renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}% Algorithm # is <chapter>.<algorithm>
+
+\providecommand\algorithmname{algorithm}

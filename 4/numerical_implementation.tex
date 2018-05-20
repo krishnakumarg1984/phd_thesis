@@ -73,10 +73,33 @@ solver can implement the time integrator, \eg{} \\ \mintinline{matlab}{[~,x_new]
 ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span, x_old); }
 
 Since  the direction  of applied  current  is susceptible  to sudden  reversals,
-(\eg{} due to acceleration and braking  events for a vehicular application), the
-solver needs  to be stopped and  re-started every sample period.  Algo blah blah
-\dots
+(\eg{}  due to  acceleration and  braking events  for a  vehicular application),
+the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
+\Cref{alg:algorithm1} shows the  sequence of operations in  a desktop simulation
+of the continuous time \gls{spm}.
 
+\begin{algorithm}[H]\captionsetup{font=small,labelfont={bf},labelsep=quad}
+    \centering
+    \begin{algorithmic}[1]
+
+        \Procedure{SUM}{ $\{x\}$}
+
+        \State $y\gets0$
+        \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
+        \State $y\gets y+x(i)$ \Comment{Summing up.}
+        \EndFor
+
+        \State \textbf{return}  $y$
+        \EndProcedure
+    \end{algorithmic}
+    \caption[Implementation of a algorithm for calculating a sum.]{Implementation of a algorithm for calculating a sum.}
+    \label{alg:algorithm1}
+\end{algorithm}
+
+% The \textproc{Sum} algorithm shows blah blah blah
+% % inside algorithm,
+% % cases environment, displayed equations, chapter wise algorithm numbering
+% % referencing function names in small caps
 
 matlab code blah blah
 
@@ -312,27 +335,6 @@ and modelled by difference equations which are to be determined.
 
 
 
-% \begin{figure}[htb]
-%     \begin{algorithmic}[1]
-
-%         \Procedure{SUM}{ $\{x\}$}
-
-%         \State $y\gets0$
-%         \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
-%         \State $y\gets y+x(i)$ \Comment{Summing up.}
-%         \EndFor
-
-%         \State \textbf{return}  $y$
-%         \EndProcedure
-%     \end{algorithmic}
-%     \caption[Implementation of a algorithm for calculating a sum.]{Implementation of a algorithm for calculating a sum.}
-%     \label{fig:algorithm1}
-% \end{figure}
-
-% The \textproc{Sum} algorithm shows blah blah blah
-% % inside algorithm,
-% % cases environment, displayed equations, chapter wise algorithm numbering
-% % referencing function names in small caps
 
 % % https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
 
