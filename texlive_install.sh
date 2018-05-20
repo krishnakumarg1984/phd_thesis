@@ -160,6 +160,7 @@ tlmgr install   \
     siunitx \
     stackengine \
     stix \
+    stix2-otf \
     subfig \
     subfloat \
     substr \

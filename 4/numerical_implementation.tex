@@ -19,6 +19,77 @@ work. Nevertheless, the  discussion here aims to lower the  barrier to real-time
 implementation and is a  unique contribution of this work in  the context of the
 cell modelling art.
 
+\subsection{Continuous-time Implementation}
+
+\subsubsection*{Analytical solution}
+
+Although not  explicitly given  in \gls{spm}  literature, from  \gls{lti} system
+theory,  an   analytical  solution   for  the  continuous-time   state  equation
+of~\cref{eq:LTIstatespace} is given by
+\begin{align}
+    \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ
+    \\
+    \shortintertext{With a standard \gls{ivp}, $t_0 = 0$}
+    \mathbf{x}(t) &= e^{A t}\mathbf{x}(0) + \underbrace{\int_{0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ}_{\text{convolution integral}}\label{eq:analyticalctssoln}
+\end{align}
+
+The matrix exponential $e^{At}$ is known as the state-transition matrix and is
+defined as
+\begin{equation}
+    e^{A t} = \mathcal{L}^{-1}\left\{(s I - A)^{-1}\right\}
+\end{equation}
+although several methods exist for its efficient numeric
+computation~\cite{Moler2003}.
+
+The  analytical  solution  of~\cref{eq:analyticalctssoln}   can  be  applied  to
+obtain  the matrix-vector  state equation~\cref{eq:threestatesmatrixvec}  of the
+\gls{spm}.  Once  the  state-solution  is   obtained  at  any  time-step,  after
+evaluating  the  surface   concentrations  as  per~\cref{eq:csurfposfromcavgpos}
+and~\cref{eq:csurfnegfromcavgneg} and  the resulting  values may  be substituted
+into the  output equation of~\cref{eq:spmbasicoutputvoltagefinal} to  obtain the
+cell terminal voltage.
+
+\subsubsection*{Numerical considerations for continuous time implementation}
+
+The procedure described  thus far has a practical limitation.  The input current
+$I(t)$ to the cell is defined as a continuous quantity. Although for the purpose
+of characterising  the cell's  behaviour, it is  possible to  use pre-determined
+continuous-functions as  load profiles  (\eg{} sinusoidal waveforms  for virtual
+\gls{eis} testing), it is desirable to  evaluate the model's response to typical
+real-life  conditions. In  a vehicular  application,  only the  samples of  cell
+current  measured by  sensors at  discrete-time  intervals are  reported to  the
+\gls{bms}. A \gls{zoh}  operation is used at the model's  input, \ie{} the level
+of current is  assumed to be held constant between  two successive measurements.
+Current profiles can be computed from standard drive cycle data.
+
+It     is    tedious     to     hand-compute     the    convolution     integral
+of~\cref{eq:analyticalctssoln}.  However,   a  variety  of  state   of  the  art
+adaptive-time  solvers  employing  numerical  schemes  such  as  Dormand-Prince,
+Runge-Kutta,  Collocation  or  Backward  Difference Formulae  are  available  to
+efficiently  handle  such \gls{ode}s.  Given  that  lithium concentrations  vary
+smoothly over time  without abrupt discontinuities, a  standard non-stiff solver
+of moderate order  shall suffice. A single line of code  using MATLAB's ode45
+solver can implement the time integrator, \eg{} \\ \mintinline{matlab}{[~,x_new] =
+ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span, x_old); }
+
+Since  the direction  of applied  current  is susceptible  to sudden  reversals,
+(\eg{} due to acceleration and braking  events for a vehicular application), the
+solver needs  to be stopped and  re-started every sample period.  Algo blah blah
+\dots
+
+
+matlab code blah blah
+
+The continuous time \gls{spm} algorithm has limited practical use. Computing the
+convolution integral or deploying \gls{ode}  solver code in a microcontroller is
+challenging  and introduces  a  substantial computational  burden. Although  the
+continuous time  model can  be used for  desktop simulation,  more sophisticated
+physics-based  models  are available  for  this  task. However,  the  continuous
+time  \gls{spm} has  an  important application,  \viz{}  estimation of  physical
+parameters  which will  explored  in~\cref{sec:spmparameterestim}. However,  for
+online  deployment  for state  estimation  and  control tasks,  a  discrete-time
+version of the model suitable for real-time implementation is needed.
+
 \subsection{Conceptual Overview of Real-Time Processing}
 
 The equations  in~\cref{sec:spmmodeldevelopment} are derived  in continuous-time
@@ -166,7 +237,7 @@ written to the relevant \gls{dac}s.
 
 \subsection{Sample Delay Considerations}
 
-\begin{figure}[htb]
+\begin{figure}[h]
     \centering
     \hrulefill
     \caption{A timeline view of CPU activities within each sample time depicting
@@ -223,28 +294,12 @@ $t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
 system of~\cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
 and modelled by difference equations which are to be determined.
 
-\subsubsection*{Continuous-time analytical solution}
+\subsection{\gls{spm} Parameter Estimation}\label{sec:spmparameterestim}
 
-Although not  explicitly given  in \gls{spm}  literature, from  \gls{lti} system
-theory,  an   analytical  solution   for  the  continuous-time   state  equation
-of~\cref{eq:LTIstatespace} is given by
-\begin{align}
-    \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ
-    \\
-    \shortintertext{With a standard \gls{ivp}, $t_0 = 0$}
-    \mathbf{x}(t) &= e^{A t}\mathbf{x}(0) + \underbrace{\int_{0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ}_{\text{convolution integral}}
-\end{align}
-
-
-
-% analytical solution (but not really applicable in state-estimation tasks)
 % decoupled
 % basic discretisation
-% System transition matrix (matrix exponential)
-% frequency range
 % EPA
 % Power input (lack of measurements in current)
-% Parameter estimation
 % Sampling/quantisation/z-domain/fourier analysis/Pre-conditioning/ZOH
 % Sampled systems are also essential in considering Kalman versions
 % Can talk in depth about Fwd Euler, Tustin vs matrix exponential approach
