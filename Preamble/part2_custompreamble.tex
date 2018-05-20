@@ -23,7 +23,8 @@
 \newcommand*{\algrule}[1][\algorithmicindent]{%
     \makebox[#1][l]{%
         \hspace*{.2em}% <------------- This is where the rule starts from
-        \color{imperialcoolgray} \vrule height .75\baselineskip depth .25\baselineskip
+        % \color{imperialcoolgray} \vrule height .75\baselineskip depth .25\baselineskip
+        \color{intermediategray} \vrule height .75\baselineskip depth .25\baselineskip
         % \vrule height .75\baselineskip depth .3\baselineskip % https://tex.stackexchange.com/questions/301462/why-are-vertical-rules-dashed-sometimes-with-algorithmic-package
     }
 }
@@ -71,3 +72,4 @@
 \newsavebox{\algboxA}
 \newsavebox{\algboxB}
 
+\usepackage{varwidth}

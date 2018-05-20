@@ -183,6 +183,7 @@ tlmgr install   \
     units \
     upquote \
     url \
+    varwidth \
     was \
     wrapfig \
     xcolor \
