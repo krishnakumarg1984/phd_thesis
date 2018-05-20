@@ -110,7 +110,7 @@ need to be performed with high priority.
             }%
         }%
     }
-    \caption[Overview of the real-time software implementation of a typical
+    \caption[Overview of real-time software implementation of a typical
     \gls{bms}]{Overview of the real-time software implementation of a typical
         \gls{bms}. Through an interrupt-driven architecture for time-critical tasks as
         as state estimation and control, the same processor can be
@@ -164,7 +164,7 @@ tasks, \eg{} regulating  the coolant-flow rate or  \gls{ice} state-toggling such
 as  in the  hysteresis control  of a  series hybrid,  these control  outputs are
 written to the relevant \gls{dac}s.
 
-\subsection{Discrete-Time \gls{spm} formulation}
+\subsection{Sample Delay Considerations}
 
 \begin{figure}[htb]
     \centering
@@ -189,7 +189,8 @@ theorem. However, in practice the frequency  range is lower.}. The CPUs clock is
 several \si{\MHz}, a vast  majority of which is spent in  background tasks or in
 sleep mode. Furthermore,  a low-latency \gls{isr} code is employed  in the tasks
 of reading the  \gls{adc} value, evaluating the model equations  and writing any
-control outputs to the \gls{dac}.
+control outputs to  the \gls{dac}. Using a simplified  physics-based models such
+as the \gls{spm} helps in achieving a low-latency throughput for the \gls{isr}.
 
 The overall implication of such a scheme  is that any \emph{delays} owing to the
 sample and  hold process  at the model  input and outputs  can be  neglected. In
@@ -199,6 +200,40 @@ the system.  Delay parameters of  $λ = 0.5  T_s$ or $λ  = 1 T_s$  are commonly
 employed as  conservative estimates. However,  owing to the extremely  small CPU
 load factor considered as established here, this delay factor is omitted in this
 thesis for discrete-time formulation of the \gls{spm} model.
+
+
+\subsection{Discrete-Time \gls{spm} formulation}
+
+\begin{figure}[htb]
+    \centering
+    % show block diagram cross-referencing equation and a question mark for the
+    % dt system
+    \includegraphics[width=0.75\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption[Block-diagram of continuous and discrete-time systems]{Block-diagram of the plant model and associated signals of a continuous-time system and its discrete-time counterpart}
+    \label{fig:blockdiagctsdisc}
+\end{figure}
+
+\Cref{fig:blockdiagctsdisc} shows  a block  diagram representation of  the plant
+model its associated input and output signals. Due to the sampling and \gls{zoh}
+operation  at  the  \gls{adc}  input  to  the  system,  the  input  signals  are
+transformed  from  being  simple  continuous time  quantities  to  discrete-time
+sequences,  \ie{} $u(t)  \mapsto  u[k]$  and $y(t)  \mapsto  y[k]$,  where $k  =
+0,1,\dots,∞$ is the sample index  corresponding to the continuous time instant
+$t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
+system of~\cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
+and modelled by difference equations which are to be determined.
+
+\subsubsection*{Continuous-time analytical solution}
+
+Although not  explicitly given  in \gls{spm}  literature, from  \gls{lti} system
+theory,  an   analytical  solution   for  the  continuous-time   state  equation
+of~\cref{eq:LTIstatespace} is given by
+\begin{align}
+    \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ
+    \\
+    \shortintertext{With a standard \gls{ivp}, $t_0 = 0$}
+    \mathbf{x}(t) &= e^{A t}\mathbf{x}(0) + \underbrace{\int_{0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ}_{\text{convolution integral}}
+\end{align}
 
 
 
