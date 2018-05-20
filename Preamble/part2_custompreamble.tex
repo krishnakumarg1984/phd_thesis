@@ -67,7 +67,7 @@
 
 \algblockdefx[NAME]{ISR}{END}%
 [2][Unknown]{\textbf{begin} \textproc{Interrupt Service Routine} #1(#2)}%
-{\textbf{end}}
+{\textbf{return} \Comment[\footnotesize]{resume suspended line in \textsc{Main()}}}
 
 \newsavebox{\algboxA}
 \newsavebox{\algboxB}
