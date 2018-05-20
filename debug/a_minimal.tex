@@ -61,14 +61,20 @@
     }
 
     \fbox{%
-        \usebox{\algboxA}
+        \subcaptionbox{background processes}{\usebox{\algboxA}}
         % \caption{background processes}
         \qquad
         \qquad
-        \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
-            \usebox{\algboxB}%
+        \subcaptionbox{foreground processes}{%
+            \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
+                \usebox{\algboxB}%
+            }%
         }%
-    }
+
+        % \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
+        %     \usebox{\algboxB}%
+        % }%
+    }%
     % \caption{RT software architecture of a microcontroller}
 \end{figure}
 
