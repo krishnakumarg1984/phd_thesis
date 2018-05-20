@@ -121,10 +121,10 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \definecolor{intermediategray}{RGB}{196,196,196}
 
 \newcounter{filePrg}
-\usepackage{minted}
+\usepackage[draft=true]{minted}
 \usepackage[most,minted]{tcolorbox}
 
-\usepackage[ makeroom]{cancel}
+\usepackage[makeroom]{cancel}
 \renewcommand{\CancelColor}{\color{imperialbrick}}
 
 \usepackage{tabstackengine}
@@ -169,13 +169,13 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     minted language=matlab,
     % minted style=algol_nu, % xcode,emacs, perldoc, pastie, borland, vs, vim, tango
     listing file={#2},
-    title=Listing (\thetcbcounter): {#1},
-    fonttitle=\bfseries,
+    title=\small{\textbf{Listing \thetcbcounter}\quad {#1}},
+    % fonttitle=\bfseries,
     listing only,
     list entry={\protect\numberline{\thetcbcounter} #1},
     enhanced jigsaw,
     breakable,
-    drop fuzzy shadow,
+    % drop fuzzy shadow,
     minted options={
         fontsize=\scriptsize,
         breaklines,
@@ -200,4 +200,7 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     label=#3
 }
 
-
+%http://tex.stackexchange.com/questions/217489/numbering-tcolorbox-toc
+\makeatletter % no indent for entries
+\renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{2.3em}}
+\makeatother

@@ -52,7 +52,7 @@
 
 % Your institution may have specific regulations if you need an abstract and where it is to be placed in the document. The default here is just after title.
 
-\include{0_frontmatter/abstract}
+% \include{0_frontmatter/abstract} % Comment this out until the abstract is written
 
 \includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}\\
 \doclicenseLongText\\
@@ -67,8 +67,8 @@ researchers must make clear to others the licence terms of this work
 %: ----------------------- tie in front matter ------------------------
 
 %\frontmatter
-\include{0_frontmatter/dedication}
-\include{0_frontmatter/acknowledgement}
+% \include{0_frontmatter/dedication}        % comment out until these are written
+% \include{0_frontmatter/acknowledgement}   % comment out until these are written
 
 
 %: ----------------------- contents ------------------------
@@ -79,7 +79,12 @@ researchers must make clear to others the licence terms of this work
 \listoffigures	% print list of figures
 \cleardoublepage
 \listoftables  % print list of tables
-\tcblistof{mypyg}{My Listings} % list of listings
+\cleardoublepage
+\listofalgorithms
+\addcontentsline{toc}{chapter}{List of algorithms}
+\cleardoublepage
+\tcblistof[\chapter]{mypyg}{List of Program Code} % list of listings
+\cleardoublepage
 
 %: ----------------------- glossary ------------------------
 

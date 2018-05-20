@@ -75,33 +75,35 @@ ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span, x_old); }
 Since  the direction  of applied  current  is susceptible  to sudden  reversals,
 (\eg{}  due to  acceleration and  braking events  for a  vehicular application),
 the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
-\Cref{alg:algorithm1} shows the  sequence of operations in  a desktop simulation
-of the continuous time \gls{spm}.
+\Cref{alg:ctstimespm} shows the  sequence of operations in  a desktop simulation
+of  the  continuous time  \gls{spm}.  The  source  code  listing of  an  example
+implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
 
-\begin{algorithm}[H]\captionsetup{font=small,labelfont={bf},labelsep=quad}
-    \centering
-    \begin{algorithmic}[1]
+\noindent\makebox[\textwidth][c]{%
+    \begin{minipage}{0.7\textwidth}
+        \begin{algorithm}[H]
+            \centering
+            \begin{algorithmic}[1]
 
-        \Procedure{SUM}{ $\{x\}$}
+                \Procedure{SUM}{ $\{x\}$}
 
-        \State $y\gets0$
-        \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
-        \State $y\gets y+x(i)$ \Comment{Summing up.}
-        \EndFor
+                \State $y\gets0$
+                \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
+                \State $y\gets y+x(i)$ \Comment{Summing up.}
+                \EndFor
 
-        \State \textbf{return}  $y$
-        \EndProcedure
-    \end{algorithmic}
-    \caption[Implementation of a algorithm for calculating a sum.]{Implementation of a algorithm for calculating a sum.}
-    \label{alg:algorithm1}
-\end{algorithm}
+                \State \textbf{return}  $y$
+                \EndProcedure
+            \end{algorithmic}
+            \caption{Continuous time \gls{spm}}
+            \label{alg:ctstimespm}
+        \end{algorithm}
+    \end{minipage}
+}%
 
 % The \textproc{Sum} algorithm shows blah blah blah
 % % inside algorithm,
-% % cases environment, displayed equations, chapter wise algorithm numbering
-% % referencing function names in small caps
-
-matlab code blah blah
+% % cases environment, displayed equations,
 
 The continuous time \gls{spm} algorithm has limited practical use. Computing the
 convolution integral or deploying \gls{ode}  solver code in a microcontroller is
@@ -263,9 +265,10 @@ written to the relevant \gls{dac}s.
 \begin{figure}[h]
     \centering
     \hrulefill
-    \caption{A timeline view of CPU activities within each sample time depicting
-        the repeating blocks of the execution sequence is shown over a larger
-        horizon. The vast majority of the CPU cycle is spent in idling or
+    \caption[Timeline of \gls{bms} activities over multiple CPU cycles of a real-time
+    controller]{A timeline view of CPU activities within each sample time
+        depicting the repeating blocks of the execution sequence is shown over a
+        larger horizon. The vast majority of the CPU cycle is spent in idling or
     background tasks. The servicing of \gls{isr} occupies a relatively small fraction.}
     \label{fig:timingdiagramSmall}
 \end{figure}
