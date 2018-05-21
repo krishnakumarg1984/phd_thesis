@@ -1,0 +1,62 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[margin=1cm]{geometry}
+
+\newcommand{\tempcaption}{}% stores the caption
+\newcommand{\templabel}{}% stores the label
+
+\newenvironment{customalgo}[2]
+{%
+    \begin{minipage}{0.7\textwidth}
+        \begin{algorithm}[H]
+            \centering
+            \gdef\tempcaption{#1}% store the caption so we can use it later
+            \gdef\templabel{#2}% store the label so we can use it later
+            \begin{algorithmic}[1]
+            }%
+            {%
+            \end{algorithmic}
+            \caption{\tempcaption}% use the stored caption
+            \label{\templabel}
+        \end{algorithm}
+    \end{minipage}
+    \smallskip
+}%
+
+%%%%%% End of Preamble%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\textbf{Needs centering}\par
+\begin{center}
+    \begin{customalgo}{Computing a Sum - needs centering}{alg:algosumnonmakebox}
+        \Procedure{SUM}{ $\{x\}$}
+
+        \State $y\gets0$
+        \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
+        \State $y\gets y+x(i)$ \Comment{Summing up.}
+        \EndFor
+
+        \State \textbf{return}  $y$
+        \EndProcedure
+    \end{customalgo}
+\end{center}
+
+\textbf{Centered with makebox}\par
+\noindent\makebox[\textwidth][c]{%
+    \begin{customalgo}{Computing a Sum}{alg:algosum}
+        \Procedure{SUM}{ $\{x\}$}
+
+        \State $y\gets0$
+        \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
+        \State $y\gets y+x(i)$ \Comment{Summing up.}
+        \EndFor
+
+        \State \textbf{return}  $y$
+        \EndProcedure
+    \end{customalgo}
+}
+
+\end{document}
