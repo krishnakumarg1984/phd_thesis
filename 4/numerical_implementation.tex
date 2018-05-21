@@ -79,28 +79,38 @@ the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 of  the  continuous time  \gls{spm}.  The  source  code  listing of  an  example
 implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
 
-\noindent\makebox[\textwidth][c]{%
-    \begin{minipage}{0.7\textwidth}
-        \begin{algorithm}[H]
-            \centering
-            \begin{algorithmic}[1]
+\begin{center}
+    \begin{customalgo}[0.9\textwidth]{Continuous time \gls{spm}}{alg:ctstimespm}
+        \Require Load profile \Comment{\eg{} a \texttt{csv} file of $t$ vs. C-rate}
+        \Require \gls{spm} parameter set  \Comment{\eg{} stored in a struct \texttt{params}}
+        \Userdata $\text{\gls{soc}}(0), t_\text{f,user}$, $t_\text{f,condition}$ \Comment{$t_\text{f,condition} \in  \left\{\texttt{max}, \texttt{min}\right\}$}
+        \Userdata Cell capacity $I_\text{1C}$, Sample rate $T_s$
+        \Ensure \gls{soc}(0), $v(0)$ within limits
+        \Procedure{Simulate\gls{spm}}{}
+        \State {$t_\text{f,desired} =
+                                % \scriptstyle
+                                \begin{cases}
+                                    % \scriptstyle
+                                    \max(t_\text{f,user},t_\text{f,profile}),
+                                    &\text{%\scriptsize
+                                    if $t_\text{f,condition}$ == \texttt{max};}\\
+                                    % \scriptstyle
+                                    \min(t_\text{f,user},t_\text{f,profile}),
+                                    &\text{%\scriptsize
+                                otherwise.}
+                            \end{cases}$} %\Comment{Extrapolate last C-rate from profile until $t_\text{f,desired}$ if necessary}
+        % \FullComment{\scriptsize Flexible end time. Extrapolate last C-rate from profile until $t_\text{f,desired}$ if necessary}
+        \State {}
 
-                \Procedure{SUM}{ $\{x\}$}
+        \State $y\gets0$
+        \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
+        \State $y\gets y+x(i)$ \Comment{Summing up.}
+        \EndFor
 
-                \State $y\gets0$
-                \For{$i \gets 1 : N^{x}$} \Comment{Time series $\{x\}$ has length $N^{x}$}
-                \State $y\gets y+x(i)$ \Comment{Summing up.}
-                \EndFor
-
-                \State \textbf{return}  $y$
-                \EndProcedure
-            \end{algorithmic}
-            \caption{Continuous time \gls{spm}}
-            \label{alg:ctstimespm}
-        \end{algorithm}
-    \end{minipage}
-}%
-
+        \State \textbf{return}  $y$
+        \EndProcedure
+    \end{customalgo}
+\end{center}
 % The \textproc{Sum} algorithm shows blah blah blah
 % % inside algorithm,
 % % cases environment, displayed equations,

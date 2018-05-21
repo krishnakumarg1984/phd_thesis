@@ -60,6 +60,12 @@
 \algnewcommand\algorithmicinput{\textbf{Initialise:}}
 \algnewcommand\Initialise{\item[\algorithmicinput]}
 
+\algnewcommand\algorithmicdata{\textbf{User data:}}
+\algnewcommand\Userdata{\item[\algorithmicdata]}
+
+\algnewcommand\algorithmicfulllinecomment{\qquad\quad  \scriptsize \textit{Note:}}
+\algnewcommand\FullComment{\item[\algorithmicfulllinecomment]}
+
 \makeatletter
 \algrenewcommand\ALG@beginalgorithmic{\footnotesize}
 \algrenewcommand\algorithmiccomment[2][\footnotesize]{{#1\hfill\(\triangleright\) #2}}
@@ -90,4 +96,25 @@
 
 \providecommand\algorithmname{algorithm}
 \captionsetup[ruled]{font=small,labelfont={bf},labelsep=quad}
+
+\newcommand{\tempcaption}{}% stores the caption
+\newcommand{\templabel}{}% stores the label
+
+\newenvironment{customalgo}[3][0.7\textwidth]
+{%
+    \begin{minipage}{#1}
+        \begin{algorithm}[H]
+            \centering
+            \gdef\tempcaption{#2}% store the caption so we can use it later
+            \gdef\templabel{#3}% store the label so we can use it later
+            \begin{algorithmic}[1]
+            }%
+            {%
+            \end{algorithmic}
+            \caption{\tempcaption}% use the stored caption
+            \label{\templabel}
+        \end{algorithm}
+    \end{minipage}
+    \smallskip
+}%
 
