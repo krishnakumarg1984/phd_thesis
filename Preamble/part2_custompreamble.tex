@@ -75,6 +75,11 @@
 [2][Unknown]{\textbf{begin} \textproc{Interrupt Service Routine} #1(#2)}%
 {\textbf{return} \Comment[\footnotesize]{resume suspended line in \textsc{Main()}}}
 
+
+\algblockdefx[NAME]{OutputEqn}{EndOutputEqn}%
+[2][\textbf{x}]{\textbf{subroutine} \textproc{ComputeCellVoltage}(#2)}%
+{\textbf{return} $V_\text{cell}$ \Comment[\footnotesize]{resume suspended line in \textproc{Simulate\gls{spm}}}}
+
 \newsavebox{\algboxA}
 \newsavebox{\algboxB}
 
@@ -115,6 +120,12 @@
             \label{\templabel}
         \end{algorithm}
     \end{minipage}
-    \smallskip
+    % \smallskip
 }%
 
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newenvironment{mycenter}[1][\topsep]
+{\setlength{\topsep}{#1}\par\kern\topsep\centering}% \begin{mycenter}[<len>]
+{\par\kern\topsep}% \end{mycenter}
