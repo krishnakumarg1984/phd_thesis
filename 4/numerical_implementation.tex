@@ -36,7 +36,7 @@ of~\cref{eq:LTIstatespace} is given by
 The matrix exponential $e^{At}$ is known as the state-transition matrix and is
 defined as
 \begin{equation}
-    e^{A t} = \mathcal{L}^{-1}\left\{(s I - A)^{-1}\right\}
+    e^{A t} ≜ \mathcal{L}^{-1}\left\{(s I - A)^{-1}\right\}
 \end{equation}
 although several methods exist for its efficient numeric
 computation~\cite{Moler2003}.
@@ -299,9 +299,8 @@ $t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
 system of~\cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
 and modelled by difference equations which are to be determined.
 
-\subsection{\gls{spm} Parameter Estimation}\label{sec:spmparameterestim}
 
-% decoupled
+% non-zero determinant. inverse exists always
 % basic discretisation
 % EPA
 % Power input (lack of measurements in current)
@@ -310,13 +309,14 @@ and modelled by difference equations which are to be determined.
 % Can talk in depth about Fwd Euler, Tustin vs matrix exponential approach
 % better to perform a vector-update (although certainly it is easy to do scalar
 % update)
-% Block diagram and stuff
 % comparison of approximations
 % show some inline minted code, ode45, Ac vs A discrete etc
 % modes are decoupled
 
 
 
+
+\subsection{\gls{spm} Parameter Estimation}\label{sec:spmparameterestim}
 
 % % https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
 
