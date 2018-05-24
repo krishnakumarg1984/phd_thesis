@@ -129,3 +129,13 @@
 \newenvironment{mycenter}[1][\topsep]
 {\setlength{\topsep}{#1}\par\kern\topsep\centering}% \begin{mycenter}[<len>]
 {\par\kern\topsep}% \end{mycenter}
+
+\usepackage{bigints}
+
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother

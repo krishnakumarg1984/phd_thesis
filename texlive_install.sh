@@ -44,6 +44,7 @@ tlmgr install   \
     belleek \
     biber \
     biblatex \
+    bigints \
     booktabs \
     cancel \
     caption \

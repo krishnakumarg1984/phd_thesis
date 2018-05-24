@@ -27,7 +27,7 @@ Although not  explicitly given  in \gls{spm}  literature, from  \gls{lti} system
 theory,  an   analytical  solution   for  the  continuous-time   state  equation
 of~\cref{eq:LTIstatespace} is given by
 \begin{align}
-    \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ
+    \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ \label{eq:genanalyticctssoln}
     \\
     \shortintertext{With a standard \gls{ivp}, $t_0 = 0$}
     \mathbf{x}(t) &= e^{A t}\mathbf{x}(0) + \underbrace{\int_{0}^{t}e^{A (t-τ)}\mathbf{B u}(τ)\,dτ}_{\text{convolution integral}}\label{eq:analyticalctssoln}
@@ -297,26 +297,123 @@ sequences,  \ie{} $u(t)  \mapsto  u[k]$  and $y(t)  \mapsto  y[k]$,  where $k  =
 0,1,\dots,∞$ is the sample index  corresponding to the continuous time instant
 $t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
 system of~\cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
-and modelled by difference equations which are to be determined.
+and modelled by a \emph{difference} equation which is to be determined.
 
+Consider       the       general      continuous-time       solution       given
+by~\cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k  =
+0,1,\dots,∞$. Therefore,
+\begin{alignat}{2}
+    x(t_0) & = x(kT_s)     & & \equiv x[k] \\
+    x(t)   & = x((k+1)T_s) & & \equiv x[k+1]
+\end{alignat}
+% The dummy  variable of  integration $\tau$  can similarly  be transformed  to an
+% arbitrary  multiple  of  $T_s$  whose  value is  applicable  within  one  sample
+% period, \ie{}  $\mathbf{u}(\tau) =  \mathbf{u}(\kappa T_s)$.
+Substituting these relationships into~\cref{eq:genanalyticctssoln},
+\begin{equation}
+    \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}\mathbf{B u}(τ)\,dτ \label{eq:intermediatediscrete}
+\end{equation}
+With the  \gls{zoh} scheme  discussed here, $u(\tau)$  remains constant  from $k
+T_s$ to $(k+1)T_s$,  and is equal to $u(kT_s)$, \ie{}  $u[k]$. Consider a change
+of variable definition  for the dummy variable of integration  $\tau$ as $\eta =
+(k+1)T_s -  \tau$. Thus,  $\tau = (k+1)T_s  - \eta$. Hence,  $d \tau  = -d\eta$.
+Substituting these into~\cref{eq:intermediatediscrete},
+\begin{align}
+    \mathbf{x}[k+1] &= e^{A T_s}\mathbf{x}[k] + \left[\int_{T_s}^{0}e^{A \eta }\mathbf{B} \right] u[k]\,{-d\eta}\\
+    \shortintertext{Reversing the order of integration leads to}
+    \mathbf{x}[k+1] &= e^{A T_s}\mathbf{x}[k] + \left[\int_{0}^{T_s}e^{A \eta }\mathbf{B} \,{d\eta} \right] u[k] \label{eq:disctimefulleqn}
+\end{align}
 
-% non-zero determinant. inverse exists always
-% basic discretisation
-% EPA
-% Power input (lack of measurements in current)
-% Sampling/quantisation/z-domain/fourier analysis/Pre-conditioning/ZOH
-% Sampled systems are also essential in considering Kalman versions
-% Can talk in depth about Fwd Euler, Tustin vs matrix exponential approach
-% better to perform a vector-update (although certainly it is easy to do scalar
-% update)
-% comparison of approximations
-% show some inline minted code, ode45, Ac vs A discrete etc
-% modes are decoupled
+\Cref{eq:disctimefulleqn} represents a discrete-time state-space representation
+of the dynamics of the system whose generic representation is given by the
+difference equation
+\begin{equation}
+    \mathbf{x}[k+1] = A_d x[k] + B_d u[k]
+\end{equation}
+where $A_d = e^{A T_s}$ and $B_d = \int_{0}^{T_s}e^{A \eta}\mathbf{B}
+\,{d\eta}$.
+If the continuous-time system matrix, $A$ is invertible, a closed form
+expression for $B_d$ is obtained as
+\begin{align}
+    B_d &= A^{-1}(A_d - I_n)B && \text{(if $A^{-1}$ exists)}
+\end{align}
+For the continuous time system matrix $A$ of the \gls{spm}, its determinant is
+zero, \ie{}
+\begin{equation}
+\begin{vsmallmatrix}
+    -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
+    0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 \\
+    0                            & 0                            & 0
+\end{vsmallmatrix} = 0
+\end{equation}
+and hence  is not invertible.  This necessitates  an explicit evaluation  of the
+integral in~\cref{eq:disctimefulleqn} for computation of the discrete-time input
+matrix, $B_d$.
 
+Since the only non-zero entries of the matrix lie along its main diagonal, \ie{}
+its modes  are decoupled, the  matrix exponential  reduces to a  diagonal matrix
+whose elements are simply the scalar exponentials of the original entries.
+\begin{alignat}{2}
+    A_d &= e^{A T_s} & &= \exp\left(
+\begin{bmatrix}
+    -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
+    0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 \\
+    0                            & 0                            & 0
+\end{bmatrix} T_s \right) \\
+& & A_d &=
+\begin{bmatrix}
+    e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                    & 0 \\
+    0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} T_s} & 0 \\
+    0                                    & 0                                    & 1
+\end{bmatrix}\label{eq:A_d}
+% \begin{bmatrix}
+%     e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                                 & 0 \\
+%     0                                                & \exp\left(-30\frac{D_\sneg}{R_\pneg^2} T_s\right) & 0 \\
+%     0                                                & 0                                                 & \exp\left(0 T_s\right)
+% \end{bmatrix}
+\end{alignat}
+\begin{align}
+    B_d &= \int_{0}^{T_s}e^{A \eta}\mathbf{B} \,{d\eta} \\
+        &=\bigint_{0}^{T_s} \left( \begin{bmatrix}
+    e^{-30\frac{D_\spos}{R_\ppos^2} \eta} & 0                                    & 0 \\
+    0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} \eta} & 0 \\
+    0                                    & 0                                    & 1
+\end{bmatrix}\cdot
+\begin{bmatrix}
+    \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A \, l_\text{pos} a_\spos F} \\
+    \frac{45}{2} \frac{-1}{R_\pneg^2 A \, l_\text{neg} a_\sneg F} \\
+    \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A \, l_\text{neg} a_\sneg F}
+\end{bmatrix} \right) \, d\eta \\
+B_d &= \begin{bmatrix}
+    \hphantom{-}\frac{3}{4} \frac{1 - \exp\left(-30\frac{D_\spos}{R_\ppos^2}\right)T_s}{D_\spos A \, l_\text{pos} a_\spos F} \\[1em]
+    -\frac{3}{4} \frac{1 -
+    \exp\left(-30\frac{D_\sneg}{R_\pneg^2}\right)T_s}{D_\sneg A \, l_\text{neg} a_\sneg F} \\[1em]
+    \hphantom{-}\hphantom{\frac{3}{4}} \frac{-3 T_s}{R_\pneg  A \, l_\text{neg} a_\sneg F}
+\end{bmatrix} \label{eq:B_d}
+\end{align}
 
+The    discrete-time    matrix-vector    system    presented    in~\cref{eq:A_d}
+and~\cref{eq:B_d} have not  been presented in existing literature,  but is vital
+to understanding  the implementation  of the  \gls{spm} in  digital controllers.
+Although, simpler  alternatives such as  Forward Euler methods are  available to
+approximate the time-derivative  of the state vector, they  suffer from problems
+such as increasing  rate of local truncation error  per time-step, necessitating
+the use of  very high sample rates,  which increases the burden  on the embedded
+controller. The matrix exponential approach is superior in terms of accuracy and
+stability across a wide range of sample rates.
 
+For a pre-determined sample-rate, the matrix exponential and hence the $A_d$ and
+$B_d$  matrices  can be  computed  offline  on a  desktop  and  stored into  the
+non-volatile storage  of the embedded  controller to  be loaded onto  RAM during
+operation. The vectorised implementation of the state dynamics presented here is
+highly  efficient  and  directly  amenable for  use  in  classical  state-vector
+algorithms.  Further analysis  in discrete-time  such as  aliasing, quantisation
+noise, signal pre-conditioning  and discrete-time fourier analysis  falls in the
+specialised engineering domain of signal processing  and is outside the scope of
+the thesis.  Thus, a discrete-time  model of  the basic ~\gls{spm}  is available
+whose results are presented next in~\cref{sec:numericalimplementation}.
 
-\subsection{\gls{spm} Parameter Estimation}\label{sec:spmparameterestim}
+\todo{DT algo here along with a listing of matlab code in appendix}
 
 % % https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
 
