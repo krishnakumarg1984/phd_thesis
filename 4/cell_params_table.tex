@@ -1,0 +1,145 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+\begin{table}[htp]
+    \small	% From RSC template
+    % \renewcommand{\thetable}{\arabic{table}}
+    % \captionsetup{justification=centering}
+    % \caption{Cell and simulation parameters \quad \protect$j\in\{\text{Al},\text{pos},\text{sep},\text{neg},\text{Cu},\text{LiPF_6},\text{pouch}\}$}
+    \caption{Cell and simulation parameters \quad \protect{$j \in \{\text{Al},\text{pos},\text{sep},\text{neg},\text{Cu},\ch{LiPF_6},\text{pouch}\}$}}
+    \label{tbl:CellParams}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%% SYSTEM TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{threeparttable}
+        % \begin{center}
+        %     \textbf{System}
+        % \end{center}
+
+        %\begin{minipage}{.486\linewidth}
+        %    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+        %        %\multicolumn{2}{c}{\textbf{System}} \\
+        %        \toprule
+        %        \multicolumn{1}{l}{Parameter} \\
+        %        \midrule
+        %        % Lower cutoff cell voltage, $V_\text{min}$ \si{(V)} & \tnote{a}\num{3.50} \\
+        %        % Upper cutoff cell voltage, $V_\text{max}$ \si{(V)} & \tnote{b}\num{4.22} \\
+        %        \bottomrule
+        %    \end{tabular*}
+        %\end{minipage}
+        %\quad
+        %\begin{minipage}{.486\linewidth}
+        %    \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+        %        \toprule
+        %        \multicolumn{1}{l}{Parameter} \\
+        %        \midrule
+        %        Target cell SOC for fast charge, $z^\ast$ \si{(\%)} & \tnote{d}\num{80.00} \\
+        %        Upper cell temperature limit, $T_\text{max}$ \si{(\degreeCelsius)} & \tnote{e}\num{55.00} \\
+        %        \bottomrule
+        %    \end{tabular*}
+        %\end{minipage}
+
+        %\bigskip
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%% GEOMETRIC PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+        %    \multicolumn{2}{c}{\textbf{Geometric}} \\
+        %    \toprule
+        %    \multicolumn{1}{l}{Parameter} \\
+        %    \midrule
+        %    Surface area of pos.\ \& neg.\ electrode overlap within a layer, {$A_\text{elec}$} \si{(m^2)} & \tnote{b}\num{4.19e-2} \\
+        %    Exterior pouch length, $L_\text{pouch}$ \si{(m)} & \tnote{f}\num{332.74e-3} \\
+        %    Exterior pouch width, $W_\text{pouch}$ \si{(m)} & \tnote{f}\num{99.06e-3} \\
+        %    Exterior pouch height, $H_\text{pouch}$ \si{(m)} & \tnote{g}\num{10.00e-3} \\
+        %    Pouch material thickness, $T_\text{pouch}$ \si{(m)} & \tnote{h}\num{160.00e-6} \\
+        %    %            Combined surface area of cell tabs, $A_\text{tabs}$ \si{(m^2)} & \tnote{x}\num{5.944e-3} \\
+        %    \bottomrule
+        %\end{tabular*}
+
+        %\bigskip
+        %% @{\extracolsep{\fill}}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%% THERMAL PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c c c c c c r}
+        %    \multicolumn{8}{c}{\textbf{Thermal}} \\
+        %    \toprule
+        %    \multicolumn{1}{l}{Parameter} & \multicolumn{1}{c}{Al CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu CC} & \multicolumn{1}{c}{$\text{LiPF_6}$} & \multicolumn{1}{r}{Pouch}\\
+        %    \midrule
+        %    Specific heat capacity, $c_j$ \si{(J.kg^{-1}.K^{-1})} & \tnote{i}\num{903.0} & \tnote{i}\num{1269.2} & \tnote{i}\num{1978.2} & \tnote{i}\num{1437.4} & \tnote{i}\num{385.0} & \tnote{i}\num{2055.1} & \tnote{k}\num{1464.8}\\
+        %    Density, $\rho_j$ \si{(kg.m^{-3})} & \tnote{l}\num{2700.0} & \tnote{m}\num{2291.6} & \tnote{b}\num{1100.0} & \tnote{n}\num{2660.0} & \tnote{l}\num{8960.0} & \tnote{n}\num{1290.0} & \tnote{o}\num{1150.0}\\
+        %    Activation energy, diff. ${E_\text{act,s}}_j$ \si{(J.mol^{-1})} & --- & \tnote{p}\num{5000} & --- & \tnote{p}\num{5000} & --- & --- & \multicolumn{1}{c}{---} \\
+        %    Activation energy, rxn. ${E_\text{act,k}}_j$ \si{(J.mol^{-1})} & --- & \tnote{p}\num{5000} & --- & \tnote{p}\num{5000} & --- & --- & \multicolumn{1}{c}{---} \\
+        %    \midrule
+        %    Heat transfer coefficient, $h$ \si{(W.m^{-2}.K^{-1})} & \multicolumn{7}{c}{\tnote{b}\num{150}} \\
+        %    Total cell tab area, $A_\text{tabs}$ \si{(m^2)} & \multicolumn{7}{c}{\tnote{b}\num{5.94e-3}} \\
+        %    \bottomrule
+        %\end{tabular*}
+
+        %\bigskip
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%% ELECTROCHEMICAL PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c c c c r}
+        %    \multicolumn{6}{c}{\textbf{Electrochemical}} \\
+        %    \toprule
+        %    \multicolumn{1}{l}{Parameter} & \multicolumn{1}{c}{Al CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu CC}\\
+        %    \midrule
+        %    Thickness, $l_j$ \si{(m)} & \tnote{g}\num{15e-6} & eqn~\eqref{eqn:lpos} & \tnote{p}\num{25e-6} & eqn~\eqref{eqn:lneg} & \tnote{p}\num{10e-6} \\
+        %    Particle radius, $R_{\text{p}_j}$ \si{(m)} & --- & \tnote{p}\num{2e-6} & --- & \tnote{p}\num{2e-6} & \multicolumn{1}{c}{---} \\
+        %    Material vol.\ fraction, $\varepsilon_j$ & --- & \tnote{p}\num{0.590} & \tnote{p}\num{0.276} & \tnote{p}\num{0.482} & \multicolumn{1}{c}{---} \\
+        %    Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$ & --- & \tnote{p}\num{0.025} & \tnote{p}\num{0} & \tnote{p}\num{0.033} & \multicolumn{1}{c}{---} \\
+        %    Bruggeman coefficient, $\text{brugg}_j$ & --- & \tnote{p}\num{4.00} & \tnote{p}\num{4.00} & \tnote{p}\num{4.00} & \multicolumn{1}{c}{---} \\
+        %    Specific interfacial surface area, $a_{\text{s}_j}$ \si{(m^{2}.m^{-3})} & --- & \tnote{p}\num{885e3} & --- & \tnote{p}\num{723.6e3} & \multicolumn{1}{c}{---} \\
+        %    Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})} & --- & \tnote{p}eqn~\eqref{eqn:liquid_diffusion} & \tnote{p}eqn~\eqref{eqn:liquid_diffusion} & \tnote{p}eqn~\eqref{eqn:liquid_diffusion} & \multicolumn{1}{c}{---} \\
+        %    Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})} & --- & \tnote{p}eqn~\eqref{eqn:liquid_conductivity} & \tnote{p}eqn~\eqref{eqn:liquid_conductivity} & \tnote{p}eqn~\eqref{eqn:liquid_conductivity} & \multicolumn{1}{c}{---} \\
+        %    Electrode diffusivity, $D_{\text{s}_j}$ \si{(m^2.s^{-1})} & --- & \tnote{p}\num{1e-14} & --- & \tnote{p}\num{3.9e-14} & \multicolumn{1}{c}{---} \\
+        %    Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})} & \tnote{p}\num{3.55e7} & \tnote{p}\num{100.00} & --- & \tnote{p}\num{100.00} & \tnote{p}\num{5.96e7} \\
+        %    Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$ & --- & \tnote{q}\num{0.9917} & --- & \tnote{q}\num{0.0143} & \multicolumn{1}{c}{---} \\
+        %    Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$ & --- & \tnote{r}\num{0.4955} & --- & \tnote{r}\num{0.8551} & \multicolumn{1}{c}{---} \\
+        %    Max concentration, ${c_\text{s,max}}_j$ \si{(mol.m^{-3})} & --- & \tnote{p}\num{51554} & --- & \tnote{p}\num{30555} & \multicolumn{1}{c}{---} \\
+        %    Saturation concen., $c_\text{s,sat}$ \si{(mol.m^{-3})} & --- & --- & --- & \tnote{s}\num{26127.58} & \multicolumn{1}{c}{---} \\
+        %    Reaction rate constant, $k_{\text{r}_j}$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & --- & \tnote{p}\num{2.33e-11} & --- & \tnote{p}\num{5.03e-11} & \multicolumn{1}{c}{---} \\
+        %    Li\textsuperscript{+} transference number, $t^0_\text{+}$ & --- & \tnote{p}\num{0.364} & \tnote{p}\num{0.364} & \tnote{p}\num{0.364} & \multicolumn{1}{c}{---} \\
+        %    Init. electrolyte conc., $c_\text{e,0}$ \si{(mol.m^{-3})} & --- & \tnote{p}\num{1000} & \tnote{p}\num{1000} & \tnote{p}\num{1000} & \multicolumn{1}{c}{---} \\
+        %    Open circuit potential, $U_j$ \si{(V)} & --- & \tnote{p}eqn~\eqref{eqn:OCP_pos} & --- & \tnote{p}eqn~\eqref{eqn:OCP_neg} & \multicolumn{1}{c}{---} \\
+        %    \midrule
+        %    Faraday constant, $F$ \si{(C.mol^{-1})} & \multicolumn{5}{c}{\num{96487}} \\
+        %    Universal gas constant, $R$ \si{(J.mol^{-1}.K^{-1})} & \multicolumn{5}{c}{\num{8.314}} \\
+        %    \bottomrule
+        %\end{tabular*}
+
+        %\bigskip
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %\begin{tabular*}{\textwidth}{l p{2.6cm} p{2.3cm} p{2.3cm} p{2.3cm} p{2.3cm}}
+        %    \multicolumn{6}{p{\textwidth}}{\hspace{0.44\textwidth}\textbf{Discretisation}} \\
+        %    \toprule
+        %    \multicolumn{1}{l}{Parameter} & \multicolumn{1}{p{2.6cm}}{} & \multicolumn{1}{p{2.3cm}}{Pos} & \multicolumn{1}{p{2.3cm}}{Sep} & \multicolumn{1}{p{2.3cm}}{Neg} & \multicolumn{1}{p{2.3cm}}{} \\
+        %    \midrule
+        %    Nodes, through-thickness (axial), $N_{\text{a}_j}$ & & \num{40} & \num{40} & \num{40} & \\
+        %    Nodes, within spherical particle (radial), $N_{\text{r}_j}$ & & \num{15} & --- & \num{15} & \\
+        %    \bottomrule
+        %\end{tabular*}
+
+        %\begin{tablenotes}
+		%\item[a]Calculated, as described in section~\ref{sec:Results}
+		%\item[b]Assumed
+		%\item[d]\mbox{Ref.\cite{SAECharging2011}}
+        %\item[e]\mbox{Ref.\cite{Kizilel2009, Lu2013}}
+        %\item[f]\mbox{Ref.\cite{GMBoltBatteryDims}}
+		%\item[g]\mbox{Ref.\cite{Groger2015}}
+        %\item[h]\mbox{Ref.\cite{Svens2013}}
+        %\item[i]\mbox{Ref.\cite{Chen2005}}
+        %\item[k]Computed based on the values of constituents in \mbox{Ref.\cite{martienssen2006springer}}
+        %\item[l]\mbox{Ref.\cite{martienssen2006springer}}
+        %\item[m]\mbox{Ref.\cite{Jeon2011}}
+        %\item[n]\mbox{Ref.\cite{Guo2010}}
+        %\item[o]\mbox{Ref.\cite{Kim2009}}
+        %\item[p]\mbox{Ref.\cite{Northrop2011}}
+        %\item[q]Obtained via C/\num{500} simulated discharge to \SI{2.7}{V}
+		%\item[r]\mbox{Ref.\cite{Subramanian2009}}
+        %\item[s]$c_\text{s}$ at $z =$ \num{100} \si{\%}
+        %\item Note: Some parameter values vary considerably in the literature. We chose those which we believe are reasonable and we necessarily keep many constant, providing a focused work.
+        %\end{tablenotes}
+
+    \end{threeparttable}
+\end{table}
