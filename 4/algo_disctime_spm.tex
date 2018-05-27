@@ -1,0 +1,65 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+\vspace{-1em}
+\noindent\makebox[\textwidth][c]{%
+    \begin{customalgo}[1.0\textwidth]{Continuous time \gls{spm}}{alg:ctstimespm}
+        \Require Load profile \Comment{\eg{} a \texttt{csv} file of $t$ vs. C-rate}
+        \Require \gls{spm} parameter set  \Comment{\eg{} stored in a struct \texttt{params}}
+        \Userdata $z[0], t_\text{f,user}$, $t_\text{f,condition}$, cell capacity $I_\text{1C}$, sample rate $T_s$ \Comment{$t_\text{f,condition} \in  \left\{\texttt{max}, \texttt{min}\right\}$}
+        \Ensure  $z[0], V_\text{cell}[0]$ within limits
+        \Procedure{Simulate\gls{spm}}{}%{$z[0],t_\text{f,desired},T_s,I_\text{1C},\texttt{params}$}
+        \State {$t_\text{f,desired} =
+            % \scriptstyle
+            \begin{cases}
+                % \scriptstyle
+                \max(t_\text{f,user},t_\text{f,profile}),
+                &\text{%\scriptsize
+            if $t_\text{f,condition}$ == \texttt{max};}\\
+            % \scriptstyle
+            \min(t_\text{f,user},t_\text{f,profile}),
+            &\text{%\scriptsize
+        otherwise.}
+    \end{cases}$} \Comment{\parbox[t]{0.25\textwidth}{may terminate early due to
+cut-off violations}}
+% }}
+        \FullComment{\scriptsize Flexible end time. Extrapolate last C-rate from
+        profile until $t_\text{f,desired}$ if necessary.}
+        \State $N_\text{max} \gets \ceil*{\frac{t_\text{f,desired}}{Ts}} + 1$
+        \Comment{max iterations assuming no cut-offs}
+        \State Allocate storage of size $\mathbb{R}^{N_\text{max}\times 1}$ for each simulation variable
+        \State Compute $\mean{c}_\sneg$[0] as per~\cref{eq:csfluxinitialcondition}
+        \State $I[0] \gets I_\text{1C} \times  \text{C-rate}[0], \quad \mathbf{x}[0] \gets \vect{0,0, \mean{c}_\sneg[0]}$ \Comment{ $\text{C-rate}[0]$ from profile}
+        % \State $\mathbf{x}[0] \gets \vect{0,0, \mean{c}_\sneg[0]}$
+        \State $V_\text{cell}[0] \gets
+        \textsc{ComputeCellVoltage}(\textbf{x}[0],I[0],\texttt{params})$
+        \Comment{from direct feedthrough}
+        \For{$k \gets 2 : N_\text{max}$}
+        \State $I[k] \gets $ interpolate from profile using \gls{zoh}
+        \State Solve continuous-time equation~\cref{eq:threestatesmatrixvec}
+        \Comment{solver IC set to $x[k-1]$}
+        \State $\mathbf{x}[k] \gets $ last time-entry  vector of
+        soln.\  matrix
+        \Comment{from an adaptive solver \eg{} MATLAB's \texttt{ode45}}
+        \State Compute $z[k]$ as per~\cref{eq:soccomputation}
+        \State $V_\text{cell} \gets \textsc{ComputeCellVoltage}(\textbf{x}[k],I[k],\texttt{param}) $
+        \If {$z[k] \text{ or } V_\text{cell}[k]$ exceeded cut-off limits}
+            \State $k \gets k - 1$ \Comment{data from last  step is invalid}
+            \State \textit{break};
+            \EndIf
+        \EndFor
+        \EndProcedure
+
+        \OutputEqn{\textbf{x},I,\texttt{params}}
+        \State Compute $c_\snegsurf$ as per~\cref{eq:csurfnegfromcavgneg}
+        \Comment{consider saturating \ie{} $c_\snegmin \le c_\snegsurf \le
+        c_\snegmax$}
+        \State Compute $\mean{c}_\spos$ as per~\cref{eq:csposbulkfromcsnegbulk}
+        \State Compute $c_\spossurf$ as per~\cref{eq:csurfposfromcavgpos}
+        \State Compute $V_\text{cell}$ as per~\cref{eq:spmbasicoutputvoltagefinal}
+        \EndOutputEqn%
+    \end{customalgo}
+}%

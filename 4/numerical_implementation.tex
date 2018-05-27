@@ -80,9 +80,6 @@ of  the  continuous time  \gls{spm}.  The  source  code  listing of  an  example
 implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
 
 \input{4/algo_ctstime_spm.tex}
-    % The \textproc{Sum} algorithm shows blah blah blah
-    % % inside algorithm,
-    % % cases environment, displayed equations,
 
 The continuous time \gls{spm} algorithm has limited practical use. Computing the
 convolution integral or deploying \gls{ode}  solver code in a microcontroller is
@@ -306,9 +303,6 @@ by~\cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k 
     x(t_0) & = x(kT_s)     & & \equiv x[k] \\
     x(t)   & = x((k+1)T_s) & & \equiv x[k+1]
 \end{alignat}
-% The dummy  variable of  integration $\tau$  can similarly  be transformed  to an
-% arbitrary  multiple  of  $T_s$  whose  value is  applicable  within  one  sample
-% period, \ie{}  $\mathbf{u}(\tau) =  \mathbf{u}(\kappa T_s)$.
 Substituting these relationships into~\cref{eq:genanalyticctssoln},
 \begin{equation}
     \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}\mathbf{B u}(τ)\,dτ \label{eq:intermediatediscrete}
@@ -327,7 +321,7 @@ Substituting these into~\cref{eq:intermediatediscrete},
 \Cref{eq:disctimefulleqn} represents a discrete-time state-space representation
 of the dynamics of the system whose generic representation is given by the
 difference equation
-\begin{equation}
+\begin{equation}\label{eq:discgenericLTI}
     \mathbf{x}[k+1] = A_d x[k] + B_d u[k]
 \end{equation}
 where $A_d = e^{A T_s}$ and $B_d = \int_{0}^{T_s}e^{A \eta}\mathbf{B}
@@ -366,11 +360,6 @@ whose elements are simply the scalar exponentials of the original entries.
     0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} T_s} & 0 \\
     0                                    & 0                                    & 1
 \end{bmatrix}\label{eq:A_d}
-% \begin{bmatrix}
-%     e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                                 & 0 \\
-%     0                                                & \exp\left(-30\frac{D_\sneg}{R_\pneg^2} T_s\right) & 0 \\
-%     0                                                & 0                                                 & \exp\left(0 T_s\right)
-% \end{bmatrix}
 \end{alignat}
 \begin{align}
     B_d &= \int_{0}^{T_s}e^{A \eta}\mathbf{B} \,{d\eta} \\
@@ -407,16 +396,28 @@ $B_d$  matrices  can be  computed  offline  on a  desktop  and  stored into  the
 non-volatile storage  of the embedded  controller to  be loaded onto  RAM during
 operation. The vectorised implementation of the state dynamics presented here is
 highly  efficient  and  directly  amenable for  use  in  classical  state-vector
-algorithms.  Further analysis  in discrete-time  such as  aliasing, quantisation
-noise, signal pre-conditioning  and discrete-time fourier analysis  falls in the
-specialised engineering domain of signal processing  and is outside the scope of
-the thesis.  Thus, a discrete-time  model of  the basic ~\gls{spm}  is available
-whose results are presented next in~\cref{sec:numericalimplementation}.
+algorithms. For the cell's terminal voltage computation, the basic structure and
+form  of the  output  equation given  by~\cref{eq:spmoutputeqn} remains  intact,
+except  that the  continuous time  variables $\left(\mathbf{x}(t),  u(t)\right)$
+need to  be replaced  by their discrete-time  counterparts in  the corresponding
+equation set~\crefrange{eq:spmbasicoutputvoltagefinal}{eq:csurfnegfromcavgneg}.
+The discrete-time output function $h_d$ is evaluated  \emph{after}  updating  the state  vector  through~\cref{eq:discgenericLTI}.
+\begin{equation}\label{eq:discspmoutputeqn}
+    y[k+1] = h_d(\mathbf{x}[k+1],u[k+1])
+\end{equation}
 
+The discrete-time variant of the \gls{spm} is given in
+\input{4/algo_disctime_spm}
 
-% mention that output equation has not really changed, but still give the
-% equation in terms of indices
-% Table comparing simulation speeds for cts and disc for constant current and dynamic current
+Further  analysis  in  discrete-time   such  as  aliasing,  quantisation  noise,
+signal  pre-conditioning  and  discrete-time   fourier  analysis  falls  in  the
+specialised  engineering  domain  of  signal   processing  and  is  outside  the
+scope  of the  thesis.  Thus,  a discrete-time  model  of  the basic  ~\gls{spm}
+is  now  available. The  results  of  the  basic  \gls{spm} are  presented  next
+in~\cref{sec:basicspmsimresults}.
+
+% algo
+% graphviz doc in appendix, toolbox, directory listing etc.
 
 \todo{DT algo here along with a listing of matlab code in appendix}
 
