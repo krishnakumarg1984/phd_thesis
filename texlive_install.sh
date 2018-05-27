@@ -179,6 +179,7 @@ tlmgr install   \
     tracklang \
     translator \
     trimspaces \
+    threeparttable \
     txfonts \
     ucharcat \
     unicode-math \
