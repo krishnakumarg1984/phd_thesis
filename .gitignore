@@ -298,3 +298,5 @@ beamercolorthemeC*.sty
 
 MWE.pdf
 *minimal.pdf
+
+debug/*
