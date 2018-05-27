@@ -76,8 +76,8 @@ Since  the direction  of applied  current  is susceptible  to sudden  reversals,
 (\eg{}  due to  acceleration and  braking events  for a  vehicular application),
 the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 \Cref{alg:ctstimespm} shows the  sequence of operations in  a desktop simulation
-of  the  continuous time  \gls{spm}.  The  source  code  listing of  an  example
-implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
+of the continuous time \gls{spm} on  a digital computer. The source code listing
+of an example implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
 
 \input{4/algo_ctstime_spm.tex}
 
@@ -412,7 +412,9 @@ The discrete-time output function $h_d$ is evaluated  \emph{after}  updating  th
     y[k+1] = h_d(\mathbf{x}[k+1],u[k+1])
 \end{equation}
 
-The discrete-time variant of the \gls{spm} is given in
+The complete  sequence of steps  to implement  the discrete-time variant  of the
+\gls{spm} is given in~\cref{alg:disctimespm}.
+
 \input{4/algo_disctime_spm}
 
 Thus,  a discrete-time  model  of  the basic  ~\gls{spm}  is  now available  for
@@ -422,10 +424,9 @@ fourier analysis lies in the specialised engineering domain of signal processing
 and falls outside  the scope of the  thesis. The results of  the basic \gls{spm}
 are presented next in~\cref{sec:basicspmsimresults}.
 
-% algo
 % graphviz doc in appendix, toolbox, directory listing etc.
 
-\todo{DT algo here along with a listing of matlab code in appendix}
+% \todo{DT algo here along with a listing of matlab code in appendix}
 
 % % https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
 

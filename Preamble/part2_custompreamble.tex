@@ -140,3 +140,11 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols c}}
 \makeatother
+
+
+\let\Algorithm\algorithm
+\renewcommand\algorithm[1][]{\Algorithm[#1]\setstretch{1.2390625}}
+
+% \usepackage{scalerel,stackengine}
+% \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+%                     \scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
