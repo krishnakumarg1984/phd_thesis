@@ -347,39 +347,45 @@ matrix, $B_d$.
 Since the only non-zero entries of the matrix lie along its main diagonal, \ie{}
 its modes  are decoupled, the  matrix exponential  reduces to a  diagonal matrix
 whose elements are simply the scalar exponentials of the original entries.
-\begin{alignat}{2}
-    A_d &= e^{A T_s} & &= \exp\left(
+\begin{equation}
+    A_d = e^{A T_s} = \exp\left(
 \begin{bmatrix}
     -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
     0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 \\
     0                            & 0                            & 0
-\end{bmatrix} T_s \right) \\
-& & A_d &=
+\end{bmatrix} T_s \right)
+\end{equation}
+\begin{equation}\label{eq:A_d}
+A_d =
 \begin{bmatrix}
     e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                    & 0 \\
     0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} T_s} & 0 \\
     0                                    & 0                                    & 1
-\end{bmatrix}\label{eq:A_d}
-\end{alignat}
-\begin{align}
-    B_d &= \int_{0}^{T_s}e^{A \eta}\mathbf{B} \,{d\eta} \\
-        &=\bigint_{0}^{T_s} \left( \begin{bmatrix}
-    e^{-30\frac{D_\spos}{R_\ppos^2} \eta} & 0                                    & 0 \\
-    0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} \eta} & 0 \\
-    0                                    & 0                                    & 1
-\end{bmatrix}\cdot
-\begin{bmatrix}
-    \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A \, l_\text{pos} a_\spos F} \\
-    \frac{45}{2} \frac{-1}{R_\pneg^2 A \, l_\text{neg} a_\sneg F} \\
-    \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A \, l_\text{neg} a_\sneg F}
-\end{bmatrix} \right) \, d\eta \\
-B_d &= \begin{bmatrix}
-    \hphantom{-}\frac{3}{4} \frac{1 - \exp\left(-30\frac{D_\spos}{R_\ppos^2}\right)T_s}{D_\spos A \, l_\text{pos} a_\spos F} \\[1em]
-    -\frac{3}{4} \frac{1 -
-    \exp\left(-30\frac{D_\sneg}{R_\pneg^2}\right)T_s}{D_\sneg A \, l_\text{neg} a_\sneg F} \\[1em]
-    \hphantom{-}\hphantom{\frac{3}{4}} \frac{-3 T_s}{R_\pneg  A \, l_\text{neg} a_\sneg F}
-\end{bmatrix} \label{eq:B_d}
-\end{align}
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+    B_d = \int_{0}^{T_s}e^{A \eta}\mathbf{B} \,{d\eta}
+\end{equation}
+\begin{equation}
+    B_d =\bigint_{0}^{T_s} \left( \begin{bmatrix}
+            e^{-30\frac{D_\spos}{R_\ppos^2} \eta} & 0                                    & 0 \\
+            0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} \eta} & 0 \\
+            0                                    & 0                                    & 1
+        \end{bmatrix}\cdot
+        \begin{bmatrix}
+            \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A \, l_\text{pos} a_\spos F} \\
+            \frac{45}{2} \frac{-1}{R_\pneg^2 A \, l_\text{neg} a_\sneg F} \\
+            \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A \, l_\text{neg} a_\sneg F}
+    \end{bmatrix} \right) \, d\eta
+\end{equation}
+\begin{equation}\label{eq:B_d}
+    B_d = \begin{bmatrix}
+        \hphantom{-}\frac{3}{4} \frac{1 - \exp\left(-30\frac{D_\spos}{R_\ppos^2}\right)T_s}{D_\spos A \, l_\text{pos} a_\spos F} \\[1em]
+        -\frac{3}{4} \frac{1 -
+        \exp\left(-30\frac{D_\sneg}{R_\pneg^2}\right)T_s}{D_\sneg A \, l_\text{neg} a_\sneg F} \\[1em]
+        \hphantom{-}\hphantom{\frac{3}{4}} \frac{-3 T_s}{R_\pneg  A \, l_\text{neg} a_\sneg F}
+    \end{bmatrix}
+\end{equation}
 
 The    discrete-time    matrix-vector    system    presented    in~\cref{eq:A_d}
 and~\cref{eq:B_d} have not  been presented in existing literature,  but is vital
@@ -409,12 +415,12 @@ The discrete-time output function $h_d$ is evaluated  \emph{after}  updating  th
 The discrete-time variant of the \gls{spm} is given in
 \input{4/algo_disctime_spm}
 
-Further  analysis  in  discrete-time   such  as  aliasing,  quantisation  noise,
-signal  pre-conditioning  and  discrete-time   fourier  analysis  falls  in  the
-specialised  engineering  domain  of  signal   processing  and  is  outside  the
-scope  of the  thesis.  Thus,  a discrete-time  model  of  the basic  ~\gls{spm}
-is  now  available. The  results  of  the  basic  \gls{spm} are  presented  next
-in~\cref{sec:basicspmsimresults}.
+Thus,  a discrete-time  model  of  the basic  ~\gls{spm}  is  now available  for
+implementation in an embedded gls{bms}. Further analysis of discrete-time issues
+such  as  aliasing, quantisation  noise,  signal  pre-conditioning and  discrete
+fourier analysis lies in the specialised engineering domain of signal processing
+and falls outside  the scope of the  thesis. The results of  the basic \gls{spm}
+are presented next in~\cref{sec:basicspmsimresults}.
 
 % algo
 % graphviz doc in appendix, toolbox, directory listing etc.
