@@ -148,3 +148,12 @@
 % \usepackage{scalerel,stackengine}
 % \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
 %                     \scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+\makeatletter
+\newcommand{\algcolor}[2]{%
+  \hskip-\ALG@thistlm\colorbox{#1}{\parbox{\dimexpr\linewidth-2\fboxsep}{\hskip\ALG@thistlm\relax #2}}%
+}
+\newcommand{\algemph}[1]{\algcolor{imperiallightgray}{#1}}
+\makeatother
+
+\SetupFloatingEnvironment{listing}{name=Code Snippet}

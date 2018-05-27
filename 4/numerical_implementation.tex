@@ -347,7 +347,7 @@ matrix, $B_d$.
 Since the only non-zero entries of the matrix lie along its main diagonal, \ie{}
 its modes  are decoupled, the  matrix exponential  reduces to a  diagonal matrix
 whose elements are simply the scalar exponentials of the original entries.
-\begin{equation}
+\begin{equation}\label{eq:A_dinit}
     A_d = e^{A T_s} = \exp\left(
 \begin{bmatrix}
     -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
@@ -363,10 +363,10 @@ A_d =
     0                                    & 0                                    & 1
 \end{bmatrix}
 \end{equation}
-\begin{equation}
+\begin{equation}\label{eq:B_dinit}
     B_d = \int_{0}^{T_s}e^{A \eta}\mathbf{B} \,{d\eta}
 \end{equation}
-\begin{equation}
+\begin{equation}\label{eq:B_dintermediate}
     B_d =\bigint_{0}^{T_s} \left( \begin{bmatrix}
             e^{-30\frac{D_\spos}{R_\ppos^2} \eta} & 0                                    & 0 \\
             0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} \eta} & 0 \\
@@ -413,9 +413,52 @@ The discrete-time output function $h_d$ is evaluated  \emph{after}  updating  th
 \end{equation}
 
 The complete  sequence of steps  to implement  the discrete-time variant  of the
-\gls{spm} is given in~\cref{alg:disctimespm}.
+\gls{spm}  is given  in~\cref{alg:disctimespm}. In  particular, it  can be  seen
+that  the discrete-time  system  and  input matrices,  $A_d$  and  $B_d$ can  be
+pre-computed  from the  parameter set  (refer to  line~\ref{algLine:computeAdBd}
+in~\cref{alg:disctimespm}), using  the matrix  exponential approach.  In MATLAB,
+this  can be  achieved by  passing the  arguments of  the matrix  exponential to
+the  \verb+expm+ command.  The  vectorised implementation  of the  discrete-time
+state equation  given in  line~\ref{algLine:discstateEq} is  a set  of efficient
+linear  algebra  operations  consisting  of  simple  matrix-vector  product  and
+vector-addition routines.
 
 \input{4/algo_disctime_spm}
+
+Since   a    subsection   of   researchers   in    electrochemical   engineering
+might   not  be   familiar  with   the   nuances  of   matrix  exponential   and
+discrete-time  matrix  computations   (refer  to  line~\ref{algLine:computeAdBd}
+in~\cref{alg:disctimespm}),   a   snippet   of  MATLAB   code   clarifying   the
+computation  of  the   discrete-time  system  and  input   matrices,  $A_d$  and
+$B_d$  is  given  in~\cref{codesnippet:computeAdBd}.  A  full  code  listing  of
+an  example  discrete-time  \gls{spm}   implementation  in  MATLAB  is  provided
+in~\cref{sc:disctimespm}.
+
+\begin{listing}
+\begin{minted}[mathescape,autogobble,bgcolor=mintedbg,escapeinside=||,label=Returns,labelposition=topline]{matlab}
+% Returns $A_d$ and $B_d$ matrices
+A_cts = [-30*Ds_pos/(R_pos^2),                    0, 0; ...
+                            0, -30*Ds_neg/(R_neg^2), 0; ...
+                            0,                    0, 0];
+% $A_d = e^{A T_s}$
+|see \crefrange{eq:A_dinit}{eq:A_d}|
+A_disc = expm(A_cts*Ts); % $\mathtt{expm}$ command returns matrix exponential
+
+B_cts = [ (45/2)/(R_pos^2*a_pos*L_pos*F*A); ...
+         (-45/2)/(R_neg^2*a_neg*L_neg*F*A); ...
+             (-3/(R_neg*a_neg*L_neg*F*A))];
+
+% $B_d = \int_{0}^{T_s}e^{A \eta}\mathbf{B} \,{d\eta}$
+|see \crefrange{eq:B_dinit}{eq:B_d}|
+B_disc = nan(size(B_cts));
+B_disc(1) = B_cts(1)*(exp(A_cts(1,1)*Ts)-1)/A_cts(1,1);
+B_disc(2) = B_cts(2)*(exp(A_cts(2,2)*Ts)-1)/A_cts(2,2);
+B_disc(3) = B_cts(3)*Ts;
+
+\end{minted}
+\caption{Computation of discrete-time matrices $A_d$ and $B_d$ in MATLAB}
+\label{codesnippet:computeAdBd}
+\end{listing}
 
 Thus,  a discrete-time  model  of  the basic  ~\gls{spm}  is  now available  for
 implementation in an embedded gls{bms}. Further analysis of discrete-time issues
@@ -423,6 +466,8 @@ such  as  aliasing, quantisation  noise,  signal  pre-conditioning and  discrete
 fourier analysis lies in the specialised engineering domain of signal processing
 and falls outside  the scope of the  thesis. The results of  the basic \gls{spm}
 are presented next in~\cref{sec:basicspmsimresults}.
+
+\FloatBarrier
 
 % graphviz doc in appendix, toolbox, directory listing etc.
 
