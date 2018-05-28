@@ -173,3 +173,34 @@
 \makeatother
 
 
+% % needs etoolbox defines a Rowcolor
+% \makeatletter
+% \newlength{\qrr@dimen@}
+% \expandafter\pretocmd\csname tabular*\endcsname{\setlength{\qrr@dimen@}{#1}}{}{}
+% \newcommand*{\Rowcolor}[2][\tabcolsep]{%
+%     \ifx\relax#1\relax\else
+%         \kern-\the\dimexpr#1\relax
+%     \fi
+%     \makebox[0pt][l]{%
+%         \fboxsep=0pt
+%         \colorbox{#2}{%
+%             \strut\kern\qrr@dimen@
+%         }%
+%     }%
+%     \ifx\relax#1\relax\else
+%         \kern\the\dimexpr#1\relax
+%     \fi
+%     \ignorespaces
+% }
+% \makeatother
+
+
+\usepackage{tabularx}       % new
+\usepackage{boldline}       % new (part of shipunov bundle)
+\usepackage{cellspace}      % new
+\setlength\cellspacetoplimit{4pt}
+\setlength\cellspacebottomlimit{4pt}
+\addparagraphcolumntypes{X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
