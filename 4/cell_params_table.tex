@@ -21,14 +21,14 @@
                 \multicolumn{1}{l}{Parameter} \\
                 \midrule
                 Lower cutoff cell voltage, $V_\text{min}$ \si{(V)} & \tnote{a}\num{2.50} \\
-                Upper cutoff cell voltage, $V_\text{max}$ \si{(V)} & \tnote{a}\num{4.30} \\
+                Upper cutoff cell voltage, $V_\text{max}$ \si{(V)} & \tnote{b}\num{4.30} \\
                 \bottomrule
             \end{tabular*}
         \end{varwidth}
         \quad
         \begin{varwidth}[b]{.50\linewidth}
             \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-            \multicolumn{2}{c}{\textbf{Universal Constants}} \\
+                \multicolumn{2}{c}{\textbf{Universal Constants}} \\
                 \toprule
                 \multicolumn{1}{l}{Parameter} \\
                 \midrule
@@ -41,29 +41,29 @@
         \bigskip
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%% ELECTROCHEMICAL PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c c r}
+        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c c c}
             \multicolumn{4}{c}{\textbf{Electrochemical}} \\
             \toprule
             \multicolumn{1}{l}{Parameter} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg}\\
             \midrule
-            Thickness, $l_j$ \si{(m)}                                                & eqn~\eqref{eqn:lpos}                         & \tnote{p}\num{25e-6}                         & eqn~\eqref{eqn:lneg}                         \\
-            Particle radius, $R_{\text{p}_j}$ \si{(m)}                               & \tnote{p}\num{2e-6}                          & ---                                          & \tnote{p}\num{2e-6}                          \\
-            Material vol.\ fraction, $\varepsilon_j$                                 & \tnote{p}\num{0.590}                         & \tnote{p}\num{0.276}                         & \tnote{p}\num{0.482}                         \\
-            Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$                     & \tnote{p}\num{0.025}                         & \tnote{p}\num{0}                             & \tnote{p}\num{0.033}                         \\
-            Bruggeman coefficient, $\text{brugg}_j$                                  & \tnote{p}\num{4.00}                          & \tnote{p}\num{4.00}                          & \tnote{p}\num{4.00}                          \\
-            Specific interfacial surface area, $a_{\text{s}_j}$ \si{(m^{2}.m^{-3})}  & \tnote{p}\num{885e3}                         & ---                                          & \tnote{p}\num{723.6e3}                       \\
-            Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})}                         & \tnote{p}eqn~\eqref{eqn:liquid_diffusion}    & \tnote{p}eqn~\eqref{eqn:liquid_diffusion}    & \tnote{p}eqn~\eqref{eqn:liquid_diffusion}    \\
-            Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})}                     & \tnote{p}eqn~\eqref{eqn:liquid_conductivity} & \tnote{p}eqn~\eqref{eqn:liquid_conductivity} & \tnote{p}eqn~\eqref{eqn:liquid_conductivity} \\
-            Electrode diffusivity, $D_{\text{s}_j}$ \si{(m^2.s^{-1})}                & \tnote{p}\num{1e-14}                         & ---                                          & \tnote{p}\num{3.9e-14}                       \\
-            Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})}                      & \tnote{p}\num{100.00}                        & ---                                          & \tnote{p}\num{100.00}                        \\
-            Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                        & \tnote{q}\num{0.9917}                        & ---                                          & \tnote{q}\num{0.0143}                        \\
-            Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                      & \tnote{r}\num{0.4955}                        & ---                                          & \tnote{r}\num{0.8551}                        \\
-            Max concentration, ${c_\text{s,max}}_j$ \si{(mol.m^{-3})}                & \tnote{p}\num{51554}                         & ---                                          & \tnote{p}\num{30555}                         \\
-            Saturation concen., $c_\text{s,sat}$ \si{(mol.m^{-3})}                   & ---                                          & ---                                          & \tnote{s}\num{26127.58}                      \\
-            Reaction rate constant, $k_{\text{r}_j}$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & \tnote{p}\num{2.33e-11}                      & ---                                          & \tnote{p}\num{5.03e-11}                      \\
-            Li\textsuperscript{+} transference number, $t^0_\text{+}$                & \tnote{p}\num{0.364}                         & \tnote{p}\num{0.364}                         & \tnote{p}\num{0.364}                         \\
-            Init. electrolyte conc., $c_\text{e,0}$ \si{(mol.m^{-3})}                & \tnote{p}\num{1000}                          & \tnote{p}\num{1000}                          & \tnote{p}\num{1000}                          \\
-            Open circuit potential, $U_j$ \si{(V)}                                   & \tnote{p}eqn~\eqref{eqn:OCP_pos}             & ---                                          & \tnote{p}eqn~\eqref{eqn:OCP_neg}             \\
+
+            Thickness, $l_j$ \si{(m)}                                          & \tnote{c}\num{88e-6}             & \tnote{c}\num{25e-6}    & \tnote{d}\num{72e-6}             \\
+            Particle radius, $R_\pj$ \si{(m)}                                  & \tnote{c}\num{2e-6}              & ---                     & \tnote{c}\num{2e-6}              \\
+            Material vol.\ fraction, $\varepsilon_\sj$                         & \tnote{e}\num{0.590}             & \tnote{e}\num{0.276}    & \tnote{e}\num{0.482}             \\
+            Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$               & \tnote{c}\num{0.025}             & ---                     & \tnote{c}\num{0.033}             \\
+            Bruggeman coefficient, $\text{brugg}_j$                            & \tnote{c}\num{4}                 & \tnote{c}\num{4}        & \tnote{c}\num{4}                 \\
+            Specific interfacial surface area, $a_\sj$ \si{(m^{2}.m^{-3})}     & \tnote{f}\num{885e3}             & ---                     & \tnote{f}\num{723.6e3}           \\
+            Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})}                   & \tnote{g}\num{3.22e-10}          & \tnote{g}\num{3.22e-10} & \tnote{g}\num{3.22e-10}          \\
+            Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})}               & \tnote{h}\num{26.24e-3}          & \tnote{c}\num{328.15}   & \tnote{c}\num{66.08e-3}          \\
+            Electrode diffusivity, $D_{\text{s}_j}$ \si{(m^2.s^{-1})}          & \tnote{c}\num{1e-14}             & ---                     & \tnote{c}\num{3.9e-14}           \\
+            Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})}                & \tnote{c}\num{100.00}            & ---                     & \tnote{c}\num{100.00}            \\
+            Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                  & \tnote{i}\num{0.9917}            & ---                     & \tnote{i}\num{0.0143}            \\
+            Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                & \tnote{r}\num{0.4955}            & ---                     & \tnote{r}\num{0.8551}            \\
+            Max concentration, ${c_\text{s,max}}_j$ \si{(mol.m^{-3})}          & \tnote{c}\num{51554}             & ---                     & \tnote{c}\num{30555}             \\
+            Reaction rate coefficient, $k_\jr$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & \tnote{c}\num{2.33e-11}          & ---                     & \tnote{c}\num{5.03e-11}          \\
+            \ch{Li^+} transference number, $t^0_\text{+}$                      & \tnote{c}\num{0.363}             & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}             \\
+            Open circuit potential, $U_j$ \si{(V)}                             & \tnote{c}eqn~\eqref{eqn:OCP_pos} & ---                     & \tnote{c}eqn~\eqref{eqn:OCP_neg} \\
+
             \bottomrule
         \end{tabular*}
 
@@ -79,26 +79,39 @@
         %    \bottomrule
         %\end{tabular*}
 
-        \begin{tablenotes}
-        \item[a]\mbox{Ref.~\cite{Northrop2011}}
-		% \item[b]Assumed
-		% \item[d]\mbox{Ref.~\cite{SAECharging2011}}
-        % \item[e]\mbox{Ref.~\cite{Kizilel2009, Lu2013}}
-        % \item[f]\mbox{Ref.~\cite{GMBoltBatteryDims}}
-		% \item[g]\mbox{Ref.~\cite{Groger2015}}
-        % \item[h]\mbox{Ref.~\cite{Svens2013}}
-        % \item[i]\mbox{Ref.~\cite{Chen2005}}
-        % \item[k]Computed based on the values of constituents in \mbox{Ref.\cite{martienssen2006springer}}
-        % \item[l]\mbox{Ref.~\cite{martienssen2006springer}}
-        % \item[m]\mbox{Ref.~\cite{Jeon2011}}
-        % \item[n]\mbox{Ref.~\cite{Guo2010}}
-        % \item[o]\mbox{Ref.~\cite{Kim2009}}
-        % \item[p]\mbox{Ref.~\cite{Northrop2011}}
-        % \item[q]Obtained via C/\num{500} simulated discharge to \SI{2.7}{V}
-		% \item[r]\mbox{Ref.~\cite{Subramanian2009}}
-        % \item[s]$c_\text{s}$ at $z =$ \num{100} \si{\%}
-        % \item Note: Some parameter values vary considerably in the literature. We chose those which we believe are reasonable and we necessarily keep many constant, providing a focused work.
+        \begin{tablenotes}[para]
+            \begin{footnotesize}
+            \item[a] Ref.~\cite{Northrop2011}
+		    \item[b] Set to $\approx $\SI{100}{\milli\volt} above the cell's \gls{ocp} at \SI{100}{\percent} cell \gls{soc}
+		    \item[c] Ref.~\cite{Subramanian2009}
+		    \item[d] Set up to adjust the loading and capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.
+		    \item[e] Computed as $1-\varepsilon_j - \varepsilon_{\text{fi}_j}$ from Ref.~\cite{Subramanian2009}, where $\varepsilon_j$ is the electrolyte porosity\\
+		    \item[f] Computed as $\frac{3 \varepsilon_\sj}{R_\pj}$
+		    \item[g] Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{2} in Ref.~\cite{Valoen2005}
+		    \item[h] Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{3} in Ref.~\cite{Valoen2005}\\
+            \item[i] Obtained as residual stoichiometries after a C/\num{500} simulated discharge from \SI{100}{\percent} cell \gls{soc} to \SI{2.7}{V}
+
+		        % \item[d]\mbox{Ref.~\cite{SAECharging2011}}
+                % \item[e]\mbox{Ref.~\cite{Kizilel2009, Lu2013}}
+                % \item[f]\mbox{Ref.~\cite{GMBoltBatteryDims}}
+		        % \item[g]\mbox{Ref.~\cite{Groger2015}}
+                % \item[h]\mbox{Ref.~\cite{Svens2013}}
+                % \item[i]\mbox{Ref.~\cite{Chen2005}}
+                % \item[k]Computed based on the values of constituents in \mbox{Ref.\cite{martienssen2006springer}}
+                % \item[l]\mbox{Ref.~\cite{martienssen2006springer}}
+                % \item[m]\mbox{Ref.~\cite{Jeon2011}}
+                % \item[n]\mbox{Ref.~\cite{Guo2010}}
+                % \item[o]\mbox{Ref.~\cite{Kim2009}}
+                % \item[p]\mbox{Ref.~\cite{Northrop2011}}
+		        % \item[r]\mbox{Ref.~\cite{Subramanian2009}}
+                % \item[s]$c_\text{s}$ at $z =$ \num{100} \si{\%}
+                % \item Note: Some parameter values vary considerably in the literature. We chose those which we believe are reasonable and we necessarily keep many constant, providing a focused work.
+            \end{footnotesize}
         \end{tablenotes}
 
     \end{threeparttable}
 \end{table}
+% Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})}                         & \multicolumn{3}{c} {\Vhrulefill{} refer to equation in \tnote{g} \Vhrulefill{}} \\
+% \item[g] $ D_j = 10^{-4} \times 10^{-4.43 - \frac{54}{T_\text{cell} - 229 - 5\times10^{-3} c_\text{e}(x,t)} - 0.22\times10^{-3} c_\text{e}(x,t)}, \quad \jinpossepneg $\\
+
+% Init. electrolyte conc., $c_\text{e,0}$ \si{(mol.m^{-3})}          & \tnote{c}\num{1000}              & \tnote{c}\num{1000}     & \tnote{c}\num{1000}              \\
