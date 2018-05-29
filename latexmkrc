@@ -26,7 +26,7 @@ push @generated_exts, "tdo";
 push @generated_exts, "thm";
 
 
-$pdflatex = 'lualatex %O %S --shell-escape --bibtex';
+$pdflatex = 'lualatex %O %S --interaction=batchmode --shell-escape --bibtex';
 $pdf_mode = 1;
 $postscript_mode = $dvi_mode = 0;
 
