@@ -7,7 +7,7 @@
 \begin{table}[!htbp]
     \small
     \caption[Simulation parameters of an \protect{\gls{lco}} cell]{Complete set of parameters for simulating the \protect{\gls{p2d}} and \protect{\gls{spm}} implementations of an \protect{\gls{lco}} cell (\ch{LiCoO_2}--\ch{LiC_6} electrode pair with \ch{LiPF_6} electrolyte),\quad \protect{$j \in \{\text{pos},\text{sep},\text{neg}\}$}}
-    \label{tbl:LCOSimParamsSPMP2D}
+    \label{tbl:lcoSimParamsSPMp2d}
 
     \begin{threeparttable}
         \centering
@@ -18,9 +18,9 @@
                 \multicolumn{1}{l}{Parameter} \\
                 \midrule
 
-                Lower cutoff cell voltage, $V_\text{min}$ \si{(V)} & \tnote{a}\num{2.50}   \\
-                Upper cutoff cell voltage, $V_\text{max}$ \si{(V)} & \tnote{b}\num{4.30}   \\
-                Cell temperature, $T_\text{cell}$ \si{(K)}         & \tnote{c}\num{298.15} \\
+                Lower cutoff cell voltage, $V_\text{min}$ (\si{\volt}) & \tnote{a}2.50   \\
+                Upper cutoff cell voltage, $V_\text{max}$ (\si{\volt}) & \tnote{b}4.30   \\
+                Cell temperature, $T_\text{cell}$ (\si{\kelvin})       & \tnote{c}298.15 \\
 
                 \bottomrule
             \end{tabular*}
@@ -33,9 +33,9 @@
                 \multicolumn{1}{l}{Parameter} \\
                 \midrule
 
-                Faraday constant, $F$ \si{(C.mol^{-1})}                   & \num{96487}         \\
-                Universal gas constant, $R$ \si{(J.mol^{-1}.K^{-1})}      & \num{8.314}         \\
-                Init. electrolyte conc., $c_\text{e,0}$ \si{(mol.m^{-3})} & \tnote{c}\num{1000} \\
+                Faraday constant, $F$ (\si{\coulomb\per\meter})                      & 96487         \\
+                Universal gas constant, $R$ (\si{\joule\per\mole\per\kelvin})        & 8.314         \\
+                Init. electrolyte conc., $c_\text{e,0}$ (\si{\mole\per\meter\cubed}) & \tnote{c}1000 \\
 
                 \bottomrule
             \end{tabular*}
@@ -49,22 +49,23 @@
             \multicolumn{1}{l}{Parameter} & \multicolumn{1}{l}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{r}{Neg}\\
             \midrule
 
-            \rowcolor{imperiallightgray} Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$               & \tnote{c}\num{0.025}    & ---                      & \tnote{c}\num{0.033}    \\
-            \rowcolor{imperiallightgray} Material vol.\ fraction, $\varepsilon_\sj$                         & \tnote{d}\num{0.590}    & \tnote{d}\num{0.276}     & \tnote{d}\num{0.482}    \\
-            \rowcolor{imperiallightgray} Bruggeman coefficient, $\text{brugg}_j$                            & \tnote{c}\num{4}        & \tnote{c}\num{4}         & \tnote{c}\num{4}        \\
-            \rowcolor{imperiallightgray} Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})}                   & \tnote{g}\num{3.22e-10} & \tnote{g}\num{3.22e-10}  & \tnote{g}\num{3.22e-10} \\
-            \rowcolor{imperiallightgray} Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})}               & \tnote{h}\num{26.24e-3} & \tnote{c}\num{328.15e-3} & \tnote{c}\num{66.08e-3} \\
-            \rowcolor{imperiallightgray} \ch{Li^+} transference number, $t^0_\text{+}$                      & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}     & \tnote{c}\num{0.363}    \\
-            \rowcolor{imperiallightgray} Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})}                & \tnote{c}\num{100.00}   & ---                      & \tnote{c}\num{100.00}   \\
-                                         Thickness, $l_j$ \si{(m)}                                          & \tnote{c}\num{88e-6}    & \tnote{c}\num{25e-6}     & \tnote{f}\num{72e-6}    \\
-                                         Particle radius, $R_\pj$ \si{(m)}                                  & \tnote{c}\num{2e-6}     & ---                      & \tnote{c}\num{2e-6}     \\
-                                         Specific interfacial surface area, $a_\sj$ \si{(m^{2}.m^{-3})}     & \tnote{e}\num{885e3}    & ---                      & \tnote{e}\num{723.6e3}  \\
-                                         Electrode diffusivity, $D_{\text{s}_j}$ \si{(m^2.s^{-1})}          & \tnote{c}\num{1e-14}    & ---                      & \tnote{c}\num{3.9e-14}  \\
-                                         Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                  & \tnote{i}\num{0.9917}   & ---                      & \tnote{i}\num{0.0143}   \\
-                                         Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                & \tnote{i}\num{0.4955}   & ---                      & \tnote{i}\num{0.8551}   \\
-                                         Max concentration, ${c_\text{s,max}}_j$ \si{(mol.m^{-3})}          & \tnote{c}\num{51554}    & ---                      & \tnote{c}\num{30555}    \\
-                                         Reaction rate coefficient, $k_\jr$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & \tnote{c}\num{2.33e-11} & ---                      & \tnote{c}\num{5.03e-11} \\
-                                         Open circuit potential, $U_j$ \si{(V)}                             & \tnote{k}see table note & ---                      & \tnote{m}see table note \\
+            \rowcolor{imperiallightgray} Electrolyte porosity, ${\varepsilon}_j$                                                 & \tnote{c}\num{0.385}    & \tnote{c}\num{0.724}     & \tnote{c}\num{0.485}    \\
+            \rowcolor{imperiallightgray} Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$                                    & \tnote{c}\num{0.025}    & ---                      & \tnote{c}\num{0.033}    \\
+            \rowcolor{imperiallightgray} Bruggeman coefficient, $\text{brugg}_j$                                                 & \tnote{c}\num{4}        & \tnote{c}\num{4}         & \tnote{c}\num{4}        \\
+            \rowcolor{imperiallightgray} Electrolyte diffusivity, $D_j$ (\si{\meter\squared\per\second})                         & \tnote{d}\num{3.22e-10} & \tnote{d}\num{3.22e-10}  & \tnote{d}\num{3.22e-10} \\
+            \rowcolor{imperiallightgray} Electrolyte conductivity, $\kappa_j$ (\si{\siemens\per\meter})                          & \tnote{e}\num{26.24e-3} & \tnote{e}\num{328.15e-3} & \tnote{e}\num{66.08e-3} \\
+            \rowcolor{imperiallightgray} \ch{Li^+} transference number, $t^0_\text{+}$                                           & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}     & \tnote{c}\num{0.363}    \\
+            \rowcolor{imperiallightgray} Electronic conductivity, $\sigma_j$ (\si{\siemens\per\meter})                           & \tnote{c}\num{100.00}   & ---                      & \tnote{c}\num{100.00}   \\
+                                         Thickness, $l_j$ (\si{\meter})                                                          & \tnote{c}\num{88e-6}    & \tnote{c}\num{25e-6}     & \tnote{f}\num{72e-6}    \\
+                                         Particle radius, $R_\pj$ (\si{\meter})                                                  & \tnote{c}\num{2e-6}     & ---                      & \tnote{c}\num{2e-6}     \\
+                                         Specific interfacial surface area, $a_\sj$ (\si{\meter\squared\per\meter\cubed})        & \tnote{g}\num{885e3}    & ---                      & \tnote{g}\num{723.6e3}  \\
+                                         Electrode diffusivity, $D_{\text{s}_j}$ (\si{\meter\squared\per\second})                & \tnote{c}\num{1e-14}    & ---                      & \tnote{c}\num{3.9e-14}  \\
+                                         Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                                       & \tnote{h}\num{0.9917}   & ---                      & \tnote{h}\num{0.0143}   \\
+                                         Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                                     & \tnote{h}\num{0.4955}   & ---                      & \tnote{h}\num{0.8551}   \\
+                                         Max concentration, ${c_\text{s,max}}_j$ (\si{\mole\per\meter\cubed})                    & \tnote{c}\num{51554}    & ---                      & \tnote{c}\num{30555}    \\
+                                         Reaction rate coefficient, $k_\jr$ (\si{\meter\tothe{2.5}\mole\tothe{-0.5}\per\second}) & \tnote{c}\num{2.33e-11} & ---                      & \tnote{c}\num{5.03e-11} \\
+                                         Overall active surface area, $A$ (\si{\meter\squared})                                  & \tnote{i}\num{2.053}    & ---                      & \tnote{i}\num{2.053}    \\
+                                         Open circuit potential, $U_j$ (\si{\volt})                                              & \tnote{k}see table note & ---                      & \tnote{m}see table note \\
             \bottomrule
         \end{tabularx}
 
@@ -83,29 +84,20 @@
             \bottomrule
         \end{tabularx}
 
-        \medskip
+        % \smallskip
 
         \begin{tablenotes}[para,flushleft]
-            \begin{footnotesize}
-                \noindent\begin{tabular}{@{} l l @{}}
-                \item[a]\, Ref.~\cite{Northrop2011}                      & \item[b]\, Set to $\approx $\SI{100}{\milli\volt} above the cell's \gls{ocp} at \SI{100}{\percent} cell \gls{soc}                                        \\
-                \item[c]\, Ref.~\cite{Subramanian2009}                   & \item[d]\, Computed as $1-\varepsilon_j - \varepsilon_{\text{fi}_j}$, where $\varepsilon_j$ is the electrolyte porosity from Ref.~\cite{Subramanian2009} \\
-                \item[e]\, Computed as $\frac{3 \varepsilon_\sj}{R_\pj}$ & \item[f]\, Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.                                           \\
-                \end{tabular}
-            \end{footnotesize}
-            \begin{footnotesize}
-                \noindent\begin{tabular}{@{} l @{}}
-                \item[g]\, Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{2} in Ref.~\cite{Valoen2005} \\
-	            \item[h]\, Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{3} in Ref.~\cite{Valoen2005}\\
-                \item[i]\, Obtained as residual stoichiometries after a C/\num{500} simulated discharge from \SI{100}{\percent} cell \gls{soc} to \SI{2.7}{V} \\
-                \end{tabular}
-            \end{footnotesize}
-            \noindent\begin{tabular}{@{} l @{}}
-            \item[k]\, $ \mathcal{U(\theta_\text{pos})} = \displaystyle \frac{-4.656 + 88.669\theta_\text{pos}^2 - 401.119\theta_\text{pos}^4 + 342.909\theta_\text{pos}^6 - 462.471\theta_\text{pos}^8 + 433.434\theta_\text{pos}^{10}}{-1 + 18.933\theta_\text{pos}^2 - 79.532\theta_\text{pos}^4 + 37.311\theta_\text{pos}^6 - 73.083\theta_\text{pos}^8 + 95.96\theta_\text{pos}^{10}}$ \\[1em]
-                \begin{footnotesize}
-                \item[m]\, $\mathcal{U(\theta_\text{neg})} = 0.7222 + 0.1387\theta_\text{neg} + 0.029\theta_\text{neg}^{0.5} - \frac{0.0172}{\theta_\text{neg}} + \frac{0.0019}{\theta_\text{neg}^{1.5}} + 0.2808 e^{(0.9 - 15\theta_\text{neg})} - 0.7984 e^{(0.4465\theta_\text{neg} - 0.4108)}$
-                \end{footnotesize}
-            \end{tabular}
+        \item[a] Ref.~\cite{Northrop2011}
+        \item[b] Set to $\approx $\SI{100}{\milli\volt} above the cell's \gls{ocp} at \SI{100}{\percent} cell \gls{soc}
+        \item[c] Ref.~\cite{Subramanian2009}
+        \item[d] Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{2} in Ref.~\cite{Valoen2005} \\
+        \item[e] Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{3} in Ref.~\cite{Valoen2005}\\
+        \item[f] Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.
+        \item[g] Computed as $\frac{3 \varepsilon_\sj}{R_\pj}$\\
+        \item[h] Obtained as residual stoichiometries after a C/\num{500} simulated discharge from \SI{100}{\percent} cell \gls{soc} to \SI{2.7}{V}
+        \item[i] Chosen so that current density for the electrochemical layer is \SI{29.23}{\ampere\per\meter\squared} for \SI{60}{\ampere} applied current
+        \item[k] $ \mathcal{U(\theta_\text{pos})} = \displaystyle \frac{-4.656 + 88.669\theta_\text{pos}^2 - 401.119\theta_\text{pos}^4 + 342.909\theta_\text{pos}^6 - 462.471\theta_\text{pos}^8 + 433.434\theta_\text{pos}^{10}}{-1 + 18.933\theta_\text{pos}^2 - 79.532\theta_\text{pos}^4 + 37.311\theta_\text{pos}^6 - 73.083\theta_\text{pos}^8 + 95.96\theta_\text{pos}^{10}}$ \\[0.25em]
+        \item[m] $\mathcal{U(\theta_\text{neg})} = 0.7222 + 0.1387\theta_\text{neg} + 0.029\theta_\text{neg}^{0.5} - \frac{0.0172}{\theta_\text{neg}} + \frac{0.0019}{\theta_\text{neg}^{1.5}} + 0.2808 e^{(0.9 - 15\theta_\text{neg})} - 0.7984 e^{(0.4465\theta_\text{neg} - 0.4108)}$\vfill
         \end{tablenotes}
 
     \end{threeparttable}
