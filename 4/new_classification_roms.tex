@@ -16,10 +16,10 @@ broad survey of relevant methodologies  and tools towards obtaining such models.
 Hence,  neither~\cite{Jokar2016}  nor~\cite{Fan2015}  provide insight  into  the
 rubrics and  implications of  the choice  of modelling in  either of  these dual
 domains. Although in principle, the transformation between them follows standard
-mathematical  practices,\todo{citation(s)  needed?}availability  of  models  for
+mathematical  practices,\fxnote{citation(s)  needed?}availability  of  models  for
 final implementation  in the time domain  aids immediate uptake by  industry for
 adoption  in online  \gls{bms}s. Treatment  of  reduced order  models from  this
-aspect  is so  germane to  the central  hypothesis of  this chapter,\todo{can  a
+aspect  is so  germane to  the central  hypothesis of  this chapter,\fxnote{can  a
 simple time  domain model  do the  job?} that  the author  of this  thesis feels
 compelled to undertake  a simpler classification exercise within  the context of
 suitability for online implementation.
@@ -43,11 +43,11 @@ significance within a particular modelling technique.
 
 
 Physics-based control-oriented models  can be classified as belonging  to one of
-the following categories.\todo{just enumerate my classification in-line here} It
+the following categories.\fxnote{just enumerate my classification in-line here} It
 is important to distinguish between models that are derived directly in the time
 domain versus  those that are  derived first in  the frequency domain  and later
 converted to time domain.
-\todo{enumerate all the desirable characteristics and criterion upon which
+\fxnote{enumerate all the desirable characteristics and criterion upon which
 models are to be evaluated}
 
 
@@ -56,7 +56,7 @@ description of physical  phenomena that is lower in  computational complexity by
 an arbitrary magnitude  than the original \gls{dfn} model can  be considered for
 further investigation. In the absence of a canonical, quantitative definition of
 what  constitutes a  reduced  order model,  the number  of  candidate family  of
-models  to  consider  is  overwhelmingly large\todo{is  it  appropriate  to  use
+models  to  consider  is  overwhelmingly large\fxnote{is  it  appropriate  to  use
 such  language?}.  In  practice,  the  constraints  and  challenges  imposed  by
 the  scope  of  this  work, \viz{}  suitability  for  real-time  implementation,
 limits  the  choice  of  candidate  modelling  families.  For  instance,  models
@@ -78,7 +78,7 @@ Padé  approximation method  that serves  as  a backbone  of a  wide variety  of
 frequency domain models.
 
 
-\todo{can  mention  that  most  frequency domain  models  are  impedance  models
+\fxnote{can  mention  that  most  frequency domain  models  are  impedance  models
 suitable for offline simulation eg An electrochemistry-based impedance model for
 lithium-ion batteries}
 
@@ -97,7 +97,7 @@ typically limited  to offline  applications owing  to the  aggressive trade-offs
 required in the approximation order to maintain accuracy. Those models truncated
 to  very low  Padé  order exhibit  poor  fidelity and  perform  no better  than
 classical  equivalent circuit  models,  although recent  research attempts  have
-focussed  to  mitigate  this  drawback~\cite{Yuan2017a,Yuan2017}.\todo{Should  I
+focussed  to  mitigate  this  drawback~\cite{Yuan2017a,Yuan2017}.\fxnote{Should  I
 discuss how they mitigated this?}
 
 
@@ -283,7 +283,7 @@ models whilst still  retaining their origins in physical  principles rather than
 on empirical curve-fitting.
 
 
-\todo{can perhaps  talk about SPM converted  to equivalent circuit by  Prasad in
+\fxnote{can perhaps  talk about SPM converted  to equivalent circuit by  Prasad in
 the IEEE conference paper}
 
 
@@ -336,7 +336,7 @@ such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
 the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
 in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
 such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
-measurements) to  that typically reported  in literature. \todo{have  not talked
+measurements) to  that typically reported  in literature. \fxnote{have  not talked
 about SPM  inspired eq circuit model.  Is it necessary  to do so?. How  to frame
 this. There are a few references that belongs to this kind}
 
@@ -348,8 +348,8 @@ majority  of the  final model  values  retain their  physical meaning,  yielding
 system engineers and cell designers alike  with a direct and causal relationship
 between  groups of  parameters and  their  influence on  the cell's  operational
 performance. Since  this chapter seeks  to provide  a readily usable  model that
-satisfies  all \todo{give  a number  here} criterion  for online  implementation
-from,\todo{cite  figure} the  author  concludes that  at  present, the  benefits
+satisfies  all \fxnote{give  a number  here} criterion  for online  implementation
+from,\fxnote{cite  figure} the  author  concludes that  at  present, the  benefits
 offered by hybrid models do not decisively outweigh this drawback.
 
 
@@ -392,7 +392,7 @@ weaknesses is  presented. The next section  presents a detailed analysis  of the
 most promising  candidate among  these models with  the potential  to facilitate
 faster adoption of physics based models in online applications. Further sections
 discuss methodologies and  solutions that aim to address the  gaps identified in
-this family of models. \todo{does this fit better at the end of this section}
+this family of models. \fxnote{does this fit better at the end of this section}
 
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
@@ -409,10 +409,10 @@ a simpler computational mesh, whilst retaining high fidelity. It should be noted
 that high node  densities are mainly required near the  surface of the spherical
 particles for the pseudo  \engordnumber{2} dimension. Similarly, such clustering
 of nodes is desirable near the  separator and current collector interfaces along
-the axial  dimension.\todo{need to define  `axial' at  the start of  the thesis}
+the axial  dimension.\fxnote{need to define  `axial' at  the start of  the thesis}
 Thus, a number  of model order reduction  strategies in the time  domain seek to
 adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
-issues\todo{citations needed}.
+issues\fxnote{citations needed}.
 
 
 Computationally    efficient     pseudo-spectral    schemes     for    numerical
@@ -463,7 +463,7 @@ models could  be worse than  simpler models with uniform  mesh-density. Although
 adaptive meshing strategies can be  employed for desktop simulation with minimal
 effort,  it remains  to  be seen  if  this  can be  deployed  successfully in  a
 resource-constrained environment  such as an embedded  \gls{bms} controller, and
-hence warrants  further research.\todo{does  this fit  better in  the conclusion
+hence warrants  further research.\fxnote{does  this fit  better in  the conclusion
 chapter?}
 
 
@@ -495,7 +495,7 @@ textbook by  Carslaw and  Jaeger~\cite{Carslaw1947} details the  derivations for
 obtaining the  standard analytical solution  to Fick's  law of diffusion  in the
 context of heat conduction in solids. Liu~\cite{Liu2006} derived this analytical
 solution for the  Lithium intercalation process in the solid  phase, taking into
-account  the  idiosyncrasies  of porous  electrodes\todo{explain  about  Olcer's
+account  the  idiosyncrasies  of porous  electrodes\fxnote{explain  about  Olcer's
 pseudo-steady state  stuff}. However, this  expression involves an  infinite sum
 expansion of eigen  modes. Guo and White~\cite{Guo2012}  formulate an expression
 for  truncated approximation  of this  solution  to arbitrary  number of  terms.
@@ -507,12 +507,12 @@ involves exponential and trigonometric terms  and is non-trivial to implement on
 has been no extensive study comparing  the analytical solution to the polynomial
 approach. Consequently, this  approach has not yet  gained widespread popularity
 in the inherent elimination of the radial dimension embedded as a core aspect of
-the  cell-level model  order reduction  approaches discussed  here.\todo{another
+the  cell-level model  order reduction  approaches discussed  here.\fxnote{another
 method of solving  this diffusion is the integral method  analysis used by Tanim
 etal. Should  I mention that?.  There is also  a comprehensive review  by Romero
 etal. Furthermore, there is a specific review by Zhang and White}
 
-\todo{In the words of  Zhang and White, ``The usage of the  PSS method is mainly
+\fxnote{In the words of  Zhang and White, ``The usage of the  PSS method is mainly
 affected by the num- ber of summation  terms included. If no summation terms are
 used, the  method degrades to  the low  order polynomial method.  Increasing the
 number of summation terms improves the accu- racy of the method, mostly at short
@@ -521,7 +521,7 @@ able to  provide accurate results  under a  wide range of  operating conditions.
 More summation  terms require solving  more differ- ential equations  (Eq. (9b))
 and could pose numerical difficulties because of the exponential terms.''}
 
-\todo{There are way too many models that use the proper orthogonal decomposition
+\fxnote{There are way too many models that use the proper orthogonal decomposition
 technique. Should I review these?}
 
 
@@ -573,16 +573,16 @@ such  piecewise  linear approaches  can  gain  widespread acceptance  in  online
 applications.
 
 
-\todo{Tikz  picture  here, showing  a  nice  layout of  various  models
+\fxnote{Tikz  picture  here, showing  a  nice  layout of  various  models
 according to the new classification scheme.}
 
-\todo{spider  drawing   on  5  counts---  simplicity,   parametrisation,  online
+\fxnote{spider  drawing   on  5  counts---  simplicity,   parametrisation,  online
 implementation, state estimation, physical insight}
 
 
-Referring  to   \todo{spider  figure   reference},  it   is  evident   that  all
+Referring  to   \fxnote{spider  figure   reference},  it   is  evident   that  all
 physics-based  reduced  order  models   presented  thus  far  entails  extensive
-parametrisation efforts  \todo{at the  end, count  and substitute  the canonical
+parametrisation efforts  \fxnote{at the  end, count  and substitute  the canonical
 number of  parameters here} to render  them useful for a  practical application.
 The  difficulties associated  with such  parametrisation, coupled  with inherent
 uncertainties  in  the obtained  parameter  values  act  as a  strong  deterrent
@@ -615,17 +615,17 @@ pursue their in-depth exploration. The  equations describing the single particle
 model  is introduced  in  \ldots. An  in-depth analysis  of  their drawbacks  is
 presented in \ldots. Various attempts to  fix this issue is presented in \ldots.
 The  electrolyte  concentration and  potential  fixes  is presented  in  \ldots.
-Finally, results and discussion. \todo{REWRITE after finishing up everything}
+Finally, results and discussion. \fxnote{REWRITE after finishing up everything}
 
 
-% \todo{Where does this  paragraph go? End of this section/end  of chapter or even
+% \fxnote{Where does this  paragraph go? End of this section/end  of chapter or even
 % last  chapter?} The  identification of  individual parameters  of the  \gls{dfn}
 % model  remains a  key  area in  battery modelling  that  remains only  partially
 % explored. Nevertheless, this effort is critical  to ensure rapid adoption of any
 % physics-based model and  sophisticated control algorithms. The state  of the art
 % in this area, the challenges involved  and current efforts in this direction are
 % explored in~\cref{ch:chapter6}.  Although sensitivity analysis of  the \gls{dfn}
-% parameters has been performed in  literature, \todo{citation here} the extent to
+% parameters has been performed in  literature, \fxnote{citation here} the extent to
 % which  parameter uncertainties  influence the  numerical  values in  the $A,  B,
 % C$  and  $D$  matrices  of~\Cref{eq:LTIstatespace} has  not  yet  been  attempted.
 % In  continuation of  this  research  aspect, the  order  of  magnitude shift  in
