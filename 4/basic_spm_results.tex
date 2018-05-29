@@ -19,12 +19,25 @@ majority  of electrochemical  parameters, \viz{}  the geometric,  thermodynamic,
 kinetic  and   transport  properties  of   the  cell  have  been   sourced  from
 Subramanian~\etal{}~\cite{Subramanian2009}.
 
-The simulation parameters that are exclusively applicable to the \gls{p2d}
-model are shown with a shaded highlighting.
-The volume fraction of the electrode  and separator materials are computed as $1
--  \varepsilon_j  -  \varepsilon_{\text{fi}_j}$, where  $\varepsilon_j$  is  the
-electrolyte-phase  volume fraction  within  each  of the  three  regions of  the
-electrode.
+The simulation parameters that are exclusively applicable to the \gls{p2d} model
+are shown with a shaded highlighting in~\cref{tbl:lcoSimParamsSPMp2d}. It can be
+seen  that only  a subset  of the  isothermal \gls{dfn}  model's parameters  are
+required for  the the  \gls{spm}. In particular,  the~\gls{spm} has  seven fewer
+parameters  per  electrode. Furthermore,  all  six  physical parameters  of  the
+separator  material required  in the  \gls{dfn} model  are ignored  in \gls{spm}
+computations. Neglecting Arrhenius type temperature dependence of parameters and
+their  corresponding activation  energies, the  basic \gls{spm}  facilitates the
+ability to afford physics-based  modelling capabilities with \emph{twenty} fewer
+parameters  than  the equivalent  isothermal  \gls{p2d}  model. With  the  naive
+assumption of equal  parametrisation effort per physical  property, this implies
+an  exact \SI{50}{\percent}  reduction in  parametrisation requirements  for the
+basic \gls{spm} compared its \gls{dfn} counterpart.
+
+
+The volume  fraction of the electrode and separator
+materials are computed as $1 - \varepsilon_j - \varepsilon_{\text{fi}_j}$, where
+$\varepsilon_j$  is the  electrolyte-phase volume  fraction within  each of  the
+three regions of the electrode.
 
 % \rowcolor{imperiallightgray} Material vol.\ fraction, $\varepsilon_\sj$                         & \tnote{d}\num{0.590}    & \tnote{d}\num{0.276}     & \tnote{d}\num{0.482}                                 \\
 
@@ -34,4 +47,5 @@ next.
 
 \subsection{Simulation Setup}
 
-The cells lower cutoff voltage is chosen to be \SI{2.5}{V}.
+Smaller parametrisation requirements  is only half the story  towards speed The.
+cells lower cutoff voltage is chosen to be \SI{2.5}{V}                         .
