@@ -5,18 +5,15 @@
 % vim:nospell
 
 \begin{table}[!htbp]
-    \small	% From RSC template
-    % \renewcommand{\thetable}{\arabic{table}}
-    % \captionsetup{justification=centering}
-    \caption{Cell and simulation parameters \quad \protect{$j \in \{\text{pos},\text{sep},\text{neg}\}$}}
-    \label{tbl:CellParamsSPM}
+    \small
+    \caption[Simulation parameters of an \protect{\gls{lco}} cell]{Complete set of parameters for simulating the \protect{\gls{p2d}} and \protect{\gls{spm}} implementations of an \protect{\gls{lco}} cell (\ch{LiCoO_2}--\ch{LiC_6} electrode pair with \ch{LiPF_6} electrolyte),\quad \protect{$j \in \{\text{pos},\text{sep},\text{neg}\}$}}
+    \label{tbl:LCOSimParamsSPMP2D}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%% SYSTEM TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{threeparttable}
         \centering
         \begin{varwidth}[t]{0.48\linewidth}
             \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
-                \multicolumn{2}{c}{\textbf{System}} \\
+                \multicolumn{2}{c}{\textbf{System Conditions}} \\
                 \toprule
                 \multicolumn{1}{l}{Parameter} \\
                 \midrule
@@ -45,59 +42,46 @@
         \end{varwidth}
 
         \bigskip
-        % \begin{tabularx}{\textwidth}{X X X r}
-        %     \multicolumn{4}{c}{\textbf{Random Table}} \\
-        %     % \hlineB{2}
-        %     Item                                       & Case 1        & Case 2          & Case 3         \\
-        %     % \hlineB{1.75}
-        %     \rowcolor{imperiallightgray}
-        %     first thing,                               & \tnote{a}245  & \tnote{b}25e-6  & \tnote{c}79e-6 \\
-        %     \rowcolor{imperiallightgray}
-        %     second thing                               & \tnote{a}450  & ---             & \tnote{b}24e-6 \\
-        %     third thing                                & \tnote{d}2e-6 & \tnote{c}4123.5 & \tnote{b}2e-6  \\
-        %     fourth thing                               & ---           & 1e6             & no data        \\
-        %     % \hlineB{2}
-        % \end{tabularx}
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%% ELECTROCHEMICAL PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \begin{tabularx}{\textwidth}{X X X X}
-            \multicolumn{4}{c}{\textbf{Electrochemical}} \\
+
+        \begin{tabularx}{\textwidth}{ l L C R }
+            \multicolumn{4}{c}{\textbf{Thermodynamic, Kinetic, Geometric and Transport Parameters}} \\
             \toprule
             \multicolumn{1}{l}{Parameter} & \multicolumn{1}{l}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{r}{Neg}\\
             \midrule
 
-            \rowcolor{imperiallightgray} Material vol.\ fraction, $\varepsilon_\sj$                         & \tnote{f}\num{0.590}    & \tnote{f}\num{0.276}    & \tnote{f}\num{0.482}    \\% [-0.1375ex]
-            \rowcolor{imperiallightgray} Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$               & \tnote{c}\num{0.025}    & ---                     & \tnote{c}\num{0.033}    \\% [-0.1375ex]
-            \rowcolor{imperiallightgray} Bruggeman coefficient, $\text{brugg}_j$                            & \tnote{c}\num{4}        & \tnote{c}\num{4}        & \tnote{c}\num{4}        \\% [-0.4ex]
-            \rowcolor{imperiallightgray} Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})}                   & \tnote{g}\num{3.22e-10} & \tnote{g}\num{3.22e-10} & \tnote{g}\num{3.22e-10} \\
-            \rowcolor{imperiallightgray} Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})}               & \tnote{h}\num{26.24e-3} & \tnote{c}\num{328.15}   & \tnote{c}\num{66.08e-3} \\
-            \rowcolor{imperiallightgray} \ch{Li^+} transference number, $t^0_\text{+}$                      & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}    \\
-            \rowcolor{imperiallightgray} Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})}                & \tnote{c}\num{100.00}   & ---                     & \tnote{c}\num{100.00}   \\
-                                         Thickness, $l_j$ \si{(m)}                                          & \tnote{c}\num{88e-6}    & \tnote{c}\num{25e-6}    & \tnote{d}\num{72e-6}    \\
-                                         Particle radius, $R_\pj$ \si{(m)}                                  & \tnote{c}\num{2e-6}     & ---                     & \tnote{c}\num{2e-6}     \\
-                                         Specific interfacial surface area, $a_\sj$ \si{(m^{2}.m^{-3})}     & \tnote{e}\num{885e3}    & ---                     & \tnote{e}\num{723.6e3}  \\
-                                         Electrode diffusivity, $D_{\text{s}_j}$ \si{(m^2.s^{-1})}          & \tnote{c}\num{1e-14}    & ---                     & \tnote{c}\num{3.9e-14}  \\
-                                         Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                  & \tnote{i}\num{0.9917}   & ---                     & \tnote{i}\num{0.0143}   \\
-                                         Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                & \tnote{r}\num{0.4955}   & ---                     & \tnote{r}\num{0.8551}   \\
-                                         Max concentration, ${c_\text{s,max}}_j$ \si{(mol.m^{-3})}          & \tnote{c}\num{51554}    & ---                     & \tnote{c}\num{30555}    \\
-                                         Reaction rate coefficient, $k_\jr$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & \tnote{c}\num{2.33e-11} & ---                     & \tnote{c}\num{5.03e-11} \\
-                                         Open circuit potential, $U_j$ \si{(V)}                             & \tnote{k}see table note & ---                     & \tnote{m}see table note \\
+            \rowcolor{imperiallightgray} Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$               & \tnote{c}\num{0.025}    & ---                      & \tnote{c}\num{0.033}    \\
+            \rowcolor{imperiallightgray} Material vol.\ fraction, $\varepsilon_\sj$                         & \tnote{d}\num{0.590}    & \tnote{d}\num{0.276}     & \tnote{d}\num{0.482}    \\
+            \rowcolor{imperiallightgray} Bruggeman coefficient, $\text{brugg}_j$                            & \tnote{c}\num{4}        & \tnote{c}\num{4}         & \tnote{c}\num{4}        \\
+            \rowcolor{imperiallightgray} Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})}                   & \tnote{g}\num{3.22e-10} & \tnote{g}\num{3.22e-10}  & \tnote{g}\num{3.22e-10} \\
+            \rowcolor{imperiallightgray} Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})}               & \tnote{h}\num{26.24e-3} & \tnote{c}\num{328.15e-3} & \tnote{c}\num{66.08e-3} \\
+            \rowcolor{imperiallightgray} \ch{Li^+} transference number, $t^0_\text{+}$                      & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}     & \tnote{c}\num{0.363}    \\
+            \rowcolor{imperiallightgray} Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})}                & \tnote{c}\num{100.00}   & ---                      & \tnote{c}\num{100.00}   \\
+                                         Thickness, $l_j$ \si{(m)}                                          & \tnote{c}\num{88e-6}    & \tnote{c}\num{25e-6}     & \tnote{f}\num{72e-6}    \\
+                                         Particle radius, $R_\pj$ \si{(m)}                                  & \tnote{c}\num{2e-6}     & ---                      & \tnote{c}\num{2e-6}     \\
+                                         Specific interfacial surface area, $a_\sj$ \si{(m^{2}.m^{-3})}     & \tnote{e}\num{885e3}    & ---                      & \tnote{e}\num{723.6e3}  \\
+                                         Electrode diffusivity, $D_{\text{s}_j}$ \si{(m^2.s^{-1})}          & \tnote{c}\num{1e-14}    & ---                      & \tnote{c}\num{3.9e-14}  \\
+                                         Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                  & \tnote{i}\num{0.9917}   & ---                      & \tnote{i}\num{0.0143}   \\
+                                         Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                & \tnote{i}\num{0.4955}   & ---                      & \tnote{i}\num{0.8551}   \\
+                                         Max concentration, ${c_\text{s,max}}_j$ \si{(mol.m^{-3})}          & \tnote{c}\num{51554}    & ---                      & \tnote{c}\num{30555}    \\
+                                         Reaction rate coefficient, $k_\jr$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & \tnote{c}\num{2.33e-11} & ---                      & \tnote{c}\num{5.03e-11} \\
+                                         Open circuit potential, $U_j$ \si{(V)}                             & \tnote{k}see table note & ---                      & \tnote{m}see table note \\
             \bottomrule
         \end{tabularx}
 
         \bigskip
         %%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c c c}
+        \begin{tabularx}{\textwidth}{ l L C R }
 
-            \multicolumn{4}{c}{\textbf{Discretisation}} \\
+            \multicolumn{4}{c}{\textbf{Spatial Discretisation}} \\
             \toprule
-            \multicolumn{1}{l}{Parameter} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg}\\
+            \multicolumn{1}{l}{Parameter} & \multicolumn{1}{l}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{r}{Neg}\\
             \midrule
 
-            Nodes, through-thickness (axial), $N_{\text{a}_j}$          & \num{15} & \num{15} & \num{15} \\
-            Nodes, within spherical particle (radial), $N_{\text{r}_j}$ & \num{10} & ---      & \num{10} \\
+            \rowcolor{imperiallightgray} Nodes, through-thickness (axial), $N_{\text{a}_j}$          & \num{15} & \num{15} & \num{15} \\
+            \rowcolor{imperiallightgray} Nodes, within spherical particle (radial), $N_{\text{r}_j}$ & \num{10} & ---      & \num{10} \\
 
             \bottomrule
-        \end{tabular*}
+        \end{tabularx}
 
         \medskip
 
@@ -105,10 +89,9 @@
             \begin{footnotesize}
                 \noindent\begin{tabular}{@{} l l @{}}
                 \item[a]\, Ref.~\cite{Northrop2011}                      & \item[b]\, Set to $\approx $\SI{100}{\milli\volt} above the cell's \gls{ocp} at \SI{100}{\percent} cell \gls{soc}                                        \\
-                \item[c]\, Ref.~\cite{Subramanian2009}                   & \item[d]\, Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.                                           \\
-                \item[e]\, Computed as $\frac{3 \varepsilon_\sj}{R_\pj}$ & \item[f]\, Computed as $1-\varepsilon_j - \varepsilon_{\text{fi}_j}$ from Ref.~\cite{Subramanian2009}, where $\varepsilon_j$ is the electrolyte porosity \\
-                    % \item[g]\, Computed at $T_\text{cell} = T_\text{ref} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{2} in Ref.~\cite{Valoen2005}              & {} \\
-		        \end{tabular}
+                \item[c]\, Ref.~\cite{Subramanian2009}                   & \item[d]\, Computed as $1-\varepsilon_j - \varepsilon_{\text{fi}_j}$, where $\varepsilon_j$ is the electrolyte porosity from Ref.~\cite{Subramanian2009} \\
+                \item[e]\, Computed as $\frac{3 \varepsilon_\sj}{R_\pj}$ & \item[f]\, Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.                                           \\
+                \end{tabular}
             \end{footnotesize}
             \begin{footnotesize}
                 \noindent\begin{tabular}{@{} l @{}}
