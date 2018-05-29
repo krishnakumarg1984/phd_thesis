@@ -73,6 +73,7 @@ tlmgr install   \
     fancyhdr \
     fancyvrb \
     filehook \
+    fixme \
     float \
     fontloader-luaotfload \
     fontspec \
