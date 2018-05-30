@@ -113,7 +113,7 @@ helps to avoid plating of lithium at the edges.}
 
 Thus,~\cref{eq:basiccapacitybalance} reduces to
 \begin{equation}
-    \frac{l_\text{neg}}{l_\text{pos}} = \frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}}
+    \frac{l_\text{neg}}{l_\text{pos}} = \frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}} = 1.22
 \end{equation}
 yielding $l_\text{neg} = \SI{72}{\micro\meter}$.
 
@@ -136,13 +136,14 @@ value  of  \approx\SI{30}{\ampere \per  \meter  \squared}  was reported  in  the
 results section of  Subramanian~\etal{}~\cite{Subramanian2009}. When considering
 a \SI{60}{\ampere\hour} pouch cell with \SI{10}{\milli\meter} exterior thickness
 and  using  the  parameters  reported  in~\cite{Subramanian2009},  this  results
-in  a  cross-sectional  area   of  \SI{2.053}{\meter\squared}.  Considering  the
+in  a cross-sectional  area of  \SI{2.053}{\meter\squared}\fxnote{to add:  refer
+to  layer  optimisation  chapter   for  detailed  derivation}.  Considering  the
 equalisation of capacity  loading, with the newly chosen thickness  value of the
 negative  electrode, the  1C-rate  capacity  of the  cell  has  been revised  to
 \SI{29.23}{\ampere\per\meter\squared}.
 
 On  simulating  the \gls{p2d}  model  with  a  trickle bleeding  type  discharge
-corresponding to a  current of \vfrac{\text{C}}{500} and logging  the data every
+corresponding   to   a  current   of   C/500   and   logging  the   data   every
 \SI{1}{\milli\second}, after reaching \SI{2.7}{\volt}\footnote{From manufacturer
 datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
 correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
