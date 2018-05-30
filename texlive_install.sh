@@ -84,6 +84,7 @@ tlmgr install   \
     framed \
     fvextra \
     geometry \
+    gitinfo2 \
     glossaries \
     glossaries-english \
     glossaries-extra \
