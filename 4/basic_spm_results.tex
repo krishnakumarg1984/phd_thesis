@@ -13,39 +13,154 @@ incorporating the full \gls{p2d} dynamics.
 
 \Cref{tbl:lcoSimParamsSPMp2d} lists  the simulation  parameters of  an \gls{lco}
 cell  whose positive  and negative  electrodes are  \ch{LiCoO_2} and  \ch{LiC_6}
-respectively.  The  electrolyte in  this  system  consists of  \ch{LiPF_6}  salt
-in  a  solution of  \gls{ec}/\gls{dmc}/\gls{emc}  in  a  1:1:1 ratio.  The  vast
-majority  of electrochemical  parameters, \viz{}  the geometric,  thermodynamic,
-kinetic  and   transport  properties  of   the  cell  have  been   sourced  from
-Subramanian~\etal{}~\cite{Subramanian2009}.
+respectively. The electrolyte  in this system consists of \ch{LiPF_6}  salt in a
+solution  of \gls{ec}/\gls{dmc}/\gls{emc}  in a  1:1:1 ratio.  The standard  set
+of  \gls{dfn}  parameters have  been  extensively  described and  documented  in
+literature.  In this  case,  the vast  majority  of electrochemical  parameters,
+\viz{} the  geometric, thermodynamic,  kinetic and  transport properties  of the
+cell  have  been  sourced from  Subramanian~\etal{}~\cite{Subramanian2009}.  The
+significance  of  each  of  the  parameters in  the  context  of  the  modelling
+assumptions discussed in~\cref{subsec:basicspmassumptions} is examined.
 
-The simulation parameters that are exclusively applicable to the \gls{p2d} model
+The simulation parameters that are applicable exclusively to the \gls{p2d} model
 are shown with a shaded highlighting in~\cref{tbl:lcoSimParamsSPMp2d}. It can be
 seen  that only  a subset  of the  isothermal \gls{dfn}  model's parameters  are
-required for  the the  \gls{spm}. In particular,  the~\gls{spm} has  seven fewer
+required  for the  the \gls{spm}.  In particular,  the~\gls{spm} has  five fewer
 parameters  per  electrode. Furthermore,  all  six  physical parameters  of  the
 separator  material required  in the  \gls{dfn} model  are ignored  in \gls{spm}
-computations. Neglecting Arrhenius type temperature dependence of parameters and
-their  corresponding activation  energies, the  basic \gls{spm}  facilitates the
-ability to afford physics-based  modelling capabilities with \emph{twenty} fewer
-parameters  than  the equivalent  isothermal  \gls{p2d}  model. With  the  naive
-assumption of equal  parametrisation effort per physical  property, this implies
-an  exact \SI{50}{\percent}  reduction in  parametrisation requirements  for the
-basic \gls{spm} compared its \gls{dfn} counterpart.
+computations.  Neglecting  Arrhenius-type  temperature  dependence  of  physical
+properties  and their  corresponding  activation energies,  the basic  \gls{spm}
+facilitates  the ability  to  afford physics-based  modelling capabilities  with
+\emph{sixteen} fewer parameters than  the equivalent isothermal \gls{p2d} model.
+With the naive assumption of equal parametrisation effort per physical property,
+this implies  a \SI{40}{\percent} reduction in  parametrisation requirements for
+the basic \gls{spm} when compared to its \gls{dfn} counterpart.
 
+Prima facie, it may seem that electrolyte porosities and filler volume fractions
+do  not  influence the  \gls{spm}  model.  However,  they  do have  an  indirect
+bearing  on arriving  at a  critical parameter,  \viz{} the  solid phase  volume
+fraction, $\varepsilon_\sj$. This parameter is  required to compute the specific
+interfacial  surface  area  of  the  electrodes  $a_\sj$,  \ie{}  the  effective
+electrode area exposed  to reaction and is an important  entity in the \gls{spm}
+model  equations  presented  in~\cref{subsec:basicspmgoverningeqns}.  The  solid
+phase volume fractions are also required in simulating the \gls{p2d} model owing
+to  the  need for  computing  the  effective  electronic conductivities  of  the
+electrodes.\fxnote{cross-reference to  specifc newman equations here}.  They are
+calculated as
+\begin{equation}
+\varepsilon_\sj = 1 - \varepsilon_j - \varepsilon_{\text{fi}_j}
+\end{equation}
+where $\varepsilon_j$  and $\varepsilon_{\text{fi}_j}$  are the  electrolyte and
+filler  volume-fraction  within  the  respective electrode  regions.  Using  the
+values from~\cref{tbl:lcoSimParamsSPMp2d} results in $\varepsilon_\spos = 0.590$
+and  $\varepsilon_\sneg  =  0.482$  for the  positive  and  negative  electrodes
+respectively. The specific interfacial surface areas are then calculated as
+\begin{equation}
+    a_\sj = \varepsilon_\sj \frac{4 \pi R_\pj^2}{\frac{4}{3} \pi R_\pj^3} = \frac{3\varepsilon_\sj}{R_\pj}
+\end{equation}
 
-The volume  fraction of the electrode and separator
-materials are computed as $1 - \varepsilon_j - \varepsilon_{\text{fi}_j}$, where
-$\varepsilon_j$  is the  electrolyte-phase volume  fraction within  each of  the
-three regions of the electrode.
+As    discussed   in    the   assumptions    made   during    model   derivation
+(see~\cref{subsec:basicspmassumptions})  and consistent  with the  assumed model
+geometry,  the  parameters  not  covered  by  the  \gls{spm}  pertain  to  those
+describing electrolyte dynamics and distribution  of electronic charge along the
+axial  thickness  direction  of  the  cell. Properties  such  as  the  intrinsic
+diffusivities  and conductivities  of  the electrolyte,  transference number  of
+\ch{Li^+} in  the organic  solvent are thus  completely redundant  for \gls{spm}
+simulation. The assumption of uniform charge density along the through-thickness
+length of each electrode implies that the intrinsic electronic conductivities of
+the two electrodes  do not play any  role in the model  dynamics. The porosities
+and Bruggeman  coefficients in~\cref{tbl:lcoSimParamsSPMp2d} serve  as modifying
+factors  of  the  intrinsic  conductivities  and  diffusivities  leading  to  an
+effective value  within each  region of the  electrochemical layer.  Thus, their
+relevance is also  rendered void in the case of  the basic \gls{spm} simulation.
+The  thickness of  the  separator  material only  plays  a  role in  electrolyte
+behaviour.  By the  model geometry  presented in~\cref{subsec:basicspmgeometry},
+this parameter also falls outside the scope of the basic \gls{spm}.
 
-% \rowcolor{imperiallightgray} Material vol.\ fraction, $\varepsilon_\sj$                         & \tnote{d}\num{0.590}    & \tnote{d}\num{0.276}     & \tnote{d}\num{0.482}                                 \\
+The  thicknesses  of the  electrodes  are  optimised  for equal  loading,  \ie{}
+to  achieve  a   balance  in  their  individual  capacities   to  store  \ch{Li}
+atoms.  The thickness  of the  positive  electrode is  the chosen  as the  value
+from~Subramanian~\etal{}~\cite{Subramanian2009}. The  thickness of  the negative
+electrode region  is then  computed with  the goal of  equalising the  volume of
+active material  in each electrode  for every  electrochemical layer in  a pouch
+cell.
+\begin{equation}\label{eq:basiccapacitybalance}
+    A_{\text{elec}_\text{pos}}\varepsilon_\spos l_\text{pos} = A_{\text{elec}_\text{neg}}\varepsilon_\sneg l_\text{neg}
+\end{equation}
+
+In a  lithium-ion pouch cell, the  electrodes are designed such  that the layers
+can be  overlaid on  top of  one another  and finally  encapsulated in  a pouch.
+Geometrical considerations  then imply  that the  cross-sectional area  (or face
+area) of the two electrodes must be  the same. However, due to the consideration
+of  avoiding  plating  at  the  edges  due  to  microscopic  malformations,  the
+design  is done  such as  to have  a small  overhang of  the negative  electrode
+layer,  \approx\SI{2}{\milli  \meter} with  respect  to  the positive  electrode
+layer\fxnote{citation  needed}  as  shown  in~\cref{fig:anodeoverhangpouchcell}.
+However, the  active surface area, is  just the common overlap  area between the
+two electrodes, and  thus, $A_\text{elec}$ is equal to  the cross-sectional area
+of the positive electrode.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \caption[Stacking of layers within a pouch cell]
+    {Image showing the stacking of layers within a pouch cell. For the negative
+        electrodes, there is a small overhang (\approx\SI{2}{mm}) at the
+    edges with respect to the positive electrodes. This design choice
+helps to avoid plating of lithium at the edges.}
+    \label{fig:anodeoverhangpouchcell}
+\end{figure}
+
+Thus,~\cref{eq:basiccapacitybalance} reduces to
+\begin{equation}
+    \frac{l_\text{neg}}{l_\text{pos}} = \frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}}
+\end{equation}
+yielding $l_\text{neg} = \SI{72}{\micro\meter}$.
+
+At first, it  may be surprising to  note that the values of  the particle radius
+$R_\pj$ used in  both the \gls{p2d} and \gls{spm} remain  identical. However, it
+is important  to note that  the \gls{p2d} equations  of the \gls{dfn}  model are
+cast in  a normalised  form, \ie{}  already set  up to  account for  the overall
+capacity of the  cell under consideration implicitly through usage  of a current
+density  (per unit  area) for  its  simulation. Furthermore,  this explains  why
+increasing the  number of  discretisation nodes does  not increase  the modelled
+capacity, but  instead serves to improves  the simulation accuracy owing  to the
+enhanced spatial resolution.
+
+The  overall  active  surface  area  $A  =  n  A_\text{elec}$  is  the  combined
+cross-sectional  area  of all  layers  ($n$  is  the number  of  electrochemical
+(pos,sep,neg) triplets) stacked  into the pouch cell. In both  the \gls{p2d} and
+\gls{spm}  models, this  parameter serves  to  scale the  external load  current
+down  to  the current  density  experienced  by  each electrochemical  layer.  A
+value  of  \approx\SI{30}{\ampere \per  \meter  \squared}  was reported  in  the
+results section of  Subramanian~\etal{}~\cite{Subramanian2009}. When considering
+a \SI{60}{\ampere\hour} pouch cell with \SI{10}{\milli\meter} exterior thickness
+and  using  the  parameters  reported  in~\cite{Subramanian2009},  this  results
+in  a  cross-sectional  area   of  \SI{2.053}{\meter\squared}.  Considering  the
+equalisation of capacity  loading, with the newly chosen thickness  value of the
+negative  electrode, the  1C-rate  capacity  of the  cell  has  been revised  to
+\SI{29.23}{\ampere\per\meter\squared}.
+
+On  simulating  the \gls{p2d}  model  with  a  trickle bleeding  type  discharge
+corresponding to a  current of \vfrac{\text{C}}{500} and logging  the data every
+\SI{1}{\milli\second}, after reaching \SI{2.7}{\volt}\footnote{From manufacturer
+datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
+correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
+in  the two  electrodes  were noted.  The  corresponding residual  stoichiometry
+values  are reported  in~\cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
+typical values reported in literature for \gls{lco} chemistries.\fxnote{citation
+needed  here.}   All  other  physical  properties,   \viz{}  stoichiometries  at
+\SI{100}{\percent},   maximum  concentrations,   diffusivities,  reaction   rate
+coefficients and  \gls{ocp} of the  two electrodes remain invariant  between the
+\gls{p2d} and \gls{spm} models.
+
+\subsection{Simulation Setup}
 
 In the interest of reproducibility of  results, the design decisions made by the
 author on  a few important aspects  of setting up the  simulations are discussed
 next.
 
-\subsection{Simulation Setup}
-
 Smaller parametrisation requirements  is only half the story  towards speed The.
 cells lower cutoff voltage is chosen to be \SI{2.5}{V}                         .
+
+% electrolyte resistance
