@@ -207,3 +207,10 @@
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 % \DeclareSIUnit{\Molar}{\textsc{m}}
+
+\usepackage[missing=Help!,notags={No tags?},dirty=Eww!,mark]{gitinfo2}
+% \renewcommand{\gitMarkFormat}{\color{\imperialcoolgray}\ttfamily}
+\renewcommand{\gitMark}{Git Branch: \gitBranch \textbullet{}\, Commit SHA: \gitAbbrevHash{} \textbullet{}\, Commit Date:\gitReln{} (\gitAuthorDate) \\ }
+\renewcommand{\gitMarkPref}{[Draft]}
+
+
