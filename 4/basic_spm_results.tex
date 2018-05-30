@@ -150,18 +150,71 @@ correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
 in  the two  electrodes  were noted.  The  corresponding residual  stoichiometry
 values  are reported  in~\cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
 typical values reported in literature for \gls{lco} chemistries.\fxnote{citation
-needed  here.}   All  other  physical  properties,   \viz{}  stoichiometries  at
-\SI{100}{\percent},   maximum  concentrations,   diffusivities,  reaction   rate
-coefficients and  \gls{ocp} of the  two electrodes remain invariant  between the
-\gls{p2d} and \gls{spm} models.
+needed here.}  This validation is  important, since below  certain stoichiometry
+thresholds, the spinel/olivine  structure of the electrodes  can become unstable
+and  collapse\fxnote{citation needed?}.  All other  physical properties,  \viz{}
+stoichiometries  at \SI{100}{\percent},  maximum concentrations,  diffusivities,
+reaction rate coefficients and \gls{ocp}  of the two electrodes remain invariant
+between the \gls{p2d} and \gls{spm} models.
 
 \subsection{Simulation Setup}
 
-In the interest of reproducibility of  results, the design decisions made by the
-author on  a few important aspects  of setting up the  simulations are discussed
-next.
+For  reproducibility of  results, it  is important  to discuss  the system-level
+parameters influencing simulation setup.
 
-Smaller parametrisation requirements  is only half the story  towards speed The.
-cells lower cutoff voltage is chosen to be \SI{2.5}{V}                         .
+The  lower cutoff  voltage of  the cell  is chosen  to be  \SI{2.5}{\volt}. This
+is  deliberately  kept  lower  than  the voltage  corresponding  to  the  cell's
+\SI{0}{\percent},  \ie{}  \SI{2.7}{\volt}.  If set  above  \SI{2.7}{\volt}  even
+at  infinitesimally small  discharge  currents, the  cell  would cut-off  before
+achieving complete discharge. Choosing a value lower than \SI{2.7}{V} means that
+the cell gets a chance to recover its terminal voltage, despite spikes in highly
+dynamic  load  currents  that  might  bring the  voltage  below  this  threshold
+momentarily. If a low-enough value is  not chosen, a system-level shutdown shall
+be  initiated  despite possessing  the  ability  to  continue to  operate  after
+recovery  of terminal  voltage.  In  this case,  choosing  a  cutoff voltage  of
+\SI{2.5}{\volt}  does  not  damage  the  cell  since  checks  are  in  place  to
+monitor  the \gls{soc}  and  trigger cutoff  in the  event  of charge  depletion
+(see~\cref{alg:ctstimespm,alg:disctimespm}).  Northrop~\etal~\cite{Northrop2011}
+use this value, although no explanation is given for the choice.
+
+The  upper  cutoff voltage  of  the  cell  is  chosen at  \SI{4.3}{\volt}  \ie{}
+\approx\SI{100}{\milli  \volt}   higher  than   the  equilibrium   \gls{ocp}  at
+\SI{100}{\percent} \gls{soc}. There are several  reasons for this smaller margin
+at the upper end of the voltage spectrum:
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
+    probabilities},itemsep=1ex]
+    \item[safety] li-ion cells are less tolerant to overcharging and can pose fire
+        hazards
+    \item[degradation] overcharging li-ion cells can lead to plating and
+        accelerate other degradation mechanisms
+    \item[low C-rates] charging C-rates are typically lower than discharge C-rates
+    \item[CCCV charging] For on-board chargers, taper charging (such as in a \gls{cccv} profile) is
+        activated, which ensures that charging
+        current drops off rapidly, leading to a lower overvoltage towards the upper
+        \gls{soc} range.
+    \item[low probabilities] The only charging event when an electrified vehicle is in motion is during
+        regenerative braking. The vehicular \gls{bms} manages the operating
+        window such that the starting \gls{soc} is much lower than the
+        overvoltage that could be caused due to braking. Furthermore, during
+        operation, the net discharge events occur more frequently than
+        regenerative braking events.
+\end{description}
+
+For  both the  \gls{p2d} model  and the  \gls{spm} model,  the cell  temperature
+is   kept   constant   at   its   initial   value   of   \SI{25}{\degreeCelsius}
+(\SI{298.15}{\kelvin}). This implies that the  operation of the lithium ion cell
+is assumed  to be isothermal.  While this  is not true  in general, it  is worth
+noting that thermal gradients in  the through-thickness direction is negligible.
+\fxnote{citation needed} Furthermore, for  the C-rates considered (<5C), typical
+in a \gls{bev} application and  for short-duration transient loads studied, this
+is a reasonable assumption. Detailed modelling of thermal dynamics is not within
+the scope of this thesis, as the primary goal is to obtain a physics based model
+incorporating  electrochemical  principles  amenable for  embedded  application.
+Future work could include \eg{} a lumped thermal model in both the \gls{spm} and
+\gls{p2d} and compare their performances.
+
+The initial concentration of electrolyte
+
+Smaller parametrisation requirements  is only half the story  towards speed
 
 % electrolyte resistance
