@@ -195,16 +195,16 @@
 % \makeatother
 
 
-\usepackage{tabularx}       % new
-% \usepackage{boldline}       % new (part of shipunov bundle)
-% \usepackage{cellspace}      % new
-% \setlength\cellspacetoplimit{4pt}
-% \setlength\cellspacebottomlimit{4pt}
-% \addparagraphcolumntypes{X}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}
-% \newcolumntype{L}[1]{>{\hsize=#1\hsize\RaggedRight} X}
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+% \usepackage{tabularx}       % new
+% % \usepackage{boldline}       % new (part of shipunov bundle)
+% % \usepackage{cellspace}      % new
+% % \setlength\cellspacetoplimit{4pt}
+% % \setlength\cellspacebottomlimit{4pt}
+% % \addparagraphcolumntypes{X}
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
+% \newcolumntype{L}{>{\raggedright\arraybackslash}X}
+% % \newcolumntype{L}[1]{>{\hsize=#1\hsize\RaggedRight} X}
+% \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 % \DeclareSIUnit{\Molar}{\textsc{m}}
 
@@ -214,3 +214,21 @@
 \renewcommand{\gitMarkPref}{[Draft]}
 
 
+\makeatletter
+
+\newcommand*{\@rowstyle}{}
+
+\newcommand*{\rowstyle}[1]{% sets the style of the next row
+    \gdef\@rowstyle{#1}%
+    \@rowstyle\ignorespaces%
+}
+
+\newcolumntype{=}{% resets the row style
+    >{\gdef\@rowstyle{}}%
+}
+
+\newcolumntype{+}{% adds the current row style to the next column
+    >{\@rowstyle}%
+}
+
+\makeatother
