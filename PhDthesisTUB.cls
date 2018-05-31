@@ -506,6 +506,7 @@ supported!}
 % ************************** Layout and Formatting *****************************
 \RequirePackage{lscape}   % Supports Landscape Layout
 \RequirePackage{setspace} % Define line spacing in paragraph
+% \RequirePackage[nodisplayskipstretch]{setspace} % Define line spacing in paragraph
 \RequirePackage{calc}     % calculate vertical spacing
 
 % *********************** Table of Contents & Appendices ***********************

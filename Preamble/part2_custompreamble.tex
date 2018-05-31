@@ -238,6 +238,32 @@
 \newlist{enumdescriptnum}{description}{1}
 \setlist[enumdescriptnum] {%
     before={\setcounter{descriptcount}{0}%
-    \renewcommand*\thedescriptcount{\arabic{descriptcount}.}}
+    \renewcommand*\thedescriptcount{\alph{descriptcount}.}}
     ,font=\bfseries\stepcounter{descriptcount}\thedescriptcount~
 }
+
+% \usepackage{bm}
+
+% \newenvironment{customenum}[2]
+% {%
+%     \begin{varwidth}[t]{7cm}
+%         {#1}
+%         \setstretch{1.0}
+%         \gdef\tempenum{#2}% store the number of enums to use later
+%     }%
+%     {%
+%         \\
+%         \centerline{$\times \tempenum$}% use the stored enum value
+%     \end{varwidth}
+% }%
+% % { Mary had a little lamb \setstretch{1.0} \\ \centerline{hello} \end{varwidth}}
+
+% \newcommand{\customenum}[2]
+% {%
+%     \begin{varwidth}[t]{\widthof{$\symbfit{\text{brugg}_j}$ ab}}
+%         {#1}
+%         \setstretch{1.0}
+%         \\
+%         \centerline{($\times {#2}$)} % use the stored enum value
+%     \end{varwidth}
+% }%
