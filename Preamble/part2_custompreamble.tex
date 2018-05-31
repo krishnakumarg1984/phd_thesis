@@ -232,3 +232,12 @@
 }
 
 \makeatother
+
+% https://tex.stackexchange.com/questions/30029/enumerated-description-list
+\newcounter{descriptcount}
+\newlist{enumdescriptnum}{description}{1}
+\setlist[enumdescriptnum] {%
+    before={\setcounter{descriptcount}{0}%
+    \renewcommand*\thedescriptcount{\arabic{descriptcount}.}}
+    ,font=\bfseries\stepcounter{descriptcount}\thedescriptcount~
+}

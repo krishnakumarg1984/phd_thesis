@@ -23,18 +23,25 @@ significance  of  each  of  the  parameters in  the  context  of  the  modelling
 assumptions discussed in~\cref{subsec:basicspmassumptions} is examined.
 
 The simulation parameters that are applicable exclusively to the \gls{p2d} model
-are shown with a shaded highlighting in~\cref{tbl:lcoSimParamsSPMp2d}. It can be
+are  shown  as  highlighted  text in~\cref{tbl:lcoSimParamsSPMp2d}.  It  can  be
 seen  that only  a subset  of the  isothermal \gls{dfn}  model's parameters  are
-required  for the  the \gls{spm}.  In particular,  the~\gls{spm} has  five fewer
-parameters  per  electrode. Furthermore,  all  six  physical parameters  of  the
-separator  material required  in the  \gls{dfn} model  are ignored  in \gls{spm}
+required  for  the  the  \gls{spm}.  In  particular,  there  is  no  requirement
+to  estimate  any  of  the  electrolyte-related  parameters  in  each  electrode
+region.  Furthermore,  the  properties  of  the  separator  material  which  are
+necessary  in the  \gls{dfn}  model are  also not  considered  in the  \gls{spm}
 computations.  Neglecting  Arrhenius-type  temperature  dependence  of  physical
 properties  and their  corresponding  activation energies,  the basic  \gls{spm}
 facilitates  the ability  to  afford physics-based  modelling capabilities  with
-\emph{sixteen} fewer parameters than  the equivalent isothermal \gls{p2d} model.
+\emph{eight} fewer  parameters than  the equivalent isothermal  \gls{p2d} model.
 With the naive assumption of equal parametrisation effort per physical property,
-this implies  a \SI{40}{\percent} reduction in  parametrisation requirements for
-the basic \gls{spm} when compared to its \gls{dfn} counterpart.
+this implies  a \SI{20}{\percent} reduction in  parametrisation requirements for
+the  basic  \gls{spm}  when  compared  to its  \gls{dfn}  counterpart.  A  brief
+enumeration of these additional \gls{p2d}-specific  parameters in the context of
+parameterisation requirements is performed.
+\begin{enumdescriptnum}[leftmargin=!,itemsep=1ex%,labelwidth=\widthof{\bfseries low probabilities}
+    ]
+    \item[brugg] The Bruggeman
+\end{enumdescriptnum}
 
 Prima facie, it may seem that electrolyte porosities and filler volume fractions
 do  not  influence the  \gls{spm}  model.  However,  they  do have  an  indirect
