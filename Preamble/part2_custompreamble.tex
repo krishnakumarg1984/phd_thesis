@@ -238,7 +238,7 @@
 \setlist[enumdescriptnum] {%
     before={\setcounter{descriptcount}{0}%
     \renewcommand*\thedescriptcount{\alph{descriptcount}.}}
-    ,font=\bfseries\stepcounter{descriptcount}\thedescriptcount~
+    ,font=\footnotesize{\bfseries\stepcounter{descriptcount}\thedescriptcount~}
 }
 
 % \usepackage{bm}
@@ -275,7 +275,9 @@
 % % $\makecell[tl]{\symbfit{\text{brugg}_j} \\ (\times   3)}$
 
 \newcommand{\customenum}[2]{
-\item[$\symbfit{#1}\, \scriptstyle (\times #2)$]
+\item[$ \symbfit{#1}\  (\times #2)$]
 }
 
+
+% \usepackage{autobreak}
 
