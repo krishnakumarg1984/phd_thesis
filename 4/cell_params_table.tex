@@ -6,9 +6,13 @@
 
 \begin{table}[!htbp]
     \small
-    \caption[Simulation parameters of an \protect{\gls{lco}} cell]{Complete set of parameters for simulating the \protect{\gls{p2d}} and \protect{\gls{spm}} implementations of an \protect{\gls{lco}} cell (with \ch{LiCoO_2}--\ch{LiC_6} electrode pair and \ch{LiPF_6} electrolyte),\quad \protect{$j \in \{\text{pos},\text{sep},\text{neg}\}$}}
+    \caption[Simulation parameters of  an \protect{\gls{lco}} cell]{Complete set
+        of  parameters for  simulating the  \protect{\gls{p2d}} and  \protect{\gls{spm}}
+        implementations  of an  \protect{\gls{lco}} cell  (with \ch{LiCoO_2}--\ch{LiC_6}
+        electrode   pair  and   \ch{LiPF_6}   electrolyte).   The  highlighted   entries
+        represent the  parameters exclusive  to \gls{p2d} model.\quad  \protect{$j \in
+    \{\text{pos},\text{sep},\text{neg}\}$}}
     \label{tbl:lcoSimParamsSPMp2d}
-
     \begin{threeparttable}
         \centering
         \begin{varwidth}[t]{0.48\linewidth}
@@ -42,6 +46,7 @@
         \end{varwidth}
 
         \bigskip
+        % \vfill
 
         \begin{tabular*}{\textwidth}{@{} =P{7.5cm} @{\extracolsep{\fill}} +l +c +r @{}}
             \multicolumn{4}{c}{\textbf{Thermodynamic, Kinetic, Geometric and Transport Parameters}} \\
@@ -71,6 +76,7 @@
         \end{tabular*}
 
         \bigskip
+        % \vfill
         %%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \begin{tabular*}{\textwidth}{@{} =P{7.5cm}  +l@{\extracolsep{\fill}}+c +r @{}}
             \multicolumn{4}{c}{\textbf{Spatial Discretisation}} \\
@@ -84,22 +90,26 @@
             \bottomrule
         \end{tabular*}
 
-        % \smallskip
-
+        \medskip
+        % \vfill
         \begin{tablenotes}[para,flushleft]
-        \item[a] Ref.~\cite{Northrop2011}
-        \item[b] Set to $\approx $\SI{100}{\milli\volt} above the cell's \gls{ocp} at \SI{100}{\percent} cell \gls{soc}
-        \item[c] Ref.~\cite{Subramanian2009}
-        \item[d] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{2} in Ref.~\cite{Valoen2005}\\%\fxnote{cross-ref to actual equation}
-        \item[e] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{3} in Ref.~\cite{Valoen2005} at $c_\text{e,0}= \SI{1000}{\mole\per\meter\cubed}$\\
-        \item[f] Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.
-        \item[g] Computed as $\frac{3 \varepsilon_\sj}{R_\pj}$\\
-        \item[h] Obtained as residual stoichiometries after a C/\num{500} simulated discharge from \SI{100}{\percent} cell \gls{soc} to \SI{2.7}{V}
-        \item[i] Chosen so that current density for the electrochemical layer is \SI{29.23}{\ampere\per\meter\squared} for \SI{60}{\ampere} applied current
-        \item[k] $ \mathcal{U(\theta_\text{pos})} = \displaystyle \frac{-4.656 + 88.669\theta_\text{pos}^2 - 401.119\theta_\text{pos}^4 + 342.909\theta_\text{pos}^6 - 462.471\theta_\text{pos}^8 + 433.434\theta_\text{pos}^{10}}{-1 + 18.933\theta_\text{pos}^2 - 79.532\theta_\text{pos}^4 + 37.311\theta_\text{pos}^6 - 73.083\theta_\text{pos}^8 + 95.96\theta_\text{pos}^{10}}$ \\[0.25em]
-        \item[m] $\mathcal{U(\theta_\text{neg})} = 0.7222 + 0.1387\theta_\text{neg} + 0.029\theta_\text{neg}^{0.5} - \frac{0.0172}{\theta_\text{neg}} + \frac{0.0019}{\theta_\text{neg}^{1.5}} + 0.2808 e^{(0.9 - 15\theta_\text{neg})} - 0.7984 e^{(0.4465\theta_\text{neg} - 0.4108)}$\vfill
+            \begin{scriptsize}
+            \item[a] Ref.~\cite{Northrop2011}
+            \item[b] Set to $\approx $\SI{100}{\milli\volt} above the cell's \gls{ocp} at \SI{100}{\percent} cell \gls{soc}
+            \item[c] Ref.~\cite{Subramanian2009}
+            \item[d] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{2} in Ref.~\cite{Valoen2005}\\%\fxnote{cross-ref to actual equation}
+            \item[e] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \rom{3} in Ref.~\cite{Valoen2005} at $c_\text{e,0}= \SI{1000}{\mole\per\meter\cubed}$\\
+            \item[f] Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.
+            \item[g] Computed as per~\cref{eq:specificsurfarea}\\
+            \item[h] Obtained as residual stoichiometries after a C/\num{500} simulated discharge from \SI{100}{\percent} cell \gls{soc} to \SI{2.7}{V}
+            \item[i] Chosen so that current density for the electrochemical layer is \SI{29.23}{\ampere\per\meter\squared} for \SI{60}{\ampere} applied current
+            \end{scriptsize}
+            \vspace{1ex}
+            \item[k] $ \mathcal{U(\theta_\text{pos})} = \textstyle \frac{-4.656 + 88.669\theta_\text{pos}^2 - 401.119\theta_\text{pos}^4 + 342.909\theta_\text{pos}^6 - 462.471\theta_\text{pos}^8 + 433.434\theta_\text{pos}^{10}}{-1 + 18.933\theta_\text{pos}^2 - 79.532\theta_\text{pos}^4 + 37.311\theta_\text{pos}^6 - 73.083\theta_\text{pos}^8 + 95.96\theta_\text{pos}^{10}}$ \\[0.25em]
+            \begin{footnotesize}
+            \item[m] $\mathcal{U(\theta_\text{neg})} = 0.7222 + 0.1387\theta_\text{neg} + 0.029\theta_\text{neg}^{0.5} - \frac{0.0172}{\theta_\text{neg}} + \frac{0.0019}{\theta_\text{neg}^{1.5}} + 0.2808 e^{(0.9 - 15\theta_\text{neg})} - 0.7984 e^{(0.4465\theta_\text{neg} - 0.4108)}$\vfill
+            \end{footnotesize}
         \end{tablenotes}
-
     \end{threeparttable}
 \end{table}
 
