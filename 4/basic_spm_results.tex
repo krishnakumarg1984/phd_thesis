@@ -39,33 +39,43 @@ this implies  a \SI{20}{\percent} reduction in  parametrisation requirements for
 the  basic  \gls{spm}  when  compared  to its  \gls{dfn}  counterpart.  A  brief
 enumeration of these additional \gls{p2d}-specific  parameters in the context of
 parameterisation requirements is provided here.
-\begin{enumdescriptnum}[leftmargin=!,itemsep=1ex,labelwidth=\widthof{$\symbfit{\text{brugg}_j}$
-    ab}
+% \begin{tabularx}{\textwidth}{l L}
+
+%     $\makecell[tl]{\symbfit{\text{brugg}_j} \\ (\times   3)}$  &   The  empirical
+%     Bruggeman coefficient helps  to define the effective  values of conductivity
+%     and diffusivity of the electrolyte. Although an identical value of 4 is used
+%     in~\cref{tbl:solidphaseapprox},  in principle  all  three  regions can  have
+%     different values of brugg and need to be parametrised separately. \\
+
+%     \customenum{D_j}{1}  & The  intrinsic electrolyte  diffusivity of  a typical
+%     electrolyte  consisting  of  \ch{LiPF_6}  salt in  an  organic  solvent  was
+%     experimentally  characterised   and  provided  as  a   table  of  polynomial
+%     coefficients  by  Valøen  and  Reimers~\cite{Valoen2005}.  Evaluating  this
+%     polynomial  at a  cell  temperature of  \SI{298.15}{\kelvin}  results in  an
+%     intrinsic diffusivity of \SI{3.22e-10}{\meter\squared\per\second}. Since the
+%     intrinsic  diffusivity is  a material  property  and is  independent of  the
+%     region within the cell, this can be counted as a single parameter.//
+
+% \end{tabularx}
+\begin{enumdescriptnum}[leftmargin=!,itemsep=1ex,labelwidth=\widthof{$\symbfit{\text{brugg}_j}\, \scriptstyle (\times 3)\qquad$}
+    ,partopsep=0pt
+    ,topsep=0pt
     ]
 
-\item[$\symbfit{\text{brugg}_j} (\times 3)$]   The   empirical  Bruggeman   coefficient
-    helps  to  define  the  effective values  of  conductivity  and  diffusivity
+    \customenum{\text{brugg}_j}{3}  The  empirical Bruggeman  coefficient  helps
+    to   define   the  effective   values   of   conductivity  and   diffusivity
     of   the  electrolyte.   Although  an   identical   value  of   4  is   used
     in~\cref{tbl:solidphaseapprox},  in principle  all  three  regions can  have
     different values of brugg and need to be parametrised separately.
 
-\item[$\symbfit{D_j} \\ (\times 1)$] The  intrinsic electrolyte  diffusivity of  a typical
+    \customenum{D_j}{1}  The  intrinsic  electrolyte diffusivity  of  a  typical
     electrolyte  consisting  of  \ch{LiPF_6}  salt in  an  organic  solvent  was
     experimentally  characterised   and  provided  as  a   table  of  polynomial
     coefficients  by  Valøen  and  Reimers~\cite{Valoen2005}.  Evaluating  this
     polynomial  at a  cell  temperature of  \SI{298.15}{\kelvin}  results in  an
     intrinsic diffusivity of \SI{3.22e-10}{\meter\squared\per\second}. Since the
     intrinsic  diffusivity is  a material  property  and is  independent of  the
-    region within the cell, this can be counted as a single parameter.
-
-\item[{\parbox[t]{7cm}{ first line \setstretch{1.0} \\ \centerline{second line}}}] more explanation
-\item[{\begin{varwidth}[t]{2cm} Mary \setstretch{1.0} \\
-    \centerline{hello} \end{varwidth}}] more explanation jdk hkjhgf jsdfj hgdsfj
-    hkjfdhg kjhgfds kjf hgfdj jdg jdgjh gkjhfdgkj dj fdjhg jhgjh jhgfdkjh gjh jh
-    gfjh gjhf jhgfkjhd gjhfdgjhdgdshgf jhgfds khgjfdsbfjhsbjhgsbfd jgbsjh bjhdb
-    gjhbdskjgbf kjbgjh fbsjdbjbgjh bfdgj
-% \item[\begin{customenum}{Kerala is God's own country}{3} \end{customenum}] more explanation
-% \item[\customenum{Kerala is God's own country}{3}] more explanation
+    region within the cell, it needs to be parametrised only once.
 
 \end{enumdescriptnum}
 
@@ -213,7 +223,7 @@ use this value, although no explanation is given for the choice.
 The  upper  cutoff voltage  of  the  cell  is  chosen at  \SI{4.3}{\volt}  \ie{}
 \approx\SI{100}{\milli  \volt}   higher  than   the  equilibrium   \gls{ocp}  at
 \SI{100}{\percent} \gls{soc}. There are several  reasons for this smaller margin
-at the upper end of the voltage spectrum:
+at the upper end of the voltage spectrum
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
     probabilities},itemsep=1ex]
     \item[safety] li-ion cells are less tolerant to overcharging and can pose fire

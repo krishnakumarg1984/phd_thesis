@@ -195,7 +195,6 @@
 % \makeatother
 
 
-% \usepackage{tabularx}       % new
 % % \usepackage{boldline}       % new (part of shipunov bundle)
 % % \usepackage{cellspace}      % new
 % % \setlength\cellspacetoplimit{4pt}
@@ -203,7 +202,7 @@
 % % \addparagraphcolumntypes{X}
 % \newcolumntype{C}{>{\centering\arraybackslash}X}
 % \newcolumntype{L}{>{\raggedright\arraybackslash}X}
-% % \newcolumntype{L}[1]{>{\hsize=#1\hsize\RaggedRight} X}
+% \newcolumntype{L}[1]{>{\hsize=#1\hsize\RaggedRight} X} % not working
 % \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 % \DeclareSIUnit{\Molar}{\textsc{m}}
@@ -267,3 +266,16 @@
 %         \centerline{($\times {#2}$)} % use the stored enum value
 %     \end{varwidth}
 % }%
+
+% \usepackage{makecell}
+
+% \newcommand{\customenum}[2]{
+%     $\makecell[tl]{\symbfit{#1} \\ (\times #2)}$
+% }
+% % $\makecell[tl]{\symbfit{\text{brugg}_j} \\ (\times   3)}$
+
+\newcommand{\customenum}[2]{
+\item[$\symbfit{#1}\, \scriptstyle (\times #2)$]
+}
+
+
