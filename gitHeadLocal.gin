@@ -1,0 +1,17 @@
+\usepackage[%
+        shash={5ecf2b8},
+        lhash={5ecf2b8e98fcf990033c0423bde66f11ccfbbfc9},
+        authname={Krishnakumar},
+        authemail={krishnakumar@imperial.ac.uk},
+        authsdate={2018-06-01},
+        authidate={2018-06-01 16:51:23 +0100},
+        authudate={1527868283},
+        commname={Krishnakumar},
+        commemail={krishnakumar@imperial.ac.uk},
+        commsdate={2018-06-01},
+        commidate={2018-06-01 16:51:23 +0100},
+        commudate={1527868283},
+        refnames={ (HEAD -> trying_gitinfo2, origin/master, origin/HEAD, master)},
+        firsttagdescribe={5ecf2b8},
+        reltag={5ecf2b8}
+    ]{gitexinfo}
