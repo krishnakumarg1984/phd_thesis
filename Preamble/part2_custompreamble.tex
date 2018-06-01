@@ -207,9 +207,9 @@
 
 % \DeclareSIUnit{\Molar}{\textsc{m}}
 
-\usepackage{gitinfo2}
-% \renewcommand{\gitMarkFormat}{\color{\imperialcoolgray}\ttfamily}
-\renewcommand{\gitMark}{Git Branch: \gitBranch \textbullet{}\, Commit SHA: \gitAbbrevHash{} \textbullet{}\, Commit Date:\gitReln{} (\gitAuthorDate) \\ }
+\usepackage[local,mark]{gitinfo2}
+\renewcommand{\gitMarkFormat}{\color{imperialbrick} \footnotesize}
+\renewcommand{\gitMark}{Git Branch: \gitBranch \textbullet{}\, Commit SHA: \textbf{\gitAbbrevHash{}} \textbullet{}\, Commit Date:\gitReln{} (\gitAuthorDate) \\ }
 \renewcommand{\gitMarkPref}{[Draft]}
 
 
