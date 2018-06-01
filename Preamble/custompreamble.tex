@@ -9,7 +9,10 @@
 \usepackage[normal]{engord}
 
 \usepackage[draft]{fixme}
-\fxsetup{theme=color}
+\fxsetup{theme=color, marginface=\singlespacing \scriptsize}
+% \definecolor{fxnote}{RGB}{2,137,59} % imperialdarkgreen
+\definecolor{fxnote}{RGB}{165,25,0} % imperialbrick
+
 % \usepackage[textsize=scriptsize]{todonotes}
 % \usepackage{luatodonotes}
 % \usepackage{excludeonly}
@@ -22,10 +25,10 @@
 % \renewcommand{\missingfigure}[2][]{\tikzexternaldisable\@missingfigure[#1]{#2}\tikzexternalenable}
 % \makeatother
 
-\usepackage[english]{isodate}
+% \usepackage[english]{isodate}
 \usepackage[all,warning]{onlyamsmath}
 
-\usepackage{relsize}
+% \usepackage{relsize}
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
@@ -34,7 +37,7 @@
 \newcommand{\eg}{\textit{e}.\textit{g}.}
 \newcommand{\viz}{\textit{viz}. }
 
-\usepackage{labelschanged}
+% \usepackage{labelschanged}
 
 \newcommand{\jinnegpos}{\ensuremath{j  ∈  \left\{\text{neg, pos}\right\}}}
 \newcommand{\jinnegposordered}{\ensuremath{j  \in  \left(\text{neg, pos}\right)}}
@@ -138,7 +141,8 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \newcounter{filePrg}
 \usepackage[draft=true,newfloat=true]{minted}
 % \usepackage[newfloat=true]{minted}
-\usepackage[most,minted]{tcolorbox}
+% \usepackage[breakable,minted]{tcolorbox}
+\usepackage[minted]{tcolorbox}
 
 \usepackage[makeroom]{cancel}
 \renewcommand{\CancelColor}{\color{imperialbrick}}
