@@ -300,3 +300,11 @@ MWE.pdf
 *minimal.pdf
 
 debug/*
+mwe.pdf
+
+# gitHeadLocal.gin
+hooks/*
+!hooks.tar.gz
+!db_uploader.tar.gz
+dropbox_uploader.sh
+!STIX2Math.otf
