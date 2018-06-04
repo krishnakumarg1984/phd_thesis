@@ -72,6 +72,7 @@ researchers must make clear to others the licence terms of this work
 
 
 %: ----------------------- contents ------------------------
+\microtypesetup{protrusion=false} % disables protrusion locally in the document
 \tableofcontents            % print the table of contents
 
 %: ----------------------- list of figures/tables ------------------------
@@ -85,7 +86,7 @@ researchers must make clear to others the licence terms of this work
 \cleardoublepage
 \tcblistof[\chapter]{mypyg}{List of Program Code} % list of listings
 \cleardoublepage
-
+\microtypesetup{protrusion=true} % re-enables protrusion
 %: ----------------------- glossary ------------------------
 
 % Tie in external source file for definitions: /0_frontmatter/glossary.tex

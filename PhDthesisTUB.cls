@@ -548,6 +548,7 @@ supported!}
 \RequirePackage{mathtools}
 \RequirePackage{amsfonts}
 
+\usepackage{lualatex-math}
 
 
 % ********************************** Fonts **********************************
@@ -598,7 +599,7 @@ supported!}
 \else
   \ifluatex
   \RequirePackage{pdftexcmds}
-  \RequirePackage[final]{microtype}
+  \RequirePackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
   \else
   % default: pdfLaTeX
   %:-------------------------- packages UTF8 -----------------------
