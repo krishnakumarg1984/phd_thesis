@@ -637,16 +637,16 @@ supported!}
 \usetikzlibrary{calc}
 
 \RequirePackage{pgfplots}
-\pgfplotsset{compat=1.9}
+\pgfplotsset{compat=newest}
 \usepgfplotslibrary{external}
 %\usetikzlibrary{arrows,pgfplots.groupplots,external}
 \usetikzlibrary{external}
 % create the tikz every run
-%\tikzset{external/force remake}
+% \tikzset{external/force remake}
 
 \tikzexternalize[shell escape=-enable-write18,  optimize=false]
 % check and run only the changed ones
-%\tikzexternalize[shell escape=-enable-write18,  optimize=false,mode=list and make]
+% \tikzexternalize[shell escape=-enable-write18,  optimize=false,mode=list and make]
 
 \ifluatex
 \tikzset{external/system call={lualatex
