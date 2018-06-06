@@ -9,7 +9,7 @@
 %: ----------------------- generate glossary ------------------------
 % \LoadPackagesNow
 \loadglsentries{0_frontmatter/glossary}
-\makeglossaries{}
+% \makeglossaries
 % \listfiles
 \begin{document}
 
@@ -39,7 +39,8 @@ researchers must make clear to others the licence terms of this work
 \listofalgorithms
 \addcontentsline{toc}{chapter}{List of Algorithms}
 \cleardoublepage
-\tcblistof[\chapter]{mypyg}{List of Program Code} % list of listings
+% \tcblistof[\chapter]{mypyg}{List of Program Code} % list of listings
+\tcblistof{mypyg}{List of Program Code} % list of listings
 \cleardoublepage
 \microtypesetup{protrusion=true} % re-enables protrusion
 
@@ -47,14 +48,14 @@ researchers must make clear to others the licence terms of this work
 
 \cleardoublepage
 
-\chapter{Glossary}\label{ch:glossary}
-\begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-    \begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-        % \printglossary[type=\acronymtype,title=Abbreviations]
-        \printglossary{}
-        \label{nom} % target name for links to glossary
-    \end{footnotesize}
-\end{multicols}
+% \chapter{Glossary}\label{ch:glossary}
+% \begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
+%     \begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
+%         % \printglossary[type=\acronymtype,title=Abbreviations]
+%         \printglossary{}
+%         \label{nom} % target name for links to glossary
+%     \end{footnotesize}
+% \end{multicols}
 
 %\tikzsetexternalprefix{./4/TikzPictures/}
 \setcounter{chapter}{3}
@@ -86,35 +87,22 @@ researchers must make clear to others the licence terms of this work
 %% The default below is one column, small font, complete author names.
 %% Entries are also linked back to the page number in the text and to external URL if provided in the BibTex file.
 
-%\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
-
-%    \ifCLASSINFOlangDE
-%        %\renewcommand{\bibname}{References}
-%\else
-%    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
-%\fi
-%% add bib to toc
-%\cleardoublepage
-%\phantomsection
-%\addcontentsline{toc}{chapter}{\bibname}
-
-%\ifCLASSINFObiblatex
-%    \printbibliography
-%\else
-%    % PhDbiblio-url2 = names small caps, title bold & hyperlinked, link to page
-%    \bibliographystyle{Classes/PhDbiblio-url2} % Title is link if provided
-%    %\bibliographystyle{apalike}
-%    \bibliography{9_backmatter/references} % adjust this to fit your BibTex file
-%\fi
-%\end{footnotesize}
+\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
+    % add bib to toc
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+    \printbibliography
+\end{footnotesize}
 
 
 %% ********************************** Appendices ********************************
 
-%\begin{appendices} % Using appendices environment for more functionality
-%    \crefalias{chapter}{appchap}
-%    \tikzsetexternalprefix{./Appendix1/TikzPictures/}
-%    \include{Appendix1/appendix1}
-%\end{appendices}
+\begin{appendices} % Using appendices environment for more functionality
+    \crefalias{chapter}{appchap}
+    \tikzsetexternalprefix{./Appendix1/TikzPictures/}
+    \include{Appendix1/appendix1}
+\end{appendices}
 
 \end{document}
