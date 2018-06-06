@@ -1,0 +1,44 @@
+\usepackage{hyperref}
+\hypersetup{ final=true,
+    pdfdisplaydoctitle = false,
+    plainpages = false,
+    pdfstartview=,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    bookmarksopen = true,
+    bookmarksopenlevel = 0,
+    bookmarksnumbered = true,
+    breaklinks = true,
+    linktocpage,
+    colorlinks = true,  % was true
+    linkcolor = [RGB]{0,62,116}, % imperialblue
+    urlcolor  = [RGB]{0,62,116}, % imperialblue
+    % citecolor = [RGB]{157,157,157}, % coolgray
+    % citecolor = [RGB]{0,33,71}, % imperialnavy
+    citecolor = [RGB]{0,62,116}, % imperialblue
+    anchorcolor = black,
+    pdflang=Englisch,
+    pdfborderstyle={/S/U/W 1},
+    % bookmarks=true,
+    % pdfpagelabels,
+    %pagebackref,
+    %hyperindex = true,
+    %hyperfigures,
+    pdfpagelayout = OneColumn
+    pdfpagemode = UseOutlines,
+    %pdfencoding=unicode
+}
+
+\usepackage{nameref}
+
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+
+\usepackage[all]{hypcap} % fix hyperref links to jump directly to Table or Figure
+
+% \RequirePackage{calc}     % calculate vertical spacing
+\usepackage{pdftexcmds}
+\usepackage[toc,abbreviations,nomain,indexonlyfirst,acronym]{glossaries-extra}
+% \glsdisablehyper
+\newglossary[slg]{symbolslist}{syi}{syg}{Symbols}
+
+\usepackage[nameinlink]{cleveref}
