@@ -39,8 +39,10 @@ researchers must make clear to others the licence terms of this work
 \listofalgorithms
 \addcontentsline{toc}{chapter}{List of Algorithms}
 \cleardoublepage
-% \tcblistof[\chapter]{mypyg}{List of Program Code} % list of listings
-\tcblistof{mypyg}{List of Program Code} % list of listings
+\begingroup
+\parskip=0pt
+\tcblistof[\chapter*]{mypyg}{List of Program Code}
+\endgroup
 \cleardoublepage
 \microtypesetup{protrusion=true} % re-enables protrusion
 

@@ -156,6 +156,8 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     label=#3
 }
 
+\pretocmd{\chapter}{\addtocontents{mypyg}{\addvspace{10pt}}}{}{}
+
 \makeatletter % no indent for entries
 \renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{2.3em}}
 \makeatother
