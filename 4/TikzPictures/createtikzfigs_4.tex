@@ -1,0 +1,52 @@
+%! TEX program = lualatex
+% vim:nospell
+
+% \documentclass[oneside,12pt,online,a4paper,pdfa1,numbered,biblatex,fontC]{clsForTikz}
+\documentclass[12pt,a4paper]{book}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{lualatex-math}
+\usepackage{anyfontsize}
+\usepackage{fontspec}
+\let\mathbbalt\mathbb
+\usepackage[warnings-off={mathtools-colon}]{unicode-math}
+\usepackage[luatex]{graphicx}
+\usepackage{pdftexcmds}
+\usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage{tikz}
+
+\usepackage{tikzscale}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{external}
+\usetikzlibrary{arrows,pgfplots.groupplots,external}
+\usetikzlibrary{external}
+% create the tikz every run
+% \tikzset{external/force remake}
+\tikzexternalize[shell escape=-enable-write18,  optimize=false]
+% % check and run only the changed ones
+% \tikzexternalize[shell escape=-enable-write18,  optimize=false,mode=list and make]
+
+\tikzset{external/system call={lualatex
+\tikzexternalcheckshellescape -halt-on-error -interaction=batchmode
+                              -jobname "\image" "\texsource"}}
+
+\newcommand{\includetikz}[1]{%
+    \tikzsetnextfilename{#1}%
+    \input{#1.tikz}%
+}
+
+\begin{document}
+
+\mainmatter
+
+\includetikz{example1}
+
+Hello world
+\cleardoublepage
+\end{document}
