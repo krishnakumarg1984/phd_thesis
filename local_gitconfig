@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	hooksPath = hooks/
+[branch "master"]
+[branch "master"]
+[remote "origin"]
+	url = git@github.com:krishnakumarg1984/phd_thesis.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
