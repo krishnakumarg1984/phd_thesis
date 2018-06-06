@@ -413,3 +413,9 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     \@mainmatterfalse
 }
 \makeatother
+
+% Define the command. Note that the input and output folders are static!
+\newcommand{\includetikz}[1]{%
+    \tikzsetnextfilename{#1}%
+    \input{#1.tikz}%
+}
