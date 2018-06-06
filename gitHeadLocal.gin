@@ -1,0 +1,17 @@
+\usepackage[%
+        shash={6770428},
+        lhash={6770428f6c8a0ed4f8a84556f29c2292e689a8c4},
+        authname={Krishnakumar},
+        authemail={krishnakumar@imperial.ac.uk},
+        authsdate={2018-06-06},
+        authidate={2018-06-06 21:20:42 +0100},
+        authudate={1528316442},
+        commname={Krishnakumar},
+        commemail={krishnakumar@imperial.ac.uk},
+        commsdate={2018-06-06},
+        commidate={2018-06-06 21:20:42 +0100},
+        commudate={1528316442},
+        refnames={ (HEAD -> master)},
+        firsttagdescribe={6770428},
+        reltag={6770428}
+    ]{gitexinfo}
