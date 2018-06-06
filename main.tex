@@ -1,9 +1,8 @@
 %! TEX program = lualatex
 % vim:nospell
 
-% \documentclass[oneside,12pt,online,a4paper,pdfa1,numbered,biblatex,fontC]{PhDthesisTUB}
 % \RequirePackage{pkgloader}
-\documentclass[12pt,a4paper,oneside,fleqn,openright]{book}
+\documentclass[12pt,a4paper,oneside,openright]{book}
 
 \include{Preamble/preamble}
 %: ----------------------- generate glossary ------------------------
@@ -15,6 +14,7 @@
 
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
+\frontmatter
 \includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}\\
 \doclicenseLongText\\
 
@@ -59,35 +59,15 @@ researchers must make clear to others the licence terms of this work
 %     \end{footnotesize}
 % \end{multicols}
 
+\mainmatter
 %\tikzsetexternalprefix{./4/TikzPictures/}
 \setcounter{chapter}{3}
 \include{4/chapter4}
 %\cfchapter{Physics-Based Controls-Oriented Time-Domain Modelling\label{ch:chapter4}}{4}{chapter4}
-%% \tikzsetexternalprefix{./5/TikzPictures/}
-%% \cfchapter{PGF-plots from python\label{ch:chapter5}}{5}{chapter5}
-%% \tikzsetexternalprefix{./6/TikzPictures/}
-%% \cfchapter{Discussion and Future Work\label{ch:chapter6}}{6}{chapter6}
-%% \tikzsetexternalprefix{./7/TikzPictures/}
-%% \cfchapter{Discussion and Future Work\label{ch:chapter7}}{7}{discussion}
-%% \tikzsetexternalprefix{./8/TikzPictures/}
-%% \cfchapter{Materials and Methods}{8}{materials_methods}
-%\cleardoublepage
-%% description of lab methods
+\cleardoublepage
 
-
-
-%% --------------------------------------------------------------
-%%:                  BACK MATTER: appendices, refs,..
-%% --------------------------------------------------------------
-
-%% the back matter: appendix and references close the thesis
-
-
+\backmatter
 %%: ----------------------- bibliography ------------------------
-
-%% The section below defines how references are listed and formatted
-%% The default below is one column, small font, complete author names.
-%% Entries are also linked back to the page number in the text and to external URL if provided in the BibTex file.
 
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
     \renewcommand{\bibname}{References} % changes the header; default: Bibliography

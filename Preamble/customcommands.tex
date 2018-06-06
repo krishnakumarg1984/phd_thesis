@@ -394,3 +394,22 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 
 \setabbreviationstyle[acronym]{long-short}% glossaries-extra.sty only
 
+\makeatletter
+\newcounter{savepagenumber}
+\renewcommand\mainmatter{%
+    \cleardoublepage
+    \setcounter{savepagenumber}{\value{page}}
+    \@mainmattertrue
+    \pagenumbering{arabic}%
+}
+\renewcommand\backmatter{%
+    \if@openright
+        \cleardoublepage
+    \else
+        \clearpage
+    \fi
+    \pagenumbering{roman}%
+    \setcounter{page}{\value{savepagenumber}}%
+    \@mainmatterfalse
+}
+\makeatother
