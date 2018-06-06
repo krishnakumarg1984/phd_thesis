@@ -27,6 +27,7 @@ researchers must make clear to others the licence terms of this work
 
 %: ----------------------- contents ------------------------
 % \newwrite\blub
+\glsunsetall
 \microtypesetup{protrusion=false} % disables protrusion locally in the document
 \tableofcontents            % print the table of contents
 
@@ -45,6 +46,7 @@ researchers must make clear to others the licence terms of this work
 \endgroup
 \cleardoublepage
 \microtypesetup{protrusion=true} % re-enables protrusion
+\glsresetall
 
 %: ----------------------- glossary ------------------------
 
@@ -66,8 +68,13 @@ researchers must make clear to others the licence terms of this work
 %\cfchapter{Physics-Based Controls-Oriented Time-Domain Modelling\label{ch:chapter4}}{4}{chapter4}
 \cleardoublepage
 
+\begin{appendices} % Using appendices environment for more functionality
+    \crefalias{chapter}{appchap}
+    \tikzsetexternalprefix{./Appendix1/TikzPictures/}
+    \include{Appendix1/appendix1}
+\end{appendices}
+
 \backmatter
-%%: ----------------------- bibliography ------------------------
 
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
     \renewcommand{\bibname}{References} % changes the header; default: Bibliography
@@ -77,14 +84,4 @@ researchers must make clear to others the licence terms of this work
     \addcontentsline{toc}{chapter}{\bibname}
     \printbibliography
 \end{footnotesize}
-
-
-%% ********************************** Appendices ********************************
-
-\begin{appendices} % Using appendices environment for more functionality
-    \crefalias{chapter}{appchap}
-    \tikzsetexternalprefix{./Appendix1/TikzPictures/}
-    \include{Appendix1/appendix1}
-\end{appendices}
-
 \end{document}

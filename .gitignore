@@ -303,7 +303,7 @@ debug/*
 mwe.pdf
 
 # gitHeadLocal.gin
-hooks/*
+# hooks/*
 !hooks.tar.gz
 !db_uploader.tar.gz
 dropbox_uploader.sh
