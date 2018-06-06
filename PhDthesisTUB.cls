@@ -1,4 +1,4 @@
-% -*- root: ../main.tex -*-
+% -*- root: ./main.tex -*-
 % vim:nospell
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                            %%
@@ -617,12 +617,6 @@ supported!}
 
    \fi
 \fi
-
-%%% minted before tikzexternalize (or glossaries stuff)
-\usepackage[draft=true,newfloat=true]{minted}
-% \usepackage[newfloat=true]{minted}
-% \usepackage[breakable,minted]{tcolorbox}
-\usepackage[minted]{tcolorbox}
 
 %:-------------------------- Glossary/Abbrev./Symbols -----------------------
 
