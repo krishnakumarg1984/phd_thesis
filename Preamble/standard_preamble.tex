@@ -1,0 +1,93 @@
+\usepackage{setspace} % Define line spacing in paragraph
+\usepackage[english]{babel}
+\usepackage[nottoc]{tocbibind} % correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
+\usepackage[title,titletoc]{appendix} % add appendices
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{lualatex-math}
+\usepackage[all,warning]{onlyamsmath}
+\usepackage{anyfontsize}
+\usepackage{fontspec}
+\let\mathbbalt\mathbb
+\usepackage[warnings-off={mathtools-colon}]{unicode-math}
+\usepackage{tabstackengine}
+\usepackage[makeroom]{cancel}
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf, .png, .jpg, .jpeg} %GIF doesn't work??
+\usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+\setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
+}]{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmathfont{Libertinus Math}
+\setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
+\usepackage[backend=biber, style=ieee, sortlocale=en_GB, maxbibnames=50, url=true, doi=true, eprint=true ]{biblatex}
+\usepackage{url}
+\usepackage{fancyhdr} % Define custom header
+\newcommand{\setFancyHdr}{
+    \pagestyle{fancy}
+    \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter. ##1 }}{}}
+    \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
+    \fancyhf{}
+    \fancyhead[R]{\bfseries\rightmark}
+    \fancyfoot[C]{\thepage}
+    \fancypagestyle{plain}{
+        \fancyhead{}
+        \renewcommand{\headrulewidth}{0pt}
+    }
+}
+
+\setlength{\headheight}{14.5pt}
+\setFancyHdr % Apply fancy header settings otherwise apply it in preamble
+\setlength\parskip{0.75\baselineskip plus0.1\baselineskip  minus0.1\baselineskip}
+\usepackage[inline]{enumitem}
+\setlist[enumerate,itemize,description]{topsep=0em}
+\setcounter{secnumdepth}{3} % organisational level that receives a numbers
+\setcounter{tocdepth}{3}    % print table of contents for level 3
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage[margin=10pt,font=small,labelfont={bf},labelsep=quad]{caption} % for improved layout of figure captions with extra margin, smaller font than text
+\usepackage{titlesec}
+\renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
+\titleformat{\chapter}[display]
+{\bfseries\sffamily\Huge}
+{\hfill\fontsize{140}{50}\selectfont\color{lightgray}\rmfamily\textbf{\thechapter}}% label
+{-0ex}
+{\filleft\fontsize{50}{50}}
+[\vspace{-0ex}]
+\usepackage[section]{placeins} %Defines a \FloatBarrier command
+\setlength{\columnsep}{20pt} % space between columns; default 10pt quite narrow
+\usepackage{booktabs}
+\usepackage{multicol} % for pages with multiple text columns, e.g. References
+\usepackage{xcolor,colortbl}
+\usepackage{ragged2e}
+\newcolumntype{P}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
+\usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}
+\sisetup{
+    locale = UK ,
+    per-mode = reciprocal-positive-first,
+    binary-units = true
+}
+
+\usepackage[modifier={by-nc-nd}]{doclicense}
+\usepackage[frac,vfrac,multskip]{mathfixs}
+\usepackage[normal]{engord}
+
+\usepackage[draft]{fixme}
+\fxsetup{theme=color, marginface=\singlespacing \scriptsize}
+\definecolor{fxnote}{RGB}{165,25,0} % imperialbrick
+
+\usepackage{chemformula}
+
+\usepackage{diffcoeff}
+\diffset[p-delims = . |, p-nudge = 0]
+
+\usepackage[draft=true,newfloat=true]{minted}
+\usepackage[minted]{tcolorbox}
+
+
+\usepackage[draft=true,newfloat=true]{minted}
+\usepackage[minted]{tcolorbox}

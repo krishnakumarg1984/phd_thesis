@@ -1,0 +1,12 @@
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{external}
+\usetikzlibrary{external}
+\tikzexternalize[shell escape=-enable-write18,  optimize=false]
+\tikzset{external/system call={lualatex
+        \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode
+-jobname "\image" "\texsource"}}
