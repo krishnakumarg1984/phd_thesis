@@ -1,6 +1,6 @@
 clear; close all; clc; format short g;
 
-no_of_pts = 100;
+no_of_pts = 15;
 temperature = linspace(-15,40,no_of_pts) + 273.15; % kelvin
 ce = linspace(0,2000,no_of_pts);
 
@@ -13,15 +13,17 @@ kappa = (1e-4*Ce.*((-10.5+0.668*1e-3*Ce+0.494*1e-6*Ce.^2) +...
 %  brewermap('plot')
 clf;
 surf(Ce,T,kappa,'EdgeColor','interp','LineStyle','none','FaceColor','interp');
+ylim([250 320]);
+xlabel('$c_\mathrm{e}\, (\mathrm{mol}\, \mathrm{m}^{-3})$');
+ylabel('$\mathrm{Temp.}\, (K)$');
+zlabel('$\kappa.\, (\mathrm{S}\, \mathrm{m}^{-1})$');
 
 % colormap(brewermap([],'*Greys'));
 customgrey_start = gray(300);
 customgrey = customgrey_start(1:225,:);
-% colormap(customgrey);
+colormap(customgrey);
 colorbar ;
 shg;
 
-%% 
-
-cleanfigure;
-matlab2tikz('showInfo',false,'m2t_kappa_ce_T.tikz');
+figwidth_mm = 140; % mm elsevier 1.5 column size
+custom_m2t_fcn('m2t_kappa_ce_T',figwidth_mm, false);

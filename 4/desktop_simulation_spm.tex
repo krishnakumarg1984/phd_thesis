@@ -298,12 +298,29 @@ in~\cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 \begin{multline}\label{eq:kappavsCeandT}
     \kappa_j(c_\text{e},T)(x,t) =  10^{-4} c_\text{e}(x,t) \bigl(-10.5 + \num{0.668e-3} c_\text{e}(x,t) + \num{0.494e-6}  c_\text{e}(x,t)^2\\
         + (0.074 - \num{1.78e-5}) c_\text{e}(x,t) - \num{8.86e-10}
-    c_\text{e}(x,t)^2 \bigr)T_\text{cell}\\
-	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e}(x,t))T_\text{cell}^2\right)^2
+    c_\text{e}(x,t)^2 \bigr)T(t)\\
+	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e}(x,t))T(t)^2\right)^2
 \end{multline}
 
-For  the  isothermal  case,  $T(t)  =  T_\text{cell}$.  At  equilibrium  initial
-condition ($t=0$), the electrolyte concentration is uniform over the axial space $x$.
+\begin{figure}[htb]
+    \centering
+    \includegraphics{4/figures/m2t_kappa_ce_T.pdf}
+    % \includetikz{4/figures/m2t_kappa_ce_T}
+    \caption[Surface plot of electrolyte conductivity]
+    {Electrolyte conductivity as a function of cell temperature and initial
+        concentration. The variation of conductivity versus these factors is a
+    smooth function.}
+    \label{fig:kappavsCeandT}
+\end{figure}
+
+\Cref{fig:kappavsCeandT} shows  a surface  plot of the  electrolyte conductivity
+as  a function  of  initial concentration  $c_\text{e,0}$  and cell  temperature
+$T_\text{cell}$.\fxnote{comment on how the variation in the direction of temp is
+less significant to that around conc} In particular,
+\begin{enumerate}%[label=\emph{\alph*})]
+    \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$ is uniform over the axial space $x$ and
+    \item only isothermal cell behaviour is considered, \ie{} $T(t) = T_\text{cell}$
+\end{enumerate},
 Hence,~\cref{eq:kappavsCeandT} reduces to
 \begin{multline}\label{eq:kappavsCeinitandTcell}
     \kappa_j =  10^{-4} c_\text{e,0} \bigl(-10.5 + \num{0.668e-3} c_\text{e,0} + \num{0.494e-6}  c_\text{e,0}^2\\
@@ -312,31 +329,24 @@ Hence,~\cref{eq:kappavsCeandT} reduces to
 	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e,0})T_\text{cell}^2\right)^2
 \end{multline}
 
-\begin{figure}[htbp]
-    \centering
-    % \input{4/figures/m2t_kappa_ce_T.tikz}
-    \includetikz{4/figures/m2t_kappa_ce_T}
-    \caption[Surface plot of electrolyte conductivity]
-    {Electrolyte conductivity as a function of cell temperature and initial
-    concentration}
-    \label{fig:kappavsCeandT}
-\end{figure}
+As   inferred   from~\cref{fig:kappavsCeandT},  the   electrolyte   conductivity
+$\kappa$   is   a  smooth   function   of   $c_\text{e}$  and   $T_\text{cell}$.
+Thus~\cref{eq:kappavsCeinitandTcell}  can be  effectively  visualised through  a
+parameteric plot of $\kappa$ vs $c_\text{e}$ with $T_\text{cell}$ as the varying
+parameter as seen in~\cref{fig:kappavsce}.
 
-\Cref{fig:kappavsCeandT} shows a surface plot of the electrolyte conductivity as
-a function of initial  concentration  $c_\text{e,0}$ and  cell
-temperature $T_\text{cell}$.\fxnote{comment on how the variation in the
-direction of temp is less significant to that around conc}. Since the cell's
-temperature is fixed at \SI{298.15}{\kelvin}, this relationship can be better
-visualised as a one-dimensional plot as shown in~\cref{fig:kappavsce}
-
-\begin{figure}[h]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    % \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \includegraphics{4/figures/m2t_kappa_ce_parametric_T.pdf}
     \caption[]
     {Electrolyte conductivity as a function of equilibrium concentration at
     $T_\text{cell} = \SI{298.15}{\kelvin}$}
     \label{fig:kappavsce}
 \end{figure}
+
+Since the cell's
+temperature is fixed at \SI{298.15}{\kelvin}
 
 From~\cref{fig:kappavsce},  it  is  evident that  the  electrolyte  conductivity
 attains its maximum value at $c_\text{e} = \SI{1000}{\mole\per\meter\cubed}$. It

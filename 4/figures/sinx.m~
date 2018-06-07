@@ -1,0 +1,13 @@
+clear; close all; clc; format short g;
+
+x = linspace(0,2*pi,100);
+y = sin(x);
+z = cos(x);
+
+p = sin(x
+
+plot(x,y);
+custom_m2t_fcn('sin_x',140, false);
+close;
+plot(x,z);
+custom_m2t_fcn('cos_x',140, false);

@@ -9,6 +9,9 @@
 
 \usepackage[title,titletoc]{appendix} % add appendices
 \usepackage[english]{babel}
+\usepackage[draft=true,newfloat=true]{minted}
+\usepackage[minted]{tcolorbox}
+\usepackage{csquotes} % The fvextra package is loaded by minted, so you should load minted before csquotes
 % \usepackage[backend=biber, style=ieee, sortlocale=en_GB, maxbibnames=50, url=true, doi=true, eprint=true ]{biblatex}
 \usepackage[backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=true ]{biblatex}
 
@@ -43,7 +46,7 @@
 
 \usepackage{multicol} % for pages with multiple text columns, e.g. References
 
-\usepackage[all,warning]{onlyamsmath}
+\usepackage[all,warning]{onlyamsmath} % if using Tikz, please include the calc and babel libraries (known incompatibilities)
 \usepackage[section]{placeins} %Defines a \FloatBarrier command
 
 \usepackage{ragged2e}
@@ -54,13 +57,11 @@
 \usepackage{subcaption}
 \usepackage{tabstackengine}
 
-\usepackage[draft=true,newfloat=true]{minted}
-\usepackage[minted]{tcolorbox}
-\usepackage{csquotes} % The fvextra package is loaded by minted, so you should load minted before csquotes
 
 \usepackage{titlesec}
 \usepackage{threeparttable}
 
+% One of the lines below causes a problem with tikz external
 \usepackage[nottoc]{tocbibind} % correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
 \usepackage[warnings-off={mathtools-colon}]{unicode-math}
 

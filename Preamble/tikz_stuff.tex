@@ -3,12 +3,19 @@
 
 \usepackage{tikz}
 \usepackage{tikzscale}
-\usetikzlibrary{shapes,arrows}
-\usetikzlibrary{calc}
 \usepackage{pgfplots}
+\usepackage{grffile}
+
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc,babel} % babel is needed to avoid incompatibilities with onlyamsmath
 \pgfplotsset{compat=newest}
-\usepgfplotslibrary{external}
 \usetikzlibrary{external}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+
+\usepgfplotslibrary{patchplots}
+\usepgfplotslibrary{external}
+
 \tikzexternalize[shell escape=-enable-write18,  optimize=false]
 \tikzset{external/system call={lualatex
         \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode
