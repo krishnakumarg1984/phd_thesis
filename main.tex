@@ -2,6 +2,7 @@
 % vim:nospell
 
 % \RequirePackage{pkgloader}
+\RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[12pt,a4paper,oneside,openright]{book}
 
 \include{Preamble/preamble}
@@ -28,6 +29,7 @@ researchers must make clear to others the licence terms of this work
 %: ----------------------- contents ------------------------
 % \newwrite\blub
 \glsunsetall
+\hypersetup{colorlinks=false}
 \microtypesetup{protrusion=false} % disables protrusion locally in the document
 \tableofcontents            % print the table of contents
 
@@ -46,6 +48,7 @@ researchers must make clear to others the licence terms of this work
 \endgroup
 \cleardoublepage
 \microtypesetup{protrusion=true} % re-enables protrusion
+\hypersetup{colorlinks=true}
 \glsresetall
 
 %: ----------------------- glossary ------------------------

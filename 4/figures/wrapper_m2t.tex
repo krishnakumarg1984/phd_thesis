@@ -1,28 +1,14 @@
 % vim:nospell
-% \ifx\directlua\@undefined
-% \else
-%     \RequirePackage{luatex85}
-%     \RequirePackage{shellesc}
-% \fi
-\documentclass{book}
+
 \RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[12pt,a4paper,oneside,openright]{book}
 \input{../../Preamble/standard_preamble}
 \input{../../Preamble/tikz_stuff}
-\usepackage{chemformula} % uses tikz arrows
-\input{../../Preamble/hyperref_related}
-
-\input{../../Preamble/customcommands}
+% \input{../../Preamble/hyperref_related}
 
 \begin{document}
 
-% \begin{figure}[htbp]
-%     \includetikz{m2t_kappa_ce_T}
-    \includetikz{m2t_kappa_ce_parametric_T}
-%     \caption{empty}
-% \end{figure}
-
-% \begin{figure}[htbp]
-%     \caption{empty}
-% \end{figure}
+\includetikz{m2t_kappa_ce_T}
+% \includetikz{m2t_kappa_ce_parametric_T}
 
 \end{document}

@@ -34,12 +34,13 @@
 
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
 
-\usepackage[all]{hypcap} % fix hyperref links to jump directly to Table or Figure
+\usepackage[all]{hypcap} % to be loaded after hyperref. fix hyperref links to jump directly to Table or Figure
 
 % \RequirePackage{calc}     % calculate vertical spacing
 \usepackage{pdftexcmds}
-\usepackage[translate=babel,abbreviations,nomain,indexonlyfirst,acronym]{glossaries-extra}
+\usepackage[translate=babel,abbreviations,nomain,indexonlyfirst,acronym]{glossaries-extra} % should be loaded after hyperref
 % \glsdisablehyper
 \newglossary[slg]{symbolslist}{syi}{syg}{Symbols}
 
+\usepackage{hypdestopt}
 \usepackage[nameinlink]{cleveref}

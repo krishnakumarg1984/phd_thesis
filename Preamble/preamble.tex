@@ -1,14 +1,21 @@
 %!TEX root = ../main.tex
 
-\RequirePackage[l2tabu, orthodox]{nag}
-\input{Preamble/standard_preamble}
-% \input{Preamble/tikz_stuff}
-\usepackage{chemformula} % uses tikz arrows
-\input{Preamble/hyperref_related}
+\input{Preamble/standard_preamble} % packages and document fonts
 
-\input{Preamble/customcommands}
+\usepackage[english]{babel}
+
+\usepackage[draft=true,newfloat=true]{minted}
+\usepackage[minted]{tcolorbox}
+\usepackage{csquotes} % The fvextra package is loaded by minted, so you should load minted before csquotes
+\usepackage[modifier={by-nc-nd}]{doclicense} % depends on csquotes
+
+\usepackage{chemformula} % uses tikz arrows
 
 \addbibresource{9_backmatter/thesis_refs.bib}
+
+\input{Preamble/hyperref_related}
+\input{Preamble/customcommands}
+
 \tolerance=1414
 \hbadness=1414
 \emergencystretch=1.5em

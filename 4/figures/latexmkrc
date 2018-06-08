@@ -1,6 +1,7 @@
 $pdflatex = 'lualatex %O %S --shell-escape';
 $pdf_mode = 1;
 $postscript_mode = $dvi_mode = 0;
+$cleanup_mode=2;
 
 
 push @generated_exts, "acn";
@@ -35,4 +36,5 @@ push @generated_exts, "xml";
 push @generated_exts, "md5";
 push @generated_exts, "dpth";
 
-
+$clean_ext = 'acn acr alg auxlock brf cb cb2 glg-abr glo-abr gls-abr ist nav nlg nlo nls nmo xml slg snm spl syg syi gz
+tdo thm loa mypyg md5 dpth synctex.gz synctex.gz(busy) run.xml tex.bak bbl bcf fdb_latexmk run tdo %R-blx.bib'

@@ -308,3 +308,6 @@ mwe.pdf
 !db_uploader.tar.gz
 dropbox_uploader.sh
 !STIX2Math.otf
+
+wrapper_m2t*.pdf
+*.m~
