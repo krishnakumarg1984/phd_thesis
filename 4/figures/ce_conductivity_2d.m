@@ -22,7 +22,7 @@ zlabel('$\kappa.\, (\mathrm{S}\, \mathrm{m}^{-1})$');
 customgrey_start = gray(300);
 customgrey = customgrey_start(1:225,:);
 colormap(customgrey);
-colorbar ;
+colorbar;
 shg;
 
 figwidth_mm = 140; % mm elsevier 1.5 column size
