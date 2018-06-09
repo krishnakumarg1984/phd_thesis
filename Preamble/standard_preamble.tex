@@ -23,7 +23,7 @@
 \usepackage[normal]{engord}
 \usepackage[inline]{enumitem}
 
-\usepackage{etoolbox}
+% \usepackage{etoolbox} % not really required if using glossaries package
 \usepackage{fancyhdr} % Define custom header (before hyperref)
 
 \usepackage[draft]{fixme}
@@ -63,6 +63,11 @@
 \usepackage{varwidth}
 \usepackage{xcolor}
 
+\usepackage[draft,hyphenation,lastparline,nosingleletter,homeoarchy,rivers]{impnattypo}
+\usepackage[all]{nowidow}
+
+
+%%%%%%%%%% font selection %%%%%%%%%%
 \setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
 }]{Libertinus Serif}
 \setsansfont{Libertinus Sans}

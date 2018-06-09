@@ -408,5 +408,6 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \makeatother
 
 % \renewcommand*{\glstextformat}[1]{\textsf{#1}}
-\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % link coloring to match normal text, ie black
+\preto\chapter{\glsresetall}
 

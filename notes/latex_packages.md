@@ -33,6 +33,7 @@ etoc
 fontawesome5
 footnotehyper
 glossaries-extra
+copyrightbox
 grffile
 hypcap
 hyperxmp
