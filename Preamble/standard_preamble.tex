@@ -52,6 +52,7 @@
 
 \usepackage{subcaption}
 \usepackage{tabstackengine}
+\usepackage{tabularx}
 
 \usepackage{titlesec}
 \usepackage{threeparttable}
@@ -71,7 +72,8 @@
 \setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
 }]{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmathfont{Libertinus Math}
-\setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{STIX2Math.otf}
+\setmathfont[bold-style=ISO]{Libertinus Math} % https://github.com/libertinus-fonts/libertinus/issues/20
+% \setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{STIX2Math.otf}
+\setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{Latin Modern Math}
 \setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
 

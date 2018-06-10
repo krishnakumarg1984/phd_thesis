@@ -2,6 +2,7 @@
 % vim:nospell
 
 % \RequirePackage{pkgloader}
+\RequirePackage[debrief]{silence}
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[12pt,a4paper,oneside,openright]{book}
 
@@ -12,13 +13,14 @@
 % \makeglossaries
 % \listfiles
 \begin{document}
+\scrollmode
 
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 \frontmatter
-\includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}\\
-\doclicenseLongText\\
-
+\begin{tabularx}
+    \includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf} & \doclicenseLongText\\
+\end{tabularx}
 The copyright of this thesis rests with the author and is made available under a
 Creative Commons Attribution Non-Commercial  No Derivatives licence. Researchers
 are free to copy,  distribute or transmit the thesis on  the condition that they
@@ -84,4 +86,5 @@ researchers must make clear to others the licence terms of this work.
     \addcontentsline{toc}{chapter}{\bibname}
     \printbibliography
 \end{footnotesize}
+\batchmode
 \end{document}
