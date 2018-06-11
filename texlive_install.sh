@@ -160,6 +160,7 @@ tlmgr install   \
     realscripts \
     relsize \
     setspace \
+    silence \
     siunitx \
     stackengine \
     stix \
