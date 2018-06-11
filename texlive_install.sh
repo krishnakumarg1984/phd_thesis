@@ -125,6 +125,7 @@ tlmgr install   \
     luaotfload \
     luatex \
     luatex85 \
+    luatexbase \
     luatodonotes \
     marginnote \
     marvosym \
