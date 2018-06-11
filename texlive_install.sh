@@ -57,6 +57,7 @@ tlmgr install   \
     cmbright \
     colortbl \
     csquotes \
+    ctablestack \
     datatool \
     dehyph-exptl \
     diffcoeff \
