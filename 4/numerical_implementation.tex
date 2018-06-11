@@ -23,15 +23,21 @@ cell modelling art.
 
 \subsubsection*{Analytical solution}
 
-Although not  explicitly given  in \gls{spm}  literature, from  \gls{lti} system
-theory,  an   analytical  solution   for  the  continuous-time   state  equation
-of~\cref{eq:LTIstatespace} is given by
+Although  not   explicitly  given  in  \gls{spm}   literature,  using  \gls{lti}
+system  theory,  the  analytical  solution for  continuous-time  state  equation
+(\cref{eq:LTIstatespace}) is given by
+\begingroup
+\allowdisplaybreaks
+\setlength{\abovedisplayskip}{0.9765625ex}
+\setlength{\belowdisplayskip}{0ex}
 \begin{align}
+    % \SwapAboveDisplaySkip
     \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}B \mathbf{u}(τ)\,dτ \label{eq:genanalyticctssoln}
     \\
     \shortintertext{With a standard \gls{ivp}, $t_0 = 0$}
     \mathbf{x}(t) &= e^{A t}\mathbf{x}(0) + \underbrace{\int_{0}^{t}e^{A (t-τ)}B \mathbf{u}(τ)\,dτ}_{\text{convolution integral}}\label{eq:analyticalctssoln}
 \end{align}
+\endgroup
 
 The matrix exponential $e^{At}$ is known as the state-transition matrix and is
 defined as
@@ -78,7 +84,7 @@ the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 \Cref{alg:ctstimespm} shows the  sequence of operations in  a desktop simulation
 of the continuous time \gls{spm} on  a digital computer. The source code listing
 of an example implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
-
+\vspace{3ex}
 \input{4/algo_ctstime_spm.tex}
 
 The continuous time \gls{spm} algorithm has limited practical use. Computing the
@@ -209,7 +215,7 @@ in~\cref{subfig:fgRTprocess} and is discussed further.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Timing diagram of a real-time software loop of a \gls{bms}]
     {Timing diagram of a real-time software loop of a \gls{bms}. The sequence of events within one sample period $T_s$ in relation
         to the base clock of the controller is shown. Particular emphasis is
@@ -238,7 +244,7 @@ written to the relevant \gls{dac}s.
 
 \subsection{Sample Delay Considerations}
 
-\begin{figure}[h]
+\begin{figure}[htb]
     \centering
     \hrulefill
     \caption[Timeline of \gls{bms} activities over multiple CPU cycles of a real-time
@@ -281,7 +287,7 @@ thesis for discrete-time formulation of the \gls{spm} model.
     \centering
     % show block diagram cross-referencing equation and a question mark for the
     % dt system
-    \includegraphics[width=0.75\textwidth]{placeholder_images/example-image-golden.pdf}
+    \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Block-diagram of continuous and discrete-time systems]{Block-diagram of the plant model and associated signals of a continuous-time system and its discrete-time counterpart}
     \label{fig:blockdiagctsdisc}
 \end{figure}

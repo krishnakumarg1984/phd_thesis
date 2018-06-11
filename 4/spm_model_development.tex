@@ -14,7 +14,7 @@ rubrics.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Schematic illustration depicting geometrical origins of the
     \protect{\gls{spm}}]
     {Schematic illustration depicting the geometrical origins of the \protect{\gls{spm}}.
@@ -143,7 +143,7 @@ detailed next.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{placeholder_images/example-image-golden.pdf}
+    \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Charge-transer and basic working mechanism of a Li-ion cell]{Simplified representation of charge-transfer process and illustration of
     basic working mechanism of a Li-ion cell.}
     \label{fig:chargetransferprocess}
@@ -345,21 +345,21 @@ illustration of this computational domain.
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+        \includegraphics{placeholder_images/example-image-golden.pdf}
         \caption{cutaway view depicting spherical shells}
         \label{subfig:radialdisc3d}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+        \includegraphics{placeholder_images/example-image-golden.pdf}
         \caption{2D view wherein shells are depicted as concentric rings}
         \label{subfig:radialdisc2d}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+        \includegraphics{placeholder_images/example-image-golden.pdf}
         \caption{schematic of 1D computational domain}
         \label{subfig:radialdisc1d}
     \end{subfigure}
@@ -426,11 +426,14 @@ $c(t)$     is     provided    in     Subramanian~\etal{}~\cite{Subramanian2005}.
 governing   equations   obtained    by   applying   the   \engordnumber{4}~order
 polynomial        approximation        to         the        system        given
 by~\cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
+\begingroup
+\allowdisplaybreaks
 \begin{align}
     \diff*{\mean{c}_\sj}{t} + 3\frac{j_\nj}{R_\pj}                                                &=0 \label{eq:csmeanevolution} \\
     \diff*{\mean{q}_j}{t} + 30\frac{D_\sj}{R_\pj^2}\mean{q}_j + \frac{45}{2}\frac{j_\nj}{R_\pj^2} &=0 \label{eq:qmeanevolution}\\
     35\frac{D_\sj}{R_\pj}\left(c_\sjsurf - \mean{c}_\sj\right) - 8D_\sj \mean{q}_j                &= -j_\nj \label{eq:csurffromcsavg}
-\end{align}
+\end{align}%
+\endgroup
 where $\mean{q}_j(t)$  represents the  volume averaged concentration  flux, that
 defines the average change of concentration  with respect to the radial position
 $r$.
