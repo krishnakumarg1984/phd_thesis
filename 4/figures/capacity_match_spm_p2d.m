@@ -37,15 +37,16 @@ legend boxoff;
 yticks([y_min:0.2:y_max]);
 
 figwidth_mm = 140; % mm elsevier 1.5 column size
-ppi = [2756, nan];
-fig = gcf;
-fig.PaperPositionMode = 'auto';
-fig.PaperUnits = 'centimeters';
+% ppi = [2756, nan];
+% fig = gcf;
+% fig.PaperPositionMode = 'auto';
+% fig.PaperUnits = 'centimeters';
+ppi = [];
 
-InSet = get(gca, 'TightInset');
-set(gca, 'Position', [InSet(1:2), 1-InSet(1)-InSet(3), 1-InSet(2)-InSet(4)]);
-old_pos = fig.PaperPosition;
-fig.PaperPosition = [old_pos(1) old_pos(2) figwidth_mm/10 figwidth_mm/(10*1.618)];
+% InSet = get(gca, 'TightInset');
+% set(gca, 'Position', [InSet(1:2), 1-InSet(1)-InSet(3), 1-InSet(2)-InSet(4)]);
+% old_pos = fig.PaperPosition;
+% fig.PaperPosition = [old_pos(1) old_pos(2) figwidth_mm/10 figwidth_mm/(10*1.618)];
 
 %% Now export to Tikz
 custom_m2t_fcn('capacity_match_spm_p2d',figwidth_mm, ppi, false);
