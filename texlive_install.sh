@@ -163,6 +163,7 @@ tlmgr install   \
     pxfonts \
     realscripts \
     relsize \
+    selnolig \
     setspace \
     silence \
     siunitx \
