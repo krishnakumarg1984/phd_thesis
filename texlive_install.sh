@@ -122,6 +122,7 @@ tlmgr install   \
     lm-math \
     logreq \
     ltxnew \
+    luacode \
     lualatex-math \
     luaotfload \
     luatex \
