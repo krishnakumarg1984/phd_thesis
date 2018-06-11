@@ -157,7 +157,7 @@ of the positive electrode.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder_images/example-image-golden.pdf}
+    \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Stacking of layers within a pouch cell]
     {Image showing the stacking of layers within a pouch cell. For the negative
         electrodes, there is a small overhang (\approx\SI{2}{mm}) at the
@@ -304,7 +304,7 @@ in~\cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=\textwidth]{4/figures/m2t_kappa_ce_T.pdf}
+    \includegraphics{4/figures/m2t_kappa_ce_T.pdf}
     % \includetikz{4/figures/m2t_kappa_ce_T}
     \caption[Surface plot of electrolyte conductivity]
     {Electrolyte conductivity as a function of cell temperature and initial
@@ -337,10 +337,12 @@ parameter as seen in~\cref{fig:kappavsce}.
 
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=\textwidth]{4/figures/m2t_kappa_ce_parametric_T.pdf}
+    \includegraphics[width=0.8\textwidth]{4/figures/m2t_kappa_ce_parametric_T.pdf}
     \caption[]
-    {Electrolyte conductivity as a function of equilibrium concentration at
-    $T_\text{cell} = \SI{298.15}{\kelvin}$}
+    {Electrolyte conductivity versus equilibrium concentration at various cell
+        temperatures. At ${T_\text{cell} = \SI{298.15}{\kelvin}}$, the maximum
+        value of electrolyte conductivity corresponds to a salt concentration of
+    \SI{1000}{\mol\per\meter\cubed}.}
     \label{fig:kappavsce}
 \end{figure}
 
@@ -374,5 +376,68 @@ the  simulation   results  are  fully   reproducible  and  are   presented  next
 in~\cref{subsec:simresultsbasicspm}.
 
 \subsection{Simulation Results}\label{subsec:simresultsbasicspm}
+
+First,  it  must be  established  that  incorporating the  parameters  presented
+in~\cref{tbl:lcoSimParamsSPMp2d} into the \gls{spm} model equations results in a
+cell with  \emph{identical} capacity as the  \gls{dfn} model. This is  to ensure
+the  validity  of  comparisons  in  further simulations.  Using  the  values  of
+per-layer  C-rate as  discussed  in~\cref{subsec:spmp2dparametrisation} and  the
+overall active  surface area from~\cref{tbl:lcoSimParamsSPMp2d}, the  cell under
+simulation has a capacity of \SI{60}{\amphour}.
+
+For experimental capacity characterisation of cells, the standard practice is to
+apply a very small discharge  current beginning at \SI{100}{\percent} \gls{soc},
+logging the charge passed using a  high-precision coulomb counter until the cell
+hits the voltage corresponding to \SI{0}{\percent} \gls{soc} as specified in the
+manufacturer datasheet. In  order to decouple the effect of  the cell's dynamics
+from its  capacity, it is  required to  apply an infinitesimal  bleeding current
+(tending towards, but should not reach \SI{0}{\ampere}).
+
+Current sensors in battery cycler equipment use high-precision (typically 15--18
+bit) \glspl{adc}  and are  able to  offer high  \glspl{snr} except  at ultra-low
+currents. The main difficulty with using very low C-rates is that it drastically
+slows down the  characterisation procedure. Using a discharge  current of C/100,
+\ie{}  \SI{0.6}{\ampere} in  this case,  results in  a characterisation  time of
+\SI{100}{\hour} or \approx $4\sfrac{1}{4}$  days (excluding soak-times and other
+set-up related  activities). Furthermore, for accurate  coloumb-counting, a high
+data logging  rate is needed,  resulting in  large file sizes  and corresponding
+difficulties in post-processing them.  Considering moderate buffer-sizes used in
+data logging modules of typical  cell-cycler software (shared between channels),
+and  to  avoid  excessively  large wait-times  for  characterisation,  discharge
+currents of C/20--C/25 are usually deemed sufficient.
+
+An analogous  procedure is  carried out in  numerically characterising  the cell
+capacities through computer  simulation. However, this approach is  not bound by
+real-world issues such as low  \glspl{snr} or long characterisation times. Using
+64-bit IEEE  floating point arithmetic,  numbers as low  as $\mathcal{10^{-16}}$
+can be safely computed, nullifying any  \gls{snr} issues. The simulation time of
+both the  \gls{p2d} and  \gls{spm} models  are much  faster than  real-time. The
+only  persistent issue  here  is that  of memory  and  storage requirements  due
+to  high-rate  data-logging for  accurate  coloumb  counting. Nevertheless,  the
+data-logging reliability of a dedicated computer workstation far exceeds that of
+real-time cell cyclers and facilitates the desired numerical characterisation of
+cell capacity.
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics{4/figures/capacity_match_spm_p2d.pdf}
+    \caption{}
+    % \label{}
+\end{figure}
+
+% table
+% computer spec
+% time
+% error-types (mean, max)
+% charge passed Ah
+
+
+
+
+
+
+
+Thus, a common baseline is established  by confirming that the two models indeed
+simulate a cell with a specific capacity.
 
 % electrolyte resistance

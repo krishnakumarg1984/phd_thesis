@@ -1,8 +1,11 @@
-function custom_m2t_fcn(filename,figwidth_mm,standalone_flag)
+function custom_m2t_fcn(filename,figwidth_mm,ppi,standalone_flag)
 
 figheight_mm = figwidth_mm/1.618; % mm 
 
-cleanfigure;
+if length(ppi)>1
+    ppi(2) = ppi(1)/1.618;
+end
+cleanfigure('targetResolution',ppi);
 matlab2tikz([filename    , '.tikz'],                       ...
             'showInfo'   , false,                          ...
             'width'      , [num2str(figwidth_mm),  'mm'],  ...
