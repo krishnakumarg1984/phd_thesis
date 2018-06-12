@@ -374,6 +374,8 @@ in~\cref{subsec:simresultsbasicspm}.
 
 \subsection{Simulation Results}\label{subsec:simresultsbasicspm}
 
+\subsubsection*{Capacity Characterisation}\label{subsubsec:capcharspmp2d}
+
 First,  it  must be  established  that  incorporating the  parameters  presented
 in~\cref{tbl:lcoSimParamsSPMp2d} into the \gls{spm} model equations results in a
 cell with  \emph{identical} capacity as the  \gls{dfn} model. This is  to ensure
@@ -415,19 +417,48 @@ data-logging reliability of a dedicated computer workstation far exceeds that of
 real-time cell cyclers and facilitates the desired numerical characterisation of
 cell capacity.
 
-\begin{figure}[!tb]
+\begin{figure}[!htb]
     \centering
     \includegraphics{4/figures/capacity_match_spm_p2d.pdf}
-    \caption{}
-    % \label{}
+    \caption[Capacity characterisation of \glsfmtshort{spm} and \glsfmtshort{p2d}
+    models]{Capacity characterisation of the cell by numerically simulating the
+        \gls{p2d} and \gls{spm} models with an ultra-low discharge current of
+        C/100, \ie{} \SI{0.6}{A}. The time-domain voltage response of both
+        models overlap. The \gls{p2d} and \gls{spm} models both achieve their
+        charge depletion point \ie{} \SI{0}{\percent} \gls{soc} after
+        \SI{100}{\hour} confirming that the modelled capacities match. Key data
+    from this characterisation run is shown in~\cref{tbl:charSimspmp2d}.}
+    \label{fig:capcharspmp2d}
 \end{figure}
 
-% table
+In order to validate  that the choice of model parameters  result in an intended
+capacity  of  \SI{60}{\amphour},  a  characterisation  simulation  beginning  at
+\SI{100}{\percent}  \gls{soc}  with  a discharge  current  of  \SI{0.6}{\ampere}
+was  performed. If  the  assumed cell  capacity is  indeed  consistent with  the
+model  parameters,  then  this  corresponds   to  a  C-rate  of  \sfrac{1}{100},
+and  the  \gls{p2d}  and  \gls{spm}   should  run  for  exactly  \SI{100}{\hour}
+before charge  depletion cut-off.  For accurate  coulomb counting,  data logging
+rate  is  set  to  \SI{50}{\milli\second}.  \Cref{fig:capcharspmp2d}  shows  the
+voltage  response   of  the  \gls{spm}   and  \gls{p2d}  models   obtained.  The
+voltage  responses  of  both  the  models  overlap,  and  they  both  achieve  a
+run-time  of \approx\SI{100}{\hour}.  This capacity  characterisation simulation
+represents the  first visualisation of  results produced by the  \gls{spm} model
+equations  discussed  in~\cref{subsec:basicspmgoverningeqns} and  its  numerical
+implementation from~\cref{sec:numericalimplementation}.
+
+%  table %
 % computer spec
-% time
+% time (run-time)
 % error-types (mean, max)
 % charge passed Ah
+% data-logging rate
+% RAM used
 
+
+\begin{table}[!htb]
+
+    \caption{hello}\label{tbl:charSimspmp2d}
+\end{table}
 
 
 
@@ -435,6 +466,6 @@ cell capacity.
 
 
 Thus, a common baseline is established  by confirming that the two models indeed
-simulate a cell with a specific capacity.
+simulate a cell with the desired capacity.
 
 % electrolyte resistance

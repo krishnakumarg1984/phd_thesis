@@ -27,6 +27,7 @@
 \usepackage{fancyhdr} % Define custom header (before hyperref)
 
 \usepackage[draft]{fixme}
+\usepackage[bottom]{footmisc}
 \usepackage[luatex,paper=a4paper,hmarginratio=1:1, vmarginratio=1:1, scale=0.75]{geometry}
 
 \usepackage{graphicx} % important to load before fontspec
@@ -46,7 +47,6 @@
 \usepackage[all,warning]{onlyamsmath} % if using Tikz, please include the calc and babel libraries (known incompatibilities)
 \usepackage[section]{placeins} %Defines a \FloatBarrier command
 
-\usepackage{ragged2e} %  "The package should therefore be loaded after the body font and size have been established  for example, after font packages have been loaded
 \usepackage{setspace} % Define line spacing
 
 \usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}
@@ -79,3 +79,4 @@
 \setmathfont[range={\mathunder,\triangleq,\underbrace},Scale=MatchUppercase]{Latin Modern Math}
 \setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
 
+\usepackage{ragged2e} %  "The package should therefore be loaded after the body font and size have been established  for example, after font packages have been loaded
