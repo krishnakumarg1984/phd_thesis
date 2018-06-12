@@ -1,0 +1,25 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+
+\begin{table}[!htb]
+    \centering
+    \caption[Simulation data --- capacity characterisation of \glsfmtshort{p2d} and \glsfmtshort{spm} models]{Simulation data --- capacity characterisation of \glsfmtshort{p2d} and \glsfmtshort{spm} models. The \glsfmtshort{p2d} model is taken as the benchmark. Hence, modelling error is defined as \protect{$\varepsilon = V_\text{cell,p2d} - V_\text{cell,spm}$}.}
+    \label{tbl:charSimspmp2d}
+    \begin{tabular}{@{} l r r @{}}
+        \toprule
+        Parameter                                                       & Value  & Units              \\
+        \midrule
+        Data-logging interval                                           & 50.00  & \si{\milli\second} \\
+        Total RAM used                                                  & 603.90 & \si{\mega\byte}    \\
+        \glsfmtshort{p2d} run-time                                      & 99.94  & \si{\hour}         \\
+        \glsfmtshort{spm} run-time                                      & 99.90  & \si{\hour}         \\
+        \glsfmtshort{p2d} discharge capacity                            & 59.96  & \si{\amphour}      \\
+        \glsfmtshort{spm} discharge capacity                            & 59.94  & \si{\amphour}      \\
+        Max error, $\varepsilon_\text{max}$                             & -94.30 & \si{\milli\volt}   \\
+        \glsfmtshort{rms} error, $\varepsilon_\text{\glsfmtshort{rms}}$ & 8.20   & \si{\milli\volt}   \\
+        \glsfmtshort{mae} error, $\varepsilon_\text{\glsfmtshort{mae}}$ & 3.20   & \si{\milli\volt}   \\
+        \bottomrule
+    \end{tabular}
+\end{table}

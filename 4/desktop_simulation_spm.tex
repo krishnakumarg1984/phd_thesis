@@ -103,7 +103,7 @@ to  the  need for  computing  the  effective  electronic conductivities  of  the
 electrodes.\fxnote{cross-reference to  specifc newman equations here}.  They are
 calculated as
 \begin{equation}
-\varepsilon_\sj = 1 - \varepsilon_j - \varepsilon_{\text{fi}_j}
+    \varepsilon_\sj = 1 - \varepsilon_j - \varepsilon_{\text{fi}_j}
 \end{equation}
 where $\varepsilon_j$  and $\varepsilon_{\text{fi}_j}$  are the  electrolyte and
 filler  volume-fraction  within  the  respective electrode  regions.  Using  the
@@ -161,8 +161,8 @@ of the positive electrode.
     \caption[Stacking of layers within a pouch cell]
     {Image showing the stacking of layers within a pouch cell. For the negative
         electrodes, there is a small overhang (\approx\SI{2}{mm}) at the
-    edges with respect to the positive electrodes. This design choice
-helps to avoid plating of lithium at the edges.}
+        edges with respect to the positive electrodes. This design choice
+    helps to avoid plating of lithium at the edges.}
     \label{fig:anodeoverhangpouchcell}
 \end{figure}
 
@@ -200,7 +200,7 @@ negative  electrode, the  1C-rate  capacity  of the  cell  has  been revised  to
 On  simulating  the \gls{p2d}  model  with  a  trickle bleeding  type  discharge
 corresponding   to   a  current   of   C/500   and   logging  the   data   every
 \SI{1}{\milli\second}, after reaching \SI{2.7}{\volt}\footnote{From manufacturer
-datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
+    datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
 correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
 in  the two  electrodes  were noted.  The  corresponding residual  stoichiometry
 values  are reported  in~\cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
@@ -249,21 +249,21 @@ at the upper end of the voltage spectrum
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
     probabilities},itemsep=1ex]
 
-    \item[safety] li-ion  cells are less  tolerant to overcharging and  can pose
+\item[safety] li-ion  cells are less  tolerant to overcharging and  can pose
     fire hazards.
 
-    \item[degradation]  overcharging  li-ion  cells  can  lead  to  plating  and
+\item[degradation]  overcharging  li-ion  cells  can  lead  to  plating  and
     accelerate other degradation mechanisms.
 
-    \item[low  C-rates]  charging C-rates  are  typically  lower than  discharge
+\item[low  C-rates]  charging C-rates  are  typically  lower than  discharge
     C-rates.
 
-    \item[CCCV charging]  For on-board  chargers, taper charging  (such as  in a
+\item[CCCV charging]  For on-board  chargers, taper charging  (such as  in a
     \gls{cccv} profile) is activated, which  ensures that charging current drops
     off  rapidly, leading  to a  lower overvoltage  towards the  upper \gls{soc}
     range.
 
-    \item[low probabilities] The only charging event when an electrified vehicle
+\item[low probabilities] The only charging event when an electrified vehicle
     is in motion is during regenerative braking. The vehicular \gls{bms} manages
     the operating window such that the starting \gls{soc} is much lower than the
     overvoltage  that  could  be  caused due  to  braking.  Furthermore,  during
@@ -297,8 +297,8 @@ electrolyte in Valøen and  Reimers~\cite{Valoen2005}, the polynomial expression
 in~\cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 \begin{multline}\label{eq:kappavsCeandT}
     \kappa_j(c_\text{e},T)(x,t) =  10^{-4} c_\text{e}(x,t) \bigl(-10.5 + \num{0.668e-3} c_\text{e}(x,t) + \num{0.494e-6}  c_\text{e}{(x,t)}^2\\
-        + (0.074 - \num{1.78e-5}) c_\text{e}(x,t) - \num{8.86e-10} c_\text{e}{(x,t)}^2 \bigr)T(t)\\
-	    + \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e}{(x,t)})T(t)^2\right)^2
+    + (0.074 - \num{1.78e-5}) c_\text{e}(x,t) - \num{8.86e-10} c_\text{e}{(x,t)}^2 \bigr)T(t)\\
+	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e}{(x,t)})T(t)^2\right)^2
 \end{multline}
 
 \begin{figure}[!htb]
@@ -427,43 +427,31 @@ cell capacity.
         models overlap. The \gls{p2d} and \gls{spm} models both achieve their
         charge depletion point \ie{} \SI{0}{\percent} \gls{soc} after
         \SI{100}{\hour} confirming that the modelled capacities match. Key data
-    from this characterisation run is shown in~\cref{tbl:charSimspmp2d}.}
+    for this characterisation run is shown in~\cref{tbl:charSimspmp2d}.}
     \label{fig:capcharspmp2d}
 \end{figure}
 
 In order to validate  that the choice of model parameters  result in an intended
 capacity  of  \SI{60}{\amphour},  a  characterisation  simulation  beginning  at
 \SI{100}{\percent}  \gls{soc}  with  a discharge  current  of  \SI{0.6}{\ampere}
-was  performed. If  the  assumed cell  capacity is  indeed  consistent with  the
-model  parameters,  then  this  corresponds   to  a  C-rate  of  \sfrac{1}{100},
-and  the  \gls{p2d}  and  \gls{spm}   should  run  for  exactly  \SI{100}{\hour}
-before charge  depletion cut-off.  For accurate  coulomb counting,  data logging
-rate  is  set  to  \SI{50}{\milli\second}.  \Cref{fig:capcharspmp2d}  shows  the
-voltage  response   of  the  \gls{spm}   and  \gls{p2d}  models   obtained.  The
+was   performed\footnote{All   simulations   were    performed   on   a   64-bit
+Hewlett-Packard  Z840  workstation  with a  16-core  \text{Intel}\textregistered
+Xeon\textregistered E5-2640 v3 (Haswell) processor at \SI{2.60}{\giga\hertz} and
+\SI{128}{\giga\byte} DDR4 RAM at 1866 MT/sec.}.  If the assumed cell capacity is
+indeed consistent with  the model parameters, then this corresponds  to a C-rate
+of  \sfrac{1}{100}, and  the  \gls{p2d}  and \gls{spm}  should  run for  exactly
+\SI{100}{\hour} before charge depletion  cut-off. For accurate coulomb counting,
+data logging interval is set to \SI{50}{\milli\second}. \Cref{fig:capcharspmp2d}
+shows the voltage  response of the \gls{spm} and \gls{p2d}  models obtained. The
 voltage  responses  of  both  the  models  overlap,  and  they  both  achieve  a
 run-time  of \approx\SI{100}{\hour}.  This capacity  characterisation simulation
 represents the  first visualisation of  results produced by the  \gls{spm} model
 equations  discussed  in~\cref{subsec:basicspmgoverningeqns} and  its  numerical
-implementation from~\cref{sec:numericalimplementation}.
+implementation from~\cref{sec:numericalimplementation}. \Cref{tbl:charSimspmp2d}
+summarises the key data from the capacity characterisation simulation.
 
-%  table %
-% computer spec
-% time (run-time)
-% error-types (mean, max)
-% charge passed Ah
-% data-logging rate
-% RAM used
-
-
-\begin{table}[!htb]
-
-    \caption{hello}\label{tbl:charSimspmp2d}
-\end{table}
-
-
-
-
-
+\input{4/char_sim_table.tex}
+% explain the table next.
 
 Thus, a common baseline is established  by confirming that the two models indeed
 simulate a cell with the desired capacity.
