@@ -149,7 +149,7 @@ Geometrical considerations  then imply  that the  cross-sectional area  (or face
 area) of the two electrodes must be  the same. However, due to the consideration
 of  avoiding  plating  at  the  edges  due  to  microscopic  malformations,  the
 design  is done  such as  to have  a small  overhang of  the negative  electrode
-layer,  \approx\SI{2}{\milli  \meter} with  respect  to  the positive  electrode
+layer,  \approx\SI{2}{\milli\meter}  with  respect  to  the  positive  electrode
 layer\fxnote{citation  needed}  as  shown  in~\cref{fig:anodeoverhangpouchcell}.
 However, the  active surface area, is  just the common overlap  area between the
 two electrodes, and  thus, $A_\text{elec}$ is equal to  the cross-sectional area
@@ -184,10 +184,10 @@ enhanced spatial resolution.
 
 The  overall  active  surface  area  $A  =  n  A_\text{elec}$  is  the  combined
 cross-sectional  area  of all  layers  ($n$  is  the number  of  electrochemical
-(pos,sep,neg) triplets) stacked  into the pouch cell. In both  the \gls{p2d} and
-\gls{spm}  models, this  parameter serves  to  scale the  external load  current
-down  to  the current  density  experienced  by  each electrochemical  layer.  A
-value  of  \approx\SI{30}{\ampere \per  \meter  \squared}  was reported  in  the
+(pos,sep,neg)  triplets) stacked  into the  pouch  cell. In  both the  \gls{p2d}
+and  \gls{spm}  models,  this  parameter  serves  to  scale  the  external  load
+current  down  to  the  current  density  experienced  by  each  electrochemical
+layer. A value of  \approx\SI{30}{\ampere\per\meter\squared} was reported in the
 results section of  Subramanian~\etal{}~\cite{Subramanian2009}. When considering
 a \SI{60}{\ampere\hour} pouch cell with \SI{10}{\milli\meter} exterior thickness
 and  using  the  parameters  reported  in~\cite{Subramanian2009},  this  results
@@ -243,7 +243,7 @@ monitor  the \gls{soc}  and  trigger cutoff  in the  event  of charge  depletion
 use this value, although no explanation is given for the choice.
 
 The  upper  cutoff voltage  of  the  cell  is  chosen at  \SI{4.3}{\volt}  \ie{}
-\approx\SI{100}{\milli  \volt}   higher  than   the  equilibrium   \gls{ocp}  at
+\approx\SI{100}{\milli\volt}   higher   than   the  equilibrium   \gls{ocp}   at
 \SI{100}{\percent} \gls{soc}. There are several  reasons for this smaller margin
 at the upper end of the voltage spectrum
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
@@ -405,55 +405,88 @@ data logging modules of typical  cell-cycler software (shared between channels),
 and  to  avoid  excessively  large wait-times  for  characterisation,  discharge
 currents of C/20--C/25 are usually deemed sufficient.
 
-An analogous  procedure is  carried out in  numerically characterising  the cell
-capacities through computer  simulation. However, this approach is  not bound by
-real-world issues such as low  \glspl{snr} or long characterisation times. Using
-64-bit IEEE  floating point arithmetic,  numbers as low  as $\mathcal{10^{-16}}$
-can be safely computed, nullifying any  \gls{snr} issues. The simulation time of
-both the  \gls{p2d} and  \gls{spm} models  are much  faster than  real-time. The
+In order to validate  that the choice of model parameters  result in an intended
+capacity  of  \SI{60}{\amphour},  an  analogous  procedure  is  carried  out  by
+means  of  computer  simulation.  A  characterisation  simulation  beginning  at
+\SI{100}{\percent} \gls{soc}  with a discharge current  of \SI{0.6}{\ampere} was
+performed\footnote{All simulations  were performed  on a  64-bit Hewlett-Packard
+Z840  workstation with  a 16-core  \text{Intel}\textsuperscript{\textregistered}
+Xeon\textsuperscript{\textregistered} E5-2640 v3  (Haswell) processor clocked at
+a base frequency of \SI{2.60}{\giga\hertz} with \SI{128}{\giga\byte} DDR4 RAM at
+1866 MT/sec.}. If the assumed cell  capacity is indeed consistent with the model
+parameters, then  this corresponds  to a  C-rate of  1/100. Therefore,  both the
+\gls{p2d} and \gls{spm}  should run for exactly 100 hours  before cut-off due to
+charge depletion.
+
+\input{4/char_sim_table.tex}
+
+Capacity validation through computer simulation  is not bound by the limitations
+of the experimental approach discussed earlier. Using 64-bit IEEE floating point
+arithmetic, quantities as low as $\mathcal{O}(10^{-16})$ can be safely computed,
+nullifying  any \gls{snr}  issues. \Cref{tbl:charSimspmp2d}  summarises the  key
+data  from  this  simulation  run.  For  accurate  coulomb  counting,  the  data
+logging  interval  is set  to  \SI{50}{\milli\second}.  Both the  \gls{p2d}  and
+\gls{spm} model ran close to 100~hours.  The small deviations from this expected
+termination  time  can  be attributed  to  the  fact  that  the current  is  not
+arbitrarily small with  the pragmatic goal of obtaining results  in a reasonable
+time. As  seen in~\cref{tbl:charSimspmp2d}, even the  \emph{combined} simulation
+time  of  the \gls{p2d}  and  \gls{spm}  models  is  lower than  real-time.  The
 only  persistent issue  here  is that  of memory  and  storage requirements  due
-to  high-rate  data-logging for  accurate  coloumb  counting. Nevertheless,  the
-data-logging reliability of a dedicated computer workstation far exceeds that of
-real-time cell cyclers and facilitates the desired numerical characterisation of
-cell capacity.
+to  high-rate  data-logging for  accurate  coulomb  counting. Nevertheless,  for
+comparable  volume  of data  to  be  logged,  reliability  and ruggedness  of  a
+dedicated  computer  workstation far  exceeds  that  of real-time  cell  cyclers
+thereby facilitating the desired numerical  characterisation of cell capacity. A
+major  disadvantage  of simulation  based  capacity  validation is  its  extreme
+sensitivity to  parameters such as  the maximum concentration of  the electrodes
+and their  stoichiometries, which  are generally  difficult to  characterise. In
+this  context, the  experimental  procedure of  high-precision coulomb  counting
+assumes  a practical  significance as  it requires  no knowledge  of the  cell's
+parameters other than the manufacturer's datasheet.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics{4/figures/capacity_match_spm_p2d.pdf}
-    \caption[Capacity characterisation of \glsfmtshort{spm} and \glsfmtshort{p2d}
-    models]{Capacity characterisation of the cell by numerically simulating the
-        \gls{p2d} and \gls{spm} models with an ultra-low discharge current of
-        C/100, \ie{} \SI{0.6}{A}. The time-domain voltage response of both
-        models overlap. The \gls{p2d} and \gls{spm} models both achieve their
-        charge depletion point \ie{} \SI{0}{\percent} \gls{soc} after
-        \SI{100}{\hour} confirming that the modelled capacities match. Key data
-    for this characterisation run is shown in~\cref{tbl:charSimspmp2d}.}
+    \caption[Voltage response of \glsfmtshort{spm} \& \glsfmtshort{p2d} models
+    for capacity validation]{Voltage response of \gls{p2d} and \gls{spm} models
+        to a discharge current input of \SI{0.6}{A}. Both models achieve their
+        charge depletion point after \approx\SI{100}{\hour} confirming that
+        their modelled capacities match. Key simulation data for this
+    characterisation run is shown in~\cref{tbl:charSimspmp2d}.}
     \label{fig:capcharspmp2d}
 \end{figure}
 
-In order to validate  that the choice of model parameters  result in an intended
-capacity  of  \SI{60}{\amphour},  a  characterisation  simulation  beginning  at
-\SI{100}{\percent}  \gls{soc}  with  a discharge  current  of  \SI{0.6}{\ampere}
-was   performed\footnote{All   simulations   were    performed   on   a   64-bit
-Hewlett-Packard  Z840  workstation  with a  16-core  \text{Intel}\textregistered
-Xeon\textregistered E5-2640 v3 (Haswell) processor at \SI{2.60}{\giga\hertz} and
-\SI{128}{\giga\byte} DDR4 RAM at 1866 MT/sec.}.  If the assumed cell capacity is
-indeed consistent with  the model parameters, then this corresponds  to a C-rate
-of  \sfrac{1}{100}, and  the  \gls{p2d}  and \gls{spm}  should  run for  exactly
-\SI{100}{\hour} before charge depletion  cut-off. For accurate coulomb counting,
-data logging interval is set to \SI{50}{\milli\second}. \Cref{fig:capcharspmp2d}
-shows the voltage  response of the \gls{spm} and \gls{p2d}  models obtained. The
-voltage  responses  of  both  the  models  overlap,  and  they  both  achieve  a
-run-time  of \approx\SI{100}{\hour}.  This capacity  characterisation simulation
-represents the  first visualisation of  results produced by the  \gls{spm} model
+\Cref{fig:capcharspmp2d}  shows  the  voltage  response  of  the  \gls{spm}  and
+\gls{p2d}  models,  which   overlap.  It  is  clear  that   both  the  \gls{p2d}
+and  \gls{spm}  models   achieve  a  run-time  of   100~hours.  This  represents
+the   first  visualisation   of  results   produced  by   the  \gls{spm}   model
 equations  discussed  in~\cref{subsec:basicspmgoverningeqns} and  its  numerical
-implementation from~\cref{sec:numericalimplementation}. \Cref{tbl:charSimspmp2d}
-summarises the key data from the capacity characterisation simulation.
+implementation  from~\cref{sec:numericalimplementation}. The error vector is
+defined as
+\begin{equation}
+    \varepsilon = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}
+\end{equation}
+The absolute maximum  error is of $\mathcal{O}\left(100\right)\si{\milli\volt}$,
+which occurs  towards the end of  discharge. Although this represents  the worst
+case  upper  bound  on  the  error,  this  is  not  strictly  representative  of
+the  overall error  behaviour  as evidenced  by the  standard  deviation of  the
+error  vector. The  mean  and \gls{rms}  error values  indicate  an accuracy  of
+$\mathcal{O}\left(10\right)\si{\milli\volt}$. It should be noted that throughout
+the simulation,  the voltage  response of  the \gls{spm}  remains above  that of
+\gls{p2d}, thereby leading  to a negative value for the  mean voltage error. For
+continuous  and  pseudo-continuous  quantities such  as  time-domain  simulation
+outputs of physical  variables, the \gls{mae} is a suitable  error metric and is
+defined as
+\begin{equation}
+    \varepsilon_\text{\scriptsize \glsfmtshort{mae}} = \frac{\Sigma_{i=1}^{n}\abs{\varepsilon_i}}{n}
+\end{equation}
+and is consistent  with the order of  magnitude of the \gls{rms}  and mean error
+metrics as well as with the standard deviation of the error vector.
 
-\input{4/char_sim_table.tex}
-% explain the table next.
+Thus,  a common  foundation  for  further simulations  has  been established  by
+confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
+\SI{60}{\amphour}.
 
-Thus, a common baseline is established  by confirming that the two models indeed
-simulate a cell with the desired capacity.
+% Include the output from the timeit script in the table
 
 % electrolyte resistance
+% toolbox
