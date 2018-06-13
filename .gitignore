@@ -282,6 +282,7 @@ notes/references.bib
 
 main.pdf
 main_vimtex.pdf
+*_vimtex.pdf
 
 *.ini
 notes/mkrctest

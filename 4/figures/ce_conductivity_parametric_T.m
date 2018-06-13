@@ -34,5 +34,9 @@ xlabel('$c_\mathrm{e}\, (\mathrm{mol}\, \mathrm{m}^{-3})$');
 ylabel('$\kappa.\, (\mathrm{S}\, \mathrm{m}^{-1})$');
 plot(1000,1.2,'Color',color_brick,'marker','o','MarkerFaceColor',color_orange,'MarkerEdgeColor',color_orange);
 
-figwidth_mm = 140; % mm elsevier 1.5 column size
-custom_m2t_fcn('m2t_kappa_ce_parametric_T',figwidth_mm, false);
+% figwidth_mm = 140; % mm elsevier 1.5 column size
+width_scale = 0.75;
+figwidth_mm = 157.4776*width_scale;     % scaling the textwidth reported by LaTeX doc
+
+% custom_m2t_fcn('m2t_kappa_ce_parametric_T',figwidth_mm, false);
+custom_m2t_fcn('m2t_kappa_ce_parametric_T',figwidth_mm,[],false);

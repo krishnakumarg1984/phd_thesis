@@ -5,9 +5,9 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(0mm,133.044mm)},
+width=63.719mm,
+height=34.624mm,
+at={(0mm,132.415mm)},
 scale only axis,
 clip=false,
 xmin=0,
@@ -18,7 +18,7 @@ ymax=4.3,
 ylabel style={font=\color{white!15!black}},
 ylabel={$V_\mathrm{cell}$ (V)},
 axis background/.style={fill=white},
-legend style={at={(0.339,0.032)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
+legend style={at={(0.339,0.031)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 scaled ticks=false,,
 xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/pgf/number format/fixed,/pgf/number format/fixed zerofill,},
 ]
@@ -224,9 +224,9 @@ at (rel axis cs:0.375,0.45) {0.20 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(82.881mm,133.044mm)},
+width=63.719mm,
+height=34.624mm,
+at={(83.324mm,132.415mm)},
 scale only axis,
 clip=false,
 xmin=0,
@@ -381,9 +381,9 @@ at (rel axis cs:0.375,0.45) {0.20 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(0mm,88.696mm)},
+width=63.719mm,
+height=34.624mm,
+at={(0mm,88.277mm)},
 scale only axis,
 clip=false,
 xmin=0,
@@ -394,7 +394,7 @@ ymax=4.3,
 ylabel style={font=\color{white!15!black}},
 ylabel={$V_\mathrm{cell}$ (V)},
 axis background/.style={fill=white},
-legend style={at={(0.339,0.032)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
+legend style={at={(0.339,0.031)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 scaled ticks=false,,
 xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/pgf/number format/fixed,/pgf/number format/fixed zerofill,},
 ]
@@ -617,9 +617,9 @@ at (rel axis cs:0.375,0.45) {0.50 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(82.881mm,88.696mm)},
+width=63.719mm,
+height=34.624mm,
+at={(83.324mm,88.277mm)},
 scale only axis,
 clip=false,
 xmin=0,
@@ -774,9 +774,9 @@ at (rel axis cs:0.375,0.45) {0.50 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(0mm,44.348mm)},
+width=63.719mm,
+height=34.624mm,
+at={(0mm,44.138mm)},
 scale only axis,
 clip=false,
 xmin=0,
@@ -787,7 +787,7 @@ ymax=4.3,
 ylabel style={font=\color{white!15!black}},
 ylabel={$V_\mathrm{cell}$ (V)},
 axis background/.style={fill=white},
-legend style={at={(0.339,0.032)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
+legend style={at={(0.339,0.031)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 scaled ticks=false,,
 xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/pgf/number format/fixed,/pgf/number format/fixed zerofill,},
 ]
@@ -1025,9 +1025,9 @@ at (rel axis cs:0.375,0.45) {1.00 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(82.881mm,44.348mm)},
+width=63.719mm,
+height=34.624mm,
+at={(83.324mm,44.138mm)},
 scale only axis,
 clip=false,
 xmin=0,
@@ -1154,8 +1154,8 @@ at (rel axis cs:0.375,0.45) {1.00 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
+width=63.719mm,
+height=34.624mm,
 at={(0mm,0mm)},
 scale only axis,
 clip=false,
@@ -1169,7 +1169,7 @@ ymax=4.3,
 ylabel style={font=\color{white!15!black}},
 ylabel={$V_\mathrm{cell}$ (V)},
 axis background/.style={fill=white},
-legend style={at={(0.339,0.032)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
+legend style={at={(0.339,0.031)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 scaled ticks=false,,
 xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/pgf/number format/fixed,/pgf/number format/fixed zerofill,},
 ]
@@ -1386,9 +1386,9 @@ at (rel axis cs:0.375,0.45) {3.00 C};
 \end{axis}
 
 \begin{axis}[%
-width=63.38mm,
-height=33.995mm,
-at={(82.881mm,0mm)},
+width=63.719mm,
+height=34.624mm,
+at={(83.324mm,0mm)},
 scale only axis,
 clip=false,
 xmin=0,

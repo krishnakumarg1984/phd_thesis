@@ -3,8 +3,8 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=116.591mm,
-height=86.527mm,
+width=98.36mm,
+height=72.996mm,
 at={(0mm,0mm)},
 scale only axis,
 point meta min=0,
@@ -30,6 +30,8 @@ axis z line*=left,
 xmajorgrids,
 ymajorgrids,
 zmajorgrids,
+scaled ticks=false,,
+xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/pgf/number format/fixed,/pgf/number format/fixed zerofill,},,
 colormap={mymap}{[1pt] rgb(0pt)=(0,0,0); rgb(224pt)=(0.749164,0.749164,0.749164)},
 colorbar
 ]
