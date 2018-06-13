@@ -1,11 +1,15 @@
 %!TEX root = ../main.tex
+% vim:nospell
 
 \input{Preamble/standard_preamble} % packages and document fonts
 
 \usepackage{fontspec} % load after graphicx
 \usepackage[warnings-off={mathtools-colon}]{unicode-math}
 
-\input{Preamble/font_selection.tex}
+\input{Preamble/font_selection.tex} % for text-fonts only
+\setmathfont[bold-style=ISO]{Libertinus Math} % https://github.com/libertinus-fonts/libertinus/issues/20
+% \setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{STIX2Math.otf}
+\setmathfont[range={\mathunder,\triangleq,\underbrace},Scale=MatchUppercase]{Latin Modern Math}
 
 \usepackage[english]{babel}
 \usepackage{selnolig} % if using babel, this package should go after loading babel
