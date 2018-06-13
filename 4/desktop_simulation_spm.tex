@@ -384,6 +384,26 @@ per-layer  C-rate as  discussed  in~\cref{subsec:spmp2dparametrisation} and  the
 overall active  surface area from~\cref{tbl:lcoSimParamsSPMp2d}, the  cell under
 simulation has a capacity of \SI{60}{\amphour}.
 
+Present literature  in battery modelling, both  for the \gls{dfn} model  and for
+the  \gls{spm}  do not  discuss  any  aspect  of capacity  characterisation.  In
+particular, parameters such  as as the geometric surface area  of cells and even
+their  1C-rate are  often  not  listed in  publications.  This  practice can  be
+attributed  to the  fact that  all one-dimensional  and \glsfmtlong{p2d}  models
+operate on  a per-layer basis, using  an applied current \emph{density}.  Many a
+time,  researchers assume  a  unit  surface area  for  the  cell. This  implicit
+normalisation  is amenable  to  those  studies which  strive  to make  numerical
+comparisons between  models through simulation. However,  it leads to a  lack of
+clarity on  the actual capacity of  the cells being modelled.  Furthermore, when
+comparing with experimental  data from a real cell, such  works resort to ad-hoc
+techniques such as empirical curve-fitting for obtaining the surface area. Often
+the source  of such parametrisation  is not made  clear. Chapter~\cref{ch:layer}
+documents  the details  of  obtaining  the overall  surface  area  of cells  and
+arriving  at the  C-rate per  layer of  the specific  cell under  consideration.
+Since  the \gls{dfn}  model does  not explicitly  model the  cell capacity,  the
+author  is  compelled  to  provide  an exposition  on  how  a  simple  numerical
+characterisation for determining cell capacity given a \emph{complete} parameter
+list. \fxnote{citations needed for each accusation.}
+
 For experimental capacity characterisation of cells, the standard practice is to
 apply a very small discharge  current beginning at \SI{100}{\percent} \gls{soc},
 logging the charge passed using a  high-precision coulomb counter until the cell
@@ -429,19 +449,21 @@ logging  interval  is set  to  \SI{50}{\milli\second}.  Both the  \gls{p2d}  and
 \gls{spm} model ran close to 100~hours.  The small deviations from this expected
 termination  time  can  be attributed  to  the  fact  that  the current  is  not
 arbitrarily small with  the pragmatic goal of obtaining results  in a reasonable
-time. As  seen in~\cref{tbl:charSimspmp2d}, even the  \emph{combined} simulation
-time  of  the \gls{p2d}  and  \gls{spm}  models  is  lower than  real-time.  The
-only  persistent issue  here  is that  of memory  and  storage requirements  due
-to  high-rate  data-logging for  accurate  coulomb  counting. Nevertheless,  for
-comparable  volume  of data  to  be  logged,  reliability  and ruggedness  of  a
-dedicated  computer  workstation far  exceeds  that  of real-time  cell  cyclers
-thereby facilitating the desired numerical  characterisation of cell capacity. A
-major  disadvantage  of simulation  based  capacity  validation is  its  extreme
-sensitivity to  parameters such as  the maximum concentration of  the electrodes
-and their  stoichiometries, which  are generally  difficult to  characterise. In
-this  context, the  experimental  procedure of  high-precision coulomb  counting
-assumes  a practical  significance as  it requires  no knowledge  of the  cell's
-parameters other than the manufacturer's datasheet.
+time. As seen in~\cref{tbl:charSimspmp2d}, even  the \emph{combined} CPU time to
+simulate both  the \gls{p2d}  and \gls{spm}  models is  two orders  of magnitude
+lower than  real-time. The only  issue that remains to  be addressed is  that of
+considerable memory and  storage requirements due to  high-rate data-logging for
+accurate coulomb counting. For a standard computer workstation, this places only
+a minor  demand on  its CPU.  For comparable volume  of data  to be  logged, the
+reliability  and ruggedness  of  a  dedicated workstation  far  exceeds that  of
+real-time cell cyclers, thereby establishing numerical simulation as an amenable
+method for characterisation of cell capacity. A major disadvantage of simulation
+based capacity validation  is its extreme sensitivity to parameters  such as the
+maximum concentration  of the  electrodes and  their stoichiometries,  which are
+generally difficult to characterise. In this context, the experimental procedure
+of  high-precision  coulomb counting  assumes  a  practical significance  as  it
+requires no  knowledge of  the cell's parameters  other than  the manufacturer's
+datasheet.
 
 \begin{figure}[!htb]
     \centering
@@ -460,10 +482,10 @@ parameters other than the manufacturer's datasheet.
 and  \gls{spm}  models   achieve  a  run-time  of   100~hours.  This  represents
 the   first  visualisation   of  results   produced  by   the  \gls{spm}   model
 equations  discussed  in~\cref{subsec:basicspmgoverningeqns} and  its  numerical
-implementation  from~\cref{sec:numericalimplementation}. The error vector is
+implementation  from~\cref{sec:numericalimplementation}.  The voltage  error  is
 defined as
 \begin{equation}
-    \varepsilon = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}
+    \varepsilon_v = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}
 \end{equation}
 The absolute maximum  error is of $\mathcal{O}\left(100\right)\si{\milli\volt}$,
 which occurs  towards the end of  discharge. Although this represents  the worst
@@ -489,7 +511,16 @@ confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
 % Include the output from the timeit script in the table
 
 \subsubsection*{Constant current input}\label{subsubsec:cnstcurrsim}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{4/figures/const_curr_dischg.pdf}
+    \caption[]{}
+    \label{fig:cnstdischgspmp2d}
+\end{figure}
+
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth} % 15.74776 cm
+% textwidth in cm: \printinunitsof{cm}\prntlen{\textheight} % 22.27184 cm
 
 
 % electrolyte resistance

@@ -1,7 +1,6 @@
 clear; close all; clc; format short g;
 load('dischg_Cby100_soc100_p2d_basicspm');
 
-
 %% Plots
 close all;
 figure(1);
@@ -11,19 +10,7 @@ ylim([spm_params.CutoffVoltage spm_params.CutoverVoltage]);
 ylabel('Cell Voltage, $V_\mathrm{cell}$ [V]');
 legend('SPM','P2d','location','best');
 
-N = 2; % how many curves/lines on figure
-cust_map = brewermap([],'*Greys');close;
-% cust_map = brewermap([],'*PuOr');close;
-cmap_stop_pts = length(cust_map);
-c_map_factor = 1; % starting from the darkest, what fraction is needed
-cmap_new_stop_pts = floor(c_map_factor*cmap_stop_pts);
-cust_map_new = cust_map(1:cmap_new_stop_pts,:);
-line_colors_indices = round(linspace(1,cmap_new_stop_pts,N));
-line_colors = cust_map_new(line_colors_indices,:);
-
-run('custom_colors');
-line_colors(2,:) = color_imp_coolgrey;
-
+run('setup_line_colors.m');
 plot(time_vector_p2d/3600,cell_voltage_results_p2d,'color',line_colors(2,:),'linewidth',4); 
 hold on;
 plot(spm_sim_time_vector/3600,v_cell_sim_results_spm,'color',line_colors(1,:),'linewidth',1); 

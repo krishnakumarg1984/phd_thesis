@@ -6,23 +6,24 @@
 
 \begin{table}[!htb]
     \centering
-    \caption[Simulation data --- capacity characterisation of \glsfmtshort{p2d} and \glsfmtshort{spm} models]{Simulation data --- capacity characterisation of \glsfmtshort{p2d} and \glsfmtshort{spm} models. The \glsfmtshort{p2d} model is considered as the reference benchmark. Hence, modelling error is defined as \protect{$\varepsilon = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}$}.}
+    \caption[Simulation data --- capacity characterisation of \glsfmtshort{p2d} and \glsfmtshort{spm} models]{Simulation data --- capacity characterisation of \glsfmtshort{p2d} and \glsfmtshort{spm} models. The \glsfmtshort{p2d} model is considered as the reference benchmark. Hence, modelling error is defined as \protect{$\varepsilon_v = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}$}.}
     \label{tbl:charSimspmp2d}
     \begin{tabular}{@{} l r r @{}}
         \toprule
-        Parameter                                                                   & Value  & Units              \\
+        Parameter                                                               & Value  & Units              \\
         \midrule
-        Data-logging interval                                                       & 50.00  & \si{\milli\second} \\
-        Total RAM used                                                              & 603.90 & \si{\mega\byte}    \\
-        \glsfmtshort{p2d} run-time                                                  & 99.94  & \si{\hour}         \\
-        \glsfmtshort{spm} run-time                                                  & 99.90  & \si{\hour}         \\
-        \glsfmtshort{p2d} discharge capacity                                        & 59.96  & \si{\amphour}      \\
-        \glsfmtshort{spm} discharge capacity                                        & 59.94  & \si{\amphour}      \\
-        Worst case error, $\varepsilon_\text{max}$                                  & -94.30 & \si{\milli\volt}   \\
-        Mean error, $\mu_\varepsilon$                                               & -3.00  & \si{\milli\volt}   \\
-        \glsfmtshort{rms} error, $\varepsilon_\text{\scriptsize \glsfmtshort{rms}}$ & 8.20   & \si{\milli\volt}   \\
-        \glsfmtshort{mae} error, $\varepsilon_\text{\scriptsize \glsfmtshort{mae}}$ & 3.20   & \si{\milli\volt}   \\
-        Standard deviation of error, $\sigma_\varepsilon$                           & 7.60   & \si{\milli\volt}   \\
+        Data-logging interval                                                   & 50.00  & \si{\milli\second} \\
+        Combined CPU time with warm cache                                       & 12.22  & \si{\minute}       \\
+        Total RAM used                                                          & 603.90 & \si{\mega\byte}    \\
+        \glsfmtshort{p2d} run-time                                              & 99.94  & \si{\hour}         \\
+        \glsfmtshort{spm} run-time                                              & 99.90  & \si{\hour}         \\
+        \glsfmtshort{p2d} discharge capacity                                    & 59.96  & \si{\amphour}      \\
+        \glsfmtshort{spm} discharge capacity                                    & 59.94  & \si{\amphour}      \\
+        Worst case error, $\varepsilon_{v_{\text{max}}}$                        & -94.30 & \si{\milli\volt}   \\
+        Mean error, $\mu_{\varepsilon_v}$                                       & -3.00  & \si{\milli\volt}   \\
+        \glsfmtshort{rms} error, $\varepsilon_{v_{\,\text{\glsfmtshort{rms}}}}$ & 8.20   & \si{\milli\volt}   \\
+        \glsfmtshort{mae} error, $\varepsilon_{v_{\,\text{\glsfmtshort{mae}}}}$ & 3.20   & \si{\milli\volt}   \\
+        Standard deviation of error, $\sigma_{\varepsilon_v}$                   & 7.60   & \si{\milli\volt}   \\
         \bottomrule
     \end{tabular}
 \end{table}

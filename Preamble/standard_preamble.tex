@@ -31,7 +31,6 @@
 \usepackage[luatex,paper=a4paper,hmarginratio=1:1, vmarginratio=1:1, scale=0.75]{geometry}
 
 \usepackage{graphicx} % important to load before fontspec
-\usepackage{fontspec}
 \usepackage{labelschanged}
 \usepackage{lualatex-math}
 \usepackage{mathtools}
@@ -44,7 +43,7 @@
 \usepackage{multicol} % for pages with multiple text columns, e.g. References
 % \usepackage{nccmath}
 
-\usepackage[all,warning]{onlyamsmath} % if using Tikz, please include the calc and babel libraries (known incompatibilities)
+% \usepackage[all,warning]{onlyamsmath} % if using Tikz, please include the calc and babel libraries (known incompatibilities)
 \usepackage[section]{placeins} %Defines a \FloatBarrier command
 
 \usepackage{setspace} % Define line spacing
@@ -59,7 +58,6 @@
 \usepackage{threeparttable}
 
 \usepackage[nottoc]{tocbibind} % correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
-\usepackage[warnings-off={mathtools-colon}]{unicode-math}
 
 \usepackage{url}
 \usepackage{varwidth}
@@ -70,16 +68,5 @@
 \usepackage[hyphenation,lastparline,nosingleletter]{impnattypo}
 \usepackage[all]{nowidow}
 
-
-%%%%%%%%%% font selection %%%%%%%%%%
-\setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
-}]{Libertinus Serif}
-\setsansfont{Libertinus Sans}
-\setmathfont[bold-style=ISO]{Libertinus Math} % https://github.com/libertinus-fonts/libertinus/issues/20
-% \setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{STIX2Math.otf}
-\setmathfont[range={\mathunder,\triangleq,\underbrace},Scale=MatchUppercase]{Latin Modern Math}
-\setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
-
-\usepackage{ragged2e} %  "The package should be loaded after the body font and size have been established  for example, after font packages have been loaded
 
 % \usepackage{layouts} % helpful for computing textwidth

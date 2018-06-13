@@ -2,6 +2,11 @@
 
 \input{Preamble/standard_preamble} % packages and document fonts
 
+\usepackage{fontspec} % load after graphicx
+\usepackage[warnings-off={mathtools-colon}]{unicode-math}
+
+\input{Preamble/font_selection.tex}
+
 \usepackage[english]{babel}
 \usepackage{selnolig} % if using babel, this package should go after loading babel
 
