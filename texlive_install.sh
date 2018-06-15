@@ -52,7 +52,9 @@ tlmgr install   \
     ccicons \
     changepage \
     chapterfolder \
+    checkend \
     chemformula \
+    chkfloat \
     cleveref \
     cmbright \
     colortbl \

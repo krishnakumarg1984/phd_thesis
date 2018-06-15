@@ -515,13 +515,40 @@ confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{4/figures/const_curr_dischg.pdf}
-    \caption[]{}
-    \label{fig:cnstdischgspmp2d}
+    \caption[Voltage responses of \glsfmtshort{p2d} and \glsfmtshort{spm} to
+    constant current discharge]{Voltage responses of \glsfmtshort{p2d} and
+        \glsfmtshort{spm} to various constant discharge rates. The left column
+        column shows the time-domain voltage response of the \gls{spm} plotted
+        against the benchmark \gls{p2d} response. The column on the right shows
+        the percentage voltage error of the \glsfmtshort{spm} with respect to
+        the \glsfmtshort{p2d} model, \ie{} $\hat{\varepsilon}_v\,(\si{\percent})
+        = 100\frac{V_{\text{cell}_\text{p2d}} -
+        V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}$. The
+        performance of the \glsfmtshort{spm} degrades considerably above C-rates
+    of 0.5C.}
+    \label{fig:cnstdischgspmp2dvoltage}
 \end{figure}
+
+The  left  column  of~\cref{fig:cnstdischgspmp2dvoltage} shows  the  time-domain
+voltage response of the basic \gls{spm} for various constant discharge currents.
+The voltage response of the \gls{p2d} model  is also overlaid on these plots and
+is used as  a reference benchmark for comparisons. Since  these comparisons have
+to  be done  across  multiple  C-rates, each  yielding  different magnitudes  in
+voltage responses,  it is  helpful to use  a relative error  metric such  as the
+percentage error, defined as
+\begin{equation}
+    \hat{\varepsilon}_v\,(\si{\percent}) = 100\frac{V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}
+\end{equation}
+
+
+The column to the right shows
+the percentage  error in the voltage  response of the \gls{spm}  with respect to
+the \gls{p2d} model.
+
+At very low C-rates below \approx 0.5C, the
+voltage-response performance of the \gls{spm} is acceptable.
 
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth} % 15.74776 cm
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textheight} % 22.27184 cm
-
-
 % electrolyte resistance
-% toolbox
+% github toolbox
