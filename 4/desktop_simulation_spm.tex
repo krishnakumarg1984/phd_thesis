@@ -514,7 +514,7 @@ confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{4/figures/const_curr_dischg.pdf}
+    \includegraphics[width=\textwidth]{4/figures/const_curr_dischg_voltage.pdf}
     \caption[Voltage responses of \glsfmtshort{p2d} and \glsfmtshort{spm} to
     constant current discharge]{Voltage responses of \glsfmtshort{p2d} and
         \glsfmtshort{spm} to various constant discharge rates. The left column
@@ -524,8 +524,8 @@ confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
         the \glsfmtshort{p2d} model, \ie{} $\hat{\varepsilon}_v\,(\si{\percent})
         = 100\frac{V_{\text{cell}_\text{p2d}} -
         V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}$. The
-        performance of the \glsfmtshort{spm} degrades considerably above C-rates
-    of 0.5C.}
+        performance of the \glsfmtshort{spm} degrades considerably at discharge currents
+        above 0.5C.}
     \label{fig:cnstdischgspmp2dvoltage}
 \end{figure}
 
@@ -540,14 +540,26 @@ percentage error, defined as
     \hat{\varepsilon}_v\,(\si{\percent}) = 100\frac{V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}
 \end{equation}
 
+In~\cref{fig:cnstdischgspmp2dvoltage},  the  column  on   the  right  shows  the
+percentage error  in the voltage response  of the \gls{spm} with  respect to the
+\gls{p2d} model.
 
-The column to the right shows
-the percentage  error in the voltage  response of the \gls{spm}  with respect to
-the \gls{p2d} model.
+At very low C-rates below \approx  0.5C, the voltage-response performance of the
+\gls{spm} is  acceptable. However,  the performance  degradation is  rapid above
+this C-rate. It is  clear that the error in the  \gls{spm} response is monotonic
+and  unidirectional. This  indicates that  the  source of  the error  is due  to
+unmodelled dynamics.  In particular, as  discussed in the  modelling assumptions
+of~\cref{subsec:basicspmassumptions},  the  \gls{spm}  ignores  the  electrolyte
+dynamics. Thus, the overpotential (internal  voltage drop) in the electrolyte is
+not  modelled, which  results in  the terminal  voltage of  the \gls{spm}  being
+always higher than its \gls{p2d} counterpart.
 
-At very low C-rates below \approx 0.5C, the
-voltage-response performance of the \gls{spm} is acceptable.
-
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{4/figures/const_curr_dischg_soc.pdf}
+    \caption{}
+    \label{fig:cnstdischgspmp2dsoc}
+\end{figure}
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth} % 15.74776 cm
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textheight} % 22.27184 cm
 % electrolyte resistance

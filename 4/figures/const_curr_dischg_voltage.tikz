@@ -111,7 +111,7 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 };
 \addlegendentry{P2d}
 
-\addplot [color=black, dashdotted, line width=2.0pt]
+\addplot [color=black, dashed, line width=2.0pt]
   table[row sep=crcr]{%
 0	4.16715\\
 10.5	4.16546\\
@@ -503,7 +503,7 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 };
 \addlegendentry{P2d}
 
-\addplot [color=black, dashdotted, line width=2.0pt]
+\addplot [color=black, dashed, line width=2.0pt]
   table[row sep=crcr]{%
 0	4.16269\\
 6	4.16006\\
@@ -908,7 +908,7 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 };
 \addlegendentry{P2d}
 
-\addplot [color=black, dashdotted, line width=2.0pt]
+\addplot [color=black, dashed, line width=2.0pt]
   table[row sep=crcr]{%
 0	4.15528\\
 4	4.15165\\
@@ -1266,7 +1266,7 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 };
 \addlegendentry{P2d}
 
-\addplot [color=black, dashdotted, line width=2.0pt]
+\addplot [color=black, dashed, line width=2.0pt]
   table[row sep=crcr]{%
 0	4.12653\\
 2	4.12103\\
