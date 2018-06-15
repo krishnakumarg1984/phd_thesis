@@ -42,6 +42,7 @@ tlmgr install   \
     auto-pst-pdf-lua \
     babel-german \
     belleek \
+    bezos \
     biber \
     biblatex \
     bigints \
@@ -52,7 +53,6 @@ tlmgr install   \
     ccicons \
     changepage \
     chapterfolder \
-    checkend \
     chemformula \
     chkfloat \
     cleveref \
