@@ -67,6 +67,8 @@ transformation  and order  reduction  of  one or  more  field  variables of  the
 implementing  such  models in  a  resource-constrained  environment such  as  an
 embedded \gls{bms} controller.
 
+\subsection{Frequency domain \glsfmtshort{rom}s}\fxnote{the glossary term rom
+has not been used. Re-read and introduce it in the appropriate place.}
 
 Owing to  the low entry-barrier for  adoption in a real-time  controller logging
 data samples  at specific time intervals,  this chapter focusses on  models that
@@ -101,11 +103,13 @@ focussed  to  mitigate  this  drawback~\cite{Yuan2017a,Yuan2017}.\fxnote{Should 
 discuss how they mitigated this?}
 
 
-Smith~\etal{}~\cite{Smith2007}  pioneered   a  semi-hybrid   modelling  approach
-to  reduced  order  modelling  and  obtained closed  form  expressions  for  all
-electrochemical field variables  in the frequency domain  except for electrolyte
-concentration and  potential (which were  solved separately using  the classical
-finite difference discretization method). To the author's knowledge, this is the
+\subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}
+
+Smith~\etal{}~\cite{Smith2007}  pioneered  a  semi-hybrid  approach  to  reduced
+order modelling  and obtained  closed form  expressions for  all electrochemical
+field variables  in the  frequency domain  except for  electrolyte concentration
+and  potential  (which  were  solved   separately  using  the  classical  finite
+difference  discretization  method). To  the  author's  knowledge, this  is  the
 earliest  published  instance  wherein  all  the  dynamics  of  the  full  order
 model were  completely retained  in the frequency  domain. This  was facilitated
 through  the use  of  transcendental  transfer functions  that  helped to  avoid
@@ -167,7 +171,7 @@ whilst retaining the derivation entirely in the frequency domain.
 
 Obtaining  closed form  expressions for  the electrolyte  variables achieved  in
 Lee~\etal{} also has an important computational implication. With these capstone
-derivations serving to completing the model description in the frequency domain,
+derivations serving to  complete the model description in  the frequency domain,
 all  electrochemical  variables of  the  \gls{dfn}  model  could now  be  solved
 independently at any  desired spatial location, \eg{} at  the current collectors
 and separator  interfaces. Until  this point,  the state of  the art  in reduced
@@ -248,9 +252,9 @@ interpolated models  questionable.
 The author  of this thesis hypothesises  that any perceivable drawbacks  such as
 non-smooth changes  in \gls{soc} estimates  arising from using  blended matrices
 could  be potentially  mitigated by  using  smoothing filters  and other  ad-hoc
-apparatus.  However,  there  exists  no  published  work  that  discusses  these
-engineering aspects. Coupled with the absence  of a theoretical analysis of loop
-stability,  these  models  are  deemed  as  not  being  suitable  for  immediate
+mathematical apparatus. However,  there exists no published  work that discusses
+these engineering aspects. Coupled with the absence of a theoretical analysis of
+loop stability,  these models  are deemed  as not  being suitable  for immediate
 adoption  by  industry, at  least  until  these  aforementioned gaps  have  been
 addressed  satisfactorily.  The non-linear  state  variable  model presented  by
 Guo~\etal{}~\cite{Guo2017} aims to  address this issue by  formulating a reduced
@@ -263,6 +267,8 @@ the absence  of actual source  code, a numerical  example or pseudo-code  of the
 model reduction workflow could have immensely helped with the reproducibility of
 the results claimed in the work.
 
+
+\subsection{Hybrid \glsfmtshort{rom}s using equivalent circuits}
 
 Physics-inspired                        equivalent                       circuit
 models~\cite{Prasad2012,Prasad2014,Zhang2017,Cheng2017,Merla2018} are a class of
@@ -287,18 +293,20 @@ on empirical curve-fitting.
 the IEEE conference paper}
 
 
-\Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
-results towards  obtaining a similar physics-informed  equivalent circuit model.
-This  modelling  effort is  a  direct  application  of  the gains  in  computing
-efficiency  through  the  application  of the  improved  \gls{dra}  reported  in
-Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},   the  detailed   coverage  of
-which  is performed  in~\cref{ch:chapter3}.  This work  intends  to address  the
-hitherto  unexplored  gap  in  impedance  modelling, \ie{}  the  absence  of  an
-equivalent impedance  model that  accounts for  the impedance  contribution from
-all  electrochemical quantities  in the  \gls{p2d} model.  This physics-informed
-impedance  model can  be  extended  to fit  parameter  values  of components  in
-an  equivalent circuit  model,  \eg{} by  using  a standard  Levenberg-Marquardt
-non-linear least squares fitting algorithm~\cite{Levenberg1944, Marquardt1963}.
+% Removed as per Greg's advice and review/feedback
+
+% \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
+% results towards  obtaining a similar physics-informed  equivalent circuit model.
+% This  modelling  effort is  a  direct  application  of  the gains  in  computing
+% efficiency  through  the  application  of the  improved  \gls{dra}  reported  in
+% Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},   the  detailed   coverage  of
+% which  is performed  in~\cref{ch:chapter3}.  This work  intends  to address  the
+% hitherto  unexplored  gap  in  impedance  modelling, \ie{}  the  absence  of  an
+% equivalent impedance  model that  accounts for  the impedance  contribution from
+% all  electrochemical quantities  in the  \gls{p2d} model.  This physics-informed
+% impedance  model can  be  extended  to fit  parameter  values  of components  in
+% an  equivalent circuit  model,  \eg{} by  using  a standard  Levenberg-Marquardt
+% non-linear least squares fitting algorithm~\cite{Levenberg1944, Marquardt1963}.
 
 
 A common characteristic of  all hybrid models is the lack  of a physical meaning
@@ -313,8 +321,8 @@ parameters and internal  overpotentials at various spatial  locations within the
 cell serves  as a powerful  tool for  in-situ lifetime estimation  of batteries.
 Although the  circuit components  of physics-informed equivalent  circuit models
 and the  state-space models discussed here  trace their origins to  the original
-parameters of  the \gls{dfn}  model, their  final numerical  values do  not bear
-even a  semblance of this relationship.
+parameters of  the \gls{dfn}  model, the link between their corresponding
+numerical parameter sets is tenuous at best.
 
 
 With  goal   of  translating   physical  parameters  into   circuit  components,
@@ -353,6 +361,7 @@ from,\fxnote{cite  figure} the  author  concludes that  at  present, the  benefi
 offered by hybrid models do not decisively outweigh this drawback.
 
 
+\subsection{Time-domain \glsfmtshort{rom}s}
 The working rubric of all time  domain reduced order models typically consist of
 attempts to reformulate the original \gls{p2d}  model equations with the goal of
 simplifying them.  In contrast to the  hybrid models, both the  model derivation
@@ -370,27 +379,26 @@ fractional  order  derivatives~\cite{Sabatier2014,Sabatier2015, Li2017,  Mu2017,
 Wang2017} shall not  be discussed. To this author, it  appears that the academic
 community has  implicitly considered these models  to be so abstruse  that there
 has not yet been a comparative  study pitting these models against the prevalent
-art. Based  on published work,  it is not clear  on how such  models distinguish
-themselves uniquely in the larger realm of reduced order battery.
+art. Comparing with the typical published work in this field, it is not clear on
+how such models  distinguish themselves uniquely in the larger  realm of reduced
+order battery modelling.
 
 
-A  few  \gls{pde}  simplification  techniques   in  the  time  domain,  such  as
-Hilbert-Space  representation  and  singular   perturbation  were  presented  in
-Manzie~\eta{}~\cite{Manzie2015}.  However, their  presentation lacks  expository
-visual information  such as plots of  time domain evolution of the  internal and
-terminal variables for dynamic load profiles. Furthermore, the authors failed to
-provide a tabulated set of physical  parameters of the cell being simulated that
-adversely affects the reproducibility of this  work. These methods have not seen
-uptake  in academia  or  industry.  The author  of  this  thesis considers  this
-presentation  to be  of a  cursory nature  and consequently,  they shall  not be
-discussed here.
-
-
-The  rest of  this section  discusses  several popular  families of  time domain
-models. In  this section, a high-level  evaluation of their relative  merits and
-weaknesses is  presented. The next section  presents a detailed analysis  of the
-most promising  candidate among  these models with  the potential  to facilitate
-faster adoption of physics based models in online applications. Further sections
+A  few techniques  for  \gls{pde}  simplification in  the  time  domain such  as
+Hilbert-Space  representation and  singular perturbation  were applied  for cell
+modelling in  Manzie~\etal~\cite{Manzie2015}. However, their  presentation lacks
+expository visual  information such  as plots  of time  domain evolution  of the
+internal  and terminal  variables for  dynamic load  profiles. Furthermore,  the
+authors have  not provided a  tabulated set of  physical parameters of  the cell
+being  simulated. This  adversely affects  the reproducibility  of the  results.
+These methods have not  seen uptake in academia or industry.  The author of this
+thesis considers this  presentation to be of a cursory  nature and consequently,
+they  shall not  be  discussed here.  The remainder  of  this section  discusses
+several popular families of time domain models providing a summary evaluation of
+their  relative merits  and  weaknesses. \Cref{sec:spmintro}  presents a  formal
+introduction to the most promising  candidate identified among these time-domain
+models that  is considered to  nurture a  latent potential to  facilitate faster
+adoption  of  physics based  models  in  online applications.  Further  sections
 discuss methodologies and  solutions that aim to address the  gaps identified in
 this family of models. \fxnote{does this fit better at the end of this section}
 
@@ -546,7 +554,7 @@ the  lumped representation of flux density is not applicable.
 One  serious  drawback in  Deng~\etal{}~\cite{Deng2018}  is  the use  of  Finite
 Difference approximation  for computing the  spatial gradient of  the \gls{ocp}.
 This  adversely  affects  computational  performance and  is  not  suitable  for
-online implementation.  The author's efforts  to replace this  finite difference
+online  implementation.  My  own  efforts  to  replace  this  finite  difference
 calculation of  the gradient  with an  analytical framework  based on  the chain
 rule  of calculus  is  currently in  preliminary stages  of  development and  is
 presented in~\cref{ch:chapter6}. Unless a proven solution for such computational
