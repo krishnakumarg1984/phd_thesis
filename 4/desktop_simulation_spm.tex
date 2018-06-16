@@ -510,29 +510,31 @@ confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
 
 % Include the output from the timeit script in the table
 
-\subsubsection*{Constant current input}\label{subsubsec:cnstcurrsim}
+\subsubsection*{Constant current discharge}\label{subsubsec:cnstcurrdischgsim}
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{4/figures/const_curr_dischg_voltage.pdf}
     \caption[Voltage responses of \glsfmtshort{p2d} and \glsfmtshort{spm} to
-    constant current discharge]{Voltage responses of \glsfmtshort{p2d} and
-        \glsfmtshort{spm} to various constant discharge rates. The left column
-        column shows the time-domain voltage response of the \gls{spm} plotted
-        against the benchmark \gls{p2d} response. The column on the right shows
-        the percentage voltage error of the \glsfmtshort{spm} with respect to
-        the \glsfmtshort{p2d} model, \ie{} $\hat{\varepsilon}_v\,(\si{\percent})
-        = 100\frac{V_{\text{cell}_\text{p2d}} -
-        V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}$. The
-        performance of the \glsfmtshort{spm} degrades considerably at discharge currents
-        above 0.5C.}
+    constant current discharge]{Voltage responses of the \glsfmtshort{p2d} and
+        \glsfmtshort{spm} models to various constant discharge rates. The left
+        column column shows the time-domain voltage response of the \gls{spm}
+        plotted against the benchmark \gls{p2d} response. The column on the
+        right shows the percentage voltage error of the \glsfmtshort{spm} with
+        respect to the \glsfmtshort{p2d} model. The performance of the
+        \glsfmtshort{spm} degrades considerably at discharge currents above
+    0.5C.}
     \label{fig:cnstdischgspmp2dvoltage}
 \end{figure}
 
 The  left  column  of~\cref{fig:cnstdischgspmp2dvoltage} shows  the  time-domain
 voltage response of the basic \gls{spm} for various constant discharge currents.
 The voltage response of the \gls{p2d} model  is also overlaid on these plots and
-is used as  a reference benchmark for comparisons. Since  these comparisons have
+is used  as a  reference benchmark  for comparisons.  It is  difficult to  use a
+common  time-scale for  the horizontal  axes of  the plots  since the  run-times
+differ by two orders of magnitude for the C-rates considered.
+
+Since  these comparisons have
 to  be done  across  multiple  C-rates, each  yielding  different magnitudes  in
 voltage responses,  it is  helpful to use  a relative error  metric such  as the
 percentage error, defined as
@@ -540,26 +542,119 @@ percentage error, defined as
     \hat{\varepsilon}_v\,(\si{\percent}) = 100\frac{V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}
 \end{equation}
 
+It is to be noted that, in all cases, the \gls{p2d} model terminates faster than
+the \gls{spm} either due to hitting lower cut-offs of either terminal voltage or
+\gls{soc} (see~\cref{fig:cnstdischgspmp2dsoc}).  Consequently, the  error vector
+is defined only the common time-region before cut-off.
+
 In~\cref{fig:cnstdischgspmp2dvoltage},  the  column  on   the  right  shows  the
 percentage error  in the voltage response  of the \gls{spm} with  respect to the
-\gls{p2d} model.
-
-At very low C-rates below \approx  0.5C, the voltage-response performance of the
-\gls{spm} is  acceptable. However,  the performance  degradation is  rapid above
-this C-rate. It is  clear that the error in the  \gls{spm} response is monotonic
-and  unidirectional. This  indicates that  the  source of  the error  is due  to
-unmodelled dynamics.  In particular, as  discussed in the  modelling assumptions
-of~\cref{subsec:basicspmassumptions},  the  \gls{spm}  ignores  the  electrolyte
-dynamics. Thus, the overpotential (internal  voltage drop) in the electrolyte is
-not  modelled, which  results in  the terminal  voltage of  the \gls{spm}  being
-always higher than its \gls{p2d} counterpart.
+\gls{p2d} model.  At very  low C-rates  below \approx0.5C,  the voltage-response
+performance of the \gls{spm} is acceptable. However, the performance degradation
+is rapid above this C-rate. It is clear that the error in the \gls{spm} response
+is monotonic and unidirectional. This indicates  that the source of the error is
+due  to  unmodelled dynamics.  In  particular,  as  discussed in  the  modelling
+assumptions  of~\cref{subsec:basicspmassumptions},  the  \gls{spm}  ignores  the
+electrolyte dynamics.  Thus, the  overpotential (internal  voltage drop)  in the
+electrolyte  is not  modelled,  which results  in the  terminal  voltage of  the
+\gls{spm} being always higher than its \gls{p2d} counterpart.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{4/figures/const_curr_dischg_soc.pdf}
-    \caption{}
+    \caption[\glsfmtshort{soc} computed by \glsfmtshort{p2d} and
+    \glsfmtshort{spm} models for constant current discharge]{Plots in the left
+        column depict the time evolution of \glsfmtshort{soc} computed by the
+        \glsfmtshort{p2d} and \glsfmtshort{spm} models for various constant
+        discharge rates. The column on the right shows the error of the
+        \glsfmtshort{soc} computed by the \glsfmtshort{spm} with respect to that
+        computed by the \glsfmtshort{p2d} model, \ie{} $ \varepsilon_\text{soc}
+        = {z_\text{p2d}} - z_\text{spm} $. The \glsfmtshort{spm} remains quite
+    accurate even at moderate currents such as 3C.}
     \label{fig:cnstdischgspmp2dsoc}
 \end{figure}
+
+\Cref{fig:cnstdischgspmp2dsoc}  shows  the  time-evolution  of~\glsfmtshort{soc}
+computed by the  \glsfmtshort{p2d} and the \glsfmtshort{spm}  models for various
+discharge  currents. Since  the  \gls{soc} of  a cell  is  already a  normalised
+quantity by  definition, the difference between  the two models can  be directly
+used for comparison across C-rates. The \gls{soc} error is defined as
+\begin{equation}
+    \varepsilon_\text{soc} = {z_\text{p2d}} - z_\text{spm}
+\end{equation}
+and like the  error in the  terminal voltage, remains unidirectional  over time,
+and defined only until one of the models hits cut-off.
+
+After  perusing the  \gls{spm}'s poor  performance demonstrated  in its  voltage
+response,  it  may   be  surprising  to  note  that   its  \gls{soc}  prediction
+capabilities remain quite accurate even  at moderate discharge currents of about
+3C and warrants a brief explanation.
+
+Referring to~\cref{eq:soccomputation}, it is  seen that the \glsfmtshort{soc} of
+the cell  is directly proportional  to the  bulk (average) concentration  in the
+negative  electrode.  Hence  the  plots  of~\cref{fig:cnstdischgspmp2dsoc}  also
+represent the solid  phase concentration with a constant scaling  factor. As per
+the assumptions listed  in~\cref{subsec:basicspmassumptions}, the only transport
+phenomena  modelled in  the \gls{spm}  is  solid phase  diffusion. However,  for
+computation of the terminal  voltage, the electrolyte overpotential contribution
+has  been   omitted  (see~\cref{eq:posoverpotential,eq:negoverpotential}).  This
+explains  why  the  voltage  accuracy  suffers  while  the  open-loop  \gls{soc}
+computation  remains  accurate.  The  high accuracy  of  \gls{soc}  (and  hence,
+solid-phase  concentration)   computation  also  validates  the   usage  of  the
+\engordnumber{4}  order  polynomial  approximation  instead of  Fick's  law  for
+modelling solid-phase diffusion.
+
+However,  the  discrepancy  in  accuracies of  terminal  voltage  and  \gls{soc}
+computed  by the  basic \gls{spm}  leads to  an important  implication. Even  at
+moderate C-rates, the  basic \gls{spm} \emph{cannot} be effectively  used in the
+design of \gls{soc}  observers. This is because, the measured  voltage maps to a
+vastly different  operating point when using  the \gls{spm} as the  plant model,
+leading to strong deviations of the estimated \gls{soc}.
+
+\subsubsection*{Constant current charge}\label{subsubsec:cnstcurrchgsim}
+
+The \gls{cccv} charging  profile is a widely adopted  standard charging strategy
+for charging lithium  ion cells. In the constant current  phase, a charging rate
+of 1C is  used as an accepted baseline, although  faster charging strategies are
+being actively sought  after both in academia and in  particular, the automotive
+industry. For establishing the charging performance of the basic \gls{spm}, the
+standard rate of 1C is used.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{4/figures/const_curr_chg.pdf}
+    \caption[Voltage and \glsfmtshort{soc} evolution of \glsfmtshort{p2d} and
+    \glsfmtshort{spm} for 1C constant current charging]{Time evolution of
+        voltage and \glsfmtshort{soc} (top row) of the \glsfmtshort{p2d} and
+        \glsfmtshort{spm} models upon charging with a constant current of 1C,
+        \ie{} \SI{60}{\ampere} starting at \SI{0}{\percent} \glsfmtshort{soc}.
+        The bottom row shows the percentage in terminal voltage and
+        \glsfmtshort{soc} respectively of the \glsfmtshort{spm} with respect to
+    the \glsfmtshort{p2d} model.}
+    \label{fig:cnstchgspmp2d}
+\end{figure}
+
+The top row of~\cref{fig:cnstchgspmp2d} shows  the evolution of terminal voltage
+and \gls{soc}  of the \gls{p2d} and  \gls{spm} models under an  applied charging
+current of  1C, \ie{} \SI{60}{\ampere}.  The constant-voltage charging  phase is
+not shown. The bottom row shows  the corresponding errors of the \gls{spm} model
+with respect  to the reference  \gls{p2d} benchmark. The corollary  behaviour of
+the constant current discharge behaviour  is observed here. The terminal voltage
+of the \gls{spm} remains below the  \gls{p2d} model throughout. This is expected
+since, to  account for the electrolyte  voltage drop in the  \gls{p2d}, a higher
+terminal voltage needs  to be applied. The voltage error  is thus unidirectional
+and remains positive (opposite to  that observed for the corresponding discharge
+case).  Similarly,  the \gls{soc}  plots  overlap  very closely  validating  the
+underlying polynomial approximation of solid  phase diffusion. It is striking to
+note  that the  error in  \gls{soc} remains  exactly around  the same  magnitude
+(\approx\SI{0.1}{\percent}) in both the charging and discharging cases.
+
+The high accuracy of the \gls{soc} in  the basic \gls{spm} leads to the author's
+hypothesis that if the electrolyte concentration can be solved as an independent
+subsystem and  incorporated into the  terminal voltage, this  can lead to  an improved
+\gls{spm}  with electrolyte  dynamics. Such  a decoupled  electrolyte inclusion
+into the basic \gls{spm}\fxnote{fix this sentence}
+
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth} % 15.74776 cm
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textheight} % 22.27184 cm
 % electrolyte resistance
