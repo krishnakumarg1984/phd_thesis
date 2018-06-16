@@ -156,44 +156,57 @@ need to be performed with high priority.
     \savebox{\algboxB}{%
         \begin{varwidth}[b]{0.65\linewidth}
             \begin{flushright}
-            \begin{algorithmic}[0]
-                \ISR[]{}
-                \State read new sensor data from ADC
-                \Function{ComputeSPM}{$i_{k-1}$, params}
-                \State evaluate spm model equations
-                \State $\vdots$
-                \State compute model output voltage
-                \Function{SOCEstimator}{$v_\text{model}$,$v_\text{meas}$}
-                \State \textit{state estimation subroutine}
-                \State $\vdots$
-                \EndFunction
-                \Function{ICEControl}{$ $}
-                \State $\vdots$
-                \State write control outputs to DACs
-                \EndFunction
-                \EndFunction
-                \END
-            \end{algorithmic}
+                \begin{algorithmic}[0]
+                    \ISR[]{}
+                    \State read new sensor data from ADC
+                    \Function{ComputeSPM}{$i_{k-1}$, params}
+                    \State evaluate spm model equations
+                    \State $\vdots$
+                    \State compute model output voltage
+                    \Function{SOCEstimator}{$v_\text{model}$,$v_\text{meas}$}
+                    \State \textit{state estimation subroutine}
+                    \State $\vdots$
+                    \EndFunction
+                    \Function{ICEControl}{$ $}
+                    \State $\vdots$
+                    \State write control outputs to DACs
+                    \EndFunction
+                    \EndFunction
+                    \END
+                \end{algorithmic}
             \end{flushright}
         \end{varwidth}%
     }
     \centering
+    % \framebox[\textwidth]{
+    %   \subcaptionbox{background processes (low priority)\label{subfig:bgRTprocess}}{\usebox{\algboxA}}
+    %     % \quad
+    %     \hfill
+    %     \subcaptionbox{foreground processes (high priority)\label{subfig:fgRTprocess}}{%
+    %         \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
+    %             \usebox{\algboxB}%
+    %         }%
+    %     }%
+    % }
     \framebox[\textwidth]{
-      \subcaptionbox{background processes (low priority)\label{subfig:bgRTprocess}}{\usebox{\algboxA}}
-        % \quad
+        \begin{subfigure}[t]{\wd\algboxA}
+            \subcaption{background process (low priority)}\label{subfig:bgRTprocess}
+            \usebox{\algboxA}
+        \end{subfigure}
         \hfill
-        \subcaptionbox{foreground processes (high priority)\label{subfig:fgRTprocess}}{%
+        \begin{subfigure}[t]{\wd\algboxB}
+            \subcaption{foreground processes (high priority)}\label{subfig:fgRTprocess}
             \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
                 \usebox{\algboxB}%
             }%
-        }%
+        \end{subfigure}
     }
     \caption[Overview of real-time software implementation of a typical
     \glsfmtshort{bms}]{Overview of the real-time software implementation of a typical
         \gls{bms}. Through an interrupt-driven architecture for time-critical tasks as
         as state estimation and control, the same processor can be
         efficiently utilised by employing its idle CPU cycles for background
-        tasks such as diagnostics, fault logging and book-keeping.}
+    tasks such as diagnostics, fault logging and book-keeping.}
     \label{fig:basicRTCsoftwarearch}
 \end{figure}
 
@@ -276,9 +289,9 @@ sample and  hold process  at the model  input and outputs  can be  neglected. In
 conventional sampled-data systems, control delays may be analysed by considering
 a multiplicative factor of $e^{-sλ}$ in the Laplace domain transfer function of
 the system.  Delay parameters of  $λ = 0.5  T_s$ or $λ  = 1 T_s$  are commonly
-employed as  conservative estimates. However,  owing to the extremely  small CPU
-load factor considered as established here, this delay factor is omitted in this
-thesis for discrete-time formulation of the \gls{spm} model.
+employed as conservative estimates. However, owing to the small CPU load factors
+considered  as good  practice  in  concurrent programming,  this  delay term  is
+omitted in this thesis for discrete-time formulation of the \gls{spm} model.
 
 
 \subsection{Discrete-Time \glsfmtshort{spm} Formulation}
