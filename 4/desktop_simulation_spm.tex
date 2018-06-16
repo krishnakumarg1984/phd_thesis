@@ -582,13 +582,20 @@ used for comparison across C-rates. The \gls{soc} error is defined as
 \begin{equation}
     \varepsilon_\text{soc} = {z_\text{p2d}} - z_\text{spm}
 \end{equation}
-and like the  error in the  terminal voltage, remains unidirectional  over time,
-and defined only until one of the models hits cut-off.
+and   like  the   error  in   the  terminal   voltage,  remains   unidirectional
+over  time,   and  defined  only   until  one   of  the  models   hits  cut-off.
+\Cref{tbl:errorsummarycntcurrdischgspmp2d}  shows  a  summary of  various  error
+metrics used  to quantify  the performance  of the  basic \gls{spm}  for various
+discharge rates.
 
-After  perusing the  \gls{spm}'s poor  performance demonstrated  in its  voltage
-response,  it  may   be  surprising  to  note  that   its  \gls{soc}  prediction
-capabilities remain quite accurate even  at moderate discharge currents of about
-3C and warrants a brief explanation.
+\input{4/dischg_errs_spm_p2d_table.tex}
+
+A   quick   perusal  of~\cref{tbl:errorsummarycntcurrdischgspmp2d}   reveals   a
+discrepancy that invokes surprise at first glance. Whilst the performance of the
+\gls{spm} is  quite poor in  terms of terminal  voltage prediction, it  is worth
+noting that its \gls{soc} prediction  capabilities remain quite accurate even at
+moderate  discharge  currents  of  about  3C and  therefore,  warrants  a  brief
+explanation.
 
 Referring to~\cref{eq:soccomputation}, it is  seen that the \glsfmtshort{soc} of
 the cell  is directly proportional  to the  bulk (average) concentration  in the
@@ -611,7 +618,6 @@ design of \gls{soc}  observers. This is because, the measured  voltage maps to a
 vastly different  operating point when using  the \gls{spm} as the  plant model,
 leading to strong deviations of the estimated \gls{soc}.
 
-\input{4/dischg_errs_spm_p2d_table.tex}
 
 \subsubsection*{Constant current charge}\label{subsubsec:cnstcurrchgsim}
 
