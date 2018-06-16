@@ -447,6 +447,10 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 3591	2.49469\\
 3596	2.54324\\
 };
+\node[right, align=left]
+at (rel axis cs:0.5,0.55) {$\%\, |\hat{\varepsilon}_v|_\mathrm{max}:\, $2.54};
+\node[right, align=left]
+at (rel axis cs:0.5,0.4) {$\%\, \hat{\varepsilon}_{v_\mathrm{mae}}\,\,\,\,\,:\, $2.05};
 \end{axis}
 
 \begin{axis}[%
@@ -454,6 +458,7 @@ width=68.24mm,
 height=42.176mm,
 at={(89.237mm,0mm)},
 scale only axis,
+clip=false,
 xmin=0,
 xmax=4000,
 xtick={   0, 1000, 2000, 3000, 4000},
@@ -517,5 +522,9 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 672.5	-0.102879\\
 3596	-0.102879\\
 };
+\node[right, align=left]
+at (rel axis cs:0.5,0.55) {$\%\, |\hat{\varepsilon}_\mathrm{soc}|_\mathrm{max}:\, $0.10};
+\node[right, align=left]
+at (rel axis cs:0.5,0.4) {$\%\, \hat{\varepsilon}_{\mathrm{soc}_\mathrm{mae}}\,\,\,\,:\, $0.10};
 \end{axis}
 \end{tikzpicture}%
