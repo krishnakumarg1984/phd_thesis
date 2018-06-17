@@ -1,0 +1,19 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:nospell
+
+\begin{table}[!htb]
+    \caption[Error-metrics summary of basic \glsfmtshort{spm} for \glsfmtshort{udds} current profile]{Summary of error
+        metrics (in terminal voltage and \glsfmtshort{soc}) of the basic \glsfmtshort{spm} for  \glsfmtshort{udds}
+    simulations.}
+    \label{tbl:errorsummaryuddsdischgspmp2d}
+    \centering
+    \begin{tabular}{@{} l S S @{}} \toprule
+        {Error metric} & {$\varepsilon_v\, (\si{\milli\volt})$} & {$\varepsilon_\text{soc}\, (\si{\percent})$} \\ \midrule
+        {Abs. max.}    & 97.37                                  & 0.21                                         \\
+        {\gls{mae}}    & 19.38                                  & 0.04                                         \\
+        {\gls{rms}}    & 25.88                                  & 0.06                                         \\ \bottomrule
+    \end{tabular}
+\end{table}

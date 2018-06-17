@@ -719,13 +719,34 @@ performance to dynamic inputs.
     \label{fig:uddssimp2dspmresults}
 \end{figure}
 
+\FloatBarrier
+
 \Cref{fig:uddssimp2dspmresults}  shows   the  simulation  results   obtained  by
 applying the  \gls{udds} current input profile  (top row) to both  the \gls{p2d}
-and  \gls{spm} models.  The voltage  output from  the models  is plotted  in the
-middle row  whereas the bottom row  shows the evolution of  the cell's \gls{soc}
-over time.
+and  \gls{spm}  models. The  simulation  is  started at  \SI{50}{\percent}  cell
+\gls{soc}. This is  representative of the median point for  the operating window
+of \gls{soc} swing for both  \glspl{bev} and \glspl{phev}. Although regenerative
+braking is  employed, due to  the reduced occurrence  of braking events  as well
+as  considering efficiencies  of  the  drivetrain, as  with  any driveycle,  the
+\gls{udds} run  also results  in a  net-discharge. The  cell's \gls{soc}  at the
+termination of  the \gls{udds}  run is \approx  \SI{6}{\percent} lower  than its
+starting value.
 
-% accuracy comparison, inset, table. whatever
+
+The voltage  output from  the models  is plotted  in the
+middle row  whereas the bottom row  shows the evolution of  the cell's \gls{soc}
+over time.  Consistent with the  error trends  observed in the  constant current
+discharge  and  charge  simulations,  the  error in  terminal  voltage  is  high
+whereas  that  in  \gls{soc}  is  very  low  for  the  dynamic  load  case  too.
+Following  convention in  prevalent literature,  the voltage  error metrics  are
+reported directly in  units of \si{\milli\volt} for the  dynamic simulation run.
+Furthermore, it  is a standard practice  to report the \gls{rms}  error for such
+dynamic load profiles  and is included in the summary  of error metrics reported
+in~\cref{tbl:errorsummaryuddsdischgspmp2d}.
+
+\input{4/udds_errs_spm_p2d_table.tex}
+
+% accuracy comparison, figure inset
 
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth} % 15.74776 cm
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textheight} % 22.27184 cm
