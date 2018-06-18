@@ -25,11 +25,15 @@ cell modelling art.
 
 Although  not   explicitly  given  in  \gls{spm}   literature,  using  \gls{lti}
 system  theory,  the  analytical  solution for  continuous-time  state  equation
-(\cref{eq:LTIstatespace}) is given by
+(\cref{eq:LTIstatespace})  with  current input\footnote{Analytical  closed  form
+solution cannot be obtained for constant  voltage operation. This is because the
+boundary flux is implicitly determined  by the non-linear Butler-Volmer equation
+and needs to be solved numerically  with some variant of a Newton-type iteration
+scheme.} is given by
 \begingroup
 \allowdisplaybreaks
 \setlength{\abovedisplayskip}{0.9765625ex}
-\setlength{\belowdisplayskip}{0ex}
+% \setlength{\belowdisplayskip}{0ex}
 \begin{align}
     % \SwapAboveDisplaySkip
     \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}B \mathbf{u}(τ)\,dτ \label{eq:genanalyticctssoln}

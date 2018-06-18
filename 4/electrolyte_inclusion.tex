@@ -1,3 +1,18 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+As  evidenced by  the  results of  the constant  current  charge, discharge  and
+dynamic  simulation runs,  the basic  \gls{spm} suffers  from a  \emph{critical}
+drawback. The lack of electrolyte dynamics in the conventional \gls{spm} results
+in  poor voltage  accuracy  even at  moderate C-rates.  This  renders the  model
+unsuitable for  observer design in  \gls{soc} estimation applications  since the
+output voltage from the model maps  to a radically different \gls{soc} operating
+point. A number of candidate solutions have been proposed in literature in order
+to mitigate this drawback. Their salient aspects are briefly evaluated here.
+
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013} discuss  the usage of  a polynomial
 approximation  for   electrolyte  concentration  and  potentials.   However,  no
 restriction was imposed on the order  of the polynomials chosen to represent the
@@ -23,4 +38,14 @@ optimisation  was performed  to obtain  the optimal  placement of  this interior
 node. Although it serves as a proof of concept towards implementing higher order
 polynomial approximations,  the author of this  thesis deems this method  as too
 complex for online implementations.
+
+
+% A common  characteristic of  these proposals  is that  they seek  to incorporate
+% electrolyte  dynamics  of  varying  degrees  of  complexity  directly  into  the
+% \gls{spm}. But I did something different.  The high accuracy of the \gls{soc} in
+% the basic  \gls{spm} leads to  the author's  hypothesis that if  the electrolyte
+% concentration  can  be  solved  as an  independent  subsystem  and  incorporated
+% into  the  terminal  voltage,  this  can lead  to  an  improved  \gls{spm}  with
+% electrolyte  dynamics. Such  a decoupled  electrolyte inclusion  into the  basic
+% \gls{spm}\fxnote{fix this sentence}
 

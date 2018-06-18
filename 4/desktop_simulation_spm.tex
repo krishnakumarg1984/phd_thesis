@@ -398,9 +398,9 @@ comparing with experimental  data from a real cell, such  works resort to ad-hoc
 techniques such as empirical curve-fitting for obtaining the surface area. Often
 the source  of such parametrisation  is not made  clear. Chapter~\cref{ch:layer}
 documents  the details  of  obtaining  the overall  surface  area  of cells  and
-arriving  at the  C-rate per  layer of  the specific  cell under  consideration.
-Since  the \gls{dfn}  model does  not explicitly  model the  cell capacity,  the
-author  is  compelled  to  provide  an exposition  on  how  a  simple  numerical
+arriving at the C-rate per layer of the specific cell under consideration. Since
+the \gls{dfn}  model does  not explicitly  model the  cell capacity,  the author
+is  compelled  to  provide  a  brief  explanation  on  how  a  simple  numerical
 characterisation for determining cell capacity given a \emph{complete} parameter
 list. \fxnote{citations needed for each accusation.}
 
@@ -657,12 +657,6 @@ underlying polynomial approximation of solid  phase diffusion. It is striking to
 note  that the  error in  \gls{soc} remains  exactly around  the same  magnitude
 (\approx\SI{0.1}{\percent}) in both the charging and discharging cases.
 
-The high accuracy of the \gls{soc} in  the basic \gls{spm} leads to the author's
-hypothesis that if the electrolyte concentration can be solved as an independent
-subsystem  and incorporated  into  the terminal  voltage, this  can  lead to  an
-improved  \gls{spm}  with electrolyte  dynamics.  Such  a decoupled  electrolyte
-inclusion into the basic \gls{spm}\fxnote{fix this sentence}
-
 \subsubsection*{Dynamic input profile}\label{subsubsec:dynamicspmp2dsim}
 
 For automotive applications, it is  important to characterise the performance of
@@ -710,7 +704,7 @@ performance to dynamic inputs.
 \begin{figure}[!htb]
     \centering
     % \includegraphics[width=13.765cm]{4/figures/udds_I_v_soc.pdf}
-    \includegraphics{4/figures/udds_I_v_soc.pdf}
+    \includegraphics{4/figures/udds_I_v_soc.pdf} % change this scale suitably afterwards
     \caption[Simulation results of \glsfmtshort{p2d} and \glsfmtshort{spm}
     models to \glsfmtshort{udds} current profile]{Simulation results for a
         \glsfmtshort{udds} current profile. The voltage prediction performance
@@ -718,8 +712,6 @@ performance to dynamic inputs.
     \glsfmtshort{soc} computation accuracy is high.}
     \label{fig:uddssimp2dspmresults}
 \end{figure}
-
-\FloatBarrier
 
 \Cref{fig:uddssimp2dspmresults}  shows   the  simulation  results   obtained  by
 applying the  \gls{udds} current input profile  (top row) to both  the \gls{p2d}
@@ -732,16 +724,16 @@ as  considering efficiencies  of  the  drivetrain, as  with  any driveycle,  the
 termination of  the \gls{udds}  run is \approx  \SI{6}{\percent} lower  than its
 starting value.
 
-
-The voltage  output from  the models  is plotted  in the
-middle row  whereas the bottom row  shows the evolution of  the cell's \gls{soc}
-over time.  Consistent with the  error trends  observed in the  constant current
-discharge  and  charge  simulations,  the  error in  terminal  voltage  is  high
-whereas  that  in  \gls{soc}  is  very  low  for  the  dynamic  load  case  too.
-Following  convention in  prevalent literature,  the voltage  error metrics  are
-reported directly in  units of \si{\milli\volt} for the  dynamic simulation run.
-Furthermore, it  is a standard practice  to report the \gls{rms}  error for such
-dynamic load profiles  and is included in the summary  of error metrics reported
+\FloatBarrier
+The  voltage  output from  the  models  is plotted  in  the  middle row  whereas
+the  bottom  row  shows  the  evolution  of  the  cell's  \gls{soc}  over  time.
+Consistent with the error trends observed  in the constant current discharge and
+charge  simulations, the  error  in terminal  voltage is  high  whereas that  in
+\gls{soc} is  very low for  the dynamic load  case too. Following  convention in
+prevalent  literature,  the  voltage  error metrics  are  reported  directly  in
+units  of  \si{\milli\volt} for  the  dynamic  simulation run.  Furthermore,  it
+is  a  standard  practice  to  report  the  \gls{rms}  error  for  such  dynamic
+load  profiles  and  is  included  in the  summary  of  error  metrics  reported
 in~\cref{tbl:errorsummaryuddsdischgspmp2d}.
 
 \input{4/udds_errs_spm_p2d_table.tex}
