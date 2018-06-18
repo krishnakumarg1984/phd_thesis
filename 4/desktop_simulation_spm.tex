@@ -220,7 +220,7 @@ both  the \gls{p2d}  and  \gls{spm}  models and  hence  are  omitted. All  other
 electrochemical  properties,   \viz{}  stoichiometries   at  \SI{100}{\percent},
 maximum concentrations, diffusivities, reaction  rate coefficients and \gls{ocp}
 of  the two  electrodes remain  invariant  between the  \gls{p2d} and  \gls{spm}
-models.
+models. \nopagebreak[4]
 
 \subsection{Simulation Setup}\label{subsec:basicspmsimsetup}
 
@@ -368,12 +368,6 @@ incorporating further meshing refinements. The discretisation-related parameters
 are  specific to  the  \gls{p2d}  model and  is  hence, highlighted  accordingly
 in~\cref{tbl:lcoSimParamsSPMp2d}.
 
-With  the cell  parametrisation discussed  and the  simulation setup  presented,
-the  simulation   results  are  fully   reproducible  and  are   presented  next
-in~\cref{subsec:simresultsbasicspm}.
-
-\subsection{Simulation Results}\label{subsec:simresultsbasicspm}
-
 \subsubsection*{Capacity Characterisation}\label{subsubsec:capcharspmp2d}
 
 First,  it  must be  established  that  incorporating the  parameters  presented
@@ -505,10 +499,12 @@ and is consistent  with the order of  magnitude of the \gls{rms}  and mean error
 metrics as well as with the standard deviation of the error vector.
 
 Thus,  a common  foundation  for  further simulations  has  been established  by
-confirming  that the  two  models indeed  simulate  a cell  with  a capacity  of
-\SI{60}{\amphour}.
+confirming  that  the  two  models  indeed  simulate  a  cell  with  a  capacity
+of  \SI{60}{\amphour}.  With  the  cell  parametrisation  discussed,  simulation
+setup  presented and  capacities  validated, the  simulation  results are  fully
+reproducible and are presented next in~\cref{subsec:simresultsbasicspm}.
 
-% Include the output from the timeit script in the table
+\subsection{Simulation Results}\label{subsec:simresultsbasicspm}
 
 \subsubsection*{Constant current discharge}\label{subsubsec:cnstcurrdischgsim}
 
@@ -723,7 +719,7 @@ as  considering efficiencies  of  the  drivetrain, as  with  any driveycle,  the
 termination of  the \gls{udds}  run is \approx  \SI{6}{\percent} lower  than its
 starting value.
 
-\FloatBarrier
+% \FloatBarrier
 The  voltage  output from  the  models  is plotted  in  the  middle row  whereas
 the  bottom  row  shows  the  evolution  of  the  cell's  \gls{soc}  over  time.
 Consistent with the error trends observed  in the constant current discharge and
