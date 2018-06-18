@@ -58,6 +58,38 @@ results of applying dynamic current profiles.  Since the critical aspect of mass
 transport  contribution  to electrolyte  overpotential  is  omitted, this  model
 cannot be viewed as a \emph{sufficient} enhancement to the basic \gls{spm}.
 
+Guo~\etal~\cite{Guo2011}  presented  an  empirical  approach  is  undertaken  to
+account   for  the   solution-phase  dynamics.   Using  standard   curve-fitting
+techniques, a  non-linear resistance  as a function  of current  and temperature
+was  introduced.  Thus,  the  equation   for  cell  terminal  voltage  presented
+in~\cref{eq:cellterminalvoltagebasic} is modified as
+\begin{equation}
+    V_\text{cell} = η_\text{pos} - η_\text{neg} + U_\text{pos} - U_\text{neg} - I R_\text{eq}
+\end{equation}
+where  $R_\text{eq}$  is the  equivalent  resistance  newly introduced.  In  the
+opinion of  this thesis  author, this  approach is too  simplistic and  does not
+generalise well. Even if giving up  physics-based model origins can be tolerated
+for one  or two subsystems  within the model,  the equivalent resistance  is not
+just a minor correction term since it  needs to account for a large polarization
+voltage of  the order  of tens of  millivolts. Secondly,  the current-dependence
+introduced  to account  for the  complex mass  and charge  transport within  the
+electrolyte  places a  disproportionately large  weight on  the accuracy  of the
+curve-fitting process. Non-linear  fits as proposed in  Guo~\etal are inherently
+problematic  in nature  as  the optimisation  routine may  converge  to a  local
+minimum.  The specific  form and  nature, \eg{}  the convexity  of the  proposed
+hypothesis function is  not discussed. Also, it is also  not guaranteed that the
+same fitting  function is  applicable to  a different cell  with another  set of
+parameters. Finally,  the correction  term being resistive  in nature  is zeroth
+order,  \ie{}  cannot account  for  the  frequency  dependent behaviour  of  the
+electrolyte's  dynamics. This  approach is  more suited  for small-scale  static
+corrections that do not depend on the current,\eg{} to account for a few tens of
+microvolts  due to  a constant  contact  resistance of  the current  collectors.
+\fxnote{later on, as a capstone work, mention how I was inspired}
+
+Although not in the context of incorporating into the \gls{spm},
+Guduru~\etal~\cite{Guduru2012} present an analytical solution of the
+spatio-temporal electrolyte concentration
+
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013} discuss  the usage of  a polynomial
 approximation  for   electrolyte  concentration  and  potentials.   However,  no
