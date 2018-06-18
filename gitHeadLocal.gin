@@ -1,17 +1,17 @@
 \usepackage[%
-        shash={d67dd07},
-        lhash={d67dd07f75ee26dc259f17cddc55cf110be1e4e2},
+        shash={e7357cb},
+        lhash={e7357cbad65cea80cc0170760581df4617fe8e32},
         authname={Krishnakumar},
         authemail={krishnakumar@imperial.ac.uk},
-        authsdate={2018-06-15},
-        authidate={2018-06-15 23:53:29 +0100},
-        authudate={1529103209},
+        authsdate={2018-06-17},
+        authidate={2018-06-17 23:42:03 +0100},
+        authudate={1529275323},
         commname={Krishnakumar},
         commemail={krishnakumar@imperial.ac.uk},
-        commsdate={2018-06-15},
-        commidate={2018-06-15 23:53:29 +0100},
-        commudate={1529103209},
+        commsdate={2018-06-17},
+        commidate={2018-06-17 23:42:03 +0100},
+        commudate={1529275323},
         refnames={ (HEAD -> master)},
-        firsttagdescribe={d67dd07},
-        reltag={d67dd07}
+        firsttagdescribe={e7357cb},
+        reltag={e7357cb}
     ]{gitexinfo}
