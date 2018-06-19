@@ -2,3 +2,4 @@
 - bode diags
 - binary tree 
 - textsc for C-rate, especially uses like 1C
+- cite colorbrewer2

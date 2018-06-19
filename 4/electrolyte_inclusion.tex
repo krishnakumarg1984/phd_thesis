@@ -86,9 +86,34 @@ corrections that do not depend on the current,\eg{} to account for a few tens of
 microvolts  due to  a constant  contact  resistance of  the current  collectors.
 \fxnote{later on, as a capstone work, mention how I was inspired}
 
-Although not in the context of incorporating into the \gls{spm},
-Guduru~\etal~\cite{Guduru2012} present an analytical solution of the
-spatio-temporal electrolyte concentration
+Although   not   in  the   context   of   incorporating  into   the   \gls{spm},
+Guduru~\etal~\cite{Guduru2012}   presented  an   analytical   solution  of   the
+spatio-temporal  evolution  of  electrolyte concentration  using  the  \gls{sov}
+method.  The \gls{sov}  was  first  applied to  lithium  ion  cell modelling  by
+Subramanian~\etal~\cite{Subramanian2001a}  in order  to  solve  for solid  phase
+concentration  profiles in  spherical  electrode particles.  Although the  ionic
+concentration  in  the electrolyte  computed  by  the analytical  expression  in
+Guduru~\etal{} seems like a feasible choice for inclusion into the \gls{spm}, it
+is only applicable for galvanostatic boundary conditions, \ie{} when the applied
+current  is held  constant over  time. By  natural extension,  researchers could
+hypothesise  that this  restriction  may  be removed  by  considering the  input
+current as  piecewise constant  over small sample  intervals. Such  a hypothesis
+could  be reinforced  by the  fact that  standard drivecycles  are specified  as
+discrete  samples  and  the  discrete-time  \gls{spm}  loops  over  these  input
+samples assuming \gls{zoh} behaviour. However, the analytical solution presented
+in  Guduru~\etal{}  assumes  a  \gls{qss} concentration  profile.  The  authors'
+presentation considers a near-instantaneous  establishment of this \gls{qss} and
+suggests its  parameter independent implementation through  use of dimensionless
+concentrations  and time-constants  instead of  absolute time.  However, in  the
+observation  of  this  thesis author\fxnote{show  electrolyte  steady-state  and
+transient gradient}, the transient duration of establishing the \gls{qss} is not
+always negligible and exhibits a dependence  on the parameter set used. Thus, in
+a highly dynamic  operating conditions with frequent reversals in  the direct of
+current, the galvanostatic assumption for  analytical solution becomes harder to
+uphold without introducing significant  errors. Finally, the analytical solution
+to  the  concentration profile  itself  is  not  entirely amenable  to  embedded
+implementation,  since  it  consists  of  a  non-trivial  set  of  trigonometric
+computations at each time-step.
 
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013} discuss  the usage of  a polynomial
