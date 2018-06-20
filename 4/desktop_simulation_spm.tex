@@ -24,12 +24,11 @@ from  Subramanian~\etal{}~\cite{Subramanian2009}.   The  significance   of  each
 of  the  parameters  in  the  context of  the  modelling  assumptions  discussed
 in~\cref{subsec:basicspmassumptions} is examined.
 
-
 The simulation parameters that are applicable exclusively to the \gls{p2d} model
 are shown as  highlighted text in~\cref{tbl:lcoSimParamsSPMp2d}. It  can be seen
 that only a  subset of the isothermal \gls{dfn} model's  parameters are required
-for the the \gls{spm}. In particular, there is no requirement to estimate any of
-the electrolyte-related  parameters in  each electrode region.  Furthermore, the
+for the \gls{spm}. In particular, there is no requirement to estimate any of the
+electrolyte-related  parameters  in  each  electrode  region.  Furthermore,  the
 properties of the separator material which  are necessary in the \gls{dfn} model
 are also  not considered in the  \gls{spm} computations. A brief  enumeration of
 the additional  \gls{p2d}-specific parameters in the  context of parametrisation
@@ -70,11 +69,11 @@ requirements is provided here.
     and is  independent of  the region  within the  cell. Hence,  this intrinsic
     property is to be parametrised only once (per solvent).
 
-    \customenum{\scalebox{1.25}{$\sigma$}_j}{2} The intrinsic conductivity of the solid
-    phase depends on the material used in the porous electrodes. Although a
-    simplified assumption of equal conductivity is used for the two electrodes,
-    in practice, this property needs to be characterised for each of the two
-    electrodes.
+    \customenum{\scalebox{1.25}{$\sigma$}_j}{2}  The  intrinsic conductivity  of
+    the  solid phase  depends on  the material  used in  the porous  electrodes.
+    Although a simplified  assumption of equal conductivity is used  for the two
+    electrodes, in practice, this property needs to be characterised for each of
+    the two electrodes.
 
 \end{enumdescriptnum}
 
@@ -100,7 +99,7 @@ electrode area exposed  to reaction and is an important  entity in the \gls{spm}
 model  equations  presented  in~\cref{subsec:basicspmgoverningeqns}.  The  solid
 phase volume fractions are also required in simulating the \gls{p2d} model owing
 to  the  need for  computing  the  effective  electronic conductivities  of  the
-electrodes.\fxnote{cross-reference to  specifc newman equations here}.  They are
+electrodes.\fxnote{cross-reference to  specific Newman equations here}.  They are
 calculated as
 \begin{equation}
     \varepsilon_\sj = 1 - \varepsilon_j - \varepsilon_{\text{fi}_j}
@@ -189,7 +188,7 @@ and  \gls{spm}  models,  this  parameter  serves  to  scale  the  external  load
 current  down  to  the  current  density  experienced  by  each  electrochemical
 layer. A value of  \approx\SI{30}{\ampere\per\meter\squared} was reported in the
 results section of  Subramanian~\etal{}~\cite{Subramanian2009}. When considering
-a \SI{60}{\ampere\hour} pouch cell with \SI{10}{\milli\meter} exterior thickness
+a  \SI{60}{\amphour} pouch  cell with  \SI{10}{\milli\meter} exterior  thickness
 and  using  the  parameters  reported  in~\cite{Subramanian2009},  this  results
 in  a cross-sectional  area of  \SI{2.053}{\meter\squared}\fxnote{to add:  refer
 to  layer  optimisation  chapter   for  detailed  derivation}.  Considering  the
@@ -200,14 +199,14 @@ negative  electrode, the  1C-rate  capacity  of the  cell  has  been revised  to
 On  simulating  the \gls{p2d}  model  with  a  trickle bleeding  type  discharge
 corresponding   to   a  current   of   C/500   and   logging  the   data   every
 \SI{1}{\milli\second}, after reaching \SI{2.7}{\volt}\footnote{From manufacturer
-    datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
+datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
 correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
 in  the two  electrodes  were noted.  The  corresponding residual  stoichiometry
 values  are reported  in~\cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
 typical values reported in literature for \gls{lco} chemistries.\fxnote{citation
 needed here.}  This validation is  important, since below  certain stoichiometry
 thresholds, the spinel/olivine  structure of the electrodes  can become unstable
-and  collapse\fxnote{citation needed?}.
+and collapse\fxnote{citation needed?}.
 
 Since   the   cell   behaviour   is   considered   isothermal,   the   parameter
 table     in~\cref{tbl:lcoSimParamsSPMp2d}     omits     activation     energies
@@ -227,7 +226,7 @@ models. \nopagebreak[4]
 For  reproducibility of  results, it  is important  to discuss  the system-level
 parameters influencing simulation setup.
 
-The  lower cutoff  voltage of  the cell  is chosen  to be  \SI{2.5}{\volt}. This
+The lower  cut-off voltage  of the  cell is chosen  to be  \SI{2.5}{\volt}. This
 is  deliberately  kept  lower  than  the voltage  corresponding  to  the  cell's
 \SI{0}{\percent},  \ie{}  \SI{2.7}{\volt}.  If set  above  \SI{2.7}{\volt}  even
 at  infinitesimally small  discharge  currents, the  cell  would cut-off  before
@@ -236,14 +235,14 @@ the cell gets a chance to recover its terminal voltage, despite spikes in highly
 dynamic  load  currents  that  might  bring the  voltage  below  this  threshold
 momentarily. If a low-enough value is  not chosen, a system-level shutdown shall
 be  initiated  despite possessing  the  ability  to  continue to  operate  after
-recovery  of terminal  voltage.  In  this case,  choosing  a  cutoff voltage  of
+recovery  of terminal  voltage.  In this  case, choosing  a  cut-off voltage  of
 \SI{2.5}{\volt}  does  not  damage  the  cell  since  checks  are  in  place  to
-monitor  the \gls{soc}  and  trigger cutoff  in the  event  of charge  depletion
+monitor  the \gls{soc}  and trigger  cut-off in  the event  of charge  depletion
 (see~\cref{alg:ctstimespm,alg:disctimespm}).  Northrop~\etal~\cite{Northrop2011}
 use this value, although no explanation is given for the choice.
 
-The  upper  cutoff voltage  of  the  cell  is  chosen at  \SI{4.3}{\volt}  \ie{}
-\approx\SI{100}{\milli\volt}   higher   than   the  equilibrium   \gls{ocp}   at
+The  upper   cut-off  voltage   of  the  cell   is  chosen   at  \SI{4.3}{\volt}
+\ie{}  \approx\SI{100}{\milli\volt} higher  than  the  equilibrium \gls{ocp}  at
 \SI{100}{\percent} \gls{soc}. There are several  reasons for this smaller margin
 at the upper end of the voltage spectrum
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
@@ -282,8 +281,8 @@ in a \gls{bev} application and  for short-duration transient loads studied, this
 is a reasonable assumption. Detailed modelling of thermal dynamics is not within
 the scope of this thesis, as the primary goal is to obtain a physics based model
 incorporating  electrochemical  principles  amenable for  embedded  application.
-Thus, thermal dependence of parameters through an Arrhenius-type relationship is
-not  considered.    Future   work  could   include  performing   thermally  coupled
+Thus, thermal  dependence of  parameters through an  Arrhenius-type relationship
+is  not  considered. Future  work  could  include performing  thermally  coupled
 simulations, incorporating  thermally relevant  parameters and use  a simplified
 heat generation expression,  \eg{} a lumped thermal model in  both the \gls{spm}
 and \gls{p2d} and compare their performances.
@@ -737,5 +736,4 @@ in~\cref{tbl:errorsummaryuddsdischgspmp2d}.
 
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth} % 15.74776 cm
 % textwidth in cm: \printinunitsof{cm}\prntlen{\textheight} % 22.27184 cm
-% electrolyte resistance
 % github toolbox
