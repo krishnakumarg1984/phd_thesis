@@ -1,8 +1,8 @@
 % This file was created by matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.99216,0.80000,0.54118}%
-\definecolor{mycolor2}{rgb}{0.98824,0.55294,0.34902}%
-\definecolor{mycolor3}{rgb}{0.84314,0.18824,0.12157}%
+\definecolor{mycolor1}{rgb}{0.98645,0.53373,0.38150}%
+\definecolor{mycolor2}{rgb}{0.71318,0.21389,0.47625}%
+\definecolor{mycolor3}{rgb}{0.31195,0.07020,0.48373}%
 \definecolor{mycolor4}{rgb}{0.19121,0.40577,0.55600}%
 \definecolor{mycolor5}{rgb}{0.12816,0.56511,0.55089}%
 \definecolor{mycolor6}{rgb}{0.21004,0.71984,0.47178}%
