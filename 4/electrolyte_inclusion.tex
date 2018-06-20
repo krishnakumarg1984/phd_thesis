@@ -160,31 +160,33 @@ profile in Guduru~\etal{}  is not amenable to embedded  implementation, since it
 consists of a non-trivial set of trigonometric computations at each time-step.
 
 
-Rahimian~\etal{}~\cite{KhaleghiRahimian2013} discuss  the usage of  a polynomial
-approximation  for   electrolyte  concentration  and  potentials.   However,  no
-restriction was imposed on the order  of the polynomials chosen to represent the
-electrolyte concentration within  each porous electrode region.  In the standard
-\gls{dfn} model, the  number of equations and  corresponding boundary conditions
-describing electrolyte charge and mass transport within the cell is insufficient
-to uniquely solve for all  unknown coefficients of the polynomial approximation.
-The  challenges  posed  due  to  this equation  deficiency  shall  be  discussed
-in~\cref{temp:eqndeficiency}. Although  the original  \gls{spm} did  not involve
-solving  for  the  electrolyte  concentrations  or  potentials,  The  polynomial
-approximation of the single
+Rahimian~\etal{}~\cite{KhaleghiRahimian2013}   were   the   first   to   provide
+approximate expressions for both charge  transport and mass transport properties
+of the electrolyte specifically with the focus on improving the basic \gls{spm}.
+The  authors discuss  the usage  of a  polynomial approximation  for electrolyte
+concentration and potentials.  In particular, a cubic polynomial  was chosen for
+approximating the  electrolyte concentration within the  porous electrodes. This
+necessitates the  need to solve  for eight coefficients for  uniquely describing
+the electrolyte concentration profile within  the electrode regions. However, in
+the standard \gls{dfn} model, the number of electrolyte-specific \glspl{pde} and
+their corresponding boundary conditions describing  charge and mass transport is
+insufficient to uniquely  solve for all unknown coefficients  of this polynomial
+approximation.  A detailed  explanation  of this  equation  deficiency shall  be
+discussed in~\cref{temp:eqndeficiency}.
+
+To overcome the issue of  equation deficiency, Rahimian~\etal{} adopted a scheme
+wherein one  additional spatial location in  the interior of each  electrode was
+also needed. The coefficients of the polynomial approximation were then obtained
+by iteratively solving a large  coupled system of algebraic equations, embedding
+within  them  the additional  equations  evaluated  at  the interior  points.  A
+complicating  issue that  then arises  is regarding  the optimal  positioning of
+these additional interior points. An online numerical optimisation was performed
+to obtain the optimal  placement of this interior node. Although  it serves as a
+proof of concept towards implementing higher order polynomial approximations, in
+the views of this thesis author, such a scheme is too complex for rapid adoption
+by industry stakeholders.
 
 
-Rahimian~\etal{} adopted  a cubic  polynomial for approximating  the electrolyte
-concentration within  the porous electrodes.  To overcome the issue  of equation
-deficiency, they adapted a scheme wherein one additional spatial location in the
-interior  of  each  electrode  was  used. The  coefficients  of  the  polynomial
-approximation  were then  obtained  by iteratively  solving  a relatively  large
-coupled  system of  algebraic equations,  embedding within  them the  additional
-equations evaluated at  the interior point. An additional  complicating issue is
-the specific positioning of this  additional interior point. An online numerical
-optimisation  was performed  to obtain  the optimal  placement of  this interior
-node. Although it serves as a proof of concept towards implementing higher order
-polynomial approximations,  the author of this  thesis deems this method  as too
-complex for online implementations.
 
 
 % A common  characteristic of  these proposals  is that  they seek  to incorporate
