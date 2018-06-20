@@ -179,12 +179,19 @@ wherein one  additional spatial location in  the interior of each  electrode was
 also needed. The coefficients of the polynomial approximation were then obtained
 by iteratively solving a large  coupled system of algebraic equations, embedding
 within  them  the additional  equations  evaluated  at  the interior  points.  A
-complicating  issue that  then arises  is regarding  the optimal  positioning of
-these additional interior points. An online numerical optimisation was performed
-to obtain the optimal  placement of this interior node. Although  it serves as a
-proof of concept towards implementing higher order polynomial approximations, in
-the views of this thesis author, such a scheme is too complex for rapid adoption
-by industry stakeholders.
+complicating issue  that arises  is regarding the  optimal positioning  of these
+additional interior  points. An online  numerical optimisation was  performed to
+obtain  the optimal  placement of  this interior  node. In  the opinion  of this
+thesis author, these optimisation results could be sensitive to the thickness of
+the electrodes  among other  parameters. A  discussion of  the stability  of the
+proposed routine and its robustness to  parameter variance shall help in lending
+confidence in the proposed method.  Although sufficient accuracy of the improved
+\gls{spm} was  demonstrated for  currents up  to 5C, a  notable omission  is the
+discussion of the model's performance  to dynamic input profiles. In conclusion,
+the author of this thesis opines that, although this method serves as a proof of
+concept towards implementing polynomial approximations for electrolyte dynamics,
+until the aforementioned  gaps are addressed with clarity, it  is not convincing
+for uptake by relevant stakeholders.
 
 
 
