@@ -84,25 +84,28 @@ particularly  near  the  current   collectors.  This  phenomenon  is  visualised
 in~\cref{fig:ce1cdischgwithzoom} wherein the electrolyte at the positive current
 collector  is  virtually  depleted  of  ions  at  the  end  of  discharge.  This
 ion-starvation process occurs earlier at higher {C-rates} and spreads throughout
-the thickness of the electrode.  Furthermore, Di Domenico~\etal{} do not present
-any results of  applying dynamic current profiles. Since the  critical aspect of
-mass transport contribution to electrolyte  overpotential is omitted, this model
-cannot be viewed as a \emph{sufficient} enhancement to the basic \gls{spm}.
+the  thickness  of  the  electrode.  Thus,  the  assumption  of  constant  ionic
+concentration  in the  electrolyte is  not true.  Neglecting mass  transport due
+to  diffusion  implies  that  the  terms  in~\cref{eq:electrolytepd}  constitute
+only  a part  of the  expression  for computing  the electrolyte  overpotential.
+Furthermore, Di Domenico~\etal{} do not  present any results of applying dynamic
+current profiles.  Since the critical  aspect of mass transport  contribution to
+electrolyte  overpotential  is  omitted,  this  model  cannot  be  viewed  as  a
+\emph{sufficient} enhancement to the basic \gls{spm}.
 
 \begin{figure}[!htp]
     \centering
     \includegraphics{4/figures/ce_1C_at_various_times.pdf}
     \caption[Electrolyte conc.\ (time-snapshots) along cell thickness for 1C
-    discharge]{Spatial distribution of \ch{Li^+} ion concentration in
-        electrolyte along cell thickness at various time-snapshots during a 1C
-        discharge lasting \SI{3571}{\second}. A \glsfmtlong{qss}
-        (\glsfmtshort{qss}) spatial profile  with inflection point at each
-        separator interface begins to form at \approx \SI{60}{\second} after
-        discharge begins. However, the ionic concentration in electrolyte
-        exhibits a significantly different transient behaviour (zoomed inset)
-        possessing another inflection point that disrupts the monotonic trend.
-        Depletion of ionic concentration at positive current collector  towards
-    end of discharge is shown.}
+    discharge]{\ch{Li^+} ion concentration in electrolyte along cell thickness
+        at various time-snapshots during a 1C discharge simulation of the
+        \glsfmtshort{p2d} model. A \glsfmtlong{qss} (\glsfmtshort{qss}) spatial
+        profile  with inflection point at each separator interface begins to
+        form at \approx \SI{60}{\second} after discharge begins. However, the
+        ionic concentration in electrolyte exhibits a significantly different
+        transient behaviour (zoomed inset) possessing another inflection point
+        that disrupts the monotonic trend. Depletion of ionic concentration at
+    positive current collector  towards end of discharge is shown.}
     \label{fig:ce1cdischgwithzoom}
 \end{figure}
 
@@ -126,16 +129,35 @@ presentation  considers a  near-instantaneous  establishment  of this  \gls{qss}
 and  suggests a  parameter  independent analysis  through  use of  dimensionless
 concentrations  and time-constants  instead of  absolute time.
 
-In  the studies  conducted  by this  thesis author,  the  transient duration  of
-establishing the  \gls{qss} is not negligible  and exhibits a dependence  on the
-parameter set used. \Cref{fig:ce1cdischgwithzoom} shows the spartial
+In  the  studies  conducted  by  this  thesis  author,  significantly  different
+transient  behaviour  is exhibited  by  the  electrolyte concentration  profile.
+Furthermore,  the  time  taken  to   establish  the  \gls{qss}  profile  is  not
+negligible. This  difference in behaviour  could be attributed to  the different
+parameter  set used.  \Cref{fig:ce1cdischgwithzoom}  shows  the spatial  profile
+of  ionic concentration  at  various  snapshots of  time  during  a 1C  constant
+current discharge. Starting at \SI{100}{\percent} \gls{soc}, the discharge lasts
+\SI{3571}{\sec}. It is  seen that it takes nearly  \SI{60}{\second} to establish
+the  approximately parabolic  shape  assumed by  the electrolyte  concentration.
+After  the  initial transient  has  elapsed,  the  underlying structure  of  the
+mathematical equations  can be assumed  to be static.  This is evidenced  by the
+fact that at \SI{1785}{\second}, \ie{} after half of the discharge is completed,
+the shape of the curve is nearly  identical to the one towards end of discharge.
+These  \gls{qss} curves  have their  sole inflection  points at  their separator
+interfaces and remains monotonic within  their respective electrode regions. The
+difference in  height for  various times  can be  accounted by  the coefficients
+solved using the analytical modal solution proposed in Guduru~\etal{}.
 
-Thus, in  a highly dynamic operating  conditions with frequent reversals  in the
-direct of current, the galvanostatic  assumption for analytical solution becomes
-harder to uphold without introducing significant errors. Finally, the analytical
-solution  to  the concentration  profile  itself  is  not entirely  amenable  to
-embedded implementation, since it consists of a non-trivial set of trigonometric
-computations at each time-step.
+The  axes  in  the  inset  of~\cref{fig:ce1cdischgwithzoom}  shows  a  zoomed-in
+view  of  the electrolyte  concentration  during  the transient  phase,  wherein
+the  \gls{qss}  has  not  yet  been  established.  In  particular,  there  exist
+additional inflection points,  one within the interior of  each electrode, which
+renders the transient concentration profile mathematically incompatible with the
+monotonicity  exhibited  by  the  \gls{qss} profile.  Thus,  in  highly  dynamic
+operating  conditions with  frequent reversals  in  the direct  of current,  the
+\gls{qss} assumption for the galvanostatic analytical solution becomes harder to
+uphold without introducing significant  errors. Finally, the analytical solution
+profile in Guduru~\etal{}  is not amenable to embedded  implementation, since it
+consists of a non-trivial set of trigonometric computations at each time-step.
 
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013} discuss  the usage of  a polynomial
