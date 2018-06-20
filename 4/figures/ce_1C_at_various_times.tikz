@@ -11,16 +11,14 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=157.478mm,
-height=94.178mm,
+width=151.778mm,
+height=97.329mm,
 at={(0mm,0mm)},
 scale only axis,
 xmin=0,
 xmax=185,
 xtick={0,72,97,185},
 xticklabels={{0},{$l_\mathrm{pos}$},{$l_\mathrm{pos}\! + l_\mathrm{sep}$},{$l_\mathrm{tot}$}},
-xlabel style={font=\color{white!15!black}},
-xlabel={$x\, \mathrm{(\mu\, m)}$},
 ymin=0,
 ymax=1750,
 ytick={   0,  250,  500,  750, 1000, 1250, 1500, 1750},
@@ -324,22 +322,22 @@ at (axis cs:166,1380) {178 s};
 at (axis cs:166,1560) {1785 s};
 \node[right, align=left]
 at (axis cs:166,1695) {3571 s};
-\addplot [color=black, dashed, forget plot]
+\addplot [color=black, dashed, line width=1.0pt, forget plot]
   table[row sep=crcr]{%
 72	0\\
-72	1925\\
+72	1800\\
 };
-\addplot [color=black, dashed, forget plot]
+\addplot [color=black, dashed, line width=1.0pt, forget plot]
   table[row sep=crcr]{%
 97	0\\
-97	1925\\
+97	1800\\
 };
 \end{axis}
 
 \begin{axis}[%
-width=44.945mm,
-height=34.98mm,
-at={(97.551mm,8.072mm)},
+width=43.318mm,
+height=36.151mm,
+at={(94.02mm,8.342mm)},
 scale only axis,
 xmin=97.25,
 xmax=185,
@@ -452,9 +450,9 @@ at (axis cs:148,1070) {20 s};
 \end{axis}
 
 \begin{axis}[%
-width=180.393mm,
-height=111.491mm,
-at={(-19.278mm,-14.404mm)},
+width=173.864mm,
+height=107.456mm,
+at={(-18.58mm,-7.323mm)},
 scale only axis,
 xmin=0,
 xmax=1,
@@ -467,16 +465,16 @@ axis y line*=left,
 scaled ticks=false,,
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]
-\draw[line width=1.5pt, draw=black] (axis cs:0.565767,0.607055) rectangle (axis cs:0.979839,0.650497);
+\draw[line width=1.5pt, draw=black] (axis cs:0.565767,0.580545) rectangle (axis cs:0.979839,0.627127);
 \addplot [color=black, line width=1.5pt, forget plot]
   table[row sep=crcr]{%
-0.565767	0.607055\\
-0.647638	0.515343\\
+0.565767	0.580545\\
+0.647638	0.482206\\
 };
 \addplot [color=black, line width=1.5pt, forget plot]
   table[row sep=crcr]{%
-0.979839	0.607055\\
-0.896788	0.515343\\
+0.979839	0.580545\\
+0.896788	0.482206\\
 };
 \end{axis}
 \end{tikzpicture}%
