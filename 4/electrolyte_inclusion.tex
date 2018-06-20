@@ -196,20 +196,52 @@ for uptake by relevant stakeholders.
 
 Kemper  and  Kum~\cite{Kemper2013} presented  an  approach  wherein the  spatial
 gradients of the electrolyte concentration  are neglected. The time-evolution of
-average ionic  concentration in each of  the three cell regions  \viz{} positive
-electrode, separator and negative electrode are described through a set of three
-\glspl{ode}. As  already established by  the discussion thus far,  the gradients
-along  the  axial  thickness  of  the cell  is  significant,  even  at  moderate
-{C-rates}. Lending strength to doubts  in the model's applicability in scenarios
-with  electrolyte concentration  gradients  is the  fact  that constant  current
-results have not been  reported in this work. Thus, this model  is deemed as not
-satisfactory to warrant further engagement.
+\emph{average}  ionic concentration  in each  of the  three cell  regions \viz{}
+positive electrode, separator  and negative electrode are described by  a set of
+three \glspl{ode}. As established by  the discussion thus far, the concentration
+gradients along the axial thickness of the cell is significant, even at moderate
+{C-rates}. Lending strength to doubts on  the model's wider applicability is the
+fact that results from constant current inputs (which induce large concentration
+gradients  in electrolyte)  have  not been  reported in  this  work. Thus,  this
+approach is deemed as not satisfactory enough to warrant further engagement.
 
-\cite{}
+Luo~\etal~\cite{Luo2013} derived  a parabolic  approximation of  the electrolyte
+concentration  distribution along  the  thickness of  the  cell. The  derivation
+is  obtained  for  the case  of  steady-state  wherein  the  rate of  change  of
+concentration  is  zero.  However,  the  author  of  this  thesis  is  sceptical
+about  this   since  in  the   simulations  performed  there  is   no  situation
+other  than  prior  to  application  of current  that  this  exact  steady-state
+condition is  satisfied. In  the \gls{qss} profile  concept discussion  based on
+on~\cref{fig:ce1cdischgwithzoom},  it  is  clear that  only  the  \emph{spatial}
+profile reaches  a shape that can  be potentially described by  a mathematically
+invariant   family   of  curves.   The   electrolyte   concentration  is   still
+\emph{time-varying} and therefore violates the static time-evolution assumption.
+Although  Luo~\etal{}  do  not  explicitly acknowledge  this,  they  provide  an
+extension for  general operating  conditions by introducing  exponential scaling
+functions  $f_n(t)$ and  $f_p(t)$ while  retaining the  assumption of  parabolic
+spatial behaviour.  The computation of  certain time-constants in  these scaling
+functions  are  not  elucidated  nor  is  a  summary  of  procedural  steps  for
+determination of the aforementioned scaling functions provided.
 
 
+In a subsequent paper by  the same authors, \ie{} Luo~\etal~\cite{Luo2013a}, the
+electrolyte concentration  model together  with a  similarly-derived electrolyte
+potential model  was incorporated into  the conventional \gls{spm} to  arrive at
+what the authors term as extended \gls{spm}. In this work, the electrolyte
+potential is set to account for contribution from two terms ---
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item ohmic drop due to bulk solution resistance and
+    \item polarization potential due to concentration gradients
+\end{enumerate*}
+Although it  seeks to correctly account  for the two causes  of overpotential in
+the  electrolyte,  there  is  no  detailed explanation  on  the  computation  of
+quantities such as time-constants involved in the polarization potential term.
+
+% fudge-factor explanation
+% need to import references from box to mendeley
 
 
+% overall unsatisfactory state of affairs
 % A common  characteristic of these proposals  is that they seek  to incorporate
 % electrolyte  dynamics  of varying  degrees  of  complexity directly  into  the
 % \gls{spm}. But I  did something different. The high accuracy  of the \gls{soc}
