@@ -237,6 +237,35 @@ Although it  seeks to correctly account  for the two causes  of overpotential in
 the  electrolyte,  there  is  no  detailed explanation  on  the  computation  of
 quantities such as time-constants involved in the polarization potential term.
 
+Tanim~\etal~\cite{Tanim2014} accounted  for mass-transport and  charge transport
+in  the electrolyte  by  deriving  reduced order  transfer  functions for  ionic
+concentration distribution and  electrolyte overpotential respectively. However,
+the coefficients of these transfer  functions are excessively long and comprised
+of  chained algebraic  operations  expressed in  a high-entropy  sum-of-products
+form  in  the  appendix  of  their work.  For  instance,  ten  coefficients  are
+needed  to  describe  the  concentration  profile  while  six  coefficients  are
+required  for  the  electrolyte  potential.  The  median  length  of  even  each
+atomic sub-expression  of these coefficients  is sufficiently high  to obfuscate
+their  physical  significance.  A  low-entropy  form  for  the  coefficients  of
+these   transfer  functions   along  the   lines  of   the  idea   pioneered  by
+Middlebrook~\cite{Middlebrooka} and  exemplified in design-oriented  analysis of
+electric circuits~\cite{Middlebrook1998a,Vorperian2002a} could have been helpful
+to aid  the readers' understanding.  The author  of this thesis  recognises that
+mathematical complexity should not be the sole basis to judge the merits of such
+proposed improvements. Although the presentation of these long coefficients have
+been judiciously moved to the appendix, their derivations --- essential to prove
+the model's validity  --- is curiously omitted. There is  also a disadvantage in
+its reproducibility  due to  the complicated mathematical  expressions. Finally,
+the  electrolyte-specific enhancements  to the  \gls{spm} are  in the  frequency
+domain,  placing  further  burden,  particularly  on  industry  stakeholders  to
+accurately  interpret  the  coefficients   for  transforming  to  a  time-domain
+implementation in an embedded \gls{bms}.
+
+
+
+
+
+% Mention that parabolic profile is a common theme
 % fudge-factor explanation
 % need to import references from box to mendeley
 
