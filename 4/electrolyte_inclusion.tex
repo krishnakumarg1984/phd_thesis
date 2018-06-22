@@ -160,6 +160,22 @@ uphold without introducing significant  errors. Finally, the analytical solution
 profile in Guduru~\etal{}  is not amenable to embedded  implementation, since it
 consists of a non-trivial set of trigonometric computations at each time-step.
 
+Prada~\etal~\cite{Prada2012} were  the first to provide  a simplified expression
+for potential drop in the electrolyte  by including the terms representing ionic
+concentration gradient within the cell thickness. Thus, \cref{eq:electrolytepd}
+gets modified as
+\begin{equation}\label{eq:electrolytepdwithce}
+    \phi_\epos - \phi_\eneg = (1-t_{+}^0) \frac{2RT}{F}\ln
+    \frac{c_\text{e,\tiny pos/cc}}{c_\text{e,\tiny neg/cc}}-\frac{I}{2 A}\left(\frac{l_\text{neg}}{\kappa_\text{eff}} + 2 \frac{l_\text{sep}}{\kappa_\text{eff}} + \frac{l_\text{pos}}{\kappa_\text{eff}}\right)
+\end{equation}
+Although  the complete  expression for  electrolyte overpotential  was provided,
+it   was  presented   in  a   cursory  manner,   \ie{}  without   detailing  the
+spatio-temporal  computation  of  ionic  concentration  values  at  the  current
+collector interfaces.  Nevertheless, it is  important to note  this contribution
+as~\cref{eq:electrolytepdwithce} is widely relied  upon by subsequent literature
+and shall be used in the original work of electrolyte concentration distribution
+presented by this thesis author in~\cref{sec:newelectrolytemodel}.
+
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013}   were   the   first   to   provide
 approximate expressions for both charge  transport and mass transport properties
@@ -237,29 +253,46 @@ Although it  seeks to correctly account  for the two causes  of overpotential in
 the  electrolyte,  there  is  no  detailed explanation  on  the  computation  of
 quantities such as time-constants involved in the polarization potential term.
 
-Tanim~\etal~\cite{Tanim2014} accounted  for mass-transport and  charge transport
-in  the electrolyte  by  deriving  reduced order  transfer  functions for  ionic
-concentration distribution and  electrolyte overpotential respectively. However,
-the coefficients of these transfer  functions are excessively long and comprised
-of  chained algebraic  operations  expressed in  a high-entropy  sum-of-products
-form  in  the  appendix  of  their work.  For  instance,  ten  coefficients  are
-needed  to  describe  the  concentration  profile  while  six  coefficients  are
-required  for  the  electrolyte  potential.  The  median  length  of  even  each
-atomic sub-expression  of these coefficients  is sufficiently high  to obfuscate
-their  physical  significance.  A  low-entropy  form  for  the  coefficients  of
-these   transfer  functions   along  the   lines  of   the  idea   pioneered  by
-Middlebrook~\cite{Middlebrooka} and  exemplified in design-oriented  analysis of
-electric circuits~\cite{Middlebrook1998a,Vorperian2002a} could have been helpful
-to aid  the readers' understanding.  The author  of this thesis  recognises that
-mathematical complexity should not be the sole basis to judge the merits of such
-proposed improvements. Although the presentation of these long coefficients have
-been judiciously moved to the appendix, their derivations --- essential to prove
-the model's validity  --- is curiously omitted. There is  also a disadvantage in
-its reproducibility  due to  the complicated mathematical  expressions. Finally,
-the  electrolyte-specific enhancements  to the  \gls{spm} are  in the  frequency
-domain,  placing  further  burden,  particularly  on  industry  stakeholders  to
-accurately  interpret  the  coefficients   for  transforming  to  a  time-domain
-implementation in an embedded \gls{bms}.
+A modified version of the electrolyte model proposed in Luo~\etal~\cite{Luo2013}
+was  used  in Zhou~\etal~\cite{Zou2016}  for  observer  design in  an  \gls{soc}
+estimation application. The modification  essentially consists of truncating the
+complex  expression  in~\cite{Luo2013}  consisting of  six  coefficients,  $p_1$
+through $p_6$ to just two, and elimination of the aforementioned time-constants.
+However, to  the disappointment  of the  author of this  thesis, the  claim that
+truncation to  $n=2$ terms is sufficient  to describe the dynamics  proved to be
+optimistic for  the parameter set considered.  In my attempts to  reproduce this
+work, an  arbitrary scaling  factor was  needed to  correct for  the electrolyte
+potential drop  and match  the \gls{p2d} simulations.  The requirement  for such
+scaling factors  whose physical  origins are not  clearly identifiable  lends to
+scepticism on the model's robustness. Furthermore,  it was found that this value
+needed to be  hand-tuned for each parameter-set. Until these  gaps are addressed
+clearly, it is worth seeking other  viable alternatives to model the electrolyte
+dynamics.
+
+
+Tanim~\etal~\cite{Tanim2014}  accounted  for  electrolyte dynamics  by  deriving
+reduced   order  transfer   functions  for   ionic  concentration   distribution
+and   electrolyte  overpotential   using  the   \gls{ima}  technique.   However,
+the  coefficients  of   these  transfer  functions  are   excessively  long  and
+comprised  of   chained  algebraic   operations  expressed  in   a  high-entropy
+sum-of-products  form  in  the  appendix   of  their  work.  For  instance,  ten
+coefficients  are  needed  to  describe  the  concentration  profile  while  six
+coefficients  are required  for  the electrolyte  potential.  The median  length
+of  each  atomic  sub-expression  of these  coefficients  is  sufficiently  high
+to  obfuscate   their  physical  significance.   A  low-entropy  form   for  the
+coefficients  of  these   transfer  functions  similar  to   that  pioneered  by
+Middlebrook~\cite{Middlebrooka} and exemplified  in the design-oriented analysis
+of  electric  circuits~\cite{Middlebrook1998a,Vorperian2002a}  could  have  been
+helpful to aid the readers' understanding.  The author of this thesis recognises
+that  mathematical complexity  should  not be  the sole  basis  to evaluate  the
+merits of  such proposed improvements.  Although the presentation of  these long
+coefficients have been judiciously moved  to the appendix, their derivations ---
+essential to prove the model's validity  --- is curiously omitted. The length of
+the mathematical  expressions increases  the probabilities of  introducing human
+errors during implementation. Finally,  the electrolyte-specific enhancements to
+the \gls{spm} are in the  frequency domain, placing further burden, particularly
+on  industry   stakeholders  to   accurately  interpret  the   coefficients  for
+transforming to a time-domain implementation in an embedded \gls{bms}.
 
 
 
