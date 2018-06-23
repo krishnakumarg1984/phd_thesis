@@ -269,6 +269,16 @@ needed to be  hand-tuned for each parameter-set. Until these  gaps are addressed
 clearly, it is worth seeking other  viable alternatives to model the electrolyte
 dynamics.
 
+After  completing  the  simulations  with  the  aforementioned  scaling  factors
+and  continuing  in  the  quest  for other  alternatives,  the  author  of  this
+thesis  made  an   observation  that  other  researchers  have   had  to  resort
+to  similar  techniques  for   describing  the  electrolyte  overpotential.  For
+instance,  Han~\etal~\cite{Han2015a} use  a  similar scaling  factor, $p<0$  for
+the  entire expression  representing electrolyte  potential difference.  In this
+case,  these  authors  used  a polynomial  approximation  approach  proposed  in
+Rahimian~\etal~\cite{KhaleghiRahimian2013}.  However, these  unexplained scaling
+factors lower the level of confidence in the model's general applicability.
+
 
 Tanim~\etal~\cite{Tanim2014}  accounted  for  electrolyte dynamics  by  deriving
 reduced   order  transfer   functions  for   ionic  concentration   distribution
@@ -289,10 +299,25 @@ merits of  such proposed improvements.  Although the presentation of  these long
 coefficients have been judiciously moved  to the appendix, their derivations ---
 essential to prove the model's validity  --- is curiously omitted. The length of
 the mathematical  expressions increases  the probabilities of  introducing human
-errors during implementation. Finally,  the electrolyte-specific enhancements to
-the \gls{spm} are in the  frequency domain, placing further burden, particularly
-on  industry   stakeholders  to   accurately  interpret  the   coefficients  for
-transforming to a time-domain implementation in an embedded \gls{bms}.
+errors during implementation.
+
+It  is worth  noting that  Marcicki~\etal~\cite{Marcicki2013} had  independently
+proposed a similar approach, \viz{}  deriving a transcendental transfer function
+from  electrolyte  concentration  to  applied  current, albeit  for  a  cell  of
+\gls{lfp} chemistry. This transfer function  consisted of a series of hyperbolic
+trigonometric functions which  were later truncated by  Padé approximation (see
+\cref{subsec:freqdomainroms}  for  a  brief  introduction  to  frequency  domain
+\glspl{rom}). However, upon trying this approach for the \gls{lco} parameter set
+by this thesis'  author, in order to obtain sufficient  accuracy, the truncation
+order had  to be  raised to  at least seven,  similar in  complexity to  that of
+Tanim~\etal~\cite{Tanim2014a}.  In  both Marcicki~\etal~\cite{Marcicki2013}  and
+Tanim~\etal~\cite{Tanim2014a},  the  electrolyte-specific  enhancements  to  the
+\gls{spm} are in  the frequency domain, placing further  burden, particularly on
+industry stakeholders to accurately interpret  and transform the coefficients to
+a time-domain implementation  for deployment in an embedded  \gls{bms}. Owing to
+this,  as  already  stated in~\cref{subsec:freqdomainroms},  these  models  fall
+outside the scope of this thesis.
+
 
 
 
@@ -301,7 +326,7 @@ transforming to a time-domain implementation in an embedded \gls{bms}.
 % Mention that parabolic profile is a common theme
 % fudge-factor explanation
 % need to import references from box to mendeley
-
+% perhaps it cannot be done, but we do not give up. Equation deficiency
 
 % overall unsatisfactory state of affairs
 % A common  characteristic of these proposals  is that they seek  to incorporate
