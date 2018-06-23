@@ -271,13 +271,14 @@ dynamics.
 
 After  completing  the  simulations  with  the  aforementioned  scaling  factors
 and  continuing  in  the  quest  for other  alternatives,  the  author  of  this
-thesis  made  an   observation  that  other  researchers  have   had  to  resort
-to  similar  techniques  for   describing  the  electrolyte  overpotential.  For
-instance,  Han~\etal~\cite{Han2015a} use  a  similar scaling  factor, $p<0$  for
-the  entire expression  representing electrolyte  potential difference.  In this
-case,  these  authors  used  a polynomial  approximation  approach  proposed  in
-Rahimian~\etal~\cite{KhaleghiRahimian2013}.  However, these  unexplained scaling
-factors lower the level of confidence in the model's general applicability.
+thesis  made  an observation  that  other  researchers  have  had to  resort  to
+similar techniques  for describing the electrolyte  overpotential. For instance,
+Han~\etal~\cite{Han2015a}  use   a  similar   scaling  factor,  $p<0$   for  the
+entire expression of~\cref{eq:electrolytepdwithce}  representing the electrolyte
+overpotential.  In this  case,  these authors  used  a polynomial  approximation
+approach proposed in  Rahimian~\etal~\cite{KhaleghiRahimian2013}. However, these
+unexplained scaling factors lower the level of confidence in the model's general
+applicability.
 
 
 Tanim~\etal~\cite{Tanim2014}  accounted  for  electrolyte dynamics  by  deriving
@@ -318,6 +319,24 @@ a time-domain implementation  for deployment in an embedded  \gls{bms}. Owing to
 this,  as  already  stated in~\cref{subsec:freqdomainroms},  these  models  fall
 outside the scope of this thesis.
 % ignoring prof plett's latest work on electrolyte transfer functions
+
+Fan~\etal~\cite{Fan2016}   proposed   an   Extended  \gls{spm}   that   includes
+electrolyte dynamics using  the \gls{gpm} which achieves  an acceptable accuracy
+in terminal voltage  performance. Although the authors claim  that the \gls{spm}
+is computationally  \emph{cheaper} than  other model order  reduction techniques
+such as proper orthogonal decomposition  and balanced truncation, this claim has
+not  been substantiated.  The sole  comparison of  CPU times  presented in  this
+work  only compares  against  the classical  \gls{fdm}.  Although an  impressive
+computational  speed is  achieved, it  is  unclear whether  the model  equations
+particularly  those  involving  solutions  of  non-linear  integral  expressions
+resulting from  applying the Galerkin's  method can  be solved in  real-time for
+embedded implementation.  In the review of  this method conducted by  the author
+of  this thesis,  it  appears  that the  Galerkin's  projection  method is  more
+suitable  for  desktop  simulations.  In  congruence  with  my  scepticism,  the
+authors  of~\cite{Fan2016} have  not claimed  the suitability  of this  work for
+online/embedded  application  in a  \gls{bms}.  Therefore,  as per  this  thesis
+authors' stance  explained in~\cref{sec:classificationscheme},  models employing
+such methods are deemed to be not in alignment with the goals of this thesis.
 
 
 
