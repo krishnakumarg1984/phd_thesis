@@ -31,10 +31,10 @@ parameters or  electrochemical quantities. Introducing numerical  examples would
 have been a redeeming factor to help keeping the mathematical aspects tractable.
 This method has not seen further uptake for \gls{spm} modelling.
 
-Guo~\etal~\cite{Guo2011}  presented   an  empirical  approach  to   account  for
-the  solution-phase   dynamics.  Using  standard  curve-fitting   techniques,  a
-non-linear   resistance  as   a  function   of  current   and  temperature   was
-introduced.   Thus,   the  equation   for   cell   terminal  voltage   presented
+Guo~\etal~\cite{Guo2011a}  presented an  empirical approach  to account  for the
+solution-phase dynamics.  Using standard curve-fitting techniques,  a non-linear
+resistance as  a function of current  and temperature was introduced.  Thus, the
+equation for cell terminal voltage presented
 in~\cref{eq:cellterminalvoltagebasic} is modified as
 \begin{equation}
     V_\text{cell} = η_\text{pos} - η_\text{neg} + U_\text{pos} - U_\text{neg} - I R_\text{eq}
@@ -338,11 +338,31 @@ online/embedded  application  in a  \gls{bms}.  Therefore,  as per  this  thesis
 authors' stance  explained in~\cref{sec:classificationscheme},  models employing
 such methods are deemed to be not in alignment with the goals of this thesis.
 
+Moura~\etal~\cite{Moura2017} propose an improved  \gls{spm} by simply augmenting
+the  conventional  \gls{spm}  with  a simplified  form  of  electrolyte-specific
+equations of  the original  \gls{dfn} model. The  resulting model  therefore has
+\glspl{pde} in it and therefore not easily amenable for embedded implementation.
+The other main  contribution of this work is its  feasibility analysis of having
+convergent  estimators for  this  model  and design  of  such a  \gls{pde}-based
+estimator.  In  the  views  of  this  thesis  author,  this  approach  is  on  a
+trajectory that  deviates too far  from a  simplified model suitable  for online
+implementation.
+
+Lofti~\etal~\cite{Lotfi2017}  presented  an   algebraic  approximation  for  the
+spatial  distribution   of  electrolyte  concentration  by   modifying  standard
+parabolic expressions with leading exponential  coefficients. There are two main
+issues with this approach. It is not explained why this mathematical formulation
+was chosen  and its superiority  with respect to other  family of curves  is not
+discussed. Secondly, these coefficients are to be determined through solution of
+equations obtained by applying continuity  and flux boundary conditions from the
+\gls{dfn}  model  for  electrolyte  concentrations  at  the  electrode-separator
+interfaces. Since exponential-type expressions are assumed, the resulting set of
+equations  are  non-linear, whose  solution,  especially  in  the context  of  a
+resource-constrained environment is problematic.
 
 
 
-
-
+% May also mention some typographical errors in Lofti etal second paper
 % Mention that parabolic profile is a common theme
 % fudge-factor explanation
 % need to import references from box to mendeley
