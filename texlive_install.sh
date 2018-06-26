@@ -206,6 +206,7 @@ tlmgr install   \
     xkeyval \
     xltxtra \
     xmpincl \
+    xpatch \
     xstring \
     xunicode
 
