@@ -28,7 +28,7 @@ push @generated_exts, "loa";
 push @generated_exts, "mypyg";
 
 
-$pdflatex = 'lualatex %O %S --interaction=batchmode --shell-escape --bibtex';
+$pdflatex = 'lualatex synctex=1 %O %S --interaction=batchmode --shell-escape --bibtex';
 $pdf_mode = 1;
 $postscript_mode = $dvi_mode = 0;
 
@@ -50,6 +50,11 @@ sub run_makeglossaries {
     system "makeglossaries '$_[0]'";
   };
 }
+
+sub asy {return system("asy -o \"$_[0]\" \"$_[0]\"");}
+add_cus_dep("asy","eps",0,"asy");
+add_cus_dep("asy","pdf",0,"asy");
+add_cus_dep("asy","tex",0,"asy");
 
 push @file_not_found, '^Package .* No file `([^\\\']*)\\\'';
 
