@@ -360,18 +360,41 @@ interfaces. Since exponential-type expressions are assumed, the resulting set of
 equations  are  non-linear, whose  solution,  especially  in  the context  of  a
 resource-constrained environment is problematic.
 
+In  the authors'  observations, the  errors  in these  model approximations  can
+be  attributed  to  inaccuracies  in  computing  the  spatio-temporal  evolution
+of  electrolyte   concentration.  Upon   obtaining  a   good  estimate   of  the
+electrolyte concentration profile,~\cref{eq:electrolytepdwithce} is deemed to be
+satisfactory for  the electrolyte  overpotential computation. Thus  attention is
+focussed on solving for the electrolyte concentration profile.
+
+From the discussion of literature, it is clear that the proposed enhancements to
+the  computing the  ionic concentration  in electrolyte  falls into  one of  the
+following two categories:
+\begin{itemize}
+    \item model description through physical principles followed by mathematical
+        simplification
+    \item fitting of pre-assumed simplified mathematical structures to some
+        physical phenomena
+\end{itemize}
+
+In the  views of the  author, it appears that  using the former  approach yields
+technically  correct, yet  mathematically convoluted  expressions overpotentials
+that are fraught with implementation  difficulties. Although the latter approach
+looks  promising  in   terms  of  ease  of   implementation,  their  sub-optimal
+performance and lack of wider-applicability leaves much to be desired. Among the
+latter  class of  models,  the quadratic  (parabolic)  approximation method  for
+electrolyte concentration  is the most widely  used\fxnote{citations needed}. It
+is therefore  important to understand  the source  of weakness of  this specific
+sub-class  of  models  which  have  not been  discussed  in  literature.  Hence,
+the  author's analysis  on the  quadratic approximation  method for  electrolyte
+concentration is presented next in~\cref{sec:quadraticapprox}.
 
 
 % May also mention some typographical errors in Lofti etal second paper
 % Mention that parabolic profile is a common theme
-% fudge-factor explanation
-% need to import references from box to mendeley
 % perhaps it cannot be done, but we do not give up. Equation deficiency
 
-% overall unsatisfactory state of affairs
-% A common  characteristic of these proposals  is that they seek  to incorporate
-% electrolyte  dynamics  of varying  degrees  of  complexity directly  into  the
-% \gls{spm}. But I  did something different. The high accuracy  of the \gls{soc}
+% But I  did something different. The high accuracy  of the \gls{soc}
 % in  the  basic  \gls{spm}  leads  to  the  author's  hypothesis  that  if  the
 % electrolyte  concentration  can be  solved  as  an independent  subsystem  and
 % incorporated into the terminal voltage, this can lead to an improved \gls{spm}

@@ -435,3 +435,7 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \xpatchbibmacro{pageref}{parens}{brackets}{}{}   % helpful to replace parens with brackets for backreferencing with biblatex % needs xpatch
 
 % \renewbibmacro*{pageref}{\iflistundef{pageref}{}{\printtext[brackets]{\printlist[​pageref][-\value{listtotal}]{pageref}}}}
+
+% \titleformat*{\section}{\large\bfseries}
+\titleformat{\section}{\normalfont\fontsize{16}{21}\bfseries}{\thesection}{1em}{}
+
