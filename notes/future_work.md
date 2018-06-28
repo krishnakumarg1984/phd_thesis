@@ -3,6 +3,7 @@
 - binary tree 
 - textsc for C-rate, especially uses like 1C
 - cite colorbrewer2
+- mendeley citation export is a problem. Switch to jabref if needed
 
 - enhanced spm paper
 - enchanced spm with KF
@@ -11,3 +12,4 @@
 - physics-informed eq circuit model
 - scaling of newman model
 - lionsimba as energy/power/resistance inputs
+
