@@ -4,6 +4,7 @@
 - textsc for C-rate, especially uses like 1C
 - cite colorbrewer2
 - mendeley citation export is a problem. Switch to jabref if needed
+- check citations especially since biblatex cleanup was very intrusive
 
 - enhanced spm paper
 - enchanced spm with KF
