@@ -173,6 +173,7 @@ tlmgr install   \
     stix \
     stix2-otf \
     subfig \
+    subfiles \
     subfloat \
     substr \
     supertabular \
