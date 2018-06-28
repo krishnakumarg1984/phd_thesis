@@ -314,3 +314,4 @@ wrapper_m2t*.pdf
 *.m~
 *.mat
 build_dir/
+*.fof
