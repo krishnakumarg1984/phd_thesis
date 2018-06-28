@@ -28,7 +28,7 @@ push @generated_exts, "loa";
 push @generated_exts, "mypyg";
 
 
-$pdflatex = 'lualatex synctex=1 %O %S --interaction=batchmode --shell-escape --bibtex';
+$pdflatex = 'lualatex %O %S --interaction=batchmode --shell-escape --bibtex';
 $pdf_mode = 1;
 $postscript_mode = $dvi_mode = 0;
 
