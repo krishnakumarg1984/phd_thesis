@@ -12,7 +12,7 @@
 \setmathfont[range={\mathunder,\triangleq,\underbrace},Scale=MatchUppercase]{Latin Modern Math}
 
 \usepackage[english]{babel}
-\usepackage{selnolig} % if using babel, this package should go after loading babel
+\usepackage[final,activate={true,nocompatibility},factor=1100,stretch=10,shrink=10,babel=true]{microtype} % if using option babel=true, babel must be loaded before microtype \usepackage{selnolig} % if using babel, this package should go after loading babel
 
 % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
 \usepackage{float}
@@ -23,7 +23,9 @@
 
 \usepackage{chemformula} % uses tikz arrows
 
-\addbibresource{9_backmatter/thesis_refs.bib}
+% \addbibresource{9_backmatter/thesis_refs.bib}
+\ShellEscape{biber --tool 9_backmatter/thesis_refs.bib} % deduplicate bibtex entries
+\addbibresource{9_backmatter/thesis_refs_bibertool.bib}
 
 \input{Preamble/hyperref_related}
 \input{Preamble/customcommands}

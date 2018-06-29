@@ -1,6 +1,7 @@
 %! TEX program = lualatex
 % vim:nospell
 
+\RequirePackage{shellesc} % unified shell-escape interface
 \RequirePackage[debrief]{silence}
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[12pt,a4paper,oneside,openright]{book}
@@ -9,7 +10,7 @@
 %: ----------------------- generate glossary ------------------------
 \loadglsentries{0_frontmatter/glossary}
 % \makeglossaries
-% \listfiles
+\includeonly{1/chapter1}
 \begin{document}
 \scrollmode
 

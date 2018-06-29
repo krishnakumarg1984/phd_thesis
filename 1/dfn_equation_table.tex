@@ -1,4 +1,21 @@
-\documentclass[../main.tex]{subfiles}
-\begin{document}
-    hello world
-\end{document}
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+\begin{table}[!htb]
+    \centering
+    \caption[]{}
+    % \label{tbl:charSimspmp2d}
+    \begin{tabular}{@{} c l r @{}}
+        \toprule
+        Cell region & Governing equations & Boundary conditions \\
+        \midrule
+        \makecell{Electrodes \\ \footnotesize \linnegpos} & $\begin{aligned} % placement: default is "center", options are "top" and "bottom"
+            x &= y+1\\
+            x &= (y+1) (y-1)
+        \end{aligned}$ & abc xyz \\
+        \bottomrule
+    \end{tabular}
+\end{table}

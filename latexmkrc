@@ -28,9 +28,11 @@ push @generated_exts, "loa";
 push @generated_exts, "mypyg";
 
 
-$pdflatex = 'lualatex %O %S --interaction=batchmode --shell-escape --bibtex';
-$pdf_mode = 1;
+$pdflatex = 'lualatex %O %S --interaction=batchmode --shell-escape --bibtex --recorder';
+$pdf_mode = 4;
 $postscript_mode = $dvi_mode = 0;
+@default_files = ('main.tex');
+
 
 @cus_dep_list = (@cus_dep_list, "glo-abr gls-abr 0 makenomenclature");
 sub makenomenclature {
