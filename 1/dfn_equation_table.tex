@@ -9,22 +9,26 @@
     \caption[]{}
     % \label{tbl:charSimspmp2d}
     \begingroup
-    % \addtolength{\jot}{0.5em}
-    \begin{tabular*}{\textwidth}{@{} c c r l @{}}
+    \addtolength{\jot}{0.5em}
+    \begin{tabular*}{\textwidth}{@{} c c r l r @{}}
         \toprule
-        Cell region & Governing equations & \multicolumn{2}{c}{Boundary conditions} \\
+        Cell region & Governing equations & \multicolumn{3}{c}{Boundary conditions} \\
         \midrule
         \makecell{Electrodes \\ \footnotesize \linnegpos} & $\begin{aligned} % placement: default is "center", options are "top" and "bottom"
             \vphantom{\diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}} \diffp{c_\slsub}{t} &= \frac{D_\effl}{r^2}\diffp{}{r}\left(r^2 \diffp{c_\slsub}{r} \right), \, r \in [0,R_\pl] \\
-            \varepsilon_l \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\effl \diffp{c_\text{e}}{x}  \right) + (1 - t^0_\text{+}) a_\slsub j(x,t)
+            \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \varepsilon_l \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\effl \diffp{c_\text{e}}{x}  \right) + (1 - t^0_\text{+}) a_\slsub j(x,t)
         \end{aligned}$ &
         $\begin{aligned}
             \vphantom{\diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}} \diffp{c_\slsub}{r}{\mathrlap{r = 0}} &= 0, \\
-            % x &= (y+1) (y-1)
+            \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \diffp{c_\text{e}}{x}{\mathrlap{x = 0}} &= 0, \\
         \end{aligned}$ &
         $\begin{aligned}
-             \diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}} &=  -\frac{j(x,t)}{D_\effl} \!\quad \refstepcounter{equation}(\theequation)\label{myeq}\\
-            % x &= (y+1) (y-1)
+            \diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}} &=  -\frac{j(x,t)}{D_\effl} \\
+            \diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}} &= 0 \\
+        \end{aligned}$ &
+        $\begin{aligned}
+            \vphantom{\diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}}\refstepcounter{equation}(\theequation)\label{eq:dfnsoliddiff} \\
+            \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \refstepcounter{equation}(\theequation)\label{eq:dfnliquiddiff} \\
         \end{aligned}$ \\
         \bottomrule
     \end{tabular*}

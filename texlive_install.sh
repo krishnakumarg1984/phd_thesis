@@ -131,6 +131,7 @@ tlmgr install   \
     luatex85 \
     luatexbase \
     luatodonotes \
+    makecell \
     marginnote \
     marvosym \
     mathdesign \
