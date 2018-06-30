@@ -470,3 +470,30 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \makesavenoteenv{table}
 
 % \newcommand{\corresponds}{\overset{\scriptscriptstyle\wedge}{=}}
+
+% aligning substack quantities (defines a new command subalign)
+% https://tex.stackexchange.com/questions/198771/align-in-substack
+% \makeatletter
+% \newcommand{\subalign}[1]{%
+%     \vcenter{%
+%         \Let@ \restore@math@cr \default@tag
+%         \baselineskip\fontdimen10 \scriptfont\tw@
+%         \advance\baselineskip\fontdimen12 \scriptfont\tw@
+%         \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
+%         \lineskiplimit\lineskip
+%         \ialign{\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\crcr
+%             #1\crcr
+%         }%
+%     }
+% }
+% \makeatother
+
+% \newcolumntype{L}{>{\scriptstyle}l}
+% \newcolumntype{C}{>{\scriptstyle}c}
+% \newcolumntype{R}{>{\scriptstyle}r}
+% \newenvironment{mysubarray}{%
+%     \scriptstyle
+%     \setlength\arraycolsep{0pt}%
+%     \setlength\extrarowheight{-1ex}
+%     \renewcommand\arraystretch{0}
+% \begin{array}{RCL}}{\end{array}}
