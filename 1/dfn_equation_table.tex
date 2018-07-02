@@ -73,22 +73,22 @@
                 \raggedright
                 \makeatletter\def\f@size{12}\check@mathfonts
                 $\begin{alignedat}{2}
-                    & \text{\textbullet{} } c_\text{e} & & \coloneqq c_\text{e}(x,t), \quad \{x \in [0,l_\text{tot}],\, (x=0)\symbol{"2259} \text{\footnotesize pos/Alcc},\, (x=l_\text{tot})\symbol{"2259} \text{\footnotesize neg/Cucc}\} \\ % \tnote{\dagger} \\
-                    & \text{\textbullet{} } \phi_\text{e} & & \coloneqq \phi_\text{e}(x,t)\\
+                    & \text{\textbullet{} } c_\text{e} & & \coloneqq c_\text{e}(x,t),\, \phi_\text{e} \coloneqq \phi_\text{e}(x,t) \qquad \big\{\, x \in [0,l_\text{tot}],\, (x=0)\symbol{"2259} \text{\footnotesize pos/Alcc},\, (x=l_\text{tot})\symbol{"2259} \text{\footnotesize neg/Cucc}\, \big\} \\ % \tnote{\dagger} \\
+                    % & \text{\textbullet{} } \phi_\text{e} & & \coloneqq \phi_\text{e}(x,t)\\
                 \end{alignedat}$
                 \\[0.7em]
                 % \fbox{\raggedright \small \linnegpos}
                 {\raggedright \small \uline{\linnegpos}}
                 $\begin{alignedat}{2}
-                    & \text{\textbullet{} } c_\slsub & & \coloneqq c_\slsub(r,t), \quad \{r \in [0,R_\pl],\, (r=0)\symbol{"2259} \text{\footnotesize particle center},\, (r=R_\pl)\symbol{"2259} \text{\footnotesize particle surface}\} \\
-                    & \text{\textbullet{} } c_\slsurf & & \coloneqq c_\slsub(r=R_\pl,t)\\
-                    & \text{\textbullet{} } \phi_\slsub & & \coloneqq \phi_\slsub(x,t)\\
-                    & \text{\textbullet{} } j_l & & \coloneqq j_l(x,t) \\
-                    & \text{\textbullet{} } \sigma_\effl & & = \sigma_l  \varepsilon_\slsub \\
+                    & \text{\textbullet{} } c_\slsub & & \coloneqq c_\slsub(r,t),\, c_\slsurf \coloneqq c_\slsub(r=R_\pl,t) \qquad \big\{\, r \in [0,R_\pl],\, (r=0)\symbol{"2259} \text{\footnotesize  center},\, (r=R_\pl)\symbol{"2259} \text{\footnotesize  surface}\, \big\} \\[0.7em]
+                    % & \text{\textbullet{} } c_\slsurf & & \coloneqq c_\slsub(r=R_\pl,t)\\
+                    & \text{\textbullet{} } \phi_\slsub & & \coloneqq \phi_\slsub(x_l,t),\, j_l \coloneqq j_l(x_l,t) \qquad \big\{\, x_l \subset x, \, x_\text{pos} \in [0,l_\text{pos}],\, x_\text{neg} \in [l_{\text{pos}+\text{neg}},l_\text{tot}]\, \big\} \\[0.7em]
+                    % & \text{\textbullet{} } j_l & & \coloneqq j_l(x,t) \\
+                    & \text{\textbullet{} } \eta_l & & \coloneqq \eta_l(x,t) = \phi_\slsub(x,t) - \phi_\text{e}(x,t) - \mathcal{U}_l(c_\slsurf) \\
+                    & \text{\textbullet{} } \sigma_\effl & & = \sigma_l  \varepsilon_\slsub,\, D_\seffl = D_\slsub  e^{\frac{-E_{\text{a},D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)},\, k_\reffl = k_\lr  e^{\frac{-E_{\text{a},k_\lr}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\[0.9em]
                     % & \text{\textbullet{} } D_\seffl & & = D_\slsub  \exp\left(\frac{-E_\text{act}^{D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)\right) \\
-                    & \text{\textbullet{} } D_\seffl & & = D_\slsub  e^{\frac{-E_\text{act}^{D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\
-                    & \text{\textbullet{} } k_\reffl & & = k_\lr  e^{\frac{-E_\text{act}^{k_\lr}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\
-                    & \text{\textbullet{} } \eta_l & & \coloneqq \eta_l(x,t) = \phi_\slsub(x,t) - \phi_\text{e}(x,t) - \mathcal{U}_l(c_\slsurf) \\[0.7em]
+                    % & \text{\textbullet{} } D_\seffl & & = D_\slsub  e^{\frac{-E_\text{act}^{D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\
+                    % & \text{\textbullet{} } k_\reffl & & = k_\lr  e^{\frac{-E_\text{act}^{k_\lr}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\
                 \end{alignedat}$
                 % \medskip
                 % \fbox{\raggedright \small \linnegseppos}\\[0.5ex]

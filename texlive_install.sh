@@ -194,6 +194,7 @@ tlmgr install   \
     threeparttable \
     txfonts \
     ucharcat \
+    ulem \
     unicode-math \
     units \
     upquote \
