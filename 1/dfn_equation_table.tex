@@ -4,79 +4,69 @@
 % content in this file will be fed into the main document
 % vim:nospell textwidth=180 foldlevelstart=3 foldlevel=3 conceallevel=0
 
-% \begin{table}[!htbp]
-    \begin{table}[p]
-        \centering
-        \caption[]{}
-        % \label{tbl:charSimspmp2d}
-        \begin{threeparttable}
-            \begingroup
-            \makeatletter\def\f@size{10.5}\check@mathfonts
-            % \addtolength{\jot}{0.75em}
-            \addtolength{\jot}{0.875em}
-            \begin{tabular*}{\textwidth}{@{} l c r l r @{}}
-                \toprule
-                Region & Governing equations & \multicolumn{3}{c}{Boundary conditions} \\
-                \midrule
-                \multicolumn{1}{l |}{\rotatebox[origin=c]{+90}{\makecell{\footnotesize Electrodes \\ \scriptsize \linnegpos}}} &
-                $\begin{aligned} % placement: default is "center", options are "top" and "bottom"
-                    \vphantom{\diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}}
-                    \diffp{c_\slsub}{t} &= \frac{D_\slsub}{r^2}\diffp{}{r}\left(r^2 \diffp{c_\slsub}{r} \right) \\
-                    \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}}
-                    \varepsilon_l \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\effl
-                    \diffp{c_\text{e}}{x} \right) + (1 - t^0_\text{+}) a_\slsub j_l \\
-                    \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} 0 &= \diffp{}{x}\left(\kappa_\effl \diffp{\phi_\text{e}}{x}\right) + \diffp{}{x}\left(\kappa_\effl \frac{2 R T(t)}{F} (t^0_{+}-1)\diffp{ \ln c_\text{e}}{x}\right) \\
-                    \vphantom{\sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\vphantom{\displaystyle M}x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} a_\slsub F j_l &= \diffp{}{x}\left(\sigma_\effl \diffp{\phi_\slsub}{x}\right) \\
-                    % j_l &= k_\lr c^\alpha_\text{e}\left(c_\slmax - c_\slsurf\right)^\alpha c^\alpha_\slsurf\left( \exp\left(\frac{\left(1-\alpha\right)F}{R T}\eta\right) - \exp\left(-\frac{\alpha F}{R T}\eta\right) \right)
-                    j_l &= 2 k_\lr \sqrt{c_\text{e}\left(c_\slmax - c_\slsurf\right) c_\slsurf} \sinh \left(\frac{0.5 F}{R T(t)} \eta_l \right)
-                \end{aligned}$ &
-                $\begin{aligned}
-                    \vphantom{\diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}} \diffp{c_\slsub}{r}{\mathrlap{r = 0}}\hspace{1mm} &= 0, \\
-                    \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \diffp{c_\text{e}}{x}{\mathrlap{x = 0}}\hspace{1mm} &= 0, \\
-                    \diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}\hspace{1mm} &= 0, \\
-                    \!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\vphantom{\displaystyle M}x = x_\text{neg/sep}\\x = x_\text{sep/pos}}}}\hspace{1mm} &= 0, \\
-                    % {}&\textemdash{}{}
-                    {}&\xdash[1.25em]{}
-                \end{aligned}$ &
-                $\begin{aligned}
-                    \diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}\hspace{1mm} &= \frac{-j_l}{D_\slsub} \\
-                    \diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}\hspace{1mm} &= 0 \\
-                \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \phi_\text{e}\Bigr\rvert_{\mathrlap{x=l_\text{tot}}} \hspace{1mm}&= 0 \\
-                \vphantom{\sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\vphantom{\displaystyle M}x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} \!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\!\!\!\!\!x=0\\x=x_\text{tot}}}}\hspace{1mm} &= \frac{-I}{\sigma_\effl A} \\
-                {}&\xdash[1.25em]{}
-            \end{aligned}$ &
-            $\begin{aligned}
-                \vphantom{\diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}}\refstepcounter{equation}(\theequation)\label{eq:dfnsoliddiff} \\
-                \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \refstepcounter{equation}(\theequation)\label{eq:dfnliquiddiff} \\
-                \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \refstepcounter{equation}(\theequation) \\
-                \vphantom{\sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\vphantom{\displaystyle M}x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} \refstepcounter{equation}(\theequation) \\
-                \vphantom{\left(\frac{0.5 F}{R T(t)} \eta \right)} \refstepcounter{equation}(\theequation)
-            \end{aligned}$ \\
-            % \cmidrule(l){1-5}
-            \cmidrule{1-5}
-            \multicolumn{1}{l |}{\rotatebox[origin=c]{+90}{\makecell{\footnotesize Separator \\ \scriptsize $l \in \{\text{sep\}}$}}} &
-            $\begin{aligned}
-                \varepsilon_l \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\effl \diffp{c_\text{e}}{x} \right) \\
-                \frac{I}{A} &= \diffp{}{x}\left(\kappa_\effl \diffp{\phi_\text{e}}{x}\right) + \diffp{}{x}\left(\kappa_\effl \frac{2 R T(t)}{F} (t^0_{+}-1)\diffp{ \ln c_\text{e}}{x}\right) \\
-            \end{aligned}$ &
-            $\begin{aligned}
-        c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{-}_\text{neg}}}\hspace{1mm} &= c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{+}_\text{neg}}},\\
-        % \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \phi_\text{e}\Bigr\rvert_{\mathrlap{x=l_\text{tot}}} \hspace{1mm}&= 0 \\
-        % \vphantom{\sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\vphantom{\displaystyle M}x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} \sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\!\!\!\!\!x=0\\x=x_\text{tot}}}}\hspace{1mm} &= \frac{-I}{A} \\
-        % {}&\xdash[1.25em]{}
+\begin{table}[p]
+    \centering
+    \caption[]{}
+    % \label{tbl:charSimspmp2d}
+    \begingroup
+    \makeatletter\def\f@size{10.45}\check@mathfonts
+    % \addtolength{\jot}{0.75em}
+    \addtolength{\jot}{0.875em}
+    \begin{tabular*}{\textwidth}{@{} l c r l r @{}}
+        \toprule
+        \multicolumn{1}{c}{Region} & Governing equations & \multicolumn{2}{c}{Boundary conditions} & {} \\
+        \midrule
+        \multicolumn{1}{l |}{\rotatebox[origin=c]{+90}{\makecell[l]{\footnotesize Electrodes \\ \scriptsize \lambdainnegpos}}} &
+        $\begin{aligned} % placement: default is "center", options are "top" and "bottom"
+            \vphantom{\diffp{c_\slambda}{r}{\mathrlap{r = R_\plambda}}}
+            \diffp{c_\slambda}{t} &= \frac{D_\slambda}{r^2}\diffp{}{r}\left(r^2 \diffp{c_\slambda}{r} \right) \\
+            \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}}
+            \varepsilon_\lambda \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\efflambda \diffp{c_\text{e}}{x} \right) + (1 - t^0_\text{+}) a_\slambda j_\lambda \\
+            \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} 0 &= \diffp{}{x}\left(\kappa_\efflambda \diffp{\phi_\text{e}}{x}\right) + \diffp{}{x}\left(\kappa_\efflambda \frac{2 R T(t)}{F} (t^0_{+}-1)\diffp{ \ln c_\text{e}}{x}\right) \\
+            \vphantom{\diffp{\phi_\slambda}{x}{\mathrlap{\substack{x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} a_\slambda F j_\lambda &= \diffp{}{x}\left(\diffp{\phi_\slambda}{x}\right) \\
+            j_\lambda &= 2 k_\lambdar \sqrt{c_\text{e}\left(c_\slambdamax - c_\slambdasurf\right) c_\slambdasurf} \sinh \left(\frac{0.5 F}{R T(t)} \eta_\lambda \right)
+        \end{aligned}$ &
+        $\begin{aligned}
+            \vphantom{\diffp{c_\slambda}{r}{\mathrlap{r = R_\plambda}}} \diffp{c_\slambda}{r}{\mathrlap{r = 0}}\hspace{1mm} &= 0, \\
+            \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \diffp{c_\text{e}}{x}{\mathrlap{x = 0}}\hspace{1mm} &= 0, \\
+            \diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}\hspace{1mm} &= 0, \\
+            \diffp{\phi_\slambda}{x}{\mathrlap{\substack{x = x_\text{neg/sep}\\x = x_\text{sep/pos}}}}\hspace{1mm} &= 0, \\
+            \vphantom{j_\lambda = 2 k_\lambdar \sqrt{c_\text{e}\left(c_\slambdamax - c_\slambdasurf\right) c_\slambdasurf} \sinh \left(\frac{0.5 F}{R T(t)} \eta_\lambda \right)}
+            {}&\xdash[1.25em]{}
+        \end{aligned}$ &
+        $\begin{aligned}
+            \diffp{c_\slambda}{r}{\mathrlap{r = R_\plambda}}\hspace{1mm} &= \frac{-j_\lambda}{D_\slambda} \\
+            \diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}\hspace{1mm} &= 0 \\
+        \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \phi_\text{e}\Bigr\rvert_{\mathrlap{x=l_\text{tot}}} \hspace{1mm}&= 0 \\
+        \vphantom{\diffp{\phi_\slambda}{x}{\mathrlap{\substack{x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} \diffp{\phi_\slambda}{x}{\mathrlap{\substack{\!\!\!\!\!x=0\\x=x_\text{tot}}}}\hspace{1mm} &= \frac{-I}{\sigma_\efflambda A} \\
+        \vphantom{j_\lambda = 2 k_\lambdar \sqrt{c_\text{e}\left(c_\slambdamax - c_\slambdasurf\right) c_\slambdasurf} \sinh \left(\frac{0.5 F}{R T(t)} \eta_\lambda \right)}
+        {}&\xdash[1.25em]{}
     \end{aligned}$ &
     $\begin{aligned}
-        \diffp{c_\slsub}{r}{\mathrlap{r = R_\pl}}\hspace{1mm} &= \frac{-j_l}{D_\slsub} \\
-        % \diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}\hspace{1mm} &= 0 \\
-        % \sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\subalign{x&=0\\x&=x_\text{tot}}}} &= \frac{-I}{A} \\
-        % \sigma_\effl\!\diffp{\phi_\slsub}{x}{\mathrlap{\substack{\begin{mysubarray} x &=0 \\ x &=x_\text{tot}\end{mysubarray}}}} &= \frac{-I}{A} \\
-        % {}&\textemdash{}{}
-        % {}&\xdash[1.25em]{}
+        \vphantom{\diffp{c_\slambda}{r}{\mathrlap{r = R_\plambda}}}\refstepcounter{equation}(\theequation)\label{eq:dfnsoliddiff} \\
+        \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \refstepcounter{equation}(\theequation)\label{eq:dfnliquiddiff} \\
+        \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \refstepcounter{equation}(\theequation) \\
+        \vphantom{\diffp{\phi_\slambda}{x}{\mathrlap{\substack{x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} \refstepcounter{equation}(\theequation) \\
+        \vphantom{j_\lambda = 2 k_\lambdar \sqrt{c_\text{e}\left(c_\slambdamax - c_\slambdasurf\right) c_\slambdasurf} \sinh \left(\frac{0.5 F}{R T(t)} \eta_\lambda \right)}
+        \refstepcounter{equation}(\theequation) \\
+    \end{aligned}$ \\
+    % \cmidrule(l){1-5}
+    \cmidrule{1-5}
+    \multicolumn{1}{l |}{\rotatebox[origin=c]{+90}{\makecell[l]{\footnotesize Separator \scriptsize \raisebox{0pt}[\height][0pt]{$\quad \left[\begin{aligned}l_\text{neg} &\coloneqq l_\text{n}\\[-1.75em] l_\text{sep} &\coloneqq l_\text{s}\\[-1.75em] l_\text{pos} &\coloneq l_\text{p}\end{aligned}\right]$}\\ \scriptsize $\lambda \in \{\text{sep}\}$}}} &
+    $\begin{aligned}
+        \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l^{+}_\text{neg}}}} \varepsilon_\lambda \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\efflambda \diffp{c_\text{e}}{x} \right) \\
+        % \frac{I}{A} &= \diffp{}{x}\left(\kappa_\efflambda \diffp{\phi_\text{e}}{x}\right) + \diffp{}{x}\left(\kappa_\efflambda \frac{2 R T(t)}{F} (t^0_{+}-1)\diffp{ \ln c_\text{e}}{x}\right) \\
+    \end{aligned}$ &
+    $\begin{aligned}
+\vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l^{+}_\text{n}}}} c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{-}_\text{n}}}\hspace{1mm} &= c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{+}_\text{n}}},\\
+% c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{-}_{\text{neg} + \text{sep}}}}\hspace{1mm} &= c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{+}_\text{neg}}},\\
+    \end{aligned}$ &
+    $\begin{aligned}
+        D_{\text{\tiny eff}_\text{n}}\!\! \! \!\, \diffp{c_\text{e}}{x}{\mathrlap{x = l^{-}_\text{n}}}\hspace{1mm} &=D_{\text{\tiny eff}_\text{s}}\!\!\!\!\,\diffp{c_\text{e}}{x}{\mathrlap{x = l^{+}_\text{n}}}\\
     \end{aligned}$ &
     $\begin{aligned}
         \refstepcounter{equation}(\theequation) \\
     \end{aligned}$
-
     \\
     \bottomrule
 \end{tabular*}
@@ -86,44 +76,28 @@
     \begin{flushleft}
         \raggedright
         \makeatletter\def\f@size{12}\check@mathfonts
-        $\begin{alignedat}{2}
-            & \text{\textbullet{} } c_\text{e} & & \coloneqq c_\text{e}(x,t),\, \phi_\text{e} \coloneqq \phi_\text{e}(x,t) \qquad \big\{\, x \in [0,l_\text{tot}],\, (x=0)\symbol{"2259} \text{\footnotesize neg/Cucc},\, (x=l_\text{tot})\symbol{"2259} \text{\footnotesize pos/Alcc}\, \big\} \\ % \tnote{\dagger} \\
-            % & \text{\textbullet{} } \phi_\text{e} & & \coloneqq \phi_\text{e}(x,t)\\
-        \end{alignedat}$
+        $ \text{\textbullet{} } c_\text{e}  \coloneqq c_\text{e}(x,t),\, \phi_\text{e} \coloneqq \phi_\text{e}(x,t) \quad \big\{\, x \in [0,l_\text{tot}],\, (x=0)\symbol{"2259} \text{\footnotesize neg/Cucc},\, (x=l_\text{tot})\symbol{"2259} \text{\footnotesize pos/Alcc}\, \big\}$
         \\[0.7em]
-        % \fbox{\raggedright \small \linnegpos}
-        {\raggedright \small \uline{\linnegpos}}
+        {\raggedright \small \uline{\lambdainnegpos}}
         $\begin{alignedat}{2}
-            & \text{\textbullet{} } c_\slsub & & \coloneqq c_\slsub(r,t),\, c_\slsurf \coloneqq c_\slsub(r=R_\pl,t) \qquad \big\{\, r \in [0,R_\pl],\, (r=0)\symbol{"2259} \text{\footnotesize  center},\, (r=R_\pl)\symbol{"2259} \text{\footnotesize  surface}\, \big\} \\[0.7em]
-            % & \text{\textbullet{} } c_\slsurf & & \coloneqq c_\slsub(r=R_\pl,t)\\
-            & \text{\textbullet{} } \phi_\slsub & & \coloneqq \phi_\slsub(x_l,t),\, j_l \coloneqq j_l(x_l,t) \qquad \big\{\, x_l \subset x, \, x_\text{neg} \in [0,l_\text{pos}],\, x_\text{pos} \in [l_{\text{pos}+\text{neg}},l_\text{tot}]\, \big\} \\[0.7em]
-            % & \text{\textbullet{} } j_l & & \coloneqq j_l(x,t) \\
-            & \text{\textbullet{} } \eta_l & & \coloneqq \eta_l(x,t) = \phi_\slsub(x,t) - \phi_\text{e}(x,t) - \mathcal{U}_l(c_\slsurf) \\
-            & \text{\textbullet{} } \sigma_\effl & & = \sigma_l  \varepsilon_\slsub,\, D_\seffl = D_\slsub  e^{\frac{-E_{\text{a},D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)},\, k_\reffl = k_\lr  e^{\frac{-E_{\text{a},k_\lr}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\[0.9em]
-            % & \text{\textbullet{} } D_\seffl & & = D_\slsub  \exp\left(\frac{-E_\text{act}^{D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)\right) \\
-            % & \text{\textbullet{} } D_\seffl & & = D_\slsub  e^{\frac{-E_\text{act}^{D_\slsub}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\
-            % & \text{\textbullet{} } k_\reffl & & = k_\lr  e^{\frac{-E_\text{act}^{k_\lr}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\
+            & \text{\textbullet{} } c_\slambda & & \coloneqq c_\slambda(r,t),\, c_\slambdasurf \coloneqq c_\slambda(r=R_\plambda,t) \quad \big\{\, r \in [0,R_\plambda],\, (r=0)\symbol{"2259} \text{\footnotesize center},\, (r=R_\plambda)\symbol{"2259} \text{\footnotesize surface}\, \big\} \\[0.7em]
+            % & \text{\textbullet{} } c_\slambdasurf & & \coloneqq c_\slambda(r=R_\plambda,t)\\
+            & \text{\textbullet{} } \phi_\slambda & & \coloneqq \phi_\slambda(x_\lambda,t),\, j_\lambda \coloneqq j_\lambda(x_\lambda,t) \quad \big\{\, x_\lambda \subset x, \, x_\text{neg} \in [0,l_\text{pos}],\, x_\text{pos} \in [l_{\text{pos}+\text{neg}},l_\text{tot}]\, \big\} \\[0.7em]
+            & \text{\textbullet{} } \eta_\lambda & & \coloneqq \eta_\lambda(x,t) = \phi_\slambda(x,t) - \phi_\text{e}(x,t) - \mathcal{U}_\lambda(c_\slambdasurf) \\
+            & \text{\textbullet{} } \sigma_\efflambda & & = \sigma_\lambda \varepsilon_\slambda,\, D_\sefflambda = D_\slambda e^{\frac{-E_{\text{a},D_\slambda}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)},\, k_\refflambda = k_\lambdar e^{\frac{-E_{\text{a},k_\lambdar}}{R}\left(\frac{1}{T(t)} - \frac{1}{T_\text{sink}}\right)} \\[0.9em]
         \end{alignedat}$
-        % \medskip
-        % \fbox{\raggedright \small \linnegseppos}\\[0.5ex]
-        {\raggedright \small \uline{\linnegseppos}}\\[0.5ex]
+        {\raggedright \small \uline{\lambdainnegseppos}}\\[0.5ex]
         $\begin{alignedat}{2}
-            & \text{\textbullet{} } D_\effl & & = D  \varepsilon_l^{\text{brugg}_l} \\
+            & \text{\textbullet{} } D_\efflambda & & = D \varepsilon_\lambda^{\text{brugg}_\lambda} \\
             & \text{\textbullet{} } D & & \coloneqq D(\scriptstyle{c_\text{e},T}\,\textstyle) = 10^{-4} \times 10^{-4.43 - \frac{54}{T(t) - 229 - 5\times10^{-3} c_\text{e}(x,t)} - 0.22\times10^{-3} c_\text{e}(x,t)} \\
         \end{alignedat}$
         \\
         \makeatletter\def\f@size{14}\check@mathfonts
         $\begin{alignedat}{2}
-            & \text{\textbullet{} } \kappa_\effl & & = \kappa  \varepsilon_l^{\text{brugg}_l} \\
+            & \text{\textbullet{} } \kappa_\efflambda & & = \kappa \varepsilon_\lambda^{\text{brugg}_\lambda} \\
             & \text{\textbullet{} } \kappa & & \coloneqq \kappa\scriptstyle{(c_\text{e},T)}\; = \; \parbox[t]{11.60cm}{$\scriptstyle 10^{-4} \times c_\text{e}(x,t)\Big(-10.5 + 0.668\times10^{-3} c_\text{e}(x,t) + 0.494\times10^{-6} c_\text{e}^2(x,t) + \big(0.074 - 1.78\times10^{-5}c_\text{e}(x,t)$ \\ \hspace*{\fill} $\scriptstyle - 8.86\times10^{-10}c_\text{e}^2(x,t)\big)T(t) + \big(-6.96\times10^{-5} + 2.8\times10^{-8} c_\text{e}(x,t)\big)T^2(t)\Big)^2$}\\
         \end{alignedat}$
     \end{flushleft}
 \end{minipage}
-% \bigskip
-% \footnoterule{}
-% \begin{tablenotes}
-% \item[\dagger] \footnotesize{This definition of the global axial domain $x$, spanning the cell thickness applies for all variables dependent on axial spatial position. Hence the domain definition for $x$ is not repeated elsewhere for the sake of brevity.}
-% \end{tablenotes}
-    \end{threeparttable}
 \end{table}
 

@@ -1,13 +1,11 @@
 %!TEX root = ../main.tex
 % vim:nospell
 
-% \newcommand{\cesub}{\ensuremath{{c_\text{e}}}}
 \newcommand*\mean[1]{\overline{#1}}
 \newcommand{\effj}{\ensuremath{{\text{eff}_j}}}
-\newcommand{\effl}{\ensuremath{{\text{eff}_l}}}
-\newcommand{\reffl}{\ensuremath{{\text{r,eff}_l}}}
+\newcommand{\efflambda}{\ensuremath{{\text{eff}_\lambda}}}
 \newcommand{\eg}{\textit{e}.\textit{g}.}
-\newcommand{\el}{\ensuremath{{\text{e}_l}}}
+\newcommand{\elambda}{\ensuremath{{\text{e}_\lambda}}}
 \newcommand{\eneg}{\ensuremath{\text{e,neg}}}
 \newcommand{\epos}{\ensuremath{\text{e,pos}}}
 \newcommand{\etal}{\textit{et~al}.}
@@ -16,9 +14,9 @@
 \newcommand{\jinnegpos}{\ensuremath{j  ∈  \left\{\text{neg, pos}\right\}}}
 \newcommand{\jinpossepneg}{\ensuremath{j  ∈  \left\{\text{pos, sep, neg}\right\}}}
 \newcommand{\jr}{\ensuremath{{\text{r}_j}}}
-\newcommand{\linnegpos}{\ensuremath{l  ∈  \left\{\text{neg, pos}\right\}}}
-\newcommand{\linnegseppos}{\ensuremath{l  \in  \{\text{neg, sep, pos}\}}}
-\newcommand{\lr}{\ensuremath{{\text{r}_l}}}
+\newcommand{\lambdainnegpos}{\ensuremath{\lambda  ∈  \left\{\text{neg, pos}\right\}}}
+\newcommand{\lambdainnegseppos}{\ensuremath{\lambda  \in  \{\text{neg, sep, pos}\}}}
+\newcommand{\lambdar}{\ensuremath{{\text{r}_\lambda}}}
 \newcommand{\maxj}{\ensuremath{{100\%_j}}}
 \newcommand{\maxneg}{\ensuremath{{100\%_\text{neg}}}}
 \newcommand{\maxpos}{\ensuremath{{100\%_\text{pos}}}}
@@ -30,19 +28,19 @@
 \newcommand{\nneg}{\ensuremath{{\text{n}_\text{neg}}}}
 \newcommand{\npos}{\ensuremath{{\text{n}_\text{pos}}}}
 \newcommand{\pj}{\ensuremath{{\text{p}_j}}}
-\newcommand{\pl}{\ensuremath{{\text{p}_l}}}
+\newcommand{\plambda}{\ensuremath{{\text{p}_\lambda}}}
 \newcommand{\pneg}{\ensuremath{{\text{p}_\text{neg}}}}
 \newcommand{\posr}{\ensuremath{{\text{r}_\text{pos}}}}
 \newcommand{\ppos}{\ensuremath{{\text{p}_\text{pos}}}}
-\newcommand{\seffl}{\ensuremath{{\text{s,eff}_l}}}
+\newcommand{\refflambda}{\ensuremath{{\text{r,eff}_\lambda}}}
+\newcommand{\sefflambda}{\ensuremath{{\text{s,eff}_\lambda}}}
 \newcommand{\sjavg}{\ensuremath{{\text{s,avg}_j}}}
 \newcommand{\sjmax}{\ensuremath{{\text{s,max}_j}}}
 \newcommand{\sjsurf}{\ensuremath{{\text{s,surf}_j}}}
 \newcommand{\sj}{\ensuremath{{\text{s}_j}}}
-\newcommand{\slmax}{\ensuremath{{\text{s,max}_l}}}
-\newcommand{\slsub}{\ensuremath{{\text{s}_l}}}
-\newcommand{\slsurf}{\ensuremath{{\text{s,surf}_l}}}
-% \newcommand{\eactdsl}{\ensuremath{{_\text{act}^{D_{\text{s}_l}}}}}
+\newcommand{\slambdamax}{\ensuremath{{\text{s,max}_\lambda}}}
+\newcommand{\slambda}{\ensuremath{{\text{s}_\lambda}}}
+\newcommand{\slambdasurf}{\ensuremath{{\text{s,surf}_\lambda}}}
 \newcommand{\snegmax}{\ensuremath{{\text{s,max}_\text{neg}}}}
 \newcommand{\snegmin}{\ensuremath{{\text{s,min}_\text{neg}}}}
 \newcommand{\snegsurf}{\ensuremath{{\text{s,surf}_\text{neg}}}}
@@ -474,45 +472,11 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     }
 }
 
-% \makesavenoteenv{tabular}
-% \makesavenoteenv{table}
-
 \newcommand*{\xdash}[1][3em]{\rule[0.5ex]{#1}{0.55pt}}
-
-% \newcommand{\corresponds}{\overset{\scriptscriptstyle\wedge}{=}}
-
-% aligning substack quantities (defines a new command subalign)
-% https://tex.stackexchange.com/questions/198771/align-in-substack
-% \makeatletter
-% \newcommand{\subalign}[1]{%
-%     \vcenter{%
-%         \Let@ \restore@math@cr \default@tag
-%         \baselineskip\fontdimen10 \scriptfont\tw@
-%         \advance\baselineskip\fontdimen12 \scriptfont\tw@
-%         \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
-%         \lineskiplimit\lineskip
-%         \ialign{\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\crcr
-%             #1\crcr
-%         }%
-%     }
-% }
-% \makeatother
-
-% \newcolumntype{L}{>{\scriptstyle}l}
-% \newcolumntype{C}{>{\scriptstyle}c}
-% \newcolumntype{R}{>{\scriptstyle}r}
-% \newenvironment{mysubarray}{%
-%     \scriptstyle
-%     \setlength\arraycolsep{0pt}%
-%     \setlength\extrarowheight{-1ex}
-%     \renewcommand\arraystretch{0}
-% \begin{array}{RCL}}{\end{array}}
-
-% \makeatletter
-% \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
-% \makeatother
 
 \renewcommand{\ULdepth}{4.0pt}
 \renewcommand{\ULthickness}{0.75pt}
 
+
+% \newcommand*{\FormatLHS}[1]{\makebox[\widthof{$\WidestLHS$}][r]{$#1$}}%
 
