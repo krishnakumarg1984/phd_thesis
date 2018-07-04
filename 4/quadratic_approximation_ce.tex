@@ -50,6 +50,30 @@ derivations, but rather aids it by keeping the notations compact.
 
 A  standard  quadratic expression  is  chosen  a  priori for  approximating  the
 electrolyte concentration profile within each region.
+\begin{alignat}{2}
+    c_\ensub &= a_2(t) z^2 + a_1(t) z + a_0(t),\quad &&0 \le z \le l_\text{n}\label{eq:cenquadstart} \\
+    c_\essub &= a_5(t) z^2 + a_4(t) z + a_3(t),\quad &&0 \le z \le l_\text{s}\label{eq:cesquadstart} \\
+    c_\epsub &= a_8(t) z^2 + a_7(t) z + a_6(t),\quad &&0 \le z \le l_\text{p}\label{eq:cepquadstart}
+\end{alignat}
+where  the  coefficient  vector  $\vect{a_0(t),a_1(t),  \dots  ,a_8(t)}$  is  to
+be   determined   at   each   time-step\footnote{For   brevity,   in   rest   of
+the   equations,   the   time-dependence   is   dropped   from   the   notation.
+However,  it   must  be   implicitly  understood   that  all   coefficients  are
+indeed  time-varying.}.   Applying  boundary   conditions  of   the  electrolyte
+diffusion  equation  of   the  \gls{dfn}  model~(refer  \cref{eq:dfnliquiddiff})
+to~\crefrange{eq:cenquadstart}{eq:cepquadstart}, it is clear  that $a_1 = 0$ and
+$a_7 = 0$. Thus, ~\crefrange{eq:cenquadstart}{eq:cepquadstart} become
+\begin{alignat}{2}
+    c_\ensub &= a_2(t) z^2 + a_0(t),\quad &&0 \le z \le l_\text{n}\label{eq:cenquadreduced} \\
+    c_\essub &= a_5(t) z^2 + a_4(t) z + a_3(t),\quad &&0 \le z \le l_\text{s}\label{eq:cesquadreduced} \\
+    c_\epsub &= a_8(t) z^2 + a_6(t),\quad &&0 \le z \le l_\text{p}\label{eq:cepquadreduced}
+\end{alignat}
 
+\input{4/dfn_electrolyte_sep_table}
 
-\input{4/dfn_electrolyte_table.tex}
+\Cref{tbl:dfnelectrolyteeqnsinsep}    lists   the    equations   and    boundary
+conditions   for  phenomena   describing   electrolyte   diffusion  and   charge
+balance  within  the   separator  domain.  Essentially,~\cref{eq:liquiddiffnsep}
+and~\cref{eq:liquidpotentialsep}  are  obtained  by applying  the  corresponding
+electrolyte  equations  of  the \gls{dfn}  model  (see  ~\cref{eq:dfnliquiddiff}
+and~\cref{eq:dfnliquidpotential}) respectively to the separator region.

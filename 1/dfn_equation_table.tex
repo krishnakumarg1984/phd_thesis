@@ -45,46 +45,11 @@
     $\begin{aligned}
         \vphantom{\diffp{c_\slambda}{r}{\mathrlap{r = R_\plambda}}}\refstepcounter{equation}(\theequation)\label{eq:dfnsoliddiff} \\
         \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l_\text{tot}}}} \refstepcounter{equation}(\theequation)\label{eq:dfnliquiddiff} \\
-        \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \refstepcounter{equation}(\theequation) \\
+        \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = 0}}} \refstepcounter{equation}(\theequation) \label{eq:dfnliquidpotential}\\
         \vphantom{\diffp{\phi_\slambda}{x}{\mathrlap{\substack{x = x_\text{pos/sep}\\x = x_\text{neg/sep}}}}} \refstepcounter{equation}(\theequation) \\
         \vphantom{j_\lambda = 2 k_\lambdar \sqrt{c_\text{e}\left(c_\slambdamax - c_\slambdasurf\right) c_\slambdasurf} \sinh \left(\frac{0.5 F}{R T(t)} \eta_\lambda \right)}
         \refstepcounter{equation}(\theequation) \\
     \end{aligned}$ \\
-    % \cmidrule{1-5}
-    % \multicolumn{1}{l |}{\multirow{10}{*}{\rotatebox[origin=c]{90}{\makecell{\footnotesize Separator\\ \scriptsize $\lambda \in \{\text{sep}\}$}}}} &
-    % \multicolumn{3}{c}{\fbox{$ l_\text{neg} \coloneqq l_\text{n},\, l_\text{sep} \coloneqq l_\text{s},\, l_\text{pos} \coloneq l_\text{p}$}} &{} \\[0.5em]
-    % {} &
-    % $\begin{aligned}[t]
-    %     \vphantom{\diffp{c_\text{e}}{x}{\mathrlap{x = l^{+}_\text{neg}}}} \varepsilon_\lambda \diffp{c_\text{e}}{t} &= \diffp{}{x}\left(D_\effmu \diffp{c_\text{e}}{x} \right) \\[-0.75em]
-    % \end{aligned}$ &
-    % $\begin{aligned}[t]
-    % c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{-}_\text{n}}}\hspace{5mm} &= c_\text{e}\Bigr\rvert_{\mathrlap{x=l^{+}_\text{n}}},\\[-0.75em]
-    % c_\text{e}\Bigr\rvert_{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{-}}}\hspace{5mm} &= c_\text{e}\Bigr\rvert_{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{+}}},\\[1.25em]
-    % \end{aligned}$ &
-    % $\begin{aligned}[t]
-    %     D_{\text{\tiny eff}_\text{n}}\!\! \! \!\, \diffp{c_\text{e}}{x}{\mathrlap{x = l^{-}_\text{n}}}\hspace{5mm} &=D_{\text{\tiny eff}_\text{s}}\!\!\!\!\,\diffp{c_\text{e}}{x}{\mathrlap{x = l^{+}_\text{n}}}\\[-0.75em]
-    %     D_{\text{\tiny eff}_\text{s}}\!\! \! \!\, \diffp{c_\text{e}}{x}{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{-}}}\hspace{5mm} &=D_{\text{\tiny eff}_\text{p}}\!\!\!\!\,\diffp{c_\text{e}}{x}{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{+}}}\\[1.25em]
-    % \end{aligned}$ &
-    % $\begin{aligned}
-    %     \refstepcounter{equation}(\theequation) \\[-0.75em]
-    % \end{aligned}$
-    % \\
-    % {} &
-    % $\begin{aligned}
-    %     \frac{I}{A} &= \diffp{}{x}\left(\kappa_\effmu \diffp{\phi_\text{e}}{x}\right) + \diffp{}{x}\left(\kappa_\effmu \frac{2 R T(t)}{F} (t^0_{+}-1)\diffp{ \ln c_\text{e}}{x}\right) \\[-0.75em]
-    % \end{aligned}$
-    % & $\begin{aligned}[t]
-    % \vphantom{\diffp{\phi_\text{e}}{x}{\mathrlap{x = l^{+}_\text{n}}}} \phi_\text{e}\Bigr\rvert_{\mathrlap{x=l^{-}_\text{n}}}\hspace{5mm} &= \phi_\text{e}\Bigr\rvert_{\mathrlap{x=l^{+}_\text{n}}},\\[-0.75em]
-    % \phi_\text{e}\Bigr\rvert_{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{-}}}\hspace{5mm} &= \phi_\text{e}\Bigr\rvert_{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{-}}},\\
-    % \end{aligned}$ &
-    % $\begin{aligned}[t]
-    %     \kappa_{\text{\tiny eff}_\text{n}}\!\! \! \!\, \diffp{c_\text{e}}{x}{\mathrlap{x = l^{-}_\text{n}}}\hspace{5mm} &=\kappa_{\text{\tiny eff}_\text{s}}\!\!\!\!\,\diffp{c_\text{e}}{x}{\mathrlap{x = l^{+}_\text{n}}}\\[-0.75em]
-    %     \kappa_{\text{\tiny eff}_\text{s}}\!\! \! \!\, \diffp{c_\text{e}}{x}{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{-}}}\hspace{5mm} &=\kappa_{\text{\tiny eff}_\text{p}}\!\!\!\!\,\diffp{c_\text{e}}{x}{\mathrlap{x=(l_{\text{n}} + l_\text{s})^{+}}}\\
-    % \end{aligned}$ &
-    % $\begin{aligned}
-    %     \refstepcounter{equation}(\theequation) \\[-0.75em]
-    % \end{aligned}$
-    % \\
     \bottomrule
 \end{tabular*}
 \endgroup
