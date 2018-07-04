@@ -54,20 +54,19 @@ electrolyte concentration profile within each region.
     c_\ensub &= a_2(t) z^2 + a_1(t) z + a_0(t),\quad &&0 \le z \le l_\text{n}\label{eq:cenquadstart} \\
     c_\essub &= a_5(t) z^2 + a_4(t) z + a_3(t),\quad &&0 \le z \le l_\text{s}\label{eq:cesquadstart} \\
     c_\epsub &= a_8(t) z^2 + a_7(t) z + a_6(t),\quad &&0 \le z \le l_\text{p}\label{eq:cepquadstart}
-\end{alignat}
-where  the  coefficient  vector  $\vect{a_0(t),a_1(t),  \dots  ,a_8(t)}$  is  to
-be   determined   at   each   time-step\footnote{For   brevity,   in   rest   of
-the   equations,   the   time-dependence   is   dropped   from   the   notation.
-However,  it   must  be   implicitly  understood   that  all   coefficients  are
-indeed  time-varying.}.   Applying  boundary   conditions  of   the  electrolyte
-diffusion  equation  of   the  \gls{dfn}  model~(refer  \cref{eq:dfnliquiddiff})
+\shortintertext{where  the coefficient  vector  $\vec{a} =  \vect{a_0(t),a_1(t),
+\dots   ,a_8(t)}$  is   to   be  determined   at  each   time-step\footnotemark.
+Applying     boundary     conditions     of    the     electrolyte     diffusion
+equation    of     the    \gls{dfn}     model~(refer    \cref{eq:dfnliquiddiff})
 to~\crefrange{eq:cenquadstart}{eq:cepquadstart}, it is clear  that $a_1 = 0$ and
-$a_7 = 0$. Thus, ~\crefrange{eq:cenquadstart}{eq:cepquadstart} become
-\begin{alignat}{2}
-    c_\ensub &= a_2(t) z^2 + a_0(t),\quad &&0 \le z \le l_\text{n}\label{eq:cenquadreduced} \\
-    c_\essub &= a_5(t) z^2 + a_4(t) z + a_3(t),\quad &&0 \le z \le l_\text{s}\label{eq:cesquadreduced} \\
-    c_\epsub &= a_8(t) z^2 + a_6(t),\quad &&0 \le z \le l_\text{p}\label{eq:cepquadreduced}
+$a_7 = 0$. Thus, ~\crefrange{eq:cenquadstart}{eq:cepquadstart} become}
+    c_\ensub &= a_2 z^2 + a_0,\quad &&0 \le z \le l_\text{n}\label{eq:cenquadreduced} \\
+    c_\essub &= a_5 z^2 + a_4 z + a_3,\quad &&0 \le z \le l_\text{s}\label{eq:cesquadreduced} \\
+    c_\epsub &= a_8 z^2 + a_6,\quad &&0 \le z \le l_\text{p}\label{eq:cepquadreduced}
 \end{alignat}
+\footnotetext{For  brevity, in  rest of  the equations,  the time-dependence  is
+dropped from  the notation. However, it  must be implicitly understood  that all
+coefficients are indeed time-varying.}
 
 \input{4/dfn_electrolyte_sep_table}
 
@@ -75,5 +74,23 @@ $a_7 = 0$. Thus, ~\crefrange{eq:cenquadstart}{eq:cepquadstart} become
 for  phenomena  describing  electrolyte  diffusion  and  charge  balance  within
 the separator  domain. \Cref{eq:liquiddiffnsep} and~\cref{eq:liquidpotentialsep}
 are  obtained  by  applying  the  corresponding  electrolyte  equations  of  the
-\gls{dfn} model  (see ~\cref{eq:dfnliquiddiff} and~\cref{eq:dfnliquidpotential})
-respectively to the separator region.
+\gls{dfn}  model (see  ~\cref{eq:dfnliquiddiff} and~\cref{eq:dfnliquidpotential}
+respectively) to the separator region.
+
+Applying  the  continuity  and  flux  boundary  conditions  of  the  electrolyte
+diffusion  equation from~\cref{eq:liquiddiffnsep}  at both  separator
+interfaces
+% results in the following set of linear algebraic equations
+\begin{alignat}{2}
+    a_2 l^2_\text{n} + a_0                      & = \hphantom{-}a_3 \qquad                    &  & \text{\footnotesize (continuity at neg/sep interface)} \\
+    a_5 l^2_\text{s} + a_4 l_\text{s} + a_3     & = \hphantom{-}a_8 l^2_\text{p} + a_6 \qquad &  & \text{\footnotesize (continuity at sep/pos interface)} \\
+    2 a_2 l_\text{n} D_\effn                    & = \hphantom{-}a_4 \qquad                    &  & \text{\footnotesize (flux b.c. at neg/sep interface)}  \\
+    \left(2 a_5 l_\text{s} + a_4\right) D_\effs & = -2 a_8 l_\text{p} D_\effp \qquad          &  & \text{\footnotesize (flux b.c. at sep/pos interface)}\label{eq:quadcefluxseppos}
+\end{alignat}
+Note that the negative sign in~\cref{eq:quadcefluxseppos} is due to the specific
+choice of the co-ordinate system used  for the positive electrode region. Due to
+this,  fluxes  at  the  separator/positive  electrode  interface  have  opposing
+directions.
+
+Let  $Q_\text{e,j}$  denote  the  number  of moles  of  \ch{Li^+}  ions  in  the
+electrolyte per unit cross-sectional area within each region $\jinnegseppos$.
