@@ -1,0 +1,55 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+In this  section, the  quadratic approximation  of ionic  spatial concentration,
+that underpins the electrolyte model  in many improved \gls{spm} formulations is
+presented. An analysis of  the weakness of this model is  performed based on the
+results  from applying  this model.  Mitigation of  this critical  drawback lead
+to  this  author's  decoupled spatio-temporal  electrolyte  concentration  model
+structure which is presented next in~\cref{sec:newelectrolytemodel}.
+
+\begin{figure}[!htb]
+    \captionsetup{singlelinecheck=off}
+    \centering
+    \includegraphics{placeholder_images/example-image-golden.pdf}
+    \caption[Co-ordinate systems for quadratic approximation of
+    electrolyte concentration]{Schematic diagram of the electrochemical sandwich
+        consisting of
+        \begin{enumerate*}[label=\itshape\alph*\upshape)]
+            \item negative electrode,
+            \item separator, and
+            \item positive electrode
+        \end{enumerate*} depicting the co-ordinate system used in deriving the
+        quadratic approximation profile. The global spatial co-ordinate is $x
+        \in \{0,l_\text{tot}\}$, where $l_\text{tot} = l_\text{neg} +
+        l_\text{sep} + l_\text{pos}$. Local co-ordinate systems specific to each
+        region are also defined. It should be noted that the positive
+        electrode's local co-ordinate axis direction is reversed.}
+    \label{fig:coordsquadapprox}
+\end{figure}
+
+The  schematic  in~\cref{fig:coordsquadapprox}  shows   the  definition  of  the
+co-ordinate  systems  used  in  deriving the  polynomial  approximation  of  the
+electrolyte concentration  profile. The globally defined  $x$ co-ordinate starts
+at  the negative  current  collector  interface ($x=0$)  and  terminates at  the
+positive  current  collector  interface  ($x =  l_\text{tot},\,  l_\text{tot}  =
+l_\text{neg} +  l_\text{sep} +  l_\text{pos}$). Three local  co-ordinate systems
+$z_\mu$  valid  only  within  their  respective regions  are  also  defined.  In
+particular, it  must be  noted that  the direction  of the  local $z_\text{pos}$
+co-ordinate axis is opposite to that of  the other two local co-ordinate axes as
+well as the global co-ordinate axis. In subsequent usages, the suffix in $z_\mu$
+is dropped and  the reader is advised  to infer the region of  validity from the
+usage  context  which are  unambiguous  as  they  occur in  separate  equations.
+Furthermore, the  notation of  the three regions  $\{\text{neg, sep,  pos}\}$ is
+abbreviated  to $\{n,s,p\}$  respectively in  all mathematical  expressions. The
+author  is convinced  that this  notation does  not detract  from following  the
+derivations, but rather aids it by keeping the notations compact.
+
+A  standard  quadratic expression  is  chosen  a  priori for  approximating  the
+electrolyte concentration profile within each region.
+
+
+\input{4/dfn_electrolyte_table.tex}
