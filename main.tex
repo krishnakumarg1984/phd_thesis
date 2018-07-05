@@ -10,7 +10,10 @@
 %: ----------------------- generate glossary ------------------------
 \loadglsentries{0_frontmatter/glossary}
 % \makeglossaries
-% \includeonly{4/chapter4}
+\includeonly{%
+    1/chapter1,
+    4/quadratic_approximation_ce,
+}%
 \begin{document}
 \scrollmode
 
@@ -74,6 +77,7 @@ this work.
 \include{1/chapter1}
 \setcounter{chapter}{3}
 \include{4/chapter4}
+\include{4/quadratic_approximation_ce}
 
 \cleardoublepage
 

@@ -55,6 +55,7 @@
 \newcommand{\snegmin}{\ensuremath{{\text{s,min}_\text{neg}}}}
 \newcommand{\snegsurf}{\ensuremath{{\text{s,surf}_\text{neg}}}}
 \newcommand{\sneg}{\ensuremath{\text{s,neg}}}
+\newcommand{\snsub}{\ensuremath{\text{s,n}}}
 \newcommand{\sposmax}{\ensuremath{{\text{s,max}_\text{pos}}}}
 \newcommand{\spossurf}{\ensuremath{{\text{s,surf}_\text{pos}}}}
 \newcommand{\spos}{\ensuremath{\text{s,pos}}}
@@ -366,7 +367,7 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \makeatother
 
 \renewcommand{\gitMarkFormat}{\color{imperialraspberry} \small}
-\renewcommand{\gitMark}{Git branch: '\gitBranch'\, \textbullet{}\, Commit SHA: \fbox{\texttt{\textbf{\gitAbbrevHash{}}}} \textbullet{}\, Last commit: \gitReln{} (\gitAuthorIsoDate) \\ }
+\renewcommand{\gitMark}{Git branch: '\gitBranch'\, \textbullet{}\, Commit SHA: \fbox{\texttt{\textbf{\gitAbbrevHash{}}}} \textbullet{}\, Last commit: \gitReln{} \gitAuthorIsoDate \\ }
 \renewcommand{\gitMarkPref}{[Draft]}
 
 \makeatletter
@@ -487,3 +488,31 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \renewcommand{\ULdepth}{4.0pt}
 \renewcommand{\ULthickness}{0.75pt}
 
+\WithArrowsOptions{displaystyle,tikz={font={\scriptsize}}}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+% Tweak these as necessary
+\newcommand*{\BraceAmplitude}{0.7em}%
+\newcommand*{\BraceAspect}{0.5}%
+\newcommand*{\VerticalOffset}{2.6ex}%
+\newcommand*{\HorizontalOffset}{0.0em}%
+
+
+\NewDocumentCommand{\InsertUnderBrace}{%
+    O{} % #1 = draw options
+    O{} % #2 = optional brace options
+    m   % #3 = left tikzmark
+    m   % #4 = right tikzmark
+    m   % #5 = text to place underbrace
+    }{%
+    \begin{tikzpicture}[overlay,remember picture]
+        \draw [decoration={brace, amplitude=\BraceAmplitude, aspect=\BraceAspect, #2}, decorate, thick, draw=blue, text=black, #1]
+            ($(#4)+(\HorizontalOffset,-\VerticalOffset)$) --
+            ($(#3)+(-\HorizontalOffset,-\VerticalOffset)$)
+            node [below=\VerticalOffset, midway] {#5};
+    \end{tikzpicture}%
+}%
