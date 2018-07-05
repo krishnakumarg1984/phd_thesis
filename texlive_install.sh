@@ -201,6 +201,7 @@ tlmgr install   \
     url \
     varwidth \
     was \
+    witharrows \
     wrapfig \
     xcolor \
     xetex \
