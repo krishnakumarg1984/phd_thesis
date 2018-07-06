@@ -116,28 +116,32 @@ We  transform   the  second  order   \glspl{ode}  of~\cref{eq:dfnliquiddiff}(for
 electrodes)  and~\cref{eq:liquiddiffnsep}(for  separator)  to  their  respective
 local  co-ordinates and  integrate  once  along the  thickness  of each  region.
 Performing this sequence of steps for the negative electrode region,
-
 \begin{varwidth}[t]{\textwidth}
-$\begin{WithArrows}
-    \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
-    \varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{applying the integral to the \glsfmtshort{rhs}}\\
-    \tikzmark{StartBraceA}\varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz\tikzmark{EndBraceA} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \Arrow[tikz={text width=3.1cm}]{by definition, the LHS is $Q_\text{e,n}(t)$}\\
-    Q_\text{e,n}(t) &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \\
-\end{WithArrows}$% \parbox{3.6cm}{\hfill \refstepcounter{equation}(\theequation)}\label{eq:hello}
+    $\begin{WithArrows}
+        \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
+        \varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{applying the integral to the \glsfmtshort{rhs}}\\
+        \tikzmark{StartBraceA}\varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz\tikzmark{EndBraceA} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \Arrow[tikz={text width=3.1cm}]{by definition, the LHS is $Q_\text{e,n}(t)$}\\
+        Q_\text{e,n}(t) &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \\
+    \end{WithArrows}$
+    % \\\vspace*{1em} Performing similar operations for the separator~(\cref{eq:liquiddiffnsep}) and
+    % positive electrode~(\cref{eq:dfnliquiddiff}) yields \\
+    % \centering
+    % $\begin{aligned}
+    %     a & = b
+    % \end{aligned}$
 \end{varwidth}
 \hfill
-\begin{minipage}[t]{0.2\textwidth}
+\begin{varwidth}[t]{0.2\textwidth}
     \begin{flushright}
         $\begin{WithArrows}
             {}&\vphantom{\varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz = \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz  }\\
             {}&\vphantom{\varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz = \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz }\\
             {}&\vphantom{\varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz }\\
-            {} &\hfill \refstepcounter{equation}(\theequation)\vphantom{Q_\text{e,n}(t) = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz }\\
+            {} &\hfill
+            \refstepcounter{equation}(\theequation)\label{eq:negliionmolestoreduce}\vphantom{Q_\text{e,n}(t) = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz }\\
         \end{WithArrows}$
     \end{flushright}
-    % \hfill hello
-    % \parbox{3.6cm}{\hfill \refstepcounter{equation}(\theequation)}\label{eq:hello}
-\end{minipage}
+\end{varwidth}
 
 \InsertUnderBrace[draw=black][aspect=0.28]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
 
