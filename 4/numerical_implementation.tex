@@ -76,11 +76,11 @@ It     is    tedious     to     hand-compute     the    convolution     integral
 of~\cref{eq:analyticalctssoln}.  However,   a  variety  of  state   of  the  art
 adaptive-time  solvers  employing  numerical  schemes  such  as  Dormand-Prince,
 Runge-Kutta,  Collocation  or  Backward  Difference Formulae  are  available  to
-efficiently  handle  such \gls{ode}s.  Given  that  lithium concentrations  vary
+efficiently  handle such  \glspl{ode}.  Given that  lithium concentrations  vary
 smoothly over time  without abrupt discontinuities, a  standard non-stiff solver
-of moderate order  shall suffice. A single line of code  using MATLAB's ode45
-solver can implement the time integrator, \eg{} \\ \mintinline{matlab}{[~,x_new] =
-ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span, x_old); }
+of moderate  order shall  suffice. A  single line of  code using  MATLAB's ode45
+solver can implement the time integrator, \eg{} \\ \mintinline{matlab}{[~,x_new]
+= ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span, x_old); }
 
 Since  the direction  of applied  current  is susceptible  to sudden  reversals,
 (\eg{}  due to  acceleration and  braking events  for a  vehicular application),
@@ -248,9 +248,9 @@ in~\cref{subfig:fgRTprocess} and is discussed further.
 \Cref{fig:timingdiagramBig} depicts  an exploded view  of the timing  aspects of
 the \textsc{Interrupt  Service Routine}  presented in~\cref{subfig:fgRTprocess}.
 Upon   the  expiry   of  an   on-chip  timer   calibrated  against   a  baseline
-precision-clock,  hardware  interrupts are  raised  by  one or  more  \gls{adc}s
+precision-clock,  hardware interrupts  are  raised by  one  or more  \glspl{adc}
 associated with voltage/current sensors mounted on cells. The \gls{isr} disables
-the  interrupt  and  reads  the  samples   of  data  from  the  \gls{adc}s  into
+the  interrupt  and  reads  the  samples  of  data  from  the  \glspl{adc}  into
 software. At  the end of this  process, the \gls{isr} rearms  the interrupts and
 simultaneously sends and acknowledgement to the appropriate sensor which reloads
 its timer.  The \gls{spm}  model equations  are then  evaluated in  software and
@@ -258,7 +258,7 @@ resulting computational variables such as  voltage and concentrations is used in
 other activities such as state estimator. If the \gls{bms} also performs control
 tasks, \eg{} regulating  the coolant-flow rate or  \gls{ice} state-toggling such
 as  in the  hysteresis control  of a  series hybrid,  these control  outputs are
-written to the relevant \gls{dac}s.
+written to the relevant \glspl{dac}.
 
 \subsection{Sample Delay Considerations}
 

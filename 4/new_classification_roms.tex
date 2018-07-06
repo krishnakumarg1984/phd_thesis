@@ -18,7 +18,7 @@ rubrics and  implications of  the choice  of modelling in  either of  these dual
 domains. Although in principle, the transformation between them follows standard
 mathematical  practices,\fxnote{citation(s) needed?}availability  of models  for
 final implementation  in the time domain  aids immediate uptake by  industry for
-adoption  in online  \gls{bms}s. Treatment  of  reduced order  models from  this
+adoption  in online  \glspl{bms}. Treatment  of reduced  order models  from this
 aspect is  so germane to  the central  hypothesis of this  chapter,\fxnote{can a
 simple time  domain model  do the  job?} that  the author  of this  thesis feels
 compelled to undertake  a simpler classification exercise within  the context of
@@ -228,7 +228,7 @@ entries in  the matrices of the  state space model depends  on the linearisation
 point.  In all  the  published  works employing  this  approach, these  transfer
 functions were obtained  by linearising the \gls{p2d} equations  at an operating
 point of  \SI{50}{\percent} \gls{soc}. The requirement  of linearisation renders
-the  model usable  only  in  a narrow  range  of  \gls{soc}s. Furthermore,  this
+the  model usable  only  in a  narrow range  of  \glspl{soc}. Furthermore,  this
 adversely affects the usability of the model for state estimation tasks, wherein
 the \gls{soc} is in fact an unknown quantity and is to be estimated.
 
@@ -245,10 +245,10 @@ changeover  mechanism. However,  this  demands careful  tuning  of the  blending
 parameters  and  gain values,  an  in-depth  treatment  of  which has  not  been
 detailed in Lee~\etal~\cite{Lee2014}.  Furthermore, employing these interpolated
 matrices---whose  entries are  obtained  from pre-computed  matrices at  various
-\gls{soc}s and temperature---for state-estimation  creates a subtle cyclic loop.
+\glspl{soc} and temperature---for state-estimation creates a subtle cyclic loop.
 The stability  of this feedback loop  hence introduced has not  been analysed in
 literature.  This  renders the  idea  of  state-estimation using  such  run-time
-interpolated models  questionable.
+interpolated models questionable.
 
 
 The author  of this thesis hypothesises  that any perceivable drawbacks  such as
@@ -426,7 +426,7 @@ issues\fxnote{citations needed}.
 
 
 Computationally    efficient     pseudo-spectral    schemes     for    numerical
-solution   of   \gls{pde}s   can be employed    by   choosing   discretisation
+solution   of   \glspl{pde}   can be employed    by   choosing   discretisation
 nodes    at    orthogonal    collocation     points    obtained    by    solving
 for     the    zeros     of    certain     classes    of     polynomial    basis
 functions~\cite{Ferguson1971,Trefethen2000,Boyd2001,Shizgal2015,Dutykh2016}.
@@ -488,15 +488,15 @@ second degree polynomial. In  a follow-on study~\cite{Subramanian2005}, the same
 authors  presented a  solution using  higher order  polynomials and  performed a
 dimensionless analysis of their  proposed reformulation. In the \engordnumber{2}
 and  \engordnumber{4}  order  solutions,  the polynomial  equation  for  surface
-concentration was  accompanied by a  corresponding \gls{ode} for  describing the
-temporal  evolution of  average concentration,  thereby leading  to a  system of
-\gls{dae}s. Furthermore, Subramanian~\etal{}~\cite{Subramanian2007} demonstrated
-the  application  of  polynomial  approximation  of  solid  phase  diffusion  by
-simulating a complete \gls{dfn} model.
+concentration  was  accompanied  by  a corresponding  \gls{ode}  for  describing
+the  temporal  evolution   of  average  concentration,  thereby   leading  to  a
+system  of \glspl{dae}.  Furthermore, Subramanian~\etal{}~\cite{Subramanian2007}
+demonstrated  the  application  of   polynomial  approximation  of  solid  phase
+diffusion by simulating a complete \gls{dfn} model.
 
 
 Using polynomial  approximation for the  solid phase concentration results  in a
-drastic reduction  in the number  of \gls{dae}s needed  to solve the  full model
+drastic reduction  in the number of  \glspl{dae} needed to solve  the full model
 since now discretisation  needs to be performed only along  the axial direction.
 The  polynomial  approximation  solution  applied   to  solve  for  the  surface
 concentration in  the solid phase can  hence be viewed as  a dimension reduction
@@ -505,7 +505,7 @@ textbook by  Carslaw and  Jaeger~\cite{Carslaw1947} details the  derivations for
 obtaining the  standard analytical solution  to Fick's  law of diffusion  in the
 context of heat conduction in solids. Liu~\cite{Liu2006} derived this analytical
 solution for the  Lithium intercalation process in the solid  phase, taking into
-account  the  idiosyncrasies  of porous  electrodes\fxnote{explain  about  Olcer's
+account  the idiosyncrasies  of porous  electrodes\fxnote{explain about  Olcer's
 pseudo-steady state  stuff}. However, this  expression involves an  infinite sum
 expansion of eigen  modes. Guo and White~\cite{Guo2012}  formulate an expression
 for  truncated approximation  of this  solution  to arbitrary  number of  terms.
@@ -517,7 +517,7 @@ involves exponential and trigonometric terms  and is non-trivial to implement on
 has been no extensive study comparing  the analytical solution to the polynomial
 approach. Consequently, this  approach has not yet  gained widespread popularity
 in the inherent elimination of the radial dimension embedded as a core aspect of
-the  cell-level model  order reduction  approaches discussed  here.\fxnote{another
+the cell-level  model order reduction approaches  discussed here.\fxnote{another
 method of solving  this diffusion is the integral method  analysis used by Tanim
 etal. Should  I mention that?.  There is also  a comprehensive review  by Romero
 etal. Furthermore, there is a specific review by Zhang and White}
@@ -606,20 +606,20 @@ porous  electrodes for  the metal  hydride cell  chemistry. In  this work,  each
 porous electrode  was represented as  a single spherical particle.  This concept
 was adopted for Lithium ion batteries  by Ning and Popov~\cite{Ning2004} and has
 since  become highly  popular. Models  employing this  lumped representation  of
-electrodes  are referred  to as  \gls{spm}s. These  models have  three advantages.
+electrodes are referred  to as \glspl{spm}. These models  have three advantages.
 Since  they involve  only  a  subset of  parameters  of  the original  \gls{dfn}
 model, most  of them being  geometric quantities  that can be  directly measured
-without  extensive chemical  or  electrical testing,  \gls{spm}s  are easier  to
+without  extensive chemical  or electrical  testing, \glspl{spm}  are easier  to
 parameterise than other physics-based reduced order model. Furthermore, they are
 computationally cheap, especially when coupled with the polynomial approximation
-for solving the solid diffusion equation for each electrode. Finally, all model
-parameters in the \gls{spm} retain their physical character, aiding in a direct
+for solving the solid diffusion equation  for each electrode. Finally, all model
+parameters in the \gls{spm} retain their  physical character, aiding in a direct
 and intuitive understanding of physical parameters on the cell's operation.
 
 
 Prima Facie, based  on a preliminary comparison of the  strengths and weaknesses
 of  the  modelling  families  in  the  literature  considered,  the  overarching
-simplicity of  \gls{spm}s and their  immediate potential  to bring the  power of
+simplicity of  \glspl{spm} and their immediate  potential to bring the  power of
 physics-based prediction  to an embedded  environment is a strong  motivation to
 pursue their in-depth exploration. The  equations describing the single particle
 model  is introduced  in  \ldots. An  in-depth analysis  of  their drawbacks  is
