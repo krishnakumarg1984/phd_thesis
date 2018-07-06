@@ -116,7 +116,10 @@ functions,  the  derivation  naturally  progresses  towards  seeking  a  set  of
 the  second   order  \glspl{ode}  of~\cref{eq:dfnliquiddiff}   (for  electrodes)
 and~\cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
-this sequence of steps for the negative electrode region,
+this sequence of steps for the negative electrode region,\\
+% \vspace*{\abovedisplayskip}
+
+% \medskip
 \begin{varwidth}[t]{\textwidth}
     $\begin{WithArrows}
         \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
@@ -124,12 +127,6 @@ this sequence of steps for the negative electrode region,
         \tikzmark{StartBraceA}\varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz\tikzmark{EndBraceA} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \Arrow[tikz={text width=3.1cm}]{by definition, the LHS is $Q_\text{e,n}(t)$}\\
         Q_\text{e,n}(t) &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \\
     \end{WithArrows}$
-    % \\\vspace*{1em} Performing similar operations for the separator~(\cref{eq:liquiddiffnsep}) and
-    % positive electrode~(\cref{eq:dfnliquiddiff}) yields \\
-    % \centering
-    % $\begin{aligned}
-    %     a & = b
-    % \end{aligned}$
 \end{varwidth}
 \hfill
 \begin{varwidth}[t]{0.2\textwidth}
@@ -143,6 +140,14 @@ this sequence of steps for the negative electrode region,
         \end{WithArrows}$
     \end{flushright}
 \end{varwidth}
+
+Performing     the     identical     sequence     of     operations     starting
+from~(\cref{eq:liquiddiffnsep})for  the separator  and~(\cref{eq:dfnliquiddiff})
+for the positive electrode yields
+\begin{align}
+        Q_\text{e,s}(t) &= D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \\
+        Q_\text{e,p}(t) &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} + (1 - t^0_\text{+}) a_\spsub \int_0^{l_\text{p}} j_\text{p}\, dz
+\end{align}
 
 \InsertUnderBrace[draw=black][aspect=0.28]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
 
