@@ -602,7 +602,7 @@ has  been   omitted  (see~\cref{eq:posoverpotential,eq:negoverpotential}).  This
 explains  why  the  voltage  accuracy  suffers  while  the  open-loop  \gls{soc}
 computation  remains  accurate.  The  high accuracy  of  \gls{soc}  (and  hence,
 solid-phase  concentration)   computation  also  validates  the   usage  of  the
-\engordnumber{4}  order  polynomial  approximation  instead of  Fick's  law  for
+\engordnumber{4} order polynomial  approximation in the place of  Fick's law for
 modelling solid-phase diffusion.
 
 However,  the  discrepancy  in  accuracies of  terminal  voltage  and  \gls{soc}
@@ -688,12 +688,14 @@ profile can be obtained. The details of this conversion for a specific \gls{bev}
 platform is  discussed in~?\fxnote{fix this to  point to layer opt  chapter}. To
 briefly summarise the conversion process, the computed power profile of the cell
 is divided by  its nominal voltage and  suitably scaled so that the  peak of the
-the current  profile corresponds to  a discharge  current of 3C.  A regenerative
-braking  factor  of \SI{85}{\percent}  is  assumed  for the  charging  scenario.
-As  seen in~\cref{fig:uddsspeedvstimecycle},  the \gls{udds}  profile is  highly
-dynamic consisting of many sets of rapid acceleration and braking events. Hence,
-this  drivecycle is  chosen to  provide  representative results  of the  model's
-performance to dynamic inputs.
+the current profile  corresponds to a discharge current of  3C. Considering that
+all of  braking energy cannot  be recovered due to  losses at the  wheels, brake
+discs  and  other  mechanical  components,  a  regenerative  braking  factor  of
+\SI{85}{\percent}  (the  fraction  of  recoverable power)  is  assumed  for  the
+charging  scenario. As  seen in~\cref{fig:uddsspeedvstimecycle},  the \gls{udds}
+profile is  highly dynamic  consisting of  many sets  of rapid  acceleration and
+braking  events. Hence,  this  drivecycle is  chosen  to provide  representative
+results of the model's performance to dynamic inputs.
 
 \begin{figure}[!htb]
     \centering

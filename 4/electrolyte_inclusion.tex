@@ -50,8 +50,8 @@ electrolyte  places a  disproportionately large  weight on  the accuracy  of the
 curve-fitting process. Non-linear fits as proposed in Guo~\etal{} are inherently
 problematic  in nature  as  the optimisation  routine may  converge  to a  local
 minimum.  The specific  form and  nature, \eg{}  the convexity  of the  proposed
-hypothesis function is  not discussed. Also, it is also  not guaranteed that the
-same fitting  function is  applicable to  a different cell  with another  set of
+hypothesis function  is not discussed. It  is also not guaranteed  that the same
+fitting  function  is  applicable  to  a different  cell  with  another  set  of
 parameters. Finally,  the correction  term being resistive  in nature  is zeroth
 order,  \ie{}  cannot account  for  the  frequency  dependent behaviour  of  the
 electrolyte's  dynamics. This  approach is  more suited  for small-scale  static
@@ -254,7 +254,7 @@ the  electrolyte,  there  is  no  detailed explanation  on  the  computation  of
 quantities such as time-constants involved in the polarization potential term.
 
 A modified version of the electrolyte model proposed in Luo~\etal~\cite{Luo2013}
-was  used in  Zhou~\etal~\cite{Zou2016a}  for observer  design  in an  \gls{soc}
+was  used  in Zou~\etal~\cite{Zou2016a}  for  observer  design in  an  \gls{soc}
 estimation application. The modification  essentially consists of truncating the
 complex  expression  in~\cite{Luo2013}  consisting of  six  coefficients,  $p_1$
 through $p_6$ to just two, and elimination of the aforementioned time-constants.
@@ -327,7 +327,7 @@ is computationally  \emph{cheaper} than  other model order  reduction techniques
 such as proper orthogonal decomposition  and balanced truncation, this claim has
 not  been substantiated.  The sole  comparison of  CPU times  presented in  this
 work  only compares  against  the classical  \gls{fdm}.  Although an  impressive
-computational  speed is  achieved, it  is  unclear whether  the model  equations
+computational  speed is  achieved, it  is unclear  whether the  model equations,
 particularly  those  involving  solutions  of  non-linear  integral  expressions
 resulting from  applying the Galerkin's  method can  be solved in  real-time for
 embedded implementation.  In the review of  this method conducted by  the author
