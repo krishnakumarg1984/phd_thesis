@@ -2,9 +2,9 @@
 %
 \definecolor{mycolor1}{rgb}{0.34558,0.34558,0.34558}%
 \definecolor{mycolor2}{rgb}{0.00000,0.43137,0.68627}%
-\definecolor{mycolor3}{rgb}{0.88424,0.88424,0.88424}%
 \definecolor{mycolor4}{rgb}{0.64706,0.09804,0.00000}%
 \definecolor{mycolor5}{rgb}{0.82353,0.25098,0.00000}%
+\definecolor{cbrewerdarkgray}{RGB}{99,99,99}
 %
 \begin{tikzpicture}
 
@@ -218,7 +218,7 @@ xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/
 1878.79	0.866789\\
 2000	0.796297\\
 };
-\addplot [color=mycolor3, line width=2.0pt, forget plot]
+\addplot [color=cbrewerdarkgray, line width=2.0pt, forget plot]
   table[row sep=crcr]{%
 0	0\\
 20.202	0.068062\\

@@ -1,30 +1,31 @@
 % vim:nospell
 
+\RequirePackage{luatex85,shellesc} % unified shell-escape interface
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[12pt,a4paper,oneside,openright]{book}
 
 % \input{../../Preamble/standard_preamble} % packages
 
-%% Comment this paragraph if using multiple plots/subplots
+% Comment this paragraph if using multiple plots/subplots
 % \usepackage{fontspec} % load after graphicx
 % \usepackage[warnings-off={mathtools-colon}]{unicode-math}
 % \input{../../Preamble/font_selection.tex} % for text-fonts only
 % \setmathfont[bold-style=ISO]{Libertinus Math} % https://github.com/libertinus-fonts/libertinus/issues/20
 
-%% using mathastext
-\usepackage[no-math]{fontspec} % load after graphicx
-\input{../../Preamble/font_selection.tex} % for text-fonts only
-\usepackage[italic]{mathastext}
+% %% using mathastext
+% \usepackage[no-math]{fontspec} % load after graphicx
+% \input{../../Preamble/font_selection.tex} % for text-fonts only
+% \usepackage[italic]{mathastext}
 
 %% poor man's substitute using pdflatex
-% \usepackage[sb]{libertine}
-% \usepackage[T1]{fontenc}
-% \usepackage{textcomp}
-% \usepackage[varqu,varl]{zi4}% inconsolata for mono, not LibertineMono
-% \usepackage{amsthm} % libertinust1math loads amsmath
-% % \usepackage{libertinust1math} % slanted integrals, by default
-% % \usepackage[scr=boondoxo,bb=boondox]{mathalfa} %Omit bb=boondox for default libertinus bb
-% \usepackage[italic]{mathastext}
+\usepackage[sb]{libertine}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[varqu,varl]{zi4}% inconsolata for mono, not LibertineMono
+\usepackage{amsthm} % libertinust1math loads amsmath
+% \usepackage{libertinust1math} % slanted integrals, by default
+% \usepackage[scr=boondoxo,bb=boondox]{mathalfa} %Omit bb=boondox for default libertinus bb
+\usepackage[italic]{mathastext}
 
 \input{../../Preamble/tikz_stuff}
 % \input{../../Preamble/hyperref_related}
@@ -32,13 +33,13 @@
 \begin{document}
 
 % \includetikz{m2t_kappa_ce_T}
-% \includetikz{m2t_kappa_ce_parametric_T}
+\includetikz{m2t_kappa_ce_parametric_T}
 % \includetikz{capacity_match_spm_p2d}
 % \includetikz{const_curr_dischg_voltage}
 % \includetikz{const_curr_dischg_soc}
 % \includetikz{const_curr_chg}
 % \includetikz{udds_I_v_soc}
 % \includetikz{udds_cycle}
-\includetikz{ce_1C_at_various_times}
+% \includetikz{ce_1C_at_various_times}
 
 \end{document}

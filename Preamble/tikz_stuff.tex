@@ -16,10 +16,11 @@
 \usepgfplotslibrary{patchplots}
 \usepgfplotslibrary{external}
 
-\tikzexternalize[shell escape=-enable-write18,  optimize=false]
-\tikzset{external/system call={lualatex
-        \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode
--jobname "\image" "\texsource"}}
+\tikzexternalize[optimize=false]
+% \tikzexternalize[shell escape=-enable-write18,  optimize=false]
+% \tikzset{external/system call={lualatex
+%         \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode
+% -jobname "\image" "\texsource"}}
 
 % Define the command. Note that the input and output folders are static!
 \newcommand{\includetikz}[1]{%

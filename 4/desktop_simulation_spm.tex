@@ -133,7 +133,7 @@ this parameter also falls outside the scope of the basic \gls{spm}.
 
 The  thicknesses  of the  electrodes  are  optimised  for equal  loading,  \ie{}
 to  achieve  a   balance  in  their  individual  capacities   to  store  \ch{Li}
-atoms.  The thickness  of the  positive  electrode is  the chosen  as the  value
+atoms.  The  thickness  of  the  positive  electrode  is  chosen  as  the  value
 from~Subramanian~\etal{}~\cite{Subramanian2009}. The  thickness of  the negative
 electrode region  is then  computed with  the goal of  equalising the  volume of
 active material  in each electrode  for every  electrochemical layer in  a pouch
@@ -150,9 +150,9 @@ of  avoiding  plating  at  the  edges  due  to  microscopic  malformations,  the
 design  is done  such as  to have  a small  overhang of  the negative  electrode
 layer,  \approx\SI{2}{\milli\meter}  with  respect  to  the  positive  electrode
 layer\fxnote{citation  needed}  as  shown  in~\cref{fig:anodeoverhangpouchcell}.
-However, the  active surface area, is  just the common overlap  area between the
-two electrodes, and  thus, $A_\text{elec}$ is equal to  the cross-sectional area
-of the positive electrode.
+Nevertheless, the  active surface area is  just the common overlap  area between
+the two  electrodes, and hence  $A_\text{elec}$ is equal to  the cross-sectional
+area of the positive electrode.
 
 \begin{figure}[!htb]
     \centering
@@ -165,11 +165,10 @@ of the positive electrode.
     \label{fig:anodeoverhangpouchcell}
 \end{figure}
 
-Thus,~\cref{eq:basiccapacitybalance} reduces to
-\begin{equation}
-    \frac{l_\text{neg}}{l_\text{pos}} = \frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}} = 1.22
-\end{equation}
-yielding $l_\text{neg} = \SI{72}{\micro\meter}$.
+Thus,~\cref{eq:basiccapacitybalance}                                     reduces
+to                      $\frac{l_\text{neg}}{l_\text{pos}}                     =
+\frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}}    =    1.22$,    yielding
+$l_\text{neg} = \SI{72}{\micro\meter}$.
 
 At first, it  may be surprising to  note that the values of  the particle radius
 $R_\pj$ used in  both the \gls{p2d} and \gls{spm} remain  identical. However, it
@@ -182,8 +181,8 @@ capacity, but  instead serves to improves  the simulation accuracy owing  to the
 enhanced spatial resolution.
 
 The  overall  active  surface  area  $A  =  n  A_\text{elec}$  is  the  combined
-cross-sectional  area  of all  layers  ($n$  is  the number  of  electrochemical
-(pos,sep,neg)  triplets) stacked  into the  pouch  cell. In  both the  \gls{p2d}
+cross-sectional area of  all layers ($n$ is the number  of electrochemical (pos,
+sep,  neg)  triplets)  stacked  into  the pouch  cell.  In  both  the  \gls{p2d}
 and  \gls{spm}  models,  this  parameter  serves  to  scale  the  external  load
 current  down  to  the  current  density  experienced  by  each  electrochemical
 layer. A value of  \approx\SI{30}{\ampere\per\meter\squared} was reported in the
@@ -273,19 +272,19 @@ at the upper end of the voltage spectrum
 
 For  both the  \gls{p2d} model  and the  \gls{spm} model,  the cell  temperature
 is   kept   constant   at   its   initial   value   of   \SI{25}{\degreeCelsius}
-(\SI{298.15}{\kelvin}). This implies that the  operation of the lithium ion cell
-is assumed  to be isothermal.  While this  is not true  in general, it  is worth
-noting that thermal gradients in  the through-thickness direction is negligible.
-\fxnote{citation needed} Furthermore, for  the C-rates considered (<5C), typical
-in a \gls{bev} application and  for short-duration transient loads studied, this
-is a reasonable assumption. Detailed modelling of thermal dynamics is not within
-the scope of this thesis, as the primary goal is to obtain a physics based model
-incorporating  electrochemical  principles  amenable for  embedded  application.
-Thus, thermal  dependence of  parameters through an  Arrhenius-type relationship
-is  not  considered. Future  work  could  include performing  thermally  coupled
-simulations, incorporating  thermally relevant  parameters and use  a simplified
-heat generation expression,  \eg{} a lumped thermal model in  both the \gls{spm}
-and \gls{p2d} and compare their performances.
+(\SI{298.15}{\kelvin}). This might imply to the reader that the operation of the
+lithium ion cell is assumed to be isothermal. While this is not true in general,
+for  the C-rates  considered  here  (<5C), typical  in  a \gls{bev}  application
+particularly for the  short-duration transient loads studied, it  is certainly a
+valid  zeroth  order  coarse  approximation of  the  cell's  thermal  condition.
+Detailed  modelling  of  thermal  dynamics  is not  within  the  scope  of  this
+thesis, as  the primary goal  is to obtain  a physics based  model incorporating
+electrochemical principles amenable for embedded application. Hence, the thermal
+dependence  of parameters  through an  Arrhenius-type relationship  is also  not
+considered. Future work could  include performing thermally coupled simulations,
+\ie{}  incorporating   thermally  dependent   parameters  and   simplified  heat
+generation expressions, \eg{} a lumped thermal  model could be employed for both
+the \gls{spm} and \gls{p2d} and their performances may be compared.
 
 To  understand  the parametrisation  of  initial  concentration, the  expression
 for   electrolyte   conductivity   needs    to   be   examined.   As   discussed
@@ -334,11 +333,11 @@ parameter as seen in~\cref{fig:kappavsce}.
 \begin{figure}[!htb]
     \centering
     \includegraphics{4/figures/m2t_kappa_ce_parametric_T.pdf}
-    \caption[]
-    {Electrolyte conductivity versus equilibrium concentration at various cell
-        temperatures. At ${T_\text{cell} = \SI{298.15}{\kelvin}}$, the maximum
-        value of electrolyte conductivity corresponds to a salt concentration of
-    \SI{1000}{\mol\per\meter\cubed}.}
+    \caption[Electrolyte conductivity versus concentration at various cell
+    temperatures]{Electrolyte conductivity versus equilibrium concentration at
+        various cell temperatures. At ${T_\text{cell} = \SI{298.15}{\kelvin}}$,
+        the maximum value of electrolyte conductivity corresponds to a salt
+    concentration of \SI{1000}{\mol\per\meter\cubed}.}
     \label{fig:kappavsce}
 \end{figure}
 
@@ -361,10 +360,10 @@ from  the   \gls{spm}  is  the   requirement  of  discretisation.   As  reported
 in~\cref{tbl:lcoSimParamsSPMp2d},  with  15 nodes  per  region  along the  axial
 direction  and  with 10  shells  per  electrode  in  the radial  direction,  the
 \gls{p2d}  model under  simulation  achieves mesh  independence  to a  tolerance
-of  \approx   \SI{2}{\percent}  for  the   range  of  C-rates   considered.  For
-higher  C-rates,  coupling  a  thermal   model  is  of  higher  importance  than
-incorporating further meshing refinements. The discretisation-related parameters
-are  specific to  the  \gls{p2d}  model and  is  hence, highlighted  accordingly
+of  \approx\SI{2}{\percent} for  the  range of  C-rates  considered. For  higher
+C-rates, coupling  a thermal  model is of  higher importance  than incorporating
+further   meshing  refinements.   The   discretisation-related  parameters   are
+specific  to  the   \gls{p2d}  model  and  is   hence,  highlighted  accordingly
 in~\cref{tbl:lcoSimParamsSPMp2d}.
 
 \subsubsection*{Capacity Characterisation}\label{subsubsec:capcharspmp2d}
@@ -715,7 +714,7 @@ of \gls{soc} swing for both  \glspl{bev} and \glspl{phev}. Although regenerative
 braking is  employed, due to  the reduced occurrence  of braking events  as well
 as  considering efficiencies  of  the  drivetrain, as  with  any driveycle,  the
 \gls{udds} run  also results  in a  net-discharge. The  cell's \gls{soc}  at the
-termination of  the \gls{udds}  run is \approx  \SI{6}{\percent} lower  than its
+termination  of the  \gls{udds} run  is \approx\SI{6}{\percent}  lower than  its
 starting value.
 
 % \FloatBarrier
