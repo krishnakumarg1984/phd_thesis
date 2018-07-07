@@ -130,6 +130,7 @@ need to be performed with high priority.
     \savebox{\algboxA}{%
         \begin{varwidth}[b]{0.65\linewidth}
             \begin{flushleft}
+                \vspace*{1.5ex}
                 \begin{algorithmic}[0]
 
                     \Initialise \gls{soc} \& other global variables
@@ -160,6 +161,7 @@ need to be performed with high priority.
     \savebox{\algboxB}{%
         \begin{varwidth}[b]{0.65\linewidth}
             \begin{flushright}
+                \vspace*{2em}
                 \begin{algorithmic}[0]
                     \ISR[]{}
                     \State read new sensor data from ADC
@@ -182,24 +184,14 @@ need to be performed with high priority.
         \end{varwidth}%
     }
     \centering
-    % \framebox[\textwidth]{
-    %   \subcaptionbox{background processes (low priority)\label{subfig:bgRTprocess}}{\usebox{\algboxA}}
-    %     % \quad
-    %     \hfill
-    %     \subcaptionbox{foreground processes (high priority)\label{subfig:fgRTprocess}}{%
-    %         \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
-    %             \usebox{\algboxB}%
-    %         }%
-    %     }%
-    % }
     \framebox[\textwidth]{
         \begin{subfigure}[t]{\wd\algboxA}
-            \subcaption{background process (low priority)}\label{subfig:bgRTprocess}
+            \subcaption{\uline{background process (low priority)}}\label{subfig:bgRTprocess}
             \usebox{\algboxA}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{\wd\algboxB}
-            \subcaption{foreground processes (high priority)}\label{subfig:fgRTprocess}
+            \subcaption{\uline{foreground processes (high priority)}}\label{subfig:fgRTprocess}
             \raisebox{\dimexpr.5\ht\algboxA-.5\ht\algboxB}{%
                 \usebox{\algboxB}%
             }%
