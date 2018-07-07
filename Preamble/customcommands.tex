@@ -188,16 +188,12 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{2.3em}}
 \makeatother
 
-\makeatletter
-\newcommand*{\algrule}[1][\algorithmicindent]{%
-    \makebox[#1][l]{%
-        \hspace*{.2em}% <------------- This is where the rule starts from
-        % \color{imperialcoolgray} \vrule height .75\baselineskip depth .25\baselineskip
-        \color{cbrewerdarkgray} \vrule height .75\baselineskip depth .25\baselineskip
-        % \vrule height .75\baselineskip depth .3\baselineskip % https://tex.stackexchange.com/questions/301462/why-are-vertical-rules-dashed-sometimes-with-algorithmic-package
-    }
-}
+% other alternative: https://tex.stackexchange.com/questions/110431/problems-with-vertical-lines-in-algorithmicx?noredirect=1&lq=1
+%%%%%%%%%% https://tex.stackexchange.com/questions/350399/indentation-scope-lines-broken-in-algpseudocode%%%%%%%%%
+\newcommand*{\algrule}[1][\algorithmicindent]{\hspace*{.2em}\vrule\vrule
+width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}}
 
+\makeatletter
 \newcount\ALG@printindent@tempcnta
 \def\ALG@printindent{%
     \ifnum \theALG@nested>0% is there anything to print
@@ -210,14 +206,18 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
         \loop
         \algrule[\csname ALG@ind@\the\ALG@printindent@tempcnta\endcsname]%
         \advance \ALG@printindent@tempcnta 1
-        \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax
+        \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax% can't do <=, so add one to RHS and use < instead
             \repeat
         \fi
     \fi
-}
+}%
+\usepackage{etoolbox}
 \patchcmd{\ALG@doentity}{\noindent\hskip\ALG@tlm}{\ALG@printindent}{}{\errmessage{failed to patch}}
-\patchcmd{\ALG@doentity}{\item[]\nointerlineskip}{}{}{} % no spurious vertical space
 \makeatother
+
+\AtBeginEnvironment{algorithmic}{\lineskip0pt}
+%%%%%%%%%% https://tex.stackexchange.com/questions/350399/indentation-scope-lines-broken-in-algpseudocode%%%%%%%%%
+
 
 \algnewcommand\algorithmicinput{\textbf{Initialise:}}
 \algnewcommand\Initialise{\item[\algorithmicinput]}
@@ -513,8 +513,8 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
     }{%
     \begin{tikzpicture}[overlay,remember picture]
         \draw [decoration={brace, amplitude=\BraceAmplitude, aspect=\BraceAspect, #2}, decorate, thick, draw=blue, text=black, #1]
-            ($(#4)+(\HorizontalOffset,-\VerticalOffset)$) --
-            ($(#3)+(-\HorizontalOffset,-\VerticalOffset)$)
-            node [below=\VerticalOffset, midway] {#5};
+        ($(#4)+(\HorizontalOffset,-\VerticalOffset)$) --
+        ($(#3)+(-\HorizontalOffset,-\VerticalOffset)$)
+        node [below=\VerticalOffset, midway] {#5};
     \end{tikzpicture}%
 }%
