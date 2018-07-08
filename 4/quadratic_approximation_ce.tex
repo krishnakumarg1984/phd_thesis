@@ -122,23 +122,35 @@ the  second   order  \glspl{ode}  of~\cref{eq:dfnliquiddiff}   (for  electrodes)
 and~\cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
 this sequence of steps for the negative electrode region
+\mathleft
 \begin{equation}
 \begin{WithArrows}[b]
-    \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
-    \varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{applying the integral to the \glsfmtshort{rhs}}\\
-    \tikzmark{StartBraceA}\varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz\tikzmark{EndBraceA} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz \Arrow[tikz={text width=3.1cm}]{by definition, the LHS is $Q_\text{e,n}(t)$}\\
-    Q_\text{e,n}(t) &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz
+    \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.4cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
+    \varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz &=
+    \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z}
+    \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz
+    \Arrow[tikz={text width=3.4cm}]{apply time-derivative operator to the whole \glsfmtshort{lhs}}\\
+    \diffp*{\left(\tikzmark{StartBraceA}\varepsilon_\text{n} \int_0^{l_\text{n}}
+    c_\ensub(z,t)\, dz\tikzmark{EndBraceA}\right)}{t} &=  \int_0^{l_\text{n}}
+    \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 -
+    t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text
+width=3.4cm}]{apply integral to the \glsfmtshort{rhs}}\\
+    \diff*{Q_\text{e,n}(t)}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz
 \end{WithArrows}
 \label{eq:negliionmolestoreduce}
 \end{equation}
-\InsertUnderBrace[draw=black][aspect=0.28]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
+\mathcenter
+\InsertUnderBrace[draw=black][aspect=0.26]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
+
+% \blindtext
+% \AddToShipoutPicture*{\ShowFramePicture}
 
 Performing     the     identical     sequence     of     operations     starting
 from~(\cref{eq:liquiddiffnsep}) for  the separator and~(\cref{eq:dfnliquiddiff})
 for the positive electrode yields
 \begin{align}
-    Q_\text{e,s}(t) &= D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolestoreduce}\\
-    Q_\text{e,p}(t) &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} + (1 - t^0_\text{+}) a_\spsub \int_0^{l_\text{p}} j_\text{p}\, dz\label{eq:posliionmolestoreduce}
+    \diff*{Q_\text{e,s}(t)}{t} &= D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolestoreduce}\\
+    \diff*{Q_\text{e,p}(t)}{t} &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} + (1 - t^0_\text{+}) a_\spsub \int_0^{l_\text{p}} j_\text{p}\, dz\label{eq:posliionmolestoreduce}
 \end{align}
 
 In    order    to   evaluate    the    integral    term   in    the    \gls{rhs}
@@ -155,22 +167,22 @@ Substituting~\crefrange{eq:negfluxintegral}{eq:posfluxintegral}
 into~\crefrange{eq:negliionmolestoreduce}{eq:posliionmolestoreduce}
 respectively
 \begin{align}
-    Q_\text{e,n} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} - (1 - t^0_\text{+}) \cancel{a_\snsub} \frac{I}{\cancel{a_\snsub} A F} \\
-    Q_\text{e,p} &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \cancel{a_\spsub} \frac{-I}{\cancel{a_\snsub} A F}
+    \diff*{Q_\text{e,s}}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} - (1 - t^0_\text{+}) \cancel{a_\snsub} \frac{I}{\cancel{a_\snsub} A F} \\
+    \diff*{Q_\text{e,p}}{t} &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \cancel{a_\spsub} \frac{-I}{\cancel{a_\snsub} A F}
 \end{align}
 
 which leads to the general expressions  for the cross-sectional molar density of
 \ch{Li^+} ions in each of the three regions as
 \begin{align}
-    Q_\text{e,n} & = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \frac{I}{A F} \label{eq:negliionmolesgen} \\
-    Q_\text{e,s} & = D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolesgen}                                             \\
-    Q_\text{e,p} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) a_\spsub \frac{I}{A F}\label{eq:posliionmolesgen}
+    \diff*{Q_\text{e,n}}{t} & = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \frac{I}{A F} \label{eq:negliionmolesgen} \\
+    \diff*{Q_\text{e,s}}{t} & = D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolesgen}                                             \\
+    \diff*{Q_\text{e,p}}{t} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) a_\spsub \frac{I}{A F}\label{eq:posliionmolesgen}
     \intertext{Substituting the assumed quadratic expressions for electrolyte concentrations in
         each of the three region, \ie{}~\crefrange{eq:cenquadreduced}{eq:cepquadreduced}
     in the above system,\ie{}~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
-    Q_\text{e,n} & = 2 a_2 l_\text{n} D_\effn + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesquadratic}                                \\
-    Q_\text{e,s} & = 2 a_5 l_\text{s} D_\effs                                                                                                     \\
-    Q_\text{e,p} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
+    \diff*{Q_\text{e,n}}{t} & = 2 a_2 l_\text{n} D_\effn + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesquadratic}                                \\
+    \diff*{Q_\text{e,s}}{t} & = 2 a_5 l_\text{s} D_\effs                                                                                                     \\
+    \diff*{Q_\text{e,p}}{t} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
 \end{align}
 The  initial  ionic  concentration  in  the electrolyte  are  identical  in  all
 three  regions  of  the  cell, assuming  equilibrium  starting  conditions~\ie{}
@@ -179,9 +191,9 @@ $c_{\text{e,0}_j} = c_\text{e,0}, \jinnsp$. Hence the initial number of moles of
 \begin{align}
     Q_\text{e,n}(0) & = \varepsilon_\text{n} c_\text{e,0} l_\text{n} \label{eq:Qeninit}\\
     Q_\text{e,s}(0) & = \varepsilon_\text{s} c_\text{e,0} l_\text{s}\\
-    Q_\text{e,p}(0) & = \varepsilon_\text{p} c_\text{e,0} l_\text{p}\\
-    \intertext{and the initial coefficient vector which satisfies the system
-        equations is obtained as}
+    Q_\text{e,p}(0) & = \varepsilon_\text{p} c_\text{e,0} l_\text{p} \label{eq:Qepinit}\\\
+    \shortintertext{and the initial coefficient vector which satisfies the system
+    equations is obtained as}
     \begin{bmatrix}
         a_0 \\
         a_2 \\
@@ -201,9 +213,9 @@ $c_{\text{e,0}_j} = c_\text{e,0}, \jinnsp$. Hence the initial number of moles of
     \end{bmatrix} \label{eq:coeffinit}
 \end{align}
 
-The                   system                   of                   \glspl{ode},
+The           system            of           \emph{three}           \glspl{ode},
 \eqref{eq:negliionmolesquadratic}--\eqref{eq:posliionmolesquadratic}    together
-with \crefrange{eq:Qeninit}{eq:coeffinit}  representing the  initial conditions,
+with  \crefrange{eq:Qeninit}{eq:Qepinit}  representing the  initial  conditions,
 form   an    \gls{ivp}.   \Crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
 represent  a  square system  of  seven  \emph{linear} algebraic  equations  with
 \emph{seven} unknown  coefficients which needs  to be solved at  each time-step.
@@ -240,12 +252,12 @@ sub-systems translate naturally  into fixed time-steps and is  well-suited for a
 workaround  to  mitigate the  complexities  of  having  to implement  and  solve
 \glspl{dae} in real time.
 
+% need to write algorithm
 The   simulation   results   of   the   quadratic   approximation   scheme   and
 the   analysis   of   its   strengths   and   weaknesses   is   presented   next
 in~\cref{subsec:quadraticsimresultsanalysis}.
 
 \subsection{Simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
 
-% \blindtext
-% \AddToShipoutPicture*{\ShowFramePicture}
+
 

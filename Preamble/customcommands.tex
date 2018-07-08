@@ -580,9 +580,9 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
 
 % Tweak these as necessary
-\newcommand*{\BraceAmplitude}{0.7em}%
+\newcommand*{\BraceAmplitude}{0.5em}%
 \newcommand*{\BraceAspect}{0.5}%
-\newcommand*{\VerticalOffset}{2.6ex}%
+\newcommand*{\VerticalOffset}{3.0ex}%
 \newcommand*{\HorizontalOffset}{0.0em}%
 
 
@@ -600,3 +600,9 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
             node [below=\VerticalOffset, midway] {#5};
     \end{tikzpicture}%
 }%
+
+\makeatletter
+\newcommand{\mathleft}{\@fleqntrue\@mathmargin0pt}
+\newcommand{\mathcenter}{\@fleqnfalse}
+\makeatother
+
