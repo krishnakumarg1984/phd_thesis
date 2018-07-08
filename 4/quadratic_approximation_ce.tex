@@ -174,9 +174,9 @@ respectively
 which leads to the general expressions  for the cross-sectional molar density of
 \ch{Li^+} ions in each of the three regions as
 \begin{align}
-    \diff*{Q_\text{e,n}}{t} & = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \frac{I}{A F} \label{eq:negliionmolesgen} \\
+    \diff*{Q_\text{e,n}}{t} & = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesgen} \\
     \diff*{Q_\text{e,s}}{t} & = D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolesgen}                                             \\
-    \diff*{Q_\text{e,p}}{t} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) a_\spsub \frac{I}{A F}\label{eq:posliionmolesgen}
+    \diff*{Q_\text{e,p}}{t} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \frac{I}{A F}\label{eq:posliionmolesgen}
     \intertext{Substituting the assumed quadratic expressions for electrolyte concentrations in
         each of the three region, \ie{}~\crefrange{eq:cenquadreduced}{eq:cepquadreduced}
     in the above system,\ie{}~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
@@ -191,7 +191,7 @@ $c_{\text{e,0}_j} = c_\text{e,0}, \jinnsp$. Hence the initial number of moles of
 \begin{align}
     Q_\text{e,n}(0) & = \varepsilon_\text{n} c_\text{e,0} l_\text{n} \label{eq:Qeninit}\\
     Q_\text{e,s}(0) & = \varepsilon_\text{s} c_\text{e,0} l_\text{s}\\
-    Q_\text{e,p}(0) & = \varepsilon_\text{p} c_\text{e,0} l_\text{p} \label{eq:Qepinit}\\\
+    Q_\text{e,p}(0) & = \varepsilon_\text{p} c_\text{e,0} l_\text{p} \label{eq:Qepinit}\\
     \shortintertext{and the initial coefficient vector which satisfies the system
     equations is obtained as}
     \begin{bmatrix}
@@ -213,14 +213,13 @@ $c_{\text{e,0}_j} = c_\text{e,0}, \jinnsp$. Hence the initial number of moles of
     \end{bmatrix} \label{eq:coeffinit}
 \end{align}
 
-The           system            of           \emph{three}           \glspl{ode},
+The             system             of             three             \glspl{ode},
 \eqref{eq:negliionmolesquadratic}--\eqref{eq:posliionmolesquadratic}    together
 with  \crefrange{eq:Qeninit}{eq:Qepinit}  representing the  initial  conditions,
 form   an    \gls{ivp}.   \Crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
-represent  a  square system  of  seven  \emph{linear} algebraic  equations  with
-\emph{seven} unknown  coefficients which needs  to be solved at  each time-step.
-These algebraic  constraints coupled  with the  aforementioned \gls{ivp}  form a
-\gls{dae} system.
+represent a square system of seven linear algebraic equations with seven unknown
+coefficients  which  needs to  be  solved  at  each time-step.  These  algebraic
+constraints coupled with the aforementioned \gls{ivp} form a \gls{dae} system.
 
 There are now two choices for proceeding  with solution of the system. The naive
 approach  would be  to  solve  the \gls{dae}  using  advanced \gls{dae}  solvers
