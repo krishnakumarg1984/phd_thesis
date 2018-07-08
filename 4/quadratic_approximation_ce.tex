@@ -4,12 +4,17 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
-In this  section, the  quadratic approximation  of ionic  spatial concentration,
-that underpins the electrolyte model  in many improved \gls{spm} formulations is
-presented. An analysis of  the weakness of this model is  performed based on the
-results  from applying  this model.  Mitigation of  this critical  drawback lead
-to  this  author's  decoupled spatio-temporal  electrolyte  concentration  model
-structure which is presented next in~\cref{sec:newelectrolytemodel}.
+In   this    section,   the    quadratic   approximation   of    ionic   spatial
+concentration,   that  underpins   the  electrolyte   model  in   many  improved
+\gls{spm}  formulations  is  presented.  The  steps  involved  in  deriving  the
+quadratic   approximation   is  detailed   in~\cref{subsec:quadraticmodelderiv}.
+In~\cref{subsec:quadraticsimresultsanalysis},  an analysis  of  the weakness  of
+this  model is  performed  based  on the  results  from  applying the  quadratic
+approximation scheme. Mitigation of this critical drawback lead to this author's
+decoupled  spatio-temporal electrolyte  concentration model  structure which  is
+presented next in~\cref{sec:newelectrolytemodel}.
+
+\subsection{Model derivation}\label{subsec:quadraticmodelderiv}
 
 \begin{figure}[!htb]
     \captionsetup{singlelinecheck=off}
@@ -69,7 +74,8 @@ electrolyte concentration profile within each region.
 dropped from  the notation. It is  implicitly noted that they  are time-varying.
 Similarly, spatio-temporal dependence of the electrolyte concentration functions
 $c_\text{e,j}$ is omitted  in circumstances where such explicit  notation is not
-crucial for understanding.}
+crucial  for  understanding.} with  the  coefficient  vector being  modified  to
+$\vec{a} = \vect{a_0,a_2, \dots ,a_6, a_8}$.
 
 \input{4/dfn_electrolyte_sep_table}
 
@@ -83,9 +89,8 @@ respectively) to the separator region.
 Applying  the  continuity  and  flux  boundary  conditions  of  the  electrolyte
 diffusion  equation from~\cref{eq:liquiddiffnsep}  at both  separator
 interfaces
-% results in the following set of linear algebraic equations
 \begin{alignat}{2}
-    a_2 l^2_\text{n} + a_0                      & = \hphantom{-}a_3 \qquad                    &  & \text{\footnotesize (continuity at neg/sep interface)} \\
+    a_2 l^2_\text{n} + a_0                      & = \hphantom{-}a_3 \qquad &  & \text{\footnotesize (continuity at neg/sep interface)} \label{eq:cecontinuitynegsep}\\
     a_5 l^2_\text{s} + a_4 l_\text{s} + a_3     & = \hphantom{-}a_8 l^2_\text{p} + a_6 \qquad &  & \text{\footnotesize (continuity at sep/pos interface)} \\
     2 a_2 l_\text{n} D_\effn                    & = \hphantom{-}a_4 \qquad                    &  & \text{\footnotesize (flux b.c.\ at neg/sep interface)}  \\
     \left(2 a_5 l_\text{s} + a_4\right) D_\effs & = -2 a_8 l_\text{p} D_\effp \qquad          &  & \text{\footnotesize (flux b.c.\ at sep/pos interface)}\label{eq:quadcefluxseppos}
@@ -107,7 +112,7 @@ Applying this to \crefrange{eq:cenquadreduced}{eq:cepquadreduced}
 \begin{align}
     Q_\text{e,n} &= \varepsilon_\text{n} \left( \frac{1}{3} a_2 l^3_\text{n} + a_0 l_\text{n}\right)\\
     Q_\text{e,s} &= \varepsilon_\text{s} \left( \frac{1}{3} a_5 l^3_\text{s} + \frac{1}{2} a_4 l^2_\text{s} + a_3 l_\text{s}\right)\\
-    Q_\text{e,p} &= \varepsilon_\text{p} \left( \frac{1}{3} a_8 l^3_\text{p} + a_6 l_\text{p}\right)
+    Q_\text{e,p} &= \varepsilon_\text{p} \left( \frac{1}{3} a_8 l^3_\text{p} + a_6 l_\text{p}\right) \label{eq:Qepbyintegration}
 \end{align}
 
 At this stage,  $Q_{\text{e},j}(t)$ are unknown. Since  these are time-dependent
@@ -116,10 +121,7 @@ functions,  the  derivation  naturally  progresses  towards  seeking  a  set  of
 the  second   order  \glspl{ode}  of~\cref{eq:dfnliquiddiff}   (for  electrodes)
 and~\cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
-this sequence of steps for the negative electrode region,\\
-% \vspace*{\abovedisplayskip}
-
-% \medskip
+this sequence of steps for the negative electrode region
 \begin{equation}
 \begin{WithArrows}[b]
     \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.1cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
@@ -129,20 +131,120 @@ this sequence of steps for the negative electrode region,\\
 \end{WithArrows}
 \label{eq:negliionmolestoreduce}
 \end{equation}
+\InsertUnderBrace[draw=black][aspect=0.28]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
 
 Performing     the     identical     sequence     of     operations     starting
 from~(\cref{eq:liquiddiffnsep}) for  the separator and~(\cref{eq:dfnliquiddiff})
 for the positive electrode yields
 \begin{align}
-    Q_\text{e,s}(t) &= D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \\
-    Q_\text{e,p}(t) &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} + (1 - t^0_\text{+}) a_\spsub \int_0^{l_\text{p}} j_\text{p}\, dz
+    Q_\text{e,s}(t) &= D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolestoreduce}\\
+    Q_\text{e,p}(t) &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} + (1 - t^0_\text{+}) a_\spsub \int_0^{l_\text{p}} j_\text{p}\, dz\label{eq:posliionmolestoreduce}
 \end{align}
 
-\InsertUnderBrace[draw=black][aspect=0.28]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
+In    order    to   evaluate    the    integral    term   in    the    \gls{rhs}
+of~\cref{eq:negliionmolestoreduce}    and~\cref{eq:posliionmolestoreduce},   the
+solid  phase  charge  conservation  equation~(\cref{eq:solidchargeconserve})  is
+integrated  along the  local  co-ordinate  axis of  the  negative electrode  and
+positive electrode respectively
+\begin{align}
+    \int_0^{l_\text{n}} j_\text{n}\, dz & =  \frac{I}{a_\snsub A F} \label{eq:negfluxintegral}\\
+    \int_0^{l_\text{p}} j_\text{p}\, dz & =  \frac{-I}{a_\spsub A F}\label{eq:posfluxintegral}
+\end{align}
 
-% \varepsilon_\text{s} \int_0^{l_\text{s}} \left(\diffp*{c_\essub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{s}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\essub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{s}\right)\, dz \\
+Substituting~\crefrange{eq:negfluxintegral}{eq:posfluxintegral}
+into~\crefrange{eq:negliionmolestoreduce}{eq:posliionmolestoreduce}
+respectively
+\begin{align}
+    Q_\text{e,n} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} - (1 - t^0_\text{+}) \cancel{a_\snsub} \frac{I}{\cancel{a_\snsub} A F} \\
+    Q_\text{e,p} &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \cancel{a_\spsub} \frac{-I}{\cancel{a_\snsub} A F}
+\end{align}
 
+which leads to the general expressions  for the cross-sectional molar density of
+\ch{Li^+} ions in each of the three regions as
+\begin{align}
+    Q_\text{e,n} & = D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \frac{I}{A F} \label{eq:negliionmolesgen} \\
+    Q_\text{e,s} & = D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolesgen}                                             \\
+    Q_\text{e,p} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) a_\spsub \frac{I}{A F}\label{eq:posliionmolesgen}
+    \intertext{Substituting the assumed quadratic expressions for electrolyte concentrations in
+        each of the three region, \ie{}~\crefrange{eq:cenquadreduced}{eq:cepquadreduced}
+    in the above system,\ie{}~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
+    Q_\text{e,n} & = 2 a_2 l_\text{n} D_\effn + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesquadratic}                                \\
+    Q_\text{e,s} & = 2 a_5 l_\text{s} D_\effs                                                                                                     \\
+    Q_\text{e,p} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
+\end{align}
+The  initial  ionic  concentration  in  the electrolyte  are  identical  in  all
+three  regions  of  the  cell, assuming  equilibrium  starting  conditions~\ie{}
+$c_{\text{e,0}_j} = c_\text{e,0}, \jinnsp$. Hence the initial number of moles of
+\ch{Li^+} per unit area in each of the three regions is given by
+\begin{align}
+    Q_\text{e,n}(0) & = \varepsilon_\text{n} c_\text{e,0} l_\text{n} \label{eq:Qeninit}\\
+    Q_\text{e,s}(0) & = \varepsilon_\text{s} c_\text{e,0} l_\text{s}\\
+    Q_\text{e,p}(0) & = \varepsilon_\text{p} c_\text{e,0} l_\text{p}\\
+    \intertext{and the initial coefficient vector which satisfies the system
+        equations is obtained as}
+    \begin{bmatrix}
+        a_0 \\
+        a_2 \\
+        a_3 \\
+        a_4 \\
+        a_5 \\
+        a_6 \\
+        a_8
+    \end{bmatrix} & = \begin{bmatrix}
+        c_\text{e,0} \\
+        0 \\
+        c_\text{e,0} \\
+        0 \\
+        0 \\
+        c_\text{e,0} \\
+        0
+    \end{bmatrix} \label{eq:coeffinit}
+\end{align}
 
+The                   system                   of                   \glspl{ode},
+\eqref{eq:negliionmolesquadratic}--\eqref{eq:posliionmolesquadratic}    together
+with \crefrange{eq:Qeninit}{eq:coeffinit}  representing the  initial conditions,
+form   an    \gls{ivp}.   \Crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
+represent  a  square system  of  seven  \emph{linear} algebraic  equations  with
+\emph{seven} unknown  coefficients which needs  to be solved at  each time-step.
+These algebraic  constraints coupled  with the  aforementioned \gls{ivp}  form a
+\gls{dae} system.
+
+There are now two choices for proceeding  with solution of the system. The naive
+approach  would be  to  solve  the \gls{dae}  using  advanced \gls{dae}  solvers
+specially  designed  to  handle  index-1 semi-explicit  systems  such  as  DASSL
+or  DASPK. For  start-stop  type  of input  currents  with discontinuities,  the
+consistent initialisation of algebraic conditions and derivatives is numerically
+challenging.  All   \gls{dae}  solvers  typically  use   adaptive  time-stepping
+algorithms.  The  feasibility of  using  such  a  complex scheme  for  real-time
+computation is questionable. On the other hand, the overall system can be viewed
+as composed of two numerical subsystems ---
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item an independent \gls{ode} system, and
+    \item an independent algebraic system
+\end{enumerate*}
+with both these  systems running back to back in  succession using solution from
+the previous time-step.
+
+To clarify the  sequence of operations, in  order to bootstrap the  model, it is
+required  to compute  $Q_{\text{e},j}(t)$ in  all three  regions. The  \gls{ode}
+system is  integrated for one time-step  by retaining the coefficients  at their
+initial  value. The  $Q_{\text{e},j}(t)$  thus solved  is  substituted into  the
+algebraic system to yield the updated value of the coefficient vector $\vec{a}(t
+= t_k)$. This new  value of the coefficient vector is  substituted back into the
+\gls{ode} system and  the process continues. Although  the continuous simulation
+of  the overall  \gls{dae} is  not possible,  this scheme  is pragmatic  from an
+engineering viewpoint  as the periodic  pauses needed to update  the intertwined
+sub-systems translate naturally  into fixed time-steps and is  well-suited for a
+\gls{bms} controller operating at a fixed sample rate. This is also an effective
+workaround  to  mitigate the  complexities  of  having  to implement  and  solve
+\glspl{dae} in real time.
+
+The   simulation   results   of   the   quadratic   approximation   scheme   and
+the   analysis   of   its   strengths   and   weaknesses   is   presented   next
+in~\cref{subsec:quadraticsimresultsanalysis}.
+
+\subsection{Simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
 
 % \blindtext
 % \AddToShipoutPicture*{\ShowFramePicture}

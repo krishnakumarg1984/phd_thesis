@@ -338,15 +338,15 @@ online/embedded  application  in a  \gls{bms}.  Therefore,  as per  this  thesis
 authors' stance  explained in~\cref{sec:classificationscheme},  models employing
 such methods are deemed to be not in alignment with the goals of this thesis.
 
-Moura~\etal~\cite{Moura2017} propose an improved  \gls{spm} by simply augmenting
+Moura~\etal~\cite{Moura2017} proposed an improved \gls{spm} by simply augmenting
 the  conventional  \gls{spm}  with  a simplified  form  of  electrolyte-specific
 equations of  the original  \gls{dfn} model. The  resulting model  therefore has
 \glspl{pde} in it and therefore not easily amenable for embedded implementation.
-The other main  contribution of this work is its  feasibility analysis of having
-convergent  estimators for  this  model  and design  of  such a  \gls{pde}-based
-estimator.  In  the  views  of  this  thesis  author,  this  approach  is  on  a
-trajectory that  deviates too far  from a  simplified model suitable  for online
-implementation.
+% The other main  contribution of this work is its  feasibility analysis of having
+% convergent  estimators for  this  model  and design  of  such a  \gls{pde}-based
+% estimator.  In  the  views  of  this  thesis  author,  this  approach  is  on  a
+% trajectory that  deviates too far  from a  simplified model suitable  for online
+% implementation.
 
 Lotfi~\etal~\cite{Lotfi2017}  presented  an   algebraic  approximation  for  the
 spatial  distribution   of  electrolyte  concentration  by   modifying  standard
@@ -360,7 +360,8 @@ interfaces. Since exponential-type expressions are assumed, the resulting set of
 equations  are  non-linear, whose  solution,  especially  in  the context  of  a
 resource-constrained environment is problematic.
 
-In  the authors'  observations, the  errors  in these  model approximations  can
+In  the  authors'   observations  in  trying  to  replicate   the  results  from
+the  literature  presented here,  the  errors  in  all such  approximations  can
 be  attributed  to  inaccuracies  in  computing  the  spatio-temporal  evolution
 of  electrolyte   concentration.  Upon   obtaining  a   good  estimate   of  the
 electrolyte concentration profile,~\cref{eq:electrolytepdwithce} is deemed to be
