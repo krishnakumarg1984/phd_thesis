@@ -267,6 +267,35 @@ in~\cref{alg:disctimespm}.
 
 \input{4/algo_quadratic_ce}
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{4/figures/quadratic_ce_approx_spatial_1C.pdf}
+    \caption[Spatial distribution of electrolyte concentration for 1C
+    discharge]{Spatial distribution of ionic concentration in electrolyte along
+        cell thickness at various snapshots of time for a 1C discharge. The
+        concentration profile obtained from simulating the \glsfmtshort{p2d}
+        model is used as the reference. The performance of the quadratic model
+        is quite poor during the initial transient duration, but improves over
+    time as a quasi-steady state is reached.}
+        \label{fig:spatialionicconc1C}
+\end{figure}
+
+\Cref{fig:spatialionicconc1C} shows  the spatial distribution of  \ch{Li^+} ions
+in electrolyte  along the  thickness of  the cell at  various snapshots  of time
+obtained by simulation  of the \gls{p2d} and the  quadratic approximation models
+using a  1C discharge current. The  \gls{p2d} model's response is  considered as
+the reference benchmark.  During the initial transient  phase, the concentration
+profile within each electrode region exhibits a characteristic inflection point.
+During this phase,  the concentration profile computed by  the parabolic profile
+exhibits  a  large deviation  in  terms  of  percentage  error at  each  spatial
+location. However, with the passage of time, as a \gls{qss} is established, this
+inflection point flattens out, and the quadratic approximation becomes closer to
+the  true  concentration value  at  each  spatial  location. Similar  trends  in
+behaviour is  exhibited for discharge and  charging at higher C-rates  and these
+results are  therefore omitted here  in the  interest of keeping  the discussion
+succinct.
+
+
 
 
 
