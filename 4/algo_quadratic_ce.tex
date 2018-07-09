@@ -1,0 +1,42 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:nospell
+
+\begin{algorithm}[!htbp]
+    \caption{Quadratic approximation model for spatio-temporal electrolyte concentration}\label{alg:quadraticce}
+    \begin{algorithmic}[1]
+        \Require Load profile \Comment{\eg{} a \texttt{csv} file of $t$ vs. C-rate}
+        \Require Electrolyte model parameter set  \Comment{\eg{} stored in a struct \texttt{ceparams}}
+        \Userdata $ t_\text{f}$,  sample rate $T_s, c_\text{e,init}$
+        \Function{QuadraticElectrolyteModel}{}
+            \State $Q_\text{e,init}$
+            \State \vdots
+            \State
+            \State
+            \State
+            \State $V_\text{cell}[1] \gets \textsc{ComputeCellVoltage}(\textbf{x}[1],I[1],\texttt{params})$ \Comment{from direct feedthrough}
+            \For{$k \gets 2 : N_\text{max}$}
+                \State $I[k] \gets $ interpolate from profile using \gls{zoh}
+                \State Solve continuous-time equation~\cref{eq:threestatesmatrixvec} \Comment{solver IC set to $x[k-1]$}
+                \State $\mathbf{x}[k] \gets $ last time-entry  vector of soln.\  matrix \Comment{from an adaptive solver \eg{} MATLAB's \texttt{ode45}}
+                \State Compute $z[k]$ as per~\cref{eq:soccomputation}
+                \State $V_\text{cell} \gets \textsc{ComputeCellVoltage}(\textbf{x}[k],I[k],\texttt{param}) $
+                \If {$z[k] \text{ or } V_\text{cell}[k]$ exceeded cut-off limits}
+                    \State $k \gets k - 1$ \Comment{data from last  step is invalid}
+                    \State \textit{break};
+                \EndIf
+            \EndFor
+        \EndFunction
+
+        \OutputEqn{\textbf{x}, I, \texttt{params}}
+            \State Compute $c_\snegsurf$ as per~\cref{eq:csurfnegfromcavgneg}
+            \Comment{consider saturating \ie{} $c_\snegmin \le c_\snegsurf \le
+            c_\snegmax$}
+            \State Compute $\mean{c}_\spos$ as per~\cref{eq:csposbulkfromcsnegbulk}
+            \State Compute $c_\spossurf$ as per~\cref{eq:csurfposfromcavgpos}
+            \State Compute $V_\text{cell}$ as per~\cref{eq:spmbasicoutputvoltagefinal}
+        \EndOutputEqn%
+    \end{algorithmic}
+\end{algorithm}

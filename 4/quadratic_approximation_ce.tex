@@ -256,7 +256,18 @@ The   simulation   results   of   the   quadratic   approximation   scheme   and
 the   analysis   of   its   strengths   and   weaknesses   is   presented   next
 in~\cref{subsec:quadraticsimresultsanalysis}.
 
-\subsection{Simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
+\subsection{Numerical implementation, simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
+
+From an analysis point of view,  the quadratic approximation model for computing
+the spatio-temporal evolution of electrolyte concentration can be simulated as a
+standalone subsystem, and  hence can be implemented numerically  as a standalone
+module  as  shown  in~\cref{alg:quadraticce}.  In practice,  this  modular  code
+is  embedded  as  a  subroutine  within  the  main  \gls{spm}  algorithm  listed
+in~\cref{alg:disctimespm}.
+
+\input{4/algo_quadratic_ce}
+
+
 
 
 

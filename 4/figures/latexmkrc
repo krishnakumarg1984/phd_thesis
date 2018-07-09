@@ -4,7 +4,6 @@ $postscript_mode = $dvi_mode = 0;
 $cleanup_mode=2;
 @default_files = ('wrapper_m2t.tex');
 
-
 push @generated_exts, "acn";
 push @generated_exts, "acr";
 push @generated_exts, "alg";
