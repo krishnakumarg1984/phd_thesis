@@ -32,7 +32,7 @@ presented next in~\cref{sec:newelectrolytemodel}.
         \in \{0,l_\text{tot}\}$, where $l_\text{tot} = l_\text{neg} +
         l_\text{sep} + l_\text{pos}$. Local co-ordinate systems specific to each
         region are also defined. It should be noted that the positive
-        electrode's local co-ordinate axis direction is reversed.}
+    electrode's local co-ordinate axis direction is reversed.}
     \label{fig:coordsquadapprox}
 \end{figure}
 
@@ -60,20 +60,20 @@ electrolyte concentration profile within each region.
     c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad &  & 0 \le z \le l_\text{s}\label{eq:cesqquadstart}   \\
     c_\epsub(z,t) & = a_8(t) z^2 + a_7(t) z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}\label{eq:cepqquadstart}
     \shortintertext{where     the    coefficient     vector    $\vec{a}(t)     =
-    \vect{a_0(t),a_1(t),   \dots  ,a_8(t)}$   is  to   be  determined   at  each
-    time-step\footnotemark.  Applying  boundary  conditions of  the  electrolyte
-    diffusion equation from  the \gls{dfn} model~(refer~\cref{eq:dfnliquiddiff})
-    to~\crefrange{eq:cenqquadstart}{eq:cepqquadstart},  it  is clear  that  $a_1
-    =  0$ and  $a_7  = 0$.  Thus,~\crefrange{eq:cenqquadstart}{eq:cepqquadstart}
+        \vect{a_0(t),a_1(t),   \dots  ,a_8(t)}$   is  to   be  determined   at  each
+        time-step\footnotemark.  Applying  boundary  conditions of  the  electrolyte
+        diffusion equation from  the \gls{dfn} model~(refer~\cref{eq:dfnliquiddiff})
+        to~\crefrange{eq:cenqquadstart}{eq:cepqquadstart},  it  is clear  that  $a_1
+        =  0$ and  $a_7  = 0$.  Thus,~\crefrange{eq:cenqquadstart}{eq:cepqquadstart}
     become}
     c_\ensub      & = a_2 z^2 + a_0         \qquad          &  & 0 \le z \le l_\text{n}\label{eq:cenquadreduced} \\
     c_\essub      & = a_5 z^2 + a_4 z + a_3 \qquad          &  & 0 \le z \le l_\text{s}\label{eq:cesquadreduced} \\
     c_\epsub      & = a_8 z^2 + a_6         \qquad          &  & 0 \le z \le l_\text{p}\label{eq:cepquadreduced}
 \end{alignat}
 \footnotetext{In rest of  the equations, time-dependence of  the coefficients is
-dropped from  the notation. It is  implicitly noted that they  are time-varying.
-Similarly, spatio-temporal dependence of the electrolyte concentration functions
-$c_\text{e,j}$ is omitted  in circumstances where such explicit  notation is not
+    dropped from  the notation. It is  implicitly noted that they  are time-varying.
+    Similarly, spatio-temporal dependence of the electrolyte concentration functions
+    $c_\text{e,j}$ is omitted  in circumstances where such explicit  notation is not
 crucial  for  understanding.} with  the  coefficient  vector being  modified  to
 $\vec{a} = \vect{a_0,a_2, \dots ,a_6, a_8}$.
 
@@ -124,20 +124,20 @@ co-ordinates and integrate  once along the thickness of  each region. Performing
 this sequence of steps for the negative electrode region
 \mathleft
 \begin{equation}
-\begin{WithArrows}[b]
-    \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.4cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
-    \varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz &=
-    \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z}
-    \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz
-    \Arrow[tikz={text width=3.4cm}]{apply time-derivative operator to the whole \glsfmtshort{lhs}}\\
-    \diffp*{\left(\tikzmark{StartBraceA}\varepsilon_\text{n} \int_0^{l_\text{n}}
-    c_\ensub(z,t)\, dz\tikzmark{EndBraceA}\right)}{t} &=  \int_0^{l_\text{n}}
-    \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 -
-    t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text
-width=3.4cm}]{apply integral to the \glsfmtshort{rhs}}\\
-    \diff*{Q_\text{e,n}(t)}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz
-\end{WithArrows}
-\label{eq:negliionmolestoreduce}
+    \begin{WithArrows}[b]
+        \varepsilon_\text{n} \int_0^{l_\text{n}} \left(\diffp*{c_\ensub(z,t)}{t}\right)\, dz &= \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text width=3.4cm}]{transposing integration \& differentiation operations in the \glsfmtshort{lhs}} \\
+        \varepsilon_\text{n} \diffp*{\int_0^{l_\text{n}} c_\ensub(z,t)}{t}\, dz &=
+        \int_0^{l_\text{n}} \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z}
+        \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz
+        \Arrow[tikz={text width=3.4cm}]{apply time-derivative operator to the whole \glsfmtshort{lhs}}\\
+        \diffp*{\left(\tikzmark{StartBraceA}\varepsilon_\text{n} \int_0^{l_\text{n}}
+        c_\ensub(z,t)\, dz\tikzmark{EndBraceA}\right)}{t} &=  \int_0^{l_\text{n}}
+        \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 -
+            t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text
+        width=3.4cm}]{apply integral to the \glsfmtshort{rhs}}\\
+        \diff*{Q_\text{e,n}(t)}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz
+    \end{WithArrows}
+    \label{eq:negliionmolestoreduce}
 \end{equation}
 \mathcenter
 \InsertUnderBrace[draw=black][aspect=0.26]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
@@ -202,7 +202,7 @@ $c_{\text{e,0}_j} = c_\text{e,0}, \jinnsp$. Hence the initial number of moles of
         a_5 \\
         a_6 \\
         a_8
-    \end{bmatrix} & = \begin{bmatrix}
+        \end{bmatrix} & = \begin{bmatrix}
         c_\text{e,0} \\
         0 \\
         c_\text{e,0} \\
@@ -277,7 +277,7 @@ in~\cref{alg:disctimespm}.
         model is used as the reference. The performance of the quadratic model
         is quite poor during the initial transient duration, but improves over
     time as a quasi-steady state is reached.}
-        \label{fig:spatialionicconc1C}
+    \label{fig:spatialionicconc1C}
 \end{figure}
 
 \Cref{fig:spatialionicconc1C} shows  the spatial distribution of  \ch{Li^+} ions
@@ -303,8 +303,18 @@ voltage accuracy of the enhanced \gls{spm}. Thus, it is important to obtain this
 alternative  perspective  of time-evolution  of  the  concentration at  the  two
 current collectors.
 
-% \input{4/figures/ce_at_cc_1Cdischg.pdf}
-\input{4/figures/ce_at_cc_1Cdischg.pdf}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{4/figures/ce_at_cc_1Cdischg.pdf}
+    \caption[Spatial distribution of electrolyte concentration for 1C
+    discharge]{Spatial distribution of ionic concentration in electrolyte along
+        cell thickness at various snapshots of time for a 1C discharge. The
+        concentration profile obtained from simulating the \glsfmtshort{p2d}
+        model is used as the reference. The performance of the quadratic model
+        is quite poor during the initial transient duration, but improves over
+    time as a quasi-steady state is reached.}
+    \label{fig:temporalce}
+\end{figure}
 
 
 
