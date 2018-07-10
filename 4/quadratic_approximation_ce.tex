@@ -330,13 +330,16 @@ the  \emph{first-order}  \gls{ode} of~\cref{eq:negliionmolesquadratic}  (with  a
 proportional mapping from $Q_\text{e,n}$ to $c_\text{e}(0,t)$). Following system
 theory, the step response  of a first order \gls{ode} is  that of an exponential
 rise to a final settling value, which  is exactly the shape seen in the top-left
-plot of~\cref{fig:temporalcequadratic}. The ionic concentration evolution at the
-positive current  collector does not exhibit  major oscillations and even  has a
-subtle monotonicity to its response. However, the classical first order response
-predicated by the quadratic approximation  model falls short of representing its
-complete  dynamics.  Errors  of  similar  magnitude are  present  in  the  ionic
-concentration at both current collector interfaces, with a maximum absolute
-error of \approx\SI{250}{\mole \per \meter \cubed}.
+plot of~\cref{fig:temporalcequadratic}.
+
+The ionic  concentration evolution  at the positive  current collector  does not
+exhibit major oscillations  and even has a subtle monotonicity  to its response.
+However,  the  classical  first  order  response  predicated  by  the  quadratic
+approximation model falls short of representing its complete dynamics. Errors of
+similar  magnitude  are present  in  the  ionic  concentration at  both  current
+collector  interfaces, with  a maximum  absolute error  of \approx\SI{250}{\mole
+\per \meter  \cubed}. Similar trends occur  in charging, with a  swapping of the
+response pattern of the behaviour at negative and positive electrode interfaces.
 
 In  the author's  analysis  of  the quadratic  approximation  model, the  origin
 and  nature  of  its  sub-optimal  performance  can  be  explained  as  per  the
@@ -349,8 +352,35 @@ simplifying  them yields  mathematically intractable  and overly  complex models
 seems to be a pragmatic alternative  to enhancing the \gls{spm} with electrolyte
 dynamics.
 
-The question  then boils down to  whether quadratic approximation is  indeed the
-\emph{best} a priori model structure that can be used.
+The  question then  boils  down  to whether  quadratic  approximation is  indeed
+the  \emph{best} model  structure  that  can be  assumed  a  priori. The  author
+embarked  on a  journey to  find suitable  alternate model  structures, \ie{}  a
+single  family of  curves that  will capture  both the  transient and  \gls{qss}
+behaviour exhibited by  the ionic concentration. The  open-source MATLAB toolbox
+GPTIPS2~\cite{Searson2015}  uses the  state-of-the-art  \gls{mggp} approach  for
+symbolic  data  mining  and  is  ideally suited  for  such  symbolic  regression
+tasks (fitting  a mathematical  curve, and  not just  fitting coefficients  to a
+pre-assumed curve as in classical numerical regression, to a given data).
+
+It is  important to recognize  that the key  criteria that restricts  the choice
+of  gene  sequence  depth  as  well  as  parent  mutations  to  choose  from  is
+the  total  number  of  unknown  symbolic coefficients  assumed  by  the  model.
+Looking at the  spatial concentration profile from  \gls{p2d} simulation results
+shown in~\cref{fig:spatialionicconc1C},  it is evident that  a simplified family
+of  curves  may  be used  for  the  separator  region,  relative to  those  used
+for  the concentration  within  the  electrode regions.  There  are  a total  of
+\emph{seven} linear equations available from  the physics of the \gls{dfn} model
+(see~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}).  Thus the  assumed
+family  of curves  \emph{cannot}  consist  of more  than  seven coefficients  to
+guarantee a  unique solution. Yet  another restriction  on the choice  of curves
+arises due to the fact that the behaviour of ionic concentration in the negative
+and positive electrode  regions are similar in complexity, and  hence need to be
+mathematically described by an identical family of curves.
+
+This process of symbolic regression
+did not yield any improvements, in particular, no single mathematical formula
+could satisfactorily
+
 
 
 
