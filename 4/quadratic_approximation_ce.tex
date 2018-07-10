@@ -300,23 +300,57 @@ is  useful,  as  seen  in~\cref{eq:electrolytepdwithce}, it  is  the  values  of
 concentration  at   the  \emph{current  collector  interfaces}   that  are  most
 influential in  computation of the  electrolyte overpotential and hence,  in the
 voltage accuracy of the enhanced \gls{spm}. Thus, it is important to obtain this
-alternative  perspective  of time-evolution  of  the  concentration at  the  two
-current collectors.
+alternative perspective  of time-evolution  of the electrolyte  concentration at
+the two current collectors.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{4/figures/ce_at_cc_1Cdischg.pdf}
-    \caption[Spatial distribution of electrolyte concentration for 1C
-    discharge]{Spatial distribution of ionic concentration in electrolyte along
-        cell thickness at various snapshots of time for a 1C discharge. The
-        concentration profile obtained from simulating the \glsfmtshort{p2d}
-        model is used as the reference. The performance of the quadratic model
-        is quite poor during the initial transient duration, but improves over
-    time as a quasi-steady state is reached.}
-    \label{fig:temporalce}
+    \caption[Ionic concentrations at current collector
+    interfaces over time for 1C discharge]{Evolution of ionic concentration over
+        time at the two current collector interfaces for a 1C discharge (top
+        row). The time evolution of the corresponding error variables is also
+    shown (bottom row).}
+    \label{fig:temporalcequadratic}
 \end{figure}
 
+\Cref{fig:temporalcequadratic} shows  the time evolution of  ionic concentration
+in  the electrolyte  at the  two current  collector interfaces  computed by  the
+\gls{p2d} and  quadratic approximation  models for a  1C discharge  current. The
+concentration  values computed  by  the  \gls{p2d} model  is  considered as  the
+reference benchmark. At the negative electrode--current collector interface, the
+ionic  concentration  exhibits  a  few oscillations  of  small  amplitude  owing
+to  the complex  interactions  of  the ionic  phase  with  the porous  electrode
+and  the charge  transfer process  at the  electrode-electrolyte interface.  The
+concentration  evolution  predicted  by  the quadratic  approximation  model  is
+rather  simplistic  and  is  unable to  capture  this  intricate  time-evolution
+pattern.  This  is because  the  governing  equation predicting  time  evolution
+of  concentration  in  the  quadratic  approximation  model  is  that  given  by
+the  \emph{first-order}  \gls{ode} of~\cref{eq:negliionmolesquadratic}  (with  a
+proportional mapping from $Q_\text{e,n}$ to $c_\text{e}(0,t)$). Following system
+theory, the step response  of a first order \gls{ode} is  that of an exponential
+rise to a final settling value, which  is exactly the shape seen in the top-left
+plot of~\cref{fig:temporalcequadratic}. The ionic concentration evolution at the
+positive current  collector does not exhibit  major oscillations and even  has a
+subtle monotonicity to its response. However, the classical first order response
+predicated by the quadratic approximation  model falls short of representing its
+complete  dynamics.  Errors  of  similar  magnitude are  present  in  the  ionic
+concentration at both current collector interfaces, with a maximum absolute
+error of \approx\SI{250}{\mole \per \meter \cubed}.
 
+In  the author's  analysis  of  the quadratic  approximation  model, the  origin
+and  nature  of  its  sub-optimal  performance  can  be  explained  as  per  the
+following  rationale.   The  quadratic  approximation  model   uses  a  top-down
+approach wherein  the model structure  is pre-assumed  and then the  physics are
+made  to  fit within  this  framework.  Given  that  the bottom-up  approach  to
+electrolyte  modelling, \ie{}  accounting for  all physical  phenomena and  then
+simplifying  them yields  mathematically intractable  and overly  complex models
+(see~\cref{sec:electrolyteinclusion} for  a detailed discussion),  this approach
+seems to be a pragmatic alternative  to enhancing the \gls{spm} with electrolyte
+dynamics.
+
+The question  then boils down to  whether quadratic approximation is  indeed the
+\emph{best} a priori model structure that can be used.
 
 
 
