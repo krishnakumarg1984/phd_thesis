@@ -181,7 +181,7 @@ which leads to the general expressions  for the cross-sectional molar density of
         each of the three region, \ie{}~\crefrange{eq:cenquadreduced}{eq:cepquadreduced}
     in the above system,\ie{}~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
     \diff*{Q_\text{e,n}}{t} & = 2 a_2 l_\text{n} D_\effn + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesquadratic}                                \\
-    \diff*{Q_\text{e,s}}{t} & = 2 a_5 l_\text{s} D_\effs                                                                                                     \\
+    \diff*{Q_\text{e,s}}{t} & = 2 a_5 l_\text{s} D_\effs\label{eq:sepliionmolesquadratic}                                                                                                     \\
     \diff*{Q_\text{e,p}}{t} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
 \end{align}
 The  initial  ionic  concentration  in  the electrolyte  are  identical  in  all
@@ -223,7 +223,7 @@ constraints coupled with the aforementioned \gls{ivp} form a \gls{dae} system.
 
 There are now two choices for proceeding  with solution of the system. The naive
 approach  would be  to  solve  the \gls{dae}  using  advanced \gls{dae}  solvers
-specially  designed  to  handle  index-1 semi-explicit  systems  such  as  DASSL
+specially designed to handle \mbox{index-1}  semi-explicit systems such as DASSL
 or  DASPK. For  start-stop  type  of input  currents  with discontinuities,  the
 consistent initialisation of algebraic conditions and derivatives is numerically
 challenging.  All   \gls{dae}  solvers  typically  use   adaptive  time-stepping
@@ -239,17 +239,17 @@ the previous time-step.
 
 To clarify the  sequence of operations, in  order to bootstrap the  model, it is
 required  to compute  $Q_{\text{e},j}(t)$ in  all three  regions. The  \gls{ode}
-system is  integrated for one time-step  by retaining the coefficients  at their
-initial  value. The  $Q_{\text{e},j}(t)$  thus solved  is  substituted into  the
-algebraic system to yield the updated value of the coefficient vector $\vec{a}(t
-= t_k)$. This new  value of the coefficient vector is  substituted back into the
-\gls{ode} system and  the process continues. Although  the continuous simulation
-of  the overall  \gls{dae} is  not possible,  this scheme  is pragmatic  from an
-engineering viewpoint  as the periodic  pauses needed to update  the intertwined
-sub-systems translate naturally  into fixed time-steps and is  well-suited for a
-\gls{bms} controller operating at a fixed sample rate. This is also an effective
-workaround  to  mitigate the  complexities  of  having  to implement  and  solve
-\glspl{dae} in real time.
+system  is  integrated  for  one  time-step by  retaining  the  coefficients  at
+their initial  value. The  $Q_{\text{e},j}(t)$ thus  solved is  substituted into
+the  algebraic system  to  yield the  updated value  of  the coefficient  vector
+$\vec{a}(t=t_k)$. This new  value of the coefficient vector  is substituted back
+into the  \gls{ode} system  and the process  continues. Although  the continuous
+simulation of  the overall \gls{dae} is  not possible, this scheme  is pragmatic
+from  an engineering  viewpoint  as the  periodic pauses  needed  to update  the
+intertwined  sub-systems  translate  naturally  into  fixed  time-steps  and  is
+well-suited for a \gls{bms} controller operating at a fixed sample rate. This is
+also an effective workaround to mitigate the complexities of having to implement
+and solve \glspl{dae} in real time.
 
 % need to write algorithm
 The   simulation   results   of   the   quadratic   approximation   scheme   and
@@ -258,6 +258,7 @@ in~\cref{subsec:quadraticsimresultsanalysis}.
 
 \subsection{Numerical implementation, simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
 
+\subsubsection*{Numerical implementation}
 From an analysis point of view,  the quadratic approximation model for computing
 the spatio-temporal evolution of electrolyte concentration can be simulated as a
 standalone subsystem, and  hence can be implemented numerically  as a standalone
@@ -280,6 +281,8 @@ in~\cref{alg:disctimespm}.
     \label{fig:spatialionicconc1C}
 \end{figure}
 
+
+\subsubsection*{Simulation results}
 \Cref{fig:spatialionicconc1C} shows  the spatial distribution of  \ch{Li^+} ions
 in electrolyte  along the  thickness of  the cell at  various snapshots  of time
 obtained by simulation  of the \gls{p2d} and the  quadratic approximation models
@@ -341,6 +344,7 @@ collector  interfaces, with  a maximum  absolute error  of \approx\SI{250}{\mole
 \per \meter  \cubed}. Similar trends occur  in charging, with a  swapping of the
 response pattern of the behaviour at negative and positive electrode interfaces.
 
+\subsubsection*{Analysis and issue of equation deficiency}
 In  the author's  analysis  of  the quadratic  approximation  model, the  origin
 and  nature  of  its  sub-optimal  performance  can  be  explained  as  per  the
 following  rationale.   The  quadratic  approximation  model   uses  a  top-down
@@ -358,17 +362,15 @@ embarked  on a  journey to  find suitable  alternate model  structures, \ie{}  a
 single  family of  curves that  will capture  both the  transient and  \gls{qss}
 behaviour exhibited by  the ionic concentration. The  open-source MATLAB toolbox
 GPTIPS2~\cite{Searson2015}  uses the  state-of-the-art  \gls{mggp} approach  for
-symbolic  data  mining  and  is  ideally suited  for  such  symbolic  regression
-tasks (fitting  a mathematical  curve, and  not just  fitting coefficients  to a
-pre-assumed curve as in classical numerical regression, to a given data).
+symbolic data  mining and is ideally  suited for such symbolic  regression tasks
+(fitting a  mathematical equation structure,  and not merely  obtaining best-fit
+coefficients to a  pre-assumed curve as in classical numerical  regression, to a
+given data).
 
-It is  important to recognize  that the key  criteria that restricts  the choice
-of  gene  sequence  depth  as  well  as  parent  mutations  to  choose  from  is
-the  total  number  of  unknown  symbolic coefficients  assumed  by  the  model.
-Looking at the  spatial concentration profile from  \gls{p2d} simulation results
-shown in~\cref{fig:spatialionicconc1C},  it is evident that  a simplified family
-of  curves  may  be used  for  the  separator  region,  relative to  those  used
-for  the concentration  within  the  electrode regions.  There  are  a total  of
+It  is  important  to  recognize  that  the  key  criteria  that  restricts  the
+choice  of gene  sequence  depth as  well  as  the choice  in  number of  parent
+mutations  is  the  total  number  of  unknown  symbolic  coefficients  required
+to  be   solved  in  the  assumed   model  structure.  There  are   a  total  of
 \emph{seven} linear equations available from  the physics of the \gls{dfn} model
 (see~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}).  Thus the  assumed
 family  of curves  \emph{cannot}  consist  of more  than  seven coefficients  to
@@ -377,9 +379,65 @@ arises due to the fact that the behaviour of ionic concentration in the negative
 and positive electrode  regions are similar in complexity, and  hence need to be
 mathematically described by an identical family of curves.
 
-This process of symbolic regression
-did not yield any improvements, in particular, no single mathematical formula
-could satisfactorily
+Upon a close inspection of the  spatial concentration profile from the \gls{p2d}
+simulation  results shown  in~\cref{fig:spatialionicconc1C}, it  is evident  the
+electrolyte approximation  functions within the  electrode regions is  of higher
+complexity than  the approximation  function suitable for  use in  the separator
+region. Based on the  results of the quadratic model, it is  clear that at least
+two coefficients  are required within the  electrode regions, $n_{\text{c,elec}}
+\ge  2$.  There  exists  an  inhibiting  factor  that  prevents  the  use  of  a
+lower  order  function within  the  separator.  As  per the  simulation  results
+of  the  \gls{p2d}  model,  the  time-domain  change  of  number  of  moles  per
+square  meter  in  the  separator   is  non-zero.  Therefore,  a  simple  linear
+approximation is immediately  ruled out as per~\cref{eq:sepliionmolesquadratic}.
+Among non-polynomial mathematical curves tried (trigonometric, hyperbolic, power
+series  among  others),  none  could  obtain  the  relatively  simple  shape  of
+the  separator function,  without  reducing  the contribution  from  one of  the
+coefficients  to below  machine  precision.  This forces  the  retention of  the
+quadratic approximation  function used thus  far (with no missing  terms), \ie{}
+$n_\text{c,sep}  = 3$.  Thus, the  overall number  of coefficients  in the  best
+possible approximation shall be $2  n_\text{c,elec} + n_\text{c,sep} = 2\cdot2 +
+3 = 7$,  which is the total number of  electrolyte-specific physical constraints
+available from the \gls{dfn} model. Thus, it can be concluded that the quadratic
+approximation model does indeed make the \emph{best} use of all of the available
+physical  equations.  The  final  question  remains to  answer  is,  with  these
+coefficient limitations, is the quadratic  equation structure indeed the optimal
+one. This was investigated through the \gls{mggp} approach.
+
+The GPTIPS2  toolbox uses a variety  of heuristic algorithms from  the theory of
+\gls{mggp} to fit a  suitable equation structure for the data  to be fitted. The
+dataset  consisted  of the  simulation  results  from  the \gls{p2d}  model,  in
+particular  the  values of  electrolyte  concentration  at the  three  different
+cell  regions,  captured  at  various  snapshots of  time.  Both  transient  and
+\gls{qss}  output  were  fed  into  this symbolic  data  mining  process  and  a
+single all-encompassing  family of curves  capable of capturing  the electrolyte
+concentration  behaviour  was  sought  for.  However,  with  the  aforementioned
+constraints in the number of coefficients results in restriction of the depth of
+gene mutations as  well as the number of unconnected  seed populations. The best
+equation  set (without  hard constraints,  yet  minimizing the  distance to  the
+constraint vector) that the symbolic regression approach yielded was
+\begin{alignat}{2}
+    c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0 \le z \le l_\text{n}   \\
+    c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad &  & 0 \le z \le l_\text{s}   \\
+    c_\epsub(z,t) & = a_8(t) \cosh z^2 + a_7(t) \sinh z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}
+\end{alignat}
+which  although  fits  the  transient  and  \gls{qss}  profiles  well,  violates
+the  constraint on  the  number of  coefficients available,  and  results in  an
+underdetermined  system  of equations.  Both  the  least-squares and  least-norm
+solution of this  system were tried. However, the results  were inferior to that
+produced by the baseline quadratic approximation method.
+
+
+
+
+
+Overall, the long and arduous process of symbolic regression was not a success
+in this context mainly due to the aforementioned limitations. Perhaps if another
+physics-based model alternative to the widely prevalent \gls{dfn} model can be
+used as the baseline, more physical governing equations could perhaps be
+established, leading to a less restrictive gene-set for coefficient
+determination. In summary, the \gls{mggp} symbolic data mining could not
+determine a single family of equations that together
 
 
 
