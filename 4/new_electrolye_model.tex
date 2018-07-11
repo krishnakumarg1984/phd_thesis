@@ -1,4 +1,42 @@
-\subsection{equation deficiency \dots}\label{temp:eqndeficiency}
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+Having performed a  comprehensive analysis of the state of  the art in \gls{spm}
+modelling, this section presents the  author's unique contribution to the field.
+Firstly, the  scope of the  contribution is identified. The  methodology adopted
+and corresponding results are presented thereafter.
+
+\subsection{Scope and motivation}\label{subsec:scopenewelectrolyte}
+
+This subsection is intended as a capstone summary helping to briefly recount the
+discussion so far  and to provide a  context for the author's work  in the wider
+realm  of the  \gls{spm}  modelling art.  In  the same  vein  as the  discussion
+in~\cref{sec:electrolyteinclusion}, the scope of the proposed enhancement to the
+\gls{spm} concerns  entirely with improving the  \emph{electrolyte subsystem} as
+it  has already  been established  in~\cref{subsec:simresultsbasicspm} that  the
+simplified representation  of the solid-phase  subsystem through a  fourth order
+polynomial  approximation  method  for  diffusion  of  \ch{Li^0}  in  the  solid
+particle, is of sufficiently high accuracy.
+
+Inspecting the  electrolyte domain,  the electrolyte  overpotential contribution
+to  terminal  voltage   consists  of  a  diffusion   overpotential  in  addition
+to   the  time-dependent   ohmic  losses   that  originates   from  differential
+concentration gradients that is  indirectly dependent upon concentration. Hence,
+accurate  determination  of  spatio-temporal   concentration  takes  the  centre
+stage.  Furthermore,  as discussed  briefly  in~\cref{sec:electrolyteinclusion},
+once   the   electrolyte   concentration   profile   at   each   time-step   has
+been   determined,   the  overpotential   equation~\cref{eq:electrolytepdwithce}
+from  Prada~\etal~\cite{Prada2012}   is  used  for  computing   the  electrolyte
+overpotential.
+
+There  exists  a  subtle  detail  in  the  use  of~\cref{eq:electrolytepdwithce}
+which  is  discussed  here  upfront  before  proceeding  ahead  to  the  refined
+context of  the author's work. There  is ambiguity regarding the  computation of
+$\kappa_\text{eff,sep}$
+
 
 % Show how these equations for ce  are independent of soc. Discuss the motivations
 % on  how this  was arrived  at. SOC  indepedence, suubsystem,  prior works  by Di
