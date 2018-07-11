@@ -344,7 +344,8 @@ collector  interfaces, with  a maximum  absolute error  of \approx\SI{250}{\mole
 \per \meter  \cubed}. Similar trends occur  in charging, with a  swapping of the
 response pattern of the behaviour at negative and positive electrode interfaces.
 
-\subsubsection*{Analysis and issue of equation deficiency}
+
+\subsubsection*{Analysis of performance and the issue of equation deficiency}
 In  the author's  analysis  of  the quadratic  approximation  model, the  origin
 and  nature  of  its  sub-optimal  performance  can  be  explained  as  per  the
 following  rationale.   The  quadratic  approximation  model   uses  a  top-down
@@ -428,20 +429,40 @@ solution of this  system were tried. However, the results  were inferior to that
 produced by the baseline quadratic approximation method.
 
 An  attempt  was  made  to  obtain different  mathematical  structures  for  the
-transient phase and  \gls{qss} phase. The symbolic regression  output for this
-approach are shown in~\cref{tbl:symbreg}.
+transient  phase  and  \gls{qss}  phase  which  respects  the  overall  equation
+constraint.  The  symbolic  regression  output   for  this  approach  are  shown
+in~\cref{tbl:symbreg}.
 \input{4/symbolic_regression_table}
 
+Although  the equations  from~\cref{tbl:symbreg}  produced  a markedly  improved
+response during  transient phase, the  performance in  the \gls{qss} was  at par
+with respect to the baseline quadratic  approximation model. This brought up the
+prospect of a blended approach, wherein a model changeover between the transient
+and \gls{qss}  was contemplated. However,  since there is no  precise definition
+of  what  constitutes  the  transient  and  dynamic  phase  of  the  electrolyte
+concentration  response,  this  approach  required ad-hoc  timing  criteria  for
+transition between the two \gls{mggp} equation sets. Further complications arise
+during dynamic input  conditions, wherein the concentration  profiles are mostly
+in a  state of  flux and  could linger  for longer  durations at  the continuous
+boundary between  transient-like and \gls{qss}-like behaviours.  In the interest
+of reproducibility across different cell-chemistries and corresponding parameter
+sets, the proposed blended model transition approach was not further pursued.
 
-Overall, the long and arduous process of symbolic regression was not a success
-in this context mainly due to the aforementioned limitations. Perhaps if another
-physics-based model alternative to the widely prevalent \gls{dfn} model can be
-used as the baseline, more physical governing equations could perhaps be
-established, leading to a less restrictive gene-set for coefficient
-determination. In summary, the \gls{mggp} symbolic data mining could not
-determine a single family of equations that together
+Overall,  the  long  and  arduous  process of  symbolic  regression  was  not  a
+definitive success  in this  context mainly  due to  the limitation  of equation
+deficiency of physical  constraints. Perhaps if yet  another physics-based model
+as an  alternative to the  widely prevalent \gls{dfn} model  can be used  as the
+baseline, perhaps a few more physical governing equations could possibly be made
+available, leading to a less  restrictive gene-set for coefficient determination
+and  consequently  a possibly  successful  implementation  through the  hitherto
+unexplored  route of  \gls{mggp}-based  equation synthesising.
 
-
-
-
+In conclusion,  the quadratic approximation model  for electrolyte concentration
+approximation makes the best use of  the available physical equations. Given the
+constraints  with  respect to  physical  equations  discussed in  this  section,
+it  also  seems   to  be  the  optimum  family  of   curves  for  modelling  the
+\emph{spatial}  profile of  ionic concentration.  Notwithstanding these  merits,
+the  \emph{temporal}  performance of  the  quadratic  approximation approach  is
+sub-optimal  as seen  in~\cref{fig:temporalcequadratic} and  the author  of this
+thesis addresses this specific issue next in~\cref{sec:newelectrolytemodel}.
 
