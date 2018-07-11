@@ -1,0 +1,40 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:nospell textwidth=180 foldlevelstart=3 foldlevel=3 conceallevel=0
+
+\begin{table}[!htb]
+    \centering
+    \caption[Transient \& \glsfmtshort{qss} expressions for electrolyte
+    concentration obtained by \glsfmtshort{mggp}]{Best fit expressions for the
+        transient and \glsfmtlong{qss} approximaton functions for the
+    electrolyte functions obtained by the \gls{mggp} approach}
+    \label{tbl:symbreg}
+    \begingroup
+    \addtolength{\jot}{0.25em}
+    \begin{tabular}{@{} c c r @{}}
+        \toprule
+        \multicolumn{1}{l}{Transient Function} & \multicolumn{1}{c}{\glsfmtlong{qss} Function} & \multicolumn{1}{c}{Region} \\
+        \midrule
+        $\begin{aligned}
+            c_{\text{e,n}_\text{trans}} &= a_1 z^6 \ln z^6 + a_0 \\
+            c_{\text{e,s}_\text{trans}} &= a_4 z^2 + a_3 z + a_2 \\
+            c_{\text{e,p}_\text{trans}} &= a_6 z^6 \ln z^6 + a_5 \\
+        \end{aligned}$ &
+        $\begin{aligned}
+            c_{\text{e,n}_\text{QSS}} &= a_1 \sinh z^2 + a_0 \\
+            c_{\text{e,s}_\text{QSS}} &= a_4 z^2 + a_3 z + a_2 \\
+            c_{\text{e,p}_\text{QSS}} &= a_6 \sinh z^2 + a_5
+        \end{aligned}$ &
+        $\begin{aligned}
+            &0 \le z \le l_\text{n} \\
+            &0 \le z \le l_\text{s} \\
+            &0 \le z \le l_\text{p}
+        \end{aligned}$
+        \\
+        \bottomrule
+    \end{tabular}
+    \endgroup
+\end{table}
+
