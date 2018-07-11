@@ -15,29 +15,65 @@ This subsection is intended as a capstone summary helping to briefly recount the
 discussion so far  and to provide a  context for the author's work  in the wider
 realm  of the  \gls{spm}  modelling art.  In  the same  vein  as the  discussion
 in~\cref{sec:electrolyteinclusion}, the scope of the proposed enhancement to the
-\gls{spm} concerns  entirely with improving the  \emph{electrolyte subsystem} as
-it  has already  been established  in~\cref{subsec:simresultsbasicspm} that  the
-simplified representation  of the solid-phase  subsystem through a  fourth order
-polynomial  approximation  method  for  diffusion  of  \ch{Li^0}  in  the  solid
-particle, is of sufficiently high accuracy.
+\gls{spm} concerns entirely  with improving the electrolyte subsystem  as it has
+already been established in~\cref{subsec:simresultsbasicspm} that the simplified
+representation of  the solid-phase subsystem  through a fourth  order polynomial
+approximation method  for diffusion of  \ch{Li^0} in  the solid particle,  is of
+sufficiently high accuracy.
 
 Inspecting the  electrolyte domain,  the electrolyte  overpotential contribution
 to  terminal  voltage   consists  of  a  diffusion   overpotential  in  addition
 to   the  time-dependent   ohmic  losses   that  originates   from  differential
-concentration gradients that is  indirectly dependent upon concentration. Hence,
-accurate  determination  of  spatio-temporal   concentration  takes  the  centre
-stage.  Furthermore,  as discussed  briefly  in~\cref{sec:electrolyteinclusion},
-once   the   electrolyte   concentration   profile   at   each   time-step   has
-been   determined,   the  overpotential   equation~\cref{eq:electrolytepdwithce}
-from  Prada~\etal~\cite{Prada2012}   is  used  for  computing   the  electrolyte
-overpotential.
+concentration  gradients  that  is   indirectly  dependent  upon  concentration.
+Hence,  accurate  determination  of   spatio-temporal  concentration  takes  the
+centre  stage.  For   the  computation  of  overpotential   in  the  electrolyte
+phase,~\cref{eq:electrolytepdwithce}  proposed  by  Prada~\etal~\cite{Prada2012}
+may be used.
 
-There  exists  a  subtle  detail  in  the  use  of~\cref{eq:electrolytepdwithce}
-which  is  discussed  here  upfront  before  proceeding  ahead  to  the  refined
-context of  the author's work. There  is ambiguity regarding the  computation of
-$\kappa_\text{eff,sep}$
+There exists a  subtle detail in the  use of~\cref{eq:electrolytepdwithce} which
+is discussed here upfront before proceeding  ahead to the refined context of the
+author's  work.  The  intrinsic  conductivity  of  electrolyte,  $\kappa$  is  a
+function of  the ionic concentration  (refer~\cref{subsec:basicspmsimsetup}). If
+the ionic  concentration at  the corresponding current  collectors are  used for
+$\kappa_\text{neg}$  and  $\kappa_text{pos}$,  this  would lead  to  a  lopsided
+computation of the overpotential in electrolyte. Furthermore, under this scheme,
+the computation of electrolyte conductivity shall be rendered ambiguous since it
+is unclear which  separator interface shall be chosen for  the separator's ionic
+concentration. Although this  has not been discussed clearly  in literature, the
+author  of this  thesis chose  to use  the mean  concentration within  each cell
+region, defined as
+\begin{equation}
+    \mean{c}_{\text{e},j}(t) = \frac{1}{l_j}\int_0^{l_j} c_{\text{e}_j}(z,t)\, dz = \frac{Q_{\text{e}_j}(t)}{\varepsilon_j l_j}
+\end{equation}
+although other measures  of central tendency might be equally  valid. Hence, the
+results of this section have the associated variability in them depending on how
+the electrolyte concentration computations are  used in evaluating the intrinsic
+conductivity of electrolyte.
 
+As  the  ionic  concentration  has  both  a  direct  and  indirect  contribution
+in~\cref{eq:electrolytepdwithce}, its spatio-temporal  computation is a critical
+aspect. As discussed  in~\cref{sec:quadraticapprox}, the quadratic approximation
+is a widely used spatio-temporal model for electrolyte concentration which makes
+the best  use of available physical  constraints. As established in  the results
+of~\cref{subsec:quadraticsimresultsanalysis}, while  the spatial  performance of
+the quadratic approximation approach is acceptable, its time-domain performance,
+particularly at the crucial current collector locations is mediocre at best.
 
-% Show how these equations for ce  are independent of soc. Discuss the motivations
-% on  how this  was arrived  at. SOC  indepedence, suubsystem,  prior works  by Di
-% Domenico, analytical solution is too hard etc.
+Thus,   the  \emph{scope}   of  the   author's  work   is  to   obtain  suitable
+alternate  expressions for  improving  the  \textbf{time-domain} performance  of
+the  electrolyte  concentration  computation   whilst  retaining  the  quadratic
+approximation   approach   for  describing   its   spatial   profile.  Such   an
+approach  is motivated  by  the  keen observation  that  the baseline  quadratic
+approximation  model  has  a  natural  `pause'  in  its  model  description.  To
+clarify,~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}  form a  tightly
+coupled set of  seven linear equations in seven unknowns.  The time evolution of
+$Q_{\text{e}_j}$  are described  through  a system  of  first order  \glspl{ode}
+given by~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.  In a
+practical  implementation,  these  \glspl{ode}  are solved  independently  in  a
+decoupled  manner,\ie{}  by using  the  coefficients  obtained from  the  linear
+system of~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration} in the previous
+time-step. The  author's hypothesis is that  by taking advantage of  the natural
+break  in the  operational  sequence which  involves  two separate  computations
+between  two independent  subsystems (for  all practical  purposes), it  must be
+possible to  replace the  underperforming time-evolution  model of  the baseline
+quadratic approximation with a superior alternate model.
