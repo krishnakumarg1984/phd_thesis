@@ -84,7 +84,7 @@ This section presents the methodology adopted in obtaining an improved model for
 the rate of evolution  of overall moles per unit area of  \ch{Li^+} ions in each
 of the three regions of the cell.
 
-\subsubsection*{Background}
+\subsubsection*{Background}\label{subsubsec:sysidbackground}
 
 This  section presents  the  background and  thought  process in  systematically
 arriving  at  the  choice of  the  methodology  that  was  adopted for  the  new
@@ -194,45 +194,101 @@ separately.
 
 \end{enumdescriptnum}
 
-\subsubsection*{Overview of black-box system identification}
+\subsubsection*{Overview of black-box system identification}\label{subsubsec:introblackboxsysid}
 Black-box system identification techniques can be broadly classified into ---
 \begin{enumerate*}[label=\emph{\alph*})]
      \item non-parametric methods, and
      \item parametric methods.
  \end{enumerate*}
 
- Non-parametric methods do not seek a pre-assumed mathematical structure for the
- system. They  aim to directly  estimate the  very kernel of  what characterises
- every system \viz{} the Markov parameters  in the time-domain and the \gls{frf}
- in  the frequency  domain,  thereby requiring  \emph{infinite}  number of  data
- points for their representation. The major non-parametric system identification
- methods include:
- \begin{itemize}[topsep=0pt]
-     \item Identification in time domain
-         \begin{itemize}
+Non-parametric methods do not seek  a pre-assumed mathematical structure for the
+system. They  aim to  directly estimate  the very  kernel of  what characterises
+every system \viz{}  the Markov parameters in the time-domain  and the \gls{frf}
+in the frequency domain, thereby requiring \emph{infinite} number of data points
+for  their representation.  Major non-parametric  system identification  methods
+include:
+\begin{itemize}[topsep=0pt]
+    \item Identification in time domain
+        \begin{itemize}
 
-             \item Direct  estimation of the system's  Markov parameters through
-             statistical correlation of its response to an unit-pulse input
+            \item Direct  estimation of the system's  Markov parameters through
+                statistical correlation of its response to an unit-pulse input
 
-         \end{itemize}
-     \item Identification in frequency domain,  \ie{} of the \gls{frf}
-         \begin{enumerate}
+        \end{itemize}
+    \item Identification in frequency domain,  \ie{} of the \gls{frf}
+        \begin{enumerate}
 
-             \item   Direct   estimation    through   input-output   statistical
-             cross-correlation
+            \item   Direct   estimation    through   input-output   statistical
+                cross-correlation
 
-             \item  \gls{etfe} using \glspl{dft} of input and output sequences
+            \item  \gls{etfe} using \glspl{dft} of input and output sequences
 
-             \item  Smoothed periodogram estimates using Welch's method
+            \item  Smoothed periodogram estimates using Welch's method
 
-             \item  Blackman-Tukey  estimation   method  using  standard  filter
-             windows (such as Hamming, Hanning, Bartlett, Boxcar etc.)
+            \item  Blackman-Tukey  estimation   method  using  standard  filter
+                windows  in digital  signal processing  (such as  Hamming, Hanning,
+                Bartlett, Boxcar etc.)
 
-         \end{enumerate}
- \end{itemize}
+        \end{enumerate}
+\end{itemize}
 
- % It is important to recognize that in model str
- % in the absence of physical equations describing the phenomena, some equation
- % structure is assumed.
+Parametric  methods  aim  to  fit  specific input-output  data  to  some  family
+of  well-known  mathematical  constructs  that  generalise  well  to  a  variety
+of  inputs.  It  is  important  to recognise  that,  in  contrast  to  white-box
+system identification, the salient coefficients/properties of these mathematical
+structures do  not, in any way  correspond to physical properties  of the system
+under consideration. Major parametric system identification methods are:
+\begin{itemize}
+    \item Transfer-function based frequency domain model structures
+        \begin{enumerate}
+            \item \gls{oe} model
+            \item \gls{arx} model
+            \item \gls{armax} model
+            \item Box-Jenkins (BJ) model
+        \end{enumerate}
+    \item State-space time-domain model structures
+        \begin{enumerate}
+            \item Ho-Kalman realisation
+            \item \gls{era} realisation
+            \item Deterministic and stochastic \emph{subspace} structures
+        \end{enumerate}
+\end{itemize}
+
+Among  these  system  identification  methods, the  non-parametric  methods  are
+immediately  ruled  out   for  applying  to  the  task  at   hand.  As  outlined
+in~\cref{subsubsec:sysidbackground},  the author  is  inspired by  the trait  of
+having  a  pre-assumed  model  structure that  brought  the  baseline  quadratic
+approximation closer to a successful  realisation. The non-parametric methods do
+not conform to this philosophy.  Furthermore, the requirement of infinite number
+of data  samples in order to  fully quantify the system  dampens its feasibility
+for implementation  in resource constrained  environments. The author is  of the
+opinion that resorting  to truncation of the characteristic  sequence shall only
+yield a sub-optimal solution.
+
+While  parametric state-space  identification is  a feasible  alternative, these
+methodologies are tedious and error-prone.  For instance, applying the Ho-Kalman
+algorithm requires construction of Block-Hankel matrices followed by a \gls{svd}
+operation.  The \gls{era}  brings with  an identical  set of  operations of  the
+Ho-Kalman procedure,  except that certain  random blocks in the  Hankel matrices
+are  chosen  at random  for  deletion  for  better  estimates in  low  \gls{snr}
+environments  and  for  capturing  slowly  decaying  phenomena  with  long  time
+constants.  The  subspace  methods  are  mathematically  involved,  requiring  a
+profound  understanding  of  projections  to orthogonal  subspaces  from  linear
+algebra. The system  under consideration which is to be  identified is presented
+in~\cref{subsubsec:sysidplantmodel}.  It   is  composed  of   three  independent
+\gls{siso}  subsystems.  The  complexity-performance  trade-off  in  state-space
+identification is  achieved only when  dealing with systems that  suggest strong
+cross-coupling among its internal states or at the least some degree of coupling
+among the various inputs and outputs.  Furthermore, the impulse responses of the
+system under  consideration does not  have long  tails and are  characterised by
+relatively short  time constants. Owing  to these  reasons, it was  decided that
+state space identification methods shall not be adopted here.
+
+\subsubsection*{Time-evolution subsystem}\label{subsubsec:sysidplantmodel}
+
+
+% It is important to recognize that in model str
+% in the absence of physical equations describing the phenomena, some equation
+% structure is assumed.
 
 
