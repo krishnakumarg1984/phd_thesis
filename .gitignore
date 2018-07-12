@@ -316,4 +316,4 @@ wrapper_m2t*.pdf
 build_dir/
 *.fof
 
-main.tex
+# main.tex
