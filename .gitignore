@@ -315,3 +315,5 @@ wrapper_m2t*.pdf
 *.mat
 build_dir/
 *.fof
+
+main.tex
