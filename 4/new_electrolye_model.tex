@@ -175,6 +175,64 @@ under consideration. The three categories of system identification are:
 numerical value  of coefficients of  governing equations are to  be parametrised
 from input-output data.
 
+\item[Black box]  wherein no  governing equations are  available for  the system
+under  consideration. The  model formulation  is facilitated  by a  rich set  of
+system theory  which proceeds by exciting  the system with input  waveforms with
+certain desirable  properties and correlating characteristics  from the response
+in order  to draw  conclusions about viable  mathematical structures  capable of
+emulating  the  terminal  behaviour  of the  system  under  generalised  inputs.
+Black  box system  identification was  employed for  the specific  problem under
+consideration and hence all future descriptions will pertain to this class.
+
+\item[Grey box] is a hybrid of the  two approaches wherein a part of the model's
+governing  physics is  known a  priori, \eg{}  the structure  of a  well-defined
+subsystem  that is  part  of a  large,  complex  system may  be  known ahead  of
+time,  where the  task  is  to characterise  the  full  system. Grey-box  system
+identification tasks can  often be reduced to a single  sub-problem of black-box
+system  identification  by  removal  of  the known  physics  and  tackling  them
+separately.
+
 \end{enumdescriptnum}
+
+\subsubsection*{Overview of black-box system identification}
+Black-box system identification techniques can be broadly classified into ---
+\begin{enumerate*}[label=\emph{\alph*})]
+     \item non-parametric methods, and
+     \item parametric methods.
+ \end{enumerate*}
+
+ Non-parametric methods do not seek a pre-assumed mathematical structure for the
+ system. They  aim to directly  estimate the  very kernel of  what characterises
+ every system \viz{} the Markov parameters  in the time-domain and the \gls{frf}
+ in  the frequency  domain,  thereby requiring  \emph{infinite}  number of  data
+ points for their representation. The major non-parametric system identification
+ methods include:
+ \begin{itemize}[topsep=0pt]
+     \item Identification in time domain
+         \begin{itemize}
+
+             \item Direct  estimation of the system's  Markov parameters through
+             statistical correlation of its response to an unit-pulse input
+
+         \end{itemize}
+     \item Identification in frequency domain,  \ie{} of the \gls{frf}
+         \begin{enumerate}
+
+             \item   Direct   estimation    through   input-output   statistical
+             cross-correlation
+
+             \item  \gls{etfe} using \glspl{dft} of input and output sequences
+
+             \item  Smoothed periodogram estimates using Welch's method
+
+             \item  Blackman-Tukey  estimation   method  using  standard  filter
+             windows (such as Hamming, Hanning, Bartlett, Boxcar etc.)
+
+         \end{enumerate}
+ \end{itemize}
+
+ % It is important to recognize that in model str
+ % in the absence of physical equations describing the phenomena, some equation
+ % structure is assumed.
 
 
