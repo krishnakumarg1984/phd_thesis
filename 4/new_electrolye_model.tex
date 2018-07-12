@@ -35,7 +35,7 @@ is discussed here upfront before proceeding  ahead to the refined context of the
 author's  work.  The  intrinsic  conductivity  of  electrolyte,  $\kappa$  is  a
 function of  the ionic concentration  (refer~\cref{subsec:basicspmsimsetup}). If
 the ionic  concentration at  the corresponding current  collectors are  used for
-$\kappa_\text{neg}$  and  $\kappa_text{pos}$,  this  would lead  to  a  lopsided
+$\kappa_\text{neg}$  and  $\kappa_\text{pos}$, this  would  lead  to a  lopsided
 computation of the overpotential in electrolyte. Furthermore, under this scheme,
 the computation of electrolyte conductivity shall be rendered ambiguous since it
 is unclear which  separator interface shall be chosen for  the separator's ionic
@@ -147,5 +147,34 @@ have  led  the  author  to  broach   a  modelling  concept  that  exhibit  these
 common  traits,  yet completely  different  in  nature and  hitherto  unexplored
 in  physics-based battery  modelling  in general  and  electrolyte modelling  in
 particular --- \emph{black-box system identification}.
+
+\subsubsection*{Brief introduction to system identification}\label{subsubsec:introsysid}
+
+A complete introduction to the topic of system identification is well beyond the
+scope of  this thesis.  However, keeping  in mind the  interests of  the battery
+modelling community  who might not be  familiar with this subject  area, a brief
+overview of the core ideas that  are essential for tackling the specific problem
+at hand, is presented. For readers  further interested in this topic, the author
+suggests  the  textbook by  Ljung~\cite{Ljung1999}  for  a thorough  theoretical
+treatment of the foundation topics in system identification.
+
+System identification aims  to provide a mathematical model  of the input-output
+mapping  of  a system\footnote{The  precise  definition  of what  constitutes  a
+`system' is given  in Ljung's textbook. However, for all  practical purposes, in
+this thesis,  the word  `system' stands  for any  unknown entity  whose terminal
+behavioural  model is  being  sought primarily  from  input-output data.}  under
+consideration. The three categories of system identification are:
+
+
+\begin{enumdescriptnum}[leftmargin=!,itemsep=1ex,labelwidth=\widthof{$\symbf{\text{brugg}_j}\ \scriptstyle (\times 3)$abc}
+    ,partopsep=0pt
+    ,topsep=0pt
+    ]
+
+\item[White box] wherein underlying physical equations are completely known. The
+numerical value  of coefficients of  governing equations are to  be parametrised
+from input-output data.
+
+\end{enumdescriptnum}
 
 
