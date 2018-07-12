@@ -60,8 +60,8 @@ the quadratic approximation approach is acceptable, its time-domain performance,
 particularly at the crucial current collector locations is mediocre at best.
 
 Thus,   the  \emph{scope}   of  the   author's  work   is  to   obtain  suitable
-alternate  expressions for  improving  the  \textbf{time-domain} performance  of
-the  electrolyte  concentration  computation   whilst  retaining  the  quadratic
+alternate   expressions   for   improving  the   computation   of   \textbf{time
+evolution}  of  the electrolyte  concentration  whilst  retaining the  quadratic
 approximation   approach   for  describing   its   spatial   profile.  Such   an
 approach  is motivated  by  the  keen observation  that  the baseline  quadratic
 approximation  model  has  a  natural  `pause'  in  its  model  description.  To
@@ -75,5 +75,77 @@ system of~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration} in the previous
 time-step. The  author's hypothesis is that  by taking advantage of  the natural
 break  in the  operational  sequence which  involves  two separate  computations
 between  two independent  subsystems (for  all practical  purposes), it  must be
-possible to  replace the  underperforming time-evolution  model of  the baseline
-quadratic approximation with a superior alternate model.
+possible  to  replace  the  underperforming time-evolution  equations  from  the
+baseline quadratic approximation with a superior alternate model.
+
+\subsection{Methodology --- System identification}
+
+This section presents the methodology adopted in obtaining an improved model for
+the rate of evolution  of overall moles per unit area of  \ch{Li^+} ions in each
+of the three regions of the cell.
+
+\subsubsection*{Background}
+
+This  section presents  the  background and  thought  process in  systematically
+arriving  at  the  choice of  the  methodology  that  was  adopted for  the  new
+time-evolution model of the electrolyte concentration.
+
+Based  upon the  experience  gained  in dealing  with  the literature  presented
+in~\cref{sec:electrolyteinclusion}, it is  the author's view that,  owing to the
+complex behaviour of electrolyte, a  naive top-down approach \ie{} including all
+the physics upfront  followed by a systematic simplification, might  result in a
+model that is  mathematically intractable for adoption in  an embedded \gls{bms}
+environment.  The baseline  quadratic  approximation method  has  proven that  a
+bottom-up  approach, \ie{}  pre-assuming a  simplified structure  for the  final
+model  and adapting  its coefficients  to physical  constraints yields  a viable
+candidate for inclusion in the conventional \gls{spm}.
+
+Upon  a   closer  examination   of  the  rubrics   of  the   baseline  quadratic
+approximation  model, it  comes  to  light that  the  natural `pause'  discussed
+towards  the  end  of~\cref{subsec:scopenewelectrolyte}  permeates  to  a  level
+more  than  merely  having  to  operate  sequentially  on  two  pseudo-decoupled
+subsystems  --- it  goes to  the extent  of rendering  the operating  philosophy
+of  fitting  physical  equations  semi-void.   To  clarify  this  statement  and
+to  substantiate   the  claim,  while  there   is  no  doubt  that   the  linear
+algebraic   equations  of~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
+do    incorporate    physical    principles   from    the    \gls{dfn}    model,
+the     same     does     not      hold     true     for     the     \glspl{ode}
+of~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.   In  fact,
+all   the   boundary   conditions   from   the   \gls{dfn}   model   have   been
+exhausted   by  this   stage  (refer~\cref{subsec:quadraticsimresultsanalysis}).
+Although~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}     are    derived
+from     the      \gls{dfn}     model,      the     coefficients      of     the
+diffusivities   in    the   \gls{rhs}   of    the   next   set    of   equations
+\ie{}~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic},   merely
+involve  substitutions  of the  spatial  derivatives  of the  assumed  quadratic
+expression.
+
+Herein lies the weakness of the  baseline quadratic approach. Unlike the spatial
+algebraic equations, which are tightly bound by the continuity and flux boundary
+conditions at the  separator interfaces, there is no equality  constraint on the
+spatial  derivative, which  is free  to grow  or shrink  without any  explicitly
+imposed  bounds.  The  onus  of  being accurate  is  therefore  on  the  spatial
+derivative evaluation which in-turn depends  on the correctness of the quadratic
+functions  (\crefrange{eq:cenquadreduced}{eq:cepquadreduced}) themselves.  It is
+not feasible to quantify the magnitude of error introduced in the time-evolution
+of concentration  given a small-signal  perturbation in the coefficients  of the
+quadratic spatial  computation,\ie{} the implicit  coupling between them  is not
+transparent. Since the quadratic approximation itself is not perfect, \ie{} does
+not capture the  spatial gradient \emph{exactly} as the \gls{p2d}  model as seen
+in~\cref{fig:spatialionicconc1C}, the internal coupling of coefficients leads to
+errors in time-evolution computation.
+
+The author's  approach is to  therefore break this detrimental  coupling between
+spatial  derivative of  concentration  and its  temporal evolution  counterpart.
+Inspired by the fact that the  quadratic approximation model almost achieved the
+desired goals with
+\begin{itemize}
+    \item a bottoms-up approach, \ie{} assuming a model structure apriori, coupled with
+    \item not bound by any physical considerations owing to exhaustion of equations
+\end{itemize}
+have  led  the  author  to  broach   a  modelling  concept  that  exhibit  these
+common  traits,  yet completely  different  in  nature and  hitherto  unexplored
+in  physics-based battery  modelling  in general  and  electrolyte modelling  in
+particular --- \emph{black-box system identification}.
+
+
