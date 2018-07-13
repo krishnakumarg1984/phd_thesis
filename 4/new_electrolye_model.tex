@@ -78,7 +78,7 @@ between  two independent  subsystems (for  all practical  purposes), it  must be
 possible  to  replace  the  underperforming time-evolution  equations  from  the
 baseline quadratic approximation with a superior alternate model.
 
-\subsection{Methodology --- System identification}
+\subsection{Methodology --- System identification} % might have to change section title if TF-based identification becomes a full-fledged subsection
 
 This section presents the methodology adopted in obtaining an improved model for
 the rate of evolution  of overall moles per unit area of  \ch{Li^+} ions in each
@@ -315,8 +315,9 @@ identification was  chosen for  tackling the  problem at  hand and  is presented
 next.
 
 
-\subsubsection*{Transfer function identification of electrolyte time-evolution subsystem}\label{subsubsec:sysidplantmodel}
+\subsubsection*{Transfer function identification of electrolyte time-evolution subsystem}\label{subsubsec:sysidplantmodel} % might possiblly have to promote into its own detailed subsection
 
+% introduction
 \Crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic} of the baseline
 quadratic  approximation  model for  electrolyte  concentration  pertain to  the
 time-evolution of the overall number  of moles of \ch{Li^+}, $Q_{\text{e,}j}$ in
@@ -329,6 +330,7 @@ $\frac{Q_\text{e,p}(s)}{I(s)}$. Based on the \gls{dfn} model, the total moles of
 the exogenous applied current and the baseline quadratic approximation \gls{ode}
 is retained for computing its time-evolution.
 
+% Persistent excitation
 In order  to successfully apply  any system identification technique,  the input
 signal must be carefully  designed to be persistently exciting~\cite{Ljung1999}.
 Narendra and Annaswamy~\cite{Narendra1984,Narendra1987}  were among the earliest
@@ -362,9 +364,12 @@ peak of  the expected  operating range. Taking  into account  all aforementioned
 considerations, the  peak amplitude of the  input current was fixed  at 2C \ie{}
 \ordfrac{2}{3} of the \gls{udds} profile's peak current amplitude.
 
+% training input current % subsubsytem
+
 Since not much prior  information is available about the poles  and zeros of the
-electrolyte subsystem in question, a wide variety of special waveforms were used
-for the current perturbation. The specific input sequence consisted of
+electrolyte subsystem  in question, a wide  variety of special waveforms  with a
+sampling interval of \SI{1}{\second} were used for the current perturbation used
+in this system identification task. The specific input sequence consisted of
 \begin{enumerate}
     \item \gls{rbs}\quad (0--\SI{199}{\second})
     \item `Chirp' \ie{} a swept cosine signal from 0--\SI{100}{\milli\hertz}\quad (200--\SI{799}{\second})
@@ -377,23 +382,36 @@ other systematically varying input profiles. The two \glspl{rbs} are intended to
 target the poles and zeros of  the electrolyte subsystem that would typically be
 excited  by  highly dynamic  input  profiles.  The  periodicity  in one  of  the
 \glspl{rbs} was introduced  to draw out any hidden periodicity  or repeated real
-poles in the system that might otherwise appear to be a single pole. The low and
-high frequency frequency spectra present in the combined training set presents a
-high degree  of confidence to capture  the relevant dynamics of  the electrolyte
-subsystem. The input current profile used for this system identification task is
-plotted in~\cref{fig:sysidtrainingcurrent}.
+poles  in the  system that  might  otherwise appear  to  be a  single pole.  The
+presence  of both  low  and high  frequency frequency  spectra  in the  combined
+training  set presents  a  high degree  of confidence  to  capture the  relevant
+dynamics of the  electrolyte subsystem. The input current profile  used for this
+system identification task is plotted in~\cref{fig:sysidtrainingcurrent}.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption{}
+    \includegraphics{4/figures/sysid_train_input.pdf}
+    \captionsetup{singlelinecheck=off}
+    \caption[Input current profile used as the training set for system
+    identification]{Input current profile used as the training set for system
+    identification. The sequence consists of
+    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
+        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
+covering both low and high frequency spectra while incorporating the potential
+to excite any periodic modes in the system to be identified.}
     \label{fig:sysidtrainingcurrent}
 \end{figure}
 
 % \item Periodic \gls{rgs} with a period of \SI{200}{\second} and  4 such periods\quad (0--\SI{799})
 
+% Testing input current
+% Linearity and time-invariance
+% Assumed transfer function model. Test results within the model itself
+% Test results for electrolyte ce (subsection)
+% test results for full system (final section)
 
-% code snippet
+% code snippet for both training and testing input current
+
 % mention in introduction where code snippets are given
 
 
