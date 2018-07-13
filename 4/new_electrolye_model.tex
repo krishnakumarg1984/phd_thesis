@@ -402,10 +402,65 @@ to excite any periodic modes in the system to be identified.}
     \label{fig:sysidtrainingcurrent}
 \end{figure}
 
-% \item Periodic \gls{rgs} with a period of \SI{200}{\second} and  4 such periods\quad (0--\SI{799})
-
 % Testing input current
+
+For  the  purposes  of  identification,  the \gls{p2d}  model  is  used  as  the
+input.  First, the  current profile  from  the training  set is  applied to  the
+\gls{p2d} model. Its  simulation results, in particular,  the numerically solved
+concentration values  at each spatially  discretised node  in each of  the three
+regions per  time-step is then integrated  over the thickness of  the respective
+regions  and multiplied  with their  respective porosities.  Thus the  number of
+moles of \ch{Li^+} per unit area  in each of the three regions $Q_{\text{e,}_j}$
+are obtained. Only the quantities $Q_\text{e,n}$ and $Q_\text{e,p}$ are chosen
+as the outputs for system identification and a transfer function model is fitted
+as per the evaluation procedure discussed in~\cref{subsubsec:actualsysid}.
+
+As with  any classical  curve fitting  (numerical regression)  procedure, system
+identification is also  prone to overfitting the training data.  In general, the
+'best' transfer  function that identifies the  given system is the  lowest order
+model that  can not  only minimize  the training error,  but also  minimizes the
+error  on  a  previously  unseen  validation  dataset.  In  the  absence  of  an
+independent validation dataset, the training error can be made arbitrarily small
+by increasing  the number  of poles  and zeros of  the transfer  function models
+without any  bounds. However, such a  model shall not have  truly identified the
+dynamics of  the system  and shall  not generalise  well to  real-world datasets
+outside  the training  realm. Hence,  having an  independent validation  current
+profile for the task at hand is of paramount importance.
+
+For the system identification task at  hand, the characteristic waveforms of the
+validation profile were deliberately conjured to be differ vastly from that used
+in training the model. The  validation profile consists of the following
+sequence
+\begin{enumerate}
+    \item Periodic \gls{rgs} with 4 periods of \SI{200}{\second} each\quad (0--\SI{799}{\second})
+    \item \gls{prbs} for emulating white noise, \ie{} with a flat power spectra
+        across the frequency spectrum\quad (800--\SI{999}{\second})
+    \item Multi-sine signal \ie{} a signal consisting of sinusoids at
+        various fundamental frequencies added together (1000--\SI{1199}{\second})
+\end{enumerate}
+
+Overall,  the validation  profile has  been designed  to cover  a wide  range of
+frequencies  akin to  the  training  profile, but  differing  completely in  its
+time-domain appearance. The specific validation current profile used in this system
+identification is shown in~\cref{fig:sysidvalidationcurrent}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics{4/figures/sysid_train_input.pdf}
+    \captionsetup{singlelinecheck=off}
+    \caption[Input current profile used as the validation set for system
+    identification]{Input current profile used as the training set for system
+    identification. The sequence consists of
+    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
+        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
+covering both low and high frequency spectra while incorporating the potential
+to excite any periodic modes in the system to be identified.}
+    \label{fig:sysidvalidationcurrent}
+\end{figure}
+
+
 % Linearity and time-invariance
+\subsubsection*{actual procedure briefly}\label{subsubsec:actualsysid}
 % Assumed transfer function model. Test results within the model itself
 % Test results for electrolyte ce (subsection)
 % test results for full system (final section)
