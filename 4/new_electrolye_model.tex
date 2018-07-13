@@ -328,3 +328,19 @@ $\frac{Q_\text{e,p}(s)}{I(s)}$. Based on the \gls{dfn} model, the total moles of
 \ch{Li^+} per  unit area in the  separator, $Q_\text{e,s}$ is not  a function of
 the exogenous applied current and the baseline quadratic approximation \gls{ode}
 is retained for computing its time-evolution.
+
+In order  to successfully apply  any system identification technique,  the input
+signal must be carefully  designed to be persistently exciting~\cite{Ljung1999}.
+Narendra and Annaswamy~\cite{Narendra1984,Narendra1987}  were among the earliest
+researchers  to provide  a detailed  treatment  of the  desirable properties  of
+persistent excitation and their implication to the quality of the identification
+output. A  practical method to achieve  persistent excitation is to  subject the
+system under  consideration to  a sequence  of well-characterised  input signals
+that  are  capable of  exciting  its  hypothesised  modes.  The author  of  this
+thesis  chose  to  use  the  data-quality guidance  provided  by  the  Mathworks
+Inc.~\cite{mathworkssysid}\ for this task  and performed an iterative refinement
+until the identification procedure resulted in a generalisable model.
+
+
+In order to apply the transfer function identification techniques, linearity and
+time-invariance of the underlying system must be established.
