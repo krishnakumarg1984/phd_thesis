@@ -315,5 +315,16 @@ identification was  chosen for  tackling the  problem at  hand and  is presented
 next.
 
 
-\subsubsection*{Transfer function identification of Time-evolution subsystem}\label{subsubsec:sysidplantmodel}
+\subsubsection*{Transfer function identification of electrolyte time-evolution subsystem}\label{subsubsec:sysidplantmodel}
 
+\Crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic} of the baseline
+quadratic  approximation  model for  electrolyte  concentration  pertain to  the
+time-evolution of the overall number  of moles of \ch{Li^+}, $Q_{\text{e,}j}$ in
+each  of  the  three  regions  of the  cell  and  are  first  order~\glspl{ode}.
+Through system  identification, we  desire to obtain  the two  rational transfer
+functions  of  $Q_\text{e,neg}$  and  $Q_\text{e,pos}$ to  applied  current  $I$
+in  the  frequency  domain,  \ie{} we  seek  $\frac{Q_\text{e,n}(s)}{I(s)}$  and
+$\frac{Q_\text{e,p}(s)}{I(s)}$. Based on the \gls{dfn} model, the total moles of
+\ch{Li^+} per  unit area in the  separator, $Q_\text{e,s}$ is not  a function of
+the exogenous applied current and the baseline quadratic approximation \gls{ode}
+is retained for computing its time-evolution.

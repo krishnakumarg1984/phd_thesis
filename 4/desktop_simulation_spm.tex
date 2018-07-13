@@ -6,7 +6,16 @@
 
 In this  section, the performance  of the  basic \gls{spm} is  discussed through
 desktop  simulation and  by comparison  against a  standard \gls{dfn}  benchmark
-model incorporating the full \gls{p2d} dynamics.
+model  incorporating  the  full  \gls{p2d}\footnote{In this  thesis,  the  terms
+\gls{p2d} and  \gls{dfn} are  used synonymously. This  is because,  although the
+\gls{dfn}  model equations  are originally  derived and  is applicable  in three
+dimensions, its  most common implementation  is the pseudo-two  dimensional case
+wherein dynamics of  all variables other than solid  concentration are evaluated
+along  the  through-thickness direction  of  the  cell  (direction of  the  most
+significant charge  transport). The  solid diffusion equation  is computed  in a
+spherical co-ordinate system on a  separate pseudo-dimension and is coupled with
+the  axial  co-ordinates through  the  boundary  flux  at  the surface  of  each
+particle.} dynamics.
 
 \subsection{Cell Parametrisation}\label{subsec:spmp2dparametrisation}
 \input{4/cell_params_table}
