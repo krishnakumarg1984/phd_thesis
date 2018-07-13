@@ -341,6 +341,31 @@ thesis  chose  to  use  the  data-quality guidance  provided  by  the  Mathworks
 Inc.~\cite{mathworkssysid}\ for this task  and performed an iterative refinement
 until the identification procedure resulted in a generalisable model.
 
+Before discussing the shape characteristics of the input sequence, its magnitude
+must be established.  The various specially prepared input  sequence families do
+not share a common definition of magnitude.  The guiding principle is that it is
+helpful  to have  the input  signal's  magnitude be  representative of  standard
+operating  conditions. Although  standardised  drive cycle  profiles exist  from
+which a speed to current mapping can be performed, it is impossible to predict a
+priori, the  specific amplitudes  of currents  that the  cell may  undergo under
+real-life load conditions. Without further deterministic information, the author
+of  this thesis  chose to  interpret magnitude  as being  the peak  amplitude of
+the  applied  input  current. As  seen  in~\cref{fig:uddssimp2dspmresults},  the
+representative  \gls{udds}  drivecycle  input  profile  corresponds  to  a  peak
+of  3C \ie{}  \SI{180}{\ampere}.  Following the  standard  principles of  system
+identification, it is desirable  for the inputs to the system  to lie along some
+measure  of  central tendency.  This  is  to  enable  the identified  system  to
+generalise well \ie{} not deviate too far  from the truth when subject to inputs
+that are far away from the central  measure. Yet another consideration is not to
+saturate the identified model by choosing input magnitude to be too close to the
+peak of  the expected  operating range. Taking  into account  all aforementioned
+considerations, the  peak amplitude of the  input current was fixed  at 2C \ie{}
+\nicefrac{2}{3} of the \gls{udds} profile's peak amplitude.
+
+
+
+% code snippet
+
 
 In order to apply the transfer function identification techniques, linearity and
 time-invariance of the underlying system must be established.
