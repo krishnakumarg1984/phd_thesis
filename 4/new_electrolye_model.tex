@@ -284,5 +284,36 @@ responses of  the system under  consideration does not  have long tails  and are
 characterised by relatively short time constants. Owing to these reasons, it was
 decided that state space identification methods shall not be adopted here.
 
-\subsubsection*{Time-evolution subsystem}\label{subsubsec:sysidplantmodel}
+Owing to a  cornucopia of well-established technical  know-how readily available
+in the systems  engineers toolkit, transfer function based  model structures are
+naturally amenable for  control oriented applications. However,  there exists an
+apparent  discrepancy  to its  usage  that  must  be addressed  first.  Transfer
+function  methods are  a frequency  domain  technique and  hence, the  resulting
+model  descriptions have  mathematical structures  radically different  from the
+time-domain model equations of the  conventional \gls{spm} within which they are
+to be  embedded. This conundrum  is resolved  by closely inspecting  the model's
+scope and its tractability for conversion to time domain as explained next.
+
+It is worth remembering that, as per~\cref{subsec:freqdomainroms}, all frequency
+domain model groups were considered as  out of scope of this thesis specifically
+due  to  the   overhead  of  conversion  from  frequency  to   time  domain  for
+implementation  and other  associated difficulties  for the  \glspl{rom} of  the
+\emph{entire cell}.  The blanket  exclusion nature  of this  statement is  to be
+revisited considering  the specific scope  of the problem  at hand. The  body of
+literature  on  frequency  domain \glspl{rom}  discuss  obtaining  physics-based
+transcendental  transfer functions  for  all electrochemical  quantities of  the
+coupled  \gls{pdae} system  of~\cref{tbl:dfneqns} through  a top-down  approach.
+However, the frequency  domain system identification methods  are concerned with
+obtaining standard  rational transfer  functions for a  system of  much narrowed
+scope, \ie{}  for the  time-evolution subsystem,  through a  bottom-up approach.
+Such  rational transfer  functions are  to obtained  for \gls{siso}  systems for
+which  an approximation-free  effortless  conversion exists  based on  classical
+control  theory and  is presented  in~\cref{subsubsec:sysidplantmodel}. In  view
+of  their  simplicity  and  familiarity, and  after  successfully  circumventing
+their  only apparent  impediment  to adoption,  transfer  function based  system
+identification was  chosen for  tackling the  problem at  hand and  is presented
+next.
+
+
+\subsubsection*{Transfer function identification of Time-evolution subsystem}\label{subsubsec:sysidplantmodel}
 
