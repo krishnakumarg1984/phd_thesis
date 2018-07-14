@@ -315,7 +315,7 @@ identification was  chosen for  tackling the  problem at  hand and  is presented
 next.
 
 
-\subsubsection*{Transfer function identification of electrolyte time-evolution subsystem}\label{subsubsec:sysidplantmodel} % might possiblly have to promote into its own detailed subsection
+\subsubsection*{Transfer function identification of electrolyte time-evolution subsystem}\label{subsubsec:sysidplantmodel} % might possibly have to promote into its own detailed subsection
 
 % introduction
 \Crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic} of the baseline
@@ -436,25 +436,35 @@ sequence
     \item \gls{prbs} for emulating white noise, \ie{} with a flat power spectra
         across the frequency spectrum\quad (800--\SI{999}{\second})
     \item Multi-sine signal \ie{} a signal consisting of sinusoids at
-        various fundamental frequencies added together (1000--\SI{1199}{\second})
+        various fundamental frequencies added together\quad (1000--\SI{1199}{\second})
 \end{enumerate}
 
 Overall,  the validation  profile has  been designed  to cover  a wide  range of
 frequencies  akin to  the  training  profile, but  differing  completely in  its
-time-domain appearance. The specific validation current profile used in this system
-identification is shown in~\cref{fig:sysidvalidationcurrent}
+time-domain appearance.  The specific  validation current  profile used  in this
+system identification is shown in~\cref{fig:sysidvalidationcurrent}.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{4/figures/sysid_train_input.pdf}
+    \includegraphics{4/figures/sysid_validation_input.pdf}
     \captionsetup{singlelinecheck=off}
     \caption[Input current profile used as the validation set for system
-    identification]{Input current profile used as the training set for system
-    identification. The sequence consists of
-    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
-        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
-covering both low and high frequency spectra while incorporating the potential
-to excite any periodic modes in the system to be identified.}
+    identification]{Input current profile used as the validation set for system
+        identification. The sequence consists of
+        \begin{enumerate*}[label=\emph{\alph*})]
+            \item a \glsfmtlong{rgs},
+            \item a \glsfmtlong{prbs}, and
+            \item a multisine waveform
+        \end{enumerate*}.
+        The overall sequence  is intended to emulate the flat  power spectrum of
+        white noise (with the \glsfmtshort{prbs}) and excite any poles and zeros
+        within  3$\sigma$ spread  of the  \glsfmtshort{rgs} mean.  The multisine
+        signal is  swept is composed  of sinusoids with  fundamental frequencies
+        from \SI{100}{\milli\hertz}  all the  way up  to the  Nyquist frequency.
+        Its  amplitude variation  across  the frequency  spectrum increases  the
+        probability to capture  the system's modes that were  possibly missed by
+        the preceding waveforms.
+    }%
     \label{fig:sysidvalidationcurrent}
 \end{figure}
 
