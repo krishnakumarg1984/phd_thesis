@@ -519,6 +519,16 @@ I_load_validate = [u4;u5;u6];
 \end{listing}
 
 % Linearity and time-invariance
+The transfer function identification techniques mentioned
+in~\cref{subsubsec:introblackboxsysid} are only applicable for \gls{lti}
+systems. At the first glance, this sounds too restrictive. Lithium ion batteries
+exhibit non-linear characteristics, owing to the strong non-linearities in the
+Butler-Volmer reaction kinections~\cref{eq:butlervolmer}
+
+
+linearity and
+time-invariance of the underlying system must be established.
+
 \subsubsection*{actual procedure briefly}\label{subsubsec:actualsysid}
 
 % Assumed transfer function model. Test results within the model itself
@@ -527,7 +537,3 @@ I_load_validate = [u4;u5;u6];
 
 
 % mention in introduction where code snippets are given
-
-
-In order to apply the transfer function identification techniques, linearity and
-time-invariance of the underlying system must be established.
