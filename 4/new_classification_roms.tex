@@ -44,12 +44,11 @@ modelling technique.
 
 
 Physics-based control-oriented models  can be classified as belonging  to one of
-the following categories.\fxnote{just enumerate my classification in-line here} It
-is important to distinguish between models that are derived directly in the time
-domain versus  those that are  derived first in  the frequency domain  and later
-converted to time domain.
-\fxnote{enumerate all the desirable characteristics and criterion upon which
-models are to be evaluated}
+the following categories.\fxnote{just enumerate  my classification in-line here}
+It is important  to distinguish between models that are  derived directly in the
+time  domain  versus those  that  are  derived  first  in the  frequency  domain
+and  later  converted  to  time  domain.  \fxnote{enumerate  all  the  desirable
+characteristics and criterion upon which models are to be evaluated}
 
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
@@ -82,7 +81,7 @@ Padé  approximation method  that serves  as  a backbone  of a  wide variety  of
 frequency domain models.
 
 
-\fxnote{can  mention  that  most  frequency domain  models  are  impedance  models
+\fxnote{can  mention that  most  frequency domain  models  are impedance  models
 suitable for offline simulation eg An electrochemistry based impedance model for
 lithium-ion batteries}
 
@@ -101,7 +100,7 @@ typically limited  to offline  applications owing  to the  aggressive trade-offs
 required in the approximation order to maintain accuracy. Those models truncated
 to  very low  Padé  order exhibit  poor  fidelity and  perform  no better  than
 classical  equivalent circuit  models,  although recent  research attempts  have
-focussed  to  mitigate  this  drawback~\cite{Yuan2017a,Yuan2017}.\fxnote{Should  I
+focussed  to mitigate  this drawback~\cite{Yuan2017a,Yuan2017}.\fxnote{Should  I
 discuss how they mitigated this?}
 
 
@@ -184,13 +183,13 @@ adoption  of such  models if  the intended  purpose of  the model  is to  simply
 predict the cell's terminal voltage.
 
 
-Furthermore,  Lee~\etal{}~\cite{Lee2012a} also  devised the  \gls{dra}, a  novel
-algorithm  to systematically  transform  all  transcendental transfer  functions
-to  the  time domain   to  obtain  an \gls{lti}  state-space   model  given  by
-\cref{eq:LTIstatespace}. The  author of  this thesis  considers the  formulation of
-the  \gls{dra}  as a  breakthrough  contribution  that  has helped  in  bringing
-physics-informed  time domain  models a  step  closer  to online  implementation
-without   having  to   resort   to   forming  a   lumped   impedance  and   then
+Furthermore,   Lee~\etal{}~\cite{Lee2012a}  also   devised   the  \gls{dra},   a
+novel  algorithm   to  systematically  transform  all   transcendental  transfer
+functions  to  the  time  domain   to  obtain  an  \gls{lti}  state-space  model
+given  by  \cref{eq:LTIstatespace}. The  author  of  this thesis  considers  the
+formulation  of the  \gls{dra} as  a breakthrough  contribution that  has helped
+in  bringing  physics-informed  time  domain  models a  step  closer  to  online
+implementation without having  to resort to forming a lumped  impedance and then
 truncating  it  suitably.  Lee~\etal{}~\cite{Lee2014} then  extended  this  work
 for  a  wider range  of  operation  across  various \gls{soc},  temperature  and
 C-rates.  Although the  final  state space  model is  simple  to implement,  the
@@ -291,24 +290,25 @@ models whilst still  retaining their origins in physical  principles rather than
 on empirical curve-fitting.
 
 
-\fxnote{can perhaps  talk about SPM converted  to equivalent circuit by  Prasad in
+\fxnote{can perhaps talk about SPM converted  to equivalent circuit by Prasad in
 the IEEE conference paper}
 
 
 % Removed as per Greg's advice and review/feedback
 
-% \Cref{ch:chapter6}  briefly presents  the author's  latest work  and preliminary
-% results towards  obtaining a similar physics-informed  equivalent circuit model.
-% This  modelling  effort is  a  direct  application  of  the gains  in  computing
-% efficiency  through  the  application  of the  improved  \gls{dra}  reported  in
-% Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},   the  detailed   coverage  of
-% which  is performed  in~\cref{ch:chapter3}.  This work  intends  to address  the
-% hitherto  unexplored  gap  in  impedance  modelling, \ie{}  the  absence  of  an
-% equivalent impedance  model that  accounts for  the impedance  contribution from
-% all  electrochemical quantities  in the  \gls{p2d} model.  This physics-informed
-% impedance  model can  be  extended  to fit  parameter  values  of components  in
-% an  equivalent circuit  model,  \eg{} by  using  a standard  Levenberg-Marquardt
-% non-linear least squares fitting algorithm~\cite{Levenberg1944, Marquardt1963}.
+% \Cref{ch:chapter6} briefly  presents the author's latest  work and preliminary
+% results  towards  obtaining  a  similar  physics-informed  equivalent  circuit
+% model.  This  modelling  effort  is  a direct  application  of  the  gains  in
+% computing  efficiency  through  the  application  of  the  improved  \gls{dra}
+% reported  in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the  detailed
+% coverage  of  which  is  performed in~\cref{ch:chapter3}.  This  work  intends
+% to  address  the  hitherto  unexplored   gap  in  impedance  modelling,  \ie{}
+% the  absence  of   an  equivalent  impedance  model  that   accounts  for  the
+% impedance contribution  from all  electrochemical quantities in  the \gls{p2d}
+% model.  This  physics-informed   impedance  model  can  be   extended  to  fit
+% parameter  values  of  components  in   an  equivalent  circuit  model,  \eg{}
+% by  using  a standard  Levenberg-Marquardt  non-linear  least squares  fitting
+% algorithm~\cite{Levenberg1944, Marquardt1963}.
 
 
 A common characteristic of  all hybrid models is the lack  of a physical meaning
@@ -346,7 +346,7 @@ such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
 the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
 in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
 such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
-measurements) to  that typically reported  in literature. \fxnote{have  not talked
+measurements) to that typically reported  in literature. \fxnote{have not talked
 about SPM  inspired eq circuit model.  Is it necessary  to do so?. How  to frame
 this. There are a few references that belongs to this kind}
 
@@ -358,8 +358,8 @@ majority  of the  final model  values  retain their  physical meaning,  yielding
 system engineers and cell designers alike  with a direct and causal relationship
 between  groups of  parameters and  their  influence on  the cell's  operational
 performance. Since  this chapter seeks  to provide  a readily usable  model that
-satisfies  all \fxnote{give  a number  here} criterion  for online  implementation
-from,\fxnote{cite  figure} the  author  concludes that  at  present, the  benefits
+satisfies all  \fxnote{give a number  here} criterion for  online implementation
+from,\fxnote{cite figure}  the author  concludes that  at present,  the benefits
 offered by hybrid models do not decisively outweigh this drawback.
 
 
@@ -406,7 +406,7 @@ this family of models. \fxnote{does this fit better at the end of this section}
 
 
 In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
-by the classical  Fick's first law~\cite{Fick1995}. In order to  solve for this
+by the  classical Fick's first law~\cite{Fick1995}.  In order to solve  for this
 concentration  profile,  it  is  required to  discretise  every  spherical  node
 (represented by the placement of a node in the axial direction) along its radial
 direction (pseudo dimension). This dramatically  increases the overall number of
@@ -419,7 +419,7 @@ a simpler computational mesh, whilst retaining high fidelity. It should be noted
 that high node  densities are mainly required near the  surface of the spherical
 particles for the pseudo  \engordnumber{2} dimension. Similarly, such clustering
 of nodes is desirable near the  separator and current collector interfaces along
-the axial  dimension.\fxnote{need to define  `axial' at  the start of  the thesis}
+the axial dimension.\fxnote{need  to define `axial' at the start  of the thesis}
 Thus, a number  of model order reduction  strategies in the time  domain seek to
 adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
 issues\fxnote{citations needed}.
@@ -473,7 +473,7 @@ models could  be worse than  simpler models with uniform  mesh-density. Although
 adaptive meshing strategies can be  employed for desktop simulation with minimal
 effort,  it remains  to  be seen  if  this  can be  deployed  successfully in  a
 resource-constrained environment  such as an embedded  \gls{bms} controller, and
-hence warrants  further research.\fxnote{does  this fit  better in  the conclusion
+hence warrants further  research.\fxnote{does this fit better  in the conclusion
 chapter?}
 
 
@@ -522,7 +522,7 @@ method of solving  this diffusion is the integral method  analysis used by Tanim
 etal. Should  I mention that?.  There is also  a comprehensive review  by Romero
 etal. Furthermore, there is a specific review by Zhang and White}
 
-\fxnote{In the words of  Zhang and White, ``The usage of the  PSS method is mainly
+\fxnote{In the words of Zhang and White, ``The usage of the PSS method is mainly
 affected by the num- ber of summation  terms included. If no summation terms are
 used, the  method degrades to  the low  order polynomial method.  Increasing the
 number of summation terms improves the accu- racy of the method, mostly at short
@@ -531,8 +531,8 @@ able to  provide accurate results  under a  wide range of  operating conditions.
 More summation  terms require solving  more differ- ential equations  (Eq. (9b))
 and could pose numerical difficulties because of the exponential terms.''}
 
-\fxnote{There are way too many models that use the proper orthogonal decomposition
-technique. Should I review these?}
+\fxnote{There  are  way   too  many  models  that  use   the  proper  orthogonal
+decomposition technique. Should I review these?}
 
 
 The computational  speed-up facilitated  by using polynomial  approximations for
@@ -541,12 +541,13 @@ approach for representing  all other electrochemical variables  of the \gls{dfn}
 model. Deng~\etal{}~\cite{Deng2018} presented a  polynomial approximation of the
 full \gls{p2d}  model, whose notable  contribution is in providing  a polynomial
 approximation for  the molar flux  density along the  thickness of the  cell.
-% To the  author's knowledge,  this  is  the first  attempt  to  provide a  spatially dependent  simplified  approximation  of  the  interfacial  flux  density.
-This presents a well-balanced choice between the  need to use the strongly
-non-linear Butler-Volmer kinetics or having to resort to a lumped representation
-of average kinetic behaviour.  Hence, this  model is particularly  suited to
-reduced order modelling  of  cells  with  medium  electrode  thicknesses wherein
-the  lumped representation of flux density is not applicable.
+% To the  author's knowledge, this is  the first attempt to  provide a spatially
+% dependent simplified approximation of the interfacial flux density.
+This  presents a  well-balanced  choice between  the need  to  use the  strongly
+non-linear Butler-Volmer kinetics~\cref{eq:butlervolmer} or  having to resort to
+a  lumped representation  of average  kinetic  behaviour. Hence,  this model  is
+particularly suited  to reduced order  modelling of cells with  medium electrode
+thicknesses wherein the lumped representation of flux density is not applicable.
 
 % In this work, the issue of equation deficiency in polynomial representation of
 % the  electrolyte  concentration  was  avoided by  using  a  simpler  quadratic
@@ -583,16 +584,16 @@ such  piecewise  linear approaches  can  gain  widespread acceptance  in  online
 applications.
 
 
-\fxnote{Tikz  picture  here, showing  a  nice  layout of  various  models
-according to the new classification scheme.}
+\fxnote{Tikz picture here, showing a nice  layout of various models according to
+the new classification scheme.}
 
-\fxnote{spider  drawing   on  5  counts---  simplicity,   parametrisation,  online
+\fxnote{spider  drawing  on  5  counts---  simplicity,  parametrisation,  online
 implementation, state estimation, physical insight}
 
 
-Referring  to   \fxnote{spider  figure   reference},  it   is  evident   that  all
+Referring  to  \fxnote{spider   figure  reference},  it  is   evident  that  all
 physics-based  reduced  order  models   presented  thus  far  entails  extensive
-parametrisation efforts  \fxnote{at the  end, count  and substitute  the canonical
+parametrisation efforts \fxnote{at  the end, count and  substitute the canonical
 number of  parameters here} to render  them useful for a  practical application.
 The  difficulties associated  with such  parametrisation, coupled  with inherent
 uncertainties  in  the obtained  parameter  values  act  as a  strong  deterrent
