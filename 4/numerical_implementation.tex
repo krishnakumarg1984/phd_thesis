@@ -422,8 +422,9 @@ algorithms. For the cell's terminal voltage computation, the basic structure and
 form  of the  output  equation given  by~\cref{eq:spmoutputeqn} remains  intact,
 except  that the  continuous time  variables $\left(\mathbf{x}(t),  u(t)\right)$
 need to  be replaced  by their discrete-time  counterparts in  the corresponding
-equation set~\crefrange{eq:spmbasicoutputvoltagefinal}{eq:csurfnegfromcavgneg}.
-The discrete-time output function $h_d$ is evaluated  \emph{after}  updating  the state  vector  through~\cref{eq:discgenericLTI}.
+equation  set~\crefrange{eq:spmbasicoutputvoltagefinal}{eq:csurfnegfromcavgneg}.
+The discrete-time output  function $h_d$ is evaluated  \emph{after} updating the
+state vector through~\cref{eq:discgenericLTI}.
 \begin{equation}\label{eq:discspmoutputeqn}
     y[k+1] = h_d(\mathbf{x}[k+1],u[k+1])
 \end{equation}
