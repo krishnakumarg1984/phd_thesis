@@ -8,14 +8,16 @@
 
 \include{Preamble/preamble}
 %: ----------------------- generate glossary ------------------------
-\loadglsentries{0_frontmatter/glossary}
 % \makeglossaries
+\makenoidxglossaries
+\input{0_frontmatter/acronyms}
 \includeonly{%
-    1/chapter1,
-    4/chapter4,
+    % 1/chapter1,
+    % 4/chapter4,
+    % 4/desktop_simulation_spm,
     % 4/electrolyte_inclusion,
     % 4/quadratic_approximation_ce,
-    % 4/new_electrolye_model,
+    4/new_electrolye_model,
 }%
 \begin{document}
 \scrollmode
@@ -77,13 +79,15 @@ this work.
 % \end{multicols}
 
 \mainmatter
-\include{1/chapter1}
+% \include{1/chapter1}
 \setcounter{chapter}{3}
-\include{4/chapter4}
-\include{4/electrolyte_inclusion}
-\include{4/quadratic_approximation_ce}
+% \include{4/chapter4}
+% \include{4/desktop_simulation_spm}
+% \include{4/electrolyte_inclusion}
+% \include{4/quadratic_approximation_ce}
 \include{4/new_electrolye_model}
 
+\printglossary[type=acronym]
 \cleardoublepage
 
 \begin{appendices} % Using appendices environment for more functionality
