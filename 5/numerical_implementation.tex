@@ -89,7 +89,7 @@ the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 of the continuous time \gls{spm} on  a digital computer. The source code listing
 of an example implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
 \vspace{3ex}
-\input{4/algo_ctstime_spm.tex}
+\input{5/algo_ctstime_spm.tex}
 
 The continuous time \gls{spm} algorithm has limited practical use. Computing the
 convolution integral or deploying \gls{ode}  solver code in a microcontroller is
@@ -227,13 +227,13 @@ in~\cref{subfig:fgRTprocess} and is discussed further.
     \centering
     \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Timing diagram of a real-time software loop of a \glsfmtshort{bms}]
-    {Timing diagram of a real-time software loop of a \gls{bms}. The sequence of events within one sample period $T_s$ in relation
-        to the base clock of the controller is shown. Particular emphasis is
-        placed on depicting the handling of \gls{isr} requests pertinent to cell
-        models. Other background tasks performed by the CPU is de-emphasised.
-        Moreover, the integration
-        of the  \gls{bms} software loop within  the larger  scope of  a master  vehicular
-    controller is not shown.}
+    {Timing diagram of a real-time software loop of a \gls{bms}. The sequence of
+        events within one sample period $T_s$ in relation to the base clock of
+        the controller is shown. Particular emphasis is placed on depicting the
+        handling of \gls{isr} requests pertinent to cell models. Other
+        background tasks performed by the CPU is de-emphasised. Moreover, the
+        integration of the  \gls{bms} software loop within  the larger  scope of
+    a master  vehicular controller is not shown.}
     \label{fig:timingdiagramBig}
 \end{figure}
 
@@ -440,7 +440,7 @@ state equation  given in  line~\ref{algLine:discstateEq} is  a set  of efficient
 linear  algebra  operations  consisting  of  simple  matrix-vector  product  and
 vector-addition routines.
 
-\input{4/algo_disctime_spm}
+\input{5/algo_disctime_spm}
 
 Since   a    subsection   of   researchers   in    electrochemical   engineering
 might   not  be   familiar  with   the   nuances  of   matrix  exponential   and

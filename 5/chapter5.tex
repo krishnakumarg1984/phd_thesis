@@ -1,28 +1,40 @@
 % -*- root: ../main.tex -*-
 %!TEX root = ../main.tex
-% ******************************* Thesis Chapter 5 ****************************
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
 
-
+\clearpage
+\chapter{Physics-Based Controls-Oriented Time-Domain Modelling}
 % ----------------------- paths to graphics ------------------------
 
 % change according to folder and file names
 \graphicspath{{5/figures/}}
 % ----------------------- contents from here ------------------------
+\input{5/intro_chapter5.tex} % Intro to the SPM analysis chapter
 
+% \section{Reduced Order Models: A New Classification Scheme}\label{sec:classificationscheme}
+% \input{5/new_classification_roms.tex}
 
-\begin{figure}[htb]
-  \centering
+\section{The \glsfmtfull{spm}}\label{sec:spmintro}
+\input{5/spm.tex}
 
-\resizebox{1\textwidth}{!}{\input{5/pgf/Exemplary_ROC.pgf}}
+\section{\glsfmtshort{spm} Model Development}\label{sec:spmmodeldevelopment}
+\input{5/spm_model_development}
 
-  \caption[Example of a ROC curve]{ Example of using python to generate a pgf-figure which has the same fonts as the main latex document. Run python plot\_exemplary\_roc.py from the Python directory to generate the pgf-file. }
-  \label{fig:ROC_curve}
-\end{figure}  
+\section{Numerical Implementation}\label{sec:numericalimplementation}
+\input{5/numerical_implementation}
 
+\section{Desktop Simulation}\label{sec:basicspmsimresults}
+\input{5/desktop_simulation_spm}
+% % Table comparing simulation speeds for cts and disc for constant current and dynamic current
 
+% \section{Enhancing the Conventional \glsfmtshort{spm}}\label{sec:electrolyteinclusion}
+% \input{5/electrolyte_inclusion.tex}
 
+% \section{Quadratic Approximation of Ionic Spatial Concentration}\label{sec:quadraticapprox}
+% \input{5/quadratic_approximation_ce.tex}
 
-% ---------------------------------------------------------------------------
-%: ----------------------- end of thesis sub-document ------------------------
-% ---------------------------------------------------------------------------
+% \section{A New Electrolyte Model through System Identification}\label{sec:newelectrolytemodel}
+% \input{5/new_electrolye_model.tex}
 

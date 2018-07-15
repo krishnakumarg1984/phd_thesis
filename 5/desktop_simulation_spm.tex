@@ -18,7 +18,7 @@ the  axial  co-ordinates through  the  boundary  flux  at  the surface  of  each
 particle.} dynamics.
 
 \subsection{Cell Parametrisation}\label{subsec:spmp2dparametrisation}
-\input{4/cell_params_table}
+\input{5/cell_params_table}
 
 \Cref{tbl:lcoSimParamsSPMp2d} lists  the simulation  parameters of  an \gls{lco}
 cell  whose positive  and negative  electrodes are  \ch{LiCoO_2} and  \ch{LiC_6}
@@ -310,7 +310,7 @@ in~\cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{4/figures/m2t_kappa_ce_T.pdf}
+    \includegraphics{m2t_kappa_ce_T.pdf}
     \caption[Surface plot of electrolyte conductivity]
     {Electrolyte conductivity as a function of cell temperature and initial
         concentration. The variation of conductivity versus these factors is a
@@ -341,7 +341,7 @@ parameter as seen in~\cref{fig:kappavsce}.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{4/figures/m2t_kappa_ce_parametric_T.pdf}
+    \includegraphics{m2t_kappa_ce_parametric_T.pdf}
     \caption[Electrolyte conductivity versus concentration at various cell
     temperatures]{Electrolyte conductivity versus equilibrium concentration at
         various cell temperatures. At ${T_\text{cell} = \SI{298.15}{\kelvin}}$,
@@ -439,7 +439,7 @@ parameters, then  this corresponds  to a  C-rate of  1/100. Therefore,  both the
 \gls{p2d} and \gls{spm}  should run for exactly 100 hours  before cut-off due to
 charge depletion.
 
-\input{4/char_sim_table.tex}
+\input{5/char_sim_table.tex}
 
 Capacity validation through computer simulation  is not bound by the limitations
 of the experimental approach discussed earlier. Using 64-bit IEEE floating point
@@ -468,7 +468,7 @@ datasheet.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{4/figures/capacity_match_spm_p2d.pdf}
+    \includegraphics{capacity_match_spm_p2d.pdf}
     \caption[Voltage response of \glsfmtshort{spm} and \glsfmtshort{p2d} models
     for capacity validation]{Voltage response of \gls{p2d} and \gls{spm} models
         to a discharge current input of \SI{0.6}{A}. Both models achieve their
@@ -517,7 +517,7 @@ reproducible and are presented next in~\cref{subsec:simresultsbasicspm}.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{4/figures/const_curr_dischg_voltage.pdf}
+    \includegraphics[width=\textwidth]{const_curr_dischg_voltage.pdf}
     \caption[Voltage responses of \glsfmtshort{p2d} and \glsfmtshort{spm} to
     constant current discharge]{Voltage responses of the \glsfmtshort{p2d} and
         \glsfmtshort{spm} models to various constant discharge rates. The left
@@ -564,7 +564,7 @@ electrolyte  is not  modelled,  which results  in the  terminal  voltage of  the
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{4/figures/const_curr_dischg_soc.pdf}
+    \includegraphics[width=\textwidth]{const_curr_dischg_soc.pdf}
     \caption[\glsfmtshort{soc} computed by \glsfmtshort{p2d} and
     \glsfmtshort{spm} models for constant current discharge]{Plots in the left
         column depict the time evolution of \glsfmtshort{soc} computed by the
@@ -591,7 +591,7 @@ over  time,   and  defined  only   until  one   of  the  models   hits  cut-off.
 metrics used  to quantify  the performance  of the  basic \gls{spm}  for various
 discharge rates.
 
-\input{4/dischg_errs_spm_p2d_table.tex}
+\input{5/dischg_errs_spm_p2d_table.tex}
 
 A   quick   perusal  of~\cref{tbl:errorsummarycntcurrdischgspmp2d}   reveals   a
 discrepancy that invokes surprise at first glance. Whilst the performance of the
@@ -633,7 +633,7 @@ standard rate of 1C is used.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{4/figures/const_curr_chg.pdf}
+    \includegraphics[width=\textwidth]{const_curr_chg.pdf}
     \caption[Voltage and \glsfmtshort{soc} computed by \glsfmtshort{p2d} and
     \glsfmtshort{spm} for 1C constant current charge]{Time evolution of voltage
         and \glsfmtshort{soc} (top row) of the \glsfmtshort{p2d} and
@@ -681,7 +681,7 @@ One complete drivecycle runs for 1369 seconds.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{4/figures/udds_cycle.pdf}
+    \includegraphics{udds_cycle.pdf}
     \caption{The \glsfmtshort{udds} drivecycle profile}
     \label{fig:uddsspeedvstimecycle}
 \end{figure}
@@ -708,7 +708,7 @@ results of the model's performance to dynamic inputs.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=10.890625cm]{4/figures/udds_I_v_soc.pdf} % change the width suitably afterwards
+    \includegraphics[width=10.890625cm]{udds_I_v_soc.pdf} % change the width suitably afterwards
     \caption[Simulation results of \glsfmtshort{p2d} and \glsfmtshort{spm}
     models to \glsfmtshort{udds} current profile]{Simulation results for a
         \glsfmtshort{udds} current profile. The voltage prediction performance
@@ -740,7 +740,7 @@ is  a  standard  practice  to  report  the  \gls{rms}  error  for  such  dynamic
 load  profiles  and  is  included  in the  summary  of  error  metrics  reported
 in~\cref{tbl:errorsummaryuddsdischgspmp2d}.
 
-\input{4/udds_errs_spm_p2d_table.tex}
+\input{5/udds_errs_spm_p2d_table.tex}
 
 % accuracy comparison, figure inset
 

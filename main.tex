@@ -11,12 +11,9 @@
 \makeglossaries
 \input{0_frontmatter/acronyms}
 \includeonly{%
-    1/chapter1,
-    4/chapter4,
-    % 4/desktop_simulation_spm,
-    % 4/electrolyte_inclusion,
-    % 4/quadratic_approximation_ce,
-    % 4/new_electrolye_model,
+    % 1/chapter1,
+    % 2/chapter2,
+    5/chapter5,
 }%
 \begin{document}
 \scrollmode
@@ -75,13 +72,17 @@ this work.
 
 
 \mainmatter
-\include{1/chapter1}
-\setcounter{chapter}{3}
-\include{4/chapter4}
-% \include{4/desktop_simulation_spm}
-% \include{4/electrolyte_inclusion}
-% \include{4/quadratic_approximation_ce}
-% \include{4/new_electrolye_model}
+\include{1/chapter1} % Introduction
+\include{2/chapter2} % Literature Review
+\include{3/chapter3} % Layer Optimisation
+\setcounter{chapter}{4}
+\include{5/chapter5} % Analysis of SPM
+
+% Temporary demo for fast compiling in local machine
+% \include{5/desktop_simulation_spm}
+% \include{5/electrolyte_inclusion}
+% \include{5/quadratic_approximation_ce}
+% \include{5/new_electrolye_model}
 
 \cleardoublepage
 
