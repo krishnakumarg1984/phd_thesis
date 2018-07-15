@@ -11,12 +11,12 @@
 \makeglossaries
 \input{0_frontmatter/acronyms}
 \includeonly{%
-    % 1/chapter1,
-    % 4/chapter4,
+    1/chapter1,
+    4/chapter4,
     % 4/desktop_simulation_spm,
     % 4/electrolyte_inclusion,
     % 4/quadratic_approximation_ce,
-    4/new_electrolye_model,
+    % 4/new_electrolye_model,
 }%
 \begin{document}
 \scrollmode
@@ -61,31 +61,27 @@ this work.
 \tcblistof[\chapter*]{mypyg}{List of Program Code}
 \endgroup
 \cleardoublepage
-\microtypesetup{protrusion=true} % re-enables protrusion
 \glsresetall
+\begingroup
+\setlength\LTleft{-5pt}
+\printglossary[type=acronym, style = custom_acronyms,title={List of Acronyms}]\label{ch:glossary}
+% \printglossary[type=acronym, style = super,title={List of Acronyms}]\label{ch:glossary}
+\endgroup
+\microtypesetup{protrusion=true} % re-enables protrusion
 
 %: ----------------------- glossary ------------------------
 
 \cleardoublepage
 
-% \chapter{Glossary}\label{ch:glossary}
-% \begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-%     \begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-%         % \printglossary[type=\acronymtype,title=Abbreviations]
-%         \printglossary{}
-%         \label{nom} % target name for links to glossary
-%     \end{footnotesize}
-% \end{multicols}
-\printglossary[type=acronym, style = custom_acronyms,title={List of Acronyms}]\label{ch:glossary}
 
 \mainmatter
 \include{1/chapter1}
 \setcounter{chapter}{3}
-% \include{4/chapter4}
+\include{4/chapter4}
 % \include{4/desktop_simulation_spm}
 % \include{4/electrolyte_inclusion}
 % \include{4/quadratic_approximation_ce}
-\include{4/new_electrolye_model}
+% \include{4/new_electrolye_model}
 
 \cleardoublepage
 
