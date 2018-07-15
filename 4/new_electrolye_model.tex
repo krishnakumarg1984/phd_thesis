@@ -532,10 +532,56 @@ non-linearities in
 \end{enumerate*}
 However, since we are dealing with a much narrower scope \ie{} the systems under
 consideration  are just  the two  sub-system entities  (one per  electrode) that
-transform the applied current at a particular time-step to the overall moles per
-unit  area of  \ch{Li^+}  ions  in the  corresponding  electrode  region of  the
-electrolyte at that same instant. Therefore, it is the linearity and time-invariance of
-these subsystems that must be investigated.
+transform the  applied current at  a particular  time-step to the  overall moles
+per  unit area  of  \ch{Li^+}  ions in  the  corresponding  electrode region  of
+the  electrolyte at  that  same  instant. Therefore,  it  is  the linearity  and
+time-invariance of these \emph{subsystems} that must be investigated.
+
+A  test  for time-invariance  is  prescribed  in  the  lecture notes  on  system
+identification by  Plett~\cite{PlettECE5560_02}. The steps involved  therein are
+reproduced here after  being suitably adapted to the notation  of the subsystems
+at hand.
+\begin{enumerate}
+    \item Apply input $u_1(t) = I(t)$ to the system and measure the outputs $\widetilde{Q}_{\text{e,n}_1}(t)$ and $\widetilde{Q}_{\text{e,p}_1}(t)$.
+    \item Apply a delayed version of the input by $\tau$ seconds \ie{} $u_2(t) = I(t-\tau)$ to the system and measure the outputs
+        $\widetilde{Q}_{\text{e,n}_2}(t)$ and $\widetilde{Q}_{\text{e,n}_2}(t)$.
+    \item If $\widetilde{Q}_{\text{e,n}_2}(t)$ = $\widetilde{Q}_{\text{e,n}_1}(t-\tau)$ and $\widetilde{Q}_{\text{e,p}_2}(t)$ = $\widetilde{Q}_{\text{e,p}_1}(t-\tau)$ for all possible delays $\tau$ as well as for choice of input signals $I(t)$, then the systems are time-invariant.
+\end{enumerate}
+
+For  the  systems   at  hand,  it  is  not  strictly   required  to  apply  this
+prescriptive  test.  Unless a  fundamental  change  in the  underlying  reaction
+phenomena/chemistry  occur that  alter the  performance over  time, systems  are
+treated  as time-invariant.  Factors  that induce  time-dependent  shift in  the
+behaviour of lithium ion batteries  are degradation phenomena such as thickening
+of \gls{sei} layer  on the electrodes, dendrite growth or  mechanical fatigue in
+electrodes  which in-turn  affect electrolytic  diffusion and  conductivity. Yet
+another cause  of time-dependent  behavioural change is  the drift  in parameter
+values. However, these  phenomena are typically one or mode  orders of magnitude
+slower than  the \gls{p2d} dynamics\fxnote{citation needed}.  This separation of
+time-scales  imply  that in  practice,  they  can  be decoupled  and  therefore,
+separate  models can  be  identified  for the  faster  and  slower processes.  A
+suitable model-blending approach  can then be considered to arrive  at cover all
+processes across time-scales. Although the  concepts developed here for the fast
+electrolyte dynamics can be suitably adapted to such slow phenomena, their study
+falls outside  the scope of this  thesis and is  left as an exercise  for future
+work.  Thus,  the overall  battery  system,  and  hence  by extension,  the  two
+subsystems considered are deemed to  be time-invariant. However, in the interest
+of  completeness, this  author  systematically applied  the aforementioned  test
+procedure  with every  combination arising  from  the choice  of ten  time-delay
+values and the following five current profiles ---
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item constant current 1C discharge,
+    \item constant current 3C discharge,
+    \item constant current 1C charge,
+    \item \gls{udds} input profile with peak amplitude of 3C,
+    \item training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
+    \item validation profile used in system identification (see~\cref{fig:sysidvalidationingcurrent}).
+\end{enumerate*}
+All tests successfully  passed, with the delayed version of  all of the original
+output signals accurately matching their  responses to the corresponding delayed
+input (down to  machine precision), thereby confirming the  time-variance of the
+subsystems considered in the system identification problem.
+
 
 In the analyses of linearity of systems, it is a recommended practice to de-bias
 the output and input quantities about their mean operating conditions. The input
@@ -569,9 +615,6 @@ obtained  by subtracting  their  respective  initial values  $Q_{\text{e,}j}(0)$
 which   implies   that   the   transfer  functions   to   be   identified   have
 to   be   modified    to   be   $\frac{\widetilde{Q}_\text{e,n}(s)}{I(s)}$   and
 $\frac{\widetilde{Q}_\text{e,p}(s)}{I(s)}$ respectively.
-
-The test for time-invariance is prescribed as follows~\cite{PlettECE5560_02}
-
 
 \subsubsection*{actual procedure briefly}\label{subsubsec:actualsysid}
 
