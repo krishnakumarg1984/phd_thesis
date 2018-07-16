@@ -26,6 +26,8 @@ push @generated_exts, "tdo";
 push @generated_exts, "thm";
 push @generated_exts, "loa";
 push @generated_exts, "mypyg";
+push @generated_exts, "mtc*";
+push @generated_exts, "ptc";
 
 
 $pdflatex = 'lualatex %O %S --interaction=batchmode --shell-escape --bibtex --recorder';

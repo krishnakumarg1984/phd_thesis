@@ -317,3 +317,7 @@ build_dir/
 *.fof
 
 # main.tex
+
+*.fof
+*.mtc*
+*.ptc
