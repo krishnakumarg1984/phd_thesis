@@ -323,7 +323,7 @@ the IEEE conference paper}
 
 % Removed as per Greg's advice and review/feedback
 
-% \Cref{ch:chapter6} briefly  presents the author's latest  work and preliminary
+% \Cref{ch:futurework} briefly presents the author's latest work and preliminary
 % results  towards  obtaining  a  similar  physics-informed  equivalent  circuit
 % model.  This  modelling  effort  is  a direct  application  of  the  gains  in
 % computing  efficiency  through  the  application  of  the  improved  \gls{dra}
@@ -550,26 +550,27 @@ since now discretisation  needs to be performed only along  the axial direction.
 The  polynomial  approximation  solution  applied   to  solve  for  the  surface
 concentration in  the solid phase can  hence be viewed as  a dimension reduction
 approach, as  it removes  the model's  dependence in  the radial  direction. The
-textbook by  Carslaw and  Jaeger~\cite{Carslaw1947} details the  derivations for
-obtaining the  standard analytical solution  to Fick's  law of diffusion  in the
+textbook by Carslaw and  Jaeger~\cite{Carslaw1947} provides detailed derivations
+for obtaining the standard analytical solution to Fick's law of diffusion in the
 context of heat conduction in solids. Liu~\cite{Liu2006} derived this analytical
-solution for the  Lithium intercalation process in the solid  phase, taking into
+solution for the  lithium intercalation process in the solid  phase, taking into
 account  the idiosyncrasies  of porous  electrodes\fxnote{explain about  Olcer's
 pseudo-steady state  stuff}. However, this  expression involves an  infinite sum
-expansion of eigen  modes. Guo and White~\cite{Guo2012}  formulate an expression
-for  truncated approximation  of this  solution  to arbitrary  number of  terms.
-Furthermore, they  demonstrated the validity  of this solution by  comparing the
-analytical solution  truncated to the  first 5 terms  with that obtained  from a
+expansion of eigen modes. Guo  and White~\cite{Guo2012} formulated an expression
+for a  truncated approximation of  this solution  to arbitrary number  of terms.
+Furthermore, they demonstrated  the validity of this  approximation by comparing
+the analytical solution truncated  to the first 5 terms to  that obtained from a
 classical finite  element solution. However, this  truncated analytical solution
 involves exponential and trigonometric terms  and is non-trivial to implement on
-\gls{bms} chips lacking support for floating point computations. Moreover, there
-has been no extensive study comparing  the analytical solution to the polynomial
-approach. Consequently, this  approach has not yet  gained widespread popularity
-in the inherent elimination of the radial dimension embedded as a core aspect of
-the cell-level  model order reduction approaches  discussed here.\fxnote{another
-method of solving  this diffusion is the integral method  analysis used by Tanim
-etal. Should  I mention that?.  There is also  a comprehensive review  by Romero
-etal. Furthermore, there is a specific review by Zhang and White}
+\gls{bms}  chips, particularly  in those  that lack  support for  floating point
+computations.  Moreover,  there  has  been  no  extensive  study  comparing  the
+analytical solution to the polynomial  approach. Consequently, this approach has
+not yet gained  widespread popularity in the inherent elimination  of the radial
+dimension that is so  deeply ingrained as a core aspect  of the cell-level order
+reduction  approaches  discussed  here.\fxnote{another method  of  solving  this
+diffusion is the  integral method analysis used by Tanim  etal. Should I mention
+that?. There is  also a comprehensive review by Romero  etal. Furthermore, there
+is a specific review by Zhang and White}
 
 \fxnote{In the words of Zhang and White, ``The usage of the PSS method is mainly
 affected by the num- ber of summation  terms included. If no summation terms are
@@ -586,51 +587,53 @@ decomposition technique. Should I review these?}
 
 The computational  speed-up facilitated  by using polynomial  approximations for
 the  solid  phase diffusion  has  motivated  other  researchers to  extend  this
-approach for representing  all other electrochemical variables  of the \gls{dfn}
-model. Deng~\etal{}~\cite{Deng2018} presented a  polynomial approximation of the
-full \gls{p2d}  model, whose notable  contribution is in providing  a polynomial
-approximation for  the molar flux  density along the  thickness of the  cell.
-% To the  author's knowledge, this is  the first attempt to  provide a spatially
-% dependent simplified approximation of the interfacial flux density.
-This  presents a  well-balanced  choice between  the need  to  use the  strongly
+approach  to  all  other  electrochemical  variables  of  the  \gls{dfn}  model.
+Deng~\etal{}~\cite{Deng2018}  presented a  polynomial-centric evaluation  of the
+full  \gls{p2d}  model, whose  notable  contribution  is  in providing  such  an
+approximation for the molar flux density along the thickness of the cell. To the
+best knowledge  of this  thesis author,  this is the  first published  work that
+provides a  spatially dependent simplified  computation of the  interfacial flux
+density. This represents a balanced choice  between the need to use the strongly
 non-linear Butler-Volmer kinetics~\cref{eq:butlervolmer} or  having to resort to
-a  lumped representation  of average  kinetic  behaviour. Hence,  this model  is
+a lumped  representation of average  kinetic behaviour. Hence, this  approach is
 particularly suited  to reduced order  modelling of cells with  medium electrode
-thicknesses wherein the lumped representation of flux density is not applicable.
+thicknesses wherein the  lumped representation of flux density  is not generally
+applicable.
 
 % In this work, the issue of equation deficiency in polynomial representation of
 % the  electrolyte  concentration  was  avoided by  using  a  simpler  quadratic
 % polynomial within the porous electrode regions.
 
 
-One  serious  drawback in  Deng~\etal{}~\cite{Deng2018}  is  the use  of  Finite
-Difference approximation  for computing the  spatial gradient of  the \gls{ocp}.
-This  adversely  affects  computational  performance and  is  not  suitable  for
-online  implementation.  My  own  efforts  to  replace  this  finite  difference
-calculation of  the gradient  with an  analytical framework  based on  the chain
-rule  of calculus  is  currently in  preliminary stages  of  development and  is
-presented in~\cref{ch:chapter6}. Unless a proven solution for such computational
-challenges is  made available,  it is  worthwhile to  continue to  explore other
-available physics-based models to identify  the most apropos first candidate for
-adoption in real-time \gls{bms} environments.
+One  serious drawback  in Deng~\etal{}~\cite{Deng2018}  is the  use of  a Finite
+Difference approximation for computing the spatial gradients of the \gls{ocp} at
+three electrode locations. This  adversely affects computational performance and
+is not  suitable for online  implementation. Unless  a proven solution  for such
+computational  challenges is  made available,  it is  worthwhile to  continue to
+explore other avenues to identify the  most apropos first candidate for adoption
+in real-time \gls{bms} environments.
 
+% My own efforts  to replace this finite difference calculation  of the gradient
+% with an analytical framework based on  the chain rule of calculus is currently
+% in preliminary stages of development and is presented in~\cref{ch:futurework}.
 
-Farag~\etal{}~\cite{Farag2017}  proposed  a  piecewise linear  approximation  of
-all  governing  equations  of  the  electrochemical  model.  Given  that  linear
-approximations are simplistic  in nature, the authors acknowledged  that a naive
-implementation shall  result in a  crude approximation of the  model's dynamics.
-Hence,  an optimal  knot-placement  scheme  was proposed  and  solved through  a
-genetic  algorithm. Since  this Computationally  intensive step  occurs offline,
-this does not adversely affect the real-time performance of the model. The final
-model is  implemented using standard  state-space matrices. However,  this model
-also suffers  from the  drawbacks of  the hybrid  modelling approaches,  \ie{} a
-complete lack  of physical interpretation of  its parameters. As with  any other
-model involving \gls{soc} based linearisation points, the stability of the model
-to uncertainties in physical parameters  is questionable. A detailed sensitivity
-analysis of the  knot placement scheme's output to such  parametric variation is
-to  be performed,  establishing  confidence in  the  model's robustness,  before
-such  piecewise  linear approaches  can  gain  widespread acceptance  in  online
-applications.
+Farag~\etal{}~\cite{Farag2017}  proposed   a  \gls{pwl}  approximation   of  all
+governing equations of the electrochemical  model. Given that straight-line fits
+to complex phenomena  are inherently too simplistic,  these authors acknowledged
+that a naive implementation of their  approach shall therefore result in a crude
+approximation of  the cell's dynamics.  Hence, an optimal  knot-placement scheme
+was proposed and solved through a  genetic algorithm to compute the break-points
+of the \gls{pwl} fit. Since  this computationally intensive step occurs offline,
+it does not  adversely affect the real-time performance of  the model. The final
+\gls{rom}  is implemented  using  standard state-space  matrices. However,  this
+model  also exhibits  the primary  drawback of  all hybrid  modelling approaches
+\ie{} a complete lack of physical  interpretation of its parameters. As with any
+other \gls{rom} involving \gls{soc}-based linearisation points, the stability of
+the model  to uncertainties in  physical parameters is questionable.  A detailed
+sensitivity analysis  of the knot  placement scheme's output to  such parametric
+variation is  to be performed  in order to  establish confidence in  the model's
+robustness, before such  \gls{pwl} approaches can gain  widespread acceptance in
+online applications.
 
 
 \fxnote{Tikz picture here, showing a nice  layout of various models according to
@@ -639,57 +642,59 @@ the new classification scheme.}
 \fxnote{spider  drawing  on  5  counts---  simplicity,  parametrisation,  online
 implementation, state estimation, physical insight}
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{placeholder_images/example-image-golden.pdf}
+    \caption[Desirability index of various \glsfmtshort{rom}s]{A radar chart
+        showing various the performance of various models compared against a
+    desirability index (scale) sought after in all \glsfmtlong{rom}s}
+    \label{fig:spiderdiagram}
+\end{figure}
 
-Referring  to  \fxnote{spider   figure  reference},  it  is   evident  that  all
-physics-based  reduced  order  models   presented  thus  far  entails  extensive
-parametrisation efforts \fxnote{at  the end, count and  substitute the canonical
-number of  parameters here} to render  them useful for a  practical application.
-The  difficulties associated  with such  parametrisation, coupled  with inherent
-uncertainties  in  the obtained  parameter  values  act  as a  strong  deterrent
-to  stakeholders  outside academia  to  adopt  physics-based models  for  online
-implementation  in  a   \gls{bms}.  This  motivates  the  need   for  a  simpler
-physics-based models and a family of such models is introduced next.
+
+From~\cref{fig:spiderdiagram}, it is evident  that all physics-based \glspl{rom}
+presented thus far entail extensive  parametrisation efforts \fxnote{at the end,
+count  and  substitute  the  canonical  number of  parameters  here}  to  render
+them  suitable for  a practical  application. The  difficulties associated  with
+such  parametrisation,  coupled  with  inherent uncertainties  in  the  obtained
+parameter values act  as a strong deterrent to stakeholders  outside academia to
+adopt  physics-based  models for  online  implementation  in a  \gls{bms}.  This
+motivates the  need for even  further simplified physics-based models.  One such
+modelling  candidate  is briefly  introduced  next  and  is analysed  in  detail
+in~\cref{ch:spmanalysis}.
 
 
 Haran~\etal{}~\cite{Haran1998}  proposed a  highly simplified  representation of
 porous  electrodes for  the metal  hydride cell  chemistry. In  this work,  each
 porous electrode  was represented as  a single spherical particle.  This concept
-was adopted for Lithium ion batteries  by Ning and Popov~\cite{Ning2004} and has
-since  become highly  popular. Models  employing this  lumped representation  of
-electrodes are referred  to as \glspl{spm}. These models  have three advantages.
-Since  they involve  only  a  subset of  parameters  of  the original  \gls{dfn}
-model, most  of them being  geometric quantities  that can be  directly measured
-without  extensive chemical  or electrical  testing, \glspl{spm}  are easier  to
-parameterise than other physics-based reduced order model. Furthermore, they are
-computationally cheap, especially when coupled with the polynomial approximation
-for solving the solid diffusion equation  for each electrode. Finally, all model
-parameters in the \gls{spm} retain their  physical character, aiding in a direct
-and intuitive understanding of physical parameters on the cell's operation.
+was adopted for lithium ion batteries  by Ning and Popov~\cite{Ning2004} and has
+since  become quite  popular.  Models employing  this  lumped representation  of
+electrodes are referred to as  \glsfmtlong{spm}s (\gls{spm}s). These models have
+three advantages. Since they involve only a subset of parameters of the original
+\gls{dfn} model,  most of them being  geometric quantities that can  be directly
+measured  without  extensive chemical  or  electrical  testing, \glspl{spm}  are
+easier to parametrise than other physics-based reduced order model. Furthermore,
+they  are computationally  cheap, especially  when coupled  with the  polynomial
+approximation  for solving  the  solid diffusion  equation  for each  electrode.
+Finally, all model parameters in  the \gls{spm} retain their physical character,
+aiding in  a direct and  intuitive understanding  of physical parameters  on the
+cell's operation.
 
+This concludes  the author's review of  literature of the various  reduced order
+modelling strategies. Based on the wealth of information gleaned from this study
+of  literature,  it was  possible  to  make an  informed  choice  to pursue  the
+\gls{spm} approach  for further research.  The thesis author's  contributions to
+the time-domain implementation-focus reduced order modelling field include
+\begin{itemize}[noitemsep,topsep=0pt, before={\vspace*{-0.25\baselineskip}}]
+    \item thorough analysis of the existing \gls{spm} variants ranging from the rudimentary to the sophisticated
+    \item enumeration of issues plaguing each \gls{spm} variant, including current state of the art
+    \item study of further literature on the current tactics to overcome the current challenges along with their associated drawbacks
+    \item conducting a  wide range of hypotheses-driven trials in an attempt to enhance  the basic \gls{spm} (some of which did not yield the desired
+        improvements), and then
+    \item finally arriving at  a  feasible  approach  capable  of  moulding  the  \gls{spm}  to  a  readily implementable  solution.
+\end{itemize}
+This research was  performed through an iterative cycle of  analysis, design and
+simulation-based verification  and shall be  elucidated in a  discourse spanning
+two chapters \viz{} \cref{ch:spmanalysis} and~\cref{ch:newelectrolytemodel}.
 
-Prima Facie, based  on a preliminary comparison of the  strengths and weaknesses
-of  the  modelling  families  in  the  literature  considered,  the  overarching
-simplicity of  \glspl{spm} and their immediate  potential to bring the  power of
-physics-based prediction  to an embedded  environment is a strong  motivation to
-pursue their in-depth exploration. The  equations describing the single particle
-model  is introduced  in  \ldots. An  in-depth analysis  of  their drawbacks  is
-presented in \ldots. Various attempts to  fix this issue is presented in \ldots.
-The  electrolyte  concentration and  potential  fixes  is presented  in  \ldots.
-Finally, results and discussion. \fxnote{REWRITE after finishing up everything}
-
-
-% \fxnote{Where does  this paragraph go? End  of this section/end of  chapter or
-% even  last  chapter?}  The  identification of  individual  parameters  of  the
-% \gls{dfn} model  remains a  key area  in battery  modelling that  remains only
-% partially  explored. Nevertheless,  this effort  is critical  to ensure  rapid
-% adoption  of any  physics-based  model and  sophisticated control  algorithms.
-% The  state of  the  art in  this  area, the  challenges  involved and  current
-% efforts  in  this  direction   are  explored  in~\cref{ch:chapter6}.  Although
-% sensitivity  analysis  of  the  \gls{dfn} parameters  has  been  performed  in
-% literature, \fxnote{citation here} the extent to which parameter uncertainties
-% influence  the   numerical  values  in  the   $A,  B,  C$  and   $D$  matrices
-% of~\Cref{eq:LTIstatespace} has not yet been attempted. In continuation of this
-% research aspect, the order of magnitude  shift in eigen/singular values of the
-% relevant system matrix also need to be quantified to enable an informed choice
-% about stability of such models for real-time implementations.
 

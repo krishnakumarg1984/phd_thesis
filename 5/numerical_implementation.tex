@@ -93,14 +93,16 @@ of an example implementation in \textsc{MATLAB} is provided in~\cref{sc:ctstimes
 \input{5/algo_ctstime_spm.tex}
 
 The continuous time \gls{spm} algorithm has limited practical use. Computing the
-convolution integral or deploying \gls{ode}  solver code in a microcontroller is
-challenging  and introduces  a  substantial computational  burden. Although  the
-continuous time  model can  be used for  desktop simulation,  more sophisticated
-physics-based  models  are available  for  this  task. However,  the  continuous
-time  \gls{spm} has  an  important application,  \viz{}  estimation of  physical
-parameters  which will  explored  in~\cref{sec:spmparameterestim}. However,  for
-online  deployment  for state  estimation  and  control tasks,  a  discrete-time
-version of the model suitable for real-time implementation is needed.
+convolution integral  or deploying  \gls{ode} solver  code in  a microcontroller
+is  challenging  and introduces  a  substantial  computational burden.  Although
+the  continuous   time  model   can  be  used   for  desktop   simulation,  more
+sophisticated physics-based  models are  available for  this task.  However, the
+continuous time  \gls{spm} has  an important  application, \viz{}  estimation of
+physical  parameters. However,  for online  deployment in  state estimation  and
+control  tasks, a  discrete-time version  of  the model  suitable for  real-time
+implementation is needed.
+
+% which will  explored  in~\cref{sec:spmparameterestim}.
 
 \subsection{Conceptual Overview of Real-Time Processing}
 
@@ -458,14 +460,14 @@ in~\cref{sc:disctimespm}.
 A_cts = [-30*Ds_pos/(R_pos^2),                    0, 0; ...
                             0, -30*Ds_neg/(R_neg^2), 0; ...
                             0,                    0, 0];
-% $A_d = e^{A T_s}$ \fontfamily{libertinus}\selectfont(see~\crefrange{eq:A_dinit}{eq:A_d})
+% $A_d = e^{A T_s}$ \fontfamily{libertinus}\selectfont(see \crefrange{eq:A_dinit}{eq:A_d})
 A_disc = expm(A_cts*Ts); % $\mathtt{expm}$ command computes the matrix exponential
 
 B_cts = [ (45/2)/(R_pos^2*a_pos*L_pos*F*A); ...
          (-45/2)/(R_neg^2*a_neg*L_neg*F*A); ...
              (-3/(R_neg*a_neg*L_neg*F*A))];
 
-% $B_d = \int_{0}^{T_s}e^{A \eta}B \,{d\eta}$ \fontfamily{libertinus}\selectfont(see~\crefrange{eq:B_dinit}{eq:B_d})
+% $B_d = \int_{0}^{T_s}e^{A \eta}B \,{d\eta}$ \fontfamily{libertinus}\selectfont(see \crefrange{eq:B_dinit}{eq:B_d})
 B_disc = nan(size(B_cts));
 B_disc(1) = B_cts(1)*(exp(A_cts(1,1)*Ts)-1)/A_cts(1,1);
 B_disc(2) = B_cts(2)*(exp(A_cts(2,2)*Ts)-1)/A_cts(2,2);

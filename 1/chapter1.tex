@@ -12,8 +12,8 @@ More introductory material goes here blah blah \dots \dots
 This  thesis  strives to  represent  all  physical  quantities in  the  standard
 International  System  of Units  (SI-Units).  However,  there are  some  notable
 exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
-practical units of Ampere hours (\SI{}Ah),  rather than the base SI Units
-of Coulombs (\SI{}{\coulomb}). Such exceptions  are made taking into account the
+practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
+Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
 prevalent conventions in standard literature.
 
 \fxnote{make a note in the introduction  chapter that the terms cell and battery
@@ -26,7 +26,8 @@ modelling and battery modelling}
 % models out there.
 
 Based on an isothermal description
-Mention that stuff is applicable for both Lithium ion and Lithium polymer chemistries
+Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
+chemistries.
 
 
 \section{Chemistry}\label{subsec:liionchemistry}
@@ -106,3 +107,20 @@ negative electrode potential from its positive electrode counterpart.
 \input{1/dfn_equation_table}
 % write about lumped thermal model equations here. Point out to relevant
 % parameters
+
+
+% \fxnote{Where does  this paragraph go? End  of this section/end of  chapter or
+% even  last  chapter?}  The  identification of  individual  parameters  of  the
+% \gls{dfn} model  remains a  key area  in battery  modelling that  remains only
+% partially  explored. Nevertheless,  this effort  is critical  to ensure  rapid
+% adoption  of any  physics-based  model and  sophisticated control  algorithms.
+% The  state of  the  art in  this  area, the  challenges  involved and  current
+% efforts  in  this  direction are  explored  in~\cref{ch:futurework}.  Although
+% sensitivity  analysis  of  the  \gls{dfn} parameters  has  been  performed  in
+% literature, \fxnote{citation here} the extent to which parameter uncertainties
+% influence  the   numerical  values  in  the   $A,  B,  C$  and   $D$  matrices
+% of~\Cref{eq:LTIstatespace} has not yet been attempted. In continuation of this
+% research aspect, the order of magnitude  shift in eigen/singular values of the
+% relevant system matrix also need to be quantified to enable an informed choice
+% about stability of such models for real-time implementations.
+
