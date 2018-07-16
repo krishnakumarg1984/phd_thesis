@@ -7,12 +7,11 @@
 Battery modellers face the classic  conundrum of conjuring physics-based battery
 models that remain amenable for control  applications. The prior attempts by the
 research  community  to  tackle  this  challenge  is  examined  here.  The  term
-`control-oriented model' can  be considered synonymous with  the term \gls{rom}.
-This is  due to the  fact that the  inherent complexity of  physics-based models
-inherently  necessitates the  use of  some  order reduction  strategy for  their
-adoption in  control and real-time  applications. In this  thesis as well  as in
-the  relevant  literature  discussed  here,  these  two  terms  have  been  used
-interchangeably.
+`control-oriented model'  can be considered  synonymous with \gls{rom}.  This is
+due to the fact that the  inherent complexity of physics-based models inherently
+necessitates the  use of  some order  reduction strategy  for their  adoption in
+control and  real-time applications. In this  thesis as well as  in the relevant
+literature discussed here, these two terms have been used interchangeably.
 
 
 Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
@@ -395,136 +394,154 @@ outweigh their drawbacks.
 % satisfies all \fxnote{give a number here} criterion for
 
 
-\subsection{Time-domain \glsfmtshort{rom}s}
-The working rubric of all time  domain reduced order models typically consist of
-attempts to reformulate the original \gls{p2d}  model equations with the goal of
-simplifying them.  In contrast to the  hybrid models, both the  model derivation
-and  final  implementation  tasks  are  carried out  entirely  within  the  time
-domain.  Whilst a  subset of  prior research  has focussed  only on  simplifying
-certain aspects  of the  cell dynamics, \eg{}  solid diffusion,  other published
-works  have aimed  at  providing a  simplified description  of  the time  domain
-evolution of all  physical quantities of the cell. An  evaluation of the salient
-literature  from both  these  approaches is  performed here.
+\subsection{Time-domain  \glsfmtshort{rom}s}
+The working rubric of all time  domain \glspl{rom} typically consist of attempts
+to  reformulate the  original  \gls{p2d}  model equations  towards  the goal  of
+simplifying  them to  as much  extent  as possible.  In contrast  to the  hybrid
+models, all tasks involved in both model derivation and final implementation are
+carried out  entirely within the time  domain. While a subset  of prior research
+has focussed only  on simplifying certain aspects of the  cell's dynamics, \eg{}
+diffusion in the two electrodes, other published works have aimed at providing a
+simplified  description of  the  time domain  evolution  of \emph{all}  physical
+quantities of the cell. An evaluation  of the salient literature based upon both
+these approaches is performed here.
 
 
-In this discussion,  those models that entail computations with  medium or large
-dense  matrices~\cite{Li2016,Xu2016,Corno2015}  or  involving concepts  such  as
-fractional  order  derivatives~\cite{Sabatier2014,Sabatier2015, Li2017,  Mu2017,
-Wang2017} shall not  be discussed. To this author, it  appears that the academic
-community has  implicitly considered these models  to be so abstruse  that there
-has not yet been a comparative  study pitting these models against the prevalent
-art. Comparing with the typical published work in this field, it is not clear on
-how such models  distinguish themselves uniquely in the larger  realm of reduced
-order battery modelling.
+In  this discussion,  the  modelling approaches  that  entail computations  with
+medium or large dense matrices~\cite{Li2016,Xu2016,Corno2015} or those involving
+concepts such  as fractional  order derivatives~\cite{Sabatier2014,Sabatier2015,
+Li2017, Mu2017, Wang2017}  shall not be discussed. In the  views of this author,
+it appears that  the academic community has implicitly considered  them to be so
+abstruse that there has not yet  been a comparative study pitting these families
+of models against  the prevalent art. Comparing with the  typical published work
+in  this field,  it  is not  clear  on how  such  models distinguish  themselves
+uniquely within the broader landscape of reduced order battery modelling.
 
 
-A  few techniques  for  \gls{pde}  simplification in  the  time  domain such  as
-Hilbert-Space  representation and  singular perturbation  were applied  for cell
-modelling in  Manzie~\etal~\cite{Manzie2015}. However, their  presentation lacks
-expository visual  information such  as plots  of time  domain evolution  of the
-internal  and terminal  variables for  dynamic load  profiles. Furthermore,  the
-authors have  not provided a  tabulated set of  physical parameters of  the cell
-being  simulated. This  adversely affects  the reproducibility  of the  results.
-These methods have not  seen uptake in academia or industry.  The author of this
-thesis considers this  presentation to be of a cursory  nature and consequently,
-they  shall not  be  discussed here.  The remainder  of  this section  discusses
-several popular families of time domain models providing a summary evaluation of
-their  relative merits  and  weaknesses. \Cref{sec:spmintro}  presents a  formal
-introduction to the most promising  candidate identified among these time-domain
-models that  is considered to  nurture a  latent potential to  facilitate faster
-adoption  of  physics based  models  in  online applications.  Further  sections
-discuss methodologies and  solutions that aim to address the  gaps identified in
-this family of models. \fxnote{does this fit better at the end of this section}
+A few mathematical  techniques for \gls{pde} simplification in  the time domain,
+such as Hilbert space representation and singular perturbation, were applied for
+cell  modelling in  Manzie~\etal~\cite{Manzie2015}. However,  their presentation
+lacks expository  visual information such as  plots of time domain  evolution of
+the internal and terminal variables  for dynamic load profiles. Furthermore, the
+authors  have  not provided  a  tabulated  set  of  physical parameters  of  the
+cell being  simulated which  therefore impedes  reproducibility of  the results.
+Consequently, these methods  have seen a healthy uptake neither  in academia nor
+in industry. The  author of this thesis  considers this presentation to  be of a
+cursory  nature  and therefore,  shall  not  be  discussed here.  The  remainder
+of  this  section discusses  several  popular  families  of time  domain  models
+and  provides a  summary evaluation  of  their relative  merits and  weaknesses.
+\Cref{ch:spmanalysis} presents a formal in-depth  analysis of all aspects of the
+state of the art  in the field of single particle  modelling. The author reckons
+that  the  \gls{spm}---reviewed briefly  later  in  this section---is  the  most
+promising  candidate identified  among  these time-domain  models  to nurture  a
+latent potential to facilitate faster adoption of physics based models in online
+applications.
+
+% Further sections  discuss methodologies and solutions  that aim to
+% address the  gaps identified  in this  family of  models. \fxnote{does  this fit
+% better at the end of this section}
 
 
-In the \gls{dfn} model, the diffusion of Lithium in the solid phase is described
-by the  classical Fick's first law~\cite{Fick1995}.  In order to solve  for this
-concentration  profile,  it  is  required to  discretise  every  spherical  node
-(represented by the placement of a node in the axial direction) along its radial
-direction (pseudo dimension). This dramatically  increases the overall number of
-discretisation  nodes, adversely  impacting  the  computational efficiency.  The
-impact of high node densities on  the computational requirements of the original
-\gls{p2d}  model have  led researchers  to adopt  various mitigation  strategies
-to  tackle  this  issue. In  contrast  to  the  pure  frequency domain  and  the
-semi-hybrid/hybrid approaches discussed thus far, these attempts aim to provided
-a simpler computational mesh, whilst retaining high fidelity. It should be noted
+In the \gls{dfn} model, the evolution of lithium in the solid phase is described
+by the classical  diffusion equation given by  Fick's first law~\cite{Fick1995}.
+In order  to solve for  this concentration profile  in full-order models,  it is
+required to discretise every spherical particle (represented by the placement of
+a  node  in  the  axial  \ie{} through-thickness  direction)  along  its  radial
+direction (pseudo  dimension). This  additional discretisation along  the pseudo
+dimension dramatically increases the overall  number of discretisation nodes and
+adversely  affects  computational  efficiency.  The impact  of  such  high  node
+densities on the computational requirements of the original \gls{p2d} model have
+led researchers to adopt various mitigation  strategies to tackle this issue. In
+contrast  to the  pure frequency  domain and  the semi-hybrid/hybrid  approaches
+discussed  thus far,  these attempts  typically strive  to arrive  at a  simpler
+computational mesh,  whilst aiming to retain  high fidelity. It should  be noted
 that high node  densities are mainly required near the  surface of the spherical
-particles for the pseudo  \engordnumber{2} dimension. Similarly, such clustering
-of nodes is desirable near the  separator and current collector interfaces along
-the axial dimension.\fxnote{need  to define `axial' at the start  of the thesis}
-Thus, a number  of model order reduction  strategies in the time  domain seek to
+particles  for the  pseudo  dimension.  Similarly, the  clustering  of nodes  is
+desirable near  the separator and  current collector interfaces along  the axial
+dimension.\fxnote{need to  define `axial' at  the start  of the thesis}  Thus, a
+sizeable  number of  order  reduction  strategies in  the  time  domain seek  to
 adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
 issues\fxnote{citations needed}.
 
 
-Computationally    efficient     pseudo-spectral    schemes     for    numerical
-solution   of   \glspl{pde}   can be employed    by   choosing   discretisation
-nodes    at    orthogonal    collocation     points    obtained    by    solving
-for     the    zeros     of    certain     classes    of     polynomial    basis
+Computationally  efficient pseudo-spectral  schemes  for  numerical solution  of
+\glspl{pde}  can  be employed  by  placing  discretisation nodes  at  orthogonal
+collocation  points obtained  by  solving  for the  zeros  of  certain class  of
+polynomial basis
 functions~\cite{Ferguson1971,Trefethen2000,Boyd2001,Shizgal2015,Dutykh2016}.
-Their accuracy extend beyond  the  algebraic  orders of that achievable with
-classical  Finite  Difference,  Finite Element  or Finite Volume Schemes.
-Northrop~\etal{}~\cite{Northrop2011} pioneered their application in battery
-modelling by employing the Jacobi polynomials as underlying basis functions.
-Suthar~\etal{}~\cite{Suthar2014} replaced the Jacobi polynomials with Chebyshev
-polynomials to extend the applicability of the model to higher C-rates.
-Bizeray~\etal{}~\cite{Bizeray2015}    provided   a detailed treatment of the
-usage of Chebyshev discretisation  for   the  full   \gls{p2d} model   on  a
-global  scale,  \ie{}  along  both   the  axial  and  radial directions.
+The  accuracy  of such  schemes  extend  beyond  the  algebraic orders  of  that
+achievable with  classical Finite  Difference, Finite  Element or  Finite Volume
+Schemes.  Northrop~\etal{}~\cite{Northrop2011}  pioneered their  application  in
+battery modelling by employing Jacobi polynomials as underlying basis functions.
+Suthar~\etal{}~\cite{Suthar2014}  replaced  Jacobi  polynomials  with  Chebyshev
+polynomials to  extend the  applicability of the  resulting \gls{rom}  to higher
+C-rates. Bizeray~\etal{}~\cite{Bizeray2015} provide a  detailed treatment of the
+usage  of Chebyshev  discretisation for  the full  \gls{p2d} model  on a  global
+scale, \ie{} along both the axial and radial directions for all equations of the
+\gls{dfn} model.
 
 
-The  reduced  number of  nodes  as  well as  their  clustered  placement at  the
-desired  spatial  locations  enabled  by  these  discretisation  schemes  lowers
-the   computational  burdens   of   simulating  a   physics-based  cell   model.
+The  reduced  number   of  nodes  as  well  as  their   clustered  placement  at
+the  desired  spatial  locations  facilitated by  these  discretisation  schemes
+lowers  the computational  burdens  of simulating  a  physics-based cell  model.
 Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2018} undertook a  hybrid approach by
 retaining a  standard finite volume  discretisation in the axial  domain, whilst
 adopting  the  Chebyshev  discretisation  only  for  the  critical  solid  phase
-diffusion component in the radial direction. Albeit in time domain, the standard
-\gls{p2d} equations, their boundary conditions and corresponding field variables
-are  mathematically transformed  to the  Chebyshev space  within which  they are
-solved.  The details  of this  transformation is  presented in  \cref{sec:hybrid
-fv-spectral}  in  \cref{ch:chapter2}  for the  solid-phase  diffusion  equation.
-Finally,  these solved  quantities  are  converted back  to  the physical  space
-through  a corresponding  inverse transformation.  Although this  bi-directional
-transformation is  algebraic in nature,  the requirement of running  a spatially
-resolved model coupled with  such variable-transformation overheads render these
-class  of  models unsuitable  for  online  implementation. The  contribution  of
-Lee~\etal{}, \ie{} the  ability to solve for any electrochemical  variable at an
-arbitrary  spatial  location by  completely  eliminating  the need  for  spatial
-discretisation assumes particular significance in this context.
+diffusion  component in  the  radial  direction. The  details  of  this work  is
+presented  in the  context of  the author's  research methodology  on delivering
+a  model-based pouch  cell  design  discussed in~\cref{ch:modelbaseddesign}.  In
+pseudo-spectral methods, the \gls{p2d}  equations, their boundary conditions and
+corresponding field  variables are  mathematically transformed to  the Chebyshev
+space  within  which  they  are  solved.  The  details  of  this  transformation
+is  presented   in  the   context  of  the   author's  aforementioned   work  in
+\cref{sec:hybrid fv-spectral} of  \cref{ch:modelbaseddesign} for the solid-phase
+diffusion equation. Finally,  these solved quantities are converted  back to the
+physical  space through  a corresponding  inverse transformation.  Although this
+bi-directional  transformation is  purely algebraic  in nature,  the requirement
+of  running a  spatially  resolved  model coupled  with  the  overheads of  such
+variable  transformations render  these class  of models  unsuitable for  online
+implementation. The contribution  of Lee~\etal~\cite{Lee2012a,Lee2012} \ie{} the
+ability to solve for any electrochemical variable at arbitrary spatial locations
+by completely eliminating the need for spatial discretisation assumes particular
+significance in this context.
 
 
 In all  non-uniform discretisation schemes  discussed here, the  implications of
 using  a non-adaptive  support mesh  obtained by  the placement  of nodes  whose
-locations are optimised a-priori, must be considered carefully. For instance, in
-the long-term  usage of the cell  \eg{} in an electric  vehicle application, the
-reaction front drifts  from separator back towards the  current collectors. This
-is  due to  the exhaustion  of  Lithium at  the  surface of  particles near  the
-separator  interfaces.  In  this  scenario,  the  solutions  produced  by  these
-models could  be worse than  simpler models with uniform  mesh-density. Although
-adaptive meshing strategies can be  employed for desktop simulation with minimal
-effort,  it remains  to  be seen  if  this  can be  deployed  successfully in  a
-resource-constrained environment  such as an embedded  \gls{bms} controller, and
-hence warrants further  research.\fxnote{does this fit better  in the conclusion
-chapter?}
+locations are optimised a priori, must be considered carefully. For instance, in
+the prolonged operation of the cell  with a net unidirectional charge flow \eg{}
+in an  electric vehicle  application, the reaction  front drifts  from separator
+back towards the current collectors. This is due to the exhaustion of lithium at
+the surface  of particles near the  separator interfaces. In this  scenario, the
+solutions  produced by  these models  could be  worse than  simpler models  with
+uniform mesh-density. Although  adaptive meshing strategies can  be employed for
+desktop simulation  with minimal effort,  it remains to be  seen if this  can be
+deployed successfully in a resource-constrained  environment such as an embedded
+\gls{bms} controller, and hence is  a candidate for future research.\fxnote{does
+this fit better in the conclusion chapter?}
 
 
-The  computational  bottlenecks arising  due  to  discretisation in  the  radial
-direction  have  motivated  researchers   to  explore  mesh-free  approaches  to
-solve for  solid phase  concentrations. Subramanian~\etal~\cite{Subramanian2004}
-pioneered  the concept  of employing  polynomial approximations  of the  Fickian
-diffusion equation to solve for Lithium concentrations in the porous electrodes.
-Here,  the solid-phase  surface  concentrations was  expressed  as a  correction
-term  applied  to their  average  concentrations  which  was described  using  a
-second degree polynomial. In  a follow-on study~\cite{Subramanian2005}, the same
-authors  presented a  solution using  higher order  polynomials and  performed a
-dimensionless analysis of their  proposed reformulation. In the \engordnumber{2}
-and  \engordnumber{4}  order  solutions,  the polynomial  equation  for  surface
-concentration  was  accompanied  by  a corresponding  \gls{ode}  for  describing
-the  temporal  evolution   of  average  concentration,  thereby   leading  to  a
-system  of \glspl{dae}.  Furthermore, Subramanian~\etal{}~\cite{Subramanian2007}
-demonstrated  the  application  of   polynomial  approximation  of  solid  phase
-diffusion by simulating a complete \gls{dfn} model.
+The   computational   bottlenecks  arising   due   to   discretisation  in   the
+radial   direction    have   motivated   researchers   to    explore   mesh-free
+approaches   to    solve   for   the   solid    phase   concentration   profile.
+Subramanian~\etal~\cite{Subramanian2004}  pioneered  the  concept  of  employing
+polynomial approximations of the Fickian diffusion equation to solve for Lithium
+concentrations  in the  porous  electrodes. In  this  approach, the  solid-phase
+surface  concentrations were  expressed  as correction  terms  applied to  their
+average concentrations (which  was described using a  second degree polynomial).
+In  a   follow-on  study~\cite{Subramanian2005},  the  same   authors  presented
+a  solution  using  higher  order  polynomials  and  performed  a  dimensionless
+analysis of  their proposed reformulation.  The details of  the \engordnumber{4}
+order  polynomial approximation  is  presented  in the  context  of this  thesis
+author's  comprehensive  analysis  of  the  \gls{spm}  modelling  art  and  will
+be  presented  in~\cref{subsec:basicspmfurtherdimensionalityreduction}.  In  the
+\engordnumber{2} and  \engordnumber{4} order solutions, the  polynomial equation
+for  surface concentration  was  accompanied by  a  corresponding \gls{ode}  for
+describing  the temporal  evolution  of average  concentration, thereby  leading
+to  a  system  of  \glspl{dae}.  Furthermore,  Subramanian~\etal{}  convincingly
+demonstrated the  application of  polynomial approximation  for the  solid phase
+diffusion  equation in  the numerical  simulation of  a complete  \gls{dfn} cell
+model~\cite{Subramanian2007}.
 
 
 Using polynomial  approximation for the  solid phase concentration results  in a
