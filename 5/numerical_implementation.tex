@@ -20,9 +20,7 @@ implementation and is a  unique contribution of this work in  the context of the
 cell modelling art.
 
 \subsection{Continuous-time Implementation}
-
 \subsubsection*{Analytical solution}
-
 Although  not   explicitly  given  in  \gls{spm}   literature,  using  \gls{lti}
 system  theory,  the  analytical  solution for  continuous-time  state  equation
 (\cref{eq:LTIstatespace})  with  current input\footnote{Analytical  closed  form
@@ -33,6 +31,7 @@ variant of a Newton-type iteration scheme.} is given by
 \begingroup
 \allowdisplaybreaks
 \setlength{\abovedisplayskip}{0.9765625ex}
+% \setlength{\abovedisplayskip}{0.1765625ex}
 % \setlength{\belowdisplayskip}{0ex}
 \begin{align}
     % \SwapAboveDisplaySkip
@@ -257,7 +256,7 @@ written to the relevant \glspl{dac}.
 
 \subsection{Sample Delay Considerations}
 
-\begin{figure}[htb]
+\begin{figure}[b]
     \centering
     \hrulefill
     \caption[Timeline of \glsfmtshort{bms} activities over multiple CPU cycles of a real-time

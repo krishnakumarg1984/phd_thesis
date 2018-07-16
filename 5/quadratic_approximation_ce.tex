@@ -256,7 +256,7 @@ The   simulation   results   of   the   quadratic   approximation   scheme   and
 the   analysis   of   its   strengths   and   weaknesses   is   presented   next
 in~\cref{subsec:quadraticsimresultsanalysis}.
 
-\subsection{Numerical implementation, simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
+\subsection{Numerical implementation and simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
 
 \subsubsection*{Numerical implementation}
 From an analysis point of view,  the quadratic approximation model for computing
@@ -341,129 +341,12 @@ However,  the  classical  first  order  response  predicated  by  the  quadratic
 approximation model falls short of representing its complete dynamics. Errors of
 similar  magnitude  are present  in  the  ionic  concentration at  both  current
 collector  interfaces, with  a maximum  absolute error  of \approx\SI{250}{\mole
-\per \meter  \cubed}. Similar trends occur  in charging, with a  swapping of the
-response pattern of the behaviour at negative and positive electrode interfaces.
+\per \meter  \cubed}. Similar trends are  exhibited in charging, with  a swapped
+response pattern observed at the two current collector interfaces.
 
-
-\subsubsection*{Analysis of performance and the issue of equation deficiency} In
-the  author's analysis  of the  quadratic  approximation model,  the origin  and
-nature of  its sub-optimal  performance can  be explained  as per  the following
-rationale. The quadratic  approximation model uses a  bottom-up approach wherein
-the final  simplified model structure  is pre-assumed  and then the  physics are
-made  to  fit  within  this  framework. Given  that  the  top-down  approach  to
-electrolyte  modelling, \ie{}  accounting for  all physical  phenomena and  then
-simplifying  them yields  mathematically intractable  and overly  complex models
-(see~\cref{sec:electrolyteinclusion} for  a detailed discussion),  this approach
-seems to be a pragmatic alternative  to enhancing the \gls{spm} with electrolyte
-dynamics.
-
-The question  then boils down to  whether quadratic approximation is  indeed the
-\emph{best} model structure that can be assumed a priori. The author embarked on
-a journey  to find suitable  alternate model  structures, \ie{} a  single family
-of  curves  that  will  capture  both  the  transient  and  \gls{qss}  behaviour
-exhibited by  the ionic  concentration. The open-source  \textsc{MATLAB} toolbox
-GPTIPS2~\cite{Searson2015}  uses the  state-of-the-art  \gls{mggp} approach  for
-symbolic data  mining and is ideally  suited for such symbolic  regression tasks
-(fitting a  mathematical equation structure,  and not merely  obtaining best-fit
-coefficients to a  pre-assumed curve as in classical numerical  regression, to a
-given data).
-
-It  is  important  to  recognize  that  the  key  criteria  that  restricts  the
-choice  of gene  sequence  depth as  well  as  the choice  in  number of  parent
-mutations  is  the  total  number  of  unknown  symbolic  coefficients  required
-to  be   solved  in  the  assumed   model  structure.  There  are   a  total  of
-\emph{seven} linear equations available from  the physics of the \gls{dfn} model
-(see~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}).  Thus the  assumed
-family  of curves  \emph{cannot}  consist  of more  than  seven coefficients  to
-guarantee a  unique solution. Yet  another restriction  on the choice  of curves
-arises due to the fact that the behaviour of ionic concentration in the negative
-and positive electrode  regions are similar in complexity, and  hence need to be
-mathematically described by an identical family of curves.
-
-Upon a close inspection of the  spatial concentration profile from the \gls{p2d}
-simulation  results shown  in~\cref{fig:spatialionicconc1C}, it  is evident  the
-electrolyte approximation  functions within the  electrode regions is  of higher
-complexity than  the approximation  function suitable for  use in  the separator
-region. Based on the  results of the quadratic model, it is  clear that at least
-two coefficients  are required within the  electrode regions, $n_{\text{c,elec}}
-\ge  2$.  There  exists  an  inhibiting  factor  that  prevents  the  use  of  a
-lower  order  function within  the  separator.  As  per the  simulation  results
-of  the  \gls{p2d}  model,  the  time-domain  change  of  number  of  moles  per
-square  meter  in  the  separator   is  non-zero.  Therefore,  a  simple  linear
-approximation is immediately  ruled out as per~\cref{eq:sepliionmolesquadratic}.
-Among non-polynomial mathematical curves tried (trigonometric, hyperbolic, power
-series  among  others),  none  could  obtain  the  relatively  simple  shape  of
-the  separator function,  without  reducing  the contribution  from  one of  the
-coefficients  to below  machine  precision.  This forces  the  retention of  the
-quadratic approximation  function used thus  far (with no missing  terms), \ie{}
-$n_\text{c,sep}  = 3$.  Thus, the  overall number  of coefficients  in the  best
-possible approximation shall be $2  n_\text{c,elec} + n_\text{c,sep} = 2\cdot2 +
-3 = 7$,  which is the total number of  electrolyte-specific physical constraints
-available from the \gls{dfn} model. Thus, it can be concluded that the quadratic
-approximation model does indeed make the \emph{best} use of all of the available
-physical  equations.  The  final  question  remains to  answer  is,  with  these
-coefficient limitations, is the quadratic  equation structure indeed the optimal
-one. This was investigated through the \gls{mggp} approach.
-
-The GPTIPS2  toolbox uses a variety  of heuristic algorithms from  the theory of
-\gls{mggp} to fit a  suitable equation structure for the data  to be fitted. The
-dataset  consisted  of the  simulation  results  from  the \gls{p2d}  model,  in
-particular  the  values of  electrolyte  concentration  at the  three  different
-cell  regions,  captured  at  various  snapshots of  time.  Both  transient  and
-\gls{qss}  output  were  fed  into  this symbolic  data  mining  process  and  a
-single all-encompassing  family of curves  capable of capturing  the electrolyte
-concentration  behaviour  was  sought  for.  However,  with  the  aforementioned
-constraints in the number of coefficients results in restriction of the depth of
-gene mutations as  well as the number of unconnected  seed populations. The best
-equation  set (without  hard constraints,  yet  minimizing the  distance to  the
-constraint vector) that the symbolic regression approach yielded was
-\begin{alignat}{2}
-    c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0 \le z \le l_\text{n}   \\
-    c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad &  & 0 \le z \le l_\text{s}   \\
-    c_\epsub(z,t) & = a_8(t) \cosh z^2 + a_7(t) \sinh z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}
-\end{alignat}
-which  although  fits  the  transient  and  \gls{qss}  profiles  well,  violates
-the  constraint on  the  number of  coefficients available,  and  results in  an
-underdetermined  system  of equations.  Both  the  least-squares and  least-norm
-solution of this  system were tried. However, the results  were inferior to that
-produced by the baseline quadratic approximation method.
-
-An  attempt  was  made  to  obtain different  mathematical  structures  for  the
-transient  phase  and  \gls{qss}  phase  which  respects  the  overall  equation
-constraint.  The  symbolic  regression  output   for  this  approach  are  shown
-in~\cref{tbl:symbreg}.
-\input{5/symbolic_regression_table}
-
-Although  the equations  from~\cref{tbl:symbreg}  produced  a markedly  improved
-response during  transient phase, the  performance in  the \gls{qss} was  at par
-with respect to the baseline quadratic  approximation model. This brought up the
-prospect of a blended approach, wherein a model changeover between the transient
-and \gls{qss}  was contemplated. However,  since there is no  precise definition
-of  what  constitutes  the  transient  and  dynamic  phase  of  the  electrolyte
-concentration  response,  this  approach  required ad-hoc  timing  criteria  for
-transition between the two \gls{mggp} equation sets. Further complications arise
-during dynamic input  conditions, wherein the concentration  profiles are mostly
-in a  state of  flux and  could linger  for longer  durations at  the continuous
-boundary between  transient-like and \gls{qss}-like behaviours.  In the interest
-of reproducibility across different cell-chemistries and corresponding parameter
-sets, the proposed blended model transition approach was not further pursued.
-
-Overall,  the  long  and  arduous  process of  symbolic  regression  was  not  a
-definitive  success in  this  case  mainly due  to  the  limitation of  equation
-deficiency of physical constraints. Perhaps  if yet another physics-based model,
-\ie{} an  alternative to the  widely prevalent \gls{dfn}  model, can be  used as
-the  baseline,  a  few  more  physical governing  equations  could  possibly  be
-made  available. This  can perhaps  result in  a less  restrictive gene-set  for
-coefficient  determination  and  consequently  pave the  way  for  a  successful
-implementation  through  this  hitherto  unexplored  route  of  \gls{mggp}-based
-equation synthesising approach.
-
-In conclusion,  the quadratic approximation model  for electrolyte concentration
-approximation makes the best use of  the available physical equations. Given the
-constraints  with  respect to  physical  equations  discussed in  this  section,
-it  also  seems   to  be  the  optimum  family  of   curves  for  modelling  the
-\emph{spatial}  profile of  ionic concentration.  Notwithstanding these  merits,
-the  \emph{temporal}  performance of  the  quadratic  approximation approach  is
-sub-optimal  as seen  in~\cref{fig:temporalcequadratic} and  the author  of this
-thesis addresses this specific issue next in~\cref{sec:newelectrolytemodel}.
+This  chapter concludes  with a  view that,  while the  spatial accuracy  of the
+quadratic  approximation  model  is  acceptable,  its  temporal  performance  is
+lacklustre. The causal  factors that contribute to this  mediocre performance is
+analysed in the context of the author's  own attempts in arriving at an enhanced
+electrolyte and is presented next in~\cref{sec:symbolicregression}.
 
