@@ -78,13 +78,12 @@ between  two independent  subsystems (for  all practical  purposes), it  must be
 possible  to  replace  the  underperforming time-evolution  equations  from  the
 baseline quadratic approximation with a superior alternate model.
 
-\subsection{Methodology --- System identification} % might have to change section title if TF-based identification becomes a full-fledged subsection
+\subsection{Background and Rationale}\label{subsec:sysidbackground}
+% might have to change section title if TF-based identification becomes a full-fledged subsection
 
-This section presents the methodology adopted in obtaining an improved model for
-the rate of evolution  of overall moles per unit area of  \ch{Li^+} ions in each
-of the three regions of the cell.
-
-\subsubsection*{Background}\label{subsubsec:sysidbackground}
+% This section presents the methodology adopted in obtaining an improved model for
+% the rate of evolution  of overall moles per unit area of  \ch{Li^+} ions in each
+% of the three regions of the cell.
 
 This  section presents  the  background and  thought  process in  systematically
 arriving  at  the  choice of  the  methodology  that  was  adopted for  the  new
@@ -148,7 +147,7 @@ traits,  yet  of  a  completely  different nature  and  hitherto  unexplored  in
 physics-based  battery  modelling  in   general  and  electrolyte  modelling  in
 particular --- \emph{black-box system identification}.
 
-\subsubsection*{Brief introduction to system identification}\label{subsubsec:introsysid}
+\subsection{Brief Introduction to System Identification}\label{subsec:introsysid}
 
 An in-depth  coverage of the topic  of system identification is  well beyond the
 scope of  this thesis.  However, keeping  in mind the  interests of  the battery
@@ -194,7 +193,7 @@ separately.
 
 \end{enumdescriptnum}
 
-\subsubsection*{Overview of black-box system identification}\label{subsubsec:introblackboxsysid}
+\subsection{Overview of black-box system identification}\label{subsec:introblackboxsysid}
 Black-box system identification techniques can be broadly classified into ---
 \begin{enumerate*}[label=\emph{\alph*})]
      \item non-parametric methods, and
@@ -256,7 +255,7 @@ under consideration. Major parametric system identification methods are:
 
 Among  these  system  identification  methods, the  non-parametric  methods  are
 immediately  ruled  out   for  applying  to  the  task  at   hand.  As  outlined
-in~\cref{subsubsec:sysidbackground},  the author  is  inspired by  the trait  of
+in~\cref{subsec:sysidbackground},  the author  is  inspired by  the trait  of
 having  a  pre-assumed  model  structure that  brought  the  baseline  quadratic
 approximation closer to a successful  realisation. The non-parametric methods do
 not conform to this philosophy.  Furthermore, the requirement of infinite number
@@ -275,7 +274,7 @@ estimates  in  low \gls{snr}  environments  and  for capturing  slowly  decaying
 phenomena  with long  time constants.  The subspace  methods are  mathematically
 involved,  requiring  a  profound  understanding of  projections  to  orthogonal
 subspaces  from linear  algebra.  The system  under  consideration is  presented
-in~\cref{subsubsec:sysidplantmodel}.  It   is  composed  of   three  independent
+in~\cref{sec:sysidplantmodel}.  It   is  composed  of   three  independent
 \gls{siso}  subsystems.  The  complexity-performance  trade-off  in  state-space
 identification  is  achieved only  when  dealing  with \gls{mimo}  systems  that
 suggest strong cross-coupling among its internal  states or at least some degree
@@ -308,16 +307,17 @@ obtaining standard  rational transfer  functions for a  system of  much narrowed
 scope, \ie{}  for the  time-evolution subsystem,  through a  bottom-up approach.
 Such  rational transfer  functions are  to obtained  for \gls{siso}  systems for
 which  an approximation-free  effortless  conversion exists  based on  classical
-control  theory and  is presented  in~\cref{subsubsec:sysidplantmodel}. In  view
+control  theory and  is presented  in~\cref{sec:sysidplantmodel}. In  view
 of  their  simplicity  and  familiarity, and  after  successfully  circumventing
 their  only apparent  impediment  to adoption,  transfer  function based  system
 identification was  chosen for  tackling the  problem at  hand and  is presented
 next.
 
 
-\subsubsection*{Transfer function identification of electrolyte time-evolution subsystem}\label{subsubsec:sysidplantmodel} % might possibly have to promote into its own detailed subsection
+\section{Transfer Function Identification of Electrolyte Subsystem}\label{sec:sysidplantmodel}
+% might possibly have to promote into its own detailed subsection
 
-% introduction
+\subsection{Introduction to time-evolution electrolyte subsystems}
 \Crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic} of the baseline
 quadratic  approximation  model for  electrolyte  concentration  pertain to  the
 time-evolution of the overall number  of moles of \ch{Li^+}, $Q_{\text{e,}j}$ in
@@ -330,7 +330,7 @@ $\frac{Q_\text{e,p}(s)}{I(s)}$. Based on the \gls{dfn} model, the total moles of
 the exogenous applied current and the baseline quadratic approximation \gls{ode}
 is retained for computing its time-evolution.
 
-% Persistent excitation
+\subsection{Design of persistent excitations}
 In order  to successfully apply  any system identification technique,  the input
 signal must be carefully  designed to be persistently exciting~\cite{Ljung1999}.
 Narendra and Annaswamy~\cite{Narendra1984,Narendra1987}  were among the earliest
@@ -364,8 +364,20 @@ peak of  the expected  operating range. Taking  into account  all aforementioned
 considerations, the  peak amplitude of the  input current was fixed  at 2C \ie{}
 \ordfrac{2}{3} of the \gls{udds} profile's peak current amplitude.
 
-% training input current % subsubsytem
-
+\subsubsection*{Training current profile}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics{sysid_train_input.pdf}
+    \captionsetup{singlelinecheck=off}
+    \caption[Input current profile used as the training set for system
+    identification]{Input current profile used as the training set for system
+    identification. The sequence consists of
+    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
+        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
+covering both low and high frequency spectra while incorporating the potential
+to excite any periodic modes in the system to be identified.}
+    \label{fig:sysidtrainingcurrent}
+\end{figure}
 Since not much prior  information is available about the poles  and zeros of the
 electrolyte subsystem  in question, a wide  variety of special waveforms  with a
 sampling interval of \SI{1}{\second} were used for the current perturbation used
@@ -388,24 +400,9 @@ training  set presents  a  high degree  of confidence  to  capture the  relevant
 dynamics of the  electrolyte subsystem. The input current profile  used for this
 system identification task is plotted in~\cref{fig:sysidtrainingcurrent}.
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics{sysid_train_input.pdf}
-    \captionsetup{singlelinecheck=off}
-    \caption[Input current profile used as the training set for system
-    identification]{Input current profile used as the training set for system
-    identification. The sequence consists of
-    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
-        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
-covering both low and high frequency spectra while incorporating the potential
-to excite any periodic modes in the system to be identified.}
-    \label{fig:sysidtrainingcurrent}
-\end{figure}
-
-% Testing input current
-
-For  the  purposes  of  identification,  the \gls{p2d}  model  is  used  as  the
-input.  First, the  current profile  from  the training  set is  applied to  the
+\subsubsection*{Validation current profile}
+For the  purposes of identification,  the \gls{p2d}  model is considered  as the
+true system. First, the current profile from  the training set is applied to the
 \gls{p2d} model. Its  simulation results, in particular,  the numerically solved
 concentration values  at each spatially  discretised node  in each of  the three
 regions per  time-step is then integrated  over the thickness of  the respective
@@ -521,6 +518,7 @@ I_load_validate = [u4;u5;u6];
 
 % Linearity and time-invariance
 
+\subsection{Test for Linearity and Time Invariance}\label{sec:lticheck}
 The      transfer     function      identification     techniques      mentioned
 in~\cref{subsubsec:introblackboxsysid}   are  applicable  only   for   \gls{lti}
 systems.  At the  first glance,  this seems  overly restrictive  for the  system
@@ -538,6 +536,7 @@ per  unit area  of  \ch{Li^+}  ions in  the  corresponding  electrode region  of
 the  electrolyte at  that  same  instant. Therefore,  it  is  the linearity  and
 time-invariance of these \emph{subsystems} that must be investigated.
 
+\subsubsection*{Time invariance of the electrolyte time-evolution subsystems}\label{subsubsec:timeinvariance}
 A  test  for time-invariance  is  prescribed  in  the  lecture notes  on  system
 identification by  Plett~\cite{PlettECE5560_02}. The steps involved  therein are
 reproduced here after  being suitably adapted to the notation  of the subsystems
@@ -584,6 +583,7 @@ input (down to  machine precision), thereby confirming the  time-variance of the
 subsystems considered in the system identification problem.
 
 
+\subsubsection*{Linearity analysis of the time-evolution electrolyte subsystems}\label{subsubsec:linearityanalysis}
 In the analyses of linearity of systems, it is a recommended practice to de-bias
 the output and input quantities about their mean operating conditions. The input
 signal in this case, is the applied load current $I(t)$. This signal can be both
@@ -617,11 +617,14 @@ which   implies   that   the   transfer  functions   to   be   identified   have
 to   be   modified    to   be   $\frac{\widetilde{Q}_\text{e,n}(s)}{I(s)}$   and
 $\frac{\widetilde{Q}_\text{e,p}(s)}{I(s)}$ respectively.
 
-\subsubsection*{actual procedure briefly}\label{subsubsec:actualsysid}
+% Discussion of identification choices here
+
+\subsection{Identification Methodology and Governing Equations}\label{subsubsec:actualsysid}
+\subsection{Performance of Final Model}
+\section{Embedding into SPM and final results for composite system}
 
 % Assumed transfer function model. Test results within the model itself
 % Test results for electrolyte ce (subsection)
 % test results for full system (final section)
-
 
 % mention in introduction where code snippets are given

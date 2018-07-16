@@ -12,13 +12,29 @@
 % change according to folder and file names
 \graphicspath{{6/figures/}}
 
-\bigskip
-Intro here \dots
 % A suitable  family of models from  the broad category of  reduced-order models
 % is  identified  as  a  promising  candidate  for  implementation  in  controls
 % applications.
+\bigskip
 
-\section{Investigation of Symbolic Regression for Improved Electrolyte Performance}\label{sec:symbolicregression}
+This   chapter  presents   the   author's  attempts   towards   arriving  at   a
+accurate  description  of  the  spatio-temporal  evolution  of  the  electrolyte
+concentration. The  performance of the quadratic  approximation model introduced
+in~\cref{ch:spmanalysis} is  thoroughly analysed  in the  context of  a symbolic
+regression framework that  helped to expose the issue of  equation deficiency in
+the underlying \gls{dfn} model. Although this framework did not ultimately yield
+the  desired  outcomes,  it  did  facilitate a  comprehensive  analysis  of  the
+strengths and weaknesses of the quadratic  approximation model which is not seen
+in present literature.  Finally, the author's unique contribution to  the art of
+single particle  modelling \viz{}  a novel  time-evolution model  of electrolyte
+concentrations through  system identification is  presented. The results  of the
+new approach  is compared  against the  baseline quadratic  approximation model.
+Finally,  the novel  electrolyte time-evolution  model is  incorporated into  an
+electrolyte-enhanced \gls{spm}  and the  performance of  the composite  model is
+compared against the conventional \gls{spm},
+
+\section{Performance Analysis: Quadratic Approximation Model}\label{sec:symbolicregression}
+
 \input{6/gptips_attempt.tex}
 
 \section{A New Electrolyte Model through System Identification}\label{sec:newelectrolytemodel}
