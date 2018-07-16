@@ -7,13 +7,14 @@
 \documentclass[12pt,a4paper,oneside,openright]{book}
 
 \input{Preamble/preamble}
-%: ----------------------- generate glossary ------------------------
 \makeglossaries
 \input{0_frontmatter/acronyms}
 \includeonly{%
-    1/chapter1,
+    % 1/chapter1,
     2/chapter2,
-    5/chapter5,
+    % 3/chapter3,
+    % 4/chapter4,
+    % 5/chapter5,
 }%
 \begin{document}
 \scrollmode
@@ -75,7 +76,7 @@ this work.
 \include{1/chapter1} % Introduction (to do later)
 \include{2/chapter2} % Literature Review
 \include{3/chapter3} % Layer Optimisation
-\setcounter{chapter}{4}
+\include{4/chapter4} % Improved DRA
 \include{5/chapter5} % Analysis of SPM
 
 % Temporary demo for fast compiling in local machine

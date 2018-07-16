@@ -77,17 +77,18 @@ of~\cref{eq:analyticalctssoln}.  However,   a  variety  of  state   of  the  art
 adaptive-time  solvers  employing  numerical  schemes  such  as  Dormand-Prince,
 Runge-Kutta,  Collocation  or  Backward  Difference Formulae  are  available  to
 efficiently  handle such  \glspl{ode}.  Given that  lithium concentrations  vary
-smoothly over time  without abrupt discontinuities, a  standard non-stiff solver
-of moderate  order shall  suffice. A  single line of  code using  MATLAB's ode45
-solver can implement the time integrator, \eg{} \\ \mintinline{matlab}{[~,x_new]
-= ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span, x_old); }
+smoothly  over  time  without   abrupt  discontinuities,  a  standard  non-stiff
+solver  of  moderate   order  shall  suffice.  A  single  line   of  code  using
+\textsc{MATLAB}'s  ode45 solver  can  implement the  time  integrator, \eg{}  \\
+\mintinline{matlab}{[~,x_new] =  ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span,
+x_old); }
 
 Since  the direction  of applied  current  is susceptible  to sudden  reversals,
 (\eg{}  due to  acceleration and  braking events  for a  vehicular application),
 the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 \Cref{alg:ctstimespm} shows the  sequence of operations in  a desktop simulation
 of the continuous time \gls{spm} on  a digital computer. The source code listing
-of an example implementation in MATLAB is provided in~\cref{sc:ctstimespm}.
+of an example implementation in \textsc{MATLAB} is provided in~\cref{sc:ctstimespm}.
 \vspace{3ex}
 \input{5/algo_ctstime_spm.tex}
 
@@ -433,22 +434,22 @@ The complete  sequence of steps  to implement  the discrete-time variant  of the
 \gls{spm}  is given  in~\cref{alg:disctimespm}. In  particular, it  can be  seen
 that  the discrete-time  system  and  input matrices,  $A_d$  and  $B_d$ can  be
 pre-computed  from the  parameter set  (refer to  line~\ref{algLine:computeAdBd}
-in~\cref{alg:disctimespm}), using  the matrix  exponential approach.  In MATLAB,
-this  can be  achieved by  passing the  arguments of  the matrix  exponential to
-the  \verb+expm+ command.  The  vectorised implementation  of the  discrete-time
-state equation  given in  line~\ref{algLine:discstateEq} is  a set  of efficient
-linear  algebra  operations  consisting  of  simple  matrix-vector  product  and
-vector-addition routines.
+in~\cref{alg:disctimespm}),   using   the   matrix  exponential   approach.   In
+\textsc{MATLAB}, this  can be achieved  by passing  the arguments of  the matrix
+exponential to  the \verb+expm+  command. The  vectorised implementation  of the
+discrete-time state equation given in line~\ref{algLine:discstateEq} is a set of
+efficient linear  algebra operations consisting of  simple matrix-vector product
+and vector-addition routines.
 
 \input{5/algo_disctime_spm}
 
 Since   a    subsection   of   researchers   in    electrochemical   engineering
 might   not  be   familiar  with   the   nuances  of   matrix  exponential   and
 discrete-time  matrix  computations   (refer  to  line~\ref{algLine:computeAdBd}
-in~\cref{alg:disctimespm}),   a   snippet   of  MATLAB   code   clarifying   the
+in~\cref{alg:disctimespm}),  a snippet  of \textsc{MATLAB}  code clarifying  the
 computation  of  the   discrete-time  system  and  input   matrices,  $A_d$  and
-$B_d$  is  given  in~\cref{codesnippet:computeAdBd}.  A  full  code  listing  of
-an  example  discrete-time  \gls{spm}   implementation  in  MATLAB  is  provided
+$B_d$  is given  in~\cref{codesnippet:computeAdBd}. A  full code  listing of  an
+example discrete-time  \gls{spm} implementation  in \textsc{MATLAB}  is provided
 in~\cref{sc:disctimespm}.
 
 \begin{listing}
@@ -470,7 +471,8 @@ B_disc(1) = B_cts(1)*(exp(A_cts(1,1)*Ts)-1)/A_cts(1,1);
 B_disc(2) = B_cts(2)*(exp(A_cts(2,2)*Ts)-1)/A_cts(2,2);
 B_disc(3) = B_cts(3)*Ts;
 \end{minted}
-\caption{Computation of discrete-time matrices $A_d$ and $B_d$ in MATLAB}
+\caption{Computation of discrete-time matrices $A_d$ and $B_d$ in
+\textsc{MATLAB}}
 \label{codesnippet:computeAdBd}
 \end{listing}
 

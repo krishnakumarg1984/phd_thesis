@@ -203,40 +203,42 @@ intended purpose of  the model is to simply predict  the cell's terminal voltage
 or serve as the plant in \gls{soc} estimation applications.
 
 
-Furthermore,   Lee~\etal{}~\cite{Lee2012a}  also   devised   the  \gls{dra},   a
-novel  algorithm   to  systematically  transform  all   transcendental  transfer
-functions  to  the  time  domain   to  obtain  an  \gls{lti}  state-space  model
-given  by  \cref{eq:LTIstatespace}. The  author  of  this thesis  considers  the
-formulation  of the  \gls{dra} as  a breakthrough  contribution that  has helped
-in  bringing  physics-informed  time  domain  models a  step  closer  to  online
-implementation without having  to resort to forming a lumped  impedance and then
-truncating  it  suitably.  Lee~\etal{}~\cite{Lee2014} then  extended  this  work
-for  a  wider range  of  operation  across  various \gls{soc},  temperature  and
-C-rates.  Although the  final  state space  model is  simple  to implement,  the
-classical  \gls{dra} scheme  proposed  by Lee~\etal{}  suffers from  significant
-computational bottlenecks  in forming the required  block-Hankel matrices during
-the  model-derivation  phase.  A   memory-efficient  version  of  the  \gls{dra}
-exploiting the  skew-symmetric structure of  these Hankel matrices  was proposed
-in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017}  resulting  in  drastically
-reduced requirements for physical memory and processing power.
+In the  same publications~\cite{Lee2012a,Lee2012}, Lee~\etal{} also  devised the
+\gls{dra},  a novel  algorithm  to systematically  transform all  transcendental
+transfer functions to  the time domain so as to  obtain an \gls{lti} state-space
+model  given by  \cref{eq:LTIstatespace}. The  author of  this thesis  considers
+the  formulation  of the  \gls{dra}  as  a  breakthrough contribution  that  has
+helped  in  bringing  physics-informed  time  domain models  a  step  closer  to
+online implementation  without having  to resort to  forming a  lumped impedance
+and  then  truncating it  suitably.  In  a subsequent  paper  by  the same  lead
+author~\cite{Lee2014}, this work was then extended to a wider range of operating
+conditions  spanning various  choices  of initial  \glspl{soc}, temperature  and
+C-rates.  Although the  final  state  space model  thus  obtained  is simple  to
+implement, the classical \gls{dra} scheme suffers from significant computational
+bottlenecks   in  forming   the  required   block-Hankel  matrices   during  the
+model-derivation phase.  A memory-efficient version of  the \gls{dra} exploiting
+the skew-symmetric structure of these Hankel  matrices was proposed by this this
+author \ie{} Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017}, which drastically
+lowers  the requirements  for  computational memory  and  processing power.  The
+details of this contribution shall be presented in~\cref{ch:improveddra}.
 
 
-In both the original  as well as the improved \gls{dra},  the computation of the
-eigenfunction modal expansion of electrolyte concentration transfer function was
-computationally intensive.  A less  severe disadvantage with  the transcendental
-transfer  functions  associated  with  the electrolyte  concentration  was  that
-their  derivation  entailed  mathematically  cumbersome  symbolic  manipulations
-that  dictated  the   need  of  a  capable  \gls{cas}   package.  Although  from
-a  stand-alone  viewpoint  this  requirement  does  not  seem  to  be  critical,
-the  Ho-Kalman  algorithm   that  forms  a  core  component   of  the  \gls{dra}
-schemes  is  steeped in  numerical  linear  algebra routines.  Furthermore,  for
+In both the original as well  as the improved \gls{dra}, the eigenfunction modal
+expansion  of electrolyte  concentration transfer  function was  computationally
+intensive.  A  slightly  less  detrimental   disadvantage  with  the  series  of
+transcendental transfer functions associated  with the electrolyte concentration
+was   that  their   derivation  entailed   mathematically  cumbersome   symbolic
+manipulations that  dictated the need  of a  capable \gls{cas}. Although  from a
+standalone  viewpoint  this  requirement  does  not seem  to  be  critical,  the
+\mbox{Ho-Kalman}  algorithm  that  forms  a  core  component  of  the  \gls{dra}
+scheme  is  steeped  in  numerical linear  algebra  routines.  Furthermore,  for
 facilitating  state  estimator  and  controller designs,  it  is  convenient  to
 implement the resultant  state-space model in a  classical numerical computation
 environment   such  as   \textsc{MATLAB}.  Taking   these  into   consideration,
 Rodriguez~\etal{}~\cite{Rodriguez2017}  introduced a  simplified computation  of
-the electrolyte  concentration transfer  function by  applying the  variation of
-parameters  (VOP)  scheme.  With  this  final  improvement,  the  hybrid  scheme
-envisaged originally by Lee~\etal{} can  be considered feature-complete with low
+the  electrolyte  concentration  transfer  function  by  applying  the  gls{vop}
+scheme.  With  this  final  improvement,  the  hybrid  \gls{rom}  implementation
+originally envisaged by Lee~\etal{} can  be considered feature-complete with low
 computational  requirements  during  both model  derivation  and  implementation
 phase.
 
@@ -244,70 +246,76 @@ phase.
 A  key  drawback  of  the  transcendental  transfer  function  approach  is  the
 requirement for  linearisation at  a specific \gls{soc}.  This implies  that the
 entries in  the matrices of the  state space model depends  on the linearisation
-point.  In all  the  published  works employing  this  approach, these  transfer
-functions were obtained  by linearising the \gls{p2d} equations  at an operating
-point of  \SI{50}{\percent} \gls{soc}. The requirement  of linearisation renders
-the  model usable  only  in a  narrow range  of  \glspl{soc}. Furthermore,  this
-adversely affects the usability of the model for state estimation tasks, wherein
-the \gls{soc} is in fact an unknown quantity and is to be estimated.
+point. In all published works  employing this approach, these transfer functions
+were  obtained by  linearising the  \gls{p2d} equations  of the  \gls{dfn} model
+(see~\cref{tbl:dfneqns}), typically  at an operating point  of \SI{50}{\percent}
+\gls{soc}.  The linearisation  requirement renders  the model  usable only  in a
+narrow range of  \glspl{soc}. Furthermore, this adversely  affects the usability
+of the  model for state  estimation tasks, wherein the  \gls{soc} is in  fact an
+unknown quantity and is to be estimated.
 
 
-In order  to extend  the model's  range of  validity, Lee~\etal{}~\cite{Lee2014}
-proposed  a  simple model-blending  approach  by  interpolating between  several
-linear models pre-computed at  different \gls{soc} and temperature combinations.
-To guarantee robustness during cross-over, a  naive approach is to incorporate a
+In order to extend the model's range of validity, Lee~\etal{}~\cite{Lee2014} had
+used a  simple model-blending approach  by interpolating between  several linear
+models  pre-computed at  different  \gls{soc} and  temperature combinations.  To
+guarantee robustness  during change-over, a  naive approach is to  incorporate a
 large  number  of  break-points  in  the  look-up  table.  Since  the  model  is
 intended  for  online  operation,  this would  entail  significant  requirements
 of  both operating  memory  and non-volatile  storage.  An alternative  approach
 is  to  implement  a  fairly  coarse  break-point  table  with  a  sophisticated
 changeover  mechanism. However,  this  demands careful  tuning  of the  blending
 parameters  and  gain values,  an  in-depth  treatment  of  which has  not  been
-detailed in Lee~\etal~\cite{Lee2014}.  Furthermore, employing these interpolated
+provided in Lee~\etal~\cite{Lee2014}.  Furthermore, employing these interpolated
 matrices---whose  entries are  obtained  from pre-computed  matrices at  various
 \glspl{soc} and temperature---for state-estimation creates a subtle cyclic loop.
-The stability  of this feedback loop  hence introduced has not  been analysed in
-literature.  This  renders the  idea  of  state-estimation using  such  run-time
-interpolated models questionable.
+The  stability of  this  internal feedback  loop thus  introduced  has not  been
+analysed in  literature. This  renders the idea  of state-estimation  using such
+run-time interpolated models questionable.
 
 
-The author  of this thesis hypothesises  that any perceivable drawbacks  such as
-non-smooth changes  in \gls{soc} estimates  arising from using  blended matrices
-could  be potentially  mitigated by  using  smoothing filters  and other  ad-hoc
-mathematical apparatus. However,  there exists no published  work that discusses
-these engineering aspects. Coupled with the absence of a theoretical analysis of
-loop stability,  these models  are deemed  as not  being suitable  for immediate
+The  author of  this thesis  hypothesises  that any  perceivable drawbacks  such
+as  non-smooth  changes  in  \gls{soc}  estimates  arising  from  using  blended
+matrices could  be potentially  mitigated by using  smoothing filters  and other
+ad-hoc  mathematical apparatus.  However, there  exists no  published work  that
+discusses these engineering  aspects or on how to actually  implementing them in
+\glspl{bms}.  Coupled  with  the  absence  of a  theoretical  analysis  of  loop
+stability,  these  models  are  deemed  as  not  being  suitable  for  immediate
 adoption  by  industry, at  least  until  these  aforementioned gaps  have  been
 addressed  satisfactorily.  The non-linear  state  variable  model presented  by
-Guo~\etal{}~\cite{Guo2017} aims to  address this issue by  formulating a reduced
-order model in  the frequency domain by eliminating  linearisation. However, the
-online solution of the model entails an complex prediction-refinement procedure,
-loosely defined as implicit and explicit solution methods, for each subsystem of
-the  \gls{dfn}  model.  The  formulation  of the  final  model  is  not  clearly
-illustrated and  in the views of  this author, is not  easily comprehensible. In
-the absence  of actual source  code, a numerical  example or pseudo-code  of the
-model reduction workflow could have immensely helped with the reproducibility of
-the results claimed in the work.
+Guo~\etal{}~\cite{Guo2017} aims  to address this  issue through a  reduced order
+model in  the frequency domain by  eliminating the linearisation phase  from the
+workflow. However, the online solution of  its field variables entails a complex
+prediction-refinement  procedure,  loosely  defined  as  implicit  and  explicit
+solution methods, for each subsystem of  the \gls{dfn} model. The formulation of
+the final model is  not clearly illustrated and in the views  of this author, is
+not easily  comprehensible. In the  absence of  actual source code,  a numerical
+example  or pseudo-code  of the  model reduction  workflow could  have immensely
+helped with the reproducibility of the results claimed in the work.
+
+In summary, the  concept of hybrid \glspl{rom} is  certainly promising, although
+more work is required to address the  present gaps, most prominently the need to
+linearise their equations at certain operating points.
 
 
 \subsection{Hybrid \glsfmtshort{rom}s based on equivalent circuits}
 
 Physics-inspired                        equivalent                       circuit
 models~\cite{Prasad2012,Prasad2014,Zhang2017,Cheng2017,Merla2018} are a class of
-hybrid  models  that  have  rapidly  gained  prominence  since  the  publication
-of~\cite{Jokar2016}  and~\cite{Fan2015}. The  derivation of  the relevant  model
-equations  is  performed   in  the  frequency  domain.   This  frequency  domain
-representation is  then converted to  a form  suitable for implementation  as an
-equivalent circuit. Prasad and Rahn~\cite{Prasad2014} extended their Padé order
-reduced  model first  presented  in~\cite{Prasad2013} to  convert the  impedance
-model into standard  equivalent circuits. A key point to  be highlighted is that
-these family of models do not necessarily strive to retain the classical Randles
-structure~\cite{Randles1947}  for   their  equivalent   circuit  representation.
-Instead,  the  values  of  the  electrical circuit  components  such  as  series
-resistance and  equivalent capacitance  are obtained through  various mechanisms
-such as \gls{eis} measurements under load.  The biggest advantage of such models
-is that  they serve  as drop-in replacements  to traditional  equivalent circuit
-models whilst still  retaining their origins in physical  principles rather than
-on empirical curve-fitting.
+hybrid  models that  have rapidly  gained  prominence since  the publication  of
+Jokar~\etal~\cite{Jokar2016}  and Fan~\etal~\cite{Fan2015}.  In  this case,  the
+derivation of the relevant model equations is performed in the frequency domain.
+This frequency  domain representation is then  converted to a form  suitable for
+implementation  as  an  equivalent circuit.  Prasad  and  Rahn~\cite{Prasad2014}
+extended their Padé order  reduced model, first presented in~\cite{Prasad2013},
+by converting  their impedance  model into standard  equivalent circuits.  A key
+point  to be  highlighted is  that  these family  of models  do not  necessarily
+strive to  retain the  classical Randles structure~\cite{Randles1947}  for their
+equivalent circuit representation. Instead, the values of the electrical circuit
+components such  as series  resistance and  equivalent capacitance  are obtained
+through  various  mechanisms such  as  \gls{eis}  measurements under  load.  The
+biggest advantage of  such models is that they serve  as drop-in replacements to
+traditional equivalent  circuit models whilst  still retaining their  origins in
+physical principles rather than on empirical curve-fitting.
 
 
 \fxnote{can perhaps talk about SPM converted  to equivalent circuit by Prasad in
@@ -335,23 +343,23 @@ A common characteristic of  all hybrid models is the lack  of a physical meaning
 to their  model parameters. This  severely limits  the insights offered  by such
 models  into  electrochemical  phenomena  internal  to  the  cell.  The  biggest
 attraction  of  using physics-based  models  is  the possibility  of  predicting
-phenomena such as cell degradation, \eg{} through computation of the solid phase
-surface concentration  and potentials  in a  vehicular application,  since their
-exact  load profile  cannot be  simulated a-priori.  In this  scenario, a  model
-capable of implying a direct and causal relationship between a group of physical
-parameters and internal  overpotentials at various spatial  locations within the
-cell serves  as a powerful  tool for  in-situ lifetime estimation  of batteries.
-Although the  circuit components  of physics-informed equivalent  circuit models
-and the  state-space models discussed here  trace their origins to  the original
-parameters of  the \gls{dfn}  model, the link between their corresponding
-numerical parameter sets is tenuous at best.
+quantities such as the \gls{soap} or  phenomena such as cell degradation through
+accurate computation  of the solid  phase surface concentration  and potentials.
+Furthermore,  a model  capable  of  implying a  direct  and causal  relationship
+between a  group of physical  parameters and internal overpotentials  at various
+spatial locations within the cell serves as a powerful tool for in-situ lifetime
+estimation  of batteries.  Although the  circuit components  of physics-informed
+equivalent circuit models and the  state-space models discussed here trace their
+origins to the original parameters of  the \gls{dfn} model, the link between the
+final model coefficients and their progenitor physical parameter sets is tenuous
+at best.
 
 
 With  goal   of  translating   physical  parameters  into   circuit  components,
 Zhang~\etal{}~\cite{Zhang2017} presented a lumped equivalent circuit model based
 on Padé  approximation and  model truncation. However,  the sensitivity  of the
-final model  values owing to perturbation  in the original model  parameters was
-not  evaluated.  Consequently, there  is  a  lack  of  clarity in  the  relative
+final model  values owing to  perturbations in the original  physical parameters
+was not  evaluated. Consequently,  there is  a lack of  clarity in  the relative
 importance  of physical  parameters  and their  influence  on circuit  component
 values.
 
@@ -361,26 +369,30 @@ be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
 diffusion at  both electrodes  and the  electrolyte. Although  these interacting
 phenomena can be complex to resolve  over all length and time-scales, acceptable
 trade-offs in  accuracy was  demonstrated to be  achievable from  a system-level
-simulation perspective. A  drawback of such models is that  key model parameters
-such  as  solid  and  electrolyte   diffusion  coefficients  are  attributed  to
-the  two electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,
-in~\cite{Merla2018},  notable discrepancies  exist in  the values  of parameters
-such as  electrolyte conductivity (obtained through  calculations from \gls{eis}
+simulation  perspective.  A drawback  of  this  approach  is that  key  physical
+parameters such as  solid and electrolyte diffusion  coefficients are attributed
+to the  two electrodes through ad-hoc,  non-verifiable assumptions. Furthermore,
+in  this work,  notable discrepancies  exist in  the values  of parameters  such
+as  electrolyte  conductivity  (obtained  through  calculations  from  \gls{eis}
 measurements) to that typically reported  in literature. \fxnote{have not talked
 about SPM  inspired eq circuit model.  Is it necessary  to do so?. How  to frame
 this. There are a few references that belongs to this kind}
 
 
 It must be acknowledged that presently  there exists no modelling candidate that
-provides  all desirable  characteristics  of  a reduced  order  model for  final
-implementation in  the time domain. However,  it is strongly desirable  that the
-majority  of the  final model  values  retain their  physical meaning,  yielding
-system engineers and cell designers alike  with a direct and causal relationship
-between  groups of  parameters and  their  influence on  the cell's  operational
-performance. Since  this chapter seeks  to provide  a readily usable  model that
-satisfies all  \fxnote{give a number  here} criterion for  online implementation
-from,\fxnote{cite figure}  the author  concludes that  at present,  the benefits
-offered by hybrid models do not decisively outweigh this drawback.
+provides  all the  desirable  characteristics  sought after  in  a \gls{rom}  to
+unconditionally adopt it  for final implementation in the  time domain. However,
+it is  strongly desirable  that the  majority of the  final model  values retain
+their physical meaning, yielding system  engineers and cell designers alike with
+a  direct  and  causal  relationship  between groups  of  parameters  and  their
+influence on the cell's operational performance.  Since one of the goals of this
+thesis is to  provide a readily usable \gls{rom} that  is immediately deployable
+in an online implementation, the author  concludes that at present, the benefits
+offered by physics-inspired  hybrid equivalent circuit models  do not decisively
+outweigh their drawbacks.
+
+% from,\fxnote{cite  figure}
+% satisfies all \fxnote{give a number here} criterion for
 
 
 \subsection{Time-domain \glsfmtshort{rom}s}
