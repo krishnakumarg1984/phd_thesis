@@ -2,13 +2,14 @@
 % vim: nospell
 \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{final=true,
+    pdfauthor = {Krishnakumar Gopalakrishnan},
     pdfdisplaydoctitle = false,
     plainpages = false,
     pdfstartview=,
     pdftoolbar=true,
     pdfmenubar=true,
     bookmarksopen = true,
-    bookmarksopenlevel = 0,
+    bookmarksopenlevel = 1,
     bookmarksnumbered = true,
     breaklinks = true,
     linktocpage,
@@ -23,7 +24,7 @@
     pdfborderstyle={/S/U/W 1},
     % bookmarks=true,
     % pdfpagelabels,
-    %pagebackref,
+    pagebackref,
     %hyperindex = true,
     %hyperfigures,
     % pdfpagelayout = OneColumn
@@ -42,4 +43,7 @@
 % \usepackage{minitoc}
 
 \usepackage{hypdestopt}
+% Adding package bookmark improves bookmarks handling.
+% More features and faster updated bookmarks.
+\usepackage{bookmark}
 \usepackage[nameinlink]{cleveref}
