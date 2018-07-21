@@ -9,7 +9,55 @@
 \printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
 
 \bigskip
-Intro here \dots
+Looking at the code differences from LIONSIMBA
+
+
+\section*{Intellectual Contributions}
+\begin{itemize}
+    \item Deterministic initialisation of the algebraic conditions replacing fsolve
+    \item Reconditioning LIONSIMBA
+        \begin{itemize}
+            \item Reparameterisation
+            \item Changing underlying equations
+        \end{itemize}
+    \item Performed comprehensive literature review to replace the dubious/bogus parameters of the electrode and electrolyte specific heat capacities email proof ``PS: Every thermal/material property of the Al/Cu current collectors is very clear and have been traced out, hand-calculated and validated.
+         But I am currently trying to trace out the original sources of the density, specific heat coefficient and thermal conductivity of the pos, neg and separator materials.  So, far although the sources haven’t been found, the specific heat coefficients certainly seem dodgy.'' Densities calculation etc
+     \item Procedure to compute the remnant capacities of the electrodes and hence their stoichiometries. Ian helped in simulation and shall be acknowledged. Proof with parametersinitcapacitycompute was started by Krishna. Now possible to start at any SoC. This was always Krishna's compliant to Marcello. There was a stupid 85.51 percent thing. As you will know, in all the examples provided in LIONSIMBA in which there is a charging phase involved, the cell is firstly discharged to a given SOC, let to rest, and then charged back again. The discharge procedure was mainly done because I did not have a quick way to initialize the cs parameters for setting the SOC.
+    \item Added linear interpolations at the edges of control volumes in the two electrodes and electrolyte. Technical details and drawing here
+    \item Picking up Bolt Cell for use case. Too much literature reviewing here. Ian was surprised at how I found the relevant PDFs. Pouch length, pouch width, thickness, too many parameters.
+    \item Due to numerical issues with an unbalanced stencil, coupled with rational approximation. Complete contribution of solid-phase diffusion with spectral methods. Reading textbook, understanding concept, investigation of applicability, hunting relevant literature, text-writing, hand-derivation of equations.
+    \item A detailed procedure of capacity computation for cells without geometry information. State of the art driving range cell.
+    \item Formula for stacking up layers through mathematical induction and educating Ian how to derive this.
+    \item Computation of unit surface area. Overall surface area, surface areas per face and number of layers within Northrop cell was computed using MIDACO. This MIDACO section entirely belongs to Krishna as I introduced Ian to the concept of integer optimisation. Remember how Monica told us that her paper on Li-S was well cited because it gave a detailed procedure. This will help us to apply current in units rather in current density. This is important since for different layer configurations, the current densities differ due to change in overall surface area while the applied external current remains the same.
+    \item Binary search. A bi-section based algorithm. One fine morning, Ian came to desk and saw computational speedup by two orders of magntiude. Ian was always interested in a for-loop approach. Krishna was interested in an optimisation approach. Algorithm/binary tree based description.
+    \item Mass recomputation (Ian congratulated Krishna for this). Packaging this up as a function and all. Specific heat too. refer to computelumpedmassandCpavgforgivenlayerfcn. Can prove git history for this file. Not only mass recomputations but also mass initial computation was done by Krishna
+    \item Thermal space permutation. Ian: ``Krishna. Whoa that small block of code does so much''
+    \item The idea of introducing saturation and pulsed charging profile. Based on patent at Auburn university. Krishna did literature review. Flag introduced in code. Code snippet.enablecsnegsaturationlimit
+    \item Fixing up the values of conductivities and diffusivities to match isothermal simulation runs. Krishna noticed it and fixed it and later on informed Ian much to his surprise. Email proof. Figures etc
+    \item Literature review on fast charging standards around the world (look for timestamp in box)
+    \item search for past emails
+    \item intend to provide a code call graph in the appendix
+    \item The values of the pouch thickness was computed by Krishna and explained to Ian. Especially twice the stuff and
+    \item For literature of changed parameters, Krishna had put those in code and hence proof by commit history. Need to look through code comments. The fitting of 47 layers in MIDACO was done by this formula. That gave us the thickness of the stack. Its numerical value is not reported in the two submitted manuscripts.
+    \item Cp avg was calculated and coded by Krishna
+    \item Table with extra parameters not present in isothermal model. In particular, the thermal parameters of the two electrodes, separator, pouch, current collectors and electrolyte.
+    \item github, zenodo ion dois to be included (or excluded?)
+    \item I do not know how we are going to split the power input BC
+\end{itemize}
+
+I shall leave the lumped thermal model to Ian, especially if a biot analysis was
+performed by  him. Anyway, suddenly discussing  the thermal model at  depth does
+not fit the story of my thesis. My hint  to Ian would be to focus on the thermal
+model, since anyway he  seems to be confident in this work.  He may also discuss
+in depth  the choice  of lumped  thermal model. Specifically  the value  of heat
+transfer coefficient was  empirically chosen by Ian. So, I  will let him explain
+that stuff. However,  tab area idea computation using twice  the Bolt's tab area
+was proposed by  Krishna, but overall this thermal stuff,  Krishna is willing to
+bequeath to Ian since  the whole thing doesn't fit the  story of Krishna's work.
+The polarisation heat concept was initially described by Greg, but anyway lt Ian
+explain it no problem.
+
+
 
 \section{Hybrid Finite Volume-Spectral Scheme}\label{sec:hybrid fv-spectral}
 
