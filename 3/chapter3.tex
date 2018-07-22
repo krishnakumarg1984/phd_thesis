@@ -14,8 +14,12 @@ Looking at the code differences from LIONSIMBA
 
 \section*{Intellectual Contributions}
 \begin{itemize}
+    \item Acceleration spec was also unearthed by Krishna (all the interlibrary loan stuff and educated Ian about it)
+    \item Layer effect simulation results
     \item Deterministic initialisation of the algebraic conditions replacing fsolve
-    \item Reconditioning LIONSIMBA
+    \item Reconditioning LIONSIMBA. Scholarpedia stuff. Fornberg matrix did not help
+    \item cutoff voltage
+    \item code for total capacity computation (maybe generate table). Useable capacity shall be lower than total capacity due to our listed reasons. Graph
         \begin{itemize}
             \item Reparameterisation
             \item Changing underlying equations
@@ -42,7 +46,15 @@ Looking at the code differences from LIONSIMBA
     \item Cp avg was calculated and coded by Krishna
     \item Table with extra parameters not present in isothermal model. In particular, the thermal parameters of the two electrodes, separator, pouch, current collectors and electrolyte.
     \item github, zenodo ion dois to be included (or excluded?)
-    \item I do not know how we are going to split the power input BC
+    \item We need to attribute it to Davide. I do not know how we are going to split the power input BC. I do not wish to work on the two intermediate steps before power output was computed
+    \item Analytical jacobian of terminal voltage versus applied current
+    \item cross-linked html documentation
+    \item mesh independence convergence analysis if I have time
+    \item Krishna initiated the n max and min computations
+    \item layers and specific heat versus cell mass figure
+    \item Set up the full set of assumptions for the PHEV simulations too before leaving actual simulations to Ian. So a contribution acknowledgement is required
+    \item Tab cooling in partial mention
+    \item My inputs have been there everywhere. But Ian did the work on heat transfer coefficient
 \end{itemize}
 
 I shall leave the lumped thermal model to Ian, especially if a biot analysis was
