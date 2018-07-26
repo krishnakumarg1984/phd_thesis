@@ -307,17 +307,17 @@ obtaining standard  rational transfer  functions for a  system of  much narrowed
 scope, \ie{}  for the  time-evolution subsystem,  through a  bottom-up approach.
 Such  rational transfer  functions are  to obtained  for \gls{siso}  systems for
 which  an approximation-free  effortless  conversion exists  based on  classical
-control  theory and  is presented  in~\cref{sec:sysidplantmodel}. In  view
-of  their  simplicity  and  familiarity, and  after  successfully  circumventing
-their  only apparent  impediment  to adoption,  transfer  function based  system
-identification was  chosen for  tackling the  problem at  hand and  is presented
-next.
+control theory and is presented  in~\cref{sec:sysidplantmodel}. In view of their
+simplicity  and familiarity,  and  after successfully  circumventing their  only
+apparent impediment  to adoption, transfer function  based system identification
+was  chosen for  tackling the  problem  at hand  and  the steps  leading to  the
+identification procedure is presented next.
 
 
-\section{Transfer Function Identification of Electrolyte Subsystem}\label{sec:sysidplantmodel}
+% \section{Transfer Function Identification of Electrolyte Subsystem}\label{sec:sysidplantmodel}
 % might possibly have to promote into its own detailed subsection
 
-\subsection{Introduction to time-evolution electrolyte subsystems}
+\section{Introduction to Time-evolution Electrolyte Subsystems}\label{sec:sysidplantmodel}
 \Crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic} of the baseline
 quadratic  approximation  model for  electrolyte  concentration  pertain to  the
 time-evolution of the overall number  of moles of \ch{Li^+}, $Q_{\text{e,}j}$ in
@@ -330,7 +330,7 @@ $\frac{Q_\text{e,p}(s)}{I(s)}$. Based on the \gls{dfn} model, the total moles of
 the exogenous applied current and the baseline quadratic approximation \gls{ode}
 is retained for computing its time-evolution.
 
-\subsection{Design of persistent excitations}
+\section{Design of persistent excitations}
 In order  to successfully apply  any system identification technique,  the input
 signal must be carefully  designed to be persistently exciting~\cite{Ljung1999}.
 Narendra and Annaswamy~\cite{Narendra1984,Narendra1987}  were among the earliest
@@ -364,7 +364,7 @@ peak of  the expected  operating range. Taking  into account  all aforementioned
 considerations, the  peak amplitude of the  input current was fixed  at 2C \ie{}
 \ordfrac{2}{3} of the \gls{udds} profile's peak current amplitude.
 
-\subsubsection*{Training current profile}
+\subsection{Training current profile}
 \begin{figure}[!htb]
     \centering
     \includegraphics{sysid_train_input.pdf}
@@ -400,7 +400,7 @@ training  set presents  a  high degree  of confidence  to  capture the  relevant
 dynamics of the  electrolyte subsystem. The input current profile  used for this
 system identification task is plotted in~\cref{fig:sysidtrainingcurrent}.
 
-\subsubsection*{Validation current profile}
+\subsection{Validation current profile}
 For the  purposes of identification,  the \gls{p2d}  model is considered  as the
 true system. First, the current profile from  the training set is applied to the
 \gls{p2d} model. Its  simulation results, in particular,  the numerically solved
@@ -518,7 +518,7 @@ I_load_validate = [u4;u5;u6];
 
 % Linearity and time-invariance
 
-\subsection{Test for Linearity and Time Invariance}\label{sec:lticheck}
+\section{Test for Linearity and Time Invariance}\label{sec:lticheck}
 The      transfer     function      identification     techniques      mentioned
 in~\cref{subsubsec:introblackboxsysid}   are  applicable  only   for   \gls{lti}
 systems.  At the  first glance,  this seems  overly restrictive  for the  system
@@ -536,15 +536,15 @@ per  unit area  of  \ch{Li^+}  ions in  the  corresponding  electrode region  of
 the  electrolyte at  that  same  instant. Therefore,  it  is  the linearity  and
 time-invariance of these \emph{subsystems} that must be investigated.
 
-\subsubsection*{Time-invariance of the electrolyte time-evolution subsystems}\label{subsubsec:timeinvariance}
+\subsection{Time-invariance of the electrolyte time-evolution subsystems}\label{subsubsec:timeinvariance}
 A  test  for time-invariance  is  prescribed  in  the  lecture notes  on  system
 identification by  Plett~\cite{PlettECE5560_02}. The steps involved  therein are
 reproduced here after  being suitably adapted to the notation  of the subsystems
 at hand.
 \begin{enumerate}
-    \item Apply input $u_1(t) = I(t)$ to the system and measure the outputs $\widetilde{Q}_{\text{e,n}_1}\!(t)$ and $\widetilde{Q}_{\text{e,p}_1}\!(t)$.
-    \item Apply a delayed version of the input by $\tau$ seconds \ie{} $u_2(t) = I(t-\tau)$ to the system and measure the outputs $\widetilde{Q}_{\text{e,n}_2}\!(t)$ and $\widetilde{Q}_{\text{e,n}_2}\!(t)$.
-    \item If $\widetilde{Q}_{\text{e,n}_2}\!(t)$ = $\widetilde{Q}_{\text{e,n}_1}\!(t-\tau)$ and $\widetilde{Q}_{\text{e,p}_2}\!(t)$ = $\widetilde{Q}_{\text{e,p}_1}\!(t-\tau)$ for all possible delays $\tau$ as well as for choice of input signals $I(t)$, then the systems are time-invariant.
+    \item Apply input $u_1(t) = I(t)$ to the system and measure the outputs $Q_{\text{e,n}_1}\!(t)$ and $Q_{\text{e,p}_1}\!(t)$.
+    \item Apply a delayed version of the input by $\tau$ seconds \ie{} $u_2(t) = I(t-\tau)$ to the system and measure the outputs $Q_{\text{e,n}_2}\!(t)$ and $Q_{\text{e,n}_2}\!(t)$.
+    \item If $Q_{\text{e,n}_2}\!(t)$ = $Q_{\text{e,n}_1}\!(t-\tau)$ and $Q_{\text{e,p}_2}\!(t)$ = $Q_{\text{e,p}_1}\!(t-\tau)$ for all possible delays $\tau$ as well as for choice of input signals $I(t)$, then the systems are time-invariant.
 \end{enumerate}
 
 For  the  systems   at  hand,  it  is  not  strictly   required  to  apply  this
@@ -577,8 +577,8 @@ values and the following six current profiles ---
     \item validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
 Finally,  these tests  were repeated  for a  choice of  five different  initial
-\glspl{soc}   ---   \SI{90}{\percent},   \SI{75}{\percent},   \SI{50}{\percent},
-\SI{25}{\percent} and \SI{10}{\percent}.
+\glspl{soc}   ---   \SI{90}{\percent},   \SI{70}{\percent},   \SI{50}{\percent},
+\SI{30}{\percent} and \SI{10}{\percent}.
 
 \begin{figure}[!htb]
     \centering
@@ -663,7 +663,9 @@ obtained  by subtracting  their  respective  initial values  $Q_{\text{e,}j}(0)$
 \end{align}
 which   implies   that   the   transfer  functions   to   be   identified   have
 to   be   modified    to   be   $\frac{\widetilde{Q}_\text{e,n}(s)}{I(s)}$   and
-$\frac{\widetilde{Q}_\text{e,p}(s)}{I(s)}$ respectively.
+$\frac{\widetilde{Q}_\text{e,p}(s)}{I(s)}$  respectively. This  does not  affect
+the time-invariance proved  in~\cref{subsubsec:timeinvariance} since the initial
+values $Q_{\text{e,}j}(0)$ are merely constants and hence not time-dependent.
 
 Similar     to      the     test      for     time      invariance     described
 in~\cref{subsubsec:timeinvariance}, a  test for linearity is  also prescribed in
@@ -672,15 +674,15 @@ steps involved therein  are reproduced here after being suitably  adapted to the
 notation of the subsystems at hand. This is essentially a recipe for testing the
 superposition principle.
 \begin{enumerate}
-    \item Apply input profile $I_1(t)$ to the system and measure the outputs $\widetilde{Q}_{\text{e,n}_1}\!(t)$ and $\widetilde{Q}_{\text{e,p}_1}\!(t)$.
-    \item Apply a different input profile $I_2(t)$ to the system and measure the outputs $\widetilde{Q}_{\text{e,n}_2}\!(t)$ and $\widetilde{Q}_{\text{e,n}_2}\!(t)$.
-    \item Apply a third input profile $I_3(t) = \alpha I_1(t) + \beta I_2(t)$ and measure a third set of outputs $\widetilde{Q}_{\text{e,n}_3}\!(t)$ and $\widetilde{Q}_{\text{e,n}_3}\!(t)$.
+    \item Apply input profile $I_1(t)$ to the system and obtain outputs $\widetilde{Q}_{\text{e,n}_1}\!(t)$ and $\widetilde{Q}_{\text{e,p}_1}\!(t)$.
+    \item Apply a different profile $I_2(t)$ to the system and obtain outputs $\widetilde{Q}_{\text{e,n}_2}\!(t)$ and $\widetilde{Q}_{\text{e,n}_2}\!(t)$.
+    \item Apply a third input profile $I_3(t) = \alpha I_1(t) + \beta I_2(t)$ so as to obtain a third set of outputs $\widetilde{Q}_{\text{e,n}_3}\!(t)$ and $\widetilde{Q}_{\text{e,n}_3}\!(t)$.
     \item If $\widetilde{Q}_{\text{e,n}_3}\!(t)$ = $\alpha\, \widetilde{Q}_{\text{e,n}_1}\!(t) + \beta \, \widetilde{Q}_{\text{e,n}_2}\!(t)$ and $\widetilde{Q}_{\text{e,p}_3}\!(t)$ = $\alpha\, \widetilde{Q}_{\text{e,p}_1}\!(t) + \beta \, \widetilde{Q}_{\text{e,p}_2}\!(t)$ for all possible $\{\alpha,\beta\}$ as well as for choice of input signals $\{I_1(t),I_2(t)\}$, then the systems are linear.
 \end{enumerate}
 
 Similar  to   the  time-invariance  test,   the  same  set  of   five  different
-initial \glspl{soc} --- \SI{90}{\percent}, \SI{75}{\percent}, \SI{50}{\percent},
-\SI{25}{\percent} and \SI{10}{\percent}, was retained for these linearity tests.
+initial \glspl{soc} --- \SI{90}{\percent}, \SI{70}{\percent}, \SI{50}{\percent},
+\SI{30}{\percent} and \SI{10}{\percent}, was retained for these linearity tests.
 For  each test  run, a  pseudo-random number  generator was  used to  select the
 values  of $\{\alpha,\beta\}$  from the  set of  real numbers  $\mathbb{R}$ (not
 restricted to the set of integers  $\mathbb{Z}$) in the closed interval spanning
@@ -702,15 +704,18 @@ isothermal assumption for the model shall remain valid. This peak current corner
 case occurs when the pseudo-random generator chooses both scaling factors at the
 selected range's limits for the 1C constant current discharge or charging cases.
 The limited  range of the  scaling factors are also  motivated by the  fact that
-most real-world systems remain linear only within a certain operating window. If
-the two subsystems under consideration remain linear everywhere below the \pm 5C
-peak current  in the isothermal  case, then  the linearity tests  are considered
-as  passed.  Future  extensions  to  undertake  a  temperature-dependent  system
-identification exercise can potentially use a first-order Taylor expansion about
-this operating window. This discussion thus far has now established the full set
-of conditions needed to conduct the tests for linearity.
+most real-world systems remain linear only within a certain operating window. In
+particular, care  must be taken to  ensure that the cell's  \gls{soc} during the
+linearity test  remains within  its physical limits  for any  initial \gls{soc}.
+Furthermore, localised  saturation or depletion  of ions for  extended durations
+must be avoided. Hence  it can be concluded that, with the  chosen range for the
+scaling  factors,  if  the  two subsystems  under  consideration  remain  linear
+everywhere below  a peak  current of  \pm 5C  in the  isothermal case,  then the
+linearity  tests are  considered as  passed.  Future extensions  to undertake  a
+temperature-dependent  system  identification  exercise can  potentially  use  a
+first-order Taylor  expansion about this  operating window. The  discussion thus
+far has fully established all the conditions for conducting the for linearity.
 
-% Finally,  these tests  were repeated  for a
 
 % Discussion of identification choices here
 
