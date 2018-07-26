@@ -536,7 +536,7 @@ per  unit area  of  \ch{Li^+}  ions in  the  corresponding  electrode region  of
 the  electrolyte at  that  same  instant. Therefore,  it  is  the linearity  and
 time-invariance of these \emph{subsystems} that must be investigated.
 
-\subsubsection*{Time invariance of the electrolyte time-evolution subsystems}\label{subsubsec:timeinvariance}
+\subsubsection*{Time-invariance of the electrolyte time-evolution subsystems}\label{subsubsec:timeinvariance}
 A  test  for time-invariance  is  prescribed  in  the  lecture notes  on  system
 identification by  Plett~\cite{PlettECE5560_02}. The steps involved  therein are
 reproduced here after  being suitably adapted to the notation  of the subsystems
@@ -576,18 +576,57 @@ values and the following five current profiles ---
     \item \gls{udds} input profile with peak amplitude of 3C,
     \item training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
     \item validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
-\end{enumerate*}
-All tests successfully  passed, with the delayed version of  all of the original
-output signals accurately matching their  responses to the corresponding delayed
-input (down to  machine precision), thereby confirming the  time-variance of the
-subsystems considered in the system identification problem.
+\end{enumerate*}.
+Finally,  these tests  were repeated  for a  choice of  five different  initial
+\glspl{soc}   ---   \SI{90}{\percent},   \SI{75}{\percent},   \SI{50}{\percent},
+\SI{25}{\percent} and \SI{10}{\percent}.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{time_invariance.pdf}
-    \caption{}
-    % \label{}
+    \caption[Demonstration of time-invariance of
+    $Q_\text{e,n}(t)$ and $Q_\text{e,p}(t)$ subsystems]{Demonstration of time-invariance of the subsystems considered. The
+        applied current profile $u_1(t)$ is the
+        system identification sequence from~\cref{fig:sysidtrainingcurrent}
+         (top row of the central column).
+        % The outputs $Q_\text{e,n}$ and $Q_\text{e,p}$ are shown to the left and right of the applied input.
+        The top left plot shows the response
+        $Q_{\text{e,n}_1}(t)$, while that on the top right shows $Q_{\text{e,p}_1}(t)$. The second row of the middle column shows the same
+    input sequence delayed by $\tau = \SI{130}{\second}$. Application of this
+    current profile $u_2(t) = u_1(t-\tau)$ results in the outputs
+    $Q_{\text{e,n}_2}(t)$ and $Q_{\text{e,p}_2}(t)$ to its left and right
+    respectively. Subtracting these from the correspondingly delayed
+    versions of the original outputs result in zero residuals, thereby
+    proving time-invariance of these subsystems. The jitter shown in the
+    bottom row of plots is $\mathcal{O}(10^{-15})$ in magnitude and
+    are due to the numerical roundoffs that occur when operating close to
+    the noise floor of the machine's floating point units.
+}%
+\label{fig:timeinvariance}
 \end{figure}
+
+\Cref{fig:timeinvariance}  demonstrates the  time-invariance  of the  subsystems
+considered  at an  initial \gls{soc}  of \SI{50}{\percent}  for a  time-delay of
+\SI{130}{\second} using  the highly dynamic system  identification sequence that
+was synthesised by this thesis author. The applied current profile $u_1(t)$ (top
+row  of  the central  column)  produces  the outputs  $Q_{\text{e,n}_1}(t)$  and
+$Q_{\text{e,p}_1}(t)$ shown  in the top  left and top right  plots respectively.
+When the delayed  version of this input sequence $u_2(t)  = u_1(t-\tau)$ (middle
+row, middle column) is applied,  it results in the outputs $Q_{\text{e,n}_2}(t)$
+and  $Q_{\text{e,p}_2}(t)$ to  its left  and right  respectively. Following  the
+steps of the test procedure,  subtracting these outputs from the correspondingly
+delayed  versions  of their  original  counterparts  result in  zero  residuals,
+thereby proving  time-invariance of these subsystems  under these representative
+test  conditions. The  residual sequences  in  the bottom  row of  plots are  of
+$\mathcal{O}(10^{-15})$ and  arise due  to numerical  roundoffs that  occur when
+operating close to the noise floor of the machine's floating point units.
+
+Similar to  the case demonstrated  here, all  tests for time-invariance  for all
+permutations of  the chosen operating  conditions passed successfully  \ie{} the
+delayed  version of  the original  output  signals accurately  matched with  the
+responses  to  the corresponding  delayed  input  (down to  machine  precision),
+thereby confirming the time-variance of  the subsystems considered in the system
+identification problem, which enables us to proceed further.
 
 
 \subsubsection*{Linearity analysis of the time-evolution electrolyte subsystems}\label{subsubsec:linearityanalysis}
