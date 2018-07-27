@@ -692,7 +692,9 @@ The composite  signal $I_3(t)$ was  obtained by taking  a random combination of
 any two of the following current profiles ---
 \begin{enumerate*}[label=\emph{\alph*})]
     \item constant current 1C discharge,
+    \item constant current discharge at C/5,
     \item constant current 1C charge,
+    \item constant current charge at C/5,
     \item training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
     \item validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
@@ -715,6 +717,33 @@ linearity  tests are  considered as  passed.  Future extensions  to undertake  a
 temperature-dependent  system  identification  exercise can  potentially  use  a
 first-order Taylor  expansion about this  operating window. The  discussion thus
 far has fully established all the conditions for conducting the for linearity.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{linearity_proof}
+    \caption[Illustration of linearity test for the
+    \protect{$\widetilde{Q}_{\text{e,n}}$} and
+    \protect{$\widetilde{Q}_{\text{e,p}}$} subsystems]{Illustration of one
+        instance of linearity tests for the subsystems under consideration. For
+        this visualisation, constant current inputs are used throughout. The top
+        row of plots shows $\widetilde{Q}_{\text{e,n}}$ and
+        $\widetilde{Q}_{\text{e,p}}$ for two input currents $I_1(t) =
+        \SI{60}{\ampere}$ and $I_2(t) = \SI{12}{\ampere}$ \ie{} discharge with
+        1C and C/5 currents respectively. The second row of plots shows
+        $\widetilde{Q}_{\text{e,n}_3}$ and $\widetilde{Q}_{\text{e,p}_3}$  for
+        $I_3 = \SI{36}{\ampere}$, where $I_3 = \alpha I_1 + \beta I_2$ with
+        $(\alpha,\beta) = (1,-2)$. The last row of plots overlays these
+        quantities with the manually computed linear combination of their two
+        preceding responses. Had these sequences overlapped exactly, the systems
+        would have been exactly linear. Despite exhibiting deviations over the
+        considered horizon, the transient responses in both electrode regions do
+        follow the superposition principle. Even past the transient, maximum
+        error in both cases is an order of magnitude lower than the individual
+        outputs. Hence, the two systems are deemed to be \emph{approximately}
+        linear.
+    }%
+    \label{fig:linearity}
+\end{figure}
 
 
 % Discussion of identification choices here
