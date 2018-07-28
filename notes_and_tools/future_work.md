@@ -6,6 +6,8 @@
 - mendeley citation export is a problem. Switch to jabref if needed
 - check citations especially since biblatex cleanup was very intrusive
 - power input spm
+- dropcap
+- Black tombstone for sections
 
 - enhanced spm paper
 - enchanced spm with KF

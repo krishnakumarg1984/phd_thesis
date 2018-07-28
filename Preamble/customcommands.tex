@@ -96,7 +96,10 @@
 \definecolor{imperialraspberry}{RGB}{145,0,72}
 
 \definecolor{imperialbrick}{RGB}{165,25,0}
+\definecolor{sepiadvipsnames}{RGB}{99,29,11}
 \definecolor{imperialnavy}{RGB}{0,33,71}
+% \definecolor{brickreddvipsnames}{RGB}{173,51,38}
+% \definecolor{mahoganydvipsnames}{RGB}{161,53,40}
 
 \definecolor{imperialblue}{RGB}{0,62,116}
 \definecolor{cbrewerdarkblue}{RGB}{49,130,189}
@@ -631,3 +634,30 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \renewcommand{\glossarypreamble}{\small}
 
 % \setcounter{minitocdepth}{3}
+
+\newcommand{\startdropcap}[2]{\lettrine[
+    loversize=0.03,
+    lines=3,
+    slope=-0.5em,
+    nindent=0pt,
+    lhang=0.35
+]{#1}{#2}}
+
+\makeatletter
+
+% \RequirePackage{tikz}
+
+\newlength\CLett% Nuova dimensione
+
+\newcommand*\capolettera[2]{% #1 lettera da ingrandire #2 testo in maiuscoletto
+    \par\noindent
+    \setbox8\hbox{\textsc{#2}}%
+    \setbox\z@\hbox{%
+        \resizebox{!}{\dimexpr\baselineskip+\ht8\relax}{%
+        \huge\color{sepiadvipsnames}#1}%
+    }%
+    \CLett=\wd\z@\hangindent\CLett\hangafter-2\relax%
+\raisebox{-\baselineskip}[0pt][0pt]{\llap{\box\z@\kern1pt}}{\box8}}
+
+\makeatother
+

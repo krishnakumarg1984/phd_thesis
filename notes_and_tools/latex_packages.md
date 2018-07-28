@@ -1,4 +1,5 @@
 % vim: nospell
+
 a2ping utility
 academicons
 accsup
@@ -164,6 +165,7 @@ indentfirst
 intopdf
 invoice2
 jslectureplanner
+koma-script
 labelschanged
 ladder
 latexdemo
@@ -172,12 +174,15 @@ latexmk
 latexsym
 layout
 layouts
+lettrine
 limecv
 longfbox
 longfigure
 lscape
 lua-check-hyphen
+makecell
 manyfoot
+marginfit
 markdown
 marvosym
 mathexam
@@ -186,6 +191,7 @@ mathrsfs
 mathtools
 mcexam
 mdframed
+memoir
 mhchem
 microtype
 midfloat
@@ -298,6 +304,7 @@ versions
 vwcol
 wallpaper
 witharrows
+wrapfig
 xcolor
 xcomment
 xhfill
