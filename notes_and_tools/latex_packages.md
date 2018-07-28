@@ -187,6 +187,7 @@ markdown
 marvosym
 mathexam
 mathfixs
+mathfont
 mathrsfs
 mathtools
 mcexam

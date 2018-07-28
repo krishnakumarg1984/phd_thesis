@@ -635,14 +635,8 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 
 % \setcounter{minitocdepth}{3}
 
-\newcommand{\startdropcap}[2]{\lettrine[
-    loversize=0.03,
-    lines=3,
-    slope=-0.5em,
-    nindent=0pt,
-    lhang=0.35
-]{#1}{#2}}
-
+% https://tex.stackexchange.com/questions/75215/automating-the-height-of-a-drop-cap-initial/75218#75218
+% using tikz instead of lettrine package
 \makeatletter
 
 % \RequirePackage{tikz}
@@ -660,4 +654,8 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \raisebox{-\baselineskip}[0pt][0pt]{\llap{\box\z@\kern1pt}}{\box8}}
 
 \makeatother
-
+% other choices for lettrine are
+% https://tex.stackexchange.com/questions/769/how-can-i-create-documents-in-latex-using-a-calligraphic-first-letter-for-chapte/10260#10260
+% https://tex.stackexchange.com/questions/250474/how-to-use-fancy-dropcaps-with-pdflatex
+% https://tex.stackexchange.com/questions/38108/how-to-increase-the-size-of-first-character-in-a-chapter-drop-caps/38111#38111
+% https://tex.stackexchange.com/questions/145490/how-to-get-libertine-initials-to-work-with-lettrine
