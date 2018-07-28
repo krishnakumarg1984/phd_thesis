@@ -1,0 +1,138 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+Black-box system identification techniques are composed of the following ---
+\begin{enumerate*}[label=\emph{\alph*})]
+     \item non-parametric methods, and
+     \item parametric methods.
+ \end{enumerate*}
+
+\subsection{Non-parametric methods}
+Non-parametric methods do not seek  a pre-assumed mathematical structure for the
+system. They  aim to  directly estimate  the very  kernel of  what characterises
+every system \viz{}  the Markov parameters in the time-domain  and the \gls{frf}
+in the frequency domain, thereby requiring \emph{infinite} number of data points
+for  their representation.  Major non-parametric  system identification  methods
+include:
+\begin{itemize}[topsep=0pt]
+    \item Identification in time domain
+        \begin{itemize}
+
+            \item Direct  estimation of the system's  Markov parameters through
+                statistical correlation of its response to an unit-pulse input.
+
+        \end{itemize}
+    \item Identification in frequency domain,  \ie{} of the \gls{frf}
+        \begin{enumerate}
+
+            \item   Direct   estimation    through   input-output   statistical
+                cross-correlation.
+
+            \item  \gls{etfe} using \glspl{dft} of input and output sequences.
+
+            \item  Smoothed periodogram estimates using Welch's method.
+
+            \item  Blackman-Tukey  Estimate   using  standard  filter
+                windows  in digital  signal processing  (such as  Hamming, Hanning,
+                Bartlett, Boxcar etc.).
+
+        \end{enumerate}
+\end{itemize}
+
+\subsection{Parametric methods}
+Parametric  methods aim  to fit  specific input-output  data to  some family  of
+well-known  mathematical constructs  that are  well-known and  widely applicable
+to  a  large  variety  of  inputs.   It  is  important  to  recognise  that,  in
+contrast to white-box system identification, the salient coefficients/properties
+of  these  mathematical structures  \emph{do  not,}  in  any way  correspond  to
+physical properties of  the system under consideration.  Major parametric system
+identification methods use:
+\begin{itemize}
+    \item Transfer-function based frequency domain model structures
+        \begin{enumerate}
+            \item \gls{oe} model
+            \item \gls{arx} model
+            \item \gls{armax} model
+            \item Box-Jenkins (BJ) model
+        \end{enumerate}
+    \item State-space time-domain model structures
+        \begin{enumerate}
+            \item Ho-Kalman realisation
+            \item \gls{era} realisation
+            \item Deterministic and stochastic \emph{subspace} structures
+        \end{enumerate}
+\end{itemize}
+
+\subsection{Investigation of suitable system identification methodology}
+% \subsubsection*{Ill-suitability of non-parametric methods}
+Among   the   various   system    identification   techniques   mentioned,   the
+non-parametric   methods    have   some    serious   drawbacks.    As   outlined
+in~\cref{subsec:sysidbackground}, the author is inspired  by the trait of having
+a pre-assumed model structure that  brought the baseline quadratic approximation
+closer to a successful realisation. The non-parametric methods do not conform to
+this philosophy. Furthermore, the requirement of infinite number of data samples
+in order to fully quantify the system dampens its feasibility for implementation
+in  resource  constrained  environments.  The  author is  of  the  opinion  that
+resorting  to truncation  of  the  characteristic sequence  shall  only yield  a
+sub-optimal solution. Hence non-parametric methods are ruled out for applying to
+the task at hand.
+
+While  parametric state-space  identification is  a feasible  alternative, these
+methodologies are tedious and error-prone.  For instance, applying the Ho-Kalman
+algorithm requires construction of large-sized Block-Hankel matrices followed by
+a  \gls{svd} operation.  The  \gls{era}  uses the  identical  set of  operations
+of  the  Ho-Kalman   procedure,  except  that  certain  blocks   in  the  Hankel
+matrices  are chosen  at  random  for deletion  for  obtaining better  estimates
+in  low  \gls{snr} environments  and  for  capturing slowly  decaying  phenomena
+with  long time  constants. The  subspace methods  are mathematically  involved,
+requiring  a  profound  understanding  of  concepts  from  linear  algebra  such
+as  projections  to orthogonal  subspaces.  The  system under  consideration  is
+presented in~\cref{sec:introtoplant} and after linearity considerations, refined
+in~\cref{subsec:linearityanalysis}. It is composed of two independent \gls{siso}
+subsystems.  However,   the  inflection  point  in   the  complexity-performance
+trade-off  in state-space  identification  is achieved  only  when dealing  with
+\gls{mimo} systems that suggest strong  cross-coupling among its internal states
+or  at least  some degree  of  coupling among  the various  inputs and  outputs.
+Furthermore, the impulse  responses of the system(s) under  consideration do not
+have long tails since they are characterised by relatively short time constants.
+Owing to these  reasons, it was decided that state  space identification methods
+shall not be adopted here.
+
+Owing to a  cornucopia of well-established technical  know-how readily available
+in the systems  engineers toolkit, transfer function based  model structures are
+naturally amenable  for control-oriented applications. However,  there exists an
+apparent discrepancy to  its usage for this case, that  must be addressed first.
+Transfer  function methods  are  a  frequency domain  technique  and hence,  the
+resulting model  descriptions have  mathematical structures  radically different
+from the time-domain model equations  of the conventional \gls{spm} within which
+they are  to be embedded. This  conundrum is resolved by  closely inspecting the
+model's scope  and its tractability for  conversion to time domain  as explained
+next.
+
+It  is  worth remembering  that,  as  per~\cref{subsec:freqdomainroms}, for  the
+reduced order  modelling of the  \emph{entire cell}, all frequency  domain model
+groups were considered  as out of scope  of this thesis specifically  due to the
+overhead  of conversion  from frequency  to time  domain for  implementation and
+other associated difficulties. The blanket exclusion nature of this statement is
+to be revisited considering the specific scope  of the problem at hand. The body
+of literature  on frequency  domain \glspl{rom} discuss  obtaining physics-based
+\emph{transcendental}   transfer   functions  for   \emph{all}   electrochemical
+quantities  of the  coupled  \gls{pdae} system  of~\cref{tbl:dfneqns} through  a
+top-down approach.  However, the frequency domain  system identification methods
+are concerned with  obtaining standard \emph{rational} transfer  functions for a
+much narrower  scope \viz{}  the time-evolution  subsystem, through  a bottom-up
+approach.  Such  rational transfer  functions  are  to obtained  for  \gls{siso}
+systems for which an approximation-free  effortless conversion already exists in
+classical control theory and is  presented in~\cref{sec:actualsysid}. In view of
+their  overwhelming  simplicity  and  familiarity to  control  engineers,  after
+considering these  arguments that circumvent  their only apparent  impediment to
+adoption, \emph{transfer  function} based  system identification was  chosen for
+tackling the problem at hand. The  steps leading to the identification procedure
+is presented next.
+
+
+% might possibly have to promote into its own detailed subsection
+

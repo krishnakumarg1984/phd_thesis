@@ -17,25 +17,40 @@
 % applications.
 \bigskip
 
-\capolettera{T}{his} chapter presents the author's attempts towards arriving at
-a  accurate description  of  the spatio-temporal  evolution  of the  electrolyte
-concentration. The  performance of the quadratic  approximation model introduced
-in~\cref{ch:spmanalysis} is  thoroughly analysed  in the  context of  a symbolic
-regression framework that  helped to expose the issue of  equation deficiency in
-the underlying \gls{dfn} model. Although this framework did not ultimately yield
-the  desired  outcomes,  it  did  facilitate a  comprehensive  analysis  of  the
-strengths and weaknesses of the quadratic  approximation model which is not seen
-in present literature.  Finally, the author's unique contribution to  the art of
-single particle  modelling \viz{}  a novel  time-evolution model  of electrolyte
-concentrations through  system identification is  presented. The results  of the
-new approach  is compared  against the  baseline quadratic  approximation model.
-Finally,  the novel  electrolyte time-evolution  model is  incorporated into  an
-electrolyte-enhanced \gls{spm}  and the  performance of  the composite  model is
-compared against the conventional \gls{spm},
+\input{6/intro_to_newelec_model_chapter}
 
 \section{Performance Analysis: Quadratic Approximation Model}\label{sec:symbolicregression}
-
 \input{6/gptips_attempt.tex}
 
 \section{A New Electrolyte Model through System Identification}\label{sec:newelectrolytemodel}
 \input{6/new_electrolyte_model.tex}
+
+\section{Brief Introduction to System Identification}\label{subsec:introsysid}
+\input{6/sysid_intro}
+
+\section{Overview of Black Box System Identification}\label{sec:introblackboxsysid}
+\input{6/black_box_sysid_overview}
+
+\section{Introduction to Electrolyte Time-Evolution Subsystems}\label{sec:introtoplant}
+\input{6/intro_time_evolution_subsys}
+
+\section{Design of Persistent Excitations}
+\input{6/persistent_excitation}
+
+\section{Investigation of Linearity and Time Invariance}\label{sec:lticheck}
+\input{6/lti_check}
+
+\section{Transfer Function Identification Procedure}\label{sec:actualsysid}
+% \subsection{Identification Methodology and Governing Equations}
+% Discussion of identification choices here
+% \subsection{Performance of Final Model}
+% \section{Embedding into SPM and final results for composite system}
+
+% % Assumed transfer function model. Test results within the model itself
+% % Test results for electrolyte ce (subsection)
+% % test results for full system (final section)
+
+% % mention in introduction where code snippets are given
+
+
+

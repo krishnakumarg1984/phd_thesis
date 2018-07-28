@@ -1,0 +1,51 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=80 fo=cqt
+
+
+An in-depth  coverage of the topic  of system identification is  well beyond the
+scope of  this thesis.  However, keeping  in mind the  interests of  the battery
+modelling community  who might not be  familiar with this subject  area, a brief
+overview of the core ideas that  are essential for tackling the specific problem
+at hand is  presented. For readers further interested in  this topic, the author
+suggests the textbook by  Ljung~\cite{Ljung1999} for a comprehensive theoretical
+treatment of the foundation topics in system identification.
+
+System identification aims  to provide a mathematical model  of the input-output
+mapping  of the  system\footnote{The precise  definition of  what constitutes  a
+`system' is detailed  in Ljung's textbook. However, for  all practical purposes,
+in this  thesis the word `system'  stands for any unknown  entity whose terminal
+behavioural model  is being  sought for ---  primarily from  input-output data.}
+under consideration. The three categories of system identification are:
+
+
+\begin{enumdescriptnum}[leftmargin=!,itemsep=1ex,labelwidth=\widthof{$\symbf{\text{brugg}_j}\ \scriptstyle (\times 3)$abc}
+    ,partopsep=0pt
+    ,topsep=0pt
+    ]
+
+\item[White  box] wherein  underlying physical  equations are  completely known.
+The  numerical value  of  coefficients of  governing equations  are  then to  be
+parametrised from input-output data.
+
+\item[Black box]  wherein no  governing equations are  available for  the system
+under  consideration. The  model formulation  is facilitated  by a  rich set  of
+system theory  which proceeds by exciting  the system with input  waveforms with
+certain desirable  properties and correlating characteristics  from the response
+to draw  conclusions about viable  mathematical structures capable  of emulating
+the terminal behaviour of the system  under generalised inputs. Black box system
+identification was employed for the specific problem under consideration in this
+thesis and hence all future descriptions will pertain to this class.
+
+\item[Grey box] is a hybrid of the  two approaches wherein a part of the model's
+governing  physics is  known  a priori  \eg{} the  structure  of a  well-defined
+subsystem  that is  part  of a  large,  complex  system may  be  known ahead  of
+time,  where the  task  is  to characterise  the  full  system. Grey box  system
+identification tasks can  often be reduced to a single  sub-problem of black box
+system  identification  by  removal  of  the known  physics  and  tackling  them
+separately.
+
+\end{enumdescriptnum}
+

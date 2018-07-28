@@ -14,15 +14,17 @@ electrolyte  modelling, \ie{}  accounting for  all physical  phenomena and  then
 simplifying  them yields  mathematically intractable  and overly  complex models
 (see~\cref{sec:electrolyteinclusion} for  a detailed discussion),  this approach
 seems to be a pragmatic alternative  to enhancing the \gls{spm} with electrolyte
-dynamics.
+dynamics. However, a detailed look at  this model from an alternate viewpoint is
+necessary for further analysis.
 
 
 \subsection{Symbolic regression using \glsfmtlong{mggp}}
 
-The  question  boils down  to  whether  quadratic  approximation is  indeed  the
-\emph{best} model structure that can be assumed a priori. The author embarked on
-a journey  to find suitable  alternate model  structures, \ie{} a  single family
-of  curves  that  will  capture  both  the  transient  and  \gls{qss}  behaviour
+The  question boils  down to  whether a  quadratic approximation  is indeed  the
+\emph{best}  model structure  that  can  be assumed  a  priori  for the  spatial
+profile  of  ionic  concentration  in  the  electrolyte.  This  author  embarked
+on  a journey  to  find  suitable alternate  model  structures,  \ie{} a  single
+family of  curves that can  capture both  the transient and  \gls{qss} behaviour
 exhibited by  the ionic  concentration. The open-source  \textsc{MATLAB} toolbox
 GPTIPS2~\cite{Searson2015}  uses the  state-of-the-art  \gls{mggp} approach  for
 symbolic data  mining and is ideally  suited for such symbolic  regression tasks
@@ -30,85 +32,101 @@ symbolic data  mining and is ideally  suited for such symbolic  regression tasks
 coefficients to a  pre-assumed curve as in classical numerical  regression, to a
 given data).
 
-It  is  important  to  recognize  that  the  key  criteria  that  restricts  the
-choice  of gene  sequence  depth as  well  as  the choice  in  number of  parent
-mutations  is  the  total  number  of  unknown  symbolic  coefficients  required
-to  be   solved  in  the  assumed   model  structure.  There  are   a  total  of
-\emph{seven} linear equations available from  the physics of the \gls{dfn} model
-(see~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}).  Thus the  assumed
-family  of curves  \emph{cannot}  consist  of more  than  seven coefficients  to
-guarantee a  unique solution. Yet  another restriction  on the choice  of curves
-arises due to the fact that the behaviour of ionic concentration in the negative
-and positive electrode  regions are similar in complexity, and  hence need to be
+In employing the \gls{mggp} approach, it  is important to recognize that the key
+criteria that restricts
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item the choice of  gene-sequence depth, as well as
+    \item the choice in number of parent mutations,
+\end{enumerate*}
+is  the   total  number  of   unknown  symbolic  coefficients  required   to  be
+solved  in the  assumed  model  structure. There  are  a  total of  \emph{seven}
+linear   equations  available   from  the   physics  of   the  \gls{dfn}   model
+(see~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}). Hence, in order to
+guarantee  a solution  the  assumed  family of  curves  cannot  consist of  more
+than  seven coefficients.  Furthermore, for  a  unique solution,  the number  of
+coefficients must be \emph{exactly} seven. Yet another restriction on the choice
+of locus of feasible  curves arises due to the fact that  the behaviour of ionic
+concentration  in the  negative and  positive electrode  regions are  similar in
+complexity\footnote{\label{fn:complexity}The  concept  of complexity  of  curves
+used  here is  not  based on  a  precise mathematical  definition  such as  that
+employed by Neumann-Coto and Arenas~\cite{Neumann-Coto2017}, but is loosely used
+to simply  convey an empirical sense  of their curvature. However,  the analysis
+here applies  to the more  rigorous definition as well.},  and hence need  to be
 mathematically described by an identical family of curves.
 
 Upon a close inspection of the  spatial concentration profile from the \gls{p2d}
 simulation  results shown  in~\cref{fig:spatialionicconc1C}, it  is evident  the
 electrolyte approximation  functions within the  electrode regions is  of higher
-complexity than  the approximation  function suitable for  use in  the separator
-region. Based on the  results of the quadratic model, it is  clear that at least
-two coefficients  are required within the  electrode regions, $n_{\text{c,elec}}
-\ge  2$.  There  exists  an  inhibiting  factor  that  prevents  the  use  of  a
-lower  order  function within  the  separator.  As  per the  simulation  results
-of  the  \gls{p2d}  model,  the  time-domain  change  of  number  of  moles  per
-square  meter  in  the  separator   is  non-zero.  Therefore,  a  simple  linear
-approximation is immediately  ruled out as per~\cref{eq:sepliionmolesquadratic}.
-Among non-polynomial mathematical curves tried (trigonometric, hyperbolic, power
-series  among  others),  none  could  obtain  the  relatively  simple  shape  of
-the  separator function,  without  reducing  the contribution  from  one of  the
-coefficients  to below  machine  precision.  This forces  the  retention of  the
-quadratic approximation  function used thus  far (with no missing  terms), \ie{}
-$n_\text{c,sep}  = 3$.  Thus, the  overall number  of coefficients  in the  best
-possible approximation shall be $2  n_\text{c,elec} + n_\text{c,sep} = 2\cdot2 +
-3 = 7$,  which is the total number of  electrolyte-specific physical constraints
-available from the \gls{dfn} model. Thus, it can be concluded that the quadratic
-approximation model does indeed make the \emph{best} use of all of the available
-physical  equations.  The  final  question  remains to  answer  is,  with  these
-coefficient limitations, is the quadratic  equation structure indeed the optimal
-one. This was investigated through the \gls{mggp} approach.
+complexity\textsuperscript{\ref{fn:complexity}} than  the approximation function
+suitable  for  use  in  the  separator  region. Based  on  the  results  of  the
+quadratic  model, it  is  clear  that at  least  two  coefficients are  required
+within the  electrode regions \ie{}  $n_{\text{c,elec}} \ge 2$. There  exists an
+inhibiting  factor that  prevents  the  use of  a  lower  order function  within
+the  separator. As  per  the  simulation results  of  the  \gls{p2d} model,  the
+time-domain  change  of number  of  moles  per  square  meter in  the  separator
+is  non-zero.  Since  the  time-derivate   of  a  linear  approximation  applied
+to~\cref{eq:sepliionmolesquadratic}  is  zero,  this straight-line  equation  is
+immediately ruled out. Among the  non-polynomial mathematical curves tried (such
+as trigonometric, hyperbolic, power series  among others), none could obtain the
+relatively simple shape of the separator function without being forced to reduce
+the  contribution from  one  of  the coefficients  to  below machine  precision.
+This necessitates  the retention  of the  quadratic approximation  function used
+thus  far  (with  no  missing  terms) \ie{}  $n_\text{c,sep}  =  3$.  Thus,  the
+overall number  of coefficients in the  best possible approximation shall  be $2
+n_\text{c,elec} + n_\text{c,sep} =  2\cdot2 + 3 = 7$, which  is the total number
+of electrolyte-specific physical constraints available from the \gls{dfn} model.
+Hence it  can be concluded  that the  quadratic approximation model  does indeed
+make the \emph{best}  use of all of the available  physical equations. The final
+question remains to  answer is, with these coefficient  limitations, whether the
+quadratic  equation structure  indeed  the optimal  one.  This was  investigated
+through the \gls{mggp} approach described next.
 
 The GPTIPS2  toolbox uses a variety  of heuristic algorithms from  the theory of
-\gls{mggp} to fit a  suitable equation structure for the data  to be fitted. The
-dataset  consisted  of the  simulation  results  from  the \gls{p2d}  model,  in
-particular  the  values of  electrolyte  concentration  at the  three  different
-cell  regions,  captured  at  various  snapshots of  time.  Both  transient  and
-\gls{qss}  output  were  fed  into  this symbolic  data  mining  process  and  a
+\gls{mggp}  to hypothesise  a suitable  equation structure  for the  data to  be
+fitted.  The dataset  consisted of  the  simulation results  from the  \gls{p2d}
+model,  in particular  the  values  of electrolyte  concentration  at the  three
+different cell  regions captured  at various snapshots  of time.  Both transient
+and  \gls{qss} data  were  fed into  this  symbolic data  mining  process and  a
 single all-encompassing  family of curves  capable of capturing  the electrolyte
-concentration  behaviour  was  sought  for.  However,  with  the  aforementioned
-constraints in the number of coefficients results in restriction of the depth of
-gene mutations as  well as the number of unconnected  seed populations. The best
-equation  set (without  hard constraints,  yet  minimizing the  distance to  the
-constraint vector) that the symbolic regression approach yielded was
+concentration behaviour was  sought for. However, the constraints  in the number
+of coefficients that  can be employed results  in a restriction of  the depth of
+gene  mutations as  well  as the  number of  parent/seed  populations. The  best
+equation set  (without strictly  enforcing the aforementioned  hard constraints,
+yet  minimizing  the  distance  to  the constraint  vector)  that  the  symbolic
+regression approach yielded was
 \begin{alignat}{2}
-    c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0 \le z \le l_\text{n}   \\
-    c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad &  & 0 \le z \le l_\text{s}   \\
-    c_\epsub(z,t) & = a_8(t) \cosh z^2 + a_7(t) \sinh z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}
+    c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0 \le z \le l_\text{n} \label{eq:cnstrviolneg} \\
+    c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad             &  & 0 \le z \le l_\text{s}                         \\
+    c_\epsub(z,t) & = a_8(t) \cosh z^2 + a_7(t) \sinh z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}\label{eq:cnstrviolpos}
 \end{alignat}
-which  although  fits  the  transient  and  \gls{qss}  profiles  well,  violates
-the  constraint on  the  number of  coefficients available,  and  results in  an
-underdetermined  system  of equations.  Both  the  least-squares and  least-norm
-solution of this  system were tried. However, the results  were inferior to that
-produced by the baseline quadratic approximation method.
 
-An  attempt  was  made  to  obtain different  mathematical  structures  for  the
-transient  phase  and  \gls{qss}  phase  which  respects  the  overall  equation
-constraint.  The  symbolic  regression  output   for  this  approach  are  shown
-in~\cref{tbl:symbreg}.
+Although~\crefrange{eq:cnstrviolneg}{eq:cnstrviolpos}  fit   the  transient  and
+\gls{qss}  profiles  well,  they  violate   the  constraint  on  the  number  of
+coefficients  available resulting  in  an underdetermined  system of  equations.
+Both  the least-squares  and  least-norm  solution of  this  system were  tried.
+However, the  results were inferior to  that produced by the  baseline quadratic
+approximation method.
+
+Next, an  attempt was made to  obtain different mathematical structures  for the
+transient phase  and \gls{qss}  phase both  of which  respect the  constraint on
+number  of  coefficients  allowed.  The symbolic  regression  outputs  for  this
+approach are shown in~\cref{tbl:symbreg}.
 \input{5/symbolic_regression_table}
 
 Although  the equations  from~\cref{tbl:symbreg}  produced  a markedly  improved
-response during  transient phase, the  performance in  the \gls{qss} was  at par
-with respect to the baseline quadratic  approximation model. This brought up the
-prospect of a blended approach, wherein a model changeover between the transient
-and \gls{qss}  was contemplated. However,  since there is no  precise definition
-of  what  constitutes  the  transient  and  dynamic  phase  of  the  electrolyte
-concentration  response,  this  approach  required ad-hoc  timing  criteria  for
-transition between the two \gls{mggp} equation sets. Further complications arise
-during dynamic input  conditions, wherein the concentration  profiles are mostly
-in a  state of  flux and  could linger  for longer  durations at  the continuous
-boundary between  transient-like and \gls{qss}-like behaviours.  In the interest
-of reproducibility across different cell-chemistries and corresponding parameter
-sets, the proposed blended model transition approach was not further pursued.
+response during the transient phase,  the performance during the \gls{qss} phase
+was merely at par to the baseline quadratic approximation model. This raised the
+prospect of  employing a  blended approach, wherein  a model  changeover between
+the  transient  and \gls{qss}  was  contemplated.  However,  since there  is  no
+precise definition  of what constitutes  the transient phase of  the electrolyte
+concentration response, this  approach required some ad-hoc  timing criteria for
+correctly  transitioning  between  the  two \gls{mggp}  equation  sets.  Further
+complications arise  during dynamic input conditions,  wherein the concentration
+profiles are mostly in a state of  flux and could linger for longer durations at
+the contiguous  boundary between  transient-like and  \gls{qss}-like behaviours.
+In  the  interest  of  reproducibility  across  different  cell-chemistries  and
+corresponding parameter sets, the proposed blended model transition approach was
+not further pursued.
 
 Overall,  the  long  and  arduous  process of  symbolic  regression  was  not  a
 definitive  success in  this  case  mainly due  to  the  limitation of  equation
@@ -120,12 +138,13 @@ coefficient  determination  and  consequently  pave the  way  for  a  successful
 implementation  through  this  hitherto  unexplored  route  of  \gls{mggp}-based
 equation synthesis.
 
-In conclusion,  the quadratic approximation model  for electrolyte concentration
-approximation makes the best use of  the available physical equations. Given the
-constraints  with  respect to  physical  equations  discussed in  this  section,
-it  also  seems   to  be  the  optimum  family  of   curves  for  modelling  the
+In conclusion,  the quadratic model for  electrolyte concentration approximation
+makes the  best use of the  available physical equations. Given  the constraints
+with  respect to  physical equations  discussed here,  it is  also deemed  to be
+the  optimum  family  of  a  priori  chosen  curves  capable  of  modelling  the
 \emph{spatial}  profile of  ionic concentration.  Notwithstanding these  merits,
 the  \emph{temporal}  performance of  the  quadratic  approximation approach  is
-sub-optimal  as seen  in~\cref{fig:temporalcequadratic} and  the author  of this
-thesis addresses this specific issue next in~\cref{sec:newelectrolytemodel}.
+sub-optimal as seen in~\cref{fig:temporalcequadratic}. The author of this thesis
+addresses this specific issue with a completely different approach that shall be
+discussed next in~\cref{sec:newelectrolytemodel}.
 
