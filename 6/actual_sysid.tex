@@ -91,9 +91,21 @@ $\widetilde{Q}_{\text{e,p}_3}$  in the  positive electrode  region, it  is clear
 that all these outputs start exactly at  zero. Therefore, there is no delay term
 to be considered for the transfer operators \ie{} $n_k = 0$ for both subsystems.
 
+\subsection{Choice of model structure}
 
+Among      the      transfer-function       model      structures      mentioned
+in~\cref{subsec:parametric}, the \gls{arx} model  structure is too simplistic to
+consider. Despite  the fact that  its numerical computation involves  only basic
+linear algebra operations,  that can be efficiently handled  on modern computing
+systems, it  is considered to produce  poor estimates of the  system's poles and
+zeros. In the absence of contributions from the noise-term, the all-encompassing
+model structure used by the Box-Jenkins approach is deemed to be unnecessary for
+the  problem  at hand.  Therefore,  the  two  model structures  considered  were
+\gls{armax} and \gls{oe} for the coefficient determination.
 
-
-
-
-
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{bode_mag.pdf}
+    \caption{}
+    \label{fig:initialbodemag}
+\end{figure}

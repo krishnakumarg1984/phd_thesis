@@ -126,41 +126,51 @@ identification problem, which enables us to proceed further.
 
 \subsection{Linearity analysis of the electrolyte time-evolution subsystems}\label{subsec:linearityanalysis}
 
+\subsubsection*{De-biasing of  input signals}
 In the analyses of linearity of systems, it is a recommended practice to de-bias
 the output and input quantities about their mean operating conditions. The input
-signal in  this case,  is the  applied load  current $I(t)$,  which can  be both
-positive (during  discharge) and negative  (during charge). Although  in typical
-drive-cycles there  is a net  discharge, the value  of the mean  applied current
-differs across  drivecycles. Furthermore, drivecycles are  merely representative
-profiles and therefore, in real-world operation, the cell needs to be treated as
-being equally  probable for being  subjected charged and discharged.  Hence, the
-mean  of the  input signal  is taken  as zero,  which eliminates  any de-biasing
-requirements.
+signal  in this  case is  the applied  load current  $I(t)$, which  can be  both
+positive  (during discharge)  and  negative  (during charge).  The  mean of  the
+training profile is  \SI{-1.167}{\ampere} and that of the  validation profile is
+\SI{-0.3273}{\ampere}. Clearly,  the mean values  are dependent upon  the actual
+current profile used. The appropriately de-biased signal \ie{} $\widetilde{I}(t)
+= I(t) - \bar{I}(t)$ is to be used  for training and validation data sets in the
+system identification procedure. For the purpose  of linearity analysis, it is a
+standard practice to simply apply a step change in input (from zero) and measure
+the output responses, thereby bypassing the de-biasing requirements.
 
-For  the output  signals  though, bias  values can  be  clearly identified.  The
-overall number of moles of \ch{Li^+} per unit area in any region within the cell
-cannot be physically negative. Even though  under high C-rates, ion depletion at
-localised  spatial  locations (such  as  the  current collectors)  is  certainly
-possible, the entire thickness of any region cannot become devoid of ions at any
-point in time  since the cell shall  instantaneously cease to work.  Thus, for a
-typical well-designed  cell operating within the  manufacturer prescribed C-rate
-limits, the output  signals under consideration operate in a  small window about
-their initial values. In the author's  simulations, even at $\pm$5C, the overall
-number of moles  of \ch{Li^+} in any  cell region exhibited a  maximum change of
-less than \SI{15}{\percent}  from its initial value. Thus,  the de-biased output
-variables  for  system  identification, $\widetilde{Q}_{\text{e,}j}(t)$  can  be
-obtained  by subtracting  their  respective  initial values  $Q_{\text{e,}j}(0)$
-(see~\cref{eq:Qeninit} and~\cref{eq:Qepinit}) from $Q_{\text{e,}j}(t)$.
+% Although, in  principle, the strength  of the input  signal does not  affect the
+% linearity tests, for  the actual system identification  procedure, the de-biased
+% signal must still be persistently exciting as in~\cref{sec:persistentexcitation}
+% must be
+
+For the output signals, bias  values can be pre-computed analytically and
+accounted for.  The overall number  of moles of \ch{Li^+}  per unit area  in any
+region within  the cell cannot  be physically  negative. Even though  under high
+C-rates,  ion depletion  at localised  spatial  locations (such  as the  current
+collectors) is  certainly possible,  the entire thickness  of any  region cannot
+become devoid of ions at any point  in time since the cell shall instantaneously
+cease  to work.  Thus, for  a typical  well-designed cell  operating within  the
+manufacturer prescribed  C-rate limits,  the output signals  under consideration
+operate  in  a  small  window  about  their  initial  values.  In  the  author's
+simulations, even  at $\pm$5C, the overall  number of moles of  \ch{Li^+} in any
+cell region exhibited  a maximum change of less than  \SI{15}{\percent} from its
+initial value. Thus,  the de-biased output variables  for system identification,
+$\widetilde{Q}_{\text{e,}j}(t)$ can be obtained  by subtracting their respective
+initial values $Q_{\text{e,}j}(0)$ (see~\cref{eq:Qeninit} and~\cref{eq:Qepinit})
+from $Q_{\text{e,}j}(t)$.
 \begin{align}
     \widetilde{Q}_\text{e,n}(t) & = {Q}_\text{e,n}(t) - {Q}_\text{e,n}(0) \\
     \widetilde{Q}_\text{e,p}(t) & = {Q}_\text{e,p}(t) - {Q}_\text{e,p}(0)
 \end{align}
-which   implies   that   the   transfer  functions   to   be   identified   have
-to   be   modified    to   be   $\frac{\widetilde{Q}_\text{e,n}(s)}{I(s)}$   and
-$\frac{\widetilde{Q}_\text{e,p}(s)}{I(s)}$  respectively. This  does not  affect
-the time-invariance proved  in~\cref{subsec:timeinvariance} since the initial
-values $Q_{\text{e,}j}(0)$ are merely constants and hence not time-dependent.
+which  implies   that  the   transfer  functions  to   be  identified   have  to
+be   modified   to   be   $\frac{\widetilde{Q}_\text{e,n}(s)}{\bar{I}(s)}$   and
+$\frac{\widetilde{Q}_\text{e,p}(s)}{\bar{I}(s)}$  respectively.  This  does  not
+affect  the  time-invariance  proved in~\cref{subsec:timeinvariance}  since  the
+initial  values   $Q_{\text{e,}j}(0)$  are   merely  constants  and   hence  not
+time-dependent.
 
+\subsubsection*{Test for linearity}
 Similar     to      the     test      for     time      invariance     described
 in~\cref{subsec:timeinvariance}, a  test for linearity is  also prescribed in
 the lecture notes on  system identification by Plett~\cite{PlettECE5560_02}. The
@@ -174,7 +184,7 @@ superposition principle.
     \item If $\widetilde{Q}_{\text{e,n}_3}\!(t)$ = $\alpha\, \widetilde{Q}_{\text{e,n}_1}\!(t) + \beta \, \widetilde{Q}_{\text{e,n}_2}\!(t)$ and $\widetilde{Q}_{\text{e,p}_3}\!(t)$ = $\alpha\, \widetilde{Q}_{\text{e,p}_1}\!(t) + \beta \, \widetilde{Q}_{\text{e,p}_2}\!(t)$ for all possible $\{\alpha,\beta\}$ as well as for choice of input signals $\{I_1(t),I_2(t)\}$, then the systems are linear.
 \end{enumerate}
 
-Similar  to   the  time-invariance  test,   the  same  set  of   five  different
+As   in   the  time-invariance   test,   the   same   set  of   five   different
 initial  \glspl{soc}\textsuperscript{\ref{fn:socstart}}  ---  \SI{90}{\percent},
 \SI{70}{\percent},  \SI{50}{\percent}, \SI{30}{\percent}  and \SI{10}{\percent},
 was  retained for  these linearity  tests. For  each test  run, a  pseudo-random
@@ -186,12 +196,12 @@ input $I_3(t)$ can be either positive or negative. The composite signal $I_3(t)$
 was obtained by taking a random combination  of any two of the following current
 profiles ---
 \begin{enumerate*}[label=\emph{\alph*})]
-    \item constant current 1C discharge,
-    \item constant current discharge at C/5,
-    \item constant current 1C charge,
-    \item constant current charge at C/5,
-    \item training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
-    \item validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
+    \item step input with a constant current 1C discharge,
+    \item step input with a constant current discharge at C/5,
+    \item step input with a constant current 1C charge,
+    \item step input with a constant current charge at C/5,
+    % \item de-biased training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
+    % \item de-biased validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
 
 The  scaling  factors  $\alpha$  and   $\beta$  were  restricted  to  the  range
@@ -223,7 +233,7 @@ linearity.
         instance of linearity tests for the subsystems under consideration. For
         this visualisation, constant current inputs are used throughout. The top
         row of plots shows $\widetilde{Q}_{\text{e,n}}$ and
-        $\widetilde{Q}_{\text{e,p}}$ for two input currents $I_1(t) =
+        $\widetilde{Q}_{\text{e,p}}$ for two step inputs $I_1(t) =
         \SI{60}{\ampere}$ and $I_2(t) = \SI{12}{\ampere}$ \ie{} discharge with
         1C and C/5 currents respectively. The second row of plots shows
         $\widetilde{Q}_{\text{e,n}_3}$ and $\widetilde{Q}_{\text{e,p}_3}$  for
