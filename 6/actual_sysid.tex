@@ -16,7 +16,13 @@ its value at the previous time-step \ie{} $ {q^{-1} u[k] \longmapsto u[k-1]}$.
 \begin{figure}[!htb]
     \centering
     \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption{}
+    \caption[Block diagram representing a generic discrete-time \glsfmtshort{lti} system]{%
+        Block  diagram representing  a  generic discrete-time  \glsfmtshort{lti}
+        system. The  control input $u[k]$ is  acted upon by the  system dynamics
+        $G[k]$  whereas a  white  noise  input $e[k]$  is  shaped  by the  noise
+        dynamics $H[k]$. The  overall output $y[k]$ consists  of a superposition
+        of the contribution from both these components.
+    }%
     \label{fig:genericltisyswithnoise}
 \end{figure}
 
@@ -69,6 +75,21 @@ Thus, the system identification task becomes one that of estimating
 for  each  of  the  two  transfer operators  $G_1(q)$  and  $G_2(q)$  \ie{}  the
 electrolyte  time-evolution subsystems  in the  negative and  positive electrode
 region respectively.
+
+\subsection{Estimation of transport delay}
+
+The transport delay $n_k$ can be estimated visually by inspecting the step
+response of the systems under consideration.
+
+In~\cref{fig:linearity},   step  inputs   of   $I_1   =  \SI{60}{\ampere},   I_2
+=    \SI{12}{\ampere},$   and    $I_3   =    \SI{36}{\ampere}$   were    applied
+to    the   two    subsystems.    Inspecting   closely    all   the    responses
+\ie{}   $\widetilde{Q}_{\text{e,n}_1},    \widetilde{Q}_{\text{e,n}_2}   $   and
+$\widetilde{Q}_{\text{e,n}_3}$    in    the     negative    electrode    region,
+and    $\widetilde{Q}_{\text{e,p}_1},    \widetilde{Q}_{\text{e,p}_2}   $    and
+$\widetilde{Q}_{\text{e,p}_3}$  in the  positive electrode  region, it  is clear
+that all these outputs start exactly at  zero. Therefore, there is no delay term
+to be considered for the transfer operators \ie{} $n_k = 0$ for both subsystems.
 
 
 
