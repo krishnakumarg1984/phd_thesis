@@ -238,7 +238,9 @@ in~\cref{fig:initialbodemag} provide clues on the number of poles in the system.
 The  corner  frequency $\omega_\text{c}$  in  both  cases  appear to  be  around
 \SI{0.15}{\radian\per\second}.  The  high-frequency  slope of  both  systems  is
 \approx\SI{20}{\decibel} per decade,  which implies that they  have at-least one
-more pole than the number of zeros \ie{} $n_a \ge n_b + 1$.
+more pole than the number of zeros if using a continuous time transfer function.
+For the  corresponding z-domain  transfer function, this  implies that  $n_a \ge
+n_b$.
 
 In the  aspect of estimating the  number and locations of  zeros, the validation
 profile outshines  the training profile. While  the Bode plot obtained  with the
@@ -247,14 +249,15 @@ plateau in \SIrange{0.3}{0.4}{\hertz} range for  the Bode plot of the validation
 profile clearly contradicts this. Once again, hypothesising that the two systems
 (in the two electrode regions)  have fundamentally identical behaviour with only
 small differences owing  to differences in their parameter  values, there exists
-at-least one zero in these systems around this frequency range.
+at-least one zero in these  continuous-time systems around this frequency range.
+The discrete-time discretisation process adds an additional zero to the system.
 
-Based on this  preliminary analysis, the estimates  are $n_k = 0$,  $n_a \ge 2$,
-$n_b  \ge  1$. Only  asymptotic  approximations  to  corner frequencies  can  be
-estimated from the Bode plots. Furthermore, the estimated locations are not used
-in  the  parametric  system  identification  algorithms  and  is  of  much  less
-importance than the model order estimates. With this initial understanding, the
-parametric system identification procedure is carried out.
+Based on this preliminary  analysis, the estimates are $n_k = 0,  n_b \ge 2, n_a
+\ge 3$.  Only asymptotic approximations  to corner frequencies can  be estimated
+from the  Bode plots. Furthermore, the  estimated locations are not  used in the
+parametric system identification algorithms and  is of much less importance than
+the  model order  estimates.  With this  initial  understanding, the  parametric
+system identification procedure is carried out.
 
 \subsection{Refinement of coefficient orders using deterministic criteria}
 
@@ -306,11 +309,30 @@ function that may  be applied for all the four  model structures \viz{\gls{arx},
     \hat{\theta} &= \text{arg}\,\underset{\theta}{\text{min}} V_N(\theta)
 \end{align}
 
-With this least squares problem applied to the \gls{arx} model structure, two
-deterministic model order criteria have been defined ---
+For  robustness  against estimation  bias,  instead  of the  standard  \gls{ols}
+estimates,  the   \gls{iv}  estimation  method   is  commonly  used   in  system
+identification  tasks~\cite{Ljung1999}. Applying  this  to  the \gls{arx}  model
+structure, two deterministic model order criteria have been defined ---
 \begin{enumerate*}[label=\emph{\alph*})]
     \item \gls{aic}, and
     \item \gls{mdl}~\cite{Ljung1999}.
 \end{enumerate*}
+
+In  the \gls{aic},  the  optimal  number of  parameters,  $\hat{d}$ in  $\theta$
+is  obtained   by  minimizing   the  modified   log  likelihood   cost  function
+\begin{equation}
+    V_{N,\text{mod}}(\theta) =  \ln V_N(\theta)  + \frac{2  d}{N}, \quad N \gg d
+\end{equation}
+In the \gls{mdl} criterion, this cost function is modified to
+\begin{equation}
+    V_{N,\text{mod}}(\theta) =  V_N(\theta)\left(1 + \frac{d\, \ln N}{N}  \right)
+\end{equation}
+
+For the two subsystems at hand, both  criteria converged to the same choices for
+the coefficient orders,  yielding $n_a = 4,  n_b = 4$ and $n_k  = 0$. Therefore,
+these values  were used as the  starting points for the  non-linear optimisation
+algorithms  used in  determining  the  exact pole  and  zero  locations for  the
+discrete-time transfer functions which is described next.
+
 
 
