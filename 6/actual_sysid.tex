@@ -61,7 +61,7 @@ disturbance transfer operator in~\cref{eq:outputwithsysandnoise} is zero
 \begin{align}
     y[k] &= G(q)u[k] + \cancelto{0}{H(q)}e[k]
 \shortintertext{Hence, the time-domain output  reduces  to}
-    y[k] &= G(q)u[k]
+y[k] &= G(q)u[k] \label{eq:outputwithsysonly}
 \end{align}
 
 Thus, the system identification task becomes one that of estimating
@@ -91,7 +91,7 @@ $\widetilde{Q}_{\text{e,p}_3}$  in the  positive electrode  region, it  is clear
 that all these outputs start exactly at  zero. Therefore, there is no delay term
 to be considered for the transfer operators \ie{} $n_k = 0$ for both subsystems.
 
-\subsection{Choice of model structure}
+\subsection{Choice of model structure}\label{subsec:modelstrucchoice}
 
 Among      the      transfer-function       model      structures      mentioned
 in~\cref{subsec:parametric}, the \gls{arx} model  structure is too simplistic to
@@ -103,7 +103,7 @@ model structure used by the Box-Jenkins approach is deemed to be unnecessary for
 the  problem  at hand.  Therefore,  the  two  model structures  considered  were
 \gls{armax} and \gls{oe} for the coefficient determination.
 
-\subsection{Starting guesses for coefficient orders}
+\subsection{Starting guesses for coefficient orders}\label{subsec:initguesscoefforder}
 
 At first, the training profile of~\cref{fig:sysidtrainingcurrent} is
 debiased (through mean removal) and applied as the input current profile in a \gls{p2d}
@@ -256,4 +256,61 @@ in  the  parametric  system  identification  algorithms  and  is  of  much  less
 importance than the model order estimates. With this initial understanding, the
 parametric system identification procedure is carried out.
 
-\subsection{Refinement of coefficient orders through deterministic criteria}
+\subsection{Refinement of coefficient orders using deterministic criteria}
+
+The initial estimate  of coefficient orders in~\cref{subsec:initguesscoefforder}
+was performed  based only on  a visual inspection  of the Bode  magnitude plots.
+Owing to  the fact that  the frequency  response data is  the result of  a crude
+ratio of  spectra, there is a  high probability of missing  vital information on
+the number and locations of poles and zeros. Hence only a lower bound on the
+coefficient orders are available until this point. Next, a set of deterministic
+criteria is used to widen and refine the coefficient order range.
+
+
+Although   the   \gls{arx}   structure   is  deemed   to   be   too   simplistic
+(see~\cref{subsec:modelstrucchoice}), owing to the fact that only linear algebra
+operations are involved, as opposed  to numerical optimisation routines employed
+in the  \gls{oe}, \gls{armax} and Box-Jenkins  structures, certain deterministic
+criteria for  coefficient order  selection can  be incorporated  for coefficient
+order selection.
+This  can serve  as  a  refinement  of  the
+initial number of  coefficients guessed from the Bode  magnitude plots discussed
+in.
+
+For any model structure used, its error can be defined as
+\begin{align}
+    % \SwapAboveDisplaySkip
+    \varepsilon[k]      & = y[k] - \hat{y}_\text{m}[k] \label{eq:sysiderroronlyk}\\
+    \shortintertext{where $y[k]$ are true measurements and}
+    \hat{y}_\text{m}[k] & = G(q)u[k] \tag{\cref{eq:outputwithsysonly} revisited}
+\end{align}
+are the model outputs obtained by the assumed transfer operator $G(q)$ (which is
+to be determined).
+
+The  number of  numerator  and denominator  coefficients in  $G(q)$  as well  as
+their  values are  to  be determined.  This  set of  unknowns  can be  collected
+into a  parameter vector  $\theta$. Thus, as  per~\cref{eq:sysiderroronlyk}, the
+error  sequence is  parametrised by  $\theta$, and  its notation  is amended  to
+$\varepsilon[k;\theta]$.
+
+For  an  input-output  data  set  consisting of  $N$  samples,  a  generic  cost
+function that may  be applied for all the four  model structures \viz{\gls{arx},
+\gls{armax}, \gls{oe} and Box-Jenkins} is
+\begin{align}
+    V_N(\theta) &= \sum_{k=1}^N L\left(\varepsilon\left[k;\theta\right]\right)
+\shortintertext{where $L(\cdot)$ is a postive-valued scalar loss function.}
+\intertext{For the \gls{arx} structure, the sum of squares of the error sequence
+    may be used as the loss function yielding}
+    V_N(\theta) &= \sum_{k=1}^N \varepsilon^2[k;\theta]
+    \shortintertext{whose least squares solution $\hat{\theta}$ is desired}
+    \hat{\theta} &= \text{arg}\,\underset{\theta}{\text{min}} V_N(\theta)
+\end{align}
+
+With this least squares problem applied to the \gls{arx} model structure, two
+deterministic model order criteria have been defined ---
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item \gls{aic}, and
+    \item \gls{mdl}~\cite{Ljung1999}.
+\end{enumerate*}
+
+
