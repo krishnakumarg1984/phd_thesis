@@ -38,7 +38,7 @@ peak of  the expected  operating range. Taking  into account  all aforementioned
 considerations, the  peak amplitude of the  input current was fixed  at 2C \ie{}
 \ordfrac{2}{3} of the \gls{udds} profile's peak current amplitude.
 
-\subsection{Training current profile}
+\subsection{Training current profile}\label{subsec:trainingprofile}
 \begin{figure}[!htb]
     \centering
     \includegraphics{sysid_train_input.pdf}
@@ -61,18 +61,19 @@ in this system identification task. The specific input sequence consisted of
     \item `Chirp' \ie{} a swept cosine signal from 0--\SI{100}{\milli\hertz}\quad (200--\SI{799}{\second})
     \item Periodic \glsfmtlong{rbs} with a period of \SI{200}{\second} and 2 such periods\quad (800--\SI{1199}{\second})
 \end{enumerate}
-thereby helping to  obtain a wide-sense persistent excitation. The swept
+thereby  helping  to  obtain  a  wide-sense  persistent  excitation.  The  swept
 cosine  signal  is designed  to  excite  the low  frequency  (DC)  modes of  the
 electrolyte subsystem and helps to capture the system's response to constant and
-other systematically varying input profiles. The two \glspl{rbs} are intended to
-target the poles and zeros of  the electrolyte subsystem that would typically be
-excited  by  highly dynamic  input  profiles.  The  periodicity  in one  of  the
-\glspl{rbs} was introduced  to draw out any hidden periodicity  or repeated real
-poles  in the  system that  might  otherwise appear  to  be a  single pole.  The
-presence  of both  low  and high  frequency frequency  spectra  in the  combined
-training  set presents  a  high degree  of confidence  to  capture the  relevant
-dynamics of the  electrolyte subsystem. The input current profile  used for this
-system identification task is plotted in~\cref{fig:sysidtrainingcurrent}.
+other systematically  varying input profiles.  The two \glspl{rbs}  are intended
+to  target  the  poles  and  zeros  of  the  electrolyte  subsystem  that  would
+typically be  excited by highly dynamic  input profiles. The periodicity  in one
+of  the  \glspl{rbs} was  introduced  to  draw out  any  repeated  real pole  or
+complex  conjugate  poles  poles  in  the system  that  might  otherwise  appear
+to  be  a  single real  pole.  The  presence  of  both low  and  high  frequency
+frequency  spectra in  the  combined  training set  presents  a  high degree  of
+confidence to  capture the relevant  dynamics of the electrolyte  subsystem. The
+input  current profile  used  for  this system  identification  task is  plotted
+in~\cref{fig:sysidtrainingcurrent}.
 
 \subsection{Validation current profile}
 

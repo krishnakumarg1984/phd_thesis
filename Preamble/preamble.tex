@@ -29,9 +29,9 @@
 
 \usepackage{chemformula} % uses tikz arrows
 
-\addbibresource{9_backmatter/thesis_refs.bib}
-% \ShellEscape{biber --tool 9_backmatter/thesis_refs.bib} % deduplicate bibtex entries
-% \addbibresource{9_backmatter/thesis_refs_bibertool.bib}
+% \addbibresource{9_backmatter/thesis_refs.bib}
+\ShellEscape{biber --tool 9_backmatter/thesis_refs.bib} % deduplicate bibtex entries
+\addbibresource{9_backmatter/thesis_refs_bibertool.bib}
 
 \input{Preamble/hyperref_related} % hyperref, glossaries etc.
 \input{Preamble/customcommands}

@@ -103,9 +103,157 @@ model structure used by the Box-Jenkins approach is deemed to be unnecessary for
 the  problem  at hand.  Therefore,  the  two  model structures  considered  were
 \gls{armax} and \gls{oe} for the coefficient determination.
 
+\subsection{Starting guesses for coefficient orders}
+
+At first, the training profile of~\cref{fig:sysidtrainingcurrent} is
+debiased (through mean removal) and applied as the input current profile in a \gls{p2d}
+simulation. The outputs of this simulation are suitably post-processed as per
+the following sequence of steps.
+\begin{enumerate}
+    \item The concentrations solved at various node locations within each
+        electrode are numerically integrated over the corresponding electrode
+        thicknesses using trapezoidal rule.
+    \item The resulting integral value is multiplied with the porosity of the
+        corresponding electrode region to obtain $Q_{\text{e,n}_\text{train}}(t)$ and
+        $Q_{\text{e,p}_\text{train}}(t)$.
+    \item These quantities are then de-biased by subtracting their initial
+        values to obtain $\widetilde{Q}_{\text{e,n}_\text{train}}(t)$ and
+        $\widetilde{Q}_{\text{e,p}_\text{train}}(t)$.
+\end{enumerate}
+
+The        same        procedure        is        repeated        for        the
+validation       current      profile       of~\cref{fig:sysidvalidationcurrent}
+to         obtain         $\widetilde{Q}_{\text{e,n}_\text{val}}(t)$         and
+$\widetilde{Q}_{\text{e,n}_\text{val}}(t)$.  These data  sets are  used for  all
+subsequent sub-tasks involved in this system identification exercise.
+
+In  order to  reduce  the search  window for  the  coefficient determination  in
+the  parametric transfer  function methods,  the hand-estimation  of coefficient
+order  through non-parametric  methods may  be performed.  This coarse  estimate
+can  act as  a  feeder to  help  in  the faster  convergence  of the  non-linear
+optimisation algorithms  used in the parametric  methods. In this case,  a basic
+spectral analysis  using a Hanning  window implemented using the  MATLAB command
+\texttt{spa.m} is applied to the time-domain data to transform it into frequency
+response data.
+
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{bode_mag.pdf}
-    \caption{}
+    \caption[Bode magnitude plots of the electrolyte time-evolution sub-systems]{%
+        Bode magnitude  plots showing the  estimated frequency response  for the
+        two  subsystems under  consideration.  The frequency  response data  was
+        obtained  through a spectral  analysis \ie{}  by computing  the ratios  of
+        spectra of the de-biased input  and output sequences. The sequences were
+        smoothed using a Hanning window before computing the ratio.
+    }%
     \label{fig:initialbodemag}
 \end{figure}
+
+\Cref{fig:initialbodemag}  shows  the  Bode  magnitude  plot  of  the  frequency
+response for
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item the training set in the negative electrode region, and
+    \item the validation set in the positive electrode region.
+\end{enumerate*}
+In the  plots, a broad  combination of  the two data  sets in the  two electrode
+region  is  depicted  to  achieve  a  compact  representation  of  all  possible
+permutations and to avoid redundancies by plotting visually similar information.
+It is important to note that these Bode diagrams obtained by such non-parametric
+methods only represent  a crude approximation of the  physical dynamics intended
+to help in initial estimates of the system behaviour.
+
+Some preliminary understanding of the  various characteristics of the system can
+be gleaned from these Bode diagrams.  The first visually striking feature is the
+similarity  in the  approximate frequency  characteristics in  the negative  and
+positive electrode  regions, even when  excited by completely different  data in
+the time domain. This confirms the author's assumptions of equal `complexity' in
+the symbolic  regression search discussed in~\cref{subsec:symbolicreg}.  This is
+also  congruent with  the physical  behaviour of  the electrolyte  in these  two
+regions.
+
+\subsubsection*{Finite DC gain}
+By visual  extension of  the frequency responses  towards lower  frequencies, it
+is  clear  that  the  DC  gains  of  both  the  systems  are  finite  and  below
+unity.  This  behaviour  can  clearly  be  seen  in  the  time-domain  responses
+of~\cref{fig:linearity}.  For  the plotted  time-horizon,  this  effect is  most
+visible for the case of the \SI{12}{\ampere} constant current input, wherein the
+responses of both regions settle to a finite value after an initial transient.
+
+There is \approx\SI{10}{\decibel} variability in  the low frequency gain between
+the two Bode  plots in~\cref{fig:initialbodemag}. This can be  attributed to the
+following  factors. A  compromise with  the spectral  estimation method  is that
+using a higher number of frequency bins  results in lower resolution per bin and
+vice-versa. By  varying the number  of frequency bins  and focussing on  the low
+frequency range, the resolution of the DC  gain can be improved. The rest of the
+variability can  be attributed to the  fact that the training  and test profiles
+behave differently and do not excite the same dynamics. In particular, the swept
+frequency cosine (chirp) signal in the training set was specifically designed to
+draw out  the low frequency  dynamics with a  high fidelity. Finally,  the small
+range of variation in the DC gain could also be due to the intrinsic small-scale
+variations of  the electrolyte  behaviour in  these two  regions. Although  on a
+macroscopic frequency scale the two regions behave similarly, the differences in
+electrode thicknesses and porosities could contribute to the small difference in
+the  DC gain.  This  helps  to confirm  that  two \emph{non-identical}  transfer
+functions are being sought for --- one for each electrode region.
+
+Finally, the finiteness  of the DC gain  helps to narrow down  the search window
+for the parametric model structures. In particular, this fact indicates that the
+model structures to be trialled must not  have any integrator terms (or poles at
+the origin of the complex plane).
+
+\subsubsection*{Resonance and model order}
+
+First  order  transfer   functions  do  not  exhibit   characteristic  peaks  or
+resonances  in  their  frequency  responses.  However,  for  the  Bode  plot  on
+the   left   of~\cref{fig:initialbodemag},   a   pronounced   resonance   around
+\SI{0.15}{\radian\per\second} is observable. This has  an enormous impact --- it
+presents  an important  clue  that the  first  order time-evolution  \glspl{ode}
+of~\cref{eq:negliionmolesquadratic}   and~\cref{eq:posliionmolesquadratic}   are
+inadequate to represent the system dynamics.
+
+An apparent  contradiction to  the first-order inadequacy  claim stems  from the
+Bode plot  on the  right hand side  in~\cref{fig:initialbodemag}. In  this case,
+there are no resonances in the  magnitude response indicating that a first order
+model description is sufficient. However, a vital aspect to be noted here is the
+nature of the  validation current profile when compared to  that of the training
+current profile.  The coarse  frequency response data  obtained by  the spectral
+method is sensitive to the actual  input sequence employed. From systems theory,
+the  resonances at  a frequency  occur  due to  the presence  of lightly  damped
+complex conjugate poles at that frequency. The periodic \gls{rgs} was explicitly
+designed in the  training set and is  however absent in the  validation set. The
+unique characteristics  of the validation  set and its influence  on coefficient
+order is discussed next.
+
+As per  the arguments presented  in the  preceding discussions, there  exists an
+implicit constraint that  the behaviour of the time-evolution  subsystems in the
+two electrode  regions are  expected to be  of similar  `complexity'. Therefore,
+based  on the  presence of  the resonance  in the  Bode magnitude  plot for  the
+response to  training profile  in the  negative electrode region,  it has  to be
+concluded that the two subsystems are \emph{at-least} of second order.
+
+\subsubsection*{Estimation of number of poles and zeros}
+
+The  high-frequency  roll-off  in  the   slopes  of  the  Bode  magnitude  plots
+in~\cref{fig:initialbodemag} provide clues on the number of poles in the system.
+The  corner  frequency $\omega_\text{c}$  in  both  cases  appear to  be  around
+\SI{0.15}{\radian\per\second}.  The  high-frequency  slope of  both  systems  is
+\approx\SI{20}{\decibel} per decade,  which implies that they  have at-least one
+more pole than the number of zeros \ie{} $n_a \ge n_b + 1$.
+
+In the  aspect of estimating the  number and locations of  zeros, the validation
+profile outshines  the training profile. While  the Bode plot obtained  with the
+training profile  does not indicate  the presence of  zeros in the  systems, the
+plateau in \SIrange{0.3}{0.4}{\hertz} range for  the Bode plot of the validation
+profile clearly contradicts this. Once again, hypothesising that the two systems
+(in the two electrode regions)  have fundamentally identical behaviour with only
+small differences owing  to differences in their parameter  values, there exists
+at-least one zero in these systems around this frequency range.
+
+Based on this  preliminary analysis, the estimates  are $n_k = 0$,  $n_a \ge 2$,
+$n_b  \ge  1$. Only  asymptotic  approximations  to  corner frequencies  can  be
+estimated from the Bode plots. Furthermore, the estimated locations are not used
+in  the  parametric  system  identification  algorithms  and  is  of  much  less
+importance than the model order estimates. With this initial understanding, the
+parametric system identification procedure is carried out.
+
+\subsection{Refinement of coefficient orders through deterministic criteria}
