@@ -360,8 +360,16 @@ optimisation.  For  the  initial  guesses   for  the  numerical  values  of  the
 coefficients $(a_1, a_2,  \dots a_{n_a})$ and $(b_1, b_2, \dots  , b_{n_b} )$, a
 randomised  multi-start  algorithm was  used.  For  the two  transfer  functions
 identified, no distinction is made  between whether the \gls{armax} structure or
-Box-Jenkins structure was used to arrive at the coefficients.
-
+Box-Jenkins structure was  used to arrive at the coefficients.  Since the output
+magnitudes of $\widetilde{Q}_{\text{e,n}}$  and $\widetilde{Q}_{\text{e,p}}$ are
+of  $\mathcal{O}{10^{-3}}$,  a  constant  scaling   factor  of  $k  =  1000$  is
+used  to  bring the  order  of  magnitude of  output  data  values to  unity.  A
+well-chosen  scaling factor  is often  vital  to the  convergence of  non-linear
+optimisation algorithms.  Since the system  is linear, this constant  gain shall
+not fundamentally change the dynamics of the  system and can be accounted for by
+using the reciprocal  scaling factor of 0.001 in  numerical implementations. The
+identification procedure  was carried  out using MATLAB's  System Identification
+Toolbox~\cite{matlabsysidtool}.
 
 \input{6/Qen_sysid_table}
 

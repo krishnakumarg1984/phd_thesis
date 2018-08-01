@@ -283,6 +283,8 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 
 \newcolumntype{P}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
 % \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
 
 
 \sisetup{
@@ -661,5 +663,24 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 % https://tex.stackexchange.com/questions/38108/how-to-increase-the-size-of-first-character-in-a-chapter-drop-caps/38111#38111
 % https://tex.stackexchange.com/questions/145490/how-to-get-libertine-initials-to-work-with-lettrine
 
-% \DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
+% \newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\makeatletter
+\newlength{\qrr@dimen@}
+\expandafter\pretocmd\csname tabular*\endcsname{\setlength{\qrr@dimen@}{#1}}{}{}
+\newcommand*{\Rowcolor}[2][\tabcolsep]{%
+\ifx\relax#1\relax\else
+    \kern-\the\dimexpr#1\relax
+\fi
+\makebox[0pt][l]{%
+    \fboxsep=0pt
+    \colorbox{#2}{%
+        \strut\kern\qrr@dimen@
+    }%
+}%
+\ifx\relax#1\relax\else
+    \kern\the\dimexpr#1\relax
+\fi
+\ignorespaces
+                                                                                                }
+                                                                                                \makeatother
