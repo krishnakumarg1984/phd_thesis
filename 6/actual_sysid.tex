@@ -373,3 +373,29 @@ Toolbox~\cite{matlabsysidtool}.
 
 \input{6/Qen_sysid_table}
 
+\Cref{tbl:sysidnegcases}   shows   the   results  obtained   by   applying   the
+aforementioned   non-linear  identification   routines  to   the  time-evolution
+subsystems in the negative electrode region. The coefficient orders tried in the
+system identification  procedure were informed  by the inferences from  the bode
+magnitude plots as well as that obtained by applying the deterministic \gls{aic}
+and \gls{mdl}  criteria. Only those  models that yielded similar  errors (within
+\SI{0.5}{\percent}) across both input datasets were retained.
+
+As  discussed  in~\cref{subsec:initguesscoefforder},   a  first  order  transfer
+function cannot capture  all the dynamics. Therefore, the lowest  order tried in
+the identification  procedure was  two (case A  in~\cref{tbl:sysidnegcases}). As
+higher order models  were tried, the system accuracy improves  steadily (cases B
+and C). Using very high order transfer  functions does not help in improving the
+model accuracy as  seen from the sixth  order result from case D.  In this case,
+redundant  values and  other  artefacts start  to  appear in  the  zeros of  the
+identified transfer  function, and results  in a percentage error  comparable to
+that  of  the  simple second  order  case.  The  fourth  order model  from  Case
+C  (shaded  grey  in~\cref{tbl:sysidnegcases})  performs the  best  across  both
+training and  validation profiles and  is chosen as  the final model.  A similar
+selection procedure was applied for  the identification of the transfer function
+corresponding to $\widetilde{Q}_{\text{e,p}}$ in the positive electrode region.
+
+% Show final table table of identified transfer functions in cts time, disc time
+
+% discuss numerical implementation in a section
+% Fix 6th order table
