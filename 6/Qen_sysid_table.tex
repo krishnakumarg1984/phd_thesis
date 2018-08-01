@@ -5,12 +5,12 @@
     \begingroup
     \sisetup{group-digits=false}
     \centering
-    \caption[A sample of system identification results for $\widetilde{Q}_\text{e,n}$]{A sample of results showing four discrete-time transfer functions identified for the electrolyte time-evolution subsystem in the negative electrode region. Only those models that yielded similar errors (within \SI{0.5}{\percent}) across both input datasets were retained.  The fourth order model from Case C (shaded in grey) performed the best across  both training and validation profiles and is chosen as the final model. Using very high order transfer functions does not help in improving the model accuracy as seen from the sixth order result from case D.}
+    \caption[A sample of system identification results for $\widetilde{Q}_\text{e,n}$]{A sample of results showing four discrete-time transfer functions identified for the electrolyte time-evolution subsystem in the negative electrode region. Only those models that yielded similar errors (within \SI{0.5}{\percent}) across both input datasets were retained.  The fourth order model from case C (shaded in grey) performed the best across  both training and validation profiles and is chosen as the final model.}
     \label{tbl:sysidnegcases}
     \begin{tabular*}{\textwidth}{@{} c   S[table-format=1.4] S[table-format=1.4] S[table-format=1.4] S[table-format=1.4]  S[table-format=1.4,table-column-width=0.95cm] S[table-format=1.4,table-column-width=0.95cm] S[table-format=1.4,table-column-width=0.95cm] S[table-format=1.4,table-column-width=0.95cm] S[table-format=2.2] S[table-format=2.2] @{}}\toprule
         \multirow{2}[2]{*}{\footnotesize Case} & \multicolumn{4}{c}{\footnotesize Numerator} & \multicolumn{4}{c}{\footnotesize Denominator} &  {\multirow{2}[2]{*}{\footnotesize \makecell{Training \\accuracy\\(\%)}}} & {\multirow{2}[2]{*}{\footnotesize \makecell{Validation\\accuracy\\(\%)}}}\\
         \cmidrule(lr){2-5} \cmidrule(lr){6-9}
-        {} & \multicolumn{1}{c}{$b_0$}  & \multicolumn{1}{c}{$b_1$}   & \multicolumn{1}{c}{$b_2$}  & \multicolumn{1}{c}{$b_3$}   & \multicolumn{1}{c}{$a_1$} & \multicolumn{1}{c}{$a_2$} & \multicolumn{1}{c}{$a_3$} & \multicolumn{1}{c}{$a_4$} \\
+        {} & \multicolumn{1}{c}{$b_1$}  & \multicolumn{1}{c}{$b_2$}   & \multicolumn{1}{c}{$b_3$}  & \multicolumn{1}{c}{$b_4$}   & \multicolumn{1}{c}{$a_1$} & \multicolumn{1}{c}{$a_2$} & \multicolumn{1}{c}{$a_3$} & \multicolumn{1}{c}{$a_4$} \\
         \midrule
         A & 0.0026 & -0.0025 & {}      & {}      & -1.922 & 0.923  & {}     & {}    & 95.11 & 95.13 \\
         B & 0.0028 & -0.0052 & 0.0025  & {}      & -2.833 & 2.669  & -0.836 & {}    & 99.14 & 98.54 \\
