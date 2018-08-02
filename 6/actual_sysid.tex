@@ -407,26 +407,6 @@ The final identified transfer functions (for the scaled output) are
     \frac{\widetilde{Q}_{\text{e,p}}(z)}{\widetilde{I}(z)} & = \frac{-0.002809 z^{-1} + 0.007139 z^{-2} - 0.005944 z^{-3} + 0.001614 z^{-4}}{1 - 3.464 z^-1 + 4.444 z^-2 - 2.495 z^-3 + 0.515 z^-4}\label{eq:finaldisctfpos}
 \end{align}
 
-The  poles of~\cref{eq:finaldisctfneg}  lie  very close  to their  corresponding
-counterparts of~\cref{eq:finaldisctfpos}  in the  stable region of  the Z-domain
-\ie{}  within   the  unit  circle.   This  confirms  the  hypothesis   that  the
-time-evolution subsystems  in these  two regions  exhibit similar  dynamics. The
-slight differences in  the pole locations could be attributed  to the variations
-in  the  physical  parameters  pertaining  to the  two  electrode  regions.  The
-numerator coefficients  of~\cref{eq:finaldisctfneg} and~\cref{eq:finaldisctfpos}
-are  also  close  to  each  other  except  that  their  signs  are  opposite  to
-each   other.  This   is  to   be   expected,  since   as  seen   in  the   step
-response   plots   of~\cref{fig:linearity},   $\widetilde{Q}_{\text{e,n}}$   and
-$\widetilde{Q}_{\text{e,p}}$ evolve in time in opposite directions. This is also
-explained by  the fact  that, for  a given  applied current,  a decrease  in the
-number of ions in the negative electrode has to be accompanied by an increase in
-the positive electrode and vice-versa (the values of the changes are not exactly
-equal owing to the presence of the separator). The identified transfer functions
-are thus consistent  and deemed to be suitable for  representing the electrolyte
-time-evolution in these regions.
-
-\subsection{Validation of identified transfer functions}
-
 \begin{figure}[!htb]
     \centering
     \includegraphics{p2d_sysid_train_qen.pdf}
@@ -443,11 +423,34 @@ time-evolution in these regions.
         transfer function in~\cref{eq:finaldisctfneg} was originally obtained by
         scaling the output by 1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the
-        predicted response shown here, thereby once again confirming the
-        linearity of this subsystem.
+        predicted response shown here, thereby once again justifying the
+        linearity assumption for this subsystem.
     }%
     \label{fig:tfpredQentrain}
 \end{figure}
+
+\Cref{fig:tfpredQentrain} shows a comparison of the $\widetilde{Q}_{\text{e,n}}$
+output for
+\begin{enumerate*}[label=\emph{\alph*})]
+    \item the \gls{p2d} model, and
+    \item the identified transfer function of~\cref{eq:finaldisctfneg}
+\end{enumerate*}
+using  the  training  current  profile  of~\cref{fig:sysidtrainingcurrent}.  The
+transfer function of~\cref{eq:finaldisctfneg} was obtained by scaling the output
+of the  training profile to  be of order $\mathcal{O}(1)$  by a factor  of 1000.
+Therefore,  for final  implementation and  comparison purposes,  the raw  output
+produced  by applying  the transfer  function  needs to  be scaled  back by  its
+reciprocal. If  the system  is linear,  then this scaling  factor shall  have no
+impact  on  the  frequency-dependent  dynamics  of  the  subsystem.  The  output
+predicted  by the  identified transfer  function is  virtually indistinguishable
+from  the `true'  output computed  by post-processing  the \gls{p2d}  model with
+an  \glsfmtshort{rms}  error   of  \SI{5.70e-6}{\mole\per\meter\squared}  and  a
+\glsfmtshort{mae} of \SI{19.19e-6}{\mole\per\meter\squared}.  This high accuracy
+of the transfer  function prediction justifies the linearity  assumption for the
+subsystem.  \Cref{fig:tfpredQepval}  presents  the  same  comparison  using  the
+validation input profile for the subsystem in the positive electrode region. The
+accuracy of  the identified transfer function  for this independent data  set is
+clearly illustrated.
 
 \begin{figure}[!htb]
     \centering
@@ -470,5 +473,45 @@ time-evolution in these regions.
     }%
     \label{fig:tfpredQepval}
 \end{figure}
+
+The  poles of~\cref{eq:finaldisctfneg}  lie  very close  to their  corresponding
+counterparts of~\cref{eq:finaldisctfpos}  in the  stable region of  the Z-domain
+\ie{}  within   the  unit  circle.   This  confirms  the  hypothesis   that  the
+time-evolution subsystems  in these  two regions  exhibit similar  dynamics. The
+slight differences in  the pole locations could be attributed  to the variations
+in  the  physical  parameters  pertaining  to the  two  electrode  regions.  The
+numerator coefficients  of~\cref{eq:finaldisctfneg} and~\cref{eq:finaldisctfpos}
+are  also  close  to  each  other  except  that  their  signs  are  opposite  to
+each   other.  This   is  to   be   expected,  since   as  seen   in  the   step
+response   plots   of~\cref{fig:linearity},   $\widetilde{Q}_{\text{e,n}}$   and
+$\widetilde{Q}_{\text{e,p}}$ evolve in time in opposite directions. This is also
+explained by  the fact  that, for  a given  applied current,  a decrease  in the
+number of ions in the negative electrode has to be accompanied by an increase in
+the positive electrode and vice-versa (the values of the changes are not exactly
+equal owing to the presence of the separator). The identified transfer functions
+are thus consistent  and deemed to be suitable for  representing the electrolyte
+time-evolution in these regions.
+
+% \subsection{Validation of identified transfer functions}
+
+% \begin{figure}[!htb]
+%     \centering
+%     \begin{varwidth}[b]{0.5\textwidth}
+%         \centering
+%         \includegraphics[width=0.9875\linewidth]{p2d_sysid_train_qen.pdf}
+%     \end{varwidth}
+%     \hfill
+%     \begin{varwidth}[b]{0.5\textwidth}
+%         \centering
+%         \includegraphics[width=0.9875\linewidth]{p2d_sysid_val_qep.pdf}
+%     \end{varwidth}
+%     \caption{}
+%     \label{}
+% \end{figure}
+
+
+
+
+
 
 % discuss numerical implementation in a section
