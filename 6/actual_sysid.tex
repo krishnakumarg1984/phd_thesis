@@ -421,8 +421,54 @@ $\widetilde{Q}_{\text{e,p}}$ evolve in time in opposite directions. This is also
 explained by  the fact  that, for  a given  applied current,  a decrease  in the
 number of ions in the negative electrode has to be accompanied by an increase in
 the positive electrode and vice-versa (the values of the changes are not exactly
-equal owing  to the presence of  the separator). Thus, these  transfer functions
-are consistent and hence, deemed to be suitable for representing the electrolyte
+equal owing to the presence of the separator). The identified transfer functions
+are thus consistent  and deemed to be suitable for  representing the electrolyte
 time-evolution in these regions.
+
+\subsection{Validation of identified transfer functions}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics{p2d_sysid_train_qen.pdf}
+    \caption[$\widetilde{Q}_{\text{e,n}}(t)$ outputs from \glsfmtshort{p2d} and
+    identified transfer function for training profile]{%
+        Time-evolution of $\widetilde{Q}_{\text{e,n}}$ computed using the
+        \glsfmtshort{p2d} model  and the identified transfer function
+        of~\cref{eq:finaldisctfneg} (scaled by 0.001) with the synthetic
+        training input profile of~\cref{fig:sysidtrainingcurrent}. The output
+        predicted by the identified transfer function closely matches the `true'
+        output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
+        \glsfmtshort{rms} error of \SI{5.70e-6}{\mole\per\meter\squared} and a
+        \glsfmtshort{mae} of \SI{19.19e-6}{\mole\per\meter\squared}. Note that the
+        transfer function in~\cref{eq:finaldisctfneg} was originally obtained by
+        scaling the output by 1000. The transfer function output is
+        multiplied by the reciprocal of the same scaling factor to obtain the
+        predicted response shown here, thereby once again confirming the
+        linearity of this subsystem.
+    }%
+    \label{fig:tfpredQentrain}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics{p2d_sysid_val_qep.pdf}
+    \caption[$\widetilde{Q}_{\text{e,p}}(t)$ outputs from \glsfmtshort{p2d} and
+    identified transfer function for training profile]{%
+        Time-evolution of $\widetilde{Q}_{\text{e,p}}$ computed using the
+        \glsfmtshort{p2d} model  and the identified transfer function
+        of~\cref{eq:finaldisctfpos} (scaled by 0.001) with the synthetic
+        validation input profile of~\cref{fig:sysidvalidationcurrent}. The output
+        predicted by the identified transfer function closely matches the `true'
+        output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
+        \glsfmtshort{rms} error of \SI{12.07e-6}{\mole\per\meter\squared} and a
+        \glsfmtshort{mae} of \SI{31.59e-6}{\mole\per\meter\squared}. Note that the
+        transfer function in~\cref{eq:finaldisctfpos} was originally obtained by
+        scaling the output by 1000. The transfer function output is
+        multiplied by the reciprocal of the same scaling factor to obtain the
+        predicted response shown here, thereby once again confirming the
+        linearity of this subsystem.
+    }%
+    \label{fig:tfpredQepval}
+\end{figure}
 
 % discuss numerical implementation in a section
