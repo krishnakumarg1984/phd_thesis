@@ -350,7 +350,7 @@ introductory overview of this topic.
 The  final  model structures  (for  both  the  positive electrode  and  negative
 electrode time-evolution subsystems) in the z-domain are given by
 \begin{equation}
-    G(z) = \frac{b_1z^{-1} + \dots + b_{n_b}z^{-{n_b}}}{1 + a_1z^{-1} + \dots + a_{n_a}z^{-{n_a}}}
+    G(z) = \frac{b_1z^{-1} + \dots + b_{n_b}z^{-{n_b}}}{1 + a_1z^{-1} + \dots + a_{n_a}z^{-{n_a}}}\label{eq:genericZtf}
 \end{equation}
 wherein the coefficients in the numerator and denominator are to be determined.
 
@@ -509,9 +509,44 @@ time-evolution in these regions.
 %     \label{}
 % \end{figure}
 
+\subsection{Numerical implementation of identified transfer functions}\label{subsec:sysidnumericalimpl}
+
+The  concept of  deploying a  Z-domain  transfer function  may seem  incongruous
+to   the  one   of  the   major  goals   of  this   thesis  \viz{}   time-domain
+implementation of  \glspl{rom} in an  embedded environment such as  a \gls{bms}.
+While  the  majority of  the  models  is  derived  and implemented  entirely  in
+time-domain, only  the two  time-evolution subsystems  of the  electrolyte seems
+to  deviate  from   this  trajectory.  However,  an  explanation   for  this  is
+provided in~\cref{subsec:suitablesysid}.  In particular,  it was  mentioned that
+an  approximation-free  conversion to  time-domain  from  Z-domain exists,  that
+mitigates this  perceived drawback  for these  two sub-systems.  This conversion
+conversion  is  amenable  for  discrete-time implementation  without  any  other
+modifications.
+
+Starting from the generic structure of the identified transfer functions (see~\cref{eq:outputwithsysonly}),
+
+\begin{DispWithArrows}[fleqn,mathindent=0cm,jot=2ex,%
+    ,xoffset=-4mm
+    ]
+    G(z) &= \frac{b_1z^{-1} + \dots + b_{n_b}z^{-{n_b}}}{1 + a_1z^{-1} + \dots + a_{n_a}z^{-{n_a}}} \Arrow{Replace with analogous \\ transfer operator $q=z$ \\ in time domain} \notag\\
+    G(q) &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Apply the definition of $G(q)$}\notag \\
+    \frac{y[k]}{u[k]} &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Cross-multiply}\notag \\
+    \left(1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}\right)y[k] &= \left(b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}\right)u[k] \Arrow{Expand on both sides} \notag \\
+    y[k] + a_1q^{-1}y[k] + \dots + a_{n_a}q^{-{n_a}}y[k] &= b_1q^{-1}u[k] + \dots + b_{n_b}q^{-{n_b}}u[k] \Arrow{Apply the definition\\ $q^{-p}x[k] = x[k-p]$}\notag \\
+    y[k] + a_1y[k-1] + \dots + a_{n_a}y[k-n_a] &= b_1u[k-1] + \dots + b_{n_b}u[k-n_b] \Arrow{Rearrange to obtain\\ the final expression}\notag \\
+    y[k] &= -a_1y[k-1] - \dots - a_{n_a}y[k-n_a] \notag \\[-2ex]
+         &\qquad   + b_1u[k-1] + \dots + b_{n_b}u[k-n_b] %\label{eq:lccde}
+\end{DispWithArrows}
+
+We  thus obtain  a  simple  algebraic expression  (a  difference equation)  that
+computes the output  at the given time-step given past  inputs and outputs. This
+is a highly memory-efficient implementation  since, at any given time-step, only
+the last $n_a$ and  $n_b$ samples of inputs and outputs  need to be `remembered'
+(stored). This concludes all the aspects (derivation and implementation) of this
+author's new model for the electrolyte time-evolution subsystem. The performance
+of  this  model  for  computation  of  electrolyte  concentration  needs  to  be
+evaluated, which is described next.
 
 
 
 
-
-% discuss numerical implementation in a section
