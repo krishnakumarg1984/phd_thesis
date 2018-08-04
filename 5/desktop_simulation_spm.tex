@@ -163,7 +163,7 @@ Nevertheless, the  active surface area is  just the common overlap  area between
 the two  electrodes, and hence  $A_\text{elec}$ is equal to  the cross-sectional
 area of the positive electrode.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Stacking of layers within a pouch cell]
@@ -308,7 +308,7 @@ in~\cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e}{(x,t)})T(t)^2\right)^2
 \end{multline}
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{m2t_kappa_ce_T.pdf}
     \caption[Surface plot of electrolyte conductivity]
@@ -339,7 +339,7 @@ Thus~\cref{eq:kappavsCeinitandTcell}  can be  effectively  visualised through  a
 parametric plot of $\kappa$ vs  $c_\text{e}$ with $T_\text{cell}$ as the varying
 parameter as seen in~\cref{fig:kappavsce}.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{m2t_kappa_ce_parametric_T.pdf}
     \caption[Electrolyte conductivity versus concentration at various cell
@@ -466,7 +466,7 @@ of  high-precision  coulomb counting  assumes  a  practical significance  as  it
 requires no  knowledge of  the cell's parameters  other than  the manufacturer's
 datasheet.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{capacity_match_spm_p2d.pdf}
     \caption[Voltage response of \glsfmtshort{spm} and \glsfmtshort{p2d} models
@@ -515,7 +515,7 @@ reproducible and are presented next in~\cref{subsec:simresultsbasicspm}.
 
 \subsubsection*{Constant current discharge}\label{subsubsec:cnstcurrdischgsim}
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{const_curr_dischg_voltage.pdf}
     \caption[Voltage responses of \glsfmtshort{p2d} and \glsfmtshort{spm} to
@@ -562,7 +562,7 @@ electrolyte dynamics.  Thus, the  overpotential (internal  voltage drop)  in the
 electrolyte  is not  modelled,  which results  in the  terminal  voltage of  the
 \gls{spm} being always higher than its \gls{p2d} counterpart.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{const_curr_dischg_soc.pdf}
     \caption[\glsfmtshort{soc} computed by \glsfmtshort{p2d} and
@@ -631,7 +631,7 @@ being actively sought  after both in academia and in  particular, the automotive
 industry. For establishing the charging performance of the basic \gls{spm}, the
 standard rate of 1C is used.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{const_curr_chg.pdf}
     \caption[Voltage and \glsfmtshort{soc} computed by \glsfmtshort{p2d} and
@@ -679,7 +679,7 @@ cycle  has  been  widely  adopted  by  regulatory  agencies  across  the  world.
 vehicle's speed has been converted to  SI units for use in further computations.
 One complete drivecycle runs for 1369 seconds.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{udds_cycle.pdf}
     \caption{The \glsfmtshort{udds} drivecycle profile}
@@ -706,7 +706,7 @@ profile is  highly dynamic  consisting of  many sets  of rapid  acceleration and
 braking  events. Hence,  this  drivecycle is  chosen  to provide  representative
 results of the model's performance to dynamic inputs.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=10.890625cm]{udds_I_v_soc.pdf} % change the width suitably afterwards
     \caption[Simulation results of \glsfmtshort{p2d} and \glsfmtshort{spm}

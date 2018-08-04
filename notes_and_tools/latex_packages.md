@@ -240,6 +240,7 @@ multicol
 multitoc
 mwe
 natmove
+needspace
 nicefilelist
 noindentafter
 nolbreaks

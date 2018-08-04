@@ -13,7 +13,7 @@ performs a  forward shift on  its input \ie{} $  {q u[k] \longmapsto  u[k+1]} $.
 Similarly, applying the  backward shift operator $ q^{-1} $  on the input yields
 its value at the previous time-step \ie{} $ {q^{-1} u[k] \longmapsto u[k-1]}$.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{placeholder_images/example-image-golden.pdf}
     \caption[Block diagram representing a generic discrete-time \glsfmtshort{lti} system]{%
@@ -136,7 +136,7 @@ spectral analysis  using a Hanning  window implemented using the  MATLAB command
 \texttt{spa.m} is applied to the time-domain data to transform it into frequency
 response data.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{bode_mag.pdf}
     \caption[Bode magnitude plots of the electrolyte time-evolution sub-systems]{%
@@ -407,7 +407,7 @@ The final identified transfer functions (for the scaled output) are
     \frac{\widetilde{Q}_{\text{e,p}}(z)}{\widetilde{I}(z)} & = \frac{-0.002809 z^{-1} + 0.007139 z^{-2} - 0.005944 z^{-3} + 0.001614 z^{-4}}{1 - 3.464 z^{-1} + 4.444 z^{-2} - 2.495 z^{-3} + 0.515 z^{-4}}\label{eq:finaldisctfpos}
 \end{align}
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{p2d_sysid_train_qen.pdf}
     \caption[$\widetilde{Q}_{\text{e,n}}(t)$ outputs from \glsfmtshort{p2d} and
@@ -452,7 +452,7 @@ validation input profile for the subsystem in the positive electrode region. The
 accuracy of  the identified transfer function  for this independent data  set is
 clearly illustrated.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{p2d_sysid_val_qep.pdf}
     \caption[$\widetilde{Q}_{\text{e,p}}(t)$ outputs from \glsfmtshort{p2d} and
@@ -494,7 +494,7 @@ time-evolution in these regions.
 
 % \subsection{Validation of identified transfer functions}
 
-% \begin{figure}[!htb]
+% \begin{figure}[!htbp]
 %     \centering
 %     \begin{varwidth}[b]{0.5\textwidth}
 %         \centering
