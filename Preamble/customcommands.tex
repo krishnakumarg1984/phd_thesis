@@ -669,18 +669,29 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \newlength{\qrr@dimen@}
 \expandafter\pretocmd\csname tabular*\endcsname{\setlength{\qrr@dimen@}{#1}}{}{}
 \newcommand*{\Rowcolor}[2][\tabcolsep]{%
-\ifx\relax#1\relax\else
-    \kern-\the\dimexpr#1\relax
-\fi
-\makebox[0pt][l]{%
-    \fboxsep=0pt
-    \colorbox{#2}{%
-        \strut\kern\qrr@dimen@
+    \ifx\relax#1\relax\else
+        \kern-\the\dimexpr#1\relax
+    \fi
+    \makebox[0pt][l]{%
+        \fboxsep=0pt
+        \colorbox{#2}{%
+            \strut\kern\qrr@dimen@
+        }%
     }%
-}%
-\ifx\relax#1\relax\else
-    \kern\the\dimexpr#1\relax
-\fi
-\ignorespaces
-                                                                                                }
-                                                                                                \makeatother
+    \ifx\relax#1\relax\else
+        \kern\the\dimexpr#1\relax
+    \fi
+    \ignorespaces
+}
+\makeatother
+
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}

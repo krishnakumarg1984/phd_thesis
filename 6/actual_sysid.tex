@@ -404,7 +404,7 @@ $\widetilde{Q}_{\text{e,p}}$ in the positive electrode region.
 The final identified transfer functions (for the scaled output) are
 \begin{align}
     \frac{\widetilde{Q}_{\text{e,n}}(z)}{\widetilde{I}(z)} & = \frac{0.002842 z^{-1} - 0.00753 z^{-2} + 0.006595 z^{-3} - 0.001906 z^{-4}}{1 - 3.577 z^{-1} + 4.767 z^{-2} - 2.801 z^{-3} + 0.6118 z^{-4}} \label{eq:finaldisctfneg}\\
-    \frac{\widetilde{Q}_{\text{e,p}}(z)}{\widetilde{I}(z)} & = \frac{-0.002809 z^{-1} + 0.007139 z^{-2} - 0.005944 z^{-3} + 0.001614 z^{-4}}{1 - 3.464 z^-1 + 4.444 z^-2 - 2.495 z^-3 + 0.515 z^-4}\label{eq:finaldisctfpos}
+    \frac{\widetilde{Q}_{\text{e,p}}(z)}{\widetilde{I}(z)} & = \frac{-0.002809 z^{-1} + 0.007139 z^{-2} - 0.005944 z^{-3} + 0.001614 z^{-4}}{1 - 3.464 z^{-1} + 4.444 z^{-2} - 2.495 z^{-3} + 0.515 z^{-4}}\label{eq:finaldisctfpos}
 \end{align}
 
 \begin{figure}[!htb]
@@ -529,7 +529,7 @@ Starting from the generic structure of the identified transfer functions (see~\c
     ,xoffset=-4mm
     ]
     G(z) &= \frac{b_1z^{-1} + \dots + b_{n_b}z^{-{n_b}}}{1 + a_1z^{-1} + \dots + a_{n_a}z^{-{n_a}}} \Arrow{Replace with analogous \\ transfer operator $q=z$ \\ in time domain} \notag\\
-    G(q) &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Apply the definition of $G(q)$}\notag \\
+    G(q) &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Apply the definition\\ of $G(q)$ on the \glsfmtshort{lhs}}\notag \\
     \frac{y[k]}{u[k]} &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Cross-multiply}\notag \\
     \left(1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}\right)y[k] &= \left(b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}\right)u[k] \Arrow{Expand on both sides} \notag \\
     y[k] + a_1q^{-1}y[k] + \dots + a_{n_a}q^{-{n_a}}y[k] &= b_1q^{-1}u[k] + \dots + b_{n_b}q^{-{n_b}}u[k] \Arrow{Apply the definition\\ $q^{-p}x[k] = x[k-p]$}\notag \\
@@ -541,12 +541,9 @@ Starting from the generic structure of the identified transfer functions (see~\c
 We  thus obtain  a  simple  algebraic expression  (a  difference equation)  that
 computes the output  at the given time-step given past  inputs and outputs. This
 is a highly memory-efficient implementation  since, at any given time-step, only
-the last $n_a$ and  $n_b$ samples of inputs and outputs  need to be `remembered'
-(stored). This concludes all the aspects (derivation and implementation) of this
-author's new model for the electrolyte time-evolution subsystem. The performance
-of  this  model  for  computation  of  electrolyte  concentration  needs  to  be
-evaluated, which is described next.
-
-
-
+the previous $n_a$ (four) output samples  and $n_b$ (four) input samples need to
+be  `remembered'  (stored).  This  concludes all  the  aspects  (derivation  and
+implementation) of  this author's new  model for the  electrolyte time-evolution
+subsystem.  The  performance  of  this  model  for  computation  of  electrolyte
+concentration needs to be evaluated, which is performed next.
 

@@ -7,7 +7,6 @@ adigraph
 adjmulticols
 adjustbox
 afterpage
-afterpagoe
 alertmessage
 aligned-overset
 amsmath
@@ -149,6 +148,7 @@ fetchcls
 filehook
 filemod
 fitbox
+flafter
 float
 floatrow
 flowfram
@@ -261,6 +261,7 @@ pdfoverlay
 pdfpages
 Pdfprivacy
 pdfreview
+perpage for makesorted
 pgfornaments
 pgfplots
 pgfplotstable
