@@ -40,7 +40,7 @@ each of the three approaches ---
         the  \gls{p2d} model is used as the benchmark reference. The  system
         identification model performs noticeably better than the quadratic
         approximation model during  the initial  transient  while delivering a
-        similar performance as a \glsfmtlong{qss} is reached.
+        similar performance as a \gls{qss} is reached.
 }%
 \label{fig:tfquadp2dspatialionicconc1C}
 \end{figure}
@@ -74,6 +74,40 @@ in~\cref{subsubsec:simresultsbaselinequad}.   Therefore  it   is  important   to
 ascertain whether a noteworthy improvement  was achieved using the model arrived
 at using the system identification procedure.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{tf_quad_ce_at_cc_1Cdischg}
+    \caption[%
+    Time evolution  of ionic  concentrations at  current collectors  computed by
+    \glsfmtshort{p2d}, quadratic  approximation \& system  identification models
+    for 1C discharge
+    ]%
+    {%
+    Evolution  of ionic  concentration over  time at  the two  current collector
+    interfaces for a 1C discharge for
+    \begin{enumerate*}[label=\roman*)]
+        \item the \glsfmtshort{p2d} model,
+        \item the quadratic approximation model and
+        \item the newly developed system identification model(s)
+    \end{enumerate*}
+    (top row). For the quadratic approximation and system identification models,
+    the time evolution of their absolute error relative to the \glsfmtshort{p2d}
+    benchmark  is also  shown  (bottom  row). At  both  current collectors,  the
+    transient performance of the system  identification model is superior to the
+    quadratic  approximation model.  At \gls{qss},  the quadratic  approximation
+    model is slightly more accurate than the system identification model.
+}%
+\label{fig:temporalcetfquadratic}
+\end{figure}
+
+\Cref{fig:temporalcetfquadratic} shows the time-evolution of the ionic
+concentrations at the current collector interfaces of the negative and positive
+electrodes for a 1C discharge. The concentration profiles computed by the three
+
+
+% Zoomed in version
+% error table
+% mention about charging
 
 % although constant current discharge is not important, it provides a glimpse on
 % the applicability of the model to dynamic conditions and is a reference
