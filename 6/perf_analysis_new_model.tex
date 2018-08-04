@@ -100,18 +100,109 @@ at using the system identification procedure.
 \label{fig:temporalcetfquadratic}
 \end{figure}
 
-\Cref{fig:temporalcetfquadratic} shows the time-evolution of the ionic
-concentrations at the current collector interfaces of the negative and positive
-electrodes for a 1C discharge. The concentration profiles computed by the three
+\Cref{fig:temporalcetfquadratic}   shows  the   time-evolution   of  the   ionic
+concentrations at the current collector  interfaces of the negative and positive
+electrodes for a 1C discharge. The  concentration profiles computed
+by the three approaches ---
+\begin{enumerate*}[label=\roman*)]
+    \item \glsfmtshort{p2d} model,
+    \item quadratic approximation model and the
+    \item newly developed system identification model(s)
+\end{enumerate*}
+are overlaid in the top row of  plots, wherein the left hand side corresponds to
+the  current collector  interface  at  the negative  electrode  while the  right
+hand  side  corresponds  to  that  at  the  positive  electrode.  The  plots  in
+the bottom  row of~\cref{fig:temporalcetfquadratic}  show the  time-evolution of
+the  absolute  value  of  their  errors. The  concentration  error  of  each  of
+the  two  \glspl{rom}  is  defined  with  respect  to  the  benchmark  \gls{p2d}
+model  \ie{}  $\varepsilon_{c_{\text{e,}j}(t)}   =  c_{\text{e,}j_\text{ROM}}  -
+c_{\text{e,}j_\text{p2d}}(t)$. The  absolute value  of the  error is  plotted so
+that  the magnitude  of the  error can  be visualised  better, aiding  immediate
+comparisons based on the plots.
 
+For both  current collectors,  the newly  developed system  identification model
+outperforms the  quadratic approximation  model during  the transient  phase. At
+the  negative electrode/current  collector interface,  the error  of the  system
+identification model remains strictly below  that of the quadratic approximation
+model until \approx \SI{650}{\second} and remains comparable to it until \approx
+\SI{1600}{\second}. Beyond  this time, the  quadratic approximation model  has a
+slightly better accuracy, although the system identification model still remains
+at a comparable distance from  it. After \approx \SI{2000}{\second}, both models
+yield  the same  response shape.  For the  positive electrode/current  collector
+interface, the  error of the system  identification model remains below  that of
+the quadratic approximation model until \approx \SI{3300}{\second}.
 
-% Zoomed in version
-% error table
-% mention about charging
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{zoomed_tf_quad_ce_at_cc_1Cdischg.pdf}
+    \caption[%
+    Transient phase of ionic  concentration evolution at  the two current collectors  computed by
+    \glsfmtshort{p2d}, quadratic  \& system  identification models
+    for 1C discharge
+    ]%
+    {%
+    Transient phase of the temporal evolution  of ionic  concentration at  the two  current collector
+    interfaces for a 1C discharge as computed by ---
+    \begin{enumerate*}[label=\roman*)]
+        \item the \glsfmtshort{p2d} model,
+        \item the quadratic approximation model, and
+        \item the newly developed system identification model(s).
+    \end{enumerate*}
+    The significantly improved accuracy of the system identification model(s)
+    relative to the state of the art quadratic approximation model is clearly demonstrated.
+}%
+\label{fig:zoomedcetfquadtemporal}
+\end{figure}
 
-% although constant current discharge is not important, it provides a glimpse on
-% the applicability of the model to dynamic conditions and is a reference
-% benchmark. Why is it not possible to use this for dynamic inputs? Explain how
-% large concentration gradients are established that deviate away from the
-% training profile. So the small-signal approximation used by the discrete-time
-% transfer function no longer holds true.
+\Cref{fig:zoomedcetfquadtemporal} shows  a zoomed version of  the time-evolution
+of the  ionic concentration  at the  two current  collectors, wherein  the first
+\SI{300}{\second}  after  application  of  the  load  current  is  plotted.  The
+significant  improvement in  accuracy  achieved by  the  newly developed  system
+identification model(s) is clearly demonstrated. At both the current collectors,
+the concentration computed  by the system identification  model(s) closely track
+that of the benchmark \gls{p2d} model.
+
+The  loss  of fidelity  exhibited  past  the  initial transient  phase  warrants
+an  explanation. It  should  be  recalled that  the  natural  decoupling of  the
+temporal and  spatial systems were taken  advantage of in developing  the system
+identification technique. This  means that, for the spatial  profile, the system
+identification  model reverts  to the  same  quadratic profile  as the  baseline
+quadratic approximation  model. This  explains why the  two models  have similar
+shape past the initial transient. During  the transient phase when the \gls{qss}
+behaviour is yet to be established, it is reasonable to assume that the temporal
+dynamics  are of  paramount importance  in governing  the concentration  profile
+evolution.  After a  \gls{qss}  has  been established  with  the reaction  front
+diffusing out  and a steady  stream of ion-electron  separation/recombination in
+place,  it is  hypothesised  that the  temporal dynamics  have  settled and  the
+spatial configuration assumes importance.
+
+With a  sustained application  of constant current  past the  initial transient,
+strong spatial gradients  in the ionic concentration are  established within the
+cell \ie{} the  concentrations are far from the initial  equilibrium value. This
+precisely  exposes the  realm  where the  system  identification model  exhibits
+its  natural  weakness.  By  following  the  theory  of  system  identification,
+which  necessitates   bias  removal,   the  training  and   validation  profiles
+of~\cref{fig:sysidtrainingcurrent}   and~\cref{fig:sysidvalidationcurrent}   had
+nearly  zero mean.  This means  that the  currents were  as equally  positive as
+negative leading to a small-signal  perturbation around the equilibrium value of
+the electrolyte  concentration. While this  profile is ideally suited  to excite
+the system's  dynamics, it  fails to  capture the large  signal behaviour.  As a
+topic  of future  research,  perhaps a  spatially-coupled system  identification
+could be attempted to handle this issue.
+
+The  main  implication of  these  results  is  that  the identified  models  are
+primarily suitable for  transient \ie{} dynamic load profiles,  which is typical
+of a real-life scenario in an electric/hybrid electric vehicular operation. Such
+a  model is  less  suitable  for sustained  constant  current application.  This
+implies that  a \gls{bms} in a  vehicle undergoing a \gls{cccv}  charging cannot
+rely on  these identified electrolyte  models. However, this exclusion  does not
+seriously hamper the model's wider applicability since a simple coulomb-counting
+approach with  a high-precision \gls{adc} is  much more accurate than  any other
+physics based model in this particular scenario.
+
+Although constant  current discharge is  not a practical use-case  for vehicular
+batteries, performing this benchmark evaluation  has helped in understanding the
+limits of the newly  developed model. This study has also  helped in providing a
+glimpse of its  potential strength \viz{} significantly  improved accuracy under
+dynamic load conditions, which is presented next.
+
