@@ -515,6 +515,13 @@ reproducible and are presented next in~\cref{subsec:simresultsbasicspm}.
 
 \subsubsection*{Constant current discharge}\label{subsubsec:cnstcurrdischgsim}
 
+The  left  column  of~\cref{fig:cnstdischgspmp2dvoltage} shows  the  time-domain
+voltage response of the basic \gls{spm} for various constant discharge currents.
+The voltage response of the \gls{p2d} model  is also overlaid on these plots and
+is used  as a  reference benchmark  for comparisons.  It is  difficult to  use a
+common  time-scale for  the horizontal  axes of  the plots  since the  run-times
+differ by two orders of magnitude for the C-rates considered.
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{const_curr_dischg_voltage.pdf}
@@ -530,17 +537,9 @@ reproducible and are presented next in~\cref{subsec:simresultsbasicspm}.
     \label{fig:cnstdischgspmp2dvoltage}
 \end{figure}
 
-The  left  column  of~\cref{fig:cnstdischgspmp2dvoltage} shows  the  time-domain
-voltage response of the basic \gls{spm} for various constant discharge currents.
-The voltage response of the \gls{p2d} model  is also overlaid on these plots and
-is used  as a  reference benchmark  for comparisons.  It is  difficult to  use a
-common  time-scale for  the horizontal  axes of  the plots  since the  run-times
-differ by two orders of magnitude for the C-rates considered.
-
-Since  these comparisons have
-to  be done  across  multiple  C-rates, each  yielding  different magnitudes  in
-voltage responses,  it is  helpful to use  a relative error  metric such  as the
-percentage error, defined as
+Since these comparisons  have to be done across multiple  C-rates, each yielding
+different magnitudes in voltage responses, it is helpful to use a relative error
+metric such as the percentage error, defined as
 \begin{equation}
     \hat{\varepsilon}_v\,(\si{\percent}) = 100\frac{V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}}{V_{\text{cell}_\text{p2d}}}
 \end{equation}

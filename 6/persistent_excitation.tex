@@ -39,19 +39,7 @@ considerations, the  peak amplitude of the  input current was fixed  at 2C \ie{}
 \ordfrac{2}{3} of the \gls{udds} profile's peak current amplitude.
 
 \subsection{Training current profile}\label{subsec:trainingprofile}
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics{sysid_train_input.pdf}
-    \captionsetup{singlelinecheck=off}
-    \caption[Input current profile used as the training set for system
-    identification]{Input current profile used as the training set for system
-    identification. The sequence consists of
-    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
-        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
-covering both low and high frequency spectra while incorporating the potential
-to excite any periodic modes in the system to be identified.}
-    \label{fig:sysidtrainingcurrent}
-\end{figure}
+
 Since not much prior  information is available about the poles  and zeros of the
 electrolyte subsystem(s)  in question, a wide  variety of special waveforms  with a
 sampling interval of \SI{1}{\second} were used for the current perturbation used
@@ -74,6 +62,20 @@ frequency  spectra in  the  combined  training set  presents  a  high degree  of
 confidence to  capture the relevant  dynamics of the electrolyte  subsystem. The
 input  current profile  used  for  this system  identification  task is  plotted
 in~\cref{fig:sysidtrainingcurrent}.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{sysid_train_input.pdf}
+    \captionsetup{singlelinecheck=off}
+    \caption[Input current profile used as the training set for system
+    identification]{Input current profile used as the training set for system
+    identification. The sequence consists of
+    \begin{enumerate*}[label=\emph{\alph*})] \item a \glsfmtlong{rbs}, \item a
+        chirp or swept cosine signal (0--\SI{100}{\milli\hertz}), and \item a periodic \glsfmtlong{rbs} \end{enumerate*} thereby
+covering both low and high frequency spectra while incorporating the potential
+to excite any periodic modes in the system to be identified.}
+    \label{fig:sysidtrainingcurrent}
+\end{figure}
 
 \subsection{Validation current profile}
 

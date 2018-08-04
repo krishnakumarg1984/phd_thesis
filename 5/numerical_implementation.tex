@@ -256,6 +256,12 @@ written to the relevant \glspl{dac}.
 
 \subsection{Sample Delay Considerations}
 
+\Cref{fig:timingdiagramSmall} shows a timeline view of all CPU activities across
+a larger  time horizon.  The CPU's  load factor is  the ratio  of time  spent in
+foreground requests to  its idling time. While a high  load factor is beneficial
+in  terms of  efficient  usage  of resources,  it  adversely  affects the  power
+efficiency of the chip.
+
 \begin{figure}[!htbp]
     \centering
     \hrulefill
@@ -266,12 +272,6 @@ written to the relevant \glspl{dac}.
     background tasks. The servicing of \gls{isr} occupies a relatively small fraction.}
     \label{fig:timingdiagramSmall}
 \end{figure}
-
-\Cref{fig:timingdiagramSmall} shows a timeline view of all CPU activities across
-a larger  time horizon.  The CPU's  load factor is  the ratio  of time  spent in
-foreground requests to  its idling time. While a high  load factor is beneficial
-in  terms of  efficient  usage  of resources,  it  adversely  affects the  power
-efficiency of the chip.
 
 For  Li-ion  cell  modelling,  a  sampling interval  of  $T_s  =  1$\si{\second}
 is   commonly  used,   thus  aiming   to   capture  the   cell  dynamics   below
@@ -295,14 +295,7 @@ omitted in this thesis for discrete-time formulation of the \gls{spm} model.
 
 \subsection{Discrete-Time \glsfmtshort{spm} Formulation}
 
-\begin{figure}[!htbp]
-    \centering
-    % show block diagram cross-referencing equation and a question mark for the
-    % dt system
-    \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption[Block-diagram of continuous and discrete-time systems]{Block-diagram of the plant model and associated signals of a continuous-time system and its discrete-time counterpart}
-    \label{fig:blockdiagctsdisc}
-\end{figure}
+
 
 \Cref{fig:blockdiagctsdisc} shows  a block  diagram representation of  the plant
 model its associated input and output signals. Due to the sampling and \gls{zoh}
@@ -313,6 +306,16 @@ sequences,  \ie{} $u(t)  \mapsto  u[k]$  and $y(t)  \mapsto  y[k]$,  where $k  =
 $t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
 system of~\cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
 and modelled by a \emph{difference} equation which is to be determined.
+
+\begin{figure}[!htbp]
+    \centering
+    % show block diagram cross-referencing equation and a question mark for the
+    % dt system
+    \includegraphics{placeholder_images/example-image-golden.pdf}
+    \caption[Block-diagram of continuous and discrete-time systems]{Block-diagram of the plant model and associated signals of a continuous-time system and its discrete-time counterpart}
+    \label{fig:blockdiagctsdisc}
+\end{figure}
+
 
 Consider       the       general      continuous-time       solution       given
 by~\cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k  =
