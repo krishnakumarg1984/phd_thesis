@@ -206,14 +206,49 @@ limits of the newly  developed model. This study has also  helped in providing a
 glimpse of its  potential strength \viz{} significantly  improved accuracy under
 dynamic load conditions, which is presented next.
 
-\subsection{Dynamic load profiles}
+\subsection{Dynamic current inputs}
 
+To characterise  the performance  of the  newly developed  system identification
+electrolyte   concentration  model(s)   under  dynamic   load  conditions,   the
+\gls{udds}  drivecycle  was  used.  The  details  of  this  drivecycle  such  as
+its  speed  versus  time  data  and its  highly  dynamic  nature  was  discussed
+in~\cref{subsubsec:dynamicspmp2dsim}. The peak of  the applied load current used
+corresponds to a discharge current of \SI{180}{\ampere} \ie{} 3C. A plot of this
+current  profile was  shown in  the top  row of~\cref{fig:uddssimp2dspmresults}.
+This  load  profile  was  applied   to  the  three  models  under  consideration
+$\big($\begin{enumerate*}[label=\itshape\alph*\upshape)] \item \glsfmtshort{p2d}
+model,  \item   quadratic  approximation   model,  and  \item   newly  developed
+system identification  model(s) \end{enumerate*}$\big)$ and  the spatio-temporal
+evolution of  ionic concentration in  electrolyte computed  by each of  them was
+studied.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{tf_quad_ce_at_cc_udds}
-    \caption{}
-    \label{}
+    \caption[%
+    Time   evolution  of   ionic  concentrations   at  current   collectors  for
+    \glsfmtshort{p2d}, quadratic  approximation \& system  identification models
+    with a \glsfmtshort{udds} input profile
+    ]%
+    {%
+        Evolution of ionic concentration over  time at the two current collector
+        interfaces with  a \gls{udds}  input profile (see  topmost plot
+        of~\cref{fig:uddssimp2dspmresults}) as computed by
+        \begin{enumerate*}[label=\roman*)]
+            \item the \glsfmtshort{p2d} model,
+            \item the quadratic approximation model and
+            \item the newly developed system identification model(s)
+        \end{enumerate*}
+        (top   row).  The   plots  on   the   left  pertain   to  the   negative
+        electrode/current  collector   interface,  while   that  on   the  right
+        corresponds to  the positive electrode/current collector  interface. For
+        the  quadratic approximation  and  system  identification models,  their
+        absolute error relative to the \glsfmtshort{p2d} benchmark is also shown
+        (bottom  row).  The system  identification  model  is considerably  more
+        accurate  than the  quadratic approximation  model for  the entire  time
+        horizon of the drivecycle.
+    }%
+    \label{fig:uddsTfQuadCeatCC}
 \end{figure}
 
 \begin{figure}[!htbp]
