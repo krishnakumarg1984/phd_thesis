@@ -200,7 +200,7 @@ examined next.
 Due to spherical symmetry,  flux at the centre of the  particle is considered to
 be zero
 \begin{equation}\label{eq:csfluxcentre}
-    \diffp{c_\sj}{r}{r=0} = 0
+    \diffp{c_\sj}{r}{\mathrlap{r=0}} = 0
 \end{equation}
 The   surface  of   each   particle  experiences   a   pore-wall  flux   density
 driven  by  reaction  kinetics.  Based   on  the  \gls{spm}  geometry  discussed
@@ -210,7 +210,7 @@ density  $j_\nj(x,t)$  is  eliminated  and can  be  represented  as  $j_\nj(t)$,
 omitted  resulting in  a simplified  notation  $j_\nj$. Hence,  at the  particle
 surface
 \begin{equation}\label{eq:csfluxsurface}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} = -j_\nj
+    D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} = -j_\nj
 \end{equation}
 The sign convention chosen here is such that pore-wall flux leaving the particle
 surface is considered to be positive.
@@ -223,7 +223,7 @@ a  uniform   charge  density   throughout  the   thickness  of   each  electrode
 \begin{align}
     j_\nj(t)                       &= ± \frac{I(t)}{A \, l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
     \shortintertext{Substituting~\cref{eq:uniformcurrdensity} in~\cref{eq:csfluxsurface},}
-    D_\sj\diffp{c_\sj}{r}{r=R_\pj} &= ∓ \frac{I}{A \, l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
+    D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} &= ∓ \frac{I}{A \, l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
 wherein   the  load   current  $I(t)   >  0$   for  discharge,   whose  explicit
 time-dependence has been  omitted in~\cref{eq:csfluxsurfacefinal} for consistent
