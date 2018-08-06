@@ -288,7 +288,10 @@ Particular, when a sudden current spike is applied at \approx \SI{200}{\second},
 the  quadratic approximation  model is  unable to  cope and  its absolute  error
 deviates  far  away   from  its  mean  value.  The  absolute   error  of  system
 identification model  remains well controlled  and even with  this instantaneous
-load demand, remains close to its median value.
+load demand, its standard deviation is remarkably close to its median value as
+shown in~\cref{tbl:errormetricsquadtfce}.
+
+\input{6/ce_error_table_udds}
 
 While the  superior accuracy of the  newly developed model during  the transient
 phase  was not  surprising, the  fact  that its  performance remains  consistent
@@ -310,7 +313,8 @@ that  the difference  in their  amplitude arises  from the  improved calculation
 of coefficients  $a_k(t)$ in~\cref{eq:cenqquadstart} and~\cref{eq:cepqquadstart}
 through  the  usage  of  more  accurate  $Q_{\text{e,n}}$  and  $Q_{\text{e,p}}$
 in  the  \gls{lhs} of~\cref{eq:Qenbyintegration}  and~\cref{eq:Qepbyintegration}
-respectively.
+respectively.  Detailed   error  metrics  of   the  two  \glspl{rom}   is  shown
+in~\cref{tbl:errormetricsquadtfce}.
 
 \begin{figure}[!htbp]
     \centering

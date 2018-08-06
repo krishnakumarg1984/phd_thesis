@@ -695,3 +695,14 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \setcounter{bottomnumber}{9}
 \setcounter{totalnumber}{20}
 \setcounter{dbltopnumber}{9}
+
+
+% % https://tex.stackexchange.com/questions/34225/different-font-sizes-for-different-rows-in-table/34226
+% \makeatletter
+% \g@addto@macro{\endtabular}{\rowfont{}}% Clear row font
+% \makeatother
+% \newcommand{\rowfonttype}{}% Current row font
+% \newcommand{\rowfont}[1]{% Set current row font
+%     \gdef\rowfonttype{#1}#1%
+% }
+% \newcolumntype{L}{>{\rowfonttype}l}
