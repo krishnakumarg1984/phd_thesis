@@ -16,7 +16,7 @@ inputs ---
     \item dynamic load profiles
 \end{enumerate*}
 
-\subsection{Constant current inputs}
+\subsection{Constant current inputs}\label{subsec:tfquadceconstcurrinput}
 
 \Cref{fig:tfquadp2dspatialionicconc1C} shows  the spatial distribution  of ionic
 concentration  in  the electrolyte  along  cell  thickness  for a  1C  discharge
@@ -218,9 +218,36 @@ current  profile was  shown in  the top  row of~\cref{fig:uddssimp2dspmresults}.
 This  load  profile  was  applied   to  the  three  models  under  consideration
 $\big($\begin{enumerate*}[label=\itshape\alph*\upshape)] \item \glsfmtshort{p2d}
 model,  \item   quadratic  approximation   model,  and  \item   newly  developed
-system identification  model(s) \end{enumerate*}$\big)$ and  the spatio-temporal
-evolution of  ionic concentration in  electrolyte computed  by each of  them was
-studied.
+system identification  model(s) \end{enumerate*}$\big)$
+and the spatio-temporal evolution of ionic concentration in electrolyte computed
+by each of them was studied.
+
+Since  the  load   current  is  highly  dynamic   and  continuously  alternating
+between  charging   and  discharging   at  various  magnitudes   throughout  the
+profile   duration,   it   is   difficult  to   discern   a   specific   pattern
+or   trend  within   the  spatial   thickness   of  the   cell.  Hence,   unlike
+the   case   of  prolonged   unidirectional   current   application  wherein   a
+clear   reaction  front   that  diffuses   gradually  out   can  be   visualised
+(see~\cref{fig:tfquadp2dspatialionicconc1C}), little  information can  be gained
+from  visualisation   of  spatial   concentration  profiles.  Since   the  ionic
+concentrations at  the two  current collectors have  a direct  (and two-pronged)
+influence on the  electrolyte overpotential (see~\cref{eq:electrolytepdwithce}),
+it is particularly important to characterise  the accuracy at these two critical
+spatial locations.
+
+Since a  direct correspondence between  the time-dependent dynamics of  the load
+profile and that of the electrolyte concentration can be intuitively visualised,
+its values  at the two current  collector interfaces are examined.  The plots in
+the top row of \cref{fig:uddsTfQuadCeatCC} shows the time evolution of the ionic
+concentration at the two current  collector locations for the \gls{udds} current
+profile computed by  each of the three models under  consideration. The plots to
+the left  pertain to the negative  current collector location while  that to the
+right correspond to  the positive current collector location. The  bottom row of
+plots show the absolute value of concentration error of the quadratic and system
+identification models relative to the  \gls{p2d} reference benchmark. As seen in
+in~\cref{fig:uddsTfQuadCeatCC}, the absolute error of the newly developed system
+identification models remain below that  of the baseline quadratic approximation
+model throughout the drivecycle.
 
 \begin{figure}[!htbp]
     \centering
@@ -251,10 +278,71 @@ studied.
     \label{fig:uddsTfQuadCeatCC}
 \end{figure}
 
+Based   on   the   conclusions   from   the   constant   current   input   study
+of~\cref{subsec:tfquadceconstcurrinput},  it   is  to   be  expected   that  the
+system  identification  model(s)  exhibit  a  superior  performance  during  the
+transient  phase   of  the   simulation.  As  seen   in  the   initial  duration
+of~\cref{fig:uddsTfQuadCeatCC}, the absolute error  of the system identification
+model is indeed  lower than that of the baseline  quadratic approximation model.
+Particular, when a sudden current spike is applied at \approx \SI{200}{\second},
+the  quadratic approximation  model is  unable to  cope and  its absolute  error
+deviates  far  away   from  its  mean  value.  The  absolute   error  of  system
+identification model  remains well controlled  and even with  this instantaneous
+load demand, remains close to its median value.
+
+While the  superior accuracy of the  newly developed model during  the transient
+phase  was not  surprising, the  fact  that its  performance remains  consistent
+throughout  the  entire  time  horizon  is  noteworthy.  Despite  being  subject
+to  incessant  changes   in  load  demands,  the   system  identification  model
+responds better  than the  quadratic approximation model  well past  the initial
+transient.  \Cref{fig:zoomedcetfquadtemporaludds} shows  a  zoomed  view of  the
+ionic concentration in the electrolyte  at the two current collector interfaces.
+To prove the improved performance of the developed model well into the operation
+o of the cell, a  \SI{50}{\second} window beginning at \approx \SI{60}{\percent}
+of the overall profile duration is examined in detail. Although it exhibits some
+oscillations,  the system  identification model(s)  reasonably track  the `true'
+concentrations computed by the \gls{p2d}  model. However, the baseline quadratic
+approximation  model seems  to suffer  from  a large  bias with  respect to  the
+\gls{p2d} model.  It should also  be noted that nearly  every `kink' in  the two
+\glspl{rom}  is identical.  This could  be attributed  to the  fact the  spatial
+profile  used  in  both of  them  is  identical.  Hence,  it must  be  concluded
+that  the difference  in their  amplitude arises  from the  improved calculation
+of coefficients  $a_k(t)$ in~\cref{eq:cenqquadstart} and~\cref{eq:cepqquadstart}
+through  the  usage  of  more  accurate  $Q_{\text{e,n}}$  and  $Q_{\text{e,p}}$
+in  the  \gls{lhs} of~\cref{eq:Qenbyintegration}  and~\cref{eq:Qepbyintegration}
+respectively.
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{zoomed_tf_quad_ce_at_cc_udds}
-    \caption{}
-    \label{}
+    \caption[%
+    Zoomed view of ionic  concentration at  both current collectors  computed by
+    the \glsfmtshort{p2d}, quadratic  \& system  identification models
+    for the \glsfmtshort{udds} profile
+    ]%
+    {%
+        A zoomed  view of  the ionic  concentration (showing  a \SI{50}{\second}
+        window  beginning at  \approx \SI{60}{\percent}  of the  overall profile
+        duration) in the electrolyte at the two current collector interfaces for
+        the \gls{udds} profile of~\cref{fig:uddssimp2dspmresults} as computed by
+        ---
+        \begin{enumerate*}[label=\roman*)]
+            \item the \glsfmtshort{p2d} model,
+            \item the quadratic approximation model, and
+            \item the newly developed system identification model(s).
+        \end{enumerate*}
+        At both current collector interfaces, the system identification model(s)
+        exhibits  a reasonable  tracking of  the concentration  profile computed
+        by  the  benchmark \gls{p2d}.  The  profile  computed by  the  quadratic
+        approximation  model  seems  to  suffer from  offsets/bias  issues  that
+        adversely affects its accuracy.
+}%
+\label{fig:zoomedcetfquadtemporaludds}
 \end{figure}
 
+Based  on  the  evidence presented  thus  far,  it  can  be concluded  that  the
+time-evolution subsystem model(s) developed here using the system identification
+technique  indeed  represent  an  advancement  of the  field  of  reduced  order
+electrolyte  modelling. With  this  aspect  thus tackled,  it  is imperative  to
+explore the potential benefits of  incorporating the discrete-time model(s) thus
+obtained into the basic \gls{spm} and is discussed next.
