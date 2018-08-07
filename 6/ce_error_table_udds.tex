@@ -6,23 +6,8 @@
 
 \begin{table}[!htbp]
     \centering
-    \caption{}
+    \caption[Error statistics for the quadratic approximation \& system identification models]{Summary of error statistics for the quadratic approximation and system identification models. The metric used is the absolute value of the concentration difference with respect to the \glsfmtshort{p2d} model at the two current collector interfaces.}
     \label{tbl:errormetricsquadtfce}
-    % \begin{tabular}{@{} c l S[table-format=3.2] S[table-format=3.2] @{}}
-    %     \toprule
-    %     \makecell{Region \& \\Quantity} & \makecell{Error  metric \\ (\si{\mole\per\meter\cubed})} & {\makecell{Baseline quadratic \\ approximation model}} & {\makecell{New system\\ identification  model}} \\
-    %     \midrule
-    %     \multirow{4}{*}{\makecell{\small Neg/CC \\ \small $\big\lvert \varepsilon_{c_\text{e,pos/cc}} \big \rvert$}} & Max   & 307.27  & 190.04 \\
-    %     {}                                & Mean                                                       & 66.38 & 54.98  \\
-    %     {}                                & Median                                                     & 49.65 & 47.12  \\
-    %     {}                                & Standard Deviation                                         & 66.80 & 37.18  \\
-    %     % \cmidrule(1r){1-4}
-    %     \multirow{4}{*}{\makecell{\small Pos/CC \\ \small $\big\lvert \varepsilon_{c_\text{e,pos/cc}} \big \rvert$}} & Max   & 292.20  & 114.44 \\
-    %     {}                                & Mean                                                       & 55.15 & 25.02  \\
-    %     {}                                & Median                                                     & 40.39 & 20.93  \\
-    %     {}                                & Standard Deviation                                         & 60.50 & 20.17  \\
-    %     \bottomrule
-    % \end{tabular}
     \begin{tabular}{@{} l S[table-format=3.2] S[table-format=3.2] S[table-format=3.2] S[table-format=3.2] @{}}
         \toprule
         \multirow{2}[2]{*}{\makecell{Error  statistic \\ (\si{\mole\per\meter\cubed})}} & \multicolumn{2}{c}{$\big\lvert \varepsilon_{c_\text{e}} \big \rvert$ at Neg/CC} &

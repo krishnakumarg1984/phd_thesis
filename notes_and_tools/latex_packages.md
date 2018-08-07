@@ -1,6 +1,9 @@
 % vim: nospell
 
 a2ping utility
+isodoc
+simpleinvoice
+phonenumbers
 academicons
 accsup
 adigraph
