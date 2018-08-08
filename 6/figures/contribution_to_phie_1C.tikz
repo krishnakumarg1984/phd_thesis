@@ -1,0 +1,141 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.38824,0.38824,0.38824}%
+\definecolor{mycolor2}{rgb}{0.74118,0.74118,0.74118}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=118.108mm,
+height=70.726mm,
+at={(0mm,0mm)},
+scale only axis,
+clip=false,
+xmin=0,
+xmax=4000,
+xtick={0,500,1000,1500,2000,2500,3000,3500,4000},
+xlabel style={font=\color{white!15!black}},
+xlabel={time (s)},
+ymin=-0.2,
+ymax=0,
+ytick={ -0.2, -0.16, -0.12, -0.08, -0.04,     0},
+ylabel style={font=\color{white!15!black}},
+ylabel={V},
+axis background/.style={fill=white},
+legend style={font=\footnotesize},title style={yshift=-1.75ex,},xticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=0,/pgf/number format/fixed,/pgf/number format/fixed zerofill,},yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }, ylabel absolute,  ylabel style={rotate=-90}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0	0\\
+3	-0.00135974\\
+7	-0.00290112\\
+13	-0.00495453\\
+21	-0.00742305\\
+31	-0.0102408\\
+42	-0.0131082\\
+55	-0.0162624\\
+69	-0.0194274\\
+84	-0.0225907\\
+100	-0.0257392\\
+118	-0.0290386\\
+137	-0.0322791\\
+157	-0.0354573\\
+179	-0.0387155\\
+203	-0.0420263\\
+229	-0.0453684\\
+257	-0.0487261\\
+287	-0.0520879\\
+320	-0.0555462\\
+355	-0.0589785\\
+393	-0.0624665\\
+433	-0.0659003\\
+475	-0.0692681\\
+518	-0.0724827\\
+562	-0.0755414\\
+607	-0.0784391\\
+653	-0.0811694\\
+700	-0.0837257\\
+748	-0.0861023\\
+797	-0.0882951\\
+847	-0.0903024\\
+899	-0.0921583\\
+953	-0.0938538\\
+1010	-0.0954094\\
+1070	-0.0968131\\
+1134	-0.0980769\\
+1203	-0.0992057\\
+1279	-0.100212\\
+1363	-0.101087\\
+1458	-0.10184\\
+1568	-0.102472\\
+1699	-0.102985\\
+1863	-0.103385\\
+2082	-0.103672\\
+2413	-0.103852\\
+3068	-0.103932\\
+3600	-0.103941\\
+};
+\addplot [color=mycolor2, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0	-0.061791\\
+3600	-0.061791\\
+};
+\addplot [color=black, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0	-0.061791\\
+3	-0.0631507\\
+7	-0.0646921\\
+13	-0.0667455\\
+21	-0.069214\\
+31	-0.0720317\\
+42	-0.0748991\\
+55	-0.0780534\\
+69	-0.0812183\\
+84	-0.0843816\\
+100	-0.0875301\\
+118	-0.0908296\\
+137	-0.09407\\
+157	-0.0972483\\
+179	-0.100507\\
+203	-0.103817\\
+229	-0.107159\\
+257	-0.110517\\
+287	-0.113879\\
+320	-0.117337\\
+355	-0.120769\\
+393	-0.124257\\
+433	-0.127691\\
+475	-0.131059\\
+518	-0.134274\\
+562	-0.137332\\
+607	-0.14023\\
+653	-0.14296\\
+700	-0.145517\\
+748	-0.147893\\
+797	-0.150086\\
+847	-0.152093\\
+899	-0.153949\\
+953	-0.155645\\
+1010	-0.1572\\
+1070	-0.158604\\
+1134	-0.159868\\
+1203	-0.160997\\
+1279	-0.162003\\
+1363	-0.162878\\
+1458	-0.163631\\
+1568	-0.164263\\
+1699	-0.164776\\
+1863	-0.165176\\
+2082	-0.165463\\
+2413	-0.165643\\
+3068	-0.165723\\
+3600	-0.165732\\
+};
+\node[right, align=left]
+at (rel axis cs:0.467,0.52) {Concentration Polarisation};
+\node[right, align=left]
+at (rel axis cs:0.467,0.73) {Ohmic Loss in Bulk Solution};
+\node[right, align=left]
+at (rel axis cs:0.467,0.21) {Overall $\Delta \phi_\mathrm{e}(t)$ in Electrolyte};
+\end{axis}
+\end{tikzpicture}%
