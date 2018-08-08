@@ -148,14 +148,16 @@ polarisation term, however has a stronger contribution in both the transient and
 steady  state. The  entire dynamics  of the  overall potential  drop during  the
 transient  phase is  governed by  this concentration-dependent  term, while  its
 steady state contribution  is in-fact higher than the  bulk solution resistance.
-In questioning whether the system identification exercise was indeed worthwhile,
-if the  concentrations in the  two current collectors  had not been  computed at
-each time-step, then this diffusion polarisation term would become zero. This is
-because, the numerator and denominator in~\cref{eq:electrolytepdwithcenew} would
-have  to be  retained at  the  initial concentration,  leading to  a unit  ratio
-whose  natural logarithm  is zero.  Therefore, it  is clear  that computing  the
-concentrations at the  two current collectors through  system identification has
-indeed helped in improving the modelling accuracy.
+The  constant  ohmic resistance  term  merely  provides  a non-zero  offset  for
+the  electrolyte  solution  overpotential.  In questioning  whether  the  system
+identification exercise was indeed worthwhile,  if the concentrations in the two
+current collectors had not been computed  at each time-step, then this diffusion
+polarisation  term  would  become  zero.  This is  because,  the  numerator  and
+denominator in~\cref{eq:electrolytepdwithcenew} would have to be retained at the
+initial concentration, leading to a unit  ratio whose natural logarithm is zero.
+Therefore, it  is clear  that computing  the concentrations  at the  two current
+collectors  through system  identification has  indeed helped  in improving  the
+modelling accuracy.
 
 Having established the relative  importance of computing the diffusion-dependent
 polarisation   overpotential,   the   next    question   to   be   answered   is
@@ -167,13 +169,23 @@ computation of  electrolyte overpotential. This  is answered by a  comparing the
 electrolyte overpotential computed by the  system identification model with that
 obtained from the \gls{p2d} model.
 
-
-
 \begin{figure}[!htbp]
     \centering
     \includegraphics{phie_delta_cnst_1C.pdf}
-    \caption{Hello world}
-    \label{}
+    \caption{%
+        Comparison   of   electrolyte overpotential   computed
+        by   the   \gls{p2d}  model   and   the   system  identification   model
+        (using~\cref{eq:electrolytepdwithcenew}) for a 1C discharge. During the
+        transient phase, the profile obtained by the system identification model
+        closely matches that of the \gls{p2d}  model. The mismatch in the
+        initial overpotential  does not  arise to  the use  of a  constant
+        concentration for the bulk resistance contribution, since
+        at equilibrium this value is exact and not an approximation. Past the
+        initial transient, accuracy of the system identification model
+        degrades. This can be explained by its analogous behaviour for
+        concentration computation in the \glsfmtlong{qss} (see~\cref{subsec:tfquadceconstcurrinput}).
+    }%
+    \label{fig:phiedeltacnst1C}
 \end{figure}
 
 \begin{figure}[!htbp]
