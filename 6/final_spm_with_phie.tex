@@ -14,13 +14,7 @@ art. The next step  is to embed this electrolyte model  into the basic \gls{spm}
 so as to  obtain a composite \gls{spm}. The performance  of this composite model
 is evaluated to ascertain its suitability towards online implementation.
 
-\subsection{Computation of electrolyte overpotential}
-
-In~\cref{subsec:simresultsbasicspm}, it  was shown that in  the basic \gls{spm},
-the computation of the cell's \gls{soc}  is of sufficient accuracy. However, its
-terminal voltage is  far from the true  value as computed by  a \gls{p2d} model.
-This mismatch between \gls{soc} and  terminal voltage hinders the suitability of
-the basic \gls{spm} as the plant model in online state estimation applications.
+\subsection{Computation of electrolyte overpotential}\label{subsec:electrolyteopcalc}
 
 The missing component in the terminal voltage computation of the basic \gls{spm}
 is  the  contribution from  the  electrolyte  overpotential  term. This  is  the
@@ -161,8 +155,8 @@ collectors  through system  identification has  indeed helped  in improving  the
 modelling accuracy.
 
 Having established the relative  importance of computing the diffusion-dependent
-polarisation   overpotential,   the   next    question   to   be   answered   is
-whether  the  constant  approximation  for   the  bulk  solution  resistance  is
+polarisation   overpotential,  the   next  question   that  arises   is  whether
+the   constant    approximation   for   the   bulk    solution   resistance   is
 indeed   appropriate.   It  also   remains   to   be   seen  if   the   accurate
 computation   of  the   ionic   concentration   through  system   identification
 (see~\cref{sec:perfanalysisnewmodel}) has  translated into a  similarly accurate
@@ -173,43 +167,148 @@ obtained from the \gls{p2d} model.
 \begin{figure}[!htbp]
     \centering
     \includegraphics{phie_delta_cnst_1C.pdf}
-    \caption{%
-        Comparison   of   electrolyte overpotential   computed
-        by   the   \gls{p2d}  model   and   the   system  identification   model
-        (using~\cref{eq:electrolytepdwithcenew}) for a 1C discharge. During the
+    \caption[%
+    Electrolyte  overpotential  computed  by the  \glsfmtshort{p2d}  and  system
+    identification models for a 1C discharge
+    ]%
+    {%
+        Comparison    of    electrolyte    overpotential   computed    by    the
+        \gls{p2d}     model    and     the    system     identification    model
+        (using~\cref{eq:electrolytepdwithcenew}) for a  1C discharge. During the
         transient phase, the profile obtained by the system identification model
-        closely matches that of the \gls{p2d}  model. The mismatch in the
-        initial overpotential  does not  arise to  the use  of a  constant
-        concentration for the bulk resistance contribution, since
-        at equilibrium this value is exact and not an approximation. Past the
-        initial transient, accuracy of the system identification model
-        degrades. This can be explained by its analogous behaviour for
-        concentration computation in the \glsfmtlong{qss} (see~\cref{subsec:tfquadceconstcurrinput}).
+        closely matches that of the \gls{p2d} model. The mismatch in the initial
+        overpotential does not arise to the  use of a constant concentration for
+        the bulk  resistance contribution,  since at  equilibrium this  value is
+        exact and  not an  approximation. Past  the initial  transient, accuracy
+        of  the system  identification  model degrades.  This  can be  explained
+        by  its  analogous  behaviour   for  concentration  computation  in  the
+        \glsfmtlong{qss} (see~\cref{subsec:tfquadceconstcurrinput}) for constant
+        current inputs.
     }%
     \label{fig:phiedeltacnst1C}
 \end{figure}
 
+\Cref{fig:phiedeltacnst1C} shows  a comparison of the  electrolyte overpotential
+computed  by   the  \gls{p2d}  and   system  identification  models  for   a  1C
+discharge. There  is a discrepancy  in the  initial offset of  the overpotential
+value.  However,  this  cannot  be  attributed   to  the  use  of  the  constant
+concentration  approximation   in  the   computation  of   ionic  conductivities
+in~\cref{eq:electrolytepdwithcenew}.  This   is  because,  at   equilibrium  the
+concentration used  is exactly  the initial  concentration. Furthermore,  at the
+instant of applying the current, diffusion gradients in the electrolyte have not
+yet been established.  Hence, the contribution from  the diffusion overpotential
+is zero,  which can  also be  seen in~\cref{fig:contributiontophiefromtwoterms}.
+Thus, it can be  concluded that this initial mismatch is due  to the presence of
+some  other unmodelled  phenomena  that  affects the  DC  offset of  electrolyte
+overpotential, and is not arising due to the approximations used by this author.
+
+In~\cref{fig:phiedeltacnst1C},   the  shape   of   the   transient  profile   of
+overpotential  computed  by  the  system identification  model  closely  matches
+that  of the  \gls{p2d} model.  This validates  that the  newly developed  model
+does  indeed  capture the  electrolyte  dynamics  sufficiently well  during  the
+initial transient.  However, past  the initial  transient, the  model's accuracy
+degrades and  the resulting  profile does  not track  the \gls{p2d}  model. This
+behaviour in overpotential is analogous to that exhibited in the spatio-temporal
+concentration   study   discussed  in~\cref{subsec:tfquadceconstcurrinput}   for
+constant current inputs,  wherein it was deemed that this  newly developed model
+is  more  suitable  for  dynamic  loads. The  same  conclusion  for  electrolyte
+overpotential   accuracy  is   reached   from  this   constant  current   study.
+Nevertheless, even for  constant current loads, using the  newly developed model
+is better than having no electrolyte model whatsoever as in the basic \gls{spm}.
+
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics{phie_delta_udds.pdf}
-    \caption{}
-    \label{}
+    \caption[%
+    Electrolyte  overpotential  computed  by the  \glsfmtshort{p2d}  and  system
+    identification models for a \glsfmtshort{udds} load profile
+    ]%
+    {%
+        Comparison    of    electrolyte    overpotential   computed    by    the
+        \gls{p2d}     model    and     the    system     identification    model
+        (using~\cref{eq:electrolytepdwithcenew}) for a  \gls{udds} load profile.
+        The overpotential  profile computed  by the system  identification model
+        reasonably matches  the profile obtained  by the \gls{p2d} model  with a
+        \glsfirst{mae} of \SI{15.88}{\milli\volt} and  a \glsfirst{rms} error of
+        \SI{24.11}{\milli\volt}.
+    }%
+    \label{fig:phiedeltacnstudds}
 \end{figure}
 
+\Cref{fig:phiedeltacnstudds} shows a comparison of the electrolyte overpotential
+computed by the \gls{p2d} and system identification models for a \gls{udds} load
+profile. The  input current corresponding to  this load profile is  shown in the
+top row  of~\cref{fig:uddssimp2dspmresults}. The system identification  model is
+able to  reasonably track  the overpotential profile  computed by  the \gls{p2d}
+model. Unlike the  case of sustained unidirectional current input,  the error in
+this case  remains well-contained. The  \gls{mae} obtained for this  profile was
+\SI{15.88}{\milli\volt}  with  an  \gls{rms} error  of  \SI{24.11}{\milli\volt}.
+This  corresponds to  \SI{8.19}{\percent} and  \SI{12.44}{\percent} of  the peak
+magnitude of the overpotential (\SI{193.86}{\milli\volt}).
 
-% Referring   to~\cref{eq:posoverpotential}  and~\cref{eq:negoverpotential},   the
-% reaction overpotential in each of the two porous electrode regions is given by
-% \begin{align}
-%     η_\text{pos} &= ϕ_\spos - ϕ_\epos - U_\text{pos} \label{eq:posoverpotentialoverall} \\% \tag{\cref{eq:posoverpotential} revisited}\\
-%     η_\text{neg} &= ϕ_\sneg - ϕ_\eneg - U_\text{neg} \label{eq:negoverpotentialoverall} %\tag{\cref{eq:negoverpotential} revisited}
-% \end{align}
-% wherein the contribution from the electrolyte potential terms $ϕ_\epos$ and $ϕ_\eneg$ are not neglected.
+Hence, it can be concluded  that the electrolyte overpotential computation using
+the system identification  model provides an acceptable  performance for dynamic
+load profiles.  The next step  is to incorporate this  electrolyte overpotential
+calculation into the basic \gls{spm} and to quantify the voltage accuracy of the
+resulting composite \gls{spm}.
 
-% Subtracting~\cref{eq:negoverpotentialoverall}
-% from~\cref{eq:posoverpotentialoverall}
-% \begin{align}
-%  η_\text{pos} - η_\text{neg} &= \underbrace{ϕ_\spos - ϕ_\sneg}_{V_\text{cell}} - ϕ_\epos + ϕ_\eneg - U_\text{pos} + U_\text{neg}\\
-% \shortintertext{whose rearrangement yields}
-% V_\text{cell} &= η_\text{pos} - η_\text{neg} + \underbrace{ϕ_\epos - ϕ_\eneg}_{\Delta \phi_\text{e}} + U_\text{pos} - U_\text{neg}
-% \end{align}
+\subsection{Terminal voltage computation of composite \glsfmtshort{spm}}
+
+In~\cref{subsec:simresultsbasicspm}, it  was shown that in  the basic \gls{spm},
+the computation of the cell's \gls{soc}  is of sufficient accuracy. However, its
+terminal  voltage  strongly deviates  from  the  true  value  as computed  by  a
+\gls{p2d} model.  This mismatch between  \gls{soc} and terminal  voltage hinders
+the  suitability of  the basic  \gls{spm}  as the  plant model  in online  state
+estimation applications. The discrepancy in terminal  voltage is due to the lack
+of electrolyte overpotential contribution in  its computation. Having obtained a
+suitable methodology  to compute this  (see~\cref{subsec:electrolyteopcalc}), it
+is now possible to refine the computation of the cell's terminal voltage.
+
+Referring   to~\cref{eq:posoverpotential}  and~\cref{eq:negoverpotential},   the
+reaction overpotential in each of the two porous electrode regions is given by
+\begin{align}
+    η_\text{pos} &= ϕ_\spos - ϕ_\epos - U_\text{pos} \label{eq:posoverpotentialoverall} \\% \tag{\cref{eq:posoverpotential} revisited}\\
+    η_\text{neg} &= ϕ_\sneg - ϕ_\eneg - U_\text{neg} \label{eq:negoverpotentialoverall} %\tag{\cref{eq:negoverpotential} revisited}
+\end{align}
+wherein the contribution from the electrolyte potential terms $ϕ_\epos$ and
+$ϕ_\eneg$ are no longer to be neglected.
+
+Subtracting~\cref{eq:negoverpotentialoverall}
+from~\cref{eq:posoverpotentialoverall}
+\begin{align}
+ η_\text{pos} - η_\text{neg} &= \underbrace{ϕ_\spos - ϕ_\sneg}_{V_\text{cell}} - ϕ_\epos + ϕ_\eneg - U_\text{pos} + U_\text{neg}\\
+\shortintertext{whose rearrangement yields}
+V_\text{cell} &= η_\text{pos} - η_\text{neg} + \underbrace{ϕ_\epos -
+ϕ_\eneg}_{\Delta \phi_\text{e}} + U_\text{pos} -
+U_\text{neg}\label{eq:intermediatevoltagewithphie}
+\end{align}
+
+Substituting for $\Delta \phi_\text{e}$ from~\cref{eq:electrolytepdwithcenew} in
+into~\cref{eq:intermediatevoltagewithphie},  and  expanding  each of  its  terms
+(see derivation of~\cref{eq:spmbasicoutputvoltagefinal}  for details), the final
+expression for the cell's terminal voltage is obtained as
+\begin{multline}
+    V_\text{cell}(t) = \frac{2 R T}{F }\sinh^{-1} \left( \frac{- I(t)}{2 A l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e} c_\spossurf(t) \left(c_\sposmax - c_\spossurf(t)\right)}}\right) \\
+    - \frac{2 R T}{F }\sinh^{-1} \left( \frac{I(t)}{2 A \, l_\text{neg} a_\sneg F k_\negr \sqrt{c_\text{e} c_\snegsurf(t) \left(c_\snegmax - c_\snegsurf(t)\right)}}\right) \\
+    \hphantom{\text{hello worl}}+ (1-t_{+}^0) \frac{2RT}{F}\ln \frac{c_\text{e,\tiny pos/cc}(t)}{c_\text{e,\tiny neg/cc}(t)} -\frac{I}{2 A}\left(\frac{l_\text{neg}}{\kappa_\text{eff,neg}\left(c_\text{e}\left(0\right)\right)} + 2 \frac{l_\text{sep}}{\kappa_\text{eff,sep}\left(c_\text{e}\left(0\right)\right)} +
+\frac{l_\text{pos}}{\kappa_\text{eff,pos}\left(c_\text{e}\left(0\right)\right)}\right)\\
+    + \mathcal{U}_\text{pos}\left(c_\spossurf(t)\right) - \mathcal{U}_\text{neg}\left(c_\snegsurf(t)\right)\label{eq:spmcompositeoutputvoltagefinal}
+\end{multline}
+
+All  other   expressions  and  computations   of  the  basic   \gls{spm}  remain
+unchanged (see~\cref{sec:spmmodeldevelopment} for the  complete set of equations
+constituting the model). The final step  is to show that the composite \gls{spm}
+thus obtained has an improved performance especially in those scenarios that the
+basic \gls{spm} performed poorly.
+
+\subsection{Validation of composite \glsfmtshort{spm}: Terminal voltage accuracy}
+
+\subsubsection*{Constant Current Input}
+\subsubsection*{Dynamic Load}
+
+
+% Conclude the chapter  by saying that everything is now  in time domain. Suitable
+% for direct  implementation. Concludes the  implementation aspect of  the thesis.
+% Can now be used as the plant model in EKF and other applications.
 
