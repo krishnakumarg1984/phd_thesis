@@ -304,14 +304,61 @@ basic \gls{spm} performed poorly.
 
 \subsection{Validation of composite \glsfmtshort{spm}: Terminal voltage accuracy}
 
-\subsubsection*{Constant Current Input}
+The final  step in  this model  development effort is  the validation  phase. In
+particular, the voltage accuracy of  the composite \gls{spm} is compared against
+the  \gls{p2d} model  for standard  input conditions.  In order  to compare  and
+contrast the  gains achieved  by the composite  \gls{spm}, the  terminal voltage
+output of the basic \gls{spm} is also considered here.
+
+\subsubsection*{Constant Current Inputs}
+
+The  voltage  accuracy of  the  newly  developed  composite \gls{spm}  is  first
+evaluated for  the standard test  case of 1C  discharge current starting  from a
+cell \gls{soc} of \SI{100}{\percent}.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics{composite_spm_vcell_1C.pdf}
-    \caption{}
-    \label{}
+    \caption[%
+    Comparison  of  terminal  voltages  of  composite  \glsfmtshort{spm},  basic
+    \glsfmtshort{spm} and the \glsfmtshort{p2d} model for a 1C discharge
+    ]%
+    {%
+        Voltage output  of various \glspl{spm}  for a 1C discharge  beginning at
+        \SI{100}{\percent} \gls{soc} (top  plot). Since it does  not account for
+        electrolyte overpotentials,  the voltage  profile computed by  the basic
+        \gls{spm} lies above that of the benchmark \gls{p2d} model. On the other
+        hand, the composite \gls{spm} tends  to over correct for the electrolyte
+        overpotential  so that  its terminal  voltage lies  below the  \gls{p2d}
+        output. Since  the two \glspl{rom}  have outputs  on either side  of the
+        \gls{p2d}  model,  it  is  convenient  to  use  the  absolute  error  to
+        compare  them. In  the  bottom  plot, the  percentage  deviation of  the
+        absolute error of the two  \glspl{rom} is shown. The composite \gls{spm}
+        performs  significantly better  with a  peak absolute  error of  \approx
+        \SI{4}{\percent} in  contrast to nearly \SI{11}{\percent}  for the basic
+        \gls{spm}.
+    }%
+    \label{fig:voltageoutputcompareallSPMs1C}
 \end{figure}
+
+\Cref{fig:voltageoutputcompareallSPMs1C}  shows the  terminal voltage  output of
+various \glspl{spm} for a 1C discharge beginning at \SI{100}{\percent} \gls{soc}
+(top  plot). Since  it  does  not account  for  electrolyte overpotentials,  the
+voltage profile computed by the basic \gls{spm} lies above that of the benchmark
+\gls{p2d}  model. On  the  other hand,  the composite  \gls{spm}  tends to  over
+correct  for the  electrolyte overpotential  so that  its terminal  voltage lies
+below  the \gls{p2d}  output. Since  the output  of the  two \glspl{rom}  lie on
+either side of the \gls{p2d} model, it  is appropriate to use the absolute value
+of their errors with respect to the  \gls{p2d} benchmark to compare them. In the
+bottom  plot,  the  percentage  deviation  of the  absolute  error  of  the  two
+\glspl{rom} is shown. The statistics of this deviation is quantified
+in~\cref{tbl:errorsummarycntcurrdischgallspms}.
+
+\input{6/final_spm_1C_error_table}
+
+In  each of  the error  statistic considered,  the composite  \gls{spm} performs
+significantly better than the basic \gls{spm}.
+
 \subsubsection*{Dynamic Load}
 
 
