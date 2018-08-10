@@ -357,9 +357,105 @@ in~\cref{tbl:errorsummarycntcurrdischgallspms}.
 \input{6/final_spm_1C_error_table}
 
 In  each of  the error  statistic considered,  the composite  \gls{spm} performs
-significantly better than the basic \gls{spm}.
+significantly better than the basic \gls{spm} for the 1C discharge case.
 
-\subsubsection*{Dynamic Load}
+One   of   the   biggest   drawbacks   of   the   conventional   \gls{spm}   was
+its    poor    voltage    accuracy    at    moderate    C-rates    above    0.5C
+(see~\cref{tbl:errorsummarycntcurrdischgspmp2d}). The high accuracy achieved for
+the 1C rate  seems to indicate that  the composite \gls{spm} is  indeed a viable
+solution for all  high C-rates, especially given the backdrop  of its methodical
+derivation steeped in systems theory.
+
+However,  there exists  a  fundamental  flaw in  all  models  that use  a~priori
+assumptions  of  simplified spatial  profiles  for  ionic concentration  in  the
+electrolyte.  In  the  case  of  both the  baseline  quadratic  and  the  system
+identification models, a parabolic profile spanning the entire thickness of each
+region within the cell was chosen a~priori. However, no attempt to modify the
+profile upon encountering an ion starvation event at any spatial location.
+
+This  critical flaw  is  exposed  by the  sustained  application  of any  higher
+current  that  induces  an  ion  starvation at  one  of  the  electrodes  during
+operation.\Cref{fig:2Cionstarvation}  depicts  the  ionic concentration  in  the
+electrolyte  over time  at  both  current collectors  for  a  2C discharge.  The
+profiles computed  by both  the \gls{p2d} and  system identification  models are
+plotted. For  the system identification  model, the current  collector interface
+at  the  positive electrode  experiences  an  ion  starvation event  at  \approx
+\SI{150}{\second}. The  quadratic spatial  profile used by  this model  does not
+account  for  such  a  reduction  in  the  effective  electrode  thickness.  All
+the  boundary conditions  and coefficients  were formulated  using the  original
+electrode  thickness.  Therefore,  beyond \SI{150}{\second},  the  concentration
+becomes negative which  is not physically meaningful. The author  of this thesis
+has implemented a saturation mechanism in the code that detects an ion depletion
+event and prevents the concentrations from becoming negative.
+
+Implementing  this  hard   lower  bound  of  zero  for   the  ion  concentration
+does    not   mitigate    the   problems    associated   with    computing   the
+electrolyte   overpotential.   Specifically,  computational   difficulties   are
+encountered    when   computing    the    concentration   dependent    diffusion
+overpotential~\cref{eq:electrolytepdwithcenew}. In the case  of ion depletion at
+the positive  current collector,  the argument of  the logarithmic  term becomes
+zero which leads to a non-feasible computation ($-\infty$). Ion depletion at the
+negative current collector  is equally detrimental to  the computation. However,
+this scenario has  a lower probability owing to the  low C-rates during charging
+operation (see~\cref{subsec:basicspmsimsetup}).  Furthermore, in the  absence of
+the lower  bound of zero  for the  concentrations, complex numbers  are obtained
+from  the logarithmic  term, which  lead to  physically erroneous  overpotential
+calculations. An  alternative is  to simply omit  the diffusion  impedance term.
+However, since  this term is  responsible for  the large-signal dynamics  of the
+overpotential (see~\cref{fig:contributiontophiefromtwoterms}), omitting this and
+reverting to  a simple ohmic  resistance contribution shall lead  to significant
+errors  in  the electrolyte  overpotential,  and  consequently in  the  terminal
+voltage.  Finally, setting  the diffusion  impedance to  zero at  the transition
+boundary of ion starvation is also not a feasible solution. This is because, the
+sudden inflection in  the trajectory of the terminal voltage  shall induce large
+errors in any state estimation algorithms that depend on the composite \gls{spm}
+as the plant model.
+
+The  difficulties  encountered  in electrolyte  overpotential  computations  for
+ion  depletion scenarios  have  not  yet been  discussed  in  the literature  by
+the  research  community that  use  such  quadratic approximation  models.  This
+thesis author  therefore assumes that  such a  scenario had not  been previously
+encountered  for  the  parameter  set  and C-rate  combinations  used  by  those
+researchers. Despite the  fact that this phenomenon might be  an artefact of the
+idiosyncrasies of the  parameter set used here, it  is nevertheless questionable
+to not  have mathematically adapted  the parabolic  profile to such  events. The
+aspect  of rendering  the model  robust to  such vagaries  is currently  an open
+problem in the field and can be the subject of future research. It can therefore
+be concluded that  this composite \gls{spm} is \emph{unsuitable}  in its present
+form for  sustained constant current  discharge at higher C-rates.  Despite this
+setback due  to deficiencies in  the mathematical formulation of  the underlying
+spatial profile, the superior performance  of the system identification model in
+the computation  of ionic  concentrations and overpotentials  for \emph{dynamic}
+conditions warrant such a study for the composite \gls{spm}.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{problematic_2C_conc.pdf}
+    \caption[
+    Time evolution of ionic concentration computed by the \gls{p2d} and system
+    identification models at both current collectors for a 2C discharge.
+    ]
+    {%
+        Time evolution of ionic concentration in electrolyte computed by the \gls{p2d} and
+        system identification models at ---
+        \begin{enumerate*}[label=\emph{\alph*})]
+            \item negative current collector interface (left plot), and
+            \item positive current collector interface (right plot)
+        \end{enumerate*}
+        for a constant current discharge at \SI{120}{\ampere} \ie{} 2C. Ion
+        starvation occurs at the positive current collector interface at \approx
+        \SI{150}{\second}. The quadratic spatial profile used by the system
+        identification model spans the entire electrode region and does not
+        account for ion depletion scenarios. In this thesis, the author has
+        implemented a saturation mechanism in the computer code to prevent the
+        ionic concentration from becoming negative. Despite this
+        mitigating action, the computation of electrolyte overpotential
+        using~\cref{eq:electrolytepdwithcenew} is problematic in such scenarios.
+    }%
+    \label{fig:2Cionstarvation}
+\end{figure}
+
+\subsubsection*{Dynamic Load Conditions}
 
 
 % Conclude the chapter  by saying that everything is now  in time domain. Suitable
