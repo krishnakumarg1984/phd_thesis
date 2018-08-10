@@ -458,10 +458,28 @@ conditions warrant such a study for the composite \gls{spm}.
 
 \subsubsection*{Dynamic Load Conditions}
 
+In  order to  evaluate the  performance of  the composite  \gls{spm} to  dynamic
+inputs, the  input profile  corresponding to  the \gls{udds}  drivecycle profile
+in~\cref{fig:uddssimp2dspmresults}  with  a  peak current  of  \SI{180}{\ampere}
+\ie{} 3C was used.
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics{composite_spm_vcell_udds.pdf}
-    \caption{}
+    \caption[%
+    Terminal voltage output of --- \emph{a}) the \glsfmtshort{p2d} model, \emph{b}) the
+    basic \glsfmtshort{spm}, and \emph{c}) the composite \glsfmtshort{spm} for a
+    \glsfmtshort{udds} input profile.
+    ]%
+    {%
+        Voltage output of the composite \gls{spm} for a \gls{udds} input profile
+        with a peak magnitude of \SI{180}{\ampere} \ie{} 3C. The voltage
+        profiles computed by the basic \gls{spm} and the benchmark \gls{p2d}
+        model is also overlaid (top plot). The percentage absolute error of the
+        two \glspl{rom} relative to the \gls{p2d} model is shown in the bottom
+        plot. The terminal voltage of the composite \gls{spm} is significantly
+        more accurate than the basic \gls{spm}.
+    }%
     \label{}
 \end{figure}
 
