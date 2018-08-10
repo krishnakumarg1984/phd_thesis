@@ -463,6 +463,19 @@ inputs, the  input profile  corresponding to  the \gls{udds}  drivecycle profile
 in~\cref{fig:uddssimp2dspmresults}  with  a  peak current  of  \SI{180}{\ampere}
 \ie{} 3C was used.
 
+\Cref{fig:voltageoutputcompareallSPMsudds}  shows  the  voltage  output  of  the
+composite  \gls{spm}  for a  \gls{udds}  input  profile  with a  peak  magnitude
+of   \SI{180}{\ampere}  \ie{}   3C  (see~\cref{fig:uddssimp2dspmresults}).   The
+voltage   profiles  computed   by  the   basic  \gls{spm}   and  the   benchmark
+\gls{p2d}  model   is  also  overlaid   (top  plot).  The   percentage  absolute
+error  of  the  two  \glspl{rom}  relative  to  the  \gls{p2d}  model  is  shown
+in  the  bottom  plot.  Clearly,  it  is  seen  that  the  terminal  voltage  of
+the  composite  \gls{spm}   is  significantly  more  accurate   than  the  basic
+\gls{spm}  (see~\cref{tbl:errorsummaryuddsdischgallspms}).   For  instance,  the
+voltage  profile  computed by  composite  \gls{spm}  matches the  complex  shape
+characteristics  of the  \gls{p2d} model  while remaining  very close  to it  in
+magnitude.
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics{composite_spm_vcell_udds.pdf}
@@ -473,15 +486,34 @@ in~\cref{fig:uddssimp2dspmresults}  with  a  peak current  of  \SI{180}{\ampere}
     ]%
     {%
         Voltage output of the composite \gls{spm} for a \gls{udds} input profile
-        with a peak magnitude of \SI{180}{\ampere} \ie{} 3C. The voltage
+        with a peak magnitude of \SI{180}{\ampere} \ie{} 3C
+        (see~\cref{fig:uddssimp2dspmresults}). The voltage
         profiles computed by the basic \gls{spm} and the benchmark \gls{p2d}
         model is also overlaid (top plot). The percentage absolute error of the
         two \glspl{rom} relative to the \gls{p2d} model is shown in the bottom
         plot. The terminal voltage of the composite \gls{spm} is significantly
-        more accurate than the basic \gls{spm}.
+        more accurate than the basic \gls{spm}
+        (see~\cref{tbl:errorsummaryuddsdischgallspms}).
     }%
-    \label{}
+    \label{fig:voltageoutputcompareallSPMsudds}
 \end{figure}
+
+\input{6/final_spm_udds_error_table}
+
+In  summary, while  the newly  developed composite  \gls{spm} is  not considered
+robust  for  use  in  sustained  discharge  at high  C-rates,  it  is  indeed  a
+suitable option  for dynamic load  profiles, even  with high peak  magnitudes of
+instantaneous charge or discharge. Such  load profiles are typically encountered
+in vehicular  applications, particularly  in hybrid  electric vehicles.  Thus, a
+suitable time-domain \gls{rom} that can be directly implemented in discrete-time
+has been developed through system identification. The shortcomings of this model
+has been  quantified. However,  its usefulness,  accuracy and  applicability has
+been proven  for real-life scenarios  using a  highly dynamic load  cycle. Thus,
+this  author  concludes  that  the composite  \gls{spm}  developed  here  indeed
+represents  an  advancement  to  the  modelling  art.  The  composite  \gls{spm}
+developed here may  be used as the  plant model in state  estimation and control
+applications in a vehicular \gls{bms}. This concludes the implementation aspects
+of physics-based battery modelling discussed in this thesis.
 
 
 % Conclude the chapter  by saying that everything is now  in time domain. Suitable
