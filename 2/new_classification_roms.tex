@@ -13,7 +13,11 @@ necessitates the  use of  some order  reduction strategy  for their  adoption in
 control and  real-time applications. In this  thesis as well as  in the relevant
 literature discussed here, these two terms have been used interchangeably.
 
-
+Research  into reduced-order  models is  motivated by  the pressing  need for  a
+real-time  model  with  accuracy  properties of  the  full-order  physics  based
+models  but  possessing  the   computational  simplicity  of  equivalent-circuit
+models.\fxnote{discussed in chapter 1. Cite here.}
+%A  number of  approaches to reduce  the  computational complexity  of  the  physics-based models  have  been explored  in literature  {[}cite{]}
 Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
 categories  of  reduced  order  physics  based  battery  models.  However,  this
 work  does  not aim  to  classify  models  based on  time-vs-frequency  domains.
@@ -122,19 +126,19 @@ Smith~\etal{}~\cite{Smith2007} pioneered a semi-hybrid approach to reduced order
 modelling and  obtained closed  form expressions  for all  electrochemical field
 variables  in  the frequency  domain  except  for those  describing  electrolyte
 concentration and  potential (which were  solved separately using  the classical
-finite  difference  discretisation  method).  To the  author's  knowledge,  this
-is  the  earliest published  instance  wherein  all  the  dynamics of  the  full
-order  model  were  completely  retained  in  the  frequency  domain.  This  was
-facilitated through  the use  of transcendental  transfer functions  that helped
-to  avoid  the  accuracy  degradation brought  about  by  truncation  techniques
-such  as  Padé approximation.  In  the  first  stage  of the  model  derivation
-procedure  detailed  in   this  work,  a  composite  impedance   model  for  the
-frequency range of interest from  \SIrange{0}{10}{\hertz} was obtained. This was
-then  converted  to  a  \engordnumber{12}  order state  space  model  using  the
-technique of  residue grouping and  truncation, thereby demonstrating  the first
-instance of  the so-called hybrid  modelling workflow. The \gls{rom}  derived in
-Smith~\etal{}~\cite{Smith2007}  was capable  of predicting  the cell's  terminal
-voltage within \SI{1}{\percent} of the full-order \gls{dfn} model.
+finite difference discretisation method). To the author's knowledge, this is the
+earliest published  instance wherein all  the dynamics  of the full  order model
+were completely retained  in the frequency domain. This  was facilitated through
+the use of  transcendental transfer functions that helped to  avoid the accuracy
+degradation brought about by truncation  techniques such as Padé approximation.
+In the first  stage of the model  derivation detailed in this  work, a composite
+impedance model for the frequency range of interest from \SIrange{0}{10}{\hertz}
+was  obtained.  This was  then  converted  to  a \engordnumber{12}  order  state
+space  model using  the technique  of residue  grouping and  truncation, thereby
+demonstrating the first instance of the so-called hybrid modelling workflow. The
+\gls{rom} derived  in Smith~\etal{}~\cite{Smith2007}  was capable  of predicting
+the cell's terminal voltage within  \SI{1}{\percent} of the full-order \gls{dfn}
+model.
 
 The  modelling  effort by  Smith~\etal{}~\cite{Smith2007}  also  has the  unique
 distinction of  being the first  of its kind  to render a  physics-based battery
@@ -205,21 +209,51 @@ or serve as the plant in \gls{soc} estimation applications.
 In the  same publications~\cite{Lee2012a,Lee2012}, Lee~\etal{} also  devised the
 \gls{dra},  a novel  algorithm  to systematically  transform all  transcendental
 transfer functions to  the time domain so as to  obtain an \gls{lti} state-space
-model  given by  \cref{eq:LTIstatespace}. The  author of  this thesis  considers
-the  formulation  of the  \gls{dra}  as  a  breakthrough contribution  that  has
-helped  in  bringing  physics-informed  time  domain models  a  step  closer  to
-online implementation  without having  to resort to  forming a  lumped impedance
-and  then  truncating it  suitably.  In  a subsequent  paper  by  the same  lead
-author~\cite{Lee2014}, this work was then extended to a wider range of operating
-conditions  spanning various  choices  of initial  \glspl{soc}, temperature  and
-C-rates.  Although the  final  state  space model  thus  obtained  is simple  to
-implement, the classical \gls{dra} scheme suffers from significant computational
-bottlenecks   in  forming   the  required   block-Hankel  matrices   during  the
-model-derivation phase.  A memory-efficient version of  the \gls{dra} exploiting
-the skew-symmetric structure of these Hankel  matrices was proposed by this this
-author \ie{} Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017}, which drastically
-lowers  the requirements  for  computational memory  and  processing power.  The
-details of this contribution shall be presented in~\cref{ch:improveddra}.
+model  given  by  \cref{eq:LTIstatespace}.  The  \gls{dra}  method  retains  the
+physical character of the original \gls{dfn}  equations until the very last step
+wherein the matrices governing the  system's dynamics are generated. This yields
+a one-dimensional  discrete-time \gls{rom} of  the cell, that is  entirely based
+upon fundamental  physical principles.  The \gls{rom}  thus obtained  could then
+be  used to  compute  the  time-evolution of  all  the internal  electrochemical
+quantities of the \gls{dfn} model. As an illustrative application of the method,
+Lee~\etal~\cite{Lee2012a}  performed a simulation study of
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item the reaction flux density,
+    \item surface concentration of Li,
+    \item ionic concentration of \ch{Li^+} in the electrolyte,
+    \item potential in electrolyte, and
+    \item potential in solid
+\end{enumerate*}
+in   the  anode   and  cathode   at   the  respective   domain  boundaries   and
+demonstrated  their high  accuracies relative  to a  benchmark \gls{dfn}  model.
+In  Lee~\etal~\cite{Lee2012,Lee2012a}, the  cell  voltage  was computed  through
+linear  combinations of  these  time-domain variables  with suitable  non-linear
+corrections. Yet another advantage of this model order reduction process is that
+the method does not involve any  form of non-linear optimization that is typical
+of other order reduction schemes that attempt a top-down approach of simplifying
+the physics-based model equations. In  particular, the \gls{dra} scheme provides
+a deterministic method for selection of the order of the simplified model, which
+is a pioneering  contribution in the field of reduced  order modelling of Li-ion
+cells.
+
+
+The author  of this thesis  considers the formulation of  the \gls{dra} to  be a
+breakthrough  contribution that  has  helped in  bringing physics-informed  time
+domain models a step closer to online implementation without having to resort to
+forming a lumped impedance and then truncating it suitably. This seminal work is
+a first  of its  kind that  is amenable to  implementing real-time  controls for
+an  entire  cell  without  relying  upon such  empirical  and  ad-hoc  modelling
+constructs. In a  subsequent paper by the same  lead author~\cite{Lee2014}, this
+approach was  then extended to  a wider  range of operating  conditions spanning
+various  choices  of  initial  \glspl{soc}, temperature  and  C-rates.  Although
+the  final  state  space  model  thus  obtained  is  simple  to  implement,  the
+classical \gls{dra} scheme suffers from significant computational bottlenecks in
+forming the  required block-Hankel  matrices during the  model-derivation phase.
+A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
+structure  of these  Hankel  matrices was  proposed by  this  this author  \ie{}
+Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers the
+requirements for computational memory and  processing power. The details of this
+contribution shall be presented in~\cref{ch:improveddra} of this thesis.
 
 
 In both the original as well  as the improved \gls{dra}, the eigenfunction modal
@@ -463,6 +497,7 @@ sizeable  number of  order  reduction  strategies in  the  time  domain seek  to
 adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
 issues\fxnote{citations needed}.
 
+% The diffusion of Lithium in the solid  being the rate-limiting step has been the focus of many model order reduction  efforts by circumventing the need for using the PDE.
 
 Computationally  efficient pseudo-spectral  schemes  for  numerical solution  of
 \glspl{pde}  can  be employed  by  placing  discretisation nodes  at  orthogonal
@@ -479,6 +514,10 @@ C-rates. Bizeray~\etal{}~\cite{Bizeray2015} provide a  detailed treatment of the
 usage  of Chebyshev  discretisation for  the full  \gls{p2d} model  on a  global
 scale, \ie{} along both the axial and radial directions for all equations of the
 \gls{dfn} model.
+
+% A Lagrangian-like integral method was also proposed to deal with electrolyte
+% and solid-state diffusions, which perform well  only at low C-rates by Smith
+% and Wang
 
 
 The  reduced  number   of  nodes  as  well  as  their   clustered  placement  at
