@@ -117,19 +117,20 @@ can  be  made   from  perusing  comprehensive  books  on  this   topic  such  as
 those  by Plett~\cite{Plett2015},  Hariharan~\cite{Hariharan2017}, and  Rahn and
 Wang~\cite{Rahn2013}.
 
-The  need to  address the  challenges of  lithium ion  batteries in  an embedded
-environment such as on-board an electric vehicle has led to an increased impetus
-on  the development  of advanced  \glspl{bms}~\cite{Bergveld2002}. In  vehicular
-applications,  the only  measurable quantities  of a  lithium ion  cell are  its
-terminal voltage,  current and temperature.  This implies that  several internal
-states of the  cell such as its \gls{soc}, whose  real-time computation is vital
-to  the  optimal performance  of  the  cell, need  to  be  estimated from  these
-available measurements. Therefore, the performance of a \gls{bms} for tasks such
-as online state estimation is dependent upon the fidelity of the underlying cell
-model  used. Sophisticated  models of  the cell  enable these  quantities to  be
-estimated more accurately and facilitate  the implementation of advanced control
-algorithms. Therefore, it is imperative that the cell model used is suitable for
-being embedded in a real-time \gls{bms}.
+The  need  to  address  the  operational challenges  of  lithium  ion  batteries
+in   an   embedded   environment   such  as   on-board   an   electric   vehicle
+has   led   to  an   increased   impetus   on   the  development   of   advanced
+\glspl{bms}~\cite{Bergveld2002}. In vehicular  applications, the only measurable
+quantities  of  a  lithium  ion  cell are  its  terminal  voltage,  current  and
+temperature. This implies  that several internal states of the  cell such as its
+\gls{soc}, whose  real-time computation is  vital to the optimal  performance of
+the cell, need to be estimated from these available measurements. Therefore, the
+performance  of  a \gls{bms}  for  tasks  such  as  online state  estimation  is
+dependent upon  the fidelity  of the underlying  cell model  used. Sophisticated
+models of the  cell enable these quantities to be  estimated more accurately and
+facilitate the implementation  of advanced control algorithms.  Therefore, it is
+imperative  that  the cell  model  used  is suitable  for  being  embedded in  a
+real-time \gls{bms}.
 
 Most battery  models have the primary  goal of accurately predicting  the cell's
 terminal  voltage  at each  time-step.  This  is so  that  the  output from  the
@@ -177,7 +178,7 @@ profiles well  outside their training  realm. Another important  disadvantage of
 equivalent circuit  models is that they  do not allow insights  into the various
 internal states of the cell.
 
-\glspl{ecm}s  of  lithium  ion  batteries  have  been  extensively  studied  and
+\glspl{ecm}  of  lithium  ion  batteries   have  been  extensively  studied  and
 are  widely  applied.  However,  the aforementioned  difficulties  render  their
 reliability and  accuracy questionable,  especially under highly  demanding load
 profiles  experienced by  the battery  packs in  \glspl{xeV}. The  boundaries of
@@ -188,36 +189,80 @@ research. Hence, this thesis does not discuss them further.
 
 \subsection{\glsfmtlong{pbm}s}
 
-Physics-based  models  employ governing  equations  that  construct an  accurate
-realization  of  the   behaviour  of  the  system  based   on  first  principles
-of   electrochemical   thermodynamics   and   kinetics.   Doyle,   Fuller,   and
-Newman  {[}cite{]}   developed  a  porous   electrode  model  to   describe  the
-cells\textquoteright{} internal variables like  solid and electrolyte potential,
-solid  and   electrolyte  concentrations,   and  lithium  molar   flux  density,
-respectively. The fundamental  advantage to this modelling approach  is that the
-prediction  of the  internal variables  can  be obtained  for arbitrary  current
-profiles, whereas the  error of the equivalent circuit models  is very high when
-current profiles outside  the model\textquoteright s training  realm is applied.
-Also, direct estimation  of state-of-charge and cell-capacity  is obtained using
-the  Physics-based  model {[}cite{]}.  The  difficulty  with the  physics  based
-modelling  approach is  to obtain  the values  of all  the physical,  geometric,
-electrochemical, thermal  and kinetic  parameters of  the cells.  Usually, these
-parameters are  trade secrets of various  cell manufacturers, and varies  due to
-production spread.  Only a  limited number  of cell  parameters can  be obtained
-directly from laboratory experiments. Hence,  some sort of system identification
-method needs to be employed for extrapolating other cell parameters. Also, it is
-a common practice to rely on published data for estimating certain parameters of
-the cell that do not depend  on physical construction, especially for those that
-remain universally  true for a particular  Li-ion family of cell  chemistry. The
-disadvantage of physics-based models is that their simulation is time-consuming,
-requiring  sophisticated  multi-physics  PDE  solvers and  hence  not  typically
-suitable for  embedded applications. However, for  high performance applications
-like automotive battery management  systems where the state-of-health monitoring
-is crucial,  there is an overwhelming  demand for the insight  into the internal
-cell variables. Thus, applying various model order reduction technqiues are seen
-a key enabler in porting the predictive powers of the physics-based model into a
-real-time microprocessor.
+\glsreset{pbm}
 
+\glspl{pbm} consist of  governing equations that construct a  realization of the
+behaviour of the cell based  upon electrochemical principles such as equilibrium
+thermodynamics,  material  diffusion  and  reaction  kinetics.  The  fundamental
+advantage  to this  modelling approach  is that  it is  possible to  compute the
+evolution of  internal states of  the cell  for arbitrary current  profiles. The
+difficulty with  the physics-based  modelling approach  lies with  obtaining the
+values  of all  the physical,  geometric, electrochemical,  thermal and  kinetic
+parameters  of the  cell. Usually,  these parameters  are closely  guarded trade
+secrets by cell cell manufacturers.
+
+In  some  cases, it  may  be  possible to  obtain  a  subset of  these  physical
+parameters  can be  obtained  by dissection  of cells  in  an inert  environment
+followed  by further  characterisation  through specialised  lab equipment.  For
+instance, Ecker~\etal~\cite{Ecker2015} demonstrate  the reverse-engineering of a
+\SI{7.5}{\amphour} pouch cell by Kokam  Ltd.\ to obtain its physical parameters.
+Nevertheless, this is a tedious process and is feasible only with access to such
+specialised lab  equipment. Furthermore, the  results from these  experiments is
+susceptible to characterisation errors as well as cell-to-cell variations due to
+production spread. Therefore, some form of system identification method needs to
+be employed  for estimating the rest  of the physical parameters  required for a
+\gls{pbm}.  Furthermore, it  is  a common  practice to  rely  on published  data
+for  the values  of  certain cell  parameters  that do  not  depend on  physical
+construction, especially for those that remain universally true for a particular
+li-ion chemistry.
+
+The challenges involved  in model parametrisation is a research  exercise of its
+own merit and  is not addressed in  this thesis. A redeeming factor  is that the
+task of  parametrisation is a  one-off problem that  appears early in  the model
+deployment  stage,  after which  the  rewards  of  superior performance  of  the
+\glspl{pbm} can be reaped. Once  the model parameters are available, \glspl{pbm}
+can be used in  aiding a deeper understanding of the working of  the cell and in
+answering research  questions that could  otherwise not be answered  with simple
+\glspl{ecm}. One area  of focus of this  thesis is to broach  a less-probed area
+--- exploring  the possibility  of using  a \gls{pbm}  for the  \emph{design} of
+pouch cells used in automotive applications. The author's findings on this topic
+shall be presented in~\cref{ch:modelbaseddesign}.
+
+A major disadvantage of \glspl{pbm} from an implementation point of view is that
+solving for  the model's field  variables is time-consuming. In  particular, the
+more  sophisticated  \glspl{pbm}  require  the use  of  multi-physics  \gls{pde}
+solvers  and  hence  are  not  typically  suitable  for  embedded  applications.
+Nevertheless,  for   high  performance   applications  such  as   in  automotive
+\glspl{bms}  wherein   state-of-health  monitoring  is  crucial,   there  is  an
+overwhelming  demand for  obtaining insight  into internal  cell variables.  For
+instance, the real-time computation of surface concentration of \ch{Li^0} in the
+solid particles enable  the \gls{bms} to avoid regulate power  flow into and out
+of the cell to proactively avoid plating and degradation of the cell.
+
+In view of this consideration, model  order reduction techniques are seen as key
+enablers that facilitate in porting the  predictive powers of \glspl{pbm} into a
+real-time microprocessor. This thesis shall therefore have a strong focus on
+
+
+
+Doyle,  Fuller,  and  Newman~\cite{Doyle1993}  developed  an  isothermal  porous
+electrode model of the cell capable of describing its internal variables such as
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item potential on the solid particles,
+    \item potential in the electrolyte solution,
+    \item concentration of \ch{Li^0} in the solid particles,
+    \item ionic concentration in the electrolyte solution, and
+    \item molar flux density of lithium at the solid-electrolyte boundary.
+\end{enumerate*}
+The most popular computational implementation  of the \gls{dfn} equations is the
+\gls{p2d} model.  In the  \gls{p2d} implementation, all  field variables  of the
+\gls{dfn} model are  computed at each spatial location location  along the axial
+thickness of the cell. The solid  concentration is computed within each particle
+in a radial co-ordinate system that is  normal to the axial direction. The axial
+and radial dimensions  are coupled at each particle's surface  through the molar
+flux density describing the rate of  pore-wall flux that crosses from solid into
+electrolyte or vice-versa. The \gls{p2d} implementation of the equations of the
+\gls{dfn} model is shown in~\cref{tbl:dfneqns}.
 
 Ragone plot
 
