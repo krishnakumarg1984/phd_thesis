@@ -1,36 +1,3 @@
-The fundamental advantage
-to this modelling approach is that the prediction of the internal
-variables can be obtained for arbitrary current profiles, whereas
-the error of the equivalent circuit models is very high when current
-profiles outside the model\textquoteright s training realm is applied.
-Also, direct estimation of state-of-charge and cell-capacity is obtained
-using the Physics-based model {[}cite{]}. The difficulty with the
-physics based modelling approach is to obtain the values of all the
-physical, geometric, electrochemical, thermal and kinetic parameters
-of the cells. Usually, these parameters are trade secrets of various
-cell manufacturers, and varies due to production spread.
-
-However this only has to be done once for a particular cell. It is
-common practice to rely on published data for estimating certain parameters
-of the cell that do not depend on physical construction, especially
-for those that remain universally true for a particular cell chemistry.
-Only a limited
-number of cell parameters can be obtained directly from laboratory
-experiments. Hence, some sort of system identification method needs
-to be employed for extrapolating other cell parameters. Also, it is
-a common practice to rely on published data for estimating certain
-parameters of the cell that do not depend on physical construction,
-especially for those that remain universally true for a particular
-Li-ion family of cell chemistry. The disadvantage of physics-based
-models is that their simulation is time-consuming, requiring sophisticated
-multi-physics PDE solvers and hence not typically suitable for embedded
-applications. However, for high performance applications like automotive
-battery management systems where the state-of-health monitoring is
-crcuial, there is an overwhelming demand for the insight into the
-internal cell variables.Thus, applying various model order reduction
-technqiues are seen a key enabler in porting the predictive powers
-of the physics-based model into a real-time microprocessor.
-
 Research into reduced-order models is thus motivated by the pressing
 need for a real-time embedded model with accuracy properties of the full-order
 physics based models but possessing the computational simplicity of

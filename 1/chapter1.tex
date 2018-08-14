@@ -7,7 +7,28 @@
 \clearpage
 \chapter{Introduction}\label{ch:intro}
 
+% need a symbol Nomenclature
 More introductory material goes here blah blah \dots \dots
+
+% Ragone plot
+
+% Different type of cells - Prismatic,  pouch and cylindrical. How pouch cells are
+% used in automotive industry acknowledge Tesla, but cite counter citations. Layer
+% photos etc
+
+% This  thesis  strives to  represent  all  physical  quantities in  the  standard
+% International  System  of Units  (SI-Units).  However,  there are  some  notable
+% exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
+% practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
+% Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
+% prevalent conventions in standard literature.
+
+% \fxnote{make a note in the introduction  chapter that the terms cell and battery
+%     are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
+% modelling and battery modelling}
+
+% Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
+% chemistries.
 
 In  recent  years,  tightening  emissions  regulations  for  various  industrial
 sectors  have  forced   a  renewed  interest  in   sustainable  energy  sources.
@@ -240,13 +261,15 @@ solid particles enable  the \gls{bms} to avoid regulate power  flow into and out
 of the cell to proactively avoid plating and degradation of the cell.
 
 In view of this consideration, model  order reduction techniques are seen as key
-enablers that facilitate in porting the  predictive powers of \glspl{pbm} into a
-real-time microprocessor. This thesis shall therefore have a strong focus on
+enablers that facilitate in porting the first-principles based predictive powers
+of \glspl{pbm}  into a  real-time microcontroller.  This thesis  shall therefore
+have  a  strong  focus  on  both the  analysis  and  implementation  aspects  of
+\glspl{rom}.
 
-
-
-Doyle,  Fuller,  and  Newman~\cite{Doyle1993}  developed  an  isothermal  porous
-electrode model of the cell capable of describing its internal variables such as
+\section{The \glsfmtlong{dfn} model}
+Doyle, Fuller and Newman~\cite{Doyle1993}  developed an isothermal physics-based
+porous electrode model of the cell  capable of describing its internal variables
+such as
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
     \item potential on the solid particles,
     \item potential in the electrolyte solution,
@@ -257,44 +280,68 @@ electrode model of the cell capable of describing its internal variables such as
 The most popular computational implementation  of the \gls{dfn} equations is the
 \gls{p2d} model.  In the  \gls{p2d} implementation, all  field variables  of the
 \gls{dfn} model are  computed at each spatial location location  along the axial
-thickness of the cell. The solid  concentration is computed within each particle
-in a radial co-ordinate system that is  normal to the axial direction. The axial
-and radial dimensions  are coupled at each particle's surface  through the molar
-flux density describing the rate of  pore-wall flux that crosses from solid into
-electrolyte or vice-versa. The \gls{p2d} implementation of the equations of the
-\gls{dfn} model is shown in~\cref{tbl:dfneqns}.
+thickness of the  cell. However, the solid concentration  in spherical electrode
+particles is solved in a radial  co-ordinate system that is perpendicular to the
+axial direction. The axial and radial  dimensions are coupled at each particle's
+surface through  the molar flux  density describing  the rate of  pore-wall flux
+that  crosses from  solid  into  electrolyte or  vice-versa.  The equations  and
+boundary conditions for  the \gls{p2d} implementation of the  \gls{dfn} model is
+shown in~\cref{tbl:dfneqns}.
 
-Ragone plot
+\input{1/dfn_equation_table}
 
-Different type of cells - Prismatic,  pouch and cylindrical. How pouch cells are
-used in automotive industry acknowledge Tesla, but cite counter citations. Layer
-photos etc
+In  this  thesis,  this  \gls{p2d}  implementation of  the  \gls{dfn}  model  is
+considered as  the reference (and  only) \gls{pbm}. Although  thermal dependence
+of  parameters  such  as  electrolyte  conductivity  and  diffusivity  is  shown
+in~\cref{tbl:dfneqns}, a sophisticated description  of detailed thermal dynamics
+\ie{} a description  of spatio-temporal evolution of cell's  temperature using a
+set of ordinary/partial  differential equations is not considered  in this work.
 
-This  thesis  strives to  represent  all  physical  quantities in  the  standard
-International  System  of Units  (SI-Units).  However,  there are  some  notable
-exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
-practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
-Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
-prevalent conventions in standard literature.
+For those aspects of this thesis dealing with the analysis and implementation of
+various  \glspl{rom} and  the  improvements  imparted herein  to  them, only  an
+\emph{isothermal}  implementation  (at  \SI{298.15}{\kelvin}) of  the  \gls{p2d}
+equations  is  considered.  The  performance  of  the  various  \glspl{rom}  are
+compared  against this  reference benchmark.  In consideration  of the  relative
+sparsity of  such detailed analysis  of \glspl{rom} in existing  literature (see
+\cref{ch:littreview}),  the  author  of  this  thesis  considers  that  such  an
+analysis, albeit isothermal, is  the need of the hour and  is imperative to gain
+a  deeper  understanding  of  the  performance  boundaries  of  various  popular
+\glspl{rom}.  Further  extensions to  the  analysis  presented here  to  include
+various thermal effects can be considered for future research.
 
-\fxnote{make a note in the introduction  chapter that the terms cell and battery
-    are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
-modelling and battery modelling}
+Since temperature does indeed play a crucial  role in the operation of cells and
+battery  packs,  an  isothermal  model  is unsuitable  for  design  purposes.  A
+model-based design that does not consider thermal effects is likely to stray far
+from the operating regimen and fail  spectacularly. Hence, it is not suitable to
+use an  isothermal cell model  for informing the design  of cells. On  the other
+hand, considering a  sophisticated thermally coupled model is  unlikely to yield
+significant gains. Firstly, running  fully coupled electrochemical-thermal model
+based simulations  over the  entire design  space is  computationally expensive.
+Secondly,  the design  results of  the model  have to  be anyway  verified using
+a  reasonable  number of  experimental  prototypes.  Taking into  account  these
+considerations it is deemed that, for the design aspect of this thesis, a lumped
+thermal model suffices. This simplified thermal model is bidirectionally coupled
+to the \gls{p2d} equations (see~\cref{tbl:dfneqns}) of the electrochemical model
+and  is used  as the  \gls{pbm}  underpinning the  model-based design  discussed
+in~\cref{ch:modelbaseddesign}.
+
+% need a symbol Nomenclature
+
+% write about lumped thermal model equations here. Point out to relevant
+
+% \subsection{Organisation of Thesis}
+
+% nice figure here
+% \Cref{ch:improveddra} analyses a critical weakness in a sophisticated \gls{rom}
+% and proposes a numerical method to circumvent it.
+% different \glspl{rom} shall be performed in
+
 
 % \cite{Grazioli2016a} goes crazy in reviewing the models out there.
-
 % \cite{Seaman2014} provide a comprehensive survey  of the wide range of battery
 % models out there.
 
-Based on an isothermal description
-Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
-chemistries.
-
-
-\input{1/dfn_equation_table}
-% write about lumped thermal model equations here. Point out to relevant
-% parameters
-
+% Based on an isothermal description
 
 % \fxnote{Where does  this paragraph go? End  of this section/end of  chapter or
 % even  last  chapter?}  The  identification of  individual  parameters  of  the
@@ -311,3 +358,4 @@ chemistries.
 % relevant system matrix also need to be quantified to enable an informed choice
 % about stability of such models for real-time implementations.
 
+% need a symbol Nomenclature

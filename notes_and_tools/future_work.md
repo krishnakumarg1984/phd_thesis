@@ -1,4 +1,5 @@
 * Scaled Newman Model with model equations
+- list of symbols
 - bode diags
 - binary tree 
 - textsc for C-rate, especially uses like 1C
