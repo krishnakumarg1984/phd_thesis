@@ -12,34 +12,15 @@
 
 \bigskip
 
-
-In  this  paper,  we  analyse  the computational  bottlenecks  in  the  existing
-modelling process  and propose a  significant improvement to the  DRA procedure.
-This paper is organized as follows. In Section  2, analysis of a key step in the
-DRA, ie. the Singular Value Decomposition of a block-Hankel matrix (for choosing
-the model order)  is performed (bottleneck 1). An analytical  formulation of the
-massive computing requirements (storage and floating point operation counts) for
-replicating  the model  in Dr.  Lee's paper  (cite) is  given. Redundancies  and
-inefficiencies in  this step  are enumerated,  therby deeming  the computational
-requirements as unnecessary. Furthermore, another computationally demanding step
-in the DRA, viz. the linear algebra  operation for the computation of the system
-dynamics  matrix A\_hat  is  identified (bottleneck  2). In  Section  3, a  fast
-computational approach using powerful algorithms  is presented that slashes down
-both the memory and the floating point operation count of the CPU for bottleneck
-1. The same code  is elegantly reused to arrive at a  solution for bottleneck 2,
-thereby promoting modularity.  In Section 4, the results arrived  at by applying
-the algorithms  of section 2  are presented, by  comparing them to  key internal
-variables from the existing DRA method. Furthermore, we compare and contrast the
-much  smaller  computational  requirements  of  our  proposed  method  with  the
-existing DRA  code for modelling the  cell behaviour. We show  that the existing
-Discrete-Time-Realization (DRA) algorithm can be significantly speeded up by our
-proposed methodology.
-
-
+% important to acknowledge Teng here
+% \author[tz]{Teng Zhang\fnref{fn2}}
+% \ead{t.zhang@imperial.ac.uk}
 
 % In  this  paper,  we  analyse  the computational  bottlenecks  in  the  existing
 % modelling process  and propose a  significant improvement to the  DRA procedure.
-% This paper is organized as follows. In Section  2, analysis of a key step in the
+% This paper is organized as follows. Our analysis reveals that the Singular Value Decomposition (SVD) of
+% the large Block-Hankel matrix of the system\textquoteright s Markov
+% parameters is a key inefficient step. In Section  2, analysis of a key step in the
 % DRA, ie. the Singular Value Decomposition of a block-Hankel matrix (for choosing
 % the model order)  is performed (bottleneck 1). An analytical  formulation of the
 % massive computing requirements (storage and floating point operation counts) for
@@ -50,13 +31,53 @@ proposed methodology.
 % dynamics  matrix A\_hat  is  identified (bottleneck  2). In  Section  3, a  fast
 % computational approach using powerful algorithms  is presented that slashes down
 % both the memory and the floating point operation count of the CPU for bottleneck
-% 1. The same concept  is elegantly reused to arrive at  a solution for bottleneck
-% 2,  thereby promoting  modularity.  In  Section 4,  the  results  arrived at  by
-% applying the  algorithms of section  2 are presented,  by comparing them  to key
-% internal variables  from the  existing DRA method.  Furthermore, we  compare and
-% contrast the much smaller computational requirements of our proposed method with
-% the existing DRA code for modelling the cell behavior.
+% 1. The same code  is elegantly reused to arrive at a  solution for bottleneck 2,
+% thereby promoting modularity.  In Section 4, the results arrived  at by applying
+% the algorithms  of section 2  are presented, by  comparing them to  key internal
+% variables from the existing DRA method. Furthermore, we compare and contrast the
+% much  smaller  computational  requirements  of  our  proposed  method  with  the
+% existing DRA  code for modelling the  cell behaviour. We show  that the existing
+% Discrete-Time-Realization (DRA) algorithm can be significantly speeded up by our
+% proposed methodology.
 
-\section{Analysis of the Computational  Bottlenecks of Discrete-Time Realization
-Algorithm (DRA)}
-\input{4/analysis_bottlenecks.tex}
+% A fast computational approach
+% is presented that significantly reduces memory usage and CPU operation
+% count by bypassing the redundant Block-Hankel matrix formation step.
+
+% An attractive approach was
+% proposed by Lee et al~\citep{LeeChemistruckPlett2012} using a technique
+% known as Discrete-time-Realization Algorithm (DRA)~\citep{LeeChemistruckPlett2012a}.
+% The ROM thus obtained in standard state-space representation can be
+% simulated to obtain the evolution of electrochemical variables of
+% the standard porous-electrode Li-ion battery model~\citep{DoyleFullerNewman1993,FullerDoyleNewman1994}.
+% An unresolved issue of this approach is the high computation requirement
+% associated with the DRA, which needs to be repeated multiple times
+% for various SOCs and temperatures.
+
+% Comparisons with existing DRA method highlight the significant reduction
+% in computation time and memory usage as well as improved modelling
+% accuracy of electrochemical quantities afforded by this new method.
+
+% % In  this  paper,  we  analyse  the computational  bottlenecks  in  the  existing
+% % modelling process  and propose a  significant improvement to the  DRA procedure.
+% % This paper is organized as follows. In Section  2, analysis of a key step in the
+% % DRA, ie. the Singular Value Decomposition of a block-Hankel matrix (for choosing
+% % the model order)  is performed (bottleneck 1). An analytical  formulation of the
+% % massive computing requirements (storage and floating point operation counts) for
+% % replicating  the model  in Dr.  Lee's paper  (cite) is  given. Redundancies  and
+% % inefficiencies in  this step  are enumerated,  therby deeming  the computational
+% % requirements as unnecessary. Furthermore, another computationally demanding step
+% % in the DRA, viz. the linear algebra  operation for the computation of the system
+% % dynamics  matrix A\_hat  is  identified (bottleneck  2). In  Section  3, a  fast
+% % computational approach using powerful algorithms  is presented that slashes down
+% % both the memory and the floating point operation count of the CPU for bottleneck
+% % 1. The same concept  is elegantly reused to arrive at  a solution for bottleneck
+% % 2,  thereby promoting  modularity.  In  Section 4,  the  results  arrived at  by
+% % applying the  algorithms of section  2 are presented,  by comparing them  to key
+% % internal variables  from the  existing DRA method.  Furthermore, we  compare and
+% % contrast the much smaller computational requirements of our proposed method with
+% % the existing DRA code for modelling the cell behavior.
+
+% \section{Analysis of the Computational  Bottlenecks of Discrete-Time Realization
+% Algorithm (DRA)}
+% \input{4/analysis_bottlenecks.tex}

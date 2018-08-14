@@ -9,115 +9,22 @@
 
 More introductory material goes here blah blah \dots \dots
 
-In recent years, tightening emissions regulations for various industrial sectors
-have  forced a  renewed interest  in sustainable  energy sources{[}cite{]}.  The
-demand  for  clean  energy  has  led  the  automotive,  utilities  and  consumer
-electronics industries to develop  advanced methods of storing energy{[}cite{]}.
-Li-ion batteries  are seen as key  enablers in this quest  {[}cite{]} ; however,
-with this explosion  in energy storage requirements comes a  stricter demand for
-cell  longevity, performance,  and adhesion  to safety  requirements {[}cite{]}.
-Lithium-ion cells have several advantages over other cell compositions including
-high  energy density,  extended lifecycle,  low internal  resistance, low  self-
-discharge, long cycle  life, fast charge and discharge  cycles {[}cite{]} making
-it no surprise that nearly all  modern consumer electronics and electric vehicle
-(EV) manufacturers  employ this technology  to varying degrees in  their product
-portfolio.
-
-Through  accurate  model representations  of  the  electrochemical behaviour  of
-the  cell,  advanced  control  strategies   can  be  deployed  to  tackle  these
-challenges{[}cite{]}. With safety and performance being of utmost concern, extra
-efforts have  been made to  construct accurate  models to describe  the physical
-behavior  of  the  cell  {[}cite{]}.Modern  demand  for  increased  performance,
-operating  lifecycle   and  safety  of   batteries  has  led   to  sophisticated
-modeling strategies.  These models  govern the  operation of  Battery Management
-Systems  (BMS) in  various  applications ranging  from  portable electronics  to
-automotive. Most  models have  the primary intent  of accurately  estimating the
-cell\textquoteright s voltage and  state-of-charge;more advanced models give key
-insight into  physical parameters that could  affect the health of  the battery.
-The literature on Li-ion battery modelling  can be generally classified into two
-broad  approaches  : (1)  Empirical/Ad-hoc  equivalent  circuit models  and  (b)
-Detailed  Physics-Based  models  based  upon first  principles.  However,  these
-two  approaches  are generally  at  loggerheads  with  each  other in  terms  of
-computational complexity as discussed below.
-
-Equivalent  circuit  models  employ   circuit  elements  like  voltage  sources,
-resistors  and capacitors  to  model  the general  behaviour  of batteries.  The
-parameters of the circuit can be identified using numerical optimization methods
-{[}cite{]}  or through  Electrochemical Impedance  Spectroscopy {[}cite{]}.  The
-open-circuit  voltage and  capacity of  the  battery are  usually determined  by
-measuring the terminal voltage and integrating the applied current during a very
-slow discharge  test (eg. at a  C/30 rate). Using the  equivalent circuit model,
-the cell\textquoteright  s state  of charge  (SOC) can  be calculated  using two
-simple  methods  using discharge  test  data  -- a)  the  manufacturer-specified
-OCV-SOC  lookup table  and  b)  coulomb counting  {[}cite{]}.  Both methods  are
-computationally  amenable for  small-scale embedded  applications like  consumer
-electronics;  however, neither  one  is robust  for  modern performance  demands
-imposed  by vehicular  applications. More  advanced methods  which employ  these
-equivalent circuit models, such as nonlinear Kalman filtering, produce very good
-robust estimates  {[}9{]}. The usefulness  of the ECM  models is limited  by the
-fact that  their parameters are  derived essentially by a  curve-fitting process
-using training data.  Since they are not based on  any physical phenomena, their
-ability to predict cell behavior is  extremely poor especially when applied with
-current profiles outside the training realm.
-
-Physics-based  models  employ governing  equations  that  construct an  accurate
-realization  of  the   behaviour  of  the  system  based   on  first  principles
-of   electrochemical   thermodynamics   and   kinetics.   Doyle,   Fuller,   and
-Newman  {[}cite{]}   developed  a  porous   electrode  model  to   describe  the
-cells\textquoteright{} internal variables like  solid and electrolyte potential,
-solid  and   electrolyte  concentrations,   and  lithium  molar   flux  density,
-respectively. The fundamental  advantage to this modelling approach  is that the
-prediction  of the  internal variables  can  be obtained  for arbitrary  current
-profiles, whereas the  error of the equivalent circuit models  is very high when
-current profiles outside  the model\textquoteright s training  realm is applied.
-Also, direct estimation  of state-of-charge and cell-capacity  is obtained using
-the  Physics-based  model {[}cite{]}.  The  difficulty  with the  physics  based
-modelling  approach is  to obtain  the values  of all  the physical,  geometric,
-electrochemical, thermal  and kinetic  parameters of  the cells.  Usually, these
-parameters are  trade secrets of various  cell manufacturers, and varies  due to
-production spread.  Only a  limited number  of cell  parameters can  be obtained
-directly from laboratory experiments. Hence,  some sort of system identification
-method needs to be employed for extrapolating other cell parameters. Also, it is
-a common practice to rely on published data for estimating certain parameters of
-the cell that do not depend  on physical construction, especially for those that
-remain universally  true for a particular  Li-ion family of cell  chemistry. The
-disadvantage of physics-based models is that their simulation is time-consuming,
-requiring  sophisticated  multi-physics  PDE  solvers and  hence  not  typically
-suitable for  embedded applications. However, for  high performance applications
-like automotive battery management  systems where the state-of-health monitoring
-is crucial,  there is an overwhelming  demand for the insight  into the internal
-cell variables. Thus, applying various model order reduction technqiues are seen
-a key enabler in porting the predictive powers of the physics-based model into a
-real-time microprocessor.
-
-
-
-
-Ragone plot
-
-Different type of cells - Prismatic,  pouch and cylindrical. How pouch cells are
-used in automotive industry acknowledge Tesla, but cite counter citations. Layer
-photos etc
-
-This  thesis  strives to  represent  all  physical  quantities in  the  standard
-International  System  of Units  (SI-Units).  However,  there are  some  notable
-exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
-practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
-Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
-prevalent conventions in standard literature.
-
-\fxnote{make a note in the introduction  chapter that the terms cell and battery
-are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
-modelling and battery modelling}
-
-% \cite{Grazioli2016a} goes crazy in reviewing the models out there.
-
-% \cite{Seaman2014} provide a comprehensive survey  of the wide range of battery
-% models out there.
-
-Based on an isothermal description
-Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
-chemistries.
+In  recent  years,  tightening  emissions  regulations  for  various  industrial
+sectors  have  forced   a  renewed  interest  in   sustainable  energy  sources.
+The   demand  for   clean  energy   has  led   the  automotive,   utilities  and
+consumer  electronics   industries  to  develop  advanced   methods  of  storing
+energy~\cite{Weiss2011}.  Li-ion   batteries  are   seen  as  key   enablers  in
+this  quest  due   to  the  attractiveness  of  their  high   energy  and  power
+densities   relative  to   other  competing   non-conventional  energy   storage
+technologies~\cite{Ibrahim2008}.  However, with  this  increased energy  storage
+demands  comes  a stricter  requirement  for  cell longevity,  performance,  and
+adhesion  to  safety  requirements,  particularly  for  adoption  in  mainstream
+transport  electrification~\cite{Andrea2010}.  Lithium-ion  cells  have  several
+advantages over other competing cell  chemistries including high energy density,
+long lifecycles, low  internal resistance, low self-discharge,  long cycle life,
+fast charge  and discharge cycles~\cite{Reddy2011,Plett2015}. This  makes it the
+preferred choice for  energy storage and on-demand retrieval  in modern consumer
+electronics and~\glspl{xeV}.
 
 
 \section{Chemistry}\label{subsec:liionchemistry}
@@ -193,6 +100,151 @@ a  function  of  its  stoichiometry  can be  obtained,  and  is  dependent  upon
 the  specific design  and  material  properties of  each  active material  under
 consideration. Finally, the \gls{ocv} of the cell is obtained by subtracting the
 negative electrode potential from its positive electrode counterpart.
+
+
+\section{Battery Modelling}
+
+Through accurate model representations  of the electrochemical-thermal behaviour
+of  the cell,  advanced monitoring  and control  strategies can  be deployed  to
+tackle  the current  research  topics  in Li-ion  batteries  such as  increasing
+cycle-life, improving operational  safety and performance~\cite{Plett2015}. Over
+the past  two decades, efforts  have been made  to construct accurate  models to
+describe  the physical,  electrical, thermal,  electrochemical and  system-level
+performance  of  Li-ion  cells,  leading  to  modelling  strategies  of  various
+level  of  sophistication.  For  the  interested  reader,  large  in-roads  into
+understanding  the breadth  and  depth  of modelling  of  lithium ion  batteries
+can  be  made   from  perusing  comprehensive  books  on  this   topic  such  as
+those  by Plett~\cite{Plett2015},  Hariharan~\cite{Hariharan2017}, and  Rahn and
+Wang~\cite{Rahn2013}.
+
+The  need to  address the  challenges of  lithium ion  batteries in  an embedded
+environment such as on-board an electric vehicle has led to an increased impetus
+on  the development  of advanced  \glspl{bms}~\cite{Bergveld2002}. In  vehicular
+applications,  the only  measurable quantities  of a  lithium ion  cell are  its
+terminal voltage,  current and temperature.  This implies that  several internal
+states of the  cell such as its \gls{soc}, whose  real-time computation is vital
+to  the  optimal performance  of  the  cell, need  to  be  estimated from  these
+available measurements. Therefore, the performance of a \gls{bms} for tasks such
+as online state estimation is dependent upon the fidelity of the underlying cell
+model  used. Sophisticated  models of  the cell  enable these  quantities to  be
+estimated more accurately and facilitate  the implementation of advanced control
+algorithms. Therefore, it is imperative that the cell model used is suitable for
+being embedded in a real-time \gls{bms}.
+
+Most battery  models have the primary  goal of accurately predicting  the cell's
+terminal  voltage  at each  time-step.  This  is so  that  the  output from  the
+predictor routine  can be compared  to the  measured voltage and  the difference
+between them  may be used in  a suitable corrector-subroutine to  improve future
+prediction.  The combined  information from  the model  and measurement  is then
+blended in a suitable way to estimate the cell's \gls{soc}.
+
+More   advanced  models   strive   to  provide   insight   into  various   other
+physico-chemical quantities  that could  affect the health  of the  battery. The
+field of  Li-ion battery modelling can  be classified into two  broad categories
+---
+\begin{enumerate*}[label=\roman*)]
+    \item empirical/ad-hoc \glspl{ecm}, and
+    \item detailed  \glspl{pbm} that are based  upon first principles.
+\end{enumerate*}
+However, these  two approaches are typically  at loggerheads with each  other in
+the aspect of their computational complexity.
+
+\subsection{\glsfmtlong{ecm}s}
+
+\glspl{ecm}  employ circuit  elements  such as  voltage  sources, resistors  and
+capacitors to  model the behaviour  of batteries at their  electrical terminals.
+The cell's  thermal subsystem may  also be  modelled by an  analogous electrical
+circuit. The  parameters of the  circuit are  typically functions of  the cell's
+current, \gls{soc} and  temperature and can be implemented as  a lookup table by
+curve-fitting  the model  to experimental  data. Using  such equivalent  circuit
+models, two simple methods are available to compute the cell's \gls{soc} ---
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item manufacturer-supplied  lookup table or graph of \gls{ocv} versus \gls{soc}, and
+    \item numerically integrating the charge passed in and out of the cell over time, commonly referred to as coulomb counting.
+\end{enumerate*}
+Both methods are computationally  amenable for small-scale embedded applications
+like  consumer  electronics;  however,  neither  one is  robust  to  handle  the
+stringent demands in performance imposed  by modern vehicular applications.
+
+Advanced state estimation algorithms such  as nonlinear Kalman filters may still
+be able to use \glspl{ecm} as the plant model and obtain reasonable estimates of
+the  cell's  \gls{soc}~\cite{Plett2006,  Sun2011}. However,  the  usefulness  of
+\glspl{ecm} is limited by the fact that their parameters are derived essentially
+by a  curve-fitting process using a  standard set of training  data. Since these
+models are  not based on  any physical phenomena,  their ability to  predict the
+cell's general behaviour  is extremely poor especially when  subjects to current
+profiles well  outside their training  realm. Another important  disadvantage of
+equivalent circuit  models is that they  do not allow insights  into the various
+internal states of the cell.
+
+\glspl{ecm}s  of  lithium  ion  batteries  have  been  extensively  studied  and
+are  widely  applied.  However,  the aforementioned  difficulties  render  their
+reliability and  accuracy questionable,  especially under highly  demanding load
+profiles  experienced by  the battery  packs in  \glspl{xeV}. The  boundaries of
+their  performance have  been well-quantified  (see~\cite{Plett2015,Plett2016}).
+Although  various estimation  and control  algorithms continue  to be  developed
+around them, the  \glspl{ecm} themselves are no longer the  subject of extensive
+research. Hence, this thesis does not discuss them further.
+
+\subsection{\glsfmtlong{pbm}s}
+
+Physics-based  models  employ governing  equations  that  construct an  accurate
+realization  of  the   behaviour  of  the  system  based   on  first  principles
+of   electrochemical   thermodynamics   and   kinetics.   Doyle,   Fuller,   and
+Newman  {[}cite{]}   developed  a  porous   electrode  model  to   describe  the
+cells\textquoteright{} internal variables like  solid and electrolyte potential,
+solid  and   electrolyte  concentrations,   and  lithium  molar   flux  density,
+respectively. The fundamental  advantage to this modelling approach  is that the
+prediction  of the  internal variables  can  be obtained  for arbitrary  current
+profiles, whereas the  error of the equivalent circuit models  is very high when
+current profiles outside  the model\textquoteright s training  realm is applied.
+Also, direct estimation  of state-of-charge and cell-capacity  is obtained using
+the  Physics-based  model {[}cite{]}.  The  difficulty  with the  physics  based
+modelling  approach is  to obtain  the values  of all  the physical,  geometric,
+electrochemical, thermal  and kinetic  parameters of  the cells.  Usually, these
+parameters are  trade secrets of various  cell manufacturers, and varies  due to
+production spread.  Only a  limited number  of cell  parameters can  be obtained
+directly from laboratory experiments. Hence,  some sort of system identification
+method needs to be employed for extrapolating other cell parameters. Also, it is
+a common practice to rely on published data for estimating certain parameters of
+the cell that do not depend  on physical construction, especially for those that
+remain universally  true for a particular  Li-ion family of cell  chemistry. The
+disadvantage of physics-based models is that their simulation is time-consuming,
+requiring  sophisticated  multi-physics  PDE  solvers and  hence  not  typically
+suitable for  embedded applications. However, for  high performance applications
+like automotive battery management  systems where the state-of-health monitoring
+is crucial,  there is an overwhelming  demand for the insight  into the internal
+cell variables. Thus, applying various model order reduction technqiues are seen
+a key enabler in porting the predictive powers of the physics-based model into a
+real-time microprocessor.
+
+
+Ragone plot
+
+Different type of cells - Prismatic,  pouch and cylindrical. How pouch cells are
+used in automotive industry acknowledge Tesla, but cite counter citations. Layer
+photos etc
+
+This  thesis  strives to  represent  all  physical  quantities in  the  standard
+International  System  of Units  (SI-Units).  However,  there are  some  notable
+exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
+practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
+Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
+prevalent conventions in standard literature.
+
+\fxnote{make a note in the introduction  chapter that the terms cell and battery
+    are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
+modelling and battery modelling}
+
+% \cite{Grazioli2016a} goes crazy in reviewing the models out there.
+
+% \cite{Seaman2014} provide a comprehensive survey  of the wide range of battery
+% models out there.
+
+Based on an isothermal description
+Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
+chemistries.
+
 
 \input{1/dfn_equation_table}
 % write about lumped thermal model equations here. Point out to relevant
