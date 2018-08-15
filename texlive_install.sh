@@ -81,6 +81,7 @@ tlmgr install   \
     fontloader-luaotfload \
     fontspec \
     footmisc \
+    footnotebackref \
     fourier \
     fouriernc \
     fp \
