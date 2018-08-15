@@ -42,17 +42,16 @@ consumer electronics and~\glspl{xeV}.
 % photos etc
 
 % Precise definition of cell unit
+% \section{Geomtery}
 % C-rate definition
 
 % Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
 % chemistries.
 
-\section{Chemistry}\label{subsec:liionchemistry}
+\section{Working Principle}\label{subsec:liionchemistry}
 
 This section  provides a  brief overview of  the essential  chemistry principles
-that helps to provide a background context for the governing equations presented
-in~\cref{subsec:basicspmgoverningeqns}.
-
+that helps to describe the working principle of a lithium ion cell.
 
 In  a Li-ion  cell,  the  positive electrode  consists  of  porous particles  of
 Lithium-Transition Metal Oxide (MO)  compounds. The negative electrode typically
@@ -127,15 +126,16 @@ negative electrode potential from its positive electrode counterpart.
 Through accurate model representations  of the electrochemical-thermal behaviour
 of  the cell,  advanced monitoring  and control  strategies can  be deployed  to
 tackle  the current  research  topics  in Li-ion  batteries  such as  increasing
-cycle-life, improving operational  safety and performance~\cite{Plett2015}. Over
-the past  two decades, efforts  have been made  to construct accurate  models to
-describe  the physical,  electrical, thermal,  electrochemical and  system-level
-performance  of  Li-ion  cells,  leading  to  modelling  strategies  of  various
-level  of  sophistication.  For  the  interested  reader,  large  in-roads  into
-understanding  the breadth  and  depth  of modelling  of  lithium ion  batteries
-can  be  made   from  perusing  comprehensive  books  on  this   topic  such  as
-those  by Plett~\cite{Plett2015},  Hariharan~\cite{Hariharan2017}, and  Rahn and
-Wang~\cite{Rahn2013}.
+cycle-life,  improving  operational   safety  and  performance~\cite{Plett2015}.
+Over  the  past two  decades,  efforts  have  been  made to  construct  accurate
+models  to  describe  the  physical, electrical,  thermal,  electrochemical  and
+system-level performance  of Li-ion  cells, leading  to modelling  strategies of
+various  level of  sophistication. For  the  interested reader,  the article  by
+Grazioli~\etal~\cite{Grazioli2016a} provides  a broad introduction to  the topic
+of computational  modelling of  lithium ion batteries.  Large in-roads  into the
+depth of the modelling  art can be made by perusing  comprehensive books on this
+topic such  as those by  Plett~\cite{Plett2015}, Hariharan~\cite{Hariharan2017},
+and Rahn and Wang~\cite{Rahn2013}.
 
 The  need  to  address  the  operational challenges  of  lithium  ion  batteries
 in   an   embedded   environment   such  as   on-board   an   electric   vehicle
@@ -167,8 +167,10 @@ field of  Li-ion battery modelling can  be classified into two  broad categories
     \item empirical/ad-hoc \glspl{ecm}, and
     \item detailed  \glspl{pbm} that are based  upon first principles.
 \end{enumerate*}
-However, these  two approaches are typically  at loggerheads with each  other in
-the aspect of their computational complexity.
+A  comprehensive summary  of  various models  that  belong to  each  of the  two
+categories  is  discussed  in Seaman~\etal~\cite{Seaman2014}.  A  characteristic
+aspect that contrasts  them is the fact that these  two approaches are typically
+at loggerheads with each other in terms of their computational complexity.
 
 \subsection{\glsfmtlong{ecm}s}
 
@@ -326,8 +328,6 @@ in~\cref{ch:modelbaseddesign}.
 
 % need a symbol Nomenclature
 
-% write about lumped thermal model equations here. Point out to relevant
-
 % \subsection{Organisation of Thesis}
 
 % nice figure here (with Bohr model of atom)
@@ -335,8 +335,6 @@ in~\cref{ch:modelbaseddesign}.
 % and proposes a numerical method to circumvent it.
 % different \glspl{rom} shall be performed in
 
-
-% \cite{Grazioli2016a} goes crazy in reviewing the models out there.
 % \cite{Seaman2014} provide a comprehensive survey  of the wide range of battery
 % models out there.
 
