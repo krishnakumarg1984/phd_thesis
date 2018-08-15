@@ -4,22 +4,25 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
+\glsreset{rom}
+
 Battery modellers face the classic  conundrum of conjuring physics-based battery
 models that remain amenable for control  applications. The prior attempts by the
 research  community  to  tackle  this  challenge  is  examined  here.  The  term
-`control-oriented model'  can be considered  synonymous with \gls{rom}.  This is
-due to the fact that the  inherent complexity of physics-based models inherently
-necessitates the  use of  some order  reduction strategy  for their  adoption in
-control and  real-time applications. In this  thesis as well as  in the relevant
-literature discussed here, these two terms have been used interchangeably.
+`control-oriented model' can  be considered synonymous with  the term \gls{rom}.
+This is  due to the  fact that the  inherent complexity of  physics-based models
+inherently  necessitates the  use of  some  order reduction  strategy for  their
+adoption in  control and real-time  applications. In this  thesis as well  as in
+the  relevant  literature  discussed  here,  these  two  terms  have  been  used
+interchangeably.
 
-Research  into reduced-order  models is  motivated by  the pressing  need for  a
-real-time  model  with  accuracy  properties of  the  full-order  physics  based
-models  but  possessing  the   computational  simplicity  of  equivalent-circuit
-models.\fxnote{discussed in chapter 1. Cite here.}
-%A  number of  approaches to reduce  the  computational complexity  of  the  physics-based models  have  been explored  in literature  {[}cite{]}
-Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
-categories  of  reduced  order  physics  based  battery  models.  However,  this
+Research into  \glspl{rom} is  motivated by  the pressing  need for  a real-time
+model  with accuracy  properties of  full-order \glspl{pbm}  but possessing  the
+computational  simplicity of  equivalent-circuit models  (see~\cref{subsec:ecms}
+and~\cref{subsec:pbms} for  an overview). A  number of approaches to  reduce the
+computational  complexity of  the  physics-based models  have  been explored  in
+literature. Jokar~\etal~\cite{Jokar2016}  provide a comprehensive review  of the
+various categories of reduced order  physics based battery models. However, this
 work  does  not aim  to  classify  models  based on  time-vs-frequency  domains.
 Fan~\etal{}~\cite{Fan2015}  conducted  a  review   of  reduced  order  modelling
 methods, but only provide a generic overview of deriving and implementing models
@@ -190,20 +193,23 @@ reduction  procedure whilst  keeping the  derivation entirely  in the  frequency
 domain.
 
 
-Obtaining  closed form  expressions for  the electrolyte  variables achieved  in
-Lee~\etal{} also has an important computational implication. With these capstone
-derivations serving to  complete the model description in  the frequency domain,
-all  electrochemical  variables of  the  \gls{dfn}  model  could now  be  solved
-independently at any desired spatial  location, in particular at certain crucial
-locations  \eg{} the  interface of  each electrode  with the  respective current
-collector or separator.  Until this breakthrough was achieved, the  state of the
-art in reduced order modelling (excluding  the \gls{spm} that shall be discussed
-later)  invariably  necessitated  procedures  to  obtain  the  solution  of  all
-electrochemical quantities  at multiple  node locations  along the  thickness of
-each  cell  layer, thereby  adding  to  the  computational  burden. This  was  a
-significant deterrent to  the adoption of such \glspl{rom},  particularly if the
-intended purpose of  the model is to simply predict  the cell's terminal voltage
-or serve as the plant in \gls{soc} estimation applications.
+Obtaining closed form expressions for  the electrochemical variables achieved in
+Smith~\etal{} (for all quantities other than electrolyte transfer functions) and
+Lee~\etal{} (all  quantities including electrolyte transfer  functions) also has
+an important computational implication.  With these capstone derivations serving
+to complete the  model description in the frequency  domain, all electrochemical
+variables  of the  \gls{dfn}  model could  now be  solved  independently at  any
+desired spatial location, in particular at certain crucial locations such as the
+interface of each electrode with  the respective current collector or separator.
+This groundbreaking idea  sharply contrasts with the incumbent state  of the art
+in reduced order modelling. For the simplification of the original \gls{pdae} of
+equations in~\cref{tbl:dfneqns}, most order  reduction approaches (excluding the
+\gls{spm} that shall be discussed later) invariably required the solution of all
+electrochemical quantities at multiple node locations along the thickness of the
+cell,  thereby  adding to  the  computational  burden.  This was  a  significant
+deterrent  to the  adoption of  such \glspl{rom},  particularly if  the intended
+purpose of the model  is to simply predict the cell's  terminal voltage or serve
+as the plant model in \gls{soc} estimation applications.
 
 
 In the  same publications~\cite{Lee2012a,Lee2012}, Lee~\etal{} also  devised the
@@ -250,7 +256,7 @@ the  final  state  space  model  thus  obtained  is  simple  to  implement,  the
 classical \gls{dra} scheme suffers from significant computational bottlenecks in
 forming the  required block-Hankel  matrices during the  model-derivation phase.
 A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
-structure  of these  Hankel  matrices was  proposed by  this  this author  \ie{}
+structure of  these Hankel  matrices was  proposed by  this thesis  author \ie{}
 Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers the
 requirements for computational memory and  processing power. The details of this
 contribution shall be presented in~\cref{ch:improveddra} of this thesis.
@@ -484,40 +490,37 @@ a  node  in  the  axial  \ie{} through-thickness  direction)  along  its  radial
 direction (pseudo  dimension). This  additional discretisation along  the pseudo
 dimension dramatically increases the overall  number of discretisation nodes and
 adversely  affects  computational  efficiency.  The impact  of  such  high  node
-densities on the computational requirements of the original \gls{p2d} model have
-led researchers to adopt various mitigation  strategies to tackle this issue. In
-contrast  to the  pure frequency  domain and  the semi-hybrid/hybrid  approaches
-discussed  thus far,  these attempts  typically strive  to arrive  at a  simpler
-computational mesh,  whilst aiming to retain  high fidelity. It should  be noted
-that high node  densities are mainly required near the  surface of the spherical
-particles  for the  pseudo  dimension.  Similarly, the  clustering  of nodes  is
-desirable near  the separator and  current collector interfaces along  the axial
-dimension.\fxnote{need to  define `axial' at  the start  of the thesis}  Thus, a
-sizeable  number of  order  reduction  strategies in  the  time  domain seek  to
-adopt  non-uniform node  spacing  towards lowering  the aforesaid  computational
-issues\fxnote{citations needed}.
+densities  on the  computational requirements  of the  original \gls{p2d}  model
+coupled  with the  fact  that diffusion  in  the solid  phase  is typically  the
+rate-limiting  aspect  of  batteries  have  led  researchers  to  adopt  various
+mitigation strategies  to tackle this issue.  In contrast to the  pure frequency
+domain and the semi-hybrid/hybrid approaches  discussed thus far, these attempts
+typically strive  to arrive at  a simpler  computational mesh, whilst  aiming to
+retain high  fidelity. It should  be noted that  high node densities  are mainly
+required near the  surface of the spherical particles for  the pseudo dimension.
+Similarly, the clustering  of nodes is desirable near the  separator and current
+collector interfaces along the axial dimension.\fxnote{need to define `axial' at
+the start of  the thesis} Thus, a sizeable number  of order reduction strategies
+in the time  domain seek to adopt non-uniform node  spacing towards lowering the
+aforesaid computational issues\fxnote{citations needed}.
 
-% The diffusion of Lithium in the solid  being the rate-limiting step has been the focus of many model order reduction  efforts by circumventing the need for using the PDE.
-
-Computationally  efficient pseudo-spectral  schemes  for  numerical solution  of
-\glspl{pde}  can  be employed  by  placing  discretisation nodes  at  orthogonal
-collocation  points obtained  by  solving  for the  zeros  of  certain class  of
-polynomial basis
-functions~\cite{Ferguson1971,Trefethen2000,Boyd2001,Shizgal2015,Dutykh2016}.
-The  accuracy  of such  schemes  extend  beyond  the  algebraic orders  of  that
-achievable with  classical Finite  Difference, Finite  Element or  Finite Volume
-Schemes.  Northrop~\etal{}~\cite{Northrop2011}  pioneered their  application  in
-battery modelling by employing Jacobi polynomials as underlying basis functions.
+Computationally    efficient     pseudo-spectral    schemes     for    numerical
+solution   of   \glspl{pde}   can   be  employed   by   placing   discretisation
+nodes    at    orthogonal    collocation     points    obtained    by    solving
+for     the     zeros    of     certain     class     of    polynomial     basis
+functions~\cite{Ferguson1971,Trefethen2000,Boyd2001,Shizgal2015,Dutykh2016}. The
+accuracy of such  schemes extend beyond the algebraic orders  of that achievable
+with  classical Finite  Difference,  Finite Element  or  Finite Volume  Schemes.
+Northrop~\etal{}~\cite{Northrop2011}  pioneered  their  application  in  battery
+modelling  by  employing  Jacobi  polynomials  as  underlying  basis  functions.
 Suthar~\etal{}~\cite{Suthar2014}  replaced  Jacobi  polynomials  with  Chebyshev
 polynomials to  extend the  applicability of the  resulting \gls{rom}  to higher
 C-rates. Bizeray~\etal{}~\cite{Bizeray2015} provide a  detailed treatment of the
 usage  of Chebyshev  discretisation for  the full  \gls{p2d} model  on a  global
 scale, \ie{} along both the axial and radial directions for all equations of the
-\gls{dfn} model.
-
-% A Lagrangian-like integral method was also proposed to deal with electrolyte
-% and solid-state diffusions, which perform well  only at low C-rates by Smith
-% and Wang
+\gls{dfn}  model. A  Lagrangian-like integral  method was  proposed by  Rahn and
+Wang~\cite{Rahn2013}  to  deal  with  electrolyte  and  solid-state  diffusions.
+However, this method works well only at low C-rates.
 
 
 The  reduced  number   of  nodes  as  well  as  their   clustered  placement  at
@@ -720,17 +723,22 @@ aiding in  a direct and  intuitive understanding  of physical parameters  on the
 cell's operation.
 
 This concludes  the author's review of  literature of the various  reduced order
-modelling strategies. Based on the wealth of information gleaned from this study
-of  literature,  it was  possible  to  make an  informed  choice  to pursue  the
-\gls{spm} approach  for further research.  The thesis author's  contributions to
-the time-domain implementation-focus reduced order modelling field include
+modelling  strategies. Based  on the  wealth  of information  gleaned from  this
+study,  it was  possible to  make  an informed  choice to  pursue the  \gls{spm}
+approach  for further  research.  In particular,  it came  to  light that  there
+has  been  no systematic  analysis  of  the  state  of the  art  \gls{spm}-based
+approach with  a view  to quantify their  performance boundaries.  This author's
+contributions to  the time-domain  implementation-focus reduced  order modelling
+field include
 \begin{itemize}[noitemsep,topsep=0pt, before={\vspace*{-0.25\baselineskip}}]
-    \item thorough analysis of the existing \gls{spm} variants ranging from the rudimentary to the sophisticated
+    \item a thorough analysis of the existing \gls{spm} variants ranging from the rudimentary to the sophisticated
     \item enumeration of issues plaguing each \gls{spm} variant, including current state of the art
     \item study of further literature on the current tactics to overcome the current challenges along with their associated drawbacks
     \item conducting a  wide range of hypotheses-driven trials in an attempt to enhance  the basic \gls{spm} (some of which did not yield the desired
-        improvements), and then
-    \item finally arriving at  a  feasible  approach  capable  of  moulding  the  \gls{spm}  to  a  readily implementable  solution.
+        improvements), and
+    \item arriving at  a  feasible  approach  capable  of  moulding  the
+        \gls{spm}  framework into  a  readily implementable  solution in
+        electric vehicle applications
 \end{itemize}
 This research was  performed through an iterative cycle of  analysis, design and
 simulation-based verification  and shall be  elucidated in a  discourse spanning
