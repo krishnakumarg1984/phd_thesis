@@ -1,165 +1,153 @@
-Research into reduced-order models is thus motivated by the pressing
-need for a real-time embedded model with accuracy properties of the full-order
-physics based models but possessing the computational simplicity of
-equivalent-circuit models. A number of approaches to reduce the computational
-complexity of the physics-based models have been explored in literature
-{[}cite{]}, of which the two most common are single particle models
-and impedance based models. The single-particle models are the simplest
-of all approaches, modeling each electrode as a single solid particle,
-while ignoring the variations of electrolyte concentration and potential
-{[}cite{]}. They perform well for lower current inputs, however, the
-outputs of these models diverge dramatically at higher C-rates{[}cite{]}.
-The diffusion of Lithium in the solid being the rate-limiting step
-has been the focus of many model order reduction efforts by circumventing
-the need for using the PDE. Rahn and Wang (cite) have proposed using
-the Pade' approximation method to model solid diffusion by truncating
-the response to a desired order. The high-frequency response of this
-model does not match experimental results and hence, deemed to be
-of a limited value in automotive applications with rapid acceleration
-and braking. A Lagrangian-like integral method was also proposed to
-deal with electrolyte and solid-state diffusions, which perform well
-only at low C-rates.
+Research into reduced-order models is thus  motivated by the pressing need for a
+real-time  embedded model  with accuracy  properties of  the full-order  physics
+based models  but possessing the computational  simplicity of equivalent-circuit
+models. A  number of approaches  to reduce  the computational complexity  of the
+physics-based models have  been explored in literature {[}cite{]},  of which the
+two  most common  are single  particle models  and impedance  based models.  The
+single-particle  models  are  the  simplest of  all  approaches,  modeling  each
+electrode  as  a  single  solid  particle,  while  ignoring  the  variations  of
+electrolyte concentration and potential {[}cite{]}.  They perform well for lower
+current inputs,  however, the  outputs of these  models diverge  dramatically at
+higher  C-rates{[}cite{]}. The  diffusion  of  Lithium in  the  solid being  the
+rate-limiting step has  been the focus of many model  order reduction efforts by
+circumventing the  need for using  the PDE. Rahn  and Wang (cite)  have proposed
+using the Pade' approximation method to  model solid diffusion by truncating the
+response to a desired order. The  high-frequency response of this model does not
+match  experimental results  and  hence, deemed  to  be of  a  limited value  in
+automotive applications  with rapid acceleration and  braking. A Lagrangian-like
+integral  method was  also proposed  to  deal with  electrolyte and  solid-state
+diffusions, which perform well only at low C-rates.
 
-Impedance-based reduced order modelling approaches
-are a recent evolution and were pioneered by Dr. Smith {[}cite{]}.
-This approach is based on transforming the physical equations to the
-Laplace domain, and then deriving linearized transfer functions for
-the cell's internal variables. Markov parameters of these transfer
-functions are computed numerically and finally a reduced set of poles
-are used to approximate the system using techniques from linear control
-theory. The significant advantage of this approachl is that it computes
-only those cell-variables at particular locations of interest within
-the cell geometry. This approach sharply contrasts with other model
-reduction approaches which aim to minimize the order of coupled PDEs,
-but still require the numerical solver to solve for all time points
-and spatial nodes defined by the meshing routine. However, Dr. Smith\textquoteright s
-model was limited in use since the electrolyte potentials and concentrations
-were solved through finite-element method and not through simple transfer
-functions. Hence, the overall computation/simulation time was no better
-than existing reduced-order models obtained by other competing model
-order reduction strategies.However, this was the first approach to
-successfully derive a linearized transfer functions for electrochemical
-variables of the pseudo-2D porous-electrode model
+Impedance-based reduced  order modelling approaches  are a recent  evolution and
+were pioneered by  Dr. Smith {[}cite{]}. This approach is  based on transforming
+the  physical equations  to the  Laplace  domain, and  then deriving  linearized
+transfer functions for the cell's internal variables. Markov parameters of these
+transfer functions are  computed numerically and finally a reduced  set of poles
+are used to approximate the system  using techniques from linear control theory.
+The  significant advantage  of this  approachl is  that it  computes only  those
+cell-variables at  particular locations  of interest  within the  cell geometry.
+This approach sharply contrasts with  other model reduction approaches which aim
+to  minimize  the  order  of  coupled PDEs,  but  still  require  the  numerical
+solver  to  solve  for  all  time  points  and  spatial  nodes  defined  by  the
+meshing  routine.  However, Dr.  Smith\textquoteright  s  model was  limited  in
+use  since the  electrolyte potentials  and concentrations  were solved  through
+finite-element  method and  not through  simple transfer  functions. Hence,  the
+overall computation/simulation  time was  no better than  existing reduced-order
+models  obtained by  other competing  model order  reduction strategies.However,
+this  was  the first  approach  to  successfully  derive a  linearized  transfer
+functions for electrochemical variables of the pseudo-2D porous-electrode model
 
-Dr. Lee {[}cite{]} extended the work of Dr. Smith and solved for the
-electrolyte concentration and potential by applying Sturm-Louisville
-theory to arrive at a multi-modal EigenFunction solution for these
-electrolyte variables. Furthermore, Dr. Lee proposed a numerical method
-known as Discrete-time-Realization Algorithm (DRA) that retains the
-physical character of the original equations until the very last step
-when the governing matrices describing the system dynamics are generated,
-yielding a one-dimensional discrete-time state-space reduced-order-model
-(ROM) of an entire Lithium-ion battery dynamics based upon fundamental
-physical principles. The reduced order model thus obtained could then
-be used to obtain the time-evolution of all the internal electrochemical
-quantities of a standard porous-electrode model. In particular, as
-an illustrative application, the reaction flux, solid and electrolyte
-lithium concentration, the solid and electrolyte potentials in the
-anode and cathode at the respective domain boundaries were studied.
-The cell voltage was obtained through linear combinations of the time-domain
-variables with suitable non-linear corrections.The primary advantage
-of this model order reduction process is that non-linear optimization
-is entirely avoided, yielding an optimal, yet deterministic method
-for selection of the system order. This seminal work is a first of
-its kind that is amenable to implementing real-time controls for an
-entire cell without relying upon empirical ad-hoc modelling constructs
-like equivalent circuits.
+Dr.  Lee  {[}cite{]}  extended  the  work  of  Dr.  Smith  and  solved  for  the
+electrolyte  concentration and  potential  by  applying Sturm-Louisville  theory
+to  arrive  at  a  multi-modal  EigenFunction  solution  for  these  electrolyte
+variables.  Furthermore,   Dr.  Lee  proposed   a  numerical  method   known  as
+Discrete-time-Realization Algorithm (DRA) that retains the physical character of
+the original  equations until  the very  last step  when the  governing matrices
+describing  the  system  dynamics  are  generated,  yielding  a  one-dimensional
+discrete-time  state-space reduced-order-model  (ROM) of  an entire  Lithium-ion
+battery dynamics based  upon fundamental physical principles.  The reduced order
+model thus obtained could  then be used to obtain the  time-evolution of all the
+internal  electrochemical quantities  of a  standard porous-electrode  model. In
+particular,  as  an  illustrative  application, the  reaction  flux,  solid  and
+electrolyte lithium concentration,  the solid and electrolyte  potentials in the
+anode and  cathode at the  respective domain  boundaries were studied.  The cell
+voltage was  obtained through linear  combinations of the  time-domain variables
+with suitable non-linear  corrections.The primary advantage of  this model order
+reduction process is that non-linear  optimization is entirely avoided, yielding
+an optimal,  yet deterministic method  for selection  of the system  order. This
+seminal work is a  first of its kind that is  amenable to implementing real-time
+controls  for an  entire cell  without relying  upon empirical  ad-hoc modelling
+constructs like equivalent circuits.
 
 
-An unresolved issue of Lee\textquoteright s reduced-order modelling
-approach is the high computation requirement associated with DRA,
-which has to be performed multiple times to identify cell parameters
-at various SOC and temperatures (cite book \& thesis). This bottleneck
-arises from the need to form large Block-Hankel matrices of the Markov
-parameters in memory, which is then suitably factorized by a Singular
-Value Decomposition (SVD) step which is computationally expensive.In
-this paper, we analyse the computational bottleneck in the DRA and
-propose a significant improvement to the DRA procedure. In Section
-2, analysis of a key step in the DRA, ie. the Singular Value Decomposition
-of a block-Hankel matrix (for choosing the model order) is performed
-(bottleneck 1). An analytical formulation of the massive computing
-requirements (storage and floating point operation counts) for replicating
-the Lee\textquoteright s model (cite) is given. Redundancies and inefficiencies
-in this step are enumerated, therefore deeming the computational requirements
-as unnecessary. In Section 3, a fast computational approach is presented
-that significantly reduces both the memory and the floating-point
-operation count of the CPU. In Section 4, the results arrived at by
-applying the algorithms of section 2 are summarized and compared with
-the existing DRA method. Furthermore, we compare and contrast the
-much smaller computational requirements of our proposed method with
-the existing DRA code for modelling the cell behavior.We conclude
-by showing that the existing Discrete-Time-Realization (DRA) algorithm
-can be significantly speeded up by our proposed methodology.
+An unresolved issue of Lee\textquoteright  s reduced-order modelling approach is
+the high computation requirement associated with  DRA, which has to be performed
+multiple  times to  identify cell  parameters  at various  SOC and  temperatures
+(cite  book \&  thesis). This  bottleneck  arises from  the need  to form  large
+Block-Hankel matrices of the Markov parameters in memory, which is then suitably
+factorized by a Singular Value Decomposition (SVD) step which is computationally
+expensive.In this paper, we analyse the  computational bottleneck in the DRA and
+propose a significant  improvement to the DRA procedure. In  Section 2, analysis
+of a key step in the DRA, ie. the Singular Value Decomposition of a block-Hankel
+matrix (for choosing the model order) is performed (bottleneck 1). An analytical
+formulation of  the massive computing  requirements (storage and  floating point
+operation  counts) for  replicating  the Lee\textquoteright  s  model (cite)  is
+given. Redundancies  and inefficiencies in  this step are  enumerated, therefore
+deeming  the computational  requirements as  unnecessary. In  Section 3,  a fast
+computational approach is  presented that significantly reduces  both the memory
+and the  floating-point operation count  of the CPU.  In Section 4,  the results
+arrived at by  applying the algorithms of section 2  are summarized and compared
+with the  existing DRA  method. Furthermore,  we compare  and contrast  the much
+smaller computational requirements of our  proposed method with the existing DRA
+code for  modelling the cell behavior.We  conclude by showing that  the existing
+Discrete-Time-Realization (DRA) algorithm can be significantly speeded up by our
+proposed methodology.
 
-(Teng: Pls edit this paragraph, Im just throwing in the story) An
-unresolved issue of Lee\textquoteright s reduced-order model is the
-high computation requirement associated with DRA, which has to be
-performed multiple times to identify cell parameters at various SOC
-and temperatures (cite book \& thesis). This computation bottleneck
-primarily arises from the need to form large block-Hankel matrices
-of the Markov parameters, which is then factorized by the computationally
-intensive SVD step. The high computation requirement of the SVD practically
-requires the Markov parameters for the slow system dynamics, i.e.
-lithium diffusion in solid particles, to be truncated which therefore
-affects model accuracy. As was point out by Plett (cite book), \textquoteright \dots .
-long impulse response\dots large Hanekl\dots{} makes to SVD intractable\dots \textquoteright .
+(Teng: Pls  edit this paragraph,  Im just throwing  in the story)  An unresolved
+issue  of  Lee\textquoteright s  reduced-order  model  is the  high  computation
+requirement associated  with DRA, which  has to  be performed multiple  times to
+identify cell parameters at various SOC  and temperatures (cite book \& thesis).
+This  computation  bottleneck primarily  arises  from  the  need to  form  large
+block-Hankel matrices of the Markov parameters,  which is then factorized by the
+computationally intensive SVD step. The  high computation requirement of the SVD
+practically requires  the Markov parameters  for the slow system  dynamics, i.e.
+lithium diffusion  in solid particles,  to be truncated which  therefore affects
+model accuracy. As  was point out by Plett (cite  book), \textquoteright \dots .
+long  impulse response\dots  large Hanekl\dots{}  makes to  SVD intractable\dots
+\textquoteright .
 
 
-In this paper, we analyse the computational bottlenecks in the existing
-modelling process and propose a significant improvement to the DRA
-procedure. This paper is organized as follows. In Section 2, analysis
-of a key step in the DRA, ie. the Singular Value Decomposition of
-a block-Hankel matrix (for choosing the model order) is performed
-(bottleneck 1). An analytical formulation of the massive computing
-requirements (storage and floating point operation counts) for replicating
-the model in Dr. Lee's paper (cite) is given. Redundancies and inefficiencies
-in this step are enumerated, therby deeming the computational requirements
-as unnecessary. Furthermore, another computationally demanding step
-in the DRA, viz. the linear algebra operation for the computation
-of the system dynamics matrix A\_hat is identified (bottleneck 2).
-In Section 3, a fast computational approach using powerful algorithms
-is presented that slashes down both the memory and the floating point
-operation count of the CPU for bottleneck 1. The same code is elegantly
-reused to arrive at a solution for bottleneck 2, thereby promoting
-modularity. In Section 4, the results arrived at by applying the algorithms
-of section 2 are presented, by comparing them to key internal variables
-from the existing DRA method. Furthermore, we compare and contrast
-the much smaller computational requirements of our proposed method
-with the existing DRA code for modelling the cell behavior. We show
-that the existing Discrete-Time-Realization (DRA) algorithm can be
-significantly speeded up by our proposed methodology.
+In  this  paper,  we  analyse  the computational  bottlenecks  in  the  existing
+modelling process  and propose a  significant improvement to the  DRA procedure.
+This paper is organized as follows. In Section  2, analysis of a key step in the
+DRA, ie. the Singular Value Decomposition of a block-Hankel matrix (for choosing
+the model order)  is performed (bottleneck 1). An analytical  formulation of the
+massive computing requirements (storage and floating point operation counts) for
+replicating  the model  in Dr.  Lee's paper  (cite) is  given. Redundancies  and
+inefficiencies in  this step  are enumerated,  therby deeming  the computational
+requirements as unnecessary. Furthermore, another computationally demanding step
+in the DRA, viz. the linear algebra  operation for the computation of the system
+dynamics  matrix A\_hat  is  identified (bottleneck  2). In  Section  3, a  fast
+computational approach using powerful algorithms  is presented that slashes down
+both the memory and the floating point operation count of the CPU for bottleneck
+1. The same code  is elegantly reused to arrive at a  solution for bottleneck 2,
+thereby promoting modularity.  In Section 4, the results arrived  at by applying
+the algorithms  of section 2  are presented, by  comparing them to  key internal
+variables from the existing DRA method. Furthermore, we compare and contrast the
+much  smaller  computational  requirements  of  our  proposed  method  with  the
+existing DRA  code for modelling  the cell behavior.  We show that  the existing
+Discrete-Time-Realization (DRA) algorithm can be significantly speeded up by our
+proposed methodology.
 
-\section{Analysis of the Computational Bottlenecks of Discrete-Time Realization
+\section{Analysis of the Computational  Bottlenecks of Discrete-Time Realization
 Algorithm (DRA)}
 
-The Reduced Order Model (ROM) obtained by Dr. Lee is based upon the
-thermodynamic and kinetic equations of the one-dimensional volume-averaged
-model first proposed by Doyle, Fuller and Newman (cite). The overall
-modelling procedure is summarized in Figure 1. First, the model equations
-are linearized about an operating point and closed-form Laplace-domain
-transcendental transfer functions of all the internal cell variables(phi\_s,phi\_e,c\_s,c\_e
-\& j at different cell locations)are derived using the applied current
-to the cell as input. The transfer functions in (cite) are summarized
-in Appendix I. The authors proposed a novel Discrete-time-Realization
-algorithm (DRA) in (DRA\_citation) to transform these transcendental
-transfer functions to equations in standard state-space representation.
-The steps involved in the Discrete-Time Realization Algorithm (DRA)
-is summarized in the block diagram (Figure 2). At the heart of this
-method is the classical subspace identification method known as Ho-Kalman
-algorithm (cite 2 papers) (visualized in Figure 3). A key step in
-the model order reduction process is the Singular Value Decomposition
-of the Block-Hankel matrix formed by the Markov parameters (unit-pulse
-responses) of the battery transfer functions. In the illustrative
-example provided by Dr. Lee, there are 28 transfer functions, with
-applied current as the input, ie. we have a Single input Multiple
-Output System (SIMO), the Markov parameters of which is collected
-into a Block-Hankel matrix as shown in Figure x. Each Block element
-in the Hankel matrix is a column vector comprising of the Markov parameters
-at every time-step. Singular Value Decomposition (SVD) is performed
-on this Block-Hankel matrix and plotted as a visual aid to provide
-an insight into the system order. A detailed analysis of this procedure
-reveals certain weaknesses, issuesand inefficiencies in this SVD computation
-step as discusses below.
+The  Reduced  Order  Model  (ROM)  obtained   by  Dr.  Lee  is  based  upon  the
+thermodynamic and kinetic equations of the one-dimensional volume-averaged model
+first  proposed  by Doyle,  Fuller  and  Newman  (cite). The  overall  modelling
+procedure is summarized  in Figure 1. First, the model  equations are linearized
+about an operating point  and closed-form Laplace-domain transcendental transfer
+functions  of  all  the  internal cell  variables(phi\_s,phi\_e,c\_s,c\_e  \&  j
+at  different  cell locations)are  derived  using  the  applied current  to  the
+cell  as input.  The transfer  functions in  (cite) are  summarized in  Appendix
+I.  The  authors  proposed  a novel  Discrete-time-Realization  algorithm  (DRA)
+in  (DRA\_citation)  to transform  these  transcendental  transfer functions  to
+equations  in standard  state-space representation.  The steps  involved in  the
+Discrete-Time Realization  Algorithm (DRA)  is summarized  in the  block diagram
+(Figure 2). At the heart of this method is the classical subspace identification
+method known  as Ho-Kalman algorithm (cite  2 papers) (visualized in  Figure 3).
+A  key  step  in  the  model  order reduction  process  is  the  Singular  Value
+Decomposition  of  the  Block-Hankel  matrix formed  by  the  Markov  parameters
+(unit-pulse responses)  of the battery  transfer functions. In  the illustrative
+example  provided by  Dr. Lee,  there are  28 transfer  functions, with  applied
+current as the input, ie. we have  a Single input Multiple Output System (SIMO),
+the  Markov parameters  of  which is  collected into  a  Block-Hankel matrix  as
+shown  in  Figure x.  Each  Block  element in  the  Hankel  matrix is  a  column
+vector comprising  of the Markov  parameters at every time-step.  Singular Value
+Decomposition (SVD)  is performed on this  Block-Hankel matrix and plotted  as a
+visual aid to provide  an insight into the system order.  A detailed analysis of
+this procedure reveals certain weaknesses,  issuesand inefficiencies in this SVD
+computation step as discusses below.
 
 \subsection{Size of the Block-Hankel Matrix}
 
