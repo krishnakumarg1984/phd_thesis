@@ -1,6 +1,9 @@
 %!TEX root = ../main.tex
 % vim: nospell
-\usepackage[hyperfootnotes=false]{hyperref}
+
+\usepackage{footnotebackref}
+\usepackage{hyperref}
+% \usepackage[hyperfootnotes=false]{hyperref}
 \hypersetup{final=true,
     % bookmarks=true,
     % citecolor = [RGB]{0,33,71}, % imperialnavy
@@ -13,7 +16,7 @@
     anchorcolor = black,
     bookmarksnumbered = true,
     bookmarksopen = true,
-    bookmarksopenlevel = 1,
+    bookmarksopenlevel = 0,
     bookmarksdepth = 4,
     breaklinks = true,
     citecolor = [RGB]{0,62,116}, % imperialblue
@@ -32,6 +35,7 @@
     urlcolor  = [RGB]{0,62,116}, % imperialblue
 }
 
+% \usepackage[ocgcolorlinks]{ocgx2} % viewer support is bad. Do not rely on this one.
 \usepackage{nameref}
 
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
@@ -48,3 +52,4 @@
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
 \usepackage[nameinlink]{cleveref}
+

@@ -1,6 +1,8 @@
 * Scaled Newman Model with model equations
 - list of symbols
 - bode diags
+- To remove color hyperlinking before printing
+- xmpinclude (hyperxmp)
 - binary tree 
 - textsc for C-rate, especially uses like 1C
 - cite colorbrewer2
