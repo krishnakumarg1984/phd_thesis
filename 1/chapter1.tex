@@ -8,45 +8,44 @@
 \chapter{Introduction}\label{ch:intro}
 
 % need a symbol Nomenclature
-More introductory material goes here blah blah \dots \dots
 
-% Ragone plot
+\capolettera{T}{ightening} emissions  regulations on various  industrial sectors
+have led  to a renewed interest  in sustainable energy sources  in recent years.
+In  particular,  the  burgeoning  demand  for  clean  energy  has  prompted  the
+automotive and  consumer electronics industries  to explore advanced  methods of
+energy storage~\cite{Weiss2011}. Li-ion batteries\footnote{The term(s) `cell(s)'
+and  `battery(ies)'  are  used  interchangeably  in  this  thesis.  Technically,
+an  electrochemical  cell is  the  smallest  self-contained  unit (housed  in  a
+packaging  with  terminal  connectors)  that  is capable  of  both  storing  and
+delivering energy. A battery  (also referred to as a battery  `pack') is made up
+of  a  group  of cells  arranged  in  a  custom  configuration to  meet  certain
+system-level  voltage,  current and  power  demands.  The  focal point  of  this
+thesis  is  a  single cell  (a  discussion  of  what  this entails  is  provided
+shortly  hereafter,  thereby  narrowing  down the  geometrical  scope  of  large
+portions  of this  thesis  to  a precisely  defined  unit).  Scaling of  various
+quantities from  the pack  level down  to the cell  level is  discussed wherever
+appropriate.}  seen as  key enablers  in this  quest due  to the  attractiveness
+of  their  high   energy  and  power  densities  compared   to  other  competing
+non-conventional energy  storage technologies~\cite{Ibrahim2008}.  However, with
+this  surge in  energy  storage  demands comes  stricter  requirements for  cell
+longevity,  performance,  and  adhesion  to  safety  requirements,  particularly
+for  adoption  in  mainstream  transport  electrification~\cite{Andrea2010}.  In
+contrast  to  other  incumbent  technologies,  lithium-ion  cells  have  several
+advantages  such  as   high  energy  density,  long   lifecycles,  low  internal
+resistance,  low self-discharge,  long  cycle life,  fast  charge and  discharge
+cycles~\cite{Reddy2011,Plett2015}\fxnote{Ragone plot here}.  This makes them the
+preferred  choice  for storage  and  on-demand  retrieval  of energy  in  modern
+consumer electronics and~\glspl{xeV}.
 
 % Different type of cells - Prismatic,  pouch and cylindrical. How pouch cells are
 % used in automotive industry acknowledge Tesla, but cite counter citations. Layer
 % photos etc
 
-% This  thesis  strives to  represent  all  physical  quantities in  the  standard
-% International  System  of Units  (SI-Units).  However,  there are  some  notable
-% exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
-% practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
-% Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
-% prevalent conventions in standard literature.
-
-% \fxnote{make a note in the introduction  chapter that the terms cell and battery
-%     are  used  interchangeably deviating  from  their  precise meaning,  \eg{}  cell
-% modelling and battery modelling}
+% Precise definition of cell unit
+% C-rate definition
 
 % Mention  that stuff  is  applicable for  both Lithium  ion  and Lithium  polymer
 % chemistries.
-
-In  recent  years,  tightening  emissions  regulations  for  various  industrial
-sectors  have  forced   a  renewed  interest  in   sustainable  energy  sources.
-The   demand  for   clean  energy   has  led   the  automotive,   utilities  and
-consumer  electronics   industries  to  develop  advanced   methods  of  storing
-energy~\cite{Weiss2011}.  Li-ion   batteries  are   seen  as  key   enablers  in
-this  quest  due   to  the  attractiveness  of  their  high   energy  and  power
-densities   relative  to   other  competing   non-conventional  energy   storage
-technologies~\cite{Ibrahim2008}.  However, with  this  increased energy  storage
-demands  comes  a stricter  requirement  for  cell longevity,  performance,  and
-adhesion  to  safety  requirements,  particularly  for  adoption  in  mainstream
-transport  electrification~\cite{Andrea2010}.  Lithium-ion  cells  have  several
-advantages over other competing cell  chemistries including high energy density,
-long lifecycles, low  internal resistance, low self-discharge,  long cycle life,
-fast charge  and discharge cycles~\cite{Reddy2011,Plett2015}. This  makes it the
-preferred choice for  energy storage and on-demand retrieval  in modern consumer
-electronics and~\glspl{xeV}.
-
 
 \section{Chemistry}\label{subsec:liionchemistry}
 
@@ -95,14 +94,14 @@ the positive electrode microstructure.
 
 During  the   charging  process,  the   reverse  phenomena  occur.   Lithium  is
 de-intercalated  from  the  positive  electrode and  a  similar  charge-transfer
-happens  at the  surface,  leading  to the  formation  of  \ch{Li^+} ions  which
-reach  the  negative  electrode  by   passing  through  the  separator.  At  the
-surface  of  the  negative  electrode particles,  these  ions  absorb  electrons
-from  the  external circuit,  leading  to  the  formation of  neutral  \ch{Li^0}
-that   diffuses  into   interior   vacant  spaces   in   the  layered   graphite
-electrode. The  charge-transfer mechanism  and sequence  of events  are depicted
-in~\cref{fig:chargetransferprocess}.
-\Cref{eq:NegElectrodeRxn,eq:PosElectrodeRxn} summarise the reactions during the
+happens   at   the   surface,   leading    to   the   formation   of   \ch{Li^+}
+ions   which   reach   the   negative   electrode   by   passing   through   the
+separator.  At   the  surface  of   the  negative  electrode   particles,  these
+ions   absorb   electrons   from   the  external   circuit,   leading   to   the
+formation   of   neutral   \ch{Li^0}   that  diffuses   into   interior   vacant
+spaces  in  the  layered   graphite  electrode.  The  charge-transfer  mechanism
+and  sequence   of  events  are   depicted  in~\cref{fig:chargetransferprocess}.
+\Cref{eq:NegElectrodeRxn,eq:PosElectrodeRxn} summarise the  reactions during the
 charging and discharging process at the surfaces of both electrode materials.
 \begin{align}
     \ch{Li_{$x$} C                            &<=>[\tiny{discharge}][\tiny{charge}] C + $x$ Li^+ + $x$ e^-}\label{eq:NegElectrodeRxn}\\
@@ -331,7 +330,7 @@ in~\cref{ch:modelbaseddesign}.
 
 % \subsection{Organisation of Thesis}
 
-% nice figure here
+% nice figure here (with Bohr model of atom)
 % \Cref{ch:improveddra} analyses a critical weakness in a sophisticated \gls{rom}
 % and proposes a numerical method to circumvent it.
 % different \glspl{rom} shall be performed in
@@ -341,7 +340,12 @@ in~\cref{ch:modelbaseddesign}.
 % \cite{Seaman2014} provide a comprehensive survey  of the wide range of battery
 % models out there.
 
-% Based on an isothermal description
+% This  thesis  strives to  represent  all  physical  quantities in  the  standard
+% International  System  of Units  (SI-Units).  However,  there are  some  notable
+% exceptions \eg{} for the capacity of a  Li-ion cell, which is represented in the
+% practical units  of Ampere  hours (\SI{}Ah),  rather than the  base SI  Units of
+% Coulombs (\SI{}{\coulomb}).  Such exceptions  are made  taking into  account the
+% prevalent conventions in standard literature.
 
 % \fxnote{Where does  this paragraph go? End  of this section/end of  chapter or
 % even  last  chapter?}  The  identification of  individual  parameters  of  the
