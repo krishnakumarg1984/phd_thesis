@@ -156,6 +156,7 @@ tlmgr install   \
     omega \
     onlyamsmath \
     paracol \
+    pdfpages \
     pdfx \
     pgf \
     pgfplots \

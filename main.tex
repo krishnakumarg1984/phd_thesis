@@ -17,6 +17,7 @@
     5/chapter5,
     6/chapter6,
     Appendices/appendix1,
+    Appendices/appendix2,
 }%
 \begin{document}
 \scrollmode
@@ -80,22 +81,18 @@ this work.
 \mainmatter
 \include{1/chapter1} % Introduction (to do later)
 \include{2/chapter2} % Literature Review
+\setcounter{chapter}{2} % Temporary for layer opt chapter plan
 \include{3/chapter3} % Layer Optimisation
 \include{4/chapter4} % Improved DRA
 \include{5/chapter5} % Analysis of SPM
 \include{6/chapter6} % New Electrolye Model
-
-% Temporary demo for fast compiling in local machine
-% \include{5/desktop_simulation_spm}
-% \include{5/electrolyte_inclusion}
-% \include{5/quadratic_approximation_ce}
-% \include{5/new_electrolye_model}
 
 \cleardoublepage
 
 \begin{appendices} % Using appendices environment for more functionality
     \crefalias{chapter}{appchap}
     \include{Appendices/appendix1}
+    \include{Appendices/appendix2}
 \end{appendices}
 
 \backmatter
