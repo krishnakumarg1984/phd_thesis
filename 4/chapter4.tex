@@ -14,15 +14,21 @@
 
 \capolettera{T}{his} chapter presents  an analysis and critical  evaluation of a
 computational bottleneck present  in a popular \gls{rom}  framework and proposes
-an alternative  numerical reformulation to mitigate  it\footnote{This chapter is
-based on  the journal  publication --- \fullcite{Gopalakrishnan2017}. All text,
-tables, figures and captions of the published work was written by this thesis
-author. Copyright clearance for non-commercial verbatim reproduction of the
-content (such as in this thesis) has been secured
-through the publication agreement  with the copyright holder and publisher, ASME and is listed in}.  From the
-literature  review presented  in~\cref{ch:littreview}, it  may be  recalled that
-transcendental transfer functions of  the cell's electrochemical field variables
-(except  for concentration  and potential  in the  electrolyte) was  obtained by
+an  alternative numerical  reformulation  to  mitigate it\footnote{This  chapter
+is  based  on the  journal  publication  --- \fullcite{Gopalakrishnan2017}.  All
+intellectual  ideas  in  this  journal article  are  original  contributions  of
+this  thesis  author.  All  text,  tables, figures  and  captions  therein  were
+contributed solely by this thesis author. Copyright clearance for non-commercial
+verbatim  reproduction  of  the  content  (such as  in  this  thesis)  has  been
+secured  through  the  publication  agreement with  the  copyright  holder  ASME
+(see~\cref{ch:permissions}). The contents in this chapter  may be, in full or in
+part, included verbatim from the said publication. This author wishes to express
+his  thankfulness  to  Teng  Zhang,  co-author  of  this  journal  article,  for
+checking  my  calculations  and  providing  valuable  feedback  that  helped  to
+refine  the  manuscript  for  this publication.}.  From  the  literature  review
+presented  in~\cref{ch:littreview},  it  may  be  recalled  that  transcendental
+transfer  functions  of  the  cell's  electrochemical  field  variables  (except
+for  concentration   and  potential   in  the   electrolyte)  was   obtained  by
 Smith~\etal~\cite{Smith2007} through  linearisation of the  underlying \gls{p2d}
 model  equations. Lee~\etal~\cite{Lee2012a,Lee2012}  extended  this approach  to
 obtain  the  missing  electrolyte   transfer  functions  through  a  multi-modal
@@ -38,7 +44,7 @@ very  last  step  wherein  the  matrices governing  the  system's  dynamics  are
 generated. This  yields a  one-dimensional discrete-time  \gls{rom} of  the cell
 that is entirely based upon  fundamental physical principles. The \gls{rom} thus
 obtained could  then be used to  compute the time-evolution of  all the internal
-electrochemical quantities of the \gls{dfn}  model. Prima~facie it appeared that
+electrochemical quantities of  the \gls{dfn} model. Prima~facie  it appears that
 this  model  could be  directly  implemented  as the  plant  model  for a  state
 estimation  application.  However, a  comprehensive  analysis  of the  procedure
 reveals certain issues that must  be first tackled before implementation aspects
