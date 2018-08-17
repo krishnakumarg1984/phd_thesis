@@ -81,11 +81,22 @@ this work.
 % \mainmatter
 \include{1/chapter1} % Introduction (to do later)
 \include{2/chapter2} % Literature Review
-\setcounter{chapter}{2} % Temporary for layer opt chapter plan
+% \setcounter{chapter}{2} % Temporary for layer opt chapter plan
 \include{3/chapter3} % Layer Optimisation
 \include{4/chapter4} % Improved DRA
 \include{5/chapter5} % Analysis of SPM
 \include{6/chapter6} % New Electrolye Model
+
+\cleardoublepage
+
+\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
+    % add bib to toc
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+    \printbibliography
+\end{footnotesize}
 
 \cleardoublepage
 
@@ -97,13 +108,6 @@ this work.
 
 % \backmatter
 
-\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
-    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
-    % add bib to toc
-    \cleardoublepage
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\bibname}
-    \printbibliography
-\end{footnotesize}
+
 \batchmode
 \end{document}
