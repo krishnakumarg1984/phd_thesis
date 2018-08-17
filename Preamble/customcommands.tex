@@ -488,25 +488,6 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 
 \setabbreviationstyle[acronym]{long-short}% glossaries-extra.sty only
 
-\makeatletter
-\newcounter{savepagenumber}
-\renewcommand\mainmatter{%
-    \cleardoublepage
-    \setcounter{savepagenumber}{\value{page}}
-    \@mainmattertrue
-    \pagenumbering{arabic}%
-}
-\renewcommand\backmatter{%
-    \if@openright
-        \cleardoublepage
-    \else
-        \clearpage
-    \fi
-    \pagenumbering{roman}%
-    \setcounter{page}{\value{savepagenumber}}%
-    \@mainmatterfalse
-}
-\makeatother
 
 % \renewcommand*{\glstextformat}[1]{\textsf{#1}}
 \renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % link coloring to match normal text, ie black
@@ -706,3 +687,27 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 %     \gdef\rowfonttype{#1}#1%
 % }
 % \newcolumntype{L}{>{\rowfonttype}l}
+
+
+% To continue roman numbering at the end of the book (for bibliography, appendices etc.)
+
+% \makeatletter
+% \newcounter{savepagenumber}
+% \renewcommand\mainmatter{%
+%     \cleardoublepage
+%     \setcounter{savepagenumber}{\value{page}}
+%     \@mainmattertrue
+%     \pagenumbering{arabic}%
+% }
+% \renewcommand\backmatter{%
+%     \if@openright
+%         \cleardoublepage
+%     \else
+%         \clearpage
+%     \fi
+%     \pagenumbering{roman}%
+%     \setcounter{page}{\value{savepagenumber}}%
+%     \@mainmatterfalse
+% }
+% \makeatother
+
