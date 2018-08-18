@@ -29,11 +29,14 @@ push @generated_exts, "mypyg";
 push @generated_exts, "mtc*";
 push @generated_exts, "ptc";
 push @generated_exts, "synctex*";
+push @generated_exts, 'glo', 'gls', 'glg';
+push @generated_exts, 'acn', 'acr', 'alg';
 
 
 $pdflatex = 'lualatex %O %S --interaction=batchmode -halt-on-error --shell-escape --bibtex --recorder';
 $pdf_mode = 4;
 $postscript_mode = $dvi_mode = 0;
+$clean_ext .= ' %R.ist %R.xdy';
 @default_files = ('main.tex');
 
 
@@ -45,6 +48,7 @@ sub makenomenclature {
 sub makegls {
    system("makeindex $_[0].syg -s nomencl.ist -o $_[0].syi"); }
 
+add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
 add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
 
 sub run_makeglossaries {

@@ -24,7 +24,8 @@
 
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
-% \frontmatter
+\frontmatter
+\pagenumbering{arabic}
 \noindent
 \begin{varwidth}[c]{0.4\textwidth}
     \includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}
@@ -75,18 +76,21 @@ this work.
 
 %: ----------------------- glossary ------------------------
 
+
+
+\makeatletter
+\@mainmattertrue
+\makeatother
 \cleardoublepage
 
-% \mainmatter
-\include{1/chapter1} % Introduction (to do later)
-\include{2/chapter2} % Literature Review
-\include{3/chapter3} % Layer Optimisation
-\include{4/chapter4} % Improved DRA
-\include{5/chapter5} % Analysis of SPM
-\include{6/chapter6} % New Electrolye Model
+\input{1/chapter1} % Introduction (to do later)
+\input{2/chapter2} % Literature Review
+\input{3/chapter3} % Layer Optimisation
+\input{4/chapter4} % Improved DRA
+\input{5/chapter5} % Analysis of SPM
+\input{6/chapter6} % New Electrolye Model
 
-\cleardoublepage
-
+\backmatter
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
     \renewcommand{\bibname}{References} % changes the header; default: Bibliography
     % add bib to toc
@@ -96,15 +100,16 @@ this work.
     \printbibliography
 \end{footnotesize}
 
+\makeatletter
+\@mainmattertrue
+\makeatother
 \cleardoublepage
-% \backmatter
 
 \begin{appendices} % Using appendices environment for more functionality
     \crefalias{chapter}{appchap}
-    \include{Appendices/appendix1}
-    \include{Appendices/appendix2}
+    \input{Appendices/appendix1}
+    \input{Appendices/appendix2}
 \end{appendices}
-
 
 \batchmode
 \end{document}
