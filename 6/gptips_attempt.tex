@@ -12,7 +12,7 @@ the final  simplified model structure  is pre-assumed  and then the  physics are
 made  to  fit  within  this  framework. Given  that  the  top-down  approach  to
 electrolyte  modelling, \ie{}  accounting for  all physical  phenomena and  then
 simplifying  them yields  mathematically intractable  and overly  complex models
-(see~\cref{sec:electrolyteinclusion} for  a detailed discussion),  this approach
+(see \cref{sec:electrolyteinclusion} for  a detailed discussion),  this approach
 seems to be a pragmatic alternative  to enhancing the \gls{spm} with electrolyte
 dynamics. However, a detailed look at  this model from an alternate viewpoint is
 necessary for further analysis.
@@ -41,7 +41,7 @@ criteria that restricts
 is  the   total  number  of   unknown  symbolic  coefficients  required   to  be
 solved  in the  assumed  model  structure. There  are  a  total of  \emph{seven}
 linear   equations  available   from  the   physics  of   the  \gls{dfn}   model
-(see~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}). Hence, in order to
+(see \crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}). Hence, in order to
 guarantee  a solution  the  assumed  family of  curves  cannot  consist of  more
 than  seven coefficients.  Furthermore, for  a  unique solution,  the number  of
 coefficients must be \emph{exactly} seven. Yet another restriction on the choice
@@ -55,7 +55,7 @@ here applies  to the more  rigorous definition as well.},  and hence need  to be
 mathematically described by an identical family of curves.
 
 Upon a close inspection of the  spatial concentration profile from the \gls{p2d}
-simulation  results shown  in~\cref{fig:spatialionicconc1C}, it  is evident  the
+simulation  results shown  in \cref{fig:spatialionicconc1C}, it  is evident  the
 electrolyte approximation  functions within the  electrode regions is  of higher
 complexity\textsuperscript{\ref{fn:complexity}} than  the approximation function
 suitable  for  use  in  the  separator  region. Based  on  the  results  of  the
@@ -65,7 +65,7 @@ inhibiting  factor that  prevents  the  use of  a  lower  order function  within
 the  separator. As  per  the  simulation results  of  the  \gls{p2d} model,  the
 time-domain  change  of number  of  moles  per  square  meter in  the  separator
 is  non-zero.  Since  the  time-derivate   of  a  linear  approximation  applied
-to~\cref{eq:sepliionmolesquadratic}  is  zero,  this straight-line  equation  is
+to \cref{eq:sepliionmolesquadratic}  is  zero,  this straight-line  equation  is
 immediately ruled out. Among the  non-polynomial mathematical curves tried (such
 as trigonometric, hyperbolic, power series  among others), none could obtain the
 relatively simple shape of the separator function without being forced to reduce
@@ -100,7 +100,7 @@ regression approach yielded was
     c_\epsub(z,t) & = a_8(t) \cosh z^2 + a_7(t) \sinh z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}\label{eq:cnstrviolpos}
 \end{alignat}
 
-Although~\crefrange{eq:cnstrviolneg}{eq:cnstrviolpos}  fit   the  transient  and
+Although \crefrange{eq:cnstrviolneg}{eq:cnstrviolpos}  fit   the  transient  and
 \gls{qss}  profiles  well,  they  violate   the  constraint  on  the  number  of
 coefficients  available resulting  in  an underdetermined  system of  equations.
 Both  the least-squares  and  least-norm  solution of  this  system were  tried.
@@ -110,10 +110,10 @@ approximation method.
 Next, an  attempt was made to  obtain different mathematical structures  for the
 transient phase  and \gls{qss}  phase both  of which  respect the  constraint on
 number  of  coefficients  allowed.  The symbolic  regression  outputs  for  this
-approach are shown in~\cref{tbl:symbreg}.
+approach are shown in \cref{tbl:symbreg}.
 \input{5/symbolic_regression_table}
 
-Although  the equations  from~\cref{tbl:symbreg}  produced  a markedly  improved
+Although  the equations  from \cref{tbl:symbreg}  produced  a markedly  improved
 response during the transient phase,  the performance during the \gls{qss} phase
 was merely at par to the baseline quadratic approximation model. This raised the
 prospect of  employing a  blended approach, wherein  a model  changeover between
@@ -144,7 +144,7 @@ with  respect to  physical equations  discussed here,  it is  also deemed  to be
 the  optimum  family  of  a~priori  chosen  curves  capable  of  modelling  the
 \emph{spatial}  profile of  ionic concentration.  Notwithstanding these  merits,
 the  \emph{temporal}  performance of  the  quadratic  approximation approach  is
-sub-optimal as seen in~\cref{fig:temporalcequadratic}. The author of this thesis
+sub-optimal as seen in \cref{fig:temporalcequadratic}. The author of this thesis
 addresses this specific issue with a completely different approach that shall be
-discussed next in~\cref{sec:newelectrolytemodel}.
+discussed next in \cref{sec:newelectrolytemodel}.
 

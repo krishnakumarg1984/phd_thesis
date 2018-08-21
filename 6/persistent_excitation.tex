@@ -26,7 +26,7 @@ current mapping  can be  performed, it  is impossible to  predict a~priori, the
 specific  amplitudes of  currents  that  the cell  may  undergo under  real-life
 load  conditions.  Without  further  deterministic information,  the  author  of
 this  thesis  chose to  interpret  magnitude  as  being  the peak  amplitude  of
-the  input  current  profile. As  seen  in~\cref{fig:uddssimp2dspmresults},  the
+the  input  current  profile. As  seen  in \cref{fig:uddssimp2dspmresults},  the
 representative  \gls{udds}  drivecycle  input  profile  corresponds  to  a  peak
 of  3C \ie{}  \SI{180}{\ampere}.  Following the  standard  principles of  system
 identification, it is desirable  for the inputs to the system  to lie along some
@@ -61,7 +61,7 @@ to  be  a  single real  pole.  The  presence  of  both low  and  high  frequency
 frequency  spectra in  the  combined  training set  presents  a  high degree  of
 confidence to  capture the relevant  dynamics of the electrolyte  subsystem. The
 input  current profile  used  for  this system  identification  task is  plotted
-in~\cref{fig:sysidtrainingcurrent}.
+in \cref{fig:sysidtrainingcurrent}.
 
 \begin{figure}[!htbp]
     \centering
@@ -88,7 +88,7 @@ and multiplied with their respective porosities to obtain the number of moles of
 \ch{Li^+} per unit area in each  of the three regions $Q_{\text{e,}j}$. Only the
 quantities  $Q_\text{e,n}$ and  $Q_\text{e,p}$  are chosen  as  the outputs  for
 system  identification and  a  transfer  function model  is  fitted  as per  the
-evaluation procedure discussed in~\cref{sec:actualsysid}.
+evaluation procedure discussed in \cref{sec:actualsysid}.
 
 As with  any classical  curve fitting  (numerical regression)  procedure, system
 identification is also  prone to overfitting the training data.  In general, the
@@ -117,7 +117,7 @@ sequence
 Overall,  the validation  profile has  been designed  to cover  a wide  range of
 frequencies  akin to  the  training  profile, but  differing  completely in  its
 time-domain appearance.  The specific  validation current  profile used  in this
-system identification is shown in~\cref{fig:sysidvalidationcurrent}.
+system identification is shown in \cref{fig:sysidvalidationcurrent}.
 
 \begin{figure}[!htbp]
     \centering
@@ -144,7 +144,7 @@ system identification is shown in~\cref{fig:sysidvalidationcurrent}.
 \end{figure}
 
 \textsc{MATLAB} code  that can be used  to generate the training  and validation
-input profiles is shown in~\cref{codesnippet:trainvalidsysidinput}.
+input profiles is shown in \cref{codesnippet:trainvalidsysidinput}.
 
 \begin{listing}[!htbp]
 \begin{minted}[mathescape,autogobble,bgcolor=mintedbg,escapeinside=||,texcomments=true]{matlab}

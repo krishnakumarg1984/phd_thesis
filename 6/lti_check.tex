@@ -6,14 +6,14 @@
 
 
 The      transfer     function      identification     techniques      mentioned
-in~\cref{sec:introblackboxsysid} are  applicable only for \gls{lti}  systems. At
+in \cref{sec:introblackboxsysid} are  applicable only for \gls{lti}  systems. At
 first glance,  this seems to  be overly restrictive  for the system(s)  at hand.
 When  considered  as  a  single  macroscopic  entity,  a  lithium  ion  battery,
 exhibits  overall non-linear  characteristics,  particularly due  to the  strong
 non-linearities in
 \begin{enumerate*}[label=\emph{\alph*})]
-    \item the Butler-Volmer reaction kinetics (see~\cref{eq:butlervolmer}), and
-    \item the \glspl{ocp} of the two electrodes (see~\cref{eq:lcoUocpPos} and~\cref{eq:lcoUocpPos}).
+    \item the Butler-Volmer reaction kinetics (see \cref{eq:butlervolmer}), and
+    \item the \glspl{ocp} of the two electrodes (see \cref{eq:lcoUocpPos} and \cref{eq:lcoUocpPos}).
 \end{enumerate*}
 However,  we are  dealing with  a much  narrower scope  \ie{} the  systems under
 consideration  are just  the two  sub-system entities  (one per  electrode) that
@@ -60,8 +60,8 @@ ten time-delay values and the following six current profiles ---
     \item constant current 3C discharge,
     \item constant current 1C charge,
     \item \gls{udds} input profile with peak amplitude of 3C,
-    \item training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
-    \item validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
+    \item training profile used in system identification (see \cref{fig:sysidtrainingcurrent}), and
+    \item validation profile used in system identification (see \cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
 Finally,  these tests  were  repeated for  a choice  of  five different  initial
 \glspl{soc}   ---   \SI{90}{\percent},   \SI{70}{\percent},   \SI{50}{\percent},
@@ -81,7 +81,7 @@ simulation data.}.
     $Q_\text{e,p}(t)$ subsystems]{Demonstration of time-invariance of the
         subsystems considered. The applied current profile $u_1(t)$ is the
         system identification training sequence
-        from~\cref{fig:sysidtrainingcurrent} (top row of the central column).
+        from \cref{fig:sysidtrainingcurrent} (top row of the central column).
         The top left plot shows the response $Q_{\text{e,n}_1}\!(t)$, while that
         on the top right shows $Q_{\text{e,p}_1}\!(t)$. The second row of the
         middle column shows the same input sequence delayed by $\tau =
@@ -102,7 +102,7 @@ simulation data.}.
 considered  at  an  initial  \gls{soc} of  \SI{50}{\percent}  for  a  time-delay
 of   \SI{130}{\second}   using   the  highly   dynamic   system   identification
 training    sequence   that    was   synthesised    by   this    thesis   author
-(see~\cref{fig:sysidtrainingcurrent}).  The  applied  current  profile  $u_1(t)$
+(see \cref{fig:sysidtrainingcurrent}).  The  applied  current  profile  $u_1(t)$
 (top row  of the  central column)  produces the  outputs $Q_{\text{e,n}_1}\!(t)$
 and  $Q_{\text{e,p}_1}\!(t)$  shown  in  the   top  left  and  top  right  plots
 respectively.  When  the delayed  version  of  this  input sequence  ${u_2(t)  =
@@ -141,7 +141,7 @@ the output responses, thereby bypassing the de-biasing requirements.
 
 % Although, in  principle, the strength  of the input  signal does not  affect the
 % linearity tests, for  the actual system identification  procedure, the de-biased
-% signal must still be persistently exciting as in~\cref{sec:persistentexcitation}
+% signal must still be persistently exciting as in \cref{sec:persistentexcitation}
 % must be
 
 For the output signals, bias  values can be pre-computed analytically and
@@ -157,7 +157,7 @@ simulations, even  at $\pm$5C, the overall  number of moles of  \ch{Li^+} in any
 cell region exhibited  a maximum change of less than  \SI{15}{\percent} from its
 initial value. Thus,  the de-biased output variables  for system identification,
 $\widetilde{Q}_{\text{e,}j}(t)$ can be obtained  by subtracting their respective
-initial values $Q_{\text{e,}j}(0)$ (see~\cref{eq:Qeninit} and~\cref{eq:Qepinit})
+initial values $Q_{\text{e,}j}(0)$ (see \cref{eq:Qeninit} and \cref{eq:Qepinit})
 from $Q_{\text{e,}j}(t)$.
 \begin{align}
     \widetilde{Q}_\text{e,n}(t) & = {Q}_\text{e,n}(t) - {Q}_\text{e,n}(0) \\
@@ -166,13 +166,13 @@ from $Q_{\text{e,}j}(t)$.
 which  implies   that  the   transfer  functions  to   be  identified   have  to
 be   modified   to   be   $\frac{\widetilde{Q}_\text{e,n}(s)}{\bar{I}(s)}$   and
 $\frac{\widetilde{Q}_\text{e,p}(s)}{\bar{I}(s)}$  respectively.  This  does  not
-affect  the  time-invariance  proved in~\cref{subsec:timeinvariance}  since  the
+affect  the  time-invariance  proved in \cref{subsec:timeinvariance}  since  the
 initial  values   $Q_{\text{e,}j}(0)$  are   merely  constants  and   hence  not
 time-dependent.
 
 \subsubsection*{Test for linearity}
 Similar     to      the     test      for     time      invariance     described
-in~\cref{subsec:timeinvariance}, a  test for linearity is  also prescribed in
+in \cref{subsec:timeinvariance}, a  test for linearity is  also prescribed in
 the lecture notes on  system identification by Plett~\cite{PlettECE5560_02}. The
 steps involved therein  are reproduced here after being suitably  adapted to the
 notation of the subsystems at hand. This is essentially a recipe for testing the
@@ -200,8 +200,8 @@ profiles ---
     \item step input with a constant current discharge at C/5,
     \item step input with a constant current 1C charge,
     \item step input with a constant current charge at C/5,
-    % \item de-biased training profile used in system identification (see~\cref{fig:sysidtrainingcurrent}), and
-    % \item de-biased validation profile used in system identification (see~\cref{fig:sysidvalidationcurrent}).
+    % \item de-biased training profile used in system identification (see \cref{fig:sysidtrainingcurrent}), and
+    % \item de-biased validation profile used in system identification (see \cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
 
 The  scaling  factors  $\alpha$  and   $\beta$  were  restricted  to  the  range
@@ -261,7 +261,7 @@ first  applied  and  the  corresponding  outputs  $\widetilde{Q}_{\text{e,n}_1}$
 and   $\widetilde{Q}_{\text{e,p}_1}$  are   obtained.   Secondly,  a   discharge
 current   of   C/5   \ie{}   is    applied   and   the   corresponding   outputs
 $\widetilde{Q}_{\text{e,n}_2}$ and  $\widetilde{Q}_{\text{e,p}_2}$ are obtained.
-These set of responses are plotted  in the top row of~\cref{fig:linearity}. Now,
+These set of responses are plotted  in the top row of \cref{fig:linearity}. Now,
 a  third  value  of  input  current $I_3$,  computed  as  a  linear  combination
 of  the  previous  input  currents  \ie{}  $I_3 =  \alpha  I_1  +  \beta  I_2  $
 is  applied.  For  illustrative  purposes, the  integer  set  $(\alpha,\beta)  =

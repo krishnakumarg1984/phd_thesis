@@ -4,7 +4,7 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
-The  equations   presented  in~\cref{sec:spmmodeldevelopment}   are  well-known,
+The  equations   presented  in \cref{sec:spmmodeldevelopment}   are  well-known,
 self-sufficient and  fully descriptive so  as to implement the  basic \gls{spm}.
 Although  numerical implementation  of  circuit-oriented cell  models have  been
 considered~\cite{Plett2004,Plett2004a,Plett2004b,Plett2006}, there  has yet been
@@ -26,7 +26,7 @@ system  theory,  the  analytical  solution for  continuous-time  state  equation
 (\cref{eq:LTIstatespace})  with  current input\footnote{Analytical  closed  form
 solution  cannot be  obtained for  constant voltage  operation. This  is because
 the  boundary flux  is  implicitly determined  by  the non-linear  Butler-Volmer
-equation~\cref{eq:butlervolmer}  and needs  to be  solved numerically  with some
+equation \cref{eq:butlervolmer}  and needs  to be  solved numerically  with some
 variant of a Newton-type iteration scheme.} is given by
 \begingroup
 \allowdisplaybreaks
@@ -50,12 +50,12 @@ defined as
 although several methods exist for its efficient numeric
 computation~\cite{Moler2003}.
 
-The  analytical  solution  of~\cref{eq:analyticalctssoln}   can  be  applied  to
-obtain  the matrix-vector  state equation~\cref{eq:threestatesmatrixvec}  of the
+The  analytical  solution  of \cref{eq:analyticalctssoln}   can  be  applied  to
+obtain  the matrix-vector  state equation \cref{eq:threestatesmatrixvec}  of the
 \gls{spm}.  Once  the  state-solution  is   obtained  at  any  time-step,  after
-evaluating  the  surface   concentrations  as  per~\cref{eq:csurfposfromcavgpos}
-and~\cref{eq:csurfnegfromcavgneg} and  the resulting  values may  be substituted
-into the  output equation of~\cref{eq:spmbasicoutputvoltagefinal} to  obtain the
+evaluating  the  surface   concentrations  as  per \cref{eq:csurfposfromcavgpos}
+and \cref{eq:csurfnegfromcavgneg} and  the resulting  values may  be substituted
+into the  output equation of \cref{eq:spmbasicoutputvoltagefinal} to  obtain the
 cell terminal voltage.
 
 \subsubsection*{Numerical considerations for continuous time implementation}
@@ -72,7 +72,7 @@ of current is  assumed to be held constant between  two successive measurements.
 Current profiles can be computed from standard drive cycle data.
 
 It     is    tedious     to     hand-compute     the    convolution     integral
-of~\cref{eq:analyticalctssoln}.  However,   a  variety  of  state   of  the  art
+of \cref{eq:analyticalctssoln}.  However,   a  variety  of  state   of  the  art
 adaptive-time  solvers  employing  numerical  schemes  such  as  Dormand-Prince,
 Runge-Kutta,  Collocation  or  Backward  Difference Formulae  are  available  to
 efficiently  handle such  \glspl{ode}.  Given that  lithium concentrations  vary
@@ -87,7 +87,7 @@ Since  the direction  of applied  current  is susceptible  to sudden  reversals,
 the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 \Cref{alg:ctstimespm} shows the  sequence of operations in  a desktop simulation
 of the continuous time \gls{spm} on  a digital computer. The source code listing
-of an example implementation in \textsc{MATLAB} is provided in~\cref{sc:ctstimespm}.
+of an example implementation in \textsc{MATLAB} is provided in \cref{sc:ctstimespm}.
 \vspace{3ex}
 \input{5/algo_ctstime_spm.tex}
 
@@ -101,12 +101,12 @@ physical  parameters. However,  for online  deployment in  state estimation  and
 control  tasks, a  discrete-time version  of  the model  suitable for  real-time
 implementation is needed.
 
-% which will  explored  in~\cref{sec:spmparameterestim}.
+% which will  explored  in \cref{sec:spmparameterestim}.
 
 \subsection{Conceptual Overview of Real-Time Processing}
 
-The equations  in~\cref{sec:spmmodeldevelopment} are derived  in continuous-time
-form. In particular, the  state equation given by~\cref{eq:threestatesmatrixvec}
+The equations  in \cref{sec:spmmodeldevelopment} are derived  in continuous-time
+form. In particular, the  state equation given by \cref{eq:threestatesmatrixvec}
 describes  the  continuous   time  dynamic  evolution  of   quantities  such  as
 the  bulk  concentration   and  mean  radial  flux  rate.   However,  a  typical
 embedded  controller  such  as  that  used in  a  vehicular  \gls{bms}  operates
@@ -223,7 +223,7 @@ high-priority tasks  are triggered by  an interrupt and the  supervisory control
 loop suspends  the presently executing  background task for later  resumption. A
 typical  example of  such  an  interrupt driven  process  is  the evaluation  of
 the  \gls{spm} model  equations  and  computation of  control  outputs as  shown
-in~\cref{subfig:fgRTprocess} and is discussed further.
+in \cref{subfig:fgRTprocess} and is discussed further.
 
 \begin{figure}[!htbp]
     \centering
@@ -240,7 +240,7 @@ in~\cref{subfig:fgRTprocess} and is discussed further.
 \end{figure}
 
 \Cref{fig:timingdiagramBig} depicts  an exploded view  of the timing  aspects of
-the \textsc{Interrupt  Service Routine}  presented in~\cref{subfig:fgRTprocess}.
+the \textsc{Interrupt  Service Routine}  presented in \cref{subfig:fgRTprocess}.
 Upon   the  expiry   of  an   on-chip  timer   calibrated  against   a  baseline
 precision-clock,  hardware interrupts  are  raised by  one  or more  \glspl{adc}
 associated with voltage/current sensors mounted on cells. The \gls{isr} disables
@@ -304,7 +304,7 @@ transformed  from  being  simple  continuous time  quantities  to  discrete-time
 sequences,  \ie{} $u(t)  \mapsto  u[k]$  and $y(t)  \mapsto  y[k]$,  where $k  =
 0,1,\dots,∞$ is the sample index  corresponding to the continuous time instant
 $t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
-system of~\cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
+system of \cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
 and modelled by a \emph{difference} equation which is to be determined.
 
 \begin{figure}[!htbp]
@@ -318,13 +318,13 @@ and modelled by a \emph{difference} equation which is to be determined.
 
 
 Consider       the       general      continuous-time       solution       given
-by~\cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k  =
+by \cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k  =
 0,1,\dots,∞$. Therefore,
 \begin{alignat}{2}
     x(t_0) & = x(kT_s)     & & \equiv x[k] \\
     x(t)   & = x((k+1)T_s) & & \equiv x[k+1]
 \end{alignat}
-Substituting these relationships into~\cref{eq:genanalyticctssoln},
+Substituting these relationships into \cref{eq:genanalyticctssoln},
 \begin{equation}
     \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}B \mathbf{u}(τ)\,dτ \label{eq:intermediatediscrete}
 \end{equation}
@@ -332,7 +332,7 @@ With the  \gls{zoh} scheme  discussed here, $u(\tau)$  remains constant  from $k
 T_s$ to $(k+1)T_s$,  and is equal to $u(kT_s)$, \ie{}  $u[k]$. Consider a change
 of variable definition  for the dummy variable of integration  $\tau$ as $\eta =
 (k+1)T_s -  \tau$. Thus,  $\tau = (k+1)T_s  - \eta$. Hence,  $d \tau  = -d\eta$.
-Substituting these into~\cref{eq:intermediatediscrete},
+Substituting these into \cref{eq:intermediatediscrete},
 \begin{align}
     \mathbf{x}[k+1] &= e^{A T_s}\mathbf{x}[k] + \left[\int_{T_s}^{0}e^{A \eta }B \right] u[k]\,{-d\eta}\\
     \shortintertext{Reversing the order of integration leads to}
@@ -362,7 +362,7 @@ zero, \ie{}
 \end{vsmallmatrix} = 0
 \end{equation}
 and hence  is not invertible.  This necessitates  an explicit evaluation  of the
-integral in~\cref{eq:disctimefulleqn} for computation of the discrete-time input
+integral in \cref{eq:disctimefulleqn} for computation of the discrete-time input
 matrix, $B_d$.
 
 Since the only non-zero entries of the matrix lie along its main diagonal, \ie{}
@@ -408,8 +408,8 @@ A_d =
     \end{bmatrix}
 \end{equation}
 
-The    discrete-time    matrix-vector    system    presented    in~\cref{eq:A_d}
-and~\cref{eq:B_d} have not  been presented in existing literature,  but is vital
+The    discrete-time    matrix-vector    system    presented    in \cref{eq:A_d}
+and \cref{eq:B_d} have not  been presented in existing literature,  but is vital
 to understanding  the implementation  of the  \gls{spm} in  digital controllers.
 Although, simpler  alternatives such as  Forward Euler methods are  available to
 approximate the time-derivative  of the state vector, they  suffer from problems
@@ -424,21 +424,21 @@ non-volatile storage  of the embedded  controller to  be loaded onto  RAM during
 operation. The vectorised implementation of the state dynamics presented here is
 highly  efficient  and  directly  amenable for  use  in  classical  state-vector
 algorithms. For the cell's terminal voltage computation, the basic structure and
-form  of the  output  equation given  by~\cref{eq:spmoutputeqn} remains  intact,
+form  of the  output  equation given  by \cref{eq:spmoutputeqn} remains  intact,
 except  that the  continuous time  variables $\left(\mathbf{x}(t),  u(t)\right)$
 need to  be replaced  by their discrete-time  counterparts in  the corresponding
-equation  set~\crefrange{eq:spmbasicoutputvoltagefinal}{eq:csurfnegfromcavgneg}.
+equation  set \crefrange{eq:spmbasicoutputvoltagefinal}{eq:csurfnegfromcavgneg}.
 The discrete-time output  function $h_d$ is evaluated  \emph{after} updating the
-state vector through~\cref{eq:discgenericLTI}.
+state vector through \cref{eq:discgenericLTI}.
 \begin{equation}\label{eq:discspmoutputeqn}
     y[k+1] = h_d(\mathbf{x}[k+1],u[k+1])
 \end{equation}
 
 The complete  sequence of steps  to implement  the discrete-time variant  of the
-\gls{spm}  is given  in~\cref{alg:disctimespm}. In  particular, it  can be  seen
+\gls{spm}  is given  in \cref{alg:disctimespm}. In  particular, it  can be  seen
 that  the discrete-time  system  and  input matrices,  $A_d$  and  $B_d$ can  be
 pre-computed  from the  parameter set  (refer to  line~\ref{algLine:computeAdBd}
-in~\cref{alg:disctimespm}),   using   the   matrix  exponential   approach.   In
+in \cref{alg:disctimespm}),   using   the   matrix  exponential   approach.   In
 \textsc{MATLAB}, this  can be achieved  by passing  the arguments of  the matrix
 exponential to  the \verb+expm+  command. The  vectorised implementation  of the
 discrete-time state equation given in line~\ref{algLine:discstateEq} is a set of
@@ -451,11 +451,11 @@ Since  there  is  a  reasonable   probability  that  some  researchers  in  more
 fundamental  areas   of  science  and  engineering,   \eg{}  those  specialising
 in  electrochemical  engineering,  might  not   be  familiar  with  the  nuances
 of  the   matrix  exponential  and  discrete-time   matrix  computations  (refer
-to  line~\ref{algLine:computeAdBd}  in~\cref{alg:disctimespm}).   A  snippet  of
+to  line~\ref{algLine:computeAdBd}  in \cref{alg:disctimespm}).   A  snippet  of
 \textsc{MATLAB} code clarifying the computation  of the discrete-time system and
-input matrices,  $A_d$ and  $B_d$ is given  in~\cref{codesnippet:computeAdBd}. A
+input matrices,  $A_d$ and  $B_d$ is given  in \cref{codesnippet:computeAdBd}. A
 full  code  listing of  an  example  discrete-time \gls{spm}  implementation  in
-\textsc{MATLAB} is provided in~\cref{sc:disctimespm}.
+\textsc{MATLAB} is provided in \cref{sc:disctimespm}.
 
 \begin{listing}
 \begin{minted}[mathescape,autogobble,bgcolor=mintedbg,escapeinside=||,texcomments=true]{matlab}
@@ -486,7 +486,7 @@ implementation  in  an embedded  \gls{bms}.  Further  analysis of  discrete-time
 issues  such  as  aliasing,  quantisation  noise,  signal  pre-conditioning  and
 discrete fourier analysis  lies in the specialised engineering  domain of signal
 processing and falls outside  the scope of the thesis. The  results of the basic
-\gls{spm} are presented next in~\cref{sec:basicspmsimresults}.
+\gls{spm} are presented next in \cref{sec:basicspmsimresults}.
 
 \FloatBarrier
 

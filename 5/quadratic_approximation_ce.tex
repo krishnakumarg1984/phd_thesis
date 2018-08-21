@@ -7,16 +7,16 @@
 In   this    section,   the    quadratic   approximation   of    ionic   spatial
 concentration,   that  underpins   the  electrolyte   model  in   many  improved
 \gls{spm}  formulations  is  presented.  The  steps  involved  in  deriving  the
-quadratic   approximation   is  detailed   in~\cref{subsec:quadraticmodelderiv}.
-In~\cref{subsec:quadraticsimresultsanalysis},  an analysis  of  the weakness  of
+quadratic   approximation   is  detailed   in \cref{subsec:quadraticmodelderiv}.
+In \cref{subsec:quadraticsimresultsanalysis},  an analysis  of  the weakness  of
 this  model is  performed  based  on the  results  from  applying the  quadratic
 approximation scheme. Mitigation of this critical drawback lead to this author's
 decoupled  spatio-temporal electrolyte  concentration model  structure which  is
-presented next in~\cref{sec:newelectrolytemodel}.
+presented next in \cref{sec:newelectrolytemodel}.
 
 \subsection{Model derivation}\label{subsec:quadraticmodelderiv}
 
-The  schematic  in~\cref{fig:coordsquadapprox}  shows   the  definition  of  the
+The  schematic  in \cref{fig:coordsquadapprox}  shows   the  definition  of  the
 co-ordinate  systems  used  in  deriving the  polynomial  approximation  of  the
 electrolyte concentration  profile. The globally defined  $x$ co-ordinate starts
 at  the negative  current  collector  interface ($x=0$)  and  terminates at  the
@@ -62,9 +62,9 @@ electrolyte concentration profile within each region.
     \shortintertext{where     the    coefficient     vector    $\vec{a}(t)     =
         \vect{a_0(t),a_1(t),   \dots  ,a_8(t)}$   is  to   be  determined   at  each
         time-step\footnotemark.  Applying  boundary  conditions of  the  electrolyte
-        diffusion equation from  the \gls{dfn} model~(refer~\cref{eq:dfnliquiddiff})
-        to~\crefrange{eq:cenqquadstart}{eq:cepqquadstart},  it  is clear  that  $a_1
-        =  0$ and  $a_7  = 0$.  Thus,~\crefrange{eq:cenqquadstart}{eq:cepqquadstart}
+        diffusion equation from  the \gls{dfn} model~(refer \cref{eq:dfnliquiddiff})
+        to \crefrange{eq:cenqquadstart}{eq:cepqquadstart},  it  is clear  that  $a_1
+        =  0$ and  $a_7  = 0$.  Thus, \crefrange{eq:cenqquadstart}{eq:cepqquadstart}
     become}
     c_\ensub      & = a_2 z^2 + a_0         \qquad          &  & 0 \le z \le l_\text{n}\label{eq:cenquadreduced} \\
     c_\essub      & = a_5 z^2 + a_4 z + a_3 \qquad          &  & 0 \le z \le l_\text{s}\label{eq:cesquadreduced} \\
@@ -81,13 +81,13 @@ $\vec{a} = \vect{a_0,a_2, \dots ,a_6, a_8}$.
 
 \Cref{tbl:dfnelectrolyteeqnsinsep} lists  the equations and  boundary conditions
 for  phenomena  describing  electrolyte  diffusion  and  charge  balance  within
-the separator  domain. \Cref{eq:liquiddiffnsep} and~\cref{eq:liquidpotentialsep}
+the separator  domain. \Cref{eq:liquiddiffnsep} and \cref{eq:liquidpotentialsep}
 are  obtained  by  applying  the  corresponding  electrolyte  equations  of  the
-\gls{dfn}  model  (see~\cref{eq:dfnliquiddiff}  and~\cref{eq:dfnliquidpotential}
+\gls{dfn}  model  (see \cref{eq:dfnliquiddiff}  and \cref{eq:dfnliquidpotential}
 respectively) to the separator region.
 
 Applying  the  continuity  and  flux  boundary  conditions  of  the  electrolyte
-diffusion  equation from~\cref{eq:liquiddiffnsep}  at both  separator
+diffusion  equation from \cref{eq:liquiddiffnsep}  at both  separator
 interfaces
 \begin{alignat}{2}
     a_2 l^2_\text{n} + a_0                      & = \hphantom{-}a_3 \qquad                    &  & \text{\footnotesize (continuity at neg/sep interface)} \label{eq:cecontinuitynegsep} \\
@@ -95,7 +95,7 @@ interfaces
     2 a_2 l_\text{n} D_\effn                    & = \hphantom{-}a_4 D_\effs \qquad            &  & \text{\footnotesize (flux b.c.\ at neg/sep interface)}                               \\
     \left(2 a_5 l_\text{s} + a_4\right) D_\effs & = -2 a_8 l_\text{p} D_\effp \qquad          &  & \text{\footnotesize (flux b.c.\ at sep/pos interface)}\label{eq:quadcefluxseppos}
 \end{alignat}
-Note that the negative sign in~\cref{eq:quadcefluxseppos} is due to the specific
+Note that the negative sign in \cref{eq:quadcefluxseppos} is due to the specific
 choice of the co-ordinate system used  for the positive electrode region. Due to
 this,  fluxes  at  the  separator/positive  electrode  interface  have  opposing
 directions.
@@ -118,8 +118,8 @@ Applying this to \crefrange{eq:cenquadreduced}{eq:cepquadreduced}
 At this stage,  $Q_{\text{e},j}(t)$ are unknown. Since  these are time-dependent
 functions,  the  derivation  naturally  progresses  towards  seeking  a  set  of
 \glspl{ode} that describe a relationship  for their time evolution. We transform
-the  second   order  \glspl{ode}  of~\cref{eq:dfnliquiddiff}   (for  electrodes)
-and~\cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
+the  second   order  \glspl{ode}  of \cref{eq:dfnliquiddiff}   (for  electrodes)
+and \cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
 this sequence of steps for the negative electrode region
 \mathleft
@@ -154,7 +154,7 @@ for the positive electrode yields
 \end{align}
 
 In    order    to   evaluate    the    integral    term   in    the    \gls{rhs}
-of~\cref{eq:negliionmolestoreduce}    and~\cref{eq:posliionmolestoreduce},   the
+of \cref{eq:negliionmolestoreduce}    and \cref{eq:posliionmolestoreduce},   the
 solid  phase  charge  conservation  equation~(\cref{eq:solidchargeconserve})  is
 integrated  along the  local  co-ordinate  axis of  the  negative electrode  and
 positive electrode respectively
@@ -163,8 +163,8 @@ positive electrode respectively
     \int_0^{l_\text{p}} j_\text{p}\, dz & =  \frac{-I}{a_\spsub A F}\label{eq:posfluxintegral}
 \end{align}
 
-Substituting~\crefrange{eq:negfluxintegral}{eq:posfluxintegral}
-into~\crefrange{eq:negliionmolestoreduce}{eq:posliionmolestoreduce}
+Substituting \crefrange{eq:negfluxintegral}{eq:posfluxintegral}
+into \crefrange{eq:negliionmolestoreduce}{eq:posliionmolestoreduce}
 respectively
 \begin{align}
     \diff*{Q_\text{e,s}}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} - (1 - t^0_\text{+}) \cancel{a_\snsub} \frac{I}{\cancel{a_\snsub} A F} \\
@@ -178,8 +178,8 @@ which leads to the general expressions  for the cross-sectional molar density of
     \diff*{Q_\text{e,s}}{t} & = D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolesgen}                                             \\
     \diff*{Q_\text{e,p}}{t} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \frac{I}{A F}\label{eq:posliionmolesgen}
     \intertext{Substituting the assumed quadratic expressions for electrolyte concentrations in
-        each of the three region, \ie{}~\crefrange{eq:cenquadreduced}{eq:cepquadreduced}
-    in the above system,\ie{}~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
+        each of the three region, \ie{} \crefrange{eq:cenquadreduced}{eq:cepquadreduced}
+    in the above system,\ie{} \crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
     \diff*{Q_\text{e,n}}{t} & = 2 a_2 l_\text{n} D_\effn + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesquadratic}                                \\
     \diff*{Q_\text{e,s}}{t} & = 2 a_5 l_\text{s} D_\effs\label{eq:sepliionmolesquadratic}                                                                                                     \\
     \diff*{Q_\text{e,p}}{t} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
@@ -254,7 +254,7 @@ and solve \glspl{dae} in real time.
 % need to write algorithm
 The   simulation   results   of   the   quadratic   approximation   scheme   and
 the   analysis   of   its   strengths   and   weaknesses   is   presented   next
-in~\cref{subsec:quadraticsimresultsanalysis}.
+in \cref{subsec:quadraticsimresultsanalysis}.
 
 \subsection{Numerical implementation, simulation results and analysis}\label{subsec:quadraticsimresultsanalysis}
 
@@ -262,9 +262,9 @@ in~\cref{subsec:quadraticsimresultsanalysis}.
 From an analysis point of view,  the quadratic approximation model for computing
 the spatio-temporal evolution  of electrolyte concentration can  be simulated as
 an  independent  subsystem,  and  hence  can be  implemented  numerically  as  a
-standalone module as shown  in~\cref{alg:quadraticce}. In practice, this modular
+standalone module as shown  in \cref{alg:quadraticce}. In practice, this modular
 code is  embedded as  a subroutine  within the  main \gls{spm}  algorithm listed
-in~\cref{alg:disctimespm}.
+in \cref{alg:disctimespm}.
 
 \input{5/algo_quadratic_ce}
 
@@ -299,7 +299,7 @@ results are  therefore omitted here  in the  interest of keeping  the discussion
 succinct.
 
 It  is important  to  note that  while having  a  spatial concentration  profile
-is  useful,  as  seen  in~\cref{eq:electrolytepdwithce}, it  is  the  values  of
+is  useful,  as  seen  in \cref{eq:electrolytepdwithce}, it  is  the  values  of
 concentration  at   the  \emph{current  collector  interfaces}   that  are  most
 influential in  computation of the  electrolyte overpotential and hence,  in the
 voltage accuracy of the enhanced \gls{spm}. Thus, it is important to obtain this
@@ -329,11 +329,11 @@ concentration  evolution  predicted  by  the quadratic  approximation  model  is
 rather  simplistic  and  is  unable to  capture  this  intricate  time-evolution
 pattern.  This  is because  the  governing  equation predicting  time  evolution
 of  concentration  in  the  quadratic  approximation  model  is  that  given  by
-the  \emph{first-order}  \gls{ode} of~\cref{eq:negliionmolesquadratic}  (with  a
+the  \emph{first-order}  \gls{ode} of \cref{eq:negliionmolesquadratic}  (with  a
 proportional mapping from $Q_\text{e,n}$ to $c_\text{e}(0,t)$). Following system
 theory, the step response  of a first order \gls{ode} is  that of an exponential
 rise to a final settling value, which  is exactly the shape seen in the top-left
-plot of~\cref{fig:temporalcequadratic}.
+plot of \cref{fig:temporalcequadratic}.
 
 The ionic  concentration evolution  at the positive  current collector  does not
 exhibit major oscillations  and even has a subtle monotonicity  to its response.
@@ -348,5 +348,5 @@ This  chapter concludes  with a  view that,  while the  spatial accuracy  of the
 quadratic  approximation  model  is  acceptable,  its  temporal  performance  is
 lacklustre. The causal  factors that contribute to this  mediocre performance is
 analysed in the context of the author's  own attempts in arriving at an enhanced
-electrolyte and is presented next in~\cref{sec:symbolicregression}.
+electrolyte and is presented next in \cref{sec:symbolicregression}.
 

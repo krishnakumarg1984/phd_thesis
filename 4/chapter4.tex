@@ -24,12 +24,12 @@ this  thesis  author.  All  text,  tables, figures  and  captions  therein  were
 contributed solely by this thesis author. Copyright clearance for non-commercial
 verbatim  reproduction  of  the  content  (such as  in  this  thesis)  has  been
 secured  through  the  publication  agreement with  the  copyright  holder  ASME
-(see~\cref{ch:permissions}). The contents in this chapter  may be, in full or in
+(see \cref{ch:permissions}). The contents in this chapter  may be, in full or in
 part,  included  verbatim from  the  said  publication.  This author  wishes  to
 express  his  thankfulness  to  Teng  Zhang,  co-author  of  this  article,  for
 checking my calculations  and providing valuable feedback that  helped to refine
 the  manuscript  for that  journal  publication.}.  From the  literature  review
-presented  in~\cref{ch:littreview},  it  may  be  recalled  that  transcendental
+presented  in \cref{ch:littreview},  it  may  be  recalled  that  transcendental
 transfer  functions  of  the  cell's  electrochemical  field  variables  (except
 for  concentration   and  potential   in  the   electrolyte)  was   obtained  by
 Smith~\etal~\cite{Smith2007} through  linearisation of the  underlying \gls{p2d}
@@ -39,7 +39,7 @@ EigenFunction expansion employing a Sturm-Liouville approach~\cite{Pryce1993}.
 
 
 In  order  to  obtain  a  \gls{lti} state-space  representation  of  the  system
-(see~\cref{eq:LTIstatespace}) for  embedded implementation,  Lee~\etal{} devised
+(see \cref{eq:LTIstatespace}) for  embedded implementation,  Lee~\etal{} devised
 the   \gls{dra},  a   numerical  procedure   to  systematically   transform  all
 transcendental  transfer functions  to  the time  domain.  The \gls{dra}  method
 retains  the physical  nature  of  the original  \gls{dfn}  equations until  the
@@ -58,18 +58,18 @@ requirements associated  with the  \gls{dra}, which  becomes a  bottleneck since
 it  needs  to  be  repeated  for multiple  \glspl{soc}  and  temperatures.  This
 computational  bottleneck  arises  from  forming  a  large  Block-Hankel  matrix
 in  memory  upon  which  a  \gls{svd} is  performed.  Under  certain  conditions
-as  discussed  in~\cref{subsec:Size-of-the}, owing  to  the  large size  of  the
+as  discussed  in \cref{subsec:Size-of-the}, owing  to  the  large size  of  the
 Block-Hankel  matrix, the  \gls{dra} computation  is rendered  intractable. This
 issue  has been  acknowledged by  the authors~\cite{Lee2012,Plett2015}.  In this
 chapter, this  computational bottleneck  is analysed and  an improved  scheme is
 proposed.  \Cref{sec:Analysis-of-the}  discusses  an  analytical  evaluation  of
 the  massive  computing requirements  of  Lee's  \gls{dra} method.  Redundancies
 and  inefficiencies in  this  step  are enumerated  and  the high  computational
-costs are deemed as  unnecessary. In~\cref{sec:Efficient-Computation-of}, a fast
+costs are deemed as  unnecessary. In \cref{sec:Efficient-Computation-of}, a fast
 computational  approach  is  presented  which  significantly  reduces  both  the
 memory  and computational  time  of the  \gls{rom} workflow.  \Cref{sec:Results}
 summarizes  the   results  obtained  from  applying   the  algorithms  discussed
-in~\cref{sec:Efficient-Computation-of}  by comparing  and  contrasting the  much
+in \cref{sec:Efficient-Computation-of}  by comparing  and  contrasting the  much
 smaller computational requirements of the new method with the existing \gls{dra}
 scheme.  Furthermore,  improved modelling  accuracy  achieved  by this  proposed
 method,  when deployed  under  resource-constrained  computing environments,  is
@@ -87,7 +87,7 @@ interchangeably in  this thesis  by the two  acronyms ---  \glsfmtshort{dfn} and
 \glsfmtshort{p2d}.}.
 
 
-The  block diagram  in~\cref{fig:traditional_ROM_Workflow}  depicts the  overall
+The  block diagram  in \cref{fig:traditional_ROM_Workflow}  depicts the  overall
 modelling workflow. First,  the governing PDE equations are  linearised about an
 operating point  of \gls{soc} and temperature.  Then, closed-form Laplace-domain
 transcendental  transfer  functions  of  all the  internal  physical  quantities
@@ -96,12 +96,12 @@ are  derived  using applied  current  as  the  input.  A detailed  treatment  of
 the  analytical  derivation  is   presented  in  Lee~\etal~\cite{Lee2012a}.  The
 authors  proposed  a novel  \glsfirst{dra}  scheme~\cite{Lee2012b}  in order  to
 transform  these  transcendental  transfer  functions  to  standard  state-space
-representation.   Sublevel-1   of~\cref{fig:traditional_ROM_Workflow}  shows   a
+representation.   Sublevel-1   of \cref{fig:traditional_ROM_Workflow}  shows   a
 breakout view of  the \gls{dra} procedure and illustrates the  steps involved in
 this  computation. At  the  heart  of this  numerical  method  is the  classical
 subspace  identification approach  known as  Ho-Kalman algorithm~\cite{HO1966a},
 whose  computation  steps  are  shown   via  the  exploded  view  in  sublevel-2
-of~\cref{fig:traditional_ROM_Workflow}. Markov  parameters (unit-pulse response)
+of \cref{fig:traditional_ROM_Workflow}. Markov  parameters (unit-pulse response)
 of this \gls{simo} linear system of battery transfer functions is computed. They
 form the entries  of a Block-Hankel matrix~\cite{Ljung1998},  wherein each block
 element is a column vector of the set of Markov parameters at a given time-step.
@@ -122,7 +122,7 @@ singular values serves as a guide in choosing the desired \gls{rom} order.
     \label{fig:traditional_ROM_Workflow}
 \end{figure}
 
-The    analyses     presented    in~\cref{subsec:Traditional-DRA--Memory}    and
+The    analyses     presented    in \cref{subsec:Traditional-DRA--Memory}    and
 \cref{subsec:Traditional-DRA--CPU}  reveal  major  inefficiencies  in  both  the
 Block-Hankel  formation and  the \gls{svd}  computation steps  which hinder  the
 entire reduced-order modelling workflow.

@@ -69,7 +69,7 @@ system under consideration. Major parametric system identification methods use:
 % \subsubsection*{Ill-suitability of non-parametric methods}
 Among   the   various   system    identification   techniques   mentioned,   the
 non-parametric   methods    have   some    serious   drawbacks.    As   outlined
-in~\cref{subsec:sysidbackground}, the author is inspired  by the trait of having
+in \cref{subsec:sysidbackground}, the author is inspired  by the trait of having
 a pre-assumed model structure that  brought the baseline quadratic approximation
 closer to a successful realisation. The non-parametric methods do not conform to
 this philosophy. Furthermore, the requirement of infinite number of data samples
@@ -89,8 +89,8 @@ in  low  \gls{snr} environments  and  for  capturing slowly  decaying  phenomena
 with  long time  constants. The  subspace methods  are mathematically  involved,
 requiring  a  profound  understanding  of  concepts  from  linear  algebra  such
 as  projections  to orthogonal  subspaces.  The  system under  consideration  is
-presented in~\cref{sec:introtoplant} and after linearity considerations, refined
-in~\cref{subsec:linearityanalysis}. It is composed of two independent \gls{siso}
+presented in \cref{sec:introtoplant} and after linearity considerations, refined
+in \cref{subsec:linearityanalysis}. It is composed of two independent \gls{siso}
 subsystems.  However,   the  inflection  point  in   the  complexity-performance
 trade-off  in state-space  identification  is achieved  only  when dealing  with
 \gls{mimo} systems that suggest strong  cross-coupling among its internal states
@@ -111,7 +111,7 @@ they are  to be embedded. This  conundrum is resolved by  closely inspecting the
 model's scope  and its tractability for  conversion to time domain  as explained
 next.
 
-It  is  worth remembering  that,  as  per~\cref{subsec:freqdomainroms}, for  the
+It  is  worth remembering  that,  as  per \cref{subsec:freqdomainroms}, for  the
 reduced order  modelling of the  \emph{entire cell}, all frequency  domain model
 groups were considered  as out of scope  of this thesis specifically  due to the
 overhead  of conversion  from frequency  to time  domain for  implementation and
@@ -119,13 +119,13 @@ other associated difficulties. The blanket exclusion nature of this statement is
 to be revisited considering the specific scope  of the problem at hand. The body
 of literature  on frequency  domain \glspl{rom} discuss  obtaining physics-based
 \emph{transcendental}   transfer   functions  for   \emph{all}   electrochemical
-quantities  of the  coupled  \gls{pdae} system  of~\cref{tbl:dfneqns} through  a
+quantities  of the  coupled  \gls{pdae} system  of \cref{tbl:dfneqns} through  a
 top-down approach.  However, the frequency domain  system identification methods
 are concerned with  obtaining standard \emph{rational} transfer  functions for a
 much narrower  scope \viz{}  the time-evolution  subsystem, through  a bottom-up
 approach.  Such  rational transfer  functions  are  to obtained  for  \gls{siso}
 systems for which an approximation-free  effortless conversion already exists in
-classical control  theory and is  presented in~\cref{subsec:sysidnumericalimpl}.
+classical control  theory and is  presented in \cref{subsec:sysidnumericalimpl}.
 In view of  their overwhelming simplicity and familiarity  to control engineers,
 after considering these arguments that circumvent their only apparent impediment
 to adoption, \emph{transfer function} based system identification was chosen for

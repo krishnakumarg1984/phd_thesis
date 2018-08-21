@@ -58,7 +58,7 @@ apex  point is  possible  per  electrode, which  is  pinned  to their  separator
 interfaces by design.
 
 During the transient portion of discharge (approximately up to \SI{357}{\second}
-as   shown   in~\cref{fig:tfquadp2dspatialionicconc1C}),   the  locus   of   the
+as   shown   in \cref{fig:tfquadp2dspatialionicconc1C}),   the  locus   of   the
 concentration  profile computed  by  the newly  developed system  identification
 model(s) clearly lies  much closer to the \gls{p2d} model  than that computed by
 the  quadratic  approximation model.  After  the  initial transition  phase,  it
@@ -70,7 +70,7 @@ To obtain  a quantifiable  perspective on  the accuracy  of the  newly developed
 model, it  is desirable  to plot  the temporal  evolution of  the concentration,
 particularly  at  the  two  current   collector  interfaces.  The  behaviour  of
 the  baseline  quadratic approximation  model  in  this regard  was  established
-in~\cref{subsubsec:simresultsbaselinequad}.   Therefore  it   is  important   to
+in \cref{subsubsec:simresultsbaselinequad}.   Therefore  it   is  important   to
 ascertain whether a noteworthy improvement  was achieved using the model arrived
 at using the system identification procedure.
 
@@ -112,7 +112,7 @@ by the three approaches ---
 are overlaid in the top row of  plots, wherein the left hand side corresponds to
 the  current collector  interface  at  the negative  electrode  while the  right
 hand  side  corresponds  to  that  at  the  positive  electrode.  The  plots  in
-the bottom  row of~\cref{fig:temporalcetfquadratic}  show the  time-evolution of
+the bottom  row of \cref{fig:temporalcetfquadratic}  show the  time-evolution of
 the  absolute  value  of  their  errors. The  concentration  error  of  each  of
 the  two  \glspl{rom}  is  defined  with  respect  to  the  benchmark  \gls{p2d}
 model  \ie{}  $\varepsilon_{c_{\text{e,}j}(t)}   =  c_{\text{e,}j_\text{ROM}}  -
@@ -182,7 +182,7 @@ cell \ie{} the  concentrations are far from the initial  equilibrium value. This
 precisely  exposes the  realm  where the  system  identification model  exhibits
 its  natural  weakness.  By  following  the  theory  of  system  identification,
 which  necessitates   bias  removal,   the  training  and   validation  profiles
-of~\cref{fig:sysidtrainingcurrent}   and~\cref{fig:sysidvalidationcurrent}   had
+of \cref{fig:sysidtrainingcurrent}   and \cref{fig:sysidvalidationcurrent}   had
 nearly  zero mean.  This means  that the  currents were  as equally  positive as
 negative leading to a small-signal  perturbation around the equilibrium value of
 the electrolyte  concentration. While this  profile is ideally suited  to excite
@@ -212,9 +212,9 @@ To characterise  the performance  of the  newly developed  system identification
 electrolyte   concentration  model(s)   under  dynamic   load  conditions,   the
 \gls{udds}  drivecycle  was  used.  The  details  of  this  drivecycle  such  as
 its  speed  versus  time  data  and its  highly  dynamic  nature  was  discussed
-in~\cref{subsubsec:dynamicspmp2dsim}. The peak of  the applied load current used
+in \cref{subsubsec:dynamicspmp2dsim}. The peak of  the applied load current used
 corresponds to a discharge current of \SI{180}{\ampere} \ie{} 3C. A plot of this
-current  profile was  shown in  the top  row of~\cref{fig:uddssimp2dspmresults}.
+current  profile was  shown in  the top  row of \cref{fig:uddssimp2dspmresults}.
 This  load  profile  was  applied   to  the  three  models  under  consideration
 $\big($\begin{enumerate*}[label=\itshape\alph*\upshape)] \item \glsfmtshort{p2d}
 model,  \item   quadratic  approximation   model,  and  \item   newly  developed
@@ -228,10 +228,10 @@ profile   duration,   it   is   difficult  to   discern   a   specific   pattern
 or   trend  within   the  spatial   thickness   of  the   cell.  Hence,   unlike
 the   case   of  prolonged   unidirectional   current   application  wherein   a
 clear   reaction  front   that  diffuses   gradually  out   can  be   visualised
-(see~\cref{fig:tfquadp2dspatialionicconc1C}), little  information can  be gained
+(see \cref{fig:tfquadp2dspatialionicconc1C}), little  information can  be gained
 from  visualisation   of  spatial   concentration  profiles.  Since   the  ionic
 concentrations at  the two  current collectors have  a direct  (and two-pronged)
-influence on the  electrolyte overpotential (see~\cref{eq:electrolytepdwithce}),
+influence on the  electrolyte overpotential (see \cref{eq:electrolytepdwithce}),
 it is particularly important to characterise  the accuracy at these two critical
 spatial locations.
 
@@ -245,7 +245,7 @@ the left  pertain to the negative  current collector location while  that to the
 right correspond to  the positive current collector location. The  bottom row of
 plots show the absolute value of concentration error of the quadratic and system
 identification models relative to the  \gls{p2d} reference benchmark. As seen in
-in~\cref{fig:uddsTfQuadCeatCC}, the absolute error of the newly developed system
+in \cref{fig:uddsTfQuadCeatCC}, the absolute error of the newly developed system
 identification models remain below that  of the baseline quadratic approximation
 model throughout the drivecycle.
 
@@ -260,7 +260,7 @@ model throughout the drivecycle.
     {%
         Evolution of ionic concentration over  time at the two current collector
         interfaces with  a \gls{udds}  input profile (see  topmost plot
-        of~\cref{fig:uddssimp2dspmresults}) as computed by
+        of \cref{fig:uddssimp2dspmresults}) as computed by
         \begin{enumerate*}[label=\roman*)]
             \item the \glsfmtshort{p2d} model,
             \item the quadratic approximation model and
@@ -279,17 +279,17 @@ model throughout the drivecycle.
 \end{figure}
 
 Based   on   the   conclusions   from   the   constant   current   input   study
-of~\cref{subsec:tfquadceconstcurrinput},  it   is  to   be  expected   that  the
+of \cref{subsec:tfquadceconstcurrinput},  it   is  to   be  expected   that  the
 system  identification  model(s)  exhibit  a  superior  performance  during  the
 transient  phase   of  the   simulation.  As  seen   in  the   initial  duration
-of~\cref{fig:uddsTfQuadCeatCC}, the absolute error  of the system identification
+of \cref{fig:uddsTfQuadCeatCC}, the absolute error  of the system identification
 model is indeed  lower than that of the baseline  quadratic approximation model.
 Particular, when a sudden current spike is applied at \approx \SI{200}{\second},
 the  quadratic approximation  model is  unable to  cope and  its absolute  error
 deviates  far  away   from  its  mean  value.  The  absolute   error  of  system
 identification model  remains well controlled  and even with  this instantaneous
 load demand, its standard deviation is remarkably close to its median value as
-shown in~\cref{tbl:errormetricsquadtfce}.
+shown in \cref{tbl:errormetricsquadtfce}.
 
 \input{6/ce_error_table_udds}
 
@@ -310,11 +310,11 @@ approximation  model seems  to suffer  from  a large  bias with  respect to  the
 \glspl{rom}  is identical.  This could  be attributed  to the  fact the  spatial
 profile  used  in  both of  them  is  identical.  Hence,  it must  be  concluded
 that  the difference  in their  amplitude arises  from the  improved calculation
-of coefficients  $a_k(t)$ in~\cref{eq:cenqquadstart} and~\cref{eq:cepqquadstart}
+of coefficients  $a_k(t)$ in \cref{eq:cenqquadstart} and \cref{eq:cepqquadstart}
 through  the  usage  of  more  accurate  $Q_{\text{e,n}}$  and  $Q_{\text{e,p}}$
-in  the  \gls{lhs} of~\cref{eq:Qenbyintegration}  and~\cref{eq:Qepbyintegration}
+in  the  \gls{lhs} of \cref{eq:Qenbyintegration}  and \cref{eq:Qepbyintegration}
 respectively.  Detailed   error  metrics  of   the  two  \glspl{rom}   is  shown
-in~\cref{tbl:errormetricsquadtfce}.
+in \cref{tbl:errormetricsquadtfce}.
 
 \begin{figure}[!htbp]
     \centering
@@ -328,7 +328,7 @@ in~\cref{tbl:errormetricsquadtfce}.
         A zoomed  view of  the ionic  concentration (showing  a \SI{50}{\second}
         window  beginning at  \approx \SI{60}{\percent}  of the  overall profile
         duration) in the electrolyte at the two current collector interfaces for
-        the \gls{udds} profile of~\cref{fig:uddssimp2dspmresults} as computed by
+        the \gls{udds} profile of \cref{fig:uddssimp2dspmresults} as computed by
         ---
         \begin{enumerate*}[label=\roman*)]
             \item the \glsfmtshort{p2d} model,

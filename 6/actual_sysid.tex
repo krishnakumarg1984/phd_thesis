@@ -57,7 +57,7 @@ coefficients in $G(q)$ and $H(q)$ respectively.
 
 In  this  system  identification  task  at hand,  the  output  measurements  are
 collected from a  \emph{noise-free} simulation of the \gls{p2d}  model \ie{} the
-disturbance transfer operator in~\cref{eq:outputwithsysandnoise} is zero
+disturbance transfer operator in \cref{eq:outputwithsysandnoise} is zero
 \begin{align}
     y[k] &= G(q)u[k] + \cancelto{0}{H(q)}e[k]
 \shortintertext{Hence, the time-domain output  reduces  to}
@@ -81,7 +81,7 @@ region respectively.
 The transport delay $n_k$ can be estimated visually by inspecting the step
 response of the systems under consideration.
 
-In~\cref{fig:linearity},   step  inputs   of   $I_1   =  \SI{60}{\ampere},   I_2
+In \cref{fig:linearity},   step  inputs   of   $I_1   =  \SI{60}{\ampere},   I_2
 =    \SI{12}{\ampere},$   and    $I_3   =    \SI{36}{\ampere}$   were    applied
 to    the   two    subsystems.    Inspecting   closely    all   the    responses
 \ie{}   $\widetilde{Q}_{\text{e,n}_1},    \widetilde{Q}_{\text{e,n}_2}   $   and
@@ -94,7 +94,7 @@ to be considered for the transfer operators \ie{} $n_k = 0$ for both subsystems.
 \subsection{Choice of model structure}\label{subsec:modelstrucchoice}
 
 Among      the      transfer-function       model      structures      mentioned
-in~\cref{subsec:parametric}, the \gls{arx} model  structure is too simplistic to
+in \cref{subsec:parametric}, the \gls{arx} model  structure is too simplistic to
 consider. Despite  the fact that  its numerical computation involves  only basic
 linear algebra operations,  that can be efficiently handled  on modern computing
 systems, it  is considered to produce  poor estimates of the  system's poles and
@@ -105,7 +105,7 @@ the  problem  at hand.  Therefore,  the  two  model structures  considered  were
 
 \subsection{Starting guesses for coefficient orders}\label{subsec:initguesscoefforder}
 
-At first, the training profile of~\cref{fig:sysidtrainingcurrent} is
+At first, the training profile of \cref{fig:sysidtrainingcurrent} is
 debiased (through mean removal) and applied as the input current profile in a \gls{p2d}
 simulation. The outputs of this simulation are suitably post-processed as per
 the following sequence of steps.
@@ -122,7 +122,7 @@ the following sequence of steps.
 \end{enumerate}
 
 The        same        procedure        is        repeated        for        the
-validation       current      profile       of~\cref{fig:sysidvalidationcurrent}
+validation       current      profile       of \cref{fig:sysidvalidationcurrent}
 to         obtain         $\widetilde{Q}_{\text{e,n}_\text{val}}(t)$         and
 $\widetilde{Q}_{\text{e,n}_\text{val}}(t)$.  These data  sets are  used for  all
 subsequent sub-tasks involved in this system identification exercise.
@@ -167,7 +167,7 @@ be gleaned from these Bode diagrams.  The first visually striking feature is the
 similarity  in the  approximate frequency  characteristics in  the negative  and
 positive electrode  regions, even when  excited by completely different  data in
 the time domain. This confirms the author's assumptions of equal `complexity' in
-the symbolic  regression search discussed in~\cref{subsec:symbolicreg}.  This is
+the symbolic  regression search discussed in \cref{subsec:symbolicreg}.  This is
 also  congruent with  the physical  behaviour of  the electrolyte  in these  two
 regions.
 
@@ -175,12 +175,12 @@ regions.
 By visual  extension of  the frequency responses  towards lower  frequencies, it
 is  clear  that  the  DC  gains  of  both  the  systems  are  finite  and  below
 unity.  This  behaviour  can  clearly  be  seen  in  the  time-domain  responses
-of~\cref{fig:linearity}.  For  the plotted  time-horizon,  this  effect is  most
+of \cref{fig:linearity}.  For  the plotted  time-horizon,  this  effect is  most
 visible for the case of the \SI{12}{\ampere} constant current input, wherein the
 responses of both regions settle to a finite value after an initial transient.
 
 There is \approx\SI{10}{\decibel} variability in  the low frequency gain between
-the two Bode  plots in~\cref{fig:initialbodemag}. This can be  attributed to the
+the two Bode  plots in \cref{fig:initialbodemag}. This can be  attributed to the
 following  factors. A  compromise with  the spectral  estimation method  is that
 using a higher number of frequency bins  results in lower resolution per bin and
 vice-versa. By  varying the number  of frequency bins  and focussing on  the low
@@ -205,14 +205,14 @@ the origin of the complex plane).
 
 First  order  transfer   functions  do  not  exhibit   characteristic  peaks  or
 resonances  in  their  frequency  responses.  However,  for  the  Bode  plot  on
-the   left   of~\cref{fig:initialbodemag},   a   pronounced   resonance   around
+the   left   of \cref{fig:initialbodemag},   a   pronounced   resonance   around
 \SI{0.15}{\radian\per\second} is observable. This has  an enormous impact --- it
 presents  an important  clue  that the  first  order time-evolution  \glspl{ode}
-of~\cref{eq:negliionmolesquadratic}   and~\cref{eq:posliionmolesquadratic}   are
+of \cref{eq:negliionmolesquadratic}   and \cref{eq:posliionmolesquadratic}   are
 inadequate to represent the system dynamics.
 
 An apparent  contradiction to  the first-order inadequacy  claim stems  from the
-Bode plot  on the  right hand side  in~\cref{fig:initialbodemag}. In  this case,
+Bode plot  on the  right hand side  in \cref{fig:initialbodemag}. In  this case,
 there are no resonances in the  magnitude response indicating that a first order
 model description is sufficient. However, a vital aspect to be noted here is the
 nature of the  validation current profile when compared to  that of the training
@@ -234,7 +234,7 @@ concluded that the two subsystems are \emph{at-least} of second order.
 \subsubsection*{Estimation of number of poles and zeros}
 
 The  high-frequency  roll-off  in  the   slopes  of  the  Bode  magnitude  plots
-in~\cref{fig:initialbodemag} provide clues on the number of poles in the system.
+in \cref{fig:initialbodemag} provide clues on the number of poles in the system.
 The  corner  frequency $\omega_\text{c}$  in  both  cases  appear to  be  around
 \SI{0.15}{\radian\per\second}.  The  high-frequency  slope of  both  systems  is
 \approx\SI{20}{\decibel} per decade,  which implies that they  have at-least one
@@ -261,7 +261,7 @@ system identification procedure is carried out.
 
 \subsection{Refinement of coefficient orders using deterministic criteria}\label{subsec:refinementofcoefforder}
 
-The initial estimate  of coefficient orders in~\cref{subsec:initguesscoefforder}
+The initial estimate  of coefficient orders in \cref{subsec:initguesscoefforder}
 was performed  based only on  a visual inspection  of the Bode  magnitude plots.
 Owing to  the fact that  the frequency  response data is  the result of  a crude
 ratio of  spectra, there is a  high probability of missing  vital information on
@@ -271,7 +271,7 @@ criteria is used to widen and refine the coefficient order range.
 
 
 Although   the   \gls{arx}   structure   is  deemed   to   be   too   simplistic
-(see~\cref{subsec:modelstrucchoice}), owing to the fact that only linear algebra
+(see \cref{subsec:modelstrucchoice}), owing to the fact that only linear algebra
 operations are involved, as opposed  to numerical optimisation routines employed
 in the  \gls{oe}, \gls{armax} and Box-Jenkins  structures, certain deterministic
 criteria for  coefficient order  selection can  be incorporated  for coefficient
@@ -292,7 +292,7 @@ to be determined).
 
 The  number of  numerator  and denominator  coefficients in  $G(q)$  as well  as
 their  values are  to  be determined.  This  set of  unknowns  can be  collected
-into a  parameter vector  $\theta$. Thus, as  per~\cref{eq:sysiderroronlyk}, the
+into a  parameter vector  $\theta$. Thus, as  per \cref{eq:sysiderroronlyk}, the
 error  sequence is  parametrised by  $\theta$, and  its notation  is amended  to
 $\varepsilon[k;\theta]$.
 
@@ -308,7 +308,7 @@ function that may  be applied for all the four  model structures \viz{\gls{arx},
     \hat{\theta} & = \text{arg}\,\underset{\theta}{\text{min}} V_N(\theta)
 \end{align}
 
-For  the \gls{arx}  model structure,~\cref{eq:nonlincostfcnsysid}  reduces to  a
+For  the \gls{arx}  model structure, \cref{eq:nonlincostfcnsysid}  reduces to  a
 standard quadratic optimisation  problem which may be  solved analytically using
 least  squares  linear  algebra.  However,  for  robustness  against  estimation
 bias,  instead of  the  standard \gls{ols}  estimates,  the \gls{iv}  estimation
@@ -339,7 +339,7 @@ discrete-time transfer functions which is described next.
 \subsection{Final transfer function coefficients --- Nonlinear optimisation}
 
 For         the         \gls{armax}        and         Box-Jenkins         model
-structures,~\cref{eq:nonlincostfcnsysid} results  in a non-linear  cost function
+structures, \cref{eq:nonlincostfcnsysid} results  in a non-linear  cost function
 which  is  minimised iteratively  using  quasi-Newton  approaches. The  theoretical
 foundation  of  standard non-linear  optimisation  methods  such as  L-BFGS  and
 Levenberg-Marquardt are  well established whose  detailed explanation is  out of
@@ -354,7 +354,7 @@ electrode time-evolution subsystems) in the z-domain are given by
 \end{equation}
 wherein the coefficients in the numerator and denominator are to be determined.
 
-The  number of  coefficients obtained  from~\cref{subsec:refinementofcoefforder}
+The  number of  coefficients obtained  from \cref{subsec:refinementofcoefforder}
 was  used as  the initial  guess for  the coefficient  orders in  the non-linear
 optimisation.  For  the  initial  guesses   for  the  numerical  values  of  the
 coefficients $(a_1, a_2,  \dots a_{n_a})$ and $(b_1, b_2, \dots  , b_{n_b} )$, a
@@ -381,10 +381,10 @@ magnitude plots as well as that obtained by applying the deterministic \gls{aic}
 and \gls{mdl}  criteria. Only those  models that yielded similar  errors (within
 \SI{0.5}{\percent}) across both input datasets were retained.
 
-As  discussed  in~\cref{subsec:initguesscoefforder},   a  first  order  transfer
+As  discussed  in \cref{subsec:initguesscoefforder},   a  first  order  transfer
 function cannot capture all the  dynamics of the subsystems under consideration.
 Therefore, the lowest order tried in  the identification procedure was two (case
-A in~\cref{tbl:sysidnegcases}).  As higher order  models were tried,  the system
+A in \cref{tbl:sysidnegcases}).  As higher order  models were tried,  the system
 accuracy improves steadily as  seen in cases B and C. However  in order to avoid
 overfitting, the  \emph{lowest} order  model that  produces the  highest matched
 accuracy across both training and validation profiles must be chosen.
@@ -394,10 +394,10 @@ optimisation algorithms.  Despite using an  identical number of  coefficients as
 case C,  the optimisation algorithm  converges to  a radically different  set of
 zeros  and  poles  resulting  in  a  percentage  error  comparable  to  that  of
 the  simple second  order  case. The  fourth  order model  from  case C  (shaded
-grey  in~\cref{tbl:sysidnegcases}) performs  the best  across both  training and
+grey  in \cref{tbl:sysidnegcases}) performs  the best  across both  training and
 validation profiles and  is chosen as the final model.  The number of numerators
 and  denominators match  exactly that  predicted by  the deterministic  criteria
-given in~\cref{subsec:refinementofcoefforder}. A similar selection procedure was
+given in \cref{subsec:refinementofcoefforder}. A similar selection procedure was
 applied  for  the  identification  of the  transfer  function  corresponding  to
 $\widetilde{Q}_{\text{e,p}}$ in the positive electrode region.
 
@@ -414,13 +414,13 @@ The final identified transfer functions (for the scaled output) are
     identified transfer function for training profile]{%
         Time-evolution of $\widetilde{Q}_{\text{e,n}}$ computed using the
         \glsfmtshort{p2d} model  and the identified transfer function
-        of~\cref{eq:finaldisctfneg} (scaled by 0.001) with the synthetic
-        training input profile of~\cref{fig:sysidtrainingcurrent}. The output
+        of \cref{eq:finaldisctfneg} (scaled by 0.001) with the synthetic
+        training input profile of \cref{fig:sysidtrainingcurrent}. The output
         predicted by the identified transfer function closely matches the `true'
         output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
         \glsfmtshort{rms} error of \SI{5.70e-6}{\mole\per\meter\squared} and a
         \glsfmtshort{mae} of \SI{19.19e-6}{\mole\per\meter\squared}. Note that the
-        transfer function in~\cref{eq:finaldisctfneg} was originally obtained by
+        transfer function in \cref{eq:finaldisctfneg} was originally obtained by
         scaling the output by 1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the
         predicted response shown here, thereby once again justifying the
@@ -433,10 +433,10 @@ The final identified transfer functions (for the scaled output) are
 output for
 \begin{enumerate*}[label=\emph{\alph*})]
     \item the \gls{p2d} model, and
-    \item the identified transfer function of~\cref{eq:finaldisctfneg}
+    \item the identified transfer function of \cref{eq:finaldisctfneg}
 \end{enumerate*}
-using  the  training  current  profile  of~\cref{fig:sysidtrainingcurrent}.  The
-transfer function of~\cref{eq:finaldisctfneg} was obtained by scaling the output
+using  the  training  current  profile  of \cref{fig:sysidtrainingcurrent}.  The
+transfer function of \cref{eq:finaldisctfneg} was obtained by scaling the output
 of the  training profile to  be of order $\mathcal{O}(1)$  by a factor  of 1000.
 Therefore,  for final  implementation and  comparison purposes,  the raw  output
 produced  by applying  the transfer  function  needs to  be scaled  back by  its
@@ -459,13 +459,13 @@ clearly illustrated.
     identified transfer function for training profile]{%
         Time-evolution of $\widetilde{Q}_{\text{e,p}}$ computed using the
         \glsfmtshort{p2d} model  and the identified transfer function
-        of~\cref{eq:finaldisctfpos} (scaled by 0.001) with the synthetic
-        validation input profile of~\cref{fig:sysidvalidationcurrent}. The output
+        of \cref{eq:finaldisctfpos} (scaled by 0.001) with the synthetic
+        validation input profile of \cref{fig:sysidvalidationcurrent}. The output
         predicted by the identified transfer function closely matches the `true'
         output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
         \glsfmtshort{rms} error of \SI{12.07e-6}{\mole\per\meter\squared} and a
         \glsfmtshort{mae} of \SI{31.59e-6}{\mole\per\meter\squared}. Note that the
-        transfer function in~\cref{eq:finaldisctfpos} was originally obtained by
+        transfer function in \cref{eq:finaldisctfpos} was originally obtained by
         scaling the output by 1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the
         predicted response shown here, thereby once again confirming the
@@ -474,16 +474,16 @@ clearly illustrated.
     \label{fig:tfpredQepval}
 \end{figure}
 
-The  poles of~\cref{eq:finaldisctfneg}  lie  very close  to their  corresponding
-counterparts of~\cref{eq:finaldisctfpos}  in the  stable region of  the Z-domain
+The  poles of \cref{eq:finaldisctfneg}  lie  very close  to their  corresponding
+counterparts of \cref{eq:finaldisctfpos}  in the  stable region of  the Z-domain
 \ie{}  within   the  unit  circle.   This  confirms  the  hypothesis   that  the
 time-evolution subsystems  in these  two regions  exhibit similar  dynamics. The
 slight differences in  the pole locations could be attributed  to the variations
 in  the  physical  parameters  pertaining  to the  two  electrode  regions.  The
-numerator coefficients  of~\cref{eq:finaldisctfneg} and~\cref{eq:finaldisctfpos}
+numerator coefficients  of \cref{eq:finaldisctfneg} and \cref{eq:finaldisctfpos}
 are  also  close  to  each  other  except  that  their  signs  are  opposite  to
 each   other.  This   is  to   be   expected,  since   as  seen   in  the   step
-response   plots   of~\cref{fig:linearity},   $\widetilde{Q}_{\text{e,n}}$   and
+response   plots   of \cref{fig:linearity},   $\widetilde{Q}_{\text{e,n}}$   and
 $\widetilde{Q}_{\text{e,p}}$ evolve in time in opposite directions. This is also
 explained by  the fact  that, for  a given  applied current,  a decrease  in the
 number of ions in the negative electrode has to be accompanied by an increase in
@@ -500,13 +500,13 @@ implementation of  \glspl{rom} in an  embedded environment such as  a \gls{bms}.
 While  the  majority of  the  models  is  derived  and implemented  entirely  in
 time-domain, only  the two  time-evolution subsystems  of the  electrolyte seems
 to  deviate  from   this  trajectory.  However,  an  explanation   for  this  is
-provided in~\cref{subsec:suitablesysid}.  In particular,  it was  mentioned that
+provided in \cref{subsec:suitablesysid}.  In particular,  it was  mentioned that
 an  approximation-free  conversion to  time-domain  from  Z-domain exists,  that
 mitigates this  perceived drawback  for these  two sub-systems.  This conversion
 conversion  is  amenable  for  discrete-time implementation  without  any  other
 modifications.
 
-Starting from the generic structure of the identified transfer functions (see~\cref{eq:outputwithsysonly}),
+Starting from the generic structure of the identified transfer functions (see \cref{eq:outputwithsysonly}),
 
 \begin{DispWithArrows}[fleqn,mathindent=0cm,jot=2ex,%
     ,xoffset=-4mm

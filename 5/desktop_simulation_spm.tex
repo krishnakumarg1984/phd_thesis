@@ -31,10 +31,10 @@ Here, the  vast majority  of electrochemical  parameters, \viz{}  the geometric,
 thermodynamic, kinetic  and transport properties  of the cell have  been sourced
 from  Subramanian~\etal{}~\cite{Subramanian2009}.   The  significance   of  each
 of  the  parameters  in  the  context of  the  modelling  assumptions  discussed
-in~\cref{subsec:basicspmassumptions} is examined.
+in \cref{subsec:basicspmassumptions} is examined.
 
 The simulation parameters that are applicable exclusively to the \gls{p2d} model
-are shown as  highlighted text in~\cref{tbl:lcoSimParamsSPMp2d}. It  can be seen
+are shown as  highlighted text in \cref{tbl:lcoSimParamsSPMp2d}. It  can be seen
 that only a  subset of the isothermal \gls{dfn} model's  parameters are required
 for the \gls{spm}. In particular, there is no requirement to estimate any of the
 electrolyte-related  parameters  in  each  electrode  region.  Furthermore,  the
@@ -51,7 +51,7 @@ requirements is provided here.
     \customenum{\text{brugg}_j}{3}  The  empirical Bruggeman  coefficient  helps
     to  define  the   effective  values  of  conductivity   and  diffusivity  of
     the   electrolyte.   Although  an   identical   value   of  four   is   used
-    in~\cref{tbl:lcoSimParamsSPMp2d}, in  principle all  three regions  can have
+    in \cref{tbl:lcoSimParamsSPMp2d}, in  principle all  three regions  can have
     different values of brugg and need to be parametrised separately.
 
     \customenum{D}{1}  The  intrinsic  electrolyte   diffusivity  of  a  typical
@@ -71,7 +71,7 @@ requirements is provided here.
     to  be evaluated  at  $T_\text{cell}= \SI{298.15}{\kelvin}$  and  has to  be
     updated during the  simulation as salt concentration  within the electrolyte
     changes over time. A discussion on the choice of initial concentration is
-    provided in~\cref{subsec:basicspmsimsetup}.
+    provided in \cref{subsec:basicspmsimsetup}.
 
     \customenum{\scalebox{1.25}{$t$}_+^0}{1}  The  cationic transference  number
     measures the relative  mobility of the \ch{Li^+} ion in  the organic solvent
@@ -105,7 +105,7 @@ bearing  on arriving  at a  critical parameter,  \viz{} the  solid phase  volume
 fraction, $\varepsilon_\sj$. This parameter is  required to compute the specific
 interfacial  surface  area  of  the  electrodes  $a_\sj$,  \ie{}  the  effective
 electrode area exposed  to reaction and is an important  entity in the \gls{spm}
-model  equations  presented  in~\cref{subsec:basicspmgoverningeqns}.  The  solid
+model  equations  presented  in \cref{subsec:basicspmgoverningeqns}.  The  solid
 phase volume fractions are also required in simulating the \gls{p2d} model owing
 to  the  need for  computing  the  effective  electronic conductivities  of  the
 electrodes.\fxnote{cross-reference to  specific Newman equations here}.  They are
@@ -115,7 +115,7 @@ calculated as
 \end{equation}
 where $\varepsilon_j$  and $\varepsilon_{\text{fi}_j}$  are the  electrolyte and
 filler  volume-fraction  within  the  respective electrode  regions.  Using  the
-values from~\cref{tbl:lcoSimParamsSPMp2d} results in $\varepsilon_\spos = 0.590$
+values from \cref{tbl:lcoSimParamsSPMp2d} results in $\varepsilon_\spos = 0.590$
 and  $\varepsilon_\sneg  =  0.482$  for the  positive  and  negative  electrodes
 respectively. The specific interfacial surface areas are then calculated as
 \begin{equation}\label{eq:specificsurfarea}
@@ -123,7 +123,7 @@ respectively. The specific interfacial surface areas are then calculated as
 \end{equation}
 
 As    discussed   in    the   assumptions    made   during    model   derivation
-(see~\cref{subsec:basicspmassumptions})  and consistent  with the  assumed model
+(see \cref{subsec:basicspmassumptions})  and consistent  with the  assumed model
 geometry,  the  parameters  not  covered  by  the  \gls{spm}  pertain  to  those
 describing electrolyte dynamics and distribution  of electronic charge along the
 axial  thickness  direction  of  the  cell. Properties  such  as  the  intrinsic
@@ -132,12 +132,12 @@ diffusivities  and conductivities  of  the electrolyte,  transference number  of
 simulation. The assumption of uniform charge density along the through-thickness
 length of each electrode implies that the intrinsic electronic conductivities of
 the two electrodes  do not play any  role in the model  dynamics. The porosities
-and Bruggeman  coefficients in~\cref{tbl:lcoSimParamsSPMp2d} serve  as modifying
+and Bruggeman  coefficients in \cref{tbl:lcoSimParamsSPMp2d} serve  as modifying
 factors  of  the  intrinsic  conductivities  and  diffusivities  leading  to  an
 effective value  within each  region of the  electrochemical layer.  Thus, their
 relevance is also  rendered void in the case of  the basic \gls{spm} simulation.
 The  thickness of  the  separator  material only  plays  a  role in  electrolyte
-behaviour.  By the  model geometry  presented in~\cref{subsec:basicspmgeometry},
+behaviour.  By the  model geometry  presented in \cref{subsec:basicspmgeometry},
 this parameter also falls outside the scope of the basic \gls{spm}.
 
 The  thicknesses  of the  electrodes  are  optimised  for equal  loading,  \ie{}
@@ -158,7 +158,7 @@ area) of the two electrodes must be  the same. However, due to the consideration
 of  avoiding  plating  at  the  edges  due  to  microscopic  malformations,  the
 design  is done  such as  to have  a small  overhang of  the negative  electrode
 layer,  \approx\SI{2}{\milli\meter}  with  respect  to  the  positive  electrode
-layer\fxnote{citation  needed}  as  shown  in~\cref{fig:anodeoverhangpouchcell}.
+layer\fxnote{citation  needed}  as  shown  in \cref{fig:anodeoverhangpouchcell}.
 Nevertheless, the  active surface area is  just the common overlap  area between
 the two  electrodes, and hence  $A_\text{elec}$ is equal to  the cross-sectional
 area of the positive electrode.
@@ -174,7 +174,7 @@ area of the positive electrode.
     \label{fig:anodeoverhangpouchcell}
 \end{figure}
 
-Thus,~\cref{eq:basiccapacitybalance}                                     reduces
+Thus, \cref{eq:basiccapacitybalance}                                     reduces
 to                      $\frac{l_\text{neg}}{l_\text{pos}}                     =
 \frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}}    =    1.22$,    yielding
 $l_\text{neg} = \SI{72}{\micro\meter}$.
@@ -210,17 +210,17 @@ corresponding   to   a  current   of   C/500   and   logging  the   data   every
 datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
 correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
 in  the two  electrodes  were noted.  The  corresponding residual  stoichiometry
-values  are reported  in~\cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
+values  are reported  in \cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
 typical values reported in literature for \gls{lco} chemistries.\fxnote{citation
 needed here.}  This validation is  important, since below  certain stoichiometry
 thresholds, the spinel/olivine  structure of the electrodes  can become unstable
 and collapse\fxnote{citation needed?}.
 
 Since   the   cell   behaviour   is   considered   isothermal,   the   parameter
-table     in~\cref{tbl:lcoSimParamsSPMp2d}     omits     activation     energies
+table     in \cref{tbl:lcoSimParamsSPMp2d}     omits     activation     energies
 for    the   various    diffusivities    and    conductivities   of    materials
-(see~\cref{subsec:basicspmsimsetup}  for  further thermal  considerations).  For
-this  reason,~\cref{tbl:lcoSimParamsSPMp2d}  does  not  include  other  material
+(see \cref{subsec:basicspmsimsetup}  for  further thermal  considerations).  For
+this  reason, \cref{tbl:lcoSimParamsSPMp2d}  does  not  include  other  material
 properties such  as specific  heats, and  thermal conductivities.  No properties
 of  the  current  collectors  appear  in  the  isothermal  model  equations  for
 both  the \gls{p2d}  and  \gls{spm}  models and  hence  are  omitted. All  other
@@ -246,7 +246,7 @@ be  initiated  despite possessing  the  ability  to  continue to  operate  after
 recovery  of terminal  voltage.  In this  case, choosing  a  cut-off voltage  of
 \SI{2.5}{\volt}  does  not  damage  the  cell  since  checks  are  in  place  to
 monitor  the \gls{soc}  and trigger  cut-off in  the event  of charge  depletion
-(see~\cref{alg:ctstimespm,alg:disctimespm}).  Northrop~\etal~\cite{Northrop2011}
+(see \cref{alg:ctstimespm,alg:disctimespm}).  Northrop~\etal~\cite{Northrop2011}
 use this value, although no explanation is given for the choice.
 
 The  upper   cut-off  voltage   of  the  cell   is  chosen   at  \SI{4.3}{\volt}
@@ -297,11 +297,11 @@ the \gls{spm} and \gls{p2d} and their performances may be compared.
 
 To  understand  the parametrisation  of  initial  concentration, the  expression
 for   electrolyte   conductivity   needs    to   be   examined.   As   discussed
-in~\cref{subsec:spmp2dparametrisation}, the intrinsic conductivity of a specific
+in \cref{subsec:spmp2dparametrisation}, the intrinsic conductivity of a specific
 type  of  electrolyte  is  a  material   property  that  depends  on  the  local
 concentration of \ch{Li^+} ions and  temperature. In the characterisation of the
 electrolyte in Valøen and  Reimers~\cite{Valoen2005}, the polynomial expression
-in~\cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
+in \cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 \begin{multline}\label{eq:kappavsCeandT}
     \kappa_j(c_\text{e},T)(x,t) =  10^{-4} c_\text{e}(x,t) \bigl(-10.5 + \num{0.668e-3} c_\text{e}(x,t) + \num{0.494e-6}  c_\text{e}{(x,t)}^2\\
     + (0.074 - \num{1.78e-5}) c_\text{e}(x,t) - \num{8.86e-10} c_\text{e}{(x,t)}^2 \bigr)T(t)\\
@@ -326,18 +326,18 @@ less significant to that around conc} In particular,
     \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$ is uniform over the axial space $x$ and
     \item only isothermal cell behaviour is considered, \ie{} $T(t) = T_\text{cell}$.
 \end{enumerate}
-Hence,~\cref{eq:kappavsCeandT} reduces to
+Hence, \cref{eq:kappavsCeandT} reduces to
 \begin{multline}\label{eq:kappavsCeinitandTcell}
     \kappa_j =  10^{-4} c_\text{e,0} \bigl(-10.5 + \num{0.668e-3} c_\text{e,0} + \num{0.494e-6}  c_\text{e,0}^2\\
         + (0.074 - \num{1.78e-5}) c_\text{e,0} - \num{8.86e-10}
     c_\text{e,0}^2 \bigr)T_\text{cell}\\
 	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e,0})T_\text{cell}^2\right)^2
 \end{multline}
-As   inferred   from~\cref{fig:kappavsCeandT},  the   electrolyte   conductivity
+As   inferred   from \cref{fig:kappavsCeandT},  the   electrolyte   conductivity
 $\kappa$   is   a  smooth   function   of   $c_\text{e}$  and   $T_\text{cell}$.
-Thus~\cref{eq:kappavsCeinitandTcell}  can be  effectively  visualised through  a
+Thus \cref{eq:kappavsCeinitandTcell}  can be  effectively  visualised through  a
 parametric plot of $\kappa$ vs  $c_\text{e}$ with $T_\text{cell}$ as the varying
-parameter as seen in~\cref{fig:kappavsce}.
+parameter as seen in \cref{fig:kappavsce}.
 
 \begin{figure}[!htbp]
     \centering
@@ -350,7 +350,7 @@ parameter as seen in~\cref{fig:kappavsce}.
     \label{fig:kappavsce}
 \end{figure}
 
-From~\cref{fig:kappavsce},       it        is       evident        that       at
+From \cref{fig:kappavsce},       it        is       evident        that       at
 $T_\text{cell}=\SI{298.15}{\kelvin}$,   the   maximum   value   of   electrolyte
 conductivity is attained at  $c_\text{e} = \SI{1000}{\mole\per\meter\cubed}$. It
 is advantageous  to operate  the cell  around this salt  concentration so  as to
@@ -361,28 +361,28 @@ both spatial  and temporal  variations during the  simulation, in  the \gls{spm}
 model, it remains constant throughout.
 
 The      reduction      in      parametrisation      requirements      discussed
-in~\cref{subsec:spmp2dparametrisation}    is   only    one   of    the   factors
+in \cref{subsec:spmp2dparametrisation}    is   only    one   of    the   factors
 contributing  to   the  simplicity   and  ease   of  simulation.   As  discussed
-in~\cref{subsec:basicspmgeometry},   an   important  computational   requirement
+in \cref{subsec:basicspmgeometry},   an   important  computational   requirement
 that   is  present   in   the  \gls{p2d}   model,   but  completely   eliminated
 from  the   \gls{spm}  is  the   requirement  of  discretisation.   As  reported
-in~\cref{tbl:lcoSimParamsSPMp2d},  with  15 nodes  per  region  along the  axial
+in \cref{tbl:lcoSimParamsSPMp2d},  with  15 nodes  per  region  along the  axial
 direction  and  with 10  shells  per  electrode  in  the radial  direction,  the
 \gls{p2d}  model under  simulation  achieves mesh  independence  to a  tolerance
 of  \approx\SI{2}{\percent} for  the  range of  C-rates  considered. For  higher
 C-rates, coupling  a thermal  model is of  higher importance  than incorporating
 further   meshing  refinements.   The   discretisation-related  parameters   are
 specific  to  the   \gls{p2d}  model  and  is   hence,  highlighted  accordingly
-in~\cref{tbl:lcoSimParamsSPMp2d}.
+in \cref{tbl:lcoSimParamsSPMp2d}.
 
 \subsubsection*{Capacity Characterisation}\label{subsubsec:capcharspmp2d}
 
 First,  it  must be  established  that  incorporating the  parameters  presented
-in~\cref{tbl:lcoSimParamsSPMp2d} into the \gls{spm} model equations results in a
+in \cref{tbl:lcoSimParamsSPMp2d} into the \gls{spm} model equations results in a
 cell with  \emph{identical} capacity as the  \gls{dfn} model. This is  to ensure
 the  validity  of  comparisons  in  further simulations.  Using  the  values  of
-per-layer  C-rate as  discussed  in~\cref{subsec:spmp2dparametrisation} and  the
-overall active  surface area from~\cref{tbl:lcoSimParamsSPMp2d}, the  cell under
+per-layer  C-rate as  discussed  in \cref{subsec:spmp2dparametrisation} and  the
+overall active  surface area from \cref{tbl:lcoSimParamsSPMp2d}, the  cell under
 simulation has a capacity of \SI{60}{\amphour}.
 
 Present literature  in battery modelling, both  for the \gls{dfn} model  and for
@@ -450,7 +450,7 @@ logging  interval  is set  to  \SI{50}{\milli\second}.  Both the  \gls{p2d}  and
 \gls{spm} model ran close to 100~hours.  The small deviations from this expected
 termination  time  can  be attributed  to  the  fact  that  the current  is  not
 arbitrarily small with  the pragmatic goal of obtaining results  in a reasonable
-time. As seen in~\cref{tbl:charSimspmp2d}, even  the \emph{combined} CPU time to
+time. As seen in \cref{tbl:charSimspmp2d}, even  the \emph{combined} CPU time to
 simulate both  the \gls{p2d}  and \gls{spm}  models is  two orders  of magnitude
 lower than  real-time. The only  issue that remains to  be addressed is  that of
 considerable memory and  storage requirements due to  high-rate data-logging for
@@ -474,7 +474,7 @@ datasheet.
         to a discharge current input of \SI{0.6}{A}. Both models achieve their
         charge depletion point after \approx\SI{100}{\hour} confirming that
         their modelled capacities match. Key simulation data for this
-    characterisation run is shown in~\cref{tbl:charSimspmp2d}.}
+    characterisation run is shown in \cref{tbl:charSimspmp2d}.}
     \label{fig:capcharspmp2d}
 \end{figure}
 
@@ -482,8 +482,8 @@ datasheet.
 \gls{p2d}  models,  which   overlap.  It  is  clear  that   both  the  \gls{p2d}
 and  \gls{spm}  models   achieve  a  run-time  of   100~hours.  This  represents
 the   first  visualisation   of  results   produced  by   the  \gls{spm}   model
-equations  discussed  in~\cref{subsec:basicspmgoverningeqns} and  its  numerical
-implementation  from~\cref{sec:numericalimplementation}.  The voltage  error  is
+equations  discussed  in \cref{subsec:basicspmgoverningeqns} and  its  numerical
+implementation  from \cref{sec:numericalimplementation}.  The voltage  error  is
 defined as
 \begin{equation}
     \varepsilon_v = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}
@@ -509,13 +509,13 @@ Thus,  a common  foundation  for  further simulations  has  been established  by
 confirming  that  the  two  models  indeed  simulate  a  cell  with  a  capacity
 of  \SI{60}{\amphour}.  With  the  cell  parametrisation  discussed,  simulation
 setup  presented and  capacities  validated, the  simulation  results are  fully
-reproducible and are presented next in~\cref{subsec:simresultsbasicspm}.
+reproducible and are presented next in \cref{subsec:simresultsbasicspm}.
 
 \subsection{Simulation Results}\label{subsec:simresultsbasicspm}
 
 \subsubsection*{Constant current discharge}\label{subsubsec:cnstcurrdischgsim}
 
-The  left  column  of~\cref{fig:cnstdischgspmp2dvoltage} shows  the  time-domain
+The  left  column  of \cref{fig:cnstdischgspmp2dvoltage} shows  the  time-domain
 voltage response of the basic \gls{spm} for various constant discharge currents.
 The voltage response of the \gls{p2d} model  is also overlaid on these plots and
 is used  as a  reference benchmark  for comparisons.  It is  difficult to  use a
@@ -546,17 +546,17 @@ metric such as the percentage error, defined as
 
 It is to be noted that, in all cases, the \gls{p2d} model terminates faster than
 the \gls{spm} either due to hitting lower cut-offs of either terminal voltage or
-\gls{soc} (see~\cref{fig:cnstdischgspmp2dsoc}).  Consequently, the  error vector
+\gls{soc} (see \cref{fig:cnstdischgspmp2dsoc}).  Consequently, the  error vector
 is defined only for the common time-region before cut-off.
 
-In~\cref{fig:cnstdischgspmp2dvoltage},  the  column  on   the  right  shows  the
+In \cref{fig:cnstdischgspmp2dvoltage},  the  column  on   the  right  shows  the
 percentage error  in the voltage response  of the \gls{spm} with  respect to the
 \gls{p2d} model.  At very  low C-rates  below \approx0.5C,  the voltage-response
 performance of the \gls{spm} is acceptable. However, the performance degradation
 is rapid above this C-rate. It is clear that the error in the \gls{spm} response
 is monotonic and unidirectional. This indicates  that the source of the error is
 due  to  unmodelled dynamics.  In  particular,  as  discussed in  the  modelling
-assumptions  of~\cref{subsec:basicspmassumptions},  the  \gls{spm}  ignores  the
+assumptions  of \cref{subsec:basicspmassumptions},  the  \gls{spm}  ignores  the
 electrolyte dynamics.  Thus, the  overpotential (internal  voltage drop)  in the
 electrolyte  is not  modelled,  which results  in the  terminal  voltage of  the
 \gls{spm} being always higher than its \gls{p2d} counterpart.
@@ -592,21 +592,21 @@ discharge rates.
 
 \input{5/dischg_errs_spm_p2d_table.tex}
 
-A   quick   perusal  of~\cref{tbl:errorsummarycntcurrdischgspmp2d}   reveals   a
+A   quick   perusal  of \cref{tbl:errorsummarycntcurrdischgspmp2d}   reveals   a
 discrepancy that invokes surprise at first glance. Whilst the performance of the
 \gls{spm} is  quite poor in  terms of terminal  voltage prediction, it  is worth
 noting that its \gls{soc} prediction  capabilities remain quite accurate even at
 moderate  discharge  currents  of  about  3C and  therefore,  warrants  a  brief
 explanation.
 
-Referring to~\cref{eq:soccomputation}, it is  seen that the \glsfmtshort{soc} of
+Referring to \cref{eq:soccomputation}, it is  seen that the \glsfmtshort{soc} of
 the cell  is directly proportional  to the  bulk (average) concentration  in the
-negative  electrode.  Hence  the  plots  of~\cref{fig:cnstdischgspmp2dsoc}  also
+negative  electrode.  Hence  the  plots  of \cref{fig:cnstdischgspmp2dsoc}  also
 represent the solid  phase concentration with a constant scaling  factor. As per
-the assumptions listed  in~\cref{subsec:basicspmassumptions}, the only transport
+the assumptions listed  in \cref{subsec:basicspmassumptions}, the only transport
 phenomena  modelled in  the \gls{spm}  is  solid phase  diffusion. However,  for
 computation of the terminal  voltage, the electrolyte overpotential contribution
-has  been   omitted  (see~\cref{eq:posoverpotential,eq:negoverpotential}).  This
+has  been   omitted  (see \cref{eq:posoverpotential,eq:negoverpotential}).  This
 explains  why  the  voltage  accuracy  suffers  while  the  open-loop  \gls{soc}
 computation  remains  accurate.  The  high accuracy  of  \gls{soc}  (and  hence,
 solid-phase  concentration)   computation  also  validates  the   usage  of  the
@@ -644,7 +644,7 @@ standard rate of 1C is used.
     \label{fig:cnstchgspmp2d}
 \end{figure}
 
-The top row of~\cref{fig:cnstchgspmp2d} shows  the evolution of terminal voltage
+The top row of \cref{fig:cnstchgspmp2d} shows  the evolution of terminal voltage
 and \gls{soc}  of the \gls{p2d} and  \gls{spm} models under an  applied charging
 current of  1C, \ie{} \SI{60}{\ampere}.  The constant-voltage charging  phase is
 not shown. The bottom row shows  the corresponding errors of the \gls{spm} model
@@ -700,7 +700,7 @@ the current profile  corresponds to a discharge current of  3C. Considering that
 all of  braking energy cannot  be recovered due to  losses at the  wheels, brake
 discs  and  other  mechanical  components,  a  regenerative  braking  factor  of
 \SI{85}{\percent}  (the  fraction  of  recoverable power)  is  assumed  for  the
-charging  scenario. As  seen in~\cref{fig:uddsspeedvstimecycle},  the \gls{udds}
+charging  scenario. As  seen in \cref{fig:uddsspeedvstimecycle},  the \gls{udds}
 profile is  highly dynamic  consisting of  many sets  of rapid  acceleration and
 braking  events. Hence,  this  drivecycle is  chosen  to provide  representative
 results of the model's performance to dynamic inputs.
@@ -737,7 +737,7 @@ prevalent  literature,  the  voltage  error metrics  are  reported  directly  in
 units  of  \si{\milli\volt} for  the  dynamic  simulation run.  Furthermore,  it
 is  a  standard  practice  to  report  the  \gls{rms}  error  for  such  dynamic
 load  profiles  and  is  included  in the  summary  of  error  metrics  reported
-in~\cref{tbl:errorsummaryuddsdischgspmp2d}.
+in \cref{tbl:errorsummaryuddsdischgspmp2d}.
 
 \input{5/udds_errs_spm_p2d_table.tex}
 

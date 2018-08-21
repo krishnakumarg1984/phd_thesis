@@ -24,14 +24,14 @@
                     \FullComment{\scriptsize Flexible end time. Extrapolate last C-rate from profile until $t_\text{f,desired}$ if necessary.}
             \State $N_\text{max} \gets \ceil*{\frac{t_\text{f,desired}}{Ts}} + 1$ \Comment{max iterations assuming no cut-offs}
             \State Allocate storage of size $\mathbb{R}^{N_\text{max}\times 1}$ for each simulation variable
-            \State Compute $\mean{c}_\sneg$[1] as per~\cref{eq:csfluxinitialcondition}
+            \State Compute $\mean{c}_\sneg$[1] as per \cref{eq:csfluxinitialcondition}
             \State $I[1] \gets I_\text{1C} \times  \text{C-rate}[1], \quad \mathbf{x}[1] \gets \vect{0,0, \mean{c}_\sneg[1]}$ \Comment{ $\text{C-rate}[1]$ from profile}
             \State $V_\text{cell}[1] \gets \textsc{ComputeCellVoltage}(\textbf{x}[1],I[1],\texttt{params})$ \Comment{from direct feedthrough}
             \For{$k \gets 2 : N_\text{max}$}
                 \State $I[k] \gets $ interpolate from profile using \gls{zoh}
-                \State Solve continuous-time equation~\cref{eq:threestatesmatrixvec} \Comment{solver IC set to $x[k-1]$}
+                \State Solve continuous-time equation \cref{eq:threestatesmatrixvec} \Comment{solver IC set to $x[k-1]$}
                 \State $\mathbf{x}[k] \gets $ last time-entry  vector of soln.\  matrix \Comment{from an adaptive solver \eg{} \textsc{MATLAB}'s \texttt{ode45}}
-                \State Compute $z[k]$ as per~\cref{eq:soccomputation}
+                \State Compute $z[k]$ as per \cref{eq:soccomputation}
                 \State $V_\text{cell} \gets \textsc{ComputeCellVoltage}(\textbf{x}[k],I[k],\texttt{param}) $
                 \If {$z[k] \text{ or } V_\text{cell}[k]$ exceeded cut-off limits}
                     \State $k \gets k - 1$ \Comment{data from last  step is invalid}
@@ -41,12 +41,12 @@
         \EndProcedure
 
         \OutputEqn{\textbf{x}, I, \texttt{params}}
-            \State Compute $c_\snegsurf$ as per~\cref{eq:csurfnegfromcavgneg}
+            \State Compute $c_\snegsurf$ as per \cref{eq:csurfnegfromcavgneg}
             \Comment{consider saturating \ie{} $c_\snegmin \le c_\snegsurf \le
             c_\snegmax$}
-            \State Compute $\mean{c}_\spos$ as per~\cref{eq:csposbulkfromcsnegbulk}
-            \State Compute $c_\spossurf$ as per~\cref{eq:csurfposfromcavgpos}
-            \State Compute $V_\text{cell}$ as per~\cref{eq:spmbasicoutputvoltagefinal}
+            \State Compute $\mean{c}_\spos$ as per \cref{eq:csposbulkfromcsnegbulk}
+            \State Compute $c_\spossurf$ as per \cref{eq:csurfposfromcavgpos}
+            \State Compute $V_\text{cell}$ as per \cref{eq:spmbasicoutputvoltagefinal}
         \EndOutputEqn%
     \end{algorithmic}
 \end{algorithm}

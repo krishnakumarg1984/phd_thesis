@@ -35,7 +35,7 @@ Guo~\etal~\cite{Guo2011a}  presented an  empirical approach  to account  for the
 solution-phase dynamics.  Using standard curve-fitting techniques,  a non-linear
 resistance as  a function of current  and temperature was introduced.  Thus, the
 equation for cell terminal voltage presented
-in~\cref{eq:cellterminalvoltagebasic} is modified as
+in \cref{eq:cellterminalvoltagebasic} is modified as
 \begin{equation}
     V_\text{cell} = η_\text{pos} - η_\text{neg} + U_\text{pos} - U_\text{neg} - I R_\text{eq}
 \end{equation}
@@ -66,27 +66,27 @@ electrolyte overpotential. The potential drop in the electrolyte is given by
     \phi_\epos - \phi_\eneg = -\frac{I}{2 A}\left(\frac{l_\text{neg}}{\kappa_\text{eff}} + 2 \frac{l_\text{sep}}{\kappa_\text{eff}} + \frac{l_\text{pos}}{\kappa_\text{eff}}\right)
 \end{equation}
 and     can     be     substituted    into     the     subtraction     operation
-involving~\cref{eq:posoverpotential} and~\cref{eq:negoverpotential} in computing
-the   overall  overpotential   of~\cref{eq:overpotentialdifference}  and   hence
+involving \cref{eq:posoverpotential} and \cref{eq:negoverpotential} in computing
+the   overall  overpotential   of \cref{eq:overpotentialdifference}  and   hence
 the  terminal  voltage.  The  effective   conductivity  of  the  electrolyte  in
 a   given   region   \jinpossepneg{},   within   the   cell,   is   defined   as
 $\kappa_\effj(c_e) = \kappa(c_e)\, \varepsilon_j^{\text{brugg}_j}$. As discussed
-in~\cref{subsec:basicspmsimsetup},  the   intrinsic  and  hence   the  effective
+in \cref{subsec:basicspmsimsetup},  the   intrinsic  and  hence   the  effective
 electrolyte conductivity is a function of the concentration of \ch{Li^+} ions in
 the  electrolyte.  Di  Domenico~\etal{}  did  not  discuss  the  spatio-temporal
 calculation  of  electrolyte  concentration.  It   is  likely  that  a  constant
 electrolyte concentration  at its  initial equilibrium value  was used.  As seen
-in~\cref{fig:ce1cdischgwithzoom}\fxnote{do not  forget to  show the  gradient in
+in \cref{fig:ce1cdischgwithzoom}\fxnote{do not  forget to  show the  gradient in
 $c_e$}, significant spatial gradients in the electrolyte are established at even
 low to moderate {C-rates} during  the cell's operation. Sustained application of
 a unidirectional  current even leads to  starvation of ions in  the electrolyte,
 particularly  near  the  current   collectors.  This  phenomenon  is  visualised
-in~\cref{fig:ce1cdischgwithzoom} wherein the electrolyte at the positive current
+in \cref{fig:ce1cdischgwithzoom} wherein the electrolyte at the positive current
 collector  is  virtually  depleted  of  ions  at  the  end  of  discharge.  This
 ion-starvation process occurs earlier at higher {C-rates} and spreads throughout
 the  thickness  of  the  electrode.  Thus,  the  assumption  of  constant  ionic
 concentration  in the  electrolyte is  not true.  Neglecting mass  transport due
-to  diffusion  implies  that  the  terms  in~\cref{eq:electrolytepd}  constitute
+to  diffusion  implies  that  the  terms  in \cref{eq:electrolytepd}  constitute
 only  a part  of the  expression  for computing  the electrolyte  overpotential.
 Furthermore, Di Domenico~\etal{} do not  present any results of applying dynamic
 current profiles.  Since the critical  aspect of mass transport  contribution to
@@ -149,7 +149,7 @@ regions.  The  difference in  height  for  various  times  can be  accounted  by
 the  coefficients  solved  using  the  analytical  modal  solution  proposed  in
 Guduru~\etal{}.
 
-The  axes  in  the  inset  of~\cref{fig:ce1cdischgwithzoom}  shows  a  zoomed-in
+The  axes  in  the  inset  of \cref{fig:ce1cdischgwithzoom}  shows  a  zoomed-in
 view  of  the electrolyte  concentration  during  the transient  phase,  wherein
 the  \gls{qss}  has  not  yet  been  established.  In  particular,  there  exist
 additional inflection points,  one within the interior of  each electrode, which
@@ -172,9 +172,9 @@ Although  the complete  expression for  electrolyte overpotential  was provided,
 it   was  presented   in  a   cursory  manner,   \ie{}  without   detailing  the
 spatio-temporal  computation  of  ionic  concentration  values  at  the  current
 collector interfaces.  Nevertheless, it is  important to note  this contribution
-as~\cref{eq:electrolytepdwithce} is widely relied  upon by subsequent literature
+as \cref{eq:electrolytepdwithce} is widely relied  upon by subsequent literature
 and shall be used in the original work of electrolyte concentration distribution
-presented by this thesis author in~\cref{sec:newelectrolytemodel}.
+presented by this thesis author in \cref{sec:newelectrolytemodel}.
 
 
 Rahimian~\etal{}~\cite{KhaleghiRahimian2013}   were   the   first   to   provide
@@ -189,7 +189,7 @@ the standard \gls{dfn} model, the number of electrolyte-specific \glspl{pde} and
 their corresponding boundary conditions describing  charge and mass transport is
 insufficient to uniquely  solve for all unknown coefficients  of this polynomial
 approximation.  A detailed  explanation  of this  equation  deficiency shall  be
-discussed in~\cref{subsec:quadraticsimresultsanalysis}.
+discussed in \cref{subsec:quadraticsimresultsanalysis}.
 
 To overcome the issue of  equation deficiency, Rahimian~\etal{} adopted a scheme
 wherein one  additional spatial location in  the interior of each  electrode was
@@ -228,7 +228,7 @@ concentration  is  zero.  However,  the  author  of  this  thesis  is  sceptical
 about  this   since  in  the   simulations  performed  there  is   no  situation
 other  than  prior  to  application  of current  that  this  exact  steady-state
 condition is  satisfied. In  the \gls{qss} profile  concept discussion  based on
-on~\cref{fig:ce1cdischgwithzoom},  it  is  clear that  only  the  \emph{spatial}
+on \cref{fig:ce1cdischgwithzoom},  it  is  clear that  only  the  \emph{spatial}
 profile reaches  a shape that can  be potentially described by  a mathematically
 invariant   family   of  curves.   The   electrolyte   concentration  is   still
 \emph{time-varying} and therefore violates the static time-evolution assumption.
@@ -274,7 +274,7 @@ and  continuing  in  the  quest  for other  alternatives,  the  author  of  this
 thesis  made  an observation  that  other  researchers  have  had to  resort  to
 similar techniques  for describing the electrolyte  overpotential. For instance,
 Han~\etal~\cite{Han2015a}  use   a  similar   scaling  factor,  $p<0$   for  the
-entire expression of~\cref{eq:electrolytepdwithce}  representing the electrolyte
+entire expression of \cref{eq:electrolytepdwithce}  representing the electrolyte
 overpotential. In  this case,  these authors  used the  polynomial approximation
 approach proposed by  Rahimian~\etal~\cite{KhaleghiRahimian2013}. However, these
 unexplained scaling factors lower the level of confidence in the model's general
@@ -316,7 +316,7 @@ Tanim~\etal~\cite{Tanim2014a},  the  electrolyte-specific  enhancements  to  the
 \gls{spm} are in  the frequency domain, placing further  burden, particularly on
 industry stakeholders to accurately interpret  and transform the coefficients to
 a time-domain implementation  for deployment in an embedded  \gls{bms}. Owing to
-this,  as  already  stated in~\cref{subsec:freqdomainroms},  these  models  fall
+this,  as  already  stated in \cref{subsec:freqdomainroms},  these  models  fall
 outside the scope of this thesis.
 % ignoring prof plett's latest work on electrolyte transfer functions
 
@@ -335,7 +335,7 @@ of  this thesis,  it  appears  that the  Galerkin's  projection  method is  more
 suitable  for  desktop  simulations.  In  congruence  with  my  scepticism,  the
 authors  of~\cite{Fan2016} have  not claimed  the suitability  of this  work for
 online/embedded  application  in a  \gls{bms}.  Therefore,  as per  this  thesis
-authors' stance  explained in~\cref{sec:classificationscheme},  models employing
+authors' stance  explained in \cref{sec:classificationscheme},  models employing
 such methods are deemed to be not in alignment with the goals of this thesis.
 
 Moura~\etal~\cite{Moura2017} proposed an improved \gls{spm} by simply augmenting
@@ -364,7 +364,7 @@ In  the  authors'   observations  in  trying  to  replicate   the  results  from
 the  literature  presented here,  the  errors  in  all such  approximations  can
 be  attributed  to  inaccuracies  in  computing  the  spatio-temporal  evolution
 of  electrolyte   concentration.  Upon   obtaining  a   good  estimate   of  the
-electrolyte concentration profile,~\cref{eq:electrolytepdwithce} is deemed to be
+electrolyte concentration profile, \cref{eq:electrolytepdwithce} is deemed to be
 satisfactory for  the electrolyte  overpotential computation. Thus  attention is
 focussed on solving for the electrolyte concentration profile.
 
@@ -388,7 +388,7 @@ electrolyte concentration  is the most widely  used\fxnote{citations needed}. It
 is therefore  important to understand  the source  of weakness of  this specific
 sub-class  of  models  which  have  not been  discussed  in  literature.  Hence,
 the  author's analysis  on the  quadratic approximation  method for  electrolyte
-concentration is presented next in~\cref{sec:quadraticapprox}.
+concentration is presented next in \cref{sec:quadraticapprox}.
 
 
 % May also mention some typographical errors in Lotfi etal second paper

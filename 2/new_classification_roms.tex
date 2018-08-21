@@ -18,8 +18,8 @@ interchangeably.
 
 Research into  \glspl{rom} is  motivated by  the pressing  need for  a real-time
 model  with accuracy  properties of  full-order \glspl{pbm}  but possessing  the
-computational  simplicity of  equivalent-circuit models  (see~\cref{subsec:ecms}
-and~\cref{subsec:pbms} for  an overview). A  number of approaches to  reduce the
+computational  simplicity of  equivalent-circuit models  (see \cref{subsec:ecms}
+and \cref{subsec:pbms} for  an overview). A  number of approaches to  reduce the
 computational  complexity of  the  physics-based models  have  been explored  in
 literature. Jokar~\etal~\cite{Jokar2016}  provide a comprehensive review  of the
 various categories of reduced order  physics based battery models. However, this
@@ -203,7 +203,7 @@ desired spatial location, in particular at certain crucial locations such as the
 interface of each electrode with  the respective current collector or separator.
 This groundbreaking idea  sharply contrasts with the incumbent state  of the art
 in reduced order modelling. For the simplification of the original \gls{pdae} of
-equations in~\cref{tbl:dfneqns}, most order  reduction approaches (excluding the
+equations in \cref{tbl:dfneqns}, most order  reduction approaches (excluding the
 \gls{spm} that shall be discussed later) invariably required the solution of all
 electrochemical quantities at multiple node locations along the thickness of the
 cell,  thereby  adding to  the  computational  burden.  This was  a  significant
@@ -215,7 +215,7 @@ as the plant model in \gls{soc} estimation applications.
 In the  same publications~\cite{Lee2012a,Lee2012}, Lee~\etal{} also  devised the
 \gls{dra},  a novel  algorithm  to systematically  transform all  transcendental
 transfer functions to  the time domain so as to  obtain an \gls{lti} state-space
-model  given  by~\cref{eq:LTIstatespace}.  The   \gls{dra}  method  retains  the
+model  given  by \cref{eq:LTIstatespace}.  The   \gls{dra}  method  retains  the
 physical character of the original \gls{dfn}  equations until the very last step
 wherein the matrices governing the  system's dynamics are generated. This yields
 a one-dimensional  discrete-time \gls{rom}  of the cell  that is  entirely based
@@ -259,7 +259,7 @@ A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
 structure of  these Hankel  matrices was  proposed by  this thesis  author \ie{}
 Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers the
 requirements for computational memory and  processing power. The details of this
-contribution shall be presented in~\cref{ch:improveddra} of this thesis.
+contribution shall be presented in \cref{ch:improveddra} of this thesis.
 
 
 In both the original as well  as the improved \gls{dra}, the eigenfunction modal
@@ -287,7 +287,7 @@ requirement for  linearisation at  a specific \gls{soc}.  This implies  that the
 entries in  the matrices of the  state space model depends  on the linearisation
 point. In all published works  employing this approach, these transfer functions
 were  obtained by  linearising the  \gls{p2d} equations  of the  \gls{dfn} model
-(see~\cref{tbl:dfneqns}), typically  at an operating point  of \SI{50}{\percent}
+(see \cref{tbl:dfneqns}), typically  at an operating point  of \SI{50}{\percent}
 \gls{soc}.  The linearisation  requirement renders  the model  usable only  in a
 narrow range of  \glspl{soc}. Furthermore, this adversely  affects the usability
 of the  model for state  estimation tasks, wherein the  \gls{soc} is in  fact an
@@ -368,7 +368,7 @@ the IEEE conference paper}
 % model.  This  modelling  effort  is  a direct  application  of  the  gains  in
 % computing  efficiency  through  the  application  of  the  improved  \gls{dra}
 % reported  in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the  detailed
-% coverage  of  which  is  performed in~\cref{ch:chapter3}.  This  work  intends
+% coverage  of  which  is  performed in \cref{ch:chapter3}.  This  work  intends
 % to  address  the  hitherto  unexplored   gap  in  impedance  modelling,  \ie{}
 % the  absence  of   an  equivalent  impedance  model  that   accounts  for  the
 % impedance contribution  from all  electrochemical quantities in  the \gls{p2d}
@@ -531,7 +531,7 @@ retaining a  standard finite volume  discretisation in the axial  domain, whilst
 adopting  the  Chebyshev  discretisation  only  for  the  critical  solid  phase
 diffusion  component in  the  radial  direction. The  details  of  this work  is
 presented  in the  context of  the author's  research methodology  on delivering
-a  model-based pouch  cell  design  discussed in~\cref{ch:modelbaseddesign}.  In
+a  model-based pouch  cell  design  discussed in \cref{ch:modelbaseddesign}.  In
 pseudo-spectral methods, the \gls{p2d}  equations, their boundary conditions and
 corresponding field  variables are  mathematically transformed to  the Chebyshev
 space  within  which  they  are  solved.  The  details  of  this  transformation
@@ -576,7 +576,7 @@ a  solution  using  higher  order  polynomials  and  performed  a  dimensionless
 analysis of  their proposed reformulation.  The details of  the \engordnumber{4}
 order  polynomial approximation  is  presented  in the  context  of this  thesis
 author's  comprehensive  analysis  of  the  \gls{spm}  modelling  art  and  will
-be  presented  in~\cref{subsec:basicspmfurtherdimensionalityreduction}.  In  the
+be  presented  in \cref{subsec:basicspmfurtherdimensionalityreduction}.  In  the
 \engordnumber{2} and  \engordnumber{4} order solutions, the  polynomial equation
 for  surface concentration  was  accompanied by  a  corresponding \gls{ode}  for
 describing  the temporal  evolution  of average  concentration, thereby  leading
@@ -636,7 +636,7 @@ approximation for the molar flux density along the thickness of the cell. To the
 best knowledge  of this  thesis author,  this is the  first published  work that
 provides a  spatially dependent simplified  computation of the  interfacial flux
 density. This represents a balanced choice  between the need to use the strongly
-non-linear Butler-Volmer kinetics~\cref{eq:butlervolmer} or  having to resort to
+non-linear Butler-Volmer kinetics \cref{eq:butlervolmer} or  having to resort to
 a lumped  representation of average  kinetic behaviour. Hence, this  approach is
 particularly suited  to reduced order  modelling of cells with  medium electrode
 thicknesses wherein the  lumped representation of flux density  is not generally
@@ -657,7 +657,7 @@ in real-time \gls{bms} environments.
 
 % My own efforts  to replace this finite difference calculation  of the gradient
 % with an analytical framework based on  the chain rule of calculus is currently
-% in preliminary stages of development and is presented in~\cref{ch:futurework}.
+% in preliminary stages of development and is presented in \cref{ch:futurework}.
 
 Farag~\etal{}~\cite{Farag2017}  proposed   a  \gls{pwl}  approximation   of  all
 governing equations of the electrochemical  model. Given that straight-line fits
@@ -694,7 +694,7 @@ implementation, state estimation, physical insight}
 \end{figure}
 
 
-From~\cref{fig:spiderdiagram}, it is evident  that all physics-based \glspl{rom}
+From \cref{fig:spiderdiagram}, it is evident  that all physics-based \glspl{rom}
 presented thus far entail extensive  parametrisation efforts \fxnote{at the end,
 count  and  substitute  the  canonical  number of  parameters  here}  to  render
 them  suitable for  a practical  application. The  difficulties associated  with
@@ -703,7 +703,7 @@ parameter values act  as a strong deterrent to stakeholders  outside academia to
 adopt  physics-based  models for  online  implementation  in a  \gls{bms}.  This
 motivates the  need for even  further simplified physics-based models.  One such
 modelling  candidate  is briefly  introduced  next  and  is analysed  in  detail
-in~\cref{ch:spmanalysis}.
+in \cref{ch:spmanalysis}.
 
 
 Haran~\etal{}~\cite{Haran1998}  proposed a  highly simplified  representation of
@@ -742,6 +742,6 @@ field include
 \end{itemize}
 This research was  performed through an iterative cycle of  analysis, design and
 simulation-based verification  and shall be  elucidated in a  discourse spanning
-two chapters \viz{} \cref{ch:spmanalysis} and~\cref{ch:newelectrolytemodel}.
+two chapters \viz{} \cref{ch:spmanalysis} and \cref{ch:newelectrolytemodel}.
 
 

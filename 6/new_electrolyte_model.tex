@@ -14,9 +14,9 @@ The methodology adopted and corresponding results are presented thereafter.
 This subsection is intended as a capstone summary helping to briefly recount the
 discussion so far  and to provide a  context for the author's work  in the wider
 realm  of the  \gls{spm}  modelling art.  In  the same  vein  as the  discussion
-in~\cref{sec:electrolyteinclusion}, the scope of the proposed enhancement to the
+in \cref{sec:electrolyteinclusion}, the scope of the proposed enhancement to the
 \gls{spm}  concerns  entirely with  improving  the  electrolyte subsystem  since
-it  has already  been established  in~\cref{subsec:simresultsbasicspm} that  the
+it  has already  been established  in \cref{subsec:simresultsbasicspm} that  the
 simplified representation  of the solid-phase  subsystem through a  fourth order
 polynomial approximation method for diffusion of \ch{Li^0} in the solid particle
 is of sufficiently high accuracy.
@@ -29,15 +29,15 @@ to  terminal  voltage   consists  of
 concentration).
 \end{enumerate*}
 Once       electrolyte        concentration       at        each       time-step
-is         available,~\cref{eq:electrolytepdwithce}          proposed         by
+is         available, \cref{eq:electrolytepdwithce}          proposed         by
 Prada~\etal~\cite{Prada2012}  may  be  used for  the  electrolyte  overpotential
 computation.  Hence, the  accurate  determination of  spatio-temporal values  of
 electrolyte concentration merits focus.
 
-There exists a  subtle detail in the  use of~\cref{eq:electrolytepdwithce} which
+There exists a  subtle detail in the  use of \cref{eq:electrolytepdwithce} which
 is discussed here upfront before proceeding  ahead to the refined context of the
 author's work. The intrinsic conductivity of electrolyte, $\kappa$ is a function
-of the ionic concentration  (refer~\cref{subsec:basicspmsimsetup}). If the ionic
+of the ionic concentration  (refer \cref{subsec:basicspmsimsetup}). If the ionic
 concentration at  the corresponding current  collectors are used  for evaluating
 $\kappa_\text{neg}$  and  $\kappa_\text{pos}$, this  would  lead  to a  lopsided
 computation of the overpotential in electrolyte. Furthermore, under this scheme,
@@ -55,11 +55,11 @@ the electrolyte concentration computations are  used in evaluating the intrinsic
 conductivity of electrolyte.
 
 As  the  ionic  concentration  has  both  a  direct  and  indirect  contribution
-in~\cref{eq:electrolytepdwithce}, its spatio-temporal  computation is a critical
-aspect. As discussed  in~\cref{sec:quadraticapprox}, the quadratic approximation
+in \cref{eq:electrolytepdwithce}, its spatio-temporal  computation is a critical
+aspect. As discussed  in \cref{sec:quadraticapprox}, the quadratic approximation
 is a widely used spatio-temporal model for electrolyte concentration which makes
 the best  use of available physical  constraints. As established in  the results
-of~\cref{subsec:quadraticsimresultsanalysis}, while  the spatial  performance of
+of \cref{subsec:quadraticsimresultsanalysis}, while  the spatial  performance of
 the quadratic approximation approach is acceptable, its time-domain performance,
 particularly at  the crucial  locations of the  current collector  interfaces is
 mediocre at best.
@@ -70,14 +70,14 @@ the  electrolyte  concentration  whilst retaining  the  quadratic  approximation
 approach   for   describing  its   spatial   profile.   Such  an   approach   is
 motivated   by    the   keen    observation   that   the    baseline   quadratic
 approximation  model  has  a  natural  `pause'  in  its  model  description.  To
-clarify,~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}  form a  tightly
+clarify, \crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}  form a  tightly
 coupled  square  system  \ie{}  a  set   of  seven  linear  equations  in  seven
 unknowns.   In   this   system,   the   time   evolution   of   $Q_{\text{e,}j}$
 are   described  through   a  separate   system  of   first  order   \glspl{ode}
-given by~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.  In a
+given by \crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.  In a
 practical  implementation,  these  \glspl{ode}  are solved  independently  in  a
 decoupled  manner \ie{}  by  using  the coefficients  obtained  from the  linear
-system of~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration} in the previous
+system of \crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration} in the previous
 time-step. The  author's hypothesis is that  by taking advantage of  the natural
 break  in the  operational  sequence which  involves  two separate  computations
 between  two nearly  independent  subsystems,  it must  be  possible to  replace
@@ -95,7 +95,7 @@ arriving  at  the  choice of  the  methodology  that  was  adopted for  the  new
 time-evolution model of the electrolyte concentration dynamics.
 
 Based  upon the  experience  gained  in dealing  with  the literature  presented
-in~\cref{sec:electrolyteinclusion}, it is  the author's view that,  owing to the
+in \cref{sec:electrolyteinclusion}, it is  the author's view that,  owing to the
 complex behaviour of electrolyte, a  naive top-down approach \ie{} including all
 the physics upfront followed by a  systematic simplification, might only yield a
 model that is  mathematically intractable for adoption in  an embedded \gls{bms}
@@ -107,21 +107,21 @@ for describing electrolyte dynamics and  for later inclusion in the conventional
 
 Upon  a   closer  examination   of  the  rubrics   of  the   baseline  quadratic
 approximation  model, it  comes  to  light that  the  natural `pause'  discussed
-towards  the  end  of~\cref{subsec:scopenewelectrolyte}  permeates  to  a  level
+towards  the  end  of \cref{subsec:scopenewelectrolyte}  permeates  to  a  level
 more  than  merely  having  to  operate  sequentially  on  two  pseudo-decoupled
 subsystems  --- it  goes to  the extent  of rendering  the operating  philosophy
 of  fitting  physical  equations  semi-void.   To  clarify  this  statement  and
 to  substantiate   the  claim,  while  there   is  no  doubt  that   the  linear
-algebraic   equations  of~\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
+algebraic   equations  of \crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
 do    incorporate    physical    principles   from    the    \gls{dfn}    model,
 the     same     does     not      hold     true     for     the     \glspl{ode}
-of~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.   In  fact,
+of \crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.   In  fact,
 all   the   boundary   conditions   from   the   \gls{dfn}   model   have   been
-exhausted   by  this   stage  (refer~\cref{subsec:quadraticsimresultsanalysis}).
-Although~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}     are    derived
+exhausted   by  this   stage  (refer \cref{subsec:quadraticsimresultsanalysis}).
+Although \crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}     are    derived
 from     the      \gls{dfn}     model,      the     coefficients      of     the
 diffusivities   in    the   \gls{rhs}   of    the   next   set    of   equations
-\ie{}~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic},   merely
+\ie{} \crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic},   merely
 involve  substitutions  of the  spatial  derivatives  of the  assumed  quadratic
 expression.
 
@@ -137,7 +137,7 @@ of concentration  given a small-signal  perturbation in the coefficients  of the
 quadratic spatial  computation \ie{} the  implicit coupling between them  is not
 transparent. Since the quadratic approximation  itself is not perfect \ie{} does
 not capture the  spatial gradient \emph{exactly} as the \gls{p2d}  model as seen
-in~\cref{fig:spatialionicconc1C}, the internal coupling of coefficients leads to
+in \cref{fig:spatialionicconc1C}, the internal coupling of coefficients leads to
 errors in time-evolution computation.
 
 The author's  approach is to  therefore break this detrimental  coupling between

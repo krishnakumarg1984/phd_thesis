@@ -11,7 +11,7 @@
         \Require Electrolyte model parameter set  \Comment{\eg{} stored in a struct \texttt{ceparams}}
         \Userdata $ t_\text{f}$,  sample rate $T_s, c_\text{e,init}$
         \Function{QuadraticElectrolyteModel}{}
-        \State Set $Q_{\text{e,init}_j}$ as per~\crefrange{eq:Qeninit}{eq:Qepinit}
+        \State Set $Q_{\text{e,init}_j}$ as per \crefrange{eq:Qeninit}{eq:Qepinit}
         \State $\vec{a}[1]$ \gets values from \cref{eq:coeffinit}
         \State $V_\text{cell}[1] \gets \textsc{ComputeCellVoltage}(\textbf{x}[1],I[1],\texttt{params})$ \Comment{from direct feedthrough}
         \For{$k \gets 2 : N_\text{max}$}
@@ -19,7 +19,7 @@
         \State Solve continuous-time state equations--\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic} \Comment{Using $\vec{a}[k-1]$}
         \State $Q_{\text{e}_j}[k]$ \gets last time-entry  vector of soln.\  matrix \Comment{if using an adaptive solver}
         \State $\vec{a}[k]$ \gets solution of \emph{linear} system of equations--\crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration} \Comment{Using $Q_{\text{e}_j}[k-1]$}
-        \State Compute $c_{\text{e}_j}$ as per~\crefrange{eq:cenquadreduced}{eq:cepquadreduced} \Comment{Quadratic polynomial expressions for concentration}
+        \State Compute $c_{\text{e}_j}$ as per \crefrange{eq:cenquadreduced}{eq:cepquadreduced} \Comment{Quadratic polynomial expressions for concentration}
         \EndFor
         \EndFunction
     \end{algorithmic}
