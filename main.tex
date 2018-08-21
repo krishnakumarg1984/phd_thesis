@@ -9,16 +9,16 @@
 \input{Preamble/preamble}
 \makeglossaries
 \input{0_frontmatter/acronyms}
-% \includeonly{%
-%     1/chapter1,
-%     % 2/chapter2,
-%     % 3/chapter3,
-%     % 4/chapter4,
-%     % 5/chapter5,
-%     % 6/chapter6,
-%     % Appendices/appendix1,
-%     Appendices/appendix2,
-% }%
+\includeonly{%
+    % 1/chapter1,
+    % 2/chapter2,
+    % 3/chapter3,
+    4/chapter4,
+    % 5/chapter5,
+    % 6/chapter6,
+    % Appendices/appendix1,
+    % Appendices/appendix2,
+}%
 \begin{document}
 \scrollmode
 
@@ -83,12 +83,12 @@ this work.
 \makeatother
 \cleardoublepage
 
-\input{1/chapter1} % Introduction (to do later)
-\input{2/chapter2} % Literature Review
-\input{3/chapter3} % Layer Optimisation
-\input{4/chapter4} % Improved DRA
-\input{5/chapter5} % Analysis of SPM
-\input{6/chapter6} % New Electrolye Model
+\include{1/chapter1} % Introduction (to do later)
+\include{2/chapter2} % Literature Review
+\include{3/chapter3} % Layer Optimisation
+\include{4/chapter4} % Improved DRA
+\include{5/chapter5} % Analysis of SPM
+\include{6/chapter6} % New Electrolye Model
 
 \backmatter
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
@@ -107,8 +107,8 @@ this work.
 
 \begin{appendices} % Using appendices environment for more functionality
     \crefalias{chapter}{appchap}
-    \input{Appendices/appendix1}
-    \input{Appendices/appendix2}
+    \include{Appendices/appendix1}
+    \include{Appendices/appendix2}
 \end{appendices}
 
 \batchmode

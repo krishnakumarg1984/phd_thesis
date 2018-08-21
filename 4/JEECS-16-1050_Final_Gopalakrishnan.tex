@@ -1,0 +1,802 @@
+\begin{abstract}
+ {\it {\small Research into Reduced-Order Models (\textsc{ROM}) for Lithium-ion
+ 	batteries is motivated by the need for a real-time embedded model
+ 	possessing the accuracy of physics-based models, whilst retaining
+ 	computational simplicity comparable to equivalent-circuit models.
+ 	The Discrete-time Realization Algorithm~(\textsc{DRA}) proposed by
+ 	Lee~et~al.~(2012) can be used to obtain a physics-based \textsc{ROM}
+ 	in standard state-space form, the time-domain simulation of which
+ 	yields the evolution of all the electrochemical variables of the standard
+ 	pseudo-2D porous-electrode battery model. An unresolved issue with
+ 	this approach is the high computation requirement associated with
+ 	the \textsc{DRA,} which needs to be repeated across multiple \textsc{SoC}
+ 	and temperatures. In this paper, we analyze the computational bottleneck
+ 	in the existing \textsc{DRA} and propose an improved scheme. Our analysis
+ 	of the existing DRA reveals that Singular Value Decomposition (\textsc{SVD})
+ 	of the large Block-Hankel matrix formed by the system\textquoteright s
+ 	Markov parameters is a key inefficient step. A streamlined DRA approach
+ 	that bypasses the redundant Block-Hankel matrix formation is presented
+ 	as a drop-in replacement. Comparisons with existing \textsc{DRA} scheme
+ 	highlight the significant reduction in computation time and memory
+ 	usage brought about by the new method. Improved modeling accuracy
+ 	afforded by our proposed scheme when deployed in a resource-constrained
+ 	computing environment is also demonstrated.\\
+ 	Keywords: Discrete-Time-Realization Algorithm (DRA), Singular Value Decomposition
+ 	(SVD), Doyle-Fuller-Newman Model, Li-ion Batteries,
+ 	Reduced-Order Modeling~(ROM), Battery Management Systems~(BMS),
+ 	Porous-electrode Pseudo-2D (P2D) model.}
+ }
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+Ever-tightening emissions regulations have prompted the automotive
+industry and various energy utilities across the globe to develop
+advanced energy storage technologies~\citep{BonnelWeissProvenza2011}.
+Owing to their high energy and power densities~\citep{IbrahimIlincaPerron2008}, cost-effective Li-ion batteries (LIBs) are seen as key enablers in
+this quest.
+For mainstream adoption of Li-ion batteries in high-performance applications
+such as electric and hybrid vehicles, stringent cycle-life and operational
+safety requirements have to be met~\citep{Andrea2010}, which can
+be addressed through better Battery Management Systems (BMS)~\citep{BergveldKruijtNotten2002}.
+Since the only quantities that are directly measurable on a LiB are
+it's voltage, current and temperature, the BMS typically relies on
+estimation techniques for real-time computation of various state and
+parameter values. Sophisticated physical models of the cell (LiB)
+enable accurate computation of these values, thereby facilitating
+the implementation of advanced control strategies. These models must
+therefore be capable of embedded, real-time operation in the BMS.
+Most models have the primary intent of estimating the cell\textquoteright s
+open circuit voltage (OCV) and state-of-charge (SoC); more advanced
+models enable estimation of physical quantities within the cell that
+might impact the battery's State-of-Health (SoH). Present literature
+on Li-ion battery models reveal two broad approaches~-~(a)~empirical
+equivalent~circuit modeling and (b)~detailed physics-based modeling.
+
+Equivalent-circuit models employ circuit elements such as voltage
+sources, resistors and capacitors to model the terminal behavior of
+batteries. Their values are typically parametrized at different currents,
+temperature and SoC. These parameters are then implemented using look-up
+tables by curve-fitting the model to experimental data. This can be
+accomplished using various system identification methods ranging from
+simple least-squares fitting to employing sophisticated techniques
+such as non-linear Kalman filtering~\citep{Plett2006,SunHuZouEtAl2011}.
+While these models are computationally amenable, their applicability
+is limited to the training realm, i.e. the operating conditions at
+which the model parameters are curve-fitted. Another important disadvantage
+of equivalent circuit models is that they do not provide any estimation
+of the internal physical quantities of a cell.
+
+Physics-based models employ governing equations that construct a realization
+of the cell's behavior based on the thermodynamic and mass-transport
+properties of the electrode and electrolyte materials, as well as
+accounting for the kinetic processes facilitating charge-transfer
+at the electrode-electrolyte interface. Doyle, Fuller, and Newman~\citep{DoyleFullerNewman1993,FullerDoyleNewman1994}
+developed a porous electrode model that describes internal variables
+such as the flux density, concentrations and potentials of the electrodes
+and electrolyte at various spatial locations within the cell. The
+singular advantage of this approach is that various internal physical
+quantities of the cell can be estimated for arbitrary load profiles,
+thereby yielding insight into phenomena such as performance degradation
+due to aging. However, a major disadvantage of physics-based models
+is their computational complexity which necessitates the use of sophisticated
+solvers for numerical simulation of the governing set of non-linear
+partial differential algebraic equations (PDAEs). Hence they are not
+typically suitable for embedded applications such as a vehicular BMS.
+Thus, in such high-performance applications where SoH monitoring is
+crucial, there is an overwhelming demand for the estimation of internal
+cell variables in order to facilitate optimal run-time usage of the
+battery. Model order reduction techniques are viewed as key enablers
+in porting the predictive powers of the physics-based model onto a
+real-time microprocessor.
+
+Research into Reduced-Order Models (ROM) is thus motivated by the
+vital need for a real-time embedded model possessing the superior
+accuracy of physics-based models, yet having computational simplicity
+comparable to equivalent-circuit models. A number of approaches in
+this direction have been explored in literature~\citep{BizerayZhaoDuncanEtAl2015,DaoVyasarayaniMcPhee2012,SubramanianBoovaragavanDiwakar2007,CaiWhite2009}.
+Under most operating conditions of an LiB, solid-phase diffusion is
+the rate-limiting step. Hence modeling this phenomenon by substituting
+the PDE implementing Fick's law of diffusion with an equivalent representation,
+while trying to minimize the trade-off in accuracy, has been the focus
+of many model order reduction efforts thus far. Rahn and Wang~\citep{RahnWang2013}
+proposed a Pade\textquoteright{} approximation to model solid diffusion
+by truncating slow dynamics up to a desired order. However, its high-frequency
+response deviates from experimental data and hence is of limited use
+in automotive applications wherein LiBs experience rapid acceleration
+and braking currents. Single-particle models represent each electrode
+as a single solid particle and ignore variations in electrolyte concentrations
+and potentials within the cell geometry~\citep{NingPopov2004}. They
+perform well for small current inputs; however, the outputs of these
+models diverge dramatically at higher C-rates~\citep{Romero-BecerrilAlvarez-Icaza2011,SanthanagopalanGuoRamadassEtAl2006}.
+Although a Lagrangian-like integral method has been proposed~\citep{RahnWang2013}
+to tackle electrolyte and solid-state diffusions, it is also limited
+to low C-rates.
+
+Impedance-based reduced order methods are a recent evolution in the
+field of physics-based battery modeling, pioneered by Smith et al.~\citep{SmithRahnWang2007}.
+This approach transforms the physical equations to the Laplace domain
+in order to obtain linearized transfer functions for the cell\textquoteright s
+internal variables. Markov parameters\footnote{A ubiquitous concept in linear systems and control theory, Markov parameters represent
+	the discrete-time unit pulse response of a linear system.} of these transfer functions are then computed numerically. Finally,
+a reduced set of poles is used to approximate the battery system using
+standard techniques from linear control theory. The significant advantage
+of this approach is that it computes the electrochemical variables
+at any arbitrary location of interest within the cell. This sharply
+contrasts with all other order reduction approaches by virtue of the
+fact that all of them require a structured computational domain representing
+the entire cell geometry. However, this model also reverts to the
+slower finite-element method in order to the compute the electrolyte
+potentials. Hence, the overall computation time of this approach is
+no better than those of other competing reduced-order methods thereby
+restricting its usage to traditional desktop simulations. Nonetheless,
+this was the first approach to successfully derive linearized transfer
+functions for the majority of the electrochemical variables of the
+pseudo-2D porous-electrode model.
+
+Lee et al~\citep{LeeChemistruckPlett2012} extended this work, solving
+for electrolyte concentrations and potentials by applying Sturm-Liouville
+theory~\citep{PryceAndrew1995} to arrive at a multi-modal eigenfunction
+solution for these entities. Furthermore, the authors proposed a numerical
+method known as Discrete-time-Realization Algorithm (DRA)~\citep{LeeChemistruckPlett2012a}
+that retains the physical origin of the model's equations until the
+very last step wherein the governing matrices describing the system
+dynamics are generated. This yields a one-dimensional discrete-time
+state-space reduced-order model (ROM) of LiB dynamics based entirely
+on fundamental physical principles. A time-domain simulation of this
+ROM yields the evolution of all internal electrochemical quantities
+represented by a standard pseudo-2D porous-electrode battery model.
+The authors demonstrated this approach by deriving a fifth order linear
+state-space model representing the reaction flux, solid and electrolyte
+lithium concentrations, and the solid and electrolyte potentials in
+both electrodes at the respective domain boundaries. The cell's terminal
+voltage can by computed using linear combinations of the time-domain
+variables along with suitable non-linear corrections. This seminal
+work was the first of its kind lending itself computationally amenable
+for real-time implementation.
+
+An unresolved issue in Lee\textquoteright s approach is the high computation
+requirement associated with the DRA, which needs to be repeated for
+multiple SoC and temperatures. This computational bottleneck arises
+from forming a large Block-Hankel matrix in memory upon which a Singular
+Value Decomposition (SVD) is performed. Under certain conditions as
+discussed in Section~\ref{subsec:Size-of-the}, owing to the large
+size of the Block-Hankel matrix, the DRA computation is rendered intractable.
+This issue has been acknowledged by the authors in~\citep{Lee2012,Plett2015}.
+In this paper, we analyze this computational bottleneck and propose
+an improved scheme. Section~\ref{sec:Analysis-of-the} deals with
+an analytical formulation of the massive computing requirements of
+the existing DRA method. Redundancies and inefficiencies in this step
+are enumerated and the computational requirements are deemed as unnecessary.
+In Section~\ref{sec:Efficient-Computation-of}, a fast computational
+approach is presented which significantly reduces both the memory
+and computational time of the ROM workflow. Section~\ref{sec:Results}
+summarizes the results obtained from applying the algorithms discussed
+in Section~\ref{sec:Efficient-Computation-of} by comparing and contrasting
+the much smaller computational requirements of the new method with
+the existing DRA scheme. Furthermore, improved modeling accuracy achieved
+by our proposed method, when deployed under resource-constrained computing
+environments is highlighted. In Section~\ref{sec:Conclusion}, we
+conclude that our improved methodology streamlines the entire modeling
+workflow, thereby helping to achieve the latent potential and wide
+applicability of the physics-based reduced order Li-ion battery model.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis of the Computational Bottlenecks of Discrete-Time Realization
+	Algorithm (DRA)\label{sec:Analysis-of-the}}
+
+\begin{figure*}
+	\caption{}
+	\label{traditional_ROM_Workflow}
+\end{figure*}
+The Reduced Order Model (ROM) obtained by Lee~et~al. is based upon
+the thermodynamic and kinetic equations of the pseudo-2D volume-averaged
+continuum model proposed by Doyle, Fuller and Newman~\citep{DoyleFullerNewman1993,FullerDoyleNewman1994}.
+The block diagram in Figure~\ref{traditional_ROM_Workflow} depicts
+the overall modeling workflow. First, the governing PDE equations
+are linearized about an operating point of SoC and temperature. Closed-form
+Laplace-domain transcendental transfer functions of all the internal
+physical quantities $\left(\phi_{s},\phi_{e},c_{s,e},c_{e},j\right)$
+at different cell locations are derived using applied current as the
+input. A detailed treatment of the analytical derivation is presented
+in Lee et al.~\citep{LeeChemistruckPlett2012}. The authors proposed
+a novel Discrete-time-Realization algorithm (DRA)~\citep{LeeChemistruckPlett2012a}
+in order to transform these transcendental transfer functions to standard
+state-space representation. Sublevel-1 of Figure~\ref{traditional_ROM_Workflow}
+shows a breakout view of the DRA procedure and illustrates the steps
+involved in this computation. At the heart of this numerical method
+is the classical subspace identification approach known as Ho-Kalman
+algorithm~\citep{KalmanHo1965}, whose computation steps are shown
+via the exploded view in sublevel-2 of Figure~\ref{traditional_ROM_Workflow}.
+Markov parameters (unit-pulse response) of this Single Input Multiple
+Output (SIMO) linear system of battery transfer functions is computed.
+They form the entries of a Block-Hankel matrix~\citep{Ljung1998},
+wherein each block element is a column vector of the set of Markov
+parameters at a given time-step. A key computation in the Ho-Kalman
+algorithm is the Singular Value Decomposition (SVD) of this Block-Hankel
+matrix. A wide separation in magnitude drop between successive singular
+values serves as a guide in choosing the desired ROM order. The analyses
+presented in Sections~\ref{subsec:Traditional-DRA--Memory} and \ref{subsec:Traditional-DRA--CPU}
+reveal major inefficiencies in both the Block-Hankel formation and
+the SVD computation steps which hinder the entire reduced-order modeling
+workflow.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Size of the Block-Hankel Matrix\label{subsec:Size-of-the}}
+
+Large Block-Hankel matrices can occur in DRA computation due to the
+following reasons.
+\begin{enumerate}
+	\item For a given duration of Markov-parameter recording, if a high sample-rate
+	ROM is desired, the emulation frequency has to be proportionately
+	increased. This is for accurately computing the continuous-time step
+	and pulse responses in Figure~\ref{traditional_ROM_Workflow}.
+	This implies that the total number of time-samples $\left(N\right)$
+	for each Markov parameter will have to be scaled proportionately to
+	capture the desired duration of the unit-pulse-response. However,
+	the size of the Block-Hankel matrix has a quadratic dependence on
+	the Markov parameter length.
+	\item The recorded sample size~$\left(N\right)$ could also become large
+	if the Markov parameters of just one of the transfer functions decay
+	very slowly. In Li-ion batteries, diffusion within the solid particle
+	is typically the slowest process. For the cell modeled in Lee et al.,
+	the unit-pulse response of surface concentration of Li adjacent to
+	the positive current collector requires approximately 16000 samples
+	before reducing to an appreciably low value, as shown in Figure~\ref{markov_cse_pos}.
+	\item For a battery modeling problem consisting of multiple transfer functions,
+	the number of entries in the Block-Hankel matrix also scales linearly
+	with the number of transfer functions. Thus, if more cell variables
+	(e.g. concentrations and potentials at other spatial locations within
+	the cell) are to be studied, then the size of the transfer function
+	vector and the Block-Hankel matrix increases correspondingly.
+\end{enumerate}
+Considering the combined influence of these effects, if $x$ transfer
+functions are to be modeled and $N$ time-samples of each Markov parameter
+are to be captured, the corresponding size of the Block-Hankel matrix,
+$H$ is
+\begin{equation}
+Size(H)\sim O(xN^{2})\text{ {entries}}\label{eq:}
+\end{equation}
+This has a significant computational impact as shown in Sections~\ref{subsec:Traditional-DRA--Memory}
+and \ref{subsec:Traditional-DRA--CPU}.
+\begin{figure}
+	\caption{}
+	\label{markov_cse_pos}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Classical DRA - Memory (RAM) Requirements\label{subsec:Traditional-DRA--Memory}}
+
+Lee et al.~\citep{LeeChemistruckPlett2012} modeled 28 transfer functions,
+representing electrochemical variables at the current collector and
+separator interfaces. Each Markov parameter is a 28 element column
+vector. 16000 time-samples was obtained at a sample-rate of 1 Hz,
+allowing sufficient time for the Markov parameters of the slowest
+dynamics, i.e. solid surface concentration to settle to an acceptably
+low magnitude. The Block-Hankel matrix thus formed has 8000 blocks,
+each block consisting of 28 elements. The Block-Hankel matrix thus
+has $8000\text{ x }28=224000$ rows and 8000 columns. Hence, the overall
+number of elements in the Block Hankel matrix is $224000\text{ x }8000=1.79\text{ x }10^{9}$.
+Using double-precision arithmetic, its storage requirement can be
+estimated to be approximately 27 GB.
+
+Computing the SVD results in formation of three more large matrices
+in memory \textendash{} matrix of output singular vectors $\left(U\right)$,
+matrix of input singular vectors $\left(V\right)$ and the diagonal
+singular-value matrix $\left(\Sigma\right)$. With 8000 Hankel-blocks,
+approximately 81 GB of RAM is required for holding these three output
+matrices generated by a full-SVD. However, the intermediate operational
+memory usage during the SVD computation is often much higher than
+the combined size of all the matrices. As these large matrices must
+be handled at each operating point of SoC and temperature, the high
+memory demand of classical DRA remains a persistent issue.
+
+\subsection{Classical DRA - CPU Operation Count\label{subsec:Traditional-DRA--CPU}}
+
+The most widely used numerical algorithm for computing the full SVD
+of a generic dense matrix $\mbox{\ensuremath{A\in\mathcal{R}^{mxn},m\geq n}}$
+is the two-stage Golub-Kahan-Reinsch method~\citep{GolubVanLoan2012}.
+In the first stage $A\in\mathcal{R}^{mxn}$ is reduced to an upper
+bidiagonal form. In the second stage, SVD of this upper bidiagonal
+matrix, $B\in\mathcal{R}^{mxn}$ is computed using an iterative procedure
+such as the Demmel-Kahan method~\citep{GolubVanLoan2012}. If stage
+I of the SVD computation employs $\mathcal{R}$~-~Bidiagonalization~\citep{GolubVanLoan2012},
+then the overall process is referred to as $\mathcal{R}$\textminus SVD.
+This is the fastest known full-SVD computation method that may be
+applied to this battery modeling problem. The \textsc{DGESVD} algorithm~\citep{AndersonBaiBischofEtAl2012},
+originally implemented in LAPACK, employs this method. This has been
+ported to many numerical computation packages such as MATLAB, GNU
+Octave and Scilab. Several numerical libraries such as NAG and Intel
+MKL also use the DGESVD codes due to its acclaimed stability, robustness
+and versatility. The MATLAB implementation \texttt{\textbf{svd}} is
+also based upon DGESVD, and hence this can be considered as the de-facto
+baseline SVD code.
+
+The operation count for computing the singular values and vectors
+of a generic dense matrix $\mbox{\ensuremath{A\in\mathcal{R}^{mxn},m\geq n}}$
+using the $\mathcal{R}$\textminus SVD method is $\mbox{\ensuremath{4m^{2}n+22n^{3}}}$~\citep{GolubVanLoan2012}.
+Markov parameters of $x$~transfer functions and $N$ time-samples
+yields a Block-Hankel matrix with $m=xN$ rows and $n=N$ columns.
+Hence,
+\begin{alignat}{2}
+CPU\text{ Operation Count} & = & \,4\left(xN\right){}^{2}N+22N^{3}\nonumber \\
+& = & \,2N^{3}\left(11+2x^{2}\right)\label{eq:cpu_op_count}
+\end{alignat}
+Thus the CPU operation count scales as $\mathcal{O}(N^{3})$
+with the number of Markov time-samples$\left(N\right)$ and as $\mathcal{O}(x^{2})$
+with the number of transfer functions being modeled. The ROM computed
+in Lee et al. uses 28 transfer functions wherein the Markov parameters
+are collected for 16000 seconds with a sampling interval of 1 second.
+Thus, the CPU operation count for performing this computation is approximately
+$\mathcal{O}(16000^{3})\sim4\text{ x }10^{12}$ floating point operations
+(\textit{flops}).
+
+\subsection{Summary Effect of Computational Bottlenecks\label{subsec:Summary-Effect-of}}
+
+The computational bottleneck in a classical DRA implementation arises
+due to the requirement of capturing a large number of Markov parameters,
+which in turn leads to growth in Block-Hankel size. In the case of
+battery modeling, this can arise in the following real-life scenarios:
+\begin{enumerate}
+	\item Electrochemical variables at additional locations of interest within
+	the cell (e.g. middle of electrode or separator domain) might need
+	to be modeled. This increases the number of transfer functions and
+	hence the number of Markov parameters.
+	\item High frequency load cycles necessitate higher sample-rates to obtain
+	a high fidelity model. This leads to a correspondingly higher number
+	of Markov parameters.
+	\item In cells with large particle sizes and small diffusion coefficients,
+	a large set of Markov parameters is needed to capture the full system
+	dynamics.
+\end{enumerate}
+Lack of specialized computing infrastructure necessitates early truncation
+of the Markov parameters in the ROM workflow. The resulting errors
+in the singular value computation lead to significant modeling errors
+in the physical variables of the cell. Thus, in practice, the computational
+bottlenecks of classical DRA manifest as modeling errors when implemented
+in a resource-constrained computing environment. Furthermore, this
+tedious computation has to be repeated for multiple SoC and temperatures.
+
+The foregoing analysis clearly demonstrates that the high memory and
+CPU demands in a classical DRA implementation severely hamper the
+scope and applicability of the reduced order modeling process. This
+implies that the modeling workflow is not accessible to research groups
+without specialized computing infrastructure and its universal appeal
+is rendered questionable. The shaded blocks in Figure~\ref{traditional_ROM_Workflow}
+depict the hierarchical propagation of the classical DRA's computational
+bottleneck throughout the ROM workflow.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Improved DRA for Battery Modeling \label{sec:Efficient-Computation-of}}
+
+Collecting a large Markov parameter set is inevitable due to the fundamental
+physics of the cell dynamics as established in Section~\ref{subsec:Summary-Effect-of}.
+Hence, in order to circumvent the high computational demands of the
+classical DRA, the second step in the process, i.e. forming the Block-Hankel
+matrix, is critically examined with the following scientific rationale.
+\begin{enumerate}
+	\item The unit-pulse responses of most battery transfer functions (other
+	than those of rate-limiting steps such as solid diffusion) decay relatively
+	quickly. Hence it is inefficient to record the Markov parameters of
+	the full system for the entire duration needed to capture the slowest
+	dynamics.
+	\item The Block-Hankel matrix is essentially redundant information since
+	its entries are simply the Markov parameters arranged in a repeating
+	special structure. Thus, it is wasteful to construct this huge matrix.
+	If the SVD operation can be performed on a virtual Hankel matrix,
+	the memory requirements can be drastically reduced.
+	\item The matrix of singular values~$\left(\Sigma\right)$ is diagonal
+	and hence, sparse. It is redundant to hold all the non-diagonal entries
+	(zeros) in memory.
+	\item It is not necessary to perform a \textit{full} SVD operation in order
+	to achieve order reduction. When an upper bound on desired system
+	order can be decided a priori, it is sufficient to compute a \textit{truncated}
+	SVD yielding the first few dominant triplets of $U,\text{ \ensuremath{\Sigma}\ \text{and }}V$.
+\end{enumerate}
+Thus, forming the large Block-Hankel matrix and computing its SVD
+is identified as an avoidable bottleneck in the classical DRA method.
+This can be tackled since forming the Block-Hankel matrix is an idiosyncrasy
+of the algorithm used and does not arise from any fundamental physical
+limits. Facilitated by an efficient SVD implementation, we propose
+an improved DRA that serves as a drop-in replacement in the ROM workflow.
+
+\subsection{Candidate Schemes for Block-Hankel SVD}
+
+\begin{figure*}
+	\caption{}
+	\label{improved_ROM_workflow}
+\end{figure*}
+
+Generic SVD routines such as DGESVD do not take advantage of the anti-diagonal
+structural symmetry of Block-Hankel matrices. Since it is sufficient
+to obtain the first few leading eigentriplets for order reduction,
+iterative algorithms such as the Jacobi and Lanczos schemes described
+in~\citep{GolubVanLoan2012} emerge as attractive candidates for
+computing these dominant singular values and vectors. In order to
+ensure accessibility to the large community of battery researchers
+and encourage widespread adoption of the fast reduced order modeling,
+we consider only freely available open-source numerical libraries
+in the public domain with permissive licensing terms. Otherwise the
+gains achieved by efficient SVD computation for implementing DRA on
+non-specialized computing hardware would be offset by commercial licensing
+terms, usage restrictions and monetary considerations associated with
+using proprietary codes. Among these open-source candidate algorithms,
+the Jacobi scheme~\citep{GolubVanLoan2012} is available through
+the xGESVD routine in the LAPACK suite. FORTRAN 77 codes for the implicitly
+restarted Arnoldi and Lanczos schemes (nuTrLan) are made available
+as part of the ARPACK~\citep{LehoucqMaschhoffSorensenEtAl2013} libraries.
+
+The practical drawback of most SVD implementations, both open-source
+and proprietary, is that they require the entire matrix as input argument.
+Since operating upon the Block-Hankel matrix requires constructing
+it in the first place, the memory bottlenecks discussed in Section~\ref{subsec:Traditional-DRA--Memory}
+are not ameliorated. An example is the \texttt{svds} routine, an economy
+size SVD implementation in MATLAB. Albeit a commercial implementation
+of the Arnoldi codes, potential benefits of using an iterative scheme
+is nullified by the memory penalty. Owing to reasons enumerated in
+Section \ref{sec:Efficient-Computation-of}, the chosen SVD algorithm
+needs to be able to handle the computation without actually forming
+the huge block-Hankel matrix in memory.
+
+\subsection{SVD Operation on a Virtual Block-Hankel Matrix}
+
+R.M. Larsen's pioneering work PROPACK~\citep{Larsen2014} implements
+a numerically stable Lanczos SVD computation designed specifically
+for large and sparse matrices. In addition to the ability to operate
+on the matrix as a whole, the PROPACK codes possess a unique flexibility
+of accepting input arguments in functional form. A key highlight of
+the Lanczos SVD scheme is that it does not strictly require the matrix
+itself, but only the product of the matrix and its transpose with
+an arbitrary vector. This feature has been effectively exploited in
+the PROPACK suite. Therefore, these multiplication routines can be
+supplied as input arguments instead of forming the large Block-Hankel
+matrices in memory. Furthermore, this package includes sophisticated
+schemes such as Gram-Schmidt partial re-orthogonalization~\citep{Bjoerck1994}
+to compensate for numerical round-off errors in the basic Lanczos
+bidiagonalization and ensures orthogonality of the input and output
+singular vectors. The PROPACK suite is available as both Fortran 77
+and MATLAB codes distributed under a permissive BSD license~\citep{Rosen2005}.
+
+For the ROM workflow, in order to use PROPACK's unique feature, i.e.
+its flexibility to accept functional form inputs, the key is to use
+an algorithm that effectively exploits the affine structure of the
+Block-Hankel matrix without actually forming it in memory. Recent
+research in a specialized time-series technique known as Singular
+Spectrum Analysis (SSA)~\citep{ElsnerTsonis2013} has yielded efficient
+methods for achieving this goal. Korobeynikov~\citep{Korobeynikov2009}
+proposed an algorithm that employs the Fast Fourier Transform (FFT)
+for implementing this matrix-vector product by embedding the Markov
+parameters into the column vectors of a circulant matrix. This is
+suitable for applications wherein the Hankel matrix is composed of
+scalar entries such as that formed by the Markov parameters of a single
+input single output (SISO) transfer function. Golyandina and Usevich~\citep{GolyandinaKorobeynikovShlemovEtAl2015,GolyandinaUsevich2004}
+extended this approach to a generic 2D-case for performing Singular
+Spectrum Analysis (SSA) on images. With this modification, this algorithm
+is rendered capable of handling the structure of Multi-level Block-Hankel
+matrices formed from the Markov parameters of a generic Multi-Input-Multi-Output
+(MIMO) system. While the modified scheme does not construct the Block-Hankel
+matrix in memory, the operational rubrics of the Golyandina-Usevich
+algorithm in conjunction with PROPACK is such that they iteratively
+operate on a virtual Hankel matrix of equivalent size. The Golyandina-Usevich
+algorithm is briefly summarized in Appendix \ref{sec:Golyandina-Usevich-Algorithm}.
+
+\subsection{Customizations for Battery Modeling}
+
+Specific considerations are required for incorporating the Golyandina-Usevich
+algorithm in the ROM workflow for Li-ion batteries. The classical
+DRA architecture is set up to handle Single Input Multiple Output
+(SIMO) systems, wherein all transfer functions are derived by considering
+only a single input \textendash{} the applied battery current. Thus
+the Markov parameters form a 2D matrix wherein each row corresponds
+to individual battery transfer functions with columns representing
+unit-pulse response samples for each transfer function. The 2D moving-window
+illustrated in \citep{GolyandinaKorobeynikovShlemovEtAl2015} for
+Block-Hankel matrix formulation has to be suitably reshaped to account
+for this structure. Step-3 of the algorithm deals with 2-D FFT computation
+of the Markov Parameter Matrix (MPM). In our implementation, this
+is pre-computed as it remains invariant between iterations of the
+Hankel-vector product computation loop. This pre-allocation and a
+priori computation contributes to overall code efficiency.
+
+Figure~\ref{improved_ROM_workflow} shows the ROM workflow with
+the improved DRA wherein all computational bottlenecks highlighted
+by shaded blocks in Figure~\ref{traditional_ROM_Workflow} have
+been eliminated. The strategy is to first employ the (suitably modified)
+Golyandina-Usevich algorithm for describing the matrix-vector multiplication
+routines. These two functions are then used as inputs to the PROPACK
+codes. Eigentriplets up to the desired upper bound on system order
+is then computed using a Lanczos SVD iteration. Figure~\ref{svdcompare}
+presents a comparison of singular values computed by both the  traditional
+and new methodologies. It is evident that the two sets of singular
+values are identical. Hence, this new scheme can serve as a drop-in
+replacement for the classical DRA.
+
+\begin{figure}
+	\caption{}
+	\label{svdcompare}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simulation Results and Discussion\label{sec:Results} }
+
+In this section, we quantitatively demonstrate the reduced computational
+demand of the improved DRA scheme by comparing it against the classical
+DRA implementation. The physical parameters of the cell are the same
+as those published in Doyle et al.\citep{FullerDoyleNewman1994}.
+Table~\ref{table:simparams} lists the parameters used in the ROM
+workflow, which are the same as those employed by Lee~et~al.\citep{LeeChemistruckPlett2012}.
+
+\begin{figure}
+	\caption{}
+	\label{memory}
+\end{figure}
+
+Figure~\ref{memory} shows a comparison of the memory usage of
+classical and improved DRA methods. It is evident that the SVD step
+in classical DRA consumes an overwhelming majority of the total memory
+demand, requiring approximately 100 GB for a Hankel block size of
+8000. This can be a limiting factor in modeling slow cell dynamics
+without access to a large memory workstation. The improved DRA method
+eliminates this bottleneck and the memory usage of SVD step is trivial.
+Overall memory usage of the improved DRA is dominated by Markov parameter
+computation. Considering 10 GB of usable RAM, 60000 Markov parameters
+(Hankel Block-size of 30000) can be captured.
+
+Figure~\ref{cputime} shows a comparison of CPU times for computing
+the ROM at a single SoC and temperature for the classical and improved
+DRA methods. Appendix \ref{sec:Specifications-of-Workstation} lists the specifications
+of the workstation used for the computations. Owing to the high flop
+count for SVD operation (eq.~\ref{eq:cpu_op_count}), the classical
+DRA requires approximately 40 minutes for a Hankel block size of 8000.
+Clearly, the overall CPU time for classical DRA is almost exclusively
+used in computing the SVD. The improved DRA method reduces the overall
+computational time by two orders of magnitude, taking approximately
+40 seconds for the same block-size. In this case, CPU time is evenly
+split between SVD and Markov parameters computations.
+
+\begin{figure}
+	\caption{}
+	\label{cputime}
+\end{figure}
+
+From Figure~\ref{memory}, it is evident that if classical DRA
+is employed, a standard laptop with a nominal 10 GB RAM limit (dedicated
+for ROM workflow) cannot capture the full cell dynamics and hence
+is restricted to 2500 Hankel blocks. This necessitates early truncation
+of Markov parameters at 5000 seconds. From Figure~\ref{markov_cse_pos},
+the truncation residue at 5000 seconds for the unit-pulse response
+of solid surface concentration at positive current collector is $-0.0087 \text{ mol m}^{-\text{3}}$.
+The truncation errors in the Markov Parameter Matrix directly translate
+to errors in computed singular values, adversely affecting accuracy
+of simulated cell variables. It must be noted that the accuracy of
+simulation results reported here does not bear a causal relationship
+to the particular DRA scheme employed. In-principle, when an upper
+bound on computational usage has not been enforced, the numerical
+operations of both the existing and proposed DRA schemes lead to similar
+error magnitudes for the modeled quantities. Instead, the accuracy
+comparison illustrated here primarily serves to demonstrate the practical
+usefulness of the improved DRA scheme when implemented in a commonplace
+computing environment.
+
+\begin{figure}
+	\caption{}
+	\label{truncated}
+\end{figure}
+
+Figure~\ref{truncated} shows a comparison of singular values obtained
+by the classical and improved SVD methods computed by imposing a RAM
+limit of 10GB. Owing to early truncation of the Markov parameter matrix,
+the dominant singular values computed by the conventional method differ
+significantly from those computed by the improved SVD operating on
+untruncated data. With the same memory constraints, the improved DRA
+can handle up to 30000 Hankel blocks, allowing for capture of 60000
+seconds of Markov parameter data.
+
+For comparative analysis of modeling accuracy under this memory constraint,
+a time-domain simulation of the ROMs obtained by classical and improved
+DRA methods is performed. The input current profile corresponding
+to UDDS drive cycle reported in Lee~et~al. \citep{LeeChemistruckPlett2012}
+is used. Figure~\ref{time_domain_sim} depicts the time-evolution
+of the solid surface concentration at the positive electrode/separator
+boundary. For comparing the accuracy of the two ROMs, a COMSOL Multiphysics~\citep{Multiphysics2012}
+simulation of the full-order pseudo-2D porous-electrode PDE model
+is used as the reference. The ROM employing classical DRA diverges
+over time, and after 1500 seconds results in an error of 1120$\text{ mol m}^{-\text{3}}$$.$
+The ROM incorporating the new DRA workflow accurately tracks the COMSOL
+simulation trend-line. Table~\ref{table:salientresults} provides
+a summary of the key simulation results.
+
+\begin{figure}
+	\caption{}
+	\label{time_domain_sim}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions\label{sec:Conclusion}}
+In this paper, Singular Value Decomposition of a large Block-Hankel
+matrix is identified as a key bottleneck in the classical DRA for
+reduced-order Li-ion cell modeling. An improved SVD scheme is presented,
+which employs a combination of the Golyandina-Usevich and Lanczos
+algorithms. The results discussed in Section \ref{sec:Results} demonstrate
+the performance improvement achieved by the new method without trading-off
+model fidelity. At a single operating point of SoC and temperature,
+for a Hankel block size of 8000, ROM workflow incorporating the improved
+DRA is approximately 100 times faster than that employing classical
+DRA. Using the machine specifications in Appenndix  \ref{sec:Specifications-of-Workstation},
+for 100 operating points (combinations of 10 SoC and temperature values),
+computing the ROM requires only 6 hours using the improved DRA, whereas
+the classical DRA consumes 666 hours (27 days). Furthermore, for the
+same block-size, the improved DRA is demonstrated to be superior in
+terms of memory efficiency, drastically reducing the memory requirement
+from 112 GB down to 2 GB. Finally, the improved DRA demonstrates superior
+modeling accuracy when implemented even in moderately equipped computing
+environments such as laptops.
+
+The proposed method leads to the possibility of modeling other physical
+quantities in the cell geometry unhindered by computing limitations.
+Furthermore, high sample-rate models to handle highly dynamic load
+profiles can be deployed in future BMS applications. The scheme also
+empowers the ROM framework to tackle cells with slower dynamics and
+other chemistries with different rate-limiting mechanisms. The improved
+DRA method opens up a wide range of possibilities and brings the goal
+of physics-based battery model implementation in a high performance
+real-time BMS a step closer to realization.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{acknowledgment}
+Financial support for the research reported in this paper has been
+obtained through the Imperial College President's PhD Scholarships
+scheme. The sponsor had no role whatsoever in collection, analysis
+and interpretation of data, or in writing of the manuscript. Furthermore,
+the funding body has no role/involvement in the decision to submit
+the article for publication. The authors wish to acknowledge the support
+of The Department of Mathematics, Imperial College London for usage
+of the departmental computing cluster. The CPU times, memory usage
+and all other computational results reported in this paper were obtained
+by using a computing node from this facility.
+\end{acknowledgment}
+
+\begin{nomenclature}
+	\entry{$c_e \scriptstyle(x,t)$}{Concentration of Li$^\text{+}$ ions in the electrolyte at each spatial location within the 1-D cell geometry $(\text{mol m}^{-\text{3}})$}
+	\entry{$c_{s,e} \scriptstyle(z,t) $}{Concentration of Li at the surface of each solid particle within the normalized domain length of each electrode $(\text{mol m}^{-\text{3}})$}
+	\entry{$\medmuskip=0mu \tilde{c}_{\scriptscriptstyle s,e_{pos}}^*\scriptstyle(0,t) $}{Surface concentration of Li in the solid particle adjacent to positive current collector, obtained after model linearisation and subsequent removal of the integrator pole. The algorithms discussed in this paper require that all model variables have poles located strictly within the open left-half complex plane. Since the solid diffusion transfer functions have poles at the origin, it is necessary to remove this integrator pole before deriving the model $(\text{mol m}^{-\text{3}})$}
+	\entry{$L_{neg}$}{Thickness of the negative electrode $(\text{m})$}
+	\entry{$L_{sep}$}{Thickness of the separator domain $(\text{m})$}
+	\entry{$L_{pos}$}{Thickness of the positive electrode $(\text{m})$}
+	\entry{$j \scriptstyle(z,t) $}{Li molar flux density at electrode-electrolye interface of each particle within the normalized electrode domain $(\text{mol m}^{-\text{2}}s^{-\text{1}})$}
+	\entry{$\phi_e \scriptstyle(x,t) $}{Electrolyte potential at each spatial location within the 1-D cell geometry $(\text{V})$}
+	\entry{$\phi_{s,e} \scriptstyle(z,t) $}{Solid-electrolyte potential difference at the inteerfacial boundary for each spatial location within the 1-D cell geometry $(\text{V})$}
+\end{nomenclature}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{asmems4}
+\bibliography{SVD_paper_Bibliography}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix %%% starting appendix
+\section{Golyandina-Usevich Algorithm\label{sec:Golyandina-Usevich-Algorithm}}
+
+The Golyandina-Usevich algorithm is used for computing the product
+of a Block-Hankel matrix with an arbitrary vector. The steps involved
+in this scheme are enumerated in Algorithm 3 of \citep{GolyandinaKorobeynikovShlemovEtAl2015}.
+These steps are reproduced here in the context of discrete-time realization
+algorithm for reduced order battery modeling.
+\begin{enumerate}
+	\item Compute a 2-D FFT of Markov parameter matrix.
+	\item Form an augmented vector by zero-padding the arbitrary vector input
+	from Lanczos iteration.
+	\item Perform a column-wise reshaping of this augmented vector to obtain
+	a new matrix with the same dimensions of the Markov parameter matrix.
+	\item Compute the element-wise product of this newly created matrix with
+	the 2-D FFT of Markov parameter matrix.
+	\item Reshape the resulting matrix back to a column vector.
+	\item Extract the first $L$ elements from this vector, wherein $L=Kx$.
+	$K$ represents the desired block-Hankel size and $x$ represents
+	the number of transfer functions being modeled.
+\end{enumerate}
+At the end of Step 6, the product of the Hankel matrix and arbitrary
+vector is obtained. This is reused as an input for the Lanczos scheme
+which generates a new arbitrary vector in the subsequent iteration.
+Thus, the steps 1\textendash 6 are run in a loop within the main Lanczos
+scheme. These same steps can also be used for computing the product
+of the transpose of the Hankel matrix and the arbitrary vector. The
+only change is to account for the different dimensions of the arbitrary
+vector input from the Lanczos scheme in step 2. As a practical implementation,
+software code representing steps 1\textendash 6 is written in a plain-text
+file and used as functional-form inputs by the PROPACK scheme which
+implements the Lanczos iteration.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\singlespacing
+\section{Specifications of Workstation Used\label{sec:Specifications-of-Workstation}}
+
+\newpage
+\section*{Listing of Table Captions}
+
+\begin{description}
+	\item[Table 1]   Parameters for ROM Computation\\
+	\item[Table 2]   Salient Results - Classical vs. Improved DRA\\
+	\item[Table 3]   Specifications of workstation used
+\end{description}
+\newpage
+\section*{Listing of Figure Captions}
+
+\begin{description}
+	\item[Fig. 1.]   Reduced-order modelling (ROM) workflow using classical DRA.\\ (The shaded blocks represent computational bottlenecks).\\
+	\item[Fig. 2.]   Time evolution of Markov parameters of pole-removed transfer function corresponding to surface concentration of Li in the solid particle adjacent to positive current collector.\\
+	\item[Fig. 3.]   Reduced Order Modelling (ROM) Workflow using improved DRA.\\
+	\item[Fig. 4.]   Comparison of singular values computed by the conventional and improved SVD methods.\\
+	\item[Fig. 5.]	 Memory usage of classical and improved DRA. Overall RAM usage as well as RAM used only for SVD computation is illustrated.\\
+	\item[Fig. 6.] 	 Computation times for classical and improved DRA schemes.\\
+	\item[Fig. 7.]	 Comparison of singular values computed by conventional and improved SVD methods under a practical RAM limit of 10 GB.\\
+	\item[Fig. 8.]	 Time-domain simulation depicting solid surface concentrations at the boundary of positive electrode and separator.\\
+\end{description}
+
+\newpage
+\singlespacing
+\begin{table}[h]
+	\begin{center}
+		\caption{Parameters for ROM Computation}
+		\label{table:simparams}
+		\begin{tabular}{ l l }
+			\hline
+			Initial Cell SoC & 60 \%  \\
+			Hankel Block Size & 8000 \\
+			Discrete-Time Model Sample-Rate,$T_s$ & 1 sec  \\
+			Number of Electrolyte EigenModes & 5 \\
+			Continuous-Time Emulation Frequency, $F_1$ & 128 Hz \\
+			Desired Number of Singular Values &	10 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\newpage
+\singlespacing
+
+\begin{table}[h]
+	\singlespacing
+	\centering
+	\caption{Salient Results - Classical vs. Improved DRA}
+	\label{table:salientresults}
+	\setlength{\extrarowheight}{1pt}
+	%\centering
+	\begin{tabular}{ c c c c }
+		\hline
+		ROM & Quantity 		& Classical & Improved \\
+		Condition		   &				  & DRA		 & DRA	  \\
+		\hline
+		\multirow{8}{1.22cm}{8000 Hankel Blocks}& Memory 		  & 111.80 GB	  & 2.14 GB  \\[-5pt]
+		& \footnotesize (overall)		&			 & 		 \\
+		& Memory 		  & 97.93 GB	  & 0.03 GB  \\[-5pt]
+		& \footnotesize(SVD step)   	&			 & 		 \\
+		& CPU Time 		& 39.78 min   & 0.63 min  \\[-5pt]
+		& \footnotesize(overall)    	&			 & 		 \\
+		& CPU Time 		& 39.30 min   & 0.14 min  \\[-5pt]
+		& \footnotesize(SVD step)   	&			 & 		 \\[2.5pt]
+		\hline
+		\multirow{3}{1.22cm}{10 GB Memory Limit}& Block Size		  & 2500	  & 30000  \\[5pt]
+		& Max. error & 1120\scriptsize $\text{ mol m}^{-\text{3}}$ &  13\scriptsize $\text{ mol m}^{-\text{3}}$ \\[-5pt]
+		& in $c_{{s,e}_{pos}}$\scriptsize $(1,t)$ &  &     \\[5pt]
+		\hline
+	\end{tabular}
+\end{table}
+\newpage
+\begin{table}[h]
+	\caption{Specifications of workstation used}
+	\label{table:comp_spec}
+	\centering
+	\begin{tabular}{ l l }
+		\hline
+		Processor & Intel\textregistered\space  Xeon \textregistered\space E5-2637 v3 \\
+		Used Cores & 1 \\
+		CPU Stepping & 2 \\
+		Clock Frequency & 3.50 GHz \\
+		Installed RAM & 500 GB \\
+		\hline
+	\end{tabular}
+\end{table}
+\end{document}
+
+
