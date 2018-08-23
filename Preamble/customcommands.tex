@@ -600,19 +600,18 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \newcommand{\ordfrac}[2]{\nicefrac{#1}{#2\textsuperscript{\myord{#2}}}}
 
 % \glsdisablehyper
-\setabbreviationstyle[acronym]{long-short}
 % \newglossary[slg]{symbolslist}{syi}{syg}{Symbols}
 
-\newglossarystyle{custom_acronyms}
-{
-    \setglossarystyle{long3colheader}%
-    \renewcommand*{\glossaryheader}{}%
-    \renewcommand{\glossentry}[2]{%
-        \textbf{\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}}
-        & \glossentrydesc{##1}
-        & {\hspace*{\fill} ##2}
-    \tabularnewline}%
-}
+% \newglossarystyle{custom_acronyms}
+% {
+%     \setglossarystyle{long3colheader}%
+%     \renewcommand*{\glossaryheader}{}%
+%     \renewcommand{\glossentry}[2]{%
+%         \textbf{\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}}
+%         & \glossentrydesc{##1}
+%         & {\hspace*{\fill} ##2}
+%     \tabularnewline}%
+% }
 
 % \renewcommand{\glossarypreamble}{\footnotesize}
 \renewcommand{\glossarypreamble}{\small}

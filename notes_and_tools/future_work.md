@@ -4,6 +4,7 @@
 - To remove color hyperlinking before printing
 - xmpinclude (hyperxmp)
 - binary tree 
+- returntogrid
 - textsc for C-rate, especially uses like 1C
 - cite colorbrewer2
 - mendeley citation export is a problem. Switch to jabref if needed

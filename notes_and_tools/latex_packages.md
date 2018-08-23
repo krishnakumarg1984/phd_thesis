@@ -1,9 +1,6 @@
 % vim: nospell
 
 a2ping utility
-isodoc
-simpleinvoice
-phonenumbers
 academicons
 accsup
 adigraph
@@ -193,6 +190,7 @@ incgraph
 indentfirst
 intopdf
 invoice2
+isodoc
 jslectureplanner
 jumplines
 koma-script
@@ -270,6 +268,7 @@ pgfornaments
 pgfplots
 pgfplotstable
 phffullpagefigure
+phonenumbers
 photo
 physics
 physymb
@@ -289,6 +288,7 @@ quoting
 ragged2e
 renditions
 resizegather
+returntogrid
 romanbarpagenumber
 rotating
 rotfloat
@@ -305,6 +305,7 @@ showhyphens
 showidx
 showkeys
 showlabels
+simpleinvoice
 siunitx
 skmath
 smartdiagram

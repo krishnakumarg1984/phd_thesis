@@ -209,6 +209,7 @@ tlmgr install   \
     xetex \
     xfor \
     xifthen \
+    xindy \
     xkeyval \
     xltxtra \
     xmpincl \
