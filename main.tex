@@ -7,8 +7,9 @@
 \documentclass[12pt,a4paper,oneside,openright]{book}
 
 \input{Preamble/preamble}
-\makeglossaries % must be before starting to define any entries for the glossary. And, all glossary definitions must come before this.
-\loadglsentries{0_frontmatter/acronyms}
+\makeglossaries % must be before starting to define any entries for the glossary. And, all glossary definitions (such as for symbols and any other custom glossaries) must come before this.
+\setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
+\input{0_frontmatter/acronyms}
 \includeonly{%
     1/chapter1,
     2/chapter2,
@@ -68,16 +69,15 @@ this work.
 \cleardoublepage
 \glsresetall
 \begingroup
-\setlength\LTleft{-5pt}
+% \setlength\LTleft{-5pt}
+% \printglossaries
+\printglossary[type=acronym,title={List of Acronyms}]\label{ch:glossary} % basic style
+% \printglossary[type=abbreviation, title={List of Acronyms}]\label{ch:glossary} % basic style
+% \printglossary[type=acronym, style = superragged3colheader, title={List of Acronyms}]\label{ch:glossary}
 % \printglossary[type=acronym, style = custom_acronyms,title={List of Acronyms}]\label{ch:glossary}
-\printglossary[type=acronym,title={List of Acronyms}]\label{ch:glossary}
 % \printglossary[type=acronym, style = super,title={List of Acronyms}]\label{ch:glossary}
 \endgroup
 \microtypesetup{protrusion=true} % re-enables protrusion
-
-%: ----------------------- glossary ------------------------
-
-
 
 \makeatletter
 \@mainmattertrue
