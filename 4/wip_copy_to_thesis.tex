@@ -1,82 +1,8 @@
-\subsection{Candidate Schemes for Block-Hankel \gls{svd}}
 
 \begin{figure*}
 	\caption{}
 	\label{improved_ROM_workflow}
 \end{figure*}
-
-Generic \gls{svd} routines such as DGE\gls{svd} do not take advantage of the anti-diagonal
-structural symmetry of Block-Hankel matrices. Since it is sufficient
-to obtain the first few leading eigentriplets for order reduction,
-iterative algorithms such as the Jacobi and Lanczos schemes described
-in~\cite{GolubVanLoan2012} emerge as attractive candidates for
-computing these dominant singular values and vectors. In order to
-ensure accessibility to the large community of battery researchers
-and encourage widespread adoption of the fast reduced order modelling,
-we consider only freely available open-source numerical libraries
-in the public domain with permissive licensing terms. Otherwise the
-gains achieved by efficient \gls{svd} computation for implementing \gls{dra}on
-non-specialized computing hardware would be offset by commercial licensing
-terms, usage restrictions and monetary considerations associated with
-using proprietary codes. Among these open-source candidate algorithms,
-the Jacobi scheme~\cite{GolubVanLoan2012} is available through
-the xGE\gls{svd} routine in the LAPACK suite. FORTRAN 77 codes for the implicitly
-restarted Arnoldi and Lanczos schemes (nuTrLan) are made available
-as part of the ARPACK~\cite{LehoucqMaschhoffSorensenEtAl2013} libraries.
-
-The practical drawback of most \gls{svd} implementations, both open-source
-and proprietary, is that they require the entire matrix as input argument.
-Since operating upon the Block-Hankel matrix requires constructing
-it in the first place, the memory bottlenecks discussed in Section~\ref{subsec:Traditional-DRA--Memory}
-are not ameliorated. An example is the \texttt{svds} routine, an economy
-size \gls{svd} implementation in MATLAB. Albeit a commercial implementation
-of the Arnoldi codes, potential benefits of using an iterative scheme
-is nullified by the memory penalty. Owing to reasons enumerated in
-Section \ref{sec:Efficient-Computation-of}, the chosen \gls{svd} algorithm
-needs to be able to handle the computation without actually forming
-the huge block-Hankel matrix in memory.
-
-\subsection{\gls{svd} Operation on a Virtual Block-Hankel Matrix}
-
-R.M. Larsen's pioneering work PROPACK~\cite{Larsen2014} implements
-a numerically stable Lanczos \gls{svd} computation designed specifically
-for large and sparse matrices. In addition to the ability to operate
-on the matrix as a whole, the PROPACK codes possess a unique flexibility
-of accepting input arguments in functional form. A key highlight of
-the Lanczos \gls{svd} scheme is that it does not strictly require the matrix
-itself, but only the product of the matrix and its transpose with
-an arbitrary vector. This feature has been effectively exploited in
-the PROPACK suite. Therefore, these multiplication routines can be
-supplied as input arguments instead of forming the large Block-Hankel
-matrices in memory. Furthermore, this package includes sophisticated
-schemes such as Gram-Schmidt partial re-orthogonalization~\cite{Bjoerck1994}
-to compensate for numerical round-off errors in the basic Lanczos
-bidiagonalization and ensures orthogonality of the input and output
-singular vectors. The PROPACK suite is available as both Fortran 77
-and MATLAB codes distributed under a permissive BSD license~\cite{Rosen2005}.
-
-For the \gls{rom} workflow, in order to use PROPACK's unique feature, i.e.
-its flexibility to accept functional form inputs, the key is to use
-an algorithm that effectively exploits the affine structure of the
-Block-Hankel matrix without actually forming it in memory. Recent
-research in a specialized time-series technique known as Singular
-Spectrum Analysis (SSA)~\cite{ElsnerTsonis2013} has yielded efficient
-methods for achieving this goal. Korobeynikov~\cite{Korobeynikov2009}
-proposed an algorithm that employs the Fast Fourier Transform (FFT)
-for implementing this matrix-vector product by embedding the Markov
-parameters into the column vectors of a circulant matrix. This is
-suitable for applications wherein the Hankel matrix is composed of
-scalar entries such as that formed by the Markov parameters of a single
-input single output (SISO) transfer function. Golyandina and Usevich~\cite{GolyandinaKorobeynikovShlemovEtAl2015,GolyandinaUsevich2004}
-extended this approach to a generic 2D-case for performing Singular
-Spectrum Analysis (SSA) on images. With this modification, this algorithm
-is rendered capable of handling the structure of Multi-level Block-Hankel
-matrices formed from the Markov parameters of a generic Multi-Input-Multi-Output
-(MIMO) system. While the modified scheme does not construct the Block-Hankel
-matrix in memory, the operational rubrics of the Golyandina-Usevich
-algorithm in conjunction with PROPACK is such that they iteratively
-operate on a virtual Hankel matrix of equivalent size. The Golyandina-Usevich
-algorithm is briefly summarized in Appendix \ref{sec:Golyandina-Usevich-Algorithm}.
 
 \subsection{Customizations for Battery modelling}
 
@@ -117,7 +43,7 @@ replacement for the classical \gls{dra}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulation Results and Discussion\label{sec:Results} }
 
-In this section, we quantitatively demonstrate the reduced computational
+In this section, I quantitatively demonstrate the reduced computational
 demand of the improved \gls{dra}scheme by comparing it against the classical
 \gls{dra}implementation. The physical parameters of the cell are the same
 as those published in Doyle et al.\cite{FullerDoyleNewman1994}.
