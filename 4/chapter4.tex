@@ -364,46 +364,76 @@ in \cref{sec:Efficient-Computation-of}, the chosen  \gls{svd} algorithm needs to
 be able to handle the computation without actually forming the huge block-Hankel
 matrix in memory.
 
-% \subsection{\gls{svd} Operation on a Virtual Block-Hankel Matrix}
+\subsection{\glsfmtshort{svd} Operation on a Virtual Block-Hankel Matrix}
 
-% R.M. Larsen's pioneering work PROPACK~\cite{Larsen2014} implements
-% a numerically stable Lanczos \gls{svd} computation designed specifically
-% for large and sparse matrices. In addition to the ability to operate
-% on the matrix as a whole, the PROPACK codes possess a unique flexibility
-% of accepting input arguments in functional form. A key highlight of
-% the Lanczos \gls{svd} scheme is that it does not strictly require the matrix
-% itself, but only the product of the matrix and its transpose with
-% an arbitrary vector. This feature has been effectively exploited in
-% the PROPACK suite. Therefore, these multiplication routines can be
-% supplied as input arguments instead of forming the large Block-Hankel
-% matrices in memory. Furthermore, this package includes sophisticated
-% schemes such as Gram-Schmidt partial re-orthogonalization~\cite{Bjoerck1994}
-% to compensate for numerical round-off errors in the basic Lanczos
-% bidiagonalization and ensures orthogonality of the input and output
-% singular vectors. The PROPACK suite is available as both Fortran 77
-% and MATLAB codes distributed under a permissive BSD license~\cite{Rosen2005}.
+The  pioneering  work  by  Larsen, PROPACK~\cite{LarsenPropack},  based  on  his
+earlier work~\cite{Larsen1998} implements a numerically stable Lanczos \gls{svd}
+computation designed specifically for large  and sparse matrices. In addition to
+the ability  to operate on the  matrix as a  whole, the PROPACK codes  possess a
+unique flexibility  of accepting  input arguments  in a  functional form.  A key
+highlight of the  Lanczos \gls{svd} scheme is that it  does not strictly require
+the  matrix  itself, but  only  the  product of  the  matrix  and its  transpose
+with  an  arbitrary vector.  This  feature  has  been effectively  exploited  in
+the  PROPACK suite.  Therefore, these  multiplication routines  can be  supplied
+as  input  arguments instead  of  forming  the  large Block-Hankel  matrices  in
+memory.  Furthermore,  this  package  includes  sophisticated  schemes  such  as
+Gram-Schmidt partial  re-orthogonalization~\cite{Bjoerck1994} to  compensate for
+numerical round-off  errors in the  basic Lanczos bidiagonalization  and ensures
+orthogonality of  the input and  output singular  vectors. The PROPACK  suite is
+available as both Fortran 77 and MATLAB codes distributed under a permissive BSD
+license. Version~1.1 of the MATLAB implementation  of the PROPACK suite was used
+by this thesis author.
 
-% For the \gls{rom} workflow, in order to use PROPACK's unique feature, i.e.
-% its flexibility to accept functional form inputs, the key is to use
-% an algorithm that effectively exploits the affine structure of the
-% Block-Hankel matrix without actually forming it in memory. Recent
-% research in a specialized time-series technique known as Singular
-% Spectrum Analysis (SSA)~\cite{ElsnerTsonis2013} has yielded efficient
-% methods for achieving this goal. Korobeynikov~\cite{Korobeynikov2009}
-% proposed an algorithm that employs the Fast Fourier Transform (FFT)
-% for implementing this matrix-vector product by embedding the Markov
-% parameters into the column vectors of a circulant matrix. This is
-% suitable for applications wherein the Hankel matrix is composed of
-% scalar entries such as that formed by the Markov parameters of a single
-% input single output (SISO) transfer function. Golyandina and Usevich~\cite{GolyandinaKorobeynikovShlemovEtAl2015,GolyandinaUsevich2004}
-% extended this approach to a generic 2D-case for performing Singular
-% Spectrum Analysis (SSA) on images. With this modification, this algorithm
-% is rendered capable of handling the structure of Multi-level Block-Hankel
-% matrices formed from the Markov parameters of a generic Multi-Input-Multi-Output
-% (MIMO) system. While the modified scheme does not construct the Block-Hankel
-% matrix in memory, the operational rubrics of the Golyandina-Usevich
-% algorithm in conjunction with PROPACK is such that they iteratively
-% operate on a virtual Hankel matrix of equivalent size. The Golyandina-Usevich
-% algorithm is briefly summarized in Appendix \ref{sec:Golyandina-Usevich-Algorithm}.
+For the \gls{rom} workflow, in order  to use PROPACK's unique feature \viz{} its
+flexibility to  accept functional form  inputs, the key  is to use  an algorithm
+that  effectively  exploits the  affine  structure  of the  Block-Hankel  matrix
+without  actually  forming  it  in  memory. Recent  research  in  a  specialized
+time-series technique known as \gls{ssa}~\cite{Elsner1996} has yielded efficient
+methods for  achieving this goal.  Korobeynikov~\cite{Korobeynikov2010} proposed
+an  algorithm that  employs the  \gls{fft} for  implementing this  matrix-vector
+product  by  embedding the  Markov  parameters  into  the  column vectors  of  a
+circulant  matrix.  This  is  suitable   for  applications  wherein  the  Hankel
+matrix  is  composed  of scalar  entries  such  as  that  formed by  the  Markov
+parameters  of   a  \gls{siso}   transfer  function.  Golyandina,   Usevich  and
+colleagues~\cite{Golyandina2010,Golyandina2015}  extended  this  approach  to  a
+generic  2D-case for  performing \gls{ssa}  on images.  With this  modification,
+this  algorithm is  rendered capable  of handling  the structure  of Multi-level
+Block-Hankel matrices formed from the  Markov parameters of a generic \gls{mimo}
+system. While  the modified  scheme does not  construct the  Block-Hankel matrix
+in  memory,  the operational  rubrics  of  the Golyandina-Usevich  algorithm  in
+conjunction with  PROPACK is  such that  they iteratively  operate on  a virtual
+Hankel matrix  of equivalent size.  The Golyandina-Usevich algorithm  is briefly
+summarized in \cref{sec:Golyandina-Usevich-Algorithm}.
 
+\section{Golyandina-Usevich Algorithm\label{sec:Golyandina-Usevich-Algorithm}}
+
+The  Golyandina-Usevich  algorithm  is  used  for computing  the  product  of  a
+Block-Hankel  matrix  with an  arbitrary  vector.  The  steps involved  in  this
+scheme are enumerated  in Algorithm~3 of \cite{Golyandina2015}.  These steps are
+reproduced  here in  the context  of the  improved \gls{dra}  for reduced  order
+battery modelling.
+\begin{enumerate}
+	\item Compute a 2-D \gls{fft} of Markov parameter matrix.
+	\item Form an augmented vector by zero-padding the arbitrary vector input
+	    from Lanczos iteration.
+	\item Perform a column-wise reshaping of this augmented vector to obtain
+	    a new matrix with the same dimensions of the Markov parameter matrix.
+	\item Compute the element-wise product of this newly created matrix with
+	    the 2-D \gls{fft} of Markov parameter matrix.
+	\item Reshape the resulting matrix back to a column vector.
+	\item Extract the first $L$ elements from this vector, wherein $L=K x$.
+	    $K$ represents the desired block-Hankel size and $x$ represents
+	    the number of transfer functions being modelled.
+\end{enumerate}
+
+At the end of  Step~6, the product of the Hankel matrix  and arbitrary vector is
+obtained. This is  reused as an input  for the Lanczos scheme  which generates a
+new arbitrary vector  in the subsequent iteration. Thus, the  steps 1--6 are run
+in a loop within the main Lanczos scheme.  These same steps can also be used for
+computing the  product of the transpose  of the Hankel matrix  and the arbitrary
+vector.  The only  change is  to  account for  the different  dimensions of  the
+arbitrary  vector input  from  the  Lanczos scheme  in  step~2.  As a  practical
+implementation, software code representing steps 1--6 is written in a plain-text
+file and used  as functional-form inputs by the PROPACK  scheme which implements
+the Lanczos iteration.
 
