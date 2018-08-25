@@ -3,11 +3,11 @@
 The computational bottleneck in a classical DRA implementation arises
 due to the requirement of capturing a large number of Markov parameters,
 which in turn leads to growth in Block-Hankel size. In the case of
-battery modeling, this can arise in the following real-life scenarios:
+battery modelling, this can arise in the following real-life scenarios:
 \begin{enumerate}
 	\item Electrochemical variables at additional locations of interest within
 	the cell (e.g. middle of electrode or separator domain) might need
-	to be modeled. This increases the number of transfer functions and
+	to be modelled. This increases the number of transfer functions and
 	hence the number of Markov parameters.
 	\item High frequency load cycles necessitate higher sample-rates to obtain
 	a high fidelity model. This leads to a correspondingly higher number
@@ -18,23 +18,23 @@ battery modeling, this can arise in the following real-life scenarios:
 \end{enumerate}
 Lack of specialized computing infrastructure necessitates early truncation
 of the Markov parameters in the ROM workflow. The resulting errors
-in the singular value computation lead to significant modeling errors
+in the singular value computation lead to significant modelling errors
 in the physical variables of the cell. Thus, in practice, the computational
-bottlenecks of classical DRA manifest as modeling errors when implemented
+bottlenecks of classical DRA manifest as modelling errors when implemented
 in a resource-constrained computing environment. Furthermore, this
 tedious computation has to be repeated for multiple SoC and temperatures.
 
 The foregoing analysis clearly demonstrates that the high memory and
 CPU demands in a classical DRA implementation severely hamper the
-scope and applicability of the reduced order modeling process. This
-implies that the modeling workflow is not accessible to research groups
+scope and applicability of the reduced order modelling process. This
+implies that the modelling workflow is not accessible to research groups
 without specialized computing infrastructure and its universal appeal
 is rendered questionable. The shaded blocks in Figure~\ref{traditional_ROM_Workflow}
 depict the hierarchical propagation of the classical DRA's computational
 bottleneck throughout the ROM workflow.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Improved DRA for Battery Modeling \label{sec:Efficient-Computation-of}}
+\section{Improved DRA for Battery modelling \label{sec:Efficient-Computation-of}}
 
 Collecting a large Markov parameter set is inevitable due to the fundamental
 physics of the cell dynamics as established in Section~\ref{subsec:Summary-Effect-of}.
@@ -81,7 +81,7 @@ iterative algorithms such as the Jacobi and Lanczos schemes described
 in~\citep{GolubVanLoan2012} emerge as attractive candidates for
 computing these dominant singular values and vectors. In order to
 ensure accessibility to the large community of battery researchers
-and encourage widespread adoption of the fast reduced order modeling,
+and encourage widespread adoption of the fast reduced order modelling,
 we consider only freely available open-source numerical libraries
 in the public domain with permissive licensing terms. Otherwise the
 gains achieved by efficient SVD computation for implementing DRA on
@@ -147,7 +147,7 @@ algorithm in conjunction with PROPACK is such that they iteratively
 operate on a virtual Hankel matrix of equivalent size. The Golyandina-Usevich
 algorithm is briefly summarized in Appendix \ref{sec:Golyandina-Usevich-Algorithm}.
 
-\subsection{Customizations for Battery Modeling}
+\subsection{Customizations for Battery modelling}
 
 Specific considerations are required for incorporating the Golyandina-Usevich
 algorithm in the ROM workflow for Li-ion batteries. The classical
@@ -202,7 +202,7 @@ Figure~\ref{memory} shows a comparison of the memory usage of
 classical and improved DRA methods. It is evident that the SVD step
 in classical DRA consumes an overwhelming majority of the total memory
 demand, requiring approximately 100 GB for a Hankel block size of
-8000. This can be a limiting factor in modeling slow cell dynamics
+8000. This can be a limiting factor in modelling slow cell dynamics
 without access to a large memory workstation. The improved DRA method
 eliminates this bottleneck and the memory usage of SVD step is trivial.
 Overall memory usage of the improved DRA is dominated by Markov parameter
@@ -240,7 +240,7 @@ simulation results reported here does not bear a causal relationship
 to the particular DRA scheme employed. In-principle, when an upper
 bound on computational usage has not been enforced, the numerical
 operations of both the existing and proposed DRA schemes lead to similar
-error magnitudes for the modeled quantities. Instead, the accuracy
+error magnitudes for the modelled quantities. Instead, the accuracy
 comparison illustrated here primarily serves to demonstrate the practical
 usefulness of the improved DRA scheme when implemented in a commonplace
 computing environment.
@@ -259,7 +259,7 @@ untruncated data. With the same memory constraints, the improved DRA
 can handle up to 30000 Hankel blocks, allowing for capture of 60000
 seconds of Markov parameter data.
 
-For comparative analysis of modeling accuracy under this memory constraint,
+For comparative analysis of modelling accuracy under this memory constraint,
 a time-domain simulation of the ROMs obtained by classical and improved
 DRA methods is performed. The input current profile corresponding
 to UDDS drive cycle reported in Lee~et~al. \citep{LeeChemistruckPlett2012}
@@ -282,7 +282,7 @@ a summary of the key simulation results.
 \section{Conclusions\label{sec:Conclusion}}
 In this paper, Singular Value Decomposition of a large Block-Hankel
 matrix is identified as a key bottleneck in the classical DRA for
-reduced-order Li-ion cell modeling. An improved SVD scheme is presented,
+reduced-order Li-ion cell modelling. An improved SVD scheme is presented,
 which employs a combination of the Golyandina-Usevich and Lanczos
 algorithms. The results discussed in Section \ref{sec:Results} demonstrate
 the performance improvement achieved by the new method without trading-off
@@ -296,10 +296,10 @@ the classical DRA consumes 666 hours (27 days). Furthermore, for the
 same block-size, the improved DRA is demonstrated to be superior in
 terms of memory efficiency, drastically reducing the memory requirement
 from 112 GB down to 2 GB. Finally, the improved DRA demonstrates superior
-modeling accuracy when implemented even in moderately equipped computing
+modelling accuracy when implemented even in moderately equipped computing
 environments such as laptops.
 
-The proposed method leads to the possibility of modeling other physical
+The proposed method leads to the possibility of modelling other physical
 quantities in the cell geometry unhindered by computing limitations.
 Furthermore, high sample-rate models to handle highly dynamic load
 profiles can be deployed in future BMS applications. The scheme also
@@ -346,7 +346,7 @@ The Golyandina-Usevich algorithm is used for computing the product
 of a Block-Hankel matrix with an arbitrary vector. The steps involved
 in this scheme are enumerated in Algorithm 3 of \citep{GolyandinaKorobeynikovShlemovEtAl2015}.
 These steps are reproduced here in the context of discrete-time realization
-algorithm for reduced order battery modeling.
+algorithm for reduced order battery modelling.
 \begin{enumerate}
 	\item Compute a 2-D FFT of Markov parameter matrix.
 	\item Form an augmented vector by zero-padding the arbitrary vector input
@@ -358,7 +358,7 @@ algorithm for reduced order battery modeling.
 	\item Reshape the resulting matrix back to a column vector.
 	\item Extract the first $L$ elements from this vector, wherein $L=Kx$.
 	$K$ represents the desired block-Hankel size and $x$ represents
-	the number of transfer functions being modeled.
+	the number of transfer functions being modelled.
 \end{enumerate}
 At the end of Step 6, the product of the Hankel matrix and arbitrary
 vector is obtained. This is reused as an input for the Lanczos scheme
