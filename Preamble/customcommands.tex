@@ -676,6 +676,10 @@ width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}
 \setcounter{totalnumber}{20}
 \setcounter{dbltopnumber}{9}
 
+% https://tex.stackexchange.com/questions/23487/how-can-i-get-roman-numerals-in-text
+\makeatletter
+\newcommand*{\romanletter}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
 
 % % https://tex.stackexchange.com/questions/34225/different-font-sizes-for-different-rows-in-table/34226
 % \makeatletter
