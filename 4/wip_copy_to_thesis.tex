@@ -1,71 +1,9 @@
-\subsection{Customizations for Battery modelling}
-
-Specific considerations are required for incorporating the Golyandina-Usevich
-algorithm in the \gls{rom} workflow for Li-ion batteries. The classical
-\gls{dra}architecture is set up to handle Single Input Multiple Output
-(SIMO) systems, wherein all transfer functions are derived by considering
-only a single input \textendash{} the applied battery current. Thus
-the Markov parameters form a 2D matrix wherein each row corresponds
-to individual battery transfer functions with columns representing
-unit-pulse response samples for each transfer function. The 2D moving-window
-illustrated in \cite{GolyandinaKorobeynikovShlemovEtAl2015} for
-Block-Hankel matrix formulation has to be suitably reshaped to account
-for this structure. Step-3 of the algorithm deals with 2-D FFT computation
-of the Markov Parameter Matrix (MPM). In our implementation, this
-is pre-computed as it remains invariant between iterations of the
-Hankel-vector product computation loop. This pre-allocation and a
-priori computation contributes to overall code efficiency.
-
-Figure~\ref{improved_ROM_workflow} shows the \gls{rom} workflow with
-the improved \gls{dra}wherein all computational bottlenecks highlighted
-by shaded blocks in Figure~\ref{traditional_ROM_Workflow} have
-been eliminated. The strategy is to first employ the (suitably modified)
-Golyandina-Usevich algorithm for describing the matrix-vector multiplication
-routines. These two functions are then used as inputs to the PROPACK
-codes. Eigentriplets up to the desired upper bound on system order
-is then computed using a Lanczos \gls{svd} iteration. Figure~\ref{svdcompare}
-presents a comparison of singular values computed by both the  traditional
-and new methodologies. It is evident that the two sets of singular
-values are identical. Hence, this new scheme can serve as a drop-in
-replacement for the classical \gls{dra}.
-
-\begin{figure*}
-	\caption{}
-	\label{improved_ROM_workflow}
-\end{figure*}
-
 
 
 \begin{figure}
 	\caption{}
-	\label{svdcompare}
+	\label{fig:memory}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Simulation Results and Discussion\label{sec:Results} }
-
-In this section, I quantitatively demonstrate the reduced computational
-demand of the improved \gls{dra}scheme by comparing it against the classical
-\gls{dra}implementation. The physical parameters of the cell are the same
-as those published in Doyle et al.\cite{FullerDoyleNewman1994}.
-Table~\ref{table:simparams} lists the parameters used in the ROM
-workflow, which are the same as those employed by Lee~et~al.\cite{LeeChemistruckPlett2012}.
-
-\begin{figure}
-	\caption{}
-	\label{memory}
-\end{figure}
-
-Figure~\ref{memory} shows a comparison of the memory usage of
-classical and improved \gls{dra}methods. It is evident that the \gls{svd} step
-in classical \gls{dra}consumes an overwhelming majority of the total memory
-demand, requiring approximately 100 GB for a Hankel block size of
-8000. This can be a limiting factor in modelling slow cell dynamics
-without access to a large memory workstation. The improved \gls{dra}method
-eliminates this bottleneck and the memory usage of \gls{svd} step is trivial.
-Overall memory usage of the improved \gls{dra}is dominated by Markov parameter
-computation. Considering 10 GB of usable \gls{ram}, 60000 Markov parameters
-(Hankel Block-size of 30000) can be captured.
 
 Figure~\ref{cputime} shows a comparison of \gls{cpu} times for computing
 the \gls{rom} at a single \gls{soc} and temperature for the classical and improved
@@ -169,16 +107,16 @@ real-time BMS a step closer to realization.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgment}
-Financial support for the research reported in this paper has been
-obtained through the Imperial College President's PhD Scholarships
-scheme. The sponsor had no role whatsoever in collection, analysis
-and interpretation of data, or in writing of the manuscript. Furthermore,
-the funding body has no role/involvement in the decision to submit
-the article for publication. The authors wish to acknowledge the support
-of The Department of Mathematics, Imperial College London for usage
-of the departmental computing cluster. The \gls{cpu} times, memory usage
-and all other computational results reported in this paper were obtained
-by using a computing node from this facility.
+    Financial support for the research reported in this paper has been
+    obtained through the Imperial College President's PhD Scholarships
+    scheme. The sponsor had no role whatsoever in collection, analysis
+    and interpretation of data, or in writing of the manuscript. Furthermore,
+    the funding body has no role/involvement in the decision to submit
+    the article for publication. The authors wish to acknowledge the support
+    of The Department of Mathematics, Imperial College London for usage
+    of the departmental computing cluster. The \gls{cpu} times, memory usage
+    and all other computational results reported in this paper were obtained
+    by using a computing node from this facility.
 \end{acknowledgment}
 
 \begin{nomenclature}
@@ -222,24 +160,7 @@ by using a computing node from this facility.
 	\item[Fig. 8.]	 Time-domain simulation depicting solid surface concentrations at the boundary of positive electrode and separator.\\
 \end{description}
 
-\newpage
-\singlespacing
-\begin{table}[h]
-	\begin{center}
-		\caption{Parameters for \gls{rom} Computation}
-		\label{table:simparams}
-		\begin{tabular}{ l l }
-			\hline
-			Initial Cell \gls{soc} & 60 \%  \\
-			Hankel Block Size & 8000 \\
-			Discrete-Time Model Sample-Rate,$T_s$ & 1 sec  \\
-			Number of Electrolyte EigenModes & 5 \\
-			Continuous-Time Emulation Frequency, $F_1$ & 128 Hz \\
-			Desired Number of Singular Values &	10 \\
-			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
+
 
 \newpage
 \singlespacing
@@ -257,17 +178,17 @@ by using a computing node from this facility.
 		Condition		   &				  & \gls{dra}		 & \gls{dra}	  \\
 		\hline
 		\multirow{8}{1.22cm}{8000 Hankel Blocks}& Memory 		  & 111.80 GB	  & 2.14 GB  \\[-5pt]
-		& \footnotesize (overall)		&			 & 		 \\
-		& Memory 		  & 97.93 GB	  & 0.03 GB  \\[-5pt]
-		& \footnotesize(\gls{svd} step)   	&			 & 		 \\
-		& \gls{cpu} Time 		& 39.78 min   & 0.63 min  \\[-5pt]
-		& \footnotesize(overall)    	&			 & 		 \\
-		& \gls{cpu} Time 		& 39.30 min   & 0.14 min  \\[-5pt]
-		& \footnotesize(\gls{svd} step)   	&			 & 		 \\[2.5pt]
+		                                        & \footnotesize (overall)		&			 & 		 \\
+		                                        & Memory 		  & 97.93 GB	  & 0.03 GB  \\[-5pt]
+		                                        & \footnotesize(\gls{svd} step)   	&			 & 		 \\
+		                                        & \gls{cpu} Time 		& 39.78 min   & 0.63 min  \\[-5pt]
+		                                        & \footnotesize(overall)    	&			 & 		 \\
+		                                        & \gls{cpu} Time 		& 39.30 min   & 0.14 min  \\[-5pt]
+		                                        & \footnotesize(\gls{svd} step)   	&			 & 		 \\[2.5pt]
 		\hline
 		\multirow{3}{1.22cm}{10 GB Memory Limit}& Block Size		  & 2500	  & 30000  \\[5pt]
-		& Max. error & 1120\scriptsize $\text{ mol m}^{-\text{3}}$ &  13\scriptsize $\text{ mol m}^{-\text{3}}$ \\[-5pt]
-		& in $c_{{s,e}_{pos}}$\scriptsize $(1,t)$ &  &     \\[5pt]
+		                                        & Max. error & 1120\scriptsize $\text{ mol m}^{-\text{3}}$ &  13\scriptsize $\text{ mol m}^{-\text{3}}$ \\[-5pt]
+		                                        & in $c_{{s,e}_{pos}}$\scriptsize $(1,t)$ &  &     \\[5pt]
 		\hline
 	\end{tabular}
 \end{table}

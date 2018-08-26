@@ -10,10 +10,11 @@
 \chapter{Computational Analysis and Numerical Reformulation of the \glsfmtshort{dra}}\label{ch:improveddra}
 % \chapter{Analysis of the \glsfmtlong{dra} and Performance Boost through Numerical Reformulation}\label{ch:improveddra}
 % \chapter{Computational Bottleneck Analysis of the \glsfmtshort{dra} and its Mitigation through Numerical Reformulations}\label{ch:improveddra}
+\vspace*{-1em}
 \startcontents[chapters]
 \printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
 
-\bigskip
+% \bigskip
 
 \capolettera{T}{his} chapter presents  an analysis and critical  evaluation of a
 computational bottleneck present in  a popular physics-based \gls{rom} framework
@@ -108,7 +109,7 @@ whose  computation steps  are  shown  via the  exploded  view  in sublevel-2  of
 \cref{fig:traditional_ROM_Workflow}.  Then,  the Markov  parameters  (unit-pulse
 response) of  this \gls{simo}  linear system of  battery transfer  functions are
 computed\footnote{A  ubiquitous concept  in linear  systems and  control theory,
-Markov parameters  represent the discrete-time  unit pulse response of  a linear
+    Markov parameters  represent the discrete-time  unit pulse response of  a linear
 system.}.  They  form the  entries  of  a Block-Hankel  matrix~\cite{Ljung1998},
 wherein each block  element is a column  vector of the set  of Markov parameters
 at  a  given  time-step.  A  key  computation  in  the  Ho-Kalman  algorithm  is
@@ -127,8 +128,8 @@ computation steps which hinder the entire reduced-order modelling workflow.
     \glsfmtshort{rom} workflow using classical \glsfmtshort{dra}.
     ]%
     {%
-        Reduced-order modelling (ROM) workflow using classical
-        \glsfmtshort{dra}. The shaded blocks represent computational bottlenecks.
+        \glsfirst{rom} workflow using classical
+        \glsfirst{dra}. The shaded blocks represent computational bottlenecks.
     }%
     \label{fig:traditional_ROM_Workflow}
 \end{figure}
@@ -180,7 +181,7 @@ Considering the combined  influence of these effects, if  $x$ transfer functions
 are to  be modelled  and $N$  time-samples of  each Markov  parameter are  to be
 captured, the corresponding size of the Block-Hankel matrix~$H$ is
 \begin{equation}
-    \text{Size}(H)\sim \mathcal{O}(x N^2)\text{ {entries}}
+    \text{Size}(H)\sim \mathcal{O}(x N^2)\text{ entries}
 \end{equation}
 
 This    has    a    significant     computational    impact    as    shown    in
@@ -337,7 +338,7 @@ Generic  \gls{svd}  routines  such  as \textsc{dgesvd}  do  not  take  advantage
 of  the  anti-diagonal  structural  symmetry  of  Block-Hankel  matrices.  Since
 it  is sufficient  to  obtain  the first  few  leading  eigentriplets for  order
 reduction,  iterative  algorithms  such  as   the  Jacobi  and  Lanczos  schemes
-(see~\cite{Golub2013}  emerge  as  attractive  candidates  for  computing  these
+(see~\cite{Golub2013})  emerge  as  attractive candidates  for  computing  these
 dominant singular  values and vectors. In  order to ensure accessibility  to the
 large community of  battery researchers and to encourage  widespread adoption of
 the fast reduced order modelling framework, the author of this thesis considered
@@ -356,8 +357,8 @@ The practical drawback  of most \gls{svd} implementations,  both open-source and
 proprietary, is  that they require  the entire  matrix as input  argument. Since
 operating upon  the Block-Hankel  matrix requires constructing  it in  the first
 place, the memory bottlenecks discussed in \cref{subsec:Traditional-DRA--Memory}
-are  not  ameliorated. An  example  is  the  \texttt{svds} routine,  an  economy
-size  \gls{svd}   implementation  in  MATLAB.   Albeit  this  is   a  commercial
+are not  ameliorated. An  example is  the \texttt{svds}  routine ---  an economy
+size  \gls{svd}  implementation  in  MATLAB\@.   Albeit  this  is  a  commercial
 implementation  of  the  Arnoldi  codes,  any potential  benefits  of  using  an
 iterative scheme is nullified by the memory penalty. Owing to reasons enumerated
 in \cref{sec:Efficient-Computation-of}, the chosen  \gls{svd} algorithm needs to
@@ -377,10 +378,10 @@ with  an  arbitrary vector.  This  feature  has  been effectively  exploited  in
 the  PROPACK suite.  Therefore, these  multiplication routines  can be  supplied
 as  input  arguments instead  of  forming  the  large Block-Hankel  matrices  in
 memory.  Furthermore,  this  package  includes  sophisticated  schemes  such  as
-Gram-Schmidt partial  re-orthogonalization~\cite{Bjoerck1994} to  compensate for
+Gram-Schmidt  partial re-orthogonalization~\cite{Bjorck1994}  to compensate  for
 numerical round-off  errors in the  basic Lanczos bidiagonalization  and ensures
 orthogonality of  the input and  output singular  vectors. The PROPACK  suite is
-available as both Fortran 77 and MATLAB codes distributed under a permissive BSD
+available as both Fortran~77 and MATLAB codes distributed under a permissive BSD
 license. Version~1.1 of the MATLAB implementation  of the PROPACK suite was used
 by this thesis author.
 
@@ -408,10 +409,11 @@ summarized in \cref{sec:Golyandina-Usevich-Algorithm}.
 \section{Golyandina-Usevich Algorithm\label{sec:Golyandina-Usevich-Algorithm}}
 
 The  Golyandina-Usevich  algorithm  is  used  for computing  the  product  of  a
-Block-Hankel  matrix  with an  arbitrary  vector.  The  steps involved  in  this
-scheme are enumerated  in Algorithm~3 of \cite{Golyandina2015}.  These steps are
-reproduced  here in  the context  of the  improved \gls{dra}  for reduced  order
-battery modelling.
+Block-Hankel matrix with an arbitrary vector.  The steps involved in this scheme
+are enumerated  in Algorithm~3 of  Golyandina~\etal~\cite{Golyandina2015}. These
+steps are reproduced  here in the context of the  improved \gls{dra} for reduced
+order battery modelling.
+
 \begin{enumerate}
 	\item Compute a 2-D \gls{fft} of Markov parameter matrix.
 	\item Form an augmented vector by zero-padding the arbitrary vector input
@@ -437,3 +439,103 @@ implementation, software code representing steps 1--6 is written in a plain-text
 file and used  as functional-form inputs by the PROPACK  scheme which implements
 the Lanczos iteration.
 
+\section{Customizations for Battery Modelling}
+
+Specific considerations  are required  for incorporating  the Golyandina-Usevich
+algorithm  in  the  \gls{rom}  workflow  for  Li-ion  batteries.  The  classical
+\gls{dra}  architecture is  set up  to  handle \gls{simo}  systems, wherein  all
+transfer functions  are derived by  considering only  a single input  \viz{} the
+applied battery  current. Thus  the Markov parameters  form a  2D~matrix wherein
+each  row corresponds  to  individual battery  transfer  functions with  columns
+representing  unit-pulse  response  samples  for  each  transfer  function.  The
+2D~moving-window  illustrated in~\cite{Golyandina2015}  for Block-Hankel  matrix
+formulation has to be suitably reshaped to account for this structure. Step~3 of
+the  algorithm  deals  with  2-D~\gls{fft}  computation  of  the  \gls{mpm}.  In
+this  thesis author's  implementation,  this is  pre-computed  since it  remains
+invariant between iterations of the Hankel-vector product computation loop. This
+pre-allocation and a~priori computation contributes to overall code efficiency.
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{new_rom.pdf}
+    \caption[%
+    \glsfmtshort{rom} workflow using improved \glsfmtshort{dra}
+    ]%
+    {%
+        \glsfirst{rom} workflow using improved \glsfirst{dra}.
+    }%
+    \label{fig:improved_ROM_workflow}
+\end{figure}
+
+\Cref{fig:improved_ROM_workflow} shows the \gls{rom}  workflow with the improved
+\gls{dra} wherein all computational bottlenecks  highlighted by shaded blocks in
+\cref{fig:traditional_ROM_Workflow}  have been  eliminated. The  strategy is  to
+first employ the (suitably modified) Golyandina-Usevich algorithm for describing
+the matrix-vector  multiplication routines.  These two  functions are  then used
+as  inputs  to  the  PROPACK  codes.  Eigentriplets  up  to  the  desired  upper
+bound on  system order  is then  computed using  a Lanczos  \gls{svd} iteration.
+\Cref{fig:svdcompare} presents a comparison of  singular values computed by both
+the  traditional and  new methodologies.  It  is evident  that the  two sets  of
+singular values are identical. This proves  that the new scheme can indeed serve
+as a drop-in replacement for the classical \gls{dra}.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{svd_compare.pdf}
+    \caption[Singular values computed by conventional and
+    improved \glsfmtshort{svd} methods]{Comparison of singular values computed by the conventional and
+        improved \glsfmtshort{svd} methods. Using the new scheme results in
+    identical singular values}
+    \label{fig:svdcompare}
+\end{figure}
+
+\section{Simulation Results and Discussion}\label{sec:Results}
+
+This section provides a quantitative  demonstration of the reduced computational
+demand  of the  improved \gls{dra}  scheme by  comparing it  with the  classical
+\gls{dra}implementation. The  physical parameters  of the cell  are the  same as
+those published in  Fuller~\etal~\cite{Fuller1994}. \Cref{table:simparams} lists
+the  parameters used  in  the  \gls{rom} workflow  (same  as  those employed  by
+Lee~\etal~\cite{Lee2012a}).
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Parameters for \gls{rom} Computation}
+    \label{table:simparams}
+    \begin{tabular}{@{} l l @{}}
+        \toprule
+		Initial Cell \glsfmtshort{soc}             & \SI{60}{\percent} \\
+		Hankel Block Size                          & 8000              \\
+		Discrete-Time Model Sample-Rate,~$T_s$     & \SI{1}{\second}   \\
+		Number of Electrolyte EigenModes           & 5                 \\
+		Continuous-Time Emulation Frequency,~$F_1$ & \SI{128}{\hertz}  \\
+		Desired Number of Singular Values          & 10                \\
+		\bottomrule
+    \end{tabular}
+\end{table}
+
+\Cref{fig:memory}  shows a  comparison  of  the memory  usage  of classical  and
+improved \gls{dra} methods.  It is evident that the \gls{svd}  step in classical
+\gls{dra}  consumes  an  overwhelming  majority  of  the  total  memory  demand,
+requiring \approx \SI{100}{\giga\byte} for a Hankel block size of~8000. This can
+be a limiting factor  in modelling slow cell dynamics without  access to a large
+memory workstation. The improved \gls{dra} method eliminates this bottleneck and
+the memory  usage of \gls{svd} step  is negligible. Overall memory  usage of the
+improved  \gls{dra} is  dominated by  Markov parameter  computation. Considering
+\SI{10}{\giga\byte} of usable \gls{ram}, this means that 60000~Markov parameters
+(Hankel Block-size of~30000) can be captured.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{ram_usage.pdf}
+    \caption[%
+    Memory usage of classical and improved \glsfmtshort{dra}
+    ]%
+    {%
+        Memory usage of classical and improved \glsfmtshort{dra}. Overall,
+        \glsfmtshort{ram} usage as well as the memory used only for SVD computation is
+        illustrated.
+    }%
+    \label{fig:memory}
+\end{figure}

@@ -19,7 +19,7 @@
   % to
   % editor #2 "{f. }{vv }{ll}{ jj}" format.name$ "others" =
   % s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
-  %to 
+  %to
   % s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
 
 ENTRY
@@ -74,7 +74,7 @@ FUNCTION {init.urlbst.variables}
   "" 'openinlinelink :=     % ditto
   "" 'closeinlinelink :=    % ditto
 }
-INTEGERS { 
+INTEGERS {
   bracket.state
   outside.brackets
   open.brackets
@@ -121,7 +121,7 @@ FUNCTION {output.nonnull.original}
 % urlbst...
 % The following three functions are for handling inlinelink.  They wrap
 % a block of text which is potentially output with write$ by multiple
-% other functions, so we don't know the content a priori.
+% other functions, so we don't know the content a~priori.
 % They communicate between each other using the variables makeinlinelink
 % (which is true if a link should be made), and closeinlinelink (which holds
 % the string which should close any current link.  They can be called
@@ -183,14 +183,14 @@ FUNCTION {output.nonnull}
       bracket.state open.brackets =
         { " [" * }
         { ", " * } % bracket.state will be within.brackets
-      if$ 
-      s * 
+      if$
+      s *
       close.brackets 'bracket.state :=
     }
   if$
 }
 
-% Call this function just before adding something which should be presented in 
+% Call this function just before adding something which should be presented in
 % brackets.  bracket.state is handled specially within output.nonnull.
 FUNCTION {inbrackets}
 { bracket.state close.brackets =
@@ -387,7 +387,7 @@ FUNCTION {format.editors}
   if$
 }
 
-% this changes the case; very bad for abbreviations like DNA, RNA 
+% this changes the case; very bad for abbreviations like DNA, RNA
 %FUNCTION {format.title}
 %{ title empty$
 %    { "" }
@@ -396,7 +396,7 @@ FUNCTION {format.editors}
 %}
 
 FUNCTION {format.title}
-{ title boldify 
+{ title boldify
 }
 
 
@@ -712,14 +712,14 @@ FUNCTION {make.href.null}
 }
 % make hypertex specials
 FUNCTION {make.href.hypertex}
-{ 
+{
   "\special {html:<a href=" quote$ *
   swap$ * quote$ * "> }" * swap$ *
   "\special {html:</a>}" *
 }
 % make hyperref specials
 FUNCTION {make.href.hyperref}
-{ 
+{
   "\href {" swap$ * "} {\path{" * swap$ * "}}" *
 }
 FUNCTION {make.href}
@@ -768,10 +768,10 @@ FUNCTION {format.doi}
 % the URL and the lastchecked in brackets.
 FUNCTION {output.url}
 { url empty$
-    'skip$ 
-    { new.block 
+    'skip$
+    { new.block
       format.url output
-      format.lastchecked output 
+      format.lastchecked output
     }
   if$
 }
@@ -820,7 +820,7 @@ FUNCTION {fin.entry}
 % Webpage entry type.
 % Title and url fields required;
 % author, note, year, month, and lastchecked fields optional
-% See references 
+% See references
 %   ISO 690-2 http://www.nlc-bnc.ca/iso/tc46sc9/standard/690-2e.htm
 %   http://www.classroom.net/classroom/CitingNetResources.html
 %   http://neal.ctstateu.edu/history/cite.html

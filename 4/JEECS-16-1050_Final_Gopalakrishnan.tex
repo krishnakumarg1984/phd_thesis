@@ -392,7 +392,7 @@ matrix, is critically examined with the following scientific rationale.
 	(zeros) in memory.
 	\item It is not necessary to perform a \textit{full} SVD operation in order
 	to achieve order reduction. When an upper bound on desired system
-	order can be decided a priori, it is sufficient to compute a \textit{truncated}
+	order can be decided a~priori, it is sufficient to compute a \textit{truncated}
 	SVD yielding the first few dominant triplets of $U,\text{ \ensuremath{\Sigma}\ \text{and }}V$.
 \end{enumerate}
 Thus, forming the large Block-Hankel matrix and computing its SVD
@@ -484,21 +484,20 @@ algorithm is briefly summarized in Appendix \ref{sec:Golyandina-Usevich-Algorith
 
 \subsection{Customizations for Battery Modeling}
 
-Specific considerations are required for incorporating the Golyandina-Usevich
-algorithm in the ROM workflow for Li-ion batteries. The classical
-DRA architecture is set up to handle Single Input Multiple Output
-(SIMO) systems, wherein all transfer functions are derived by considering
-only a single input \textendash{} the applied battery current. Thus
-the Markov parameters form a 2D matrix wherein each row corresponds
-to individual battery transfer functions with columns representing
-unit-pulse response samples for each transfer function. The 2D moving-window
-illustrated in \citep{GolyandinaKorobeynikovShlemovEtAl2015} for
-Block-Hankel matrix formulation has to be suitably reshaped to account
-for this structure. Step-3 of the algorithm deals with 2-D FFT computation
-of the Markov Parameter Matrix (MPM). In our implementation, this
-is pre-computed as it remains invariant between iterations of the
-Hankel-vector product computation loop. This pre-allocation and a
-priori computation contributes to overall code efficiency.
+Specific considerations  are required  for incorporating  the Golyandina-Usevich
+algorithm  in  the  ROM  workflow   for  Li-ion  batteries.  The  classical  DRA
+architecture  is  set   up  to  handle  Single  Input   Multiple  Output  (SIMO)
+systems,  wherein all  transfer  functions  are derived  by  considering only  a
+single  input  \textendash{}  the  applied  battery  current.  Thus  the  Markov
+parameters  form  a  2D  matrix  wherein  each  row  corresponds  to  individual
+battery  transfer  functions  with   columns  representing  unit-pulse  response
+samples   for  each   transfer  function.   The  2D   moving-window  illustrated
+in   \citep{GolyandinaKorobeynikovShlemovEtAl2015}   for   Block-Hankel   matrix
+formulation has  to be suitably reshaped  to account for this  structure. Step-3
+of  the  algorithm deals  with  2-D  FFT  computation  of the  Markov  Parameter
+Matrix  (MPM).  In  our  implementation,  this is  pre-computed  as  it  remains
+invariant between iterations of the Hankel-vector product computation loop. This
+pre-allocation and a~priori computation contributes to overall code efficiency.
 
 Figure~\ref{improved_ROM_workflow} shows the ROM workflow with
 the improved DRA wherein all computational bottlenecks highlighted
