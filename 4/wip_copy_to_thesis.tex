@@ -1,71 +1,19 @@
-
-
 \begin{figure}
 	\caption{}
-	\label{fig:memory}
+	\label{fig:truncated}
 \end{figure}
-
-Figure~\ref{cputime} shows a comparison of \gls{cpu} times for computing
-the \gls{rom} at a single \gls{soc} and temperature for the classical and improved
-\gls{dra}methods. Appendix \ref{sec:Specifications-of-Workstation} lists the specifications
-of the workstation used for the computations. Owing to the high flop
-count for \gls{svd} operation (eq.~\ref{eq:cpu_op_count}), the classical
-\gls{dra}requires approximately 40 minutes for a Hankel block size of 8000.
-Clearly, the overall \gls{cpu} time for classical \gls{dra}is almost exclusively
-used in computing the \gls{svd}. The improved \gls{dra}method reduces the overall
-computational time by two orders of magnitude, taking approximately
-40 seconds for the same block-size. In this case, \gls{cpu} time is evenly
-split between \gls{svd} and Markov parameters computations.
-
-\begin{figure}
-	\caption{}
-	\label{cputime}
-\end{figure}
-
-From Figure~\ref{memory}, it is evident that if classical \gls{dra}
-is employed, a standard laptop with a nominal 10 GB \gls{ram} limit (dedicated
-for \gls{rom} workflow) cannot capture the full cell dynamics and hence
-is restricted to 2500 Hankel blocks. This necessitates early truncation
-of Markov parameters at 5000 seconds. From Figure~\ref{markov_cse_pos},
-the truncation residue at 5000 seconds for the unit-pulse response
-of solid surface concentration at positive current collector is $-0.0087 \text{ mol m}^{-\text{3}}$.
-The truncation errors in the Markov Parameter Matrix directly translate
-to errors in computed singular values, adversely affecting accuracy
-of simulated cell variables. It must be noted that the accuracy of
-simulation results reported here does not bear a causal relationship
-to the particular \gls{dra}scheme employed. In-principle, when an upper
-bound on computational usage has not been enforced, the numerical
-operations of both the existing and proposed \gls{dra}schemes lead to similar
-error magnitudes for the modelled quantities. Instead, the accuracy
-comparison illustrated here primarily serves to demonstrate the practical
-usefulness of the improved \gls{dra}scheme when implemented in a commonplace
-computing environment.
-
-\begin{figure}
-	\caption{}
-	\label{truncated}
-\end{figure}
-
-Figure~\ref{truncated} shows a comparison of singular values obtained
-by the classical and improved \gls{svd} methods computed by imposing a \gls{ram}
-limit of 10GB. Owing to early truncation of the Markov parameter matrix,
-the dominant singular values computed by the conventional method differ
-significantly from those computed by the improved \gls{svd} operating on
-untruncated data. With the same memory constraints, the improved \gls{dra}
-can handle up to 30000 Hankel blocks, allowing for capture of 60000
-seconds of Markov parameter data.
 
 For comparative analysis of modelling accuracy under this memory constraint,
 a time-domain simulation of the ROMs obtained by classical and improved
-\gls{dra}methods is performed. The input current profile corresponding
+\gls{dra} methods is performed. The input current profile corresponding
 to UDDS drive cycle reported in Lee~et~al. \cite{LeeChemistruckPlett2012}
 is used. Figure~\ref{time_domain_sim} depicts the time-evolution
 of the solid surface concentration at the positive electrode/separator
 boundary. For comparing the accuracy of the two ROMs, a COMSOL Multiphysics~\cite{Multiphysics2012}
 simulation of the full-order pseudo-2D porous-electrode PDE model
-is used as the reference. The \gls{rom} employing classical \gls{dra}diverges
+is used as the reference. The \gls{rom} employing classical \gls{dra} diverges
 over time, and after 1500 seconds results in an error of 1120$\text{ mol m}^{-\text{3}}$$.$
-The \gls{rom} incorporating the new \gls{dra}workflow accurately tracks the COMSOL
+The \gls{rom} incorporating the new \gls{dra} workflow accurately tracks the COMSOL
 simulation trend-line. Table~\ref{table:salientresults} provides
 a summary of the key simulation results.
 
@@ -77,21 +25,21 @@ a summary of the key simulation results.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions\label{sec:Conclusion}}
 In this paper, Singular Value Decomposition of a large Block-Hankel
-matrix is identified as a key bottleneck in the classical \gls{dra}for
+matrix is identified as a key bottleneck in the classical \gls{dra} for
 reduced-order Li-ion cell modelling. An improved \gls{svd} scheme is presented,
 which employs a combination of the Golyandina-Usevich and Lanczos
 algorithms. The results discussed in Section \ref{sec:Results} demonstrate
 the performance improvement achieved by the new method without trading-off
 model fidelity. At a single operating point of \gls{soc} and temperature,
 for a Hankel block size of 8000, \gls{rom} workflow incorporating the improved
-\gls{dra}is approximately 100 times faster than that employing classical
+\gls{dra} is approximately 100 times faster than that employing classical
 DRA. Using the machine specifications in Appenndix  \ref{sec:Specifications-of-Workstation},
 for 100 operating points (combinations of 10 \gls{soc} and temperature values),
-computing the \gls{rom} requires only 6 hours using the improved \gls{dra}, whereas
-the classical \gls{dra}consumes 666 hours (27 days). Furthermore, for the
-same block-size, the improved \gls{dra}is demonstrated to be superior in
+computing the \gls{rom} requires only 6 hours using the improved \gls{dra} , whereas
+the classical \gls{dra} consumes 666 hours (27 days). Furthermore, for the
+same block-size, the improved \gls{dra} is demonstrated to be superior in
 terms of memory efficiency, drastically reducing the memory requirement
-from 112 GB down to 2 GB. Finally, the improved \gls{dra}demonstrates superior
+from 112 GB down to 2 GB. Finally, the improved \gls{dra} demonstrates superior
 modelling accuracy when implemented even in moderately equipped computing
 environments such as laptops.
 
@@ -101,7 +49,7 @@ Furthermore, high sample-rate models to handle highly dynamic load
 profiles can be deployed in future BMS applications. The scheme also
 empowers the \gls{rom} framework to tackle cells with slower dynamics and
 other chemistries with different rate-limiting mechanisms. The improved
-\gls{dra}method opens up a wide range of possibilities and brings the goal
+\gls{dra} method opens up a wide range of possibilities and brings the goal
 of physics-based battery model implementation in a high performance
 real-time BMS a step closer to realization.
 
@@ -143,19 +91,19 @@ real-time BMS a step closer to realization.
 
 \begin{description}
 	\item[Table 1]   Parameters for \gls{rom} Computation\\
-	\item[Table 2]   Salient Results - Classical vs. Improved \gls{dra}\\
+	\item[Table 2]   Salient Results - Classical vs. Improved \gls{dra} \\
 	\item[Table 3]   Specifications of workstation used
 \end{description}
 \newpage
 \section*{Listing of Figure Captions}
 
 \begin{description}
-	\item[Fig. 1.]   Reduced-order modelling (ROM) workflow using classical \gls{dra}.\\ (The shaded blocks represent computational bottlenecks).\\
+	\item[Fig. 1.]   Reduced-order modelling (ROM) workflow using classical \gls{dra} .\\ (The shaded blocks represent computational bottlenecks).\\
 	\item[Fig. 2.]   Time evolution of Markov parameters of pole-removed transfer function corresponding to surface concentration of Li in the solid particle adjacent to positive current collector.\\
-	\item[Fig. 3.]   Reduced Order Modelling (ROM) Workflow using improved \gls{dra}.\\
+	\item[Fig. 3.]   Reduced Order Modelling (ROM) Workflow using improved \gls{dra} .\\
 	\item[Fig. 4.]   Comparison of singular values computed by the conventional and improved \gls{svd} methods.\\
-	\item[Fig. 5.]	 Memory usage of classical and improved \gls{dra}. Overall \gls{ram} usage as well as \gls{ram} used only for \gls{svd} computation is illustrated.\\
-	\item[Fig. 6.] 	 Computation times for classical and improved \gls{dra}schemes.\\
+	\item[Fig. 5.]	 Memory usage of classical and improved \gls{dra} . Overall \gls{ram} usage as well as \gls{ram} used only for \gls{svd} computation is illustrated.\\
+	\item[Fig. 6.] 	 Computation times for classical and improved \gls{dra} schemes.\\
 	\item[Fig. 7.]	 Comparison of singular values computed by conventional and improved \gls{svd} methods under a practical \gls{ram} limit of 10 GB.\\
 	\item[Fig. 8.]	 Time-domain simulation depicting solid surface concentrations at the boundary of positive electrode and separator.\\
 \end{description}
@@ -168,14 +116,14 @@ real-time BMS a step closer to realization.
 \begin{table}[h]
 	\singlespacing
 	\centering
-	\caption{Salient Results - Classical vs. Improved \gls{dra}}
+	\caption{Salient Results - Classical vs. Improved \gls{dra} }
 	\label{table:salientresults}
 	\setlength{\extrarowheight}{1pt}
 	%\centering
 	\begin{tabular}{ c c c c }
 		\hline
 		\gls{rom} & Quantity 		& Classical & Improved \\
-		Condition		   &				  & \gls{dra}		 & \gls{dra}	  \\
+		Condition		   &				  & \gls{dra} 		 & \gls{dra} 	  \\
 		\hline
 		\multirow{8}{1.22cm}{8000 Hankel Blocks}& Memory 		  & 111.80 GB	  & 2.14 GB  \\[-5pt]
 		                                        & \footnotesize (overall)		&			 & 		 \\

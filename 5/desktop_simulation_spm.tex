@@ -426,18 +426,19 @@ data logging modules of typical  cell-cycler software (shared between channels),
 and  to  avoid  excessively  large wait-times  for  characterisation,  discharge
 currents of C/20--C/25 are usually deemed sufficient.
 
-In order to validate  that the choice of model parameters  result in an intended
-capacity  of  \SI{60}{\amphour},  an  analogous  procedure  is  carried  out  by
-means  of  computer  simulation.  A  characterisation  simulation  beginning  at
-\SI{100}{\percent} \gls{soc}  with a discharge current  of \SI{0.6}{\ampere} was
-performed\footnote{All simulations  were performed  on a  64-bit Hewlett-Packard
-Z840  workstation with  a 16-core  \text{Intel}\textsuperscript{\textregistered}
-Xeon\textsuperscript{\textregistered} E5-2640 v3  (Haswell) processor clocked at
-a base frequency of \SI{2.60}{\giga\hertz} with \SI{128}{\giga\byte} DDR4 RAM at
-1866 MT/sec.}. If the assumed cell  capacity is indeed consistent with the model
-parameters, then  this corresponds  to a  C-rate of  1/100. Therefore,  both the
-\gls{p2d} and \gls{spm}  should run for exactly 100 hours  before cut-off due to
-charge depletion.
+In    order   to    validate    that   the    choice    of   model    parameters
+result   in   an   intended   capacity  of   \SI{60}{\amphour},   an   analogous
+procedure   is    carried   out   by    means   of   computer    simulation.   A
+characterisation  simulation  beginning  at  \SI{100}{\percent}  \gls{soc}  with
+a   discharge   current    of   \SI{0.6}{\ampere}   was   performed\footnote{All
+computations  were  performed  on   a  64-bit  Hewlett-Packard~Z840  workstation
+with   a   \mbox{16-core}   \mbox{\text{Intel}\textsuperscript{\textregistered}}
+\mbox{Xeon\textsuperscript{\textregistered}}     \mbox{E5-2640~v3}     (Haswell)
+processor   clocked  at   a  base   frequency  of   \SI{2.60}{\giga\hertz}  with
+\SI{128}{\giga\byte} DDR4~RAM at 1866~MT/sec.}. If  the assumed cell capacity is
+indeed consistent with  the model parameters, then this corresponds  to a C-rate
+of 1/100. Therefore, both the \gls{p2d} and \gls{spm} should run for exactly 100
+hours before cut-off due to charge depletion.
 
 \input{5/char_sim_table.tex}
 

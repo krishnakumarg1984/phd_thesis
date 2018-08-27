@@ -533,9 +533,70 @@ improved  \gls{dra} is  dominated by  Markov parameter  computation. Considering
     Memory usage of classical and improved \glsfmtshort{dra}
     ]%
     {%
-        Memory usage of classical and improved \glsfmtshort{dra}. Overall,
-        \glsfmtshort{ram} usage as well as the memory used only for SVD computation is
-        illustrated.
+        Memory  usage  of  classical and  improved  \glsfmtshort{dra}.  Overall,
+        \glsfmtshort{ram}  usage   as  well   as  the   memory  used   only  for
+        \glsfmtshort{svd} computation is illustrated.
     }%
     \label{fig:memory}
+\end{figure}
+
+\Cref{fig:cputime}  shows a  comparison  of \gls{cpu}  times  for computing  the
+\gls{rom} at a  single \gls{soc} and temperature for both  the classical and the
+improved \gls{dra}  methods\footnote{All computations  reported in  this chapter
+were performed on a dedicated high-\glsfmtshort{ram} pool drawn from the compute
+cluster hosted at the Department of  Mathematics at Imperial College London. The
+author  of this  thesis  wishes  to express  his  thankfulness  to the  relevant
+authorities for providing  access to this facility. The  resources borrowed were
+one core of a \mbox{4-core} \mbox{\text{Intel}\textsuperscript{\textregistered}}
+\mbox{Xeon\textsuperscript{\textregistered}} \mbox{E5-2637~v3} processor clocked
+at   \SI{3.50}{\giga\hertz}   with   \SI{500}{\giga\byte}   \glsfmtshort{ram}.}.
+Owing   to   the   high   operation  count   for   the   \gls{svd}   computation
+(see   \cref{eq:cpu_op_count}),  the   classical   \gls{dra}  requires   \approx
+\SI{40}{\minute} for a Hankel block size of~8000. Clearly, the overall \gls{cpu}
+time for the  classical \gls{dra} is almost exclusively spent  for computing the
+\gls{svd}. The improved \gls{dra} method  reduces the overall computational time
+by  two  orders of  magnitude,  taking  \approx  \SI{40}{\second} for  the  same
+block-size.  In this  case,  the  \gls{cpu} time  is  evenly  split between  the
+\gls{svd} and Markov parameter computations.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{cpu_usage.pdf}
+    \caption{Computation times for classical and improved \glsfmtshort{dra} schemes}
+    \label{fig:cputime}
+\end{figure}
+
+From  \cref{fig:memory},   it  is  evident   that  if  classical   \gls{dra}  is
+employed,  a  standard  laptop  with  a  nominal  \SI{10}{\giga\byte}  \gls{ram}
+limit   (dedicated   for   \gls{rom}   workflow)   cannot   capture   the   full
+cell   dynamics  and   hence   is  restricted   to   2500~Hankel  blocks.   This
+necessitates early  truncation of Markov parameters  at \SI{5000}{\second}. From
+\cref{fig:markov_cse_pos}, the truncation residue  at \SI{5000}{\second} for the
+unit-pulse response of solid surface concentration at positive current collector
+is $\SI{-0.0087}{\mole\per\meter\cubed}$. The truncation errors in the \gls{mpm}
+directly translate  to errors in  computed singular values,  adversely affecting
+accuracy of  simulated cell  variables. It  must be noted  that the  accuracy of
+simulation results  reported here  does not  bear a  causal relationship  to the
+particular  \gls{dra} scheme  employed. In  principle,  when an  upper bound  on
+computational usage has not been enforced,  the numerical operations of both the
+existing and proposed \gls{dra} schemes lead to similar error magnitudes for the
+modelled quantities. Instead, the accuracy comparison illustrated here primarily
+serves to demonstrate the practical  usefulness of the improved \gls{dra} scheme
+when implemented in a commonplace computing environment.
+
+\Cref{fig:truncated}  shows a  comparison  of singular  values  obtained by  the
+classical and improved \gls{svd} methods  computed by imposing a \gls{ram} limit
+of \SI{10}{\giga\byte}. Owing to early truncation of the \gls{mpm}, the dominant
+singular values  computed by the  conventional method differ  significantly from
+those computed by the improved \gls{svd} operating on untruncated data. With the
+same memory  constraints, the improved  \gls{dra} can handle up  to 30000~Hankel
+blocks, allowing for capture of \SI{60000}{\second} of Markov parameter data.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{truncated.pdf}
+    \caption{Comparison of singular values computed by conventional and improved
+    \glsfmtshort{svd} methods under a practical \glsfmtshort{ram} limit of
+\SI{10}{\giga\byte}}
+    \label{fig:truncated}
 \end{figure}
