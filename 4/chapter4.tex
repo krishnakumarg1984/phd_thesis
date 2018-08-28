@@ -70,16 +70,12 @@ original  \gls{dra} method.  Redundancies and  inefficiencies in  this step  are
 enumerated  and the  high  computational  costs are  deemed  as unnecessary.  In
 \cref{sec:Efficient-Computation-of}, a fast  computational approach is presented
 which  significantly reduces  both  the  memory and  computational  time of  the
-\gls{rom}  workflow. \Cref{sec:Results}  summarizes  the  results obtained  from
+\gls{rom}  workflow. \Cref{sec:Results}  summarises  the  results obtained  from
 applying the  new workflow presented in  \cref{sec:Efficient-Computation-of}, by
 comparing and contrasting the much smaller computational requirements of the new
 method  with the  original  \gls{dra} scheme.  The  improved modelling  accuracy
 achieved  by  this  proposed  method when  deployed  under  resource-constrained
-computing environments, is also highlighted. \Cref{sec:Conclusion} concludes the
-chapter  with a  view that  although  the improved  methodology streamlines  the
-entire  workflow,  there exist  some  fundamental  deficiencies in  this  hybrid
-modelling approach  that impede its effective  deployment as the plant  model in
-state estimation tasks.
+computing environments, is also highlighted.
 
 \section{Analysis of the Computational Bottlenecks of the \glsfmtshort{dra}}\label{sec:Analysis-of-the}
 
@@ -225,7 +221,7 @@ first  stage $A\in\mathbb{R}^{m  \times n}$  is reduced  to an  upper bidiagonal
 form.  In  the  second  stage,   \gls{svd}  of  this  upper  bidiagonal  matrix,
 $B\in\mathbb{R}^{m  \times n}$  is computed  using an  iterative procedure  such
 as  the Demmel-Kahan  method~\cite{Golub2013}. If  stage~\romanletter{1} of  the
-\gls{svd}  computation employs  $\mathbb{R}$-Bidiagonalization~\cite{Golub2013},
+\gls{svd}  computation employs  $\mathbb{R}$-Bidiagonalisation~\cite{Golub2013},
 then the overall  process is referred to as $\mathbb{R}$-\gls{svd}.  This is the
 fastest known  full \gls{svd}  computation method  that may  be applied  to this
 battery modelling problem. The \textsc{dgesvd} algorithm, originally implemented
@@ -276,7 +272,7 @@ this can arise in the following real-life scenarios:
         large set  of Markov  parameters is  needed to  capture the  full system
         dynamics.
 \end{enumerate}
-Lack  of  specialized  computing infrastructure  necessitates  early  truncation
+Lack  of  specialised  computing infrastructure  necessitates  early  truncation
 of  the  Markov parameters  in  the  \gls{rom}  workflow. The  resulting  errors
 in  the singular  value  computation  lead to  significant  modelling errors  in
 the  physical  variables of  the  cell.  Thus,  in practice,  the  computational
@@ -287,7 +283,7 @@ computation has to be repeated for multiple \glspl{soc} and temperatures.
 The foregoing analysis  clearly demonstrates that the high  memory and \gls{cpu}
 demands in  a classical \gls{dra}  implementation severely hamper the  scope and
 applicability  of the  reduced order  modelling process.  This implies  that the
-modelling  workflow is  not accessible  to research  groups without  specialized
+modelling  workflow is  not accessible  to research  groups without  specialised
 computing infrastructure and its universal  appeal is rendered questionable. The
 shaded  blocks in  \cref{fig:traditional_ROM_Workflow}  depict the  hierarchical
 propagation of the classical \gls{dra}'s computational bottleneck throughout the
@@ -345,7 +341,7 @@ the fast reduced order modelling framework, the author of this thesis considered
 only freely available  open-source numerical libraries that exist  in the public
 domain, especially  those with permissive  licensing terms. Otherwise  the gains
 achieved by  an efficient  \gls{svd} computation  for implementing  \gls{dra} on
-non-specialized  computing  hardware would  be  offset  by commercial  licensing
+non-specialised  computing  hardware would  be  offset  by commercial  licensing
 terms,  usage restrictions  and  monetary considerations  associated with  using
 proprietary  codes. Among  these  open-source candidate  algorithms, the  Jacobi
 scheme~\cite{Golub2013} is  available through the  xGESVD routine in  the LAPACK
@@ -378,8 +374,8 @@ with  an  arbitrary vector.  This  feature  has  been effectively  exploited  in
 the  PROPACK suite.  Therefore, these  multiplication routines  can be  supplied
 as  input  arguments instead  of  forming  the  large Block-Hankel  matrices  in
 memory.  Furthermore,  this  package  includes  sophisticated  schemes  such  as
-Gram-Schmidt  partial re-orthogonalization~\cite{Bjorck1994}  to compensate  for
-numerical round-off  errors in the  basic Lanczos bidiagonalization  and ensures
+Gram-Schmidt  partial re-orthogonalisation~\cite{Bjorck1994}  to compensate  for
+numerical round-off  errors in the  basic Lanczos bidiagonalisation  and ensures
 orthogonality of  the input and  output singular  vectors. The PROPACK  suite is
 available as both Fortran~77 and MATLAB codes distributed under a permissive BSD
 license. Version~1.1 of the MATLAB implementation  of the PROPACK suite was used
@@ -388,7 +384,7 @@ by this thesis author.
 For the \gls{rom} workflow, in order  to use PROPACK's unique feature \viz{} its
 flexibility to  accept functional form  inputs, the key  is to use  an algorithm
 that  effectively  exploits the  affine  structure  of the  Block-Hankel  matrix
-without  actually  forming  it  in  memory. Recent  research  in  a  specialized
+without  actually  forming  it  in  memory. Recent  research  in  a  specialised
 time-series technique known as \gls{ssa}~\cite{Elsner1996} has yielded efficient
 methods for  achieving this goal.  Korobeynikov~\cite{Korobeynikov2010} proposed
 an  algorithm that  employs the  \gls{fft} for  implementing this  matrix-vector
@@ -404,7 +400,7 @@ system. While  the modified  scheme does not  construct the  Block-Hankel matrix
 in  memory,  the operational  rubrics  of  the Golyandina-Usevich  algorithm  in
 conjunction with  PROPACK is  such that  they iteratively  operate on  a virtual
 Hankel matrix  of equivalent size.  The Golyandina-Usevich algorithm  is briefly
-summarized in \cref{sec:Golyandina-Usevich-Algorithm}.
+summarised in \cref{sec:Golyandina-Usevich-Algorithm}.
 
 \section{Golyandina-Usevich Algorithm\label{sec:Golyandina-Usevich-Algorithm}}
 
@@ -439,7 +435,7 @@ implementation, software code representing steps 1--6 is written in a plain-text
 file and used  as functional-form inputs by the PROPACK  scheme which implements
 the Lanczos iteration.
 
-\section{Customizations for Battery Modelling}
+\section{Customisations for Battery Modelling}
 
 Specific considerations  are required  for incorporating  the Golyandina-Usevich
 algorithm  in  the  \gls{rom}  workflow  for  Li-ion  batteries.  The  classical
@@ -540,14 +536,15 @@ improved  \gls{dra} is  dominated by  Markov parameter  computation. Considering
     \label{fig:memory}
 \end{figure}
 
-\Cref{fig:cputime}  shows a  comparison  of \gls{cpu}  times  for computing  the
-\gls{rom} at a  single \gls{soc} and temperature for both  the classical and the
-improved \gls{dra}  methods\footnote{All computations  reported in  this chapter
-were performed on a dedicated high-\glsfmtshort{ram} pool drawn from the compute
-cluster hosted at the Department of  Mathematics at Imperial College London. The
-author  of this  thesis  wishes  to express  his  thankfulness  to the  relevant
-authorities for providing  access to this facility. The  resources borrowed were
-one core of a \mbox{4-core} \mbox{\text{Intel}\textsuperscript{\textregistered}}
+\Cref{fig:cputime}  shows   a  comparison  of  \gls{cpu}   times  for  computing
+the   \gls{rom}  at   a  single   \gls{soc}   and  temperature   for  both   the
+classical  and  the improved  \gls{dra}  methods\footnote{\label{fn:clusterspec}
+All  computations  reported  in  this  chapter were  performed  on  a  dedicated
+high-\glsfmtshort{ram}  pool  drawn  from  the compute  cluster  hosted  at  the
+Department  of  Mathematics at  Imperial  College  London.  The author  of  this
+thesis  wishes  to   express  his  thankfulness  to   the  relevant  authorities
+for  providing  access  to  this  facility.  The  resources  borrowed  were  one
+core  of  a  \mbox{4-core}  \mbox{\text{Intel}\textsuperscript{\textregistered}}
 \mbox{Xeon\textsuperscript{\textregistered}} \mbox{E5-2637~v3} processor clocked
 at   \SI{3.50}{\giga\hertz}   with   \SI{500}{\giga\byte}   \glsfmtshort{ram}.}.
 Owing   to   the   high   operation  count   for   the   \gls{svd}   computation
@@ -596,7 +593,120 @@ blocks, allowing for capture of \SI{60000}{\second} of Markov parameter data.
     \centering
     \includegraphics{truncated.pdf}
     \caption{Comparison of singular values computed by conventional and improved
-    \glsfmtshort{svd} methods under a practical \glsfmtshort{ram} limit of
-\SI{10}{\giga\byte}}
+        \glsfmtshort{svd} methods under a practical \glsfmtshort{ram} limit of
+    \SI{10}{\giga\byte}}
     \label{fig:truncated}
 \end{figure}
+
+For comparative analysis  of modelling accuracy under this  memory constraint, a
+time-domain simulation  of the  \glspl{rom} obtained  by classical  and improved
+\gls{dra}  methods is  performed.  The input  current  profile corresponding  to
+a  \gls{udds}  drive  cycle  reported in  Lee~\etal{}~\cite{Lee2012a}  is  used.
+\Cref{fig:time_domain_sim}  depicts  the  time-evolution of  the  solid  surface
+concentration  at  the  positive  electrode/separator  boundary.  For  comparing
+the  accuracy   of  the   two  ROMs,  a   COMSOL  Multiphysics~\cite{COMSOL2012}
+simulation  of  the  full-order   pseudo-2D  porous-electrode  \gls{pdae}  model
+is  used  as   the  reference.  The  \gls{rom}   employing  classical  \gls{dra}
+diverges  over   time,  and  after   \SI{1500}{\second}  results  in   an  error
+of  \SI{1120}{\mole\per\meter\cubed}.   The  \gls{rom}  incorporating   the  new
+\gls{dra}  workflow   accurately  tracks   the  COMSOL   simulation  trend-line.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{comsol_comparison.pdf}
+    \caption[%
+    Evolution of solid surface concentrations at
+    positive electrode/separator interface.
+    ]%
+    {%
+        Time-domain  simulation depicting  solid surface  concentrations at  the
+        boundary  of positive  electrode and  separator. The  simulation results
+        from  the  \gls{p2d}  model  implemented   in  COMSOL  is  used  as  the
+        reference  benchmark. The  two  \glsfmtshortpl{rom}  were derived  under
+        a  \glsfmtshort{ram}  limit   of  \SI{10}{\giga\byte}.  The  performance
+        of  the  improved \glsfmtshort{dra}  is  significantly  better than  the
+        classical \glsfmtshort{dra} owing to the  fact that its derivation could
+        accommodate  a larger  number  of Hankel  blocks  without exceeding  the
+        specified memory limit.
+    }%
+    \label{fig:time_domain_sim}
+\end{figure}
+
+\Cref{tbl:salientresults}   provides   a   summary   of   the   key   simulation
+results.  At  a  single  operating  point  of  \gls{soc}  and  temperature,  for
+a  Hankel  block   size  of~8000,  the  \gls{rom}   workflow  incorporating  the
+improved  \gls{dra}  is  \approx  100  times  faster  than  that  employing  the
+classical   \gls{dra}.  Using   the  machine   with  specifications   listed  in
+the  footnote\textsuperscript{\ref{fn:clusterspec}},  for  100~operating  points
+(combinations of  10~\gls{soc} and temperature values),  computing the \gls{rom}
+requires  only  6~hours using  the  improved  \gls{dra}, whereas  the  classical
+\gls{dra} consumes  666~hours (27~days).  Furthermore, for the  same block-size,
+the  improved \gls{dra}  is  demonstrated  to be  superior  in  terms of  memory
+efficiency,  drastically reducing  the memory  requirement from  112~GB down  to
+2~GB. Finally,  the improved \gls{dra} demonstrates  superior modelling accuracy
+when  implemented even  in moderately  equipped computing  environments such  as
+laptops.
+
+\begin{table}[!htbp]
+	% \singlespacing
+	\centering
+	\caption{Salient Results --- Classical vs.\ Improved \gls{dra} }
+	\label{tbl:salientresults}
+	\setlength{\extrarowheight}{1pt}
+	\begin{tabular}{ @{} l c l l @{} }
+		\toprule
+		% \gls{rom}                                & Quantity                                & Classical                                   & Improved                                  \\
+		% Condition                                &                                         & \gls{dra}                                   & \gls{dra}                                 \\
+		\makecell{\gls{rom} \\ Condition} & {Entity} & \makecell{Classical \\ \gls{dra} } & \makecell{Improved \\ \gls{dra}} \\
+		\midrule
+		\multirow{8}{1.22cm}{8000 Hankel Blocks} & Memory                         & 111.80 GB                        & 2.14 GB                        \\ [-5pt]
+                                                 & \footnotesize (overall)        &                                  &                                \\
+                                                 & Memory                         & 97.93 GB                         & 0.03 GB                        \\ [-5pt]
+                                                 & \footnotesize(\gls{svd} step)  &                                  &                                \\
+                                                 & \gls{cpu} Time                 & 39.78 min                        & 0.63 min                       \\ [-5pt]
+                                                 & \footnotesize(overall)         &                                  &                                \\
+                                                 & \gls{cpu} Time                 & 39.30 min                        & 0.14 min                       \\ [-5pt]
+                                                 & \footnotesize(\gls{svd} step)  &                                  &                                \\ [2.5pt]
+		\midrule
+		\multirow{3}{1.22cm}{10 GB Memory Limit} & Block Size                     & 2500                             & 30000                          \\ [5pt]
+                                                 & Max.\ error                    & \SI{1120}{\mole\per\meter\cubed} & \SI{13}{\mole\per\meter\cubed} \\ [-5pt]
+                                                 & in $c_{{s,e}_\text{pos}}(1,t)$ &                                  &                                \\ [5pt]
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+The  proposed  method opens  up  the  possibility  of modelling  other  physical
+quantities  in  the   cell's  geometry  without  being   hindered  by  computing
+limitations. Furthermore, high sample-rate models  to handle highly dynamic load
+profiles  can be  deployed in  future  \gls{bms} applications.  The scheme  also
+empowers the \gls{rom} framework to tackle  cells with slower dynamics and other
+chemistries  with different  rate-limiting  mechanisms.  The improved  \gls{dra}
+method therefore  opens up a  wide range of  possibilities and looks  capable of
+bringing  the goal  of  physics-based  battery model  implementation  in a  high
+performance real-time \gls{bms}, a step closer to realisation.
+
+Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
+streamlining  of  the reduced  order  modelling  workflow through  the  improved
+\gls{dra},  there  exists a  fundamental  deficiency  in this  hybrid  modelling
+approach  that impede  its  effective deployment  as the  plant  model in  state
+estimation tasks. This aspect was already discussed in \cref{ch:littreview}, and
+is  reiterated here.  The  entries in  the  matrices of  the  final state  space
+model  depend on  the linearisation  point  of \gls{soc}  and temperature.  This
+linearisation requirement adversely affects the usability of the model for state
+estimation tasks, wherein the \gls{soc} is in fact an unknown quantity and is to
+be  estimated.  This  cyclic  dependency between  the  linearisation  point  and
+the  state-estimation quantity  makes  the  use of  this  model questionable  in
+a  demanding  application such  as  in  embedded \glspl{bms}  on-board  electric
+vehicles.
+
+This  chapter  concludes  with  the  view  that,  although  the  bottlenecks  in
+Lee~\etal~\cite{Lee2012a}  revealed   by  this   in-depth  analysis   have  been
+effectively tackled in  this chapter, the underlying model itself  is not robust
+enough for implementation. Furthermore, the  model derivation is convoluted with
+the derivation being performed in the frequency domain and implementation in the
+time-domain. This  thesis author is of  the opinion that a  simple, yet accurate
+model derived  and implemented entirely in  time-domain is the need  of the hour
+for encouraging  the automotive industry  to adapt physics-based  battery models
+onto on-board  \glspl{bms} of  electric vehicles.  In the  quest to  fulfil this
+need, an  analysis of the  simplest time-domain  physics based model  \viz{} the
+\gls{spm} is presented next in \cref{ch:spmanalysis}.

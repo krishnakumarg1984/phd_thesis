@@ -1,57 +1,21 @@
-\begin{figure}
-	\caption{}
-	\label{fig:truncated}
-\end{figure}
-
-For comparative analysis of modelling accuracy under this memory constraint,
-a time-domain simulation of the ROMs obtained by classical and improved
-\gls{dra} methods is performed. The input current profile corresponding
-to UDDS drive cycle reported in Lee~et~al. \cite{LeeChemistruckPlett2012}
-is used. Figure~\ref{time_domain_sim} depicts the time-evolution
-of the solid surface concentration at the positive electrode/separator
-boundary. For comparing the accuracy of the two ROMs, a COMSOL Multiphysics~\cite{Multiphysics2012}
-simulation of the full-order pseudo-2D porous-electrode PDE model
-is used as the reference. The \gls{rom} employing classical \gls{dra} diverges
-over time, and after 1500 seconds results in an error of 1120$\text{ mol m}^{-\text{3}}$$.$
-The \gls{rom} incorporating the new \gls{dra} workflow accurately tracks the COMSOL
-simulation trend-line. Table~\ref{table:salientresults} provides
-a summary of the key simulation results.
-
-\begin{figure}
-	\caption{}
-	\label{time_domain_sim}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions\label{sec:Conclusion}}
-In this paper, Singular Value Decomposition of a large Block-Hankel
-matrix is identified as a key bottleneck in the classical \gls{dra} for
-reduced-order Li-ion cell modelling. An improved \gls{svd} scheme is presented,
-which employs a combination of the Golyandina-Usevich and Lanczos
-algorithms. The results discussed in Section \ref{sec:Results} demonstrate
-the performance improvement achieved by the new method without trading-off
-model fidelity. At a single operating point of \gls{soc} and temperature,
-for a Hankel block size of 8000, \gls{rom} workflow incorporating the improved
-\gls{dra} is approximately 100 times faster than that employing classical
-DRA. Using the machine specifications in Appenndix  \ref{sec:Specifications-of-Workstation},
-for 100 operating points (combinations of 10 \gls{soc} and temperature values),
-computing the \gls{rom} requires only 6 hours using the improved \gls{dra} , whereas
-the classical \gls{dra} consumes 666 hours (27 days). Furthermore, for the
-same block-size, the improved \gls{dra} is demonstrated to be superior in
-terms of memory efficiency, drastically reducing the memory requirement
-from 112 GB down to 2 GB. Finally, the improved \gls{dra} demonstrates superior
-modelling accuracy when implemented even in moderately equipped computing
-environments such as laptops.
-
-The proposed method leads to the possibility of modelling other physical
-quantities in the cell geometry unhindered by computing limitations.
-Furthermore, high sample-rate models to handle highly dynamic load
-profiles can be deployed in future BMS applications. The scheme also
-empowers the \gls{rom} framework to tackle cells with slower dynamics and
-other chemistries with different rate-limiting mechanisms. The improved
-\gls{dra} method opens up a wide range of possibilities and brings the goal
-of physics-based battery model implementation in a high performance
-real-time BMS a step closer to realization.
+\section{Conclusions\label{sec:Conclusion}}  In   this  paper,   Singular  Value
+Decomposition of a  large Block-Hankel matrix is identified as  a key bottleneck
+in  the  classical  \gls{dra}  for   reduced-order  Li-ion  cell  modelling.  An
+improved  \gls{svd} scheme  is presented,  which  employs a  combination of  the
+Golyandina-Usevich  and Lanczos  algorithms.  The results  discussed in  Section
+\ref{sec:Results} demonstrate  the performance  improvement achieved by  the new
+method  without trading-off  model  fidelity.  At a  single  operating point  of
+\gls{soc} and temperature,  for a Hankel block size of  8000, \gls{rom} workflow
+incorporating  the improved  \gls{dra} is  approximately 100  times faster  than
+that  employing classical  DRA. Using  the machine  specifications in  Appenndix
+\ref{sec:Specifications-of-Workstation}, for 100  operating points (combinations
+of 10 \gls{soc} and temperature values), computing the \gls{rom} requires only 6
+hours using  the improved \gls{dra}  , whereas the classical  \gls{dra} consumes
+666  hours  (27  days).  Furthermore,  for the  same  block-size,  the  improved
+\gls{dra}  is  demonstrated  to  be  superior in  terms  of  memory  efficiency,
+drastically reducing the  memory requirement from 112 GB down  to 2 GB. Finally,
+the improved \gls{dra} demonstrates superior modelling accuracy when implemented
+even in moderately equipped computing environments such as laptops.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgment}
@@ -108,53 +72,6 @@ real-time BMS a step closer to realization.
 	\item[Fig. 8.]	 Time-domain simulation depicting solid surface concentrations at the boundary of positive electrode and separator.\\
 \end{description}
 
-
-
-\newpage
-\singlespacing
-
-\begin{table}[h]
-	\singlespacing
-	\centering
-	\caption{Salient Results - Classical vs. Improved \gls{dra} }
-	\label{table:salientresults}
-	\setlength{\extrarowheight}{1pt}
-	%\centering
-	\begin{tabular}{ c c c c }
-		\hline
-		\gls{rom} & Quantity 		& Classical & Improved \\
-		Condition		   &				  & \gls{dra} 		 & \gls{dra} 	  \\
-		\hline
-		\multirow{8}{1.22cm}{8000 Hankel Blocks}& Memory 		  & 111.80 GB	  & 2.14 GB  \\[-5pt]
-		                                        & \footnotesize (overall)		&			 & 		 \\
-		                                        & Memory 		  & 97.93 GB	  & 0.03 GB  \\[-5pt]
-		                                        & \footnotesize(\gls{svd} step)   	&			 & 		 \\
-		                                        & \gls{cpu} Time 		& 39.78 min   & 0.63 min  \\[-5pt]
-		                                        & \footnotesize(overall)    	&			 & 		 \\
-		                                        & \gls{cpu} Time 		& 39.30 min   & 0.14 min  \\[-5pt]
-		                                        & \footnotesize(\gls{svd} step)   	&			 & 		 \\[2.5pt]
-		\hline
-		\multirow{3}{1.22cm}{10 GB Memory Limit}& Block Size		  & 2500	  & 30000  \\[5pt]
-		                                        & Max. error & 1120\scriptsize $\text{ mol m}^{-\text{3}}$ &  13\scriptsize $\text{ mol m}^{-\text{3}}$ \\[-5pt]
-		                                        & in $c_{{s,e}_{pos}}$\scriptsize $(1,t)$ &  &     \\[5pt]
-		\hline
-	\end{tabular}
-\end{table}
-\newpage
-\begin{table}[h]
-	\caption{Specifications of workstation used}
-	\label{table:comp_spec}
-	\centering
-	\begin{tabular}{ l l }
-		\hline
-		Processor & Intel\textregistered\space  Xeon \textregistered\space E5-2637 v3 \\
-		Used Cores & 1 \\
-		\gls{cpu} Stepping & 2 \\
-		Clock Frequency & 3.50 GHz \\
-		Installed \gls{ram} & 500 GB \\
-		\hline
-	\end{tabular}
-\end{table}
 
 
 % achieve the latent  potential and wide applicability  of the
