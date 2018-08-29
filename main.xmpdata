@@ -1,0 +1,11 @@
+    \Title{Towards application of physics-based lithium ion battery models in electric vehicles : analysis, design and implementation}
+    \Author{Krishnakumar Gopalakrishnan}
+    \CoverDate{\today}
+    \Copyright{The copyright  of  this thesis  rests  with the  author  and is  made available  under a  Creative Commons  Attribution Non-Commercial  No Derivatives licence. Researchers are free to copy,  distribute or transmit the thesis on the condition  that they  attribute  it, that  they  do not  use  it for  commercial purposes and that they  do not alter, transform or build upon  it. For any reuse or redistribution,  researchers must make clear  to others the licence  terms of this work.}
+    \CopyrightURL{http://creativecommons.org/licenses/by-nc-sa/4.0/}
+    \Creator{LuaTeX + pdfx.sty with options \pdfxopts}
+    \Keywords{Lithium-ion batteries \sep electric vehicles \sep mathematical modelling}
+    \Publisher{Imperial College London}
+    \PublicationType{book}
+    \pdfxSetRGBcolorProfileDir{icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc}
+    \pdfxSetCMYKcolorProfileDir{icc_profiles/coated_FOGRA39L_argl.icc}

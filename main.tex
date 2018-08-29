@@ -4,8 +4,25 @@
 \RequirePackage{shellesc} % unified shell-escape interface
 \RequirePackage[debrief]{silence}
 \RequirePackage[l2tabu, orthodox]{nag}
+\providecommand{\pdfxopts}{a-1b}
+\immediate\write18{rm \jobname.xmpdata} % uncomment for Unix-based systems
+\begin{filecontents*}{\jobname.xmpdata}
+    \Title{Towards application of physics-based lithium ion battery models in electric vehicles : analysis, design and implementation}
+    \Author{Krishnakumar Gopalakrishnan}
+    \CoverDate{\today}
+    \Copyright{The copyright  of  this thesis  rests  with the  author  and is  made available  under a  Creative Commons  Attribution Non-Commercial  No Derivatives licence. Researchers are free to copy,  distribute or transmit the thesis on the condition  that they  attribute  it, that  they  do not  use  it for  commercial purposes and that they  do not alter, transform or build upon  it. For any reuse or redistribution,  researchers must make clear  to others the licence  terms of this work.}
+    \CopyrightURL{http://creativecommons.org/licenses/by-nc-sa/4.0/}
+    \Creator{LuaTeX + pdfx.sty with options \pdfxopts}
+    \Keywords{Lithium-ion batteries \sep electric vehicles \sep mathematical modelling}
+    \Publisher{Imperial College London}
+    \PublicationType{book}
+    \pdfxSetRGBcolorProfileDir{icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc}
+    \pdfxSetCMYKcolorProfileDir{icc_profiles/coated_FOGRA39L_argl.icc}
+\end{filecontents*}
 \documentclass[12pt,a4paper,oneside,openright]{book}
-
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{luatex}{pdflscape}
+% \usepackage[\pdfxopts]{pdfx}
 \input{Preamble/preamble}
 \makeglossaries % must be before starting to define any entries for the glossary. And, all glossary definitions (such as for symbols and any other custom glossaries) must come before this.
 % no hyperlink on first use for entries with category=acronym
@@ -13,12 +30,12 @@
 \setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
 \input{0_frontmatter/acronyms}
 \includeonly{%
-    1/chapter1,
-    2/chapter2,
-    3/chapter3,
-    4/chapter4,
-    5/chapter5,
-    6/chapter6,
+    introduction/intro,
+    litt_review/litt_review,
+    layer_opt/layer_opt,
+    dra/improved_dra,
+    spm_analysis/spm_analysis,
+    sys_id/sys_id,
     Appendices/appendix1,
     Appendices/appendix2,
 }%
@@ -31,6 +48,8 @@
 \pagenumbering{arabic}
 \noindent
 \begin{varwidth}[c]{0.4\textwidth}
+    % This  work  is  licensed  under  aCreative  Commons  ‘Attribution-NonCommercial-NoDerivs  3.0  Unported’licence
+    % https://www.imperial.ac.uk/research-and-innovation/support-for-staff/scholarly-communication/open-access/spiral/licences-and-policies/
     \includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}
 \end{varwidth}
 \hfill
@@ -86,12 +105,12 @@ this work.
 \makeatother
 \cleardoublepage
 
-\include{1/chapter1} % Introduction (to do later)
-\include{2/chapter2} % Literature Review
-\include{3/chapter3} % Layer Optimisation
-\include{4/chapter4} % Improved DRA
-\include{5/chapter5} % Analysis of SPM
-\include{6/chapter6} % New Electrolye Model
+\include{introduction/intro}          % Introduction
+\include{litt_review/litt_review}     % Literature Review
+\include{layer_opt/layer_opt}         % Layer Optimisation
+\include{dra/improved_dra}            % Improved DRA
+\include{spm_analysis/spm_analysis}   % Analysis of SPM
+\include{sys_id/sys_id}               % New Electrolye Model
 
 \backmatter
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)

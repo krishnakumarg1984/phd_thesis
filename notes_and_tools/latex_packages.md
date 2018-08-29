@@ -19,6 +19,7 @@ askinclude
 asyfig
 asypictureb
 atbegshi
+attachfile
 attachfile2
 attachfile2opts
 atveryend
@@ -117,6 +118,7 @@ easyformat
 easyreview
 efbox
 elements
+embedall
 embedfile
 embrac
 endfloat
@@ -145,6 +147,7 @@ fancypar
 fancyslides
 fancytabs
 fetchcls
+filecontents
 filehook
 filemod
 fitbox
@@ -185,6 +188,7 @@ hf-tikz
 hypcap
 hyperref
 hyperxmp
+hypgotoe
 impnattypo
 incgraph
 indentfirst
@@ -287,8 +291,10 @@ quotchap
 quoting
 ragged2e
 renditions
+repltext
 resizegather
 returntogrid
+rmannot
 romanbarpagenumber
 rotating
 rotfloat
@@ -381,3 +387,4 @@ xspace
 xurl
 xwatermark
 xymtex
+yt4pdf

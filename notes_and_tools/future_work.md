@@ -14,6 +14,7 @@
 - power input spm
 - dropcap
 - Black tombstone for sections
+- verapdf for pdfa validation
 
 - enhanced spm paper
 - enchanced spm with KF

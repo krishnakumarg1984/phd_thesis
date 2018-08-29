@@ -94,17 +94,21 @@ tlmgr install   \
     glossaries-extra \
     glossaries-german \
     graphics \
+    hyperref \
     hyphen-german \
     ifetex \
     iffont \
+    ifluatex \
     ifmtarg \
     ifoddpage \
     ifplatform \
     ifsym \
     iftex \
     ifthenx \
-    import \
+    ifxetex \
     impnattypo \
+    import \
+    inputenc \
     isodate \
     iwona \
     kerkis \
@@ -157,6 +161,7 @@ tlmgr install   \
     onlyamsmath \
     paracol \
     pdfpages \
+    pdftexcmds \
     pdfx \
     pgf \
     pgfplots \
@@ -175,6 +180,7 @@ tlmgr install   \
     stackengine \
     stix \
     stix2-otf \
+    stringenc \
     subfig \
     subfiles \
     subfloat \
@@ -186,6 +192,7 @@ tlmgr install   \
     tex-gyre \
     tex-gyre-math \
     textcase \
+    threeparttable \
     tikzscale \
     titlesec \
     tocbibind \
@@ -193,7 +200,6 @@ tlmgr install   \
     tracklang \
     translator \
     trimspaces \
-    threeparttable \
     txfonts \
     ucharcat \
     ulem \
@@ -216,7 +222,6 @@ tlmgr install   \
     xpatch \
     xstring \
     xunicode
-
 
 
 # Keep no backups (not required, simply makes cache bigger)
