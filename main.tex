@@ -9,9 +9,9 @@
 \begin{filecontents*}{\jobname.xmpdata}
     \Title{Towards application of physics-based lithium ion battery models in electric vehicles : analysis, design and implementation}
     \Author{Krishnakumar Gopalakrishnan}
-    \CoverDate{\today}
+    % \CoverDate{\today}
     \Copyright{The copyright  of  this thesis  rests  with the  author  and is  made available  under a  Creative Commons  Attribution Non-Commercial  No Derivatives licence. Researchers are free to copy,  distribute or transmit the thesis on the condition  that they  attribute  it, that  they  do not  use  it for  commercial purposes and that they  do not alter, transform or build upon  it. For any reuse or redistribution,  researchers must make clear  to others the licence  terms of this work.}
-    \CopyrightURL{http://creativecommons.org/licenses/by-nc-sa/4.0/}
+    \CopyrightURL{https://creativecommons.org/licenses/by-nc-nd/3.0/}
     \Creator{LuaTeX + pdfx.sty with options \pdfxopts}
     \Keywords{Lithium-ion batteries \sep electric vehicles \sep mathematical modelling}
     \Publisher{Imperial College London}
@@ -22,7 +22,7 @@
 \documentclass[12pt,a4paper,oneside,openright]{book}
 \PassOptionsToPackage{table}{xcolor}
 \PassOptionsToPackage{luatex}{pdflscape}
-% \usepackage[\pdfxopts]{pdfx}
+\usepackage[\pdfxopts]{pdfx}
 \input{Preamble/preamble}
 \makeglossaries % must be before starting to define any entries for the glossary. And, all glossary definitions (such as for symbols and any other custom glossaries) must come before this.
 % no hyperlink on first use for entries with category=acronym
@@ -31,13 +31,13 @@
 \input{0_frontmatter/acronyms}
 \includeonly{%
     introduction/intro,
-    litt_review/litt_review,
-    layer_opt/layer_opt,
-    dra/improved_dra,
-    spm_analysis/spm_analysis,
-    sys_id/sys_id,
-    Appendices/appendix1,
-    Appendices/appendix2,
+    % litt_review/litt_review,
+    % layer_opt/layer_opt,
+    % dra/improved_dra,
+    % spm_analysis/spm_analysis,
+    % sys_id/sys_id,
+    % Appendices/appendix1,
+    % Appendices/appendix2,
 }%
 \begin{document}
 \scrollmode
