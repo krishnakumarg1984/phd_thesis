@@ -37,6 +37,7 @@ $pdflatex = 'lualatex %O %S --interaction=batchmode -halt-on-error --shell-escap
 $pdf_mode = 4;
 $postscript_mode = $dvi_mode = 0;
 $clean_ext .= ' %R.ist %R.xdy';
+$ENV{'TZ'}='Europe/London';
 @default_files = ('main.tex');
 
 
