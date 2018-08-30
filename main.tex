@@ -1,34 +1,7 @@
 %! TEX program = lualatex
 % vim:nospell
 
-\RequirePackage{shellesc} % unified shell-escape interface
-\RequirePackage[debrief]{silence}
-\RequirePackage[l2tabu, orthodox]{nag}
-\providecommand{\pdfxopts}{a-3b,pdf17} % a-1a. a-1b
-\immediate\write18{rm \jobname.xmpdata} % uncomment for Unix-based systems
-\begin{filecontents*}{\jobname.xmpdata}
-    \Title{Computational modelling of lithium ion batteries for electric vehicle applications: analysis, design and implementation}
-    \Author{Krishnakumar Gopalakrishnan}
-    % \CoverDate{\today}
-    \Copyright{The copyright  of  this thesis  rests  with the  author  and is  made available  under a  Creative Commons  Attribution Non-Commercial  No Derivatives licence. Researchers are free to copy,  distribute or transmit the thesis on the condition  that they  attribute  it, that  they  do not  use  it for  commercial purposes and that they  do not alter, transform or build upon  it. For any reuse or redistribution,  researchers must make clear  to others the licence  terms of this work.}
-    \CopyrightURL{https://creativecommons.org/licenses/by-nc-nd/3.0/}
-    \Creator{LuaTeX + pdfx.sty with options \pdfxopts}
-    \Keywords{Lithium-ion batteries \sep electric vehicles \sep mathematical modelling}
-    \Publisher{Imperial College London}
-    \PublicationType{book}
-    \pdfxSetRGBcolorProfileDir{icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc}
-    \pdfxSetCMYKcolorProfileDir{icc_profiles/coated_FOGRA39L_argl.icc}
-\end{filecontents*}
-\documentclass[12pt,a4paper,oneside,openright]{book}
-\PassOptionsToPackage{table}{xcolor}
-\PassOptionsToPackage{luatex}{pdflscape}
-\usepackage[\pdfxopts]{pdfx}
-\input{Preamble/preamble}
-\makeglossaries % must be before starting to define any entries for the glossary. And, all glossary definitions (such as for symbols and any other custom glossaries) must come before this.
-% no hyperlink on first use for entries with category=acronym
-\glssetcategoryattribute{acronym}{nohyperfirst}{true} % https://tex.stackexchange.com/questions/434160/line-break-long-glossaries-entry-when-using-hyperref-and-latex-dvips-ps2pdf
-\setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
-\input{0_frontmatter/acronyms}
+\input{Preamble/preamble}  % full preamble, including metadata, documentclass, packages, fonts and custom commands
 \includeonly{%
     introduction/intro,
     litt_review/litt_review,
@@ -45,12 +18,12 @@
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 \frontmatter
-\pagenumbering{arabic}
+\pagenumbering{arabic} % Imperial College requirement that all pages must be in continuous arabic numbering
 \noindent
 \begin{varwidth}[c]{0.4\textwidth}
     % This  work  is  licensed  under  aCreative  Commons  ‘Attribution-NonCommercial-NoDerivs  3.0  Unported’licence
     % https://www.imperial.ac.uk/research-and-innovation/support-for-staff/scholarly-communication/open-access/spiral/licences-and-policies/
-    \includegraphics{9_backmatter/doclicense-CC-by-nc-nd.pdf}
+    \includegraphics{backmatter/doclicense-CC-by-nc-nd.pdf}
 \end{varwidth}
 \hfill
 \begin{varwidth}[c]{0.70\textwidth}
@@ -76,9 +49,9 @@ this work.
 
 %: ----------------------- list of figures/tables ------------------------
 \cleardoublepage
-\listoffigures  % print list of figures
+\listoffigures
 \cleardoublepage
-\listoftables   % print list of tables
+\listoftables
 \cleardoublepage
 \listofalgorithms
 \addcontentsline{toc}{chapter}{List of Algorithms}
@@ -100,6 +73,7 @@ this work.
 \endgroup
 \microtypesetup{protrusion=true} % re-enables protrusion
 
+% Required to maintain continuous arabic numbering
 \makeatletter
 \@mainmattertrue
 \makeatother
@@ -122,12 +96,13 @@ this work.
     \printbibliography
 \end{footnotesize}
 
+% Required to maintain continuous arabic numbering
 \makeatletter
 \@mainmattertrue
 \makeatother
 \cleardoublepage
 
-\begin{appendices} % Using appendices environment for more functionality
+\begin{appendices} % Using the appendices environment (from appendix package) for more functionality
     \crefalias{chapter}{appchap}
     \include{Appendices/appendix1}
     \include{Appendices/appendix2}

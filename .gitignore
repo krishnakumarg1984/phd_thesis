@@ -320,3 +320,5 @@ build_dir/
 
 *.mtc*
 *.ptc
+
+*.out.ps

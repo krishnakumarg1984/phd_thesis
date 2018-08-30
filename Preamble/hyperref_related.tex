@@ -4,7 +4,7 @@
 % \usepackage{footnotebackref} % Breaks footnotemark and footnotetext https://tex.stackexchange.com/questions/78423/how-to-use-the-footnotebackref-package-with-footnotemark-and-footnotetext
 % \usepackage{hyperref}
 
-% \usepackage[\pdfxopts]{pdfx}
+\usepackage[\pdfxopts]{pdfx}
 % \usepackage{hyperref} % comment if using the pdfx package
 \hypersetup{%
     % bookmarks=true,
@@ -16,25 +16,27 @@
     % pdfpagelabels,
     % pdfpagelayout = OneColumn
     % pdfpagemode = UseOutlines,
-    anchorcolor = black,
-    bookmarksdepth = 4,
-    bookmarksnumbered = true,
-    bookmarksopen = true,
+    anchorcolor        = black,
+    bookmarksdepth     = 4,
+    bookmarksnumbered  = true,
+    bookmarksopen      = true,
     bookmarksopenlevel = 0,
-    breaklinks = true,
-    citecolor = [RGB]{0,62,116}, % imperialblue
-    colorlinks = true,
-    final = true,
-    hyperfootnotes=false,
-    linkcolor = [RGB]{0,62,116}, % imperialblue
-    linktocpage,
-    pdfborderstyle={/S/U/W 1},
+    breaklinks         = true,
+    citecolor          = [RGB]{0,62,116}, % imperialblue
+    colorlinks         = true,
+    final              = true,
+    hyperfootnotes     = false,
+    linkcolor          = [RGB]{0,62,116}, % imperialblue
+    linktocpage        = true,
+    pdfborderstyle     = {/S/U/W 1},
     pdfdisplaydoctitle = false,
-    pdfmenubar=true,
-    pdfstartview={Fit},
-    pdftoolbar=true,
-    plainpages = false,
-    urlcolor  = [RGB]{0,62,116}, % imperialblue
+    pdflang            = {en-GB-oed},
+    pdfmenubar         = true,
+    pdfstartview       = {Fit},
+    pdftoolbar         = true,
+    plainpages         = false,
+    unicode            = true,
+    urlcolor           = [RGB]{0,62,116}, % imperialblue
 }%
 
 % \usepackage[ocgcolorlinks]{ocgx2} % viewer support is bad. Do not rely on this one.
