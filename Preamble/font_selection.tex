@@ -4,7 +4,7 @@
 
 % \setmainfont{LibertinusSerif}[%
 % Extension      = .otf,
-% Path           = fonts/,
+% Path           = ./textfonts/,
 % UprightFont    = *-Regular,
 % BoldFont       = *-Bold,
 % ItalicFont     = *-Italic,
@@ -18,7 +18,7 @@
 
 % \setsansfont{LibertinusSans}[%
 % Extension      = .otf,
-% Path           = fonts/,
+% Path           = ./textfonts/,
 % UprightFont    = *-Regular,
 % BoldFont       = *-Bold,
 % ItalicFont     = *-Italic,
@@ -26,16 +26,16 @@
 % Ligatures      = {TeX, Common},
 % ]%
 
-\setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
-}]{Libertinus Serif}
-\setsansfont{Libertinus Sans}
+% \setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
+% }]{Libertinus Serif}
+% \setsansfont{Libertinus Sans}
 
 \setmonofont{Latin Modern Mono}
 \usepackage{ragged2e} %  "The package should be loaded after the body font and size have been established  for example, after font packages have been loaded
 
-% % https://tex.stackexchange.com/questions/103379/minionpro-semibold-medium
-% \DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
-% \DeclareTextFontCommand{\textsb}{\sbseries}
+% https://tex.stackexchange.com/questions/103379/minionpro-semibold-medium
+\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+\DeclareTextFontCommand{\textsb}{\sbseries}
 
 \defaultfontfeatures{ Scale = MatchLowercase }
 \defaultfontfeatures[\rmfamily]{ Scale = 1}
