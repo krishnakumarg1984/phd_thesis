@@ -4,6 +4,11 @@
 % \usepackage{footnotebackref} % Breaks footnotemark and footnotetext https://tex.stackexchange.com/questions/78423/how-to-use-the-footnotebackref-package-with-footnotemark-and-footnotetext
 % \usepackage{hyperref}
 
+% \makeatletter
+% \def\extractpdftexversion#1-#2-#3 #4\@nil{#3}
+% \edef\pdftexversion{\expandafter\extractpdftexversion\pdftexbanner\@nil}
+% \makeatother
+
 \usepackage[\pdfxopts]{pdfx}
 % \usepackage{hyperref} % comment if using the pdfx package
 \hypersetup{%
@@ -11,10 +16,12 @@
     % hyperfigures,
     % hyperindex = true,
     % pagebackref,
-    % pdfauthor = {Krishnakumar Gopalakrishnan},
+    % pdfcontactemail    = {krishnak at vt dot edu},
+    % pdfcopyright       = {\textcopyright{} 2018 by Krishnakumar Gopalakrishnan},
     % pdflang=Englisch,
+    % pdflicenseurl      = {https://creativecommons.org/licenses/by-nc-nd/3.0/},
     % pdfpagelabels,
-    % pdfpagelayout = OneColumn
+    % pdfpagelayout = OneColumn,
     % pdfpagemode = UseOutlines,
     anchorcolor        = black,
     bookmarksdepth     = 4,
@@ -28,11 +35,16 @@
     hyperfootnotes     = false,
     linkcolor          = [RGB]{0,62,116}, % imperialblue
     linktocpage        = true,
+    pdfauthor          = {\textcopyright{} Krishnakumar Gopalakrishnan},
     pdfborderstyle     = {/S/U/W 1},
-    pdfdisplaydoctitle = false,
+    pdfcenterwindow    = true,
+    pdfcreator         = {Neovim 0.3.1 with the vimtex plugin},
+    pdfdisplaydoctitle = true,
+    pdffitwindow       = true,
     pdflang            = {en-GB-oed},
-    pdfmenubar         = true,
+    pdfproducer        = {LuaTeX 1.07 + pdfx.sty with options \pdfxopts},
     pdfstartview       = {Fit},
+    pdftitle           = {Computational modelling of lithium ion batteries for electric vehicle applications: analysis, design and implementation},
     pdftoolbar         = true,
     plainpages         = false,
     unicode            = true,
