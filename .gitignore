@@ -322,3 +322,4 @@ build_dir/
 *.ptc
 
 *.out.ps
+*.xmpdata

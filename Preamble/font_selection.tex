@@ -1,10 +1,41 @@
 %!TEX root = ../main.tex
 % vim:nospell
 
-%%%%%%%%%% font selection %%%%%%%%%%
+
+% \setmainfont{LibertinusSerif}[%
+% Extension      = .otf,
+% Path           = fonts/,
+% UprightFont    = *-Regular,
+% BoldFont       = *-Bold,
+% ItalicFont     = *-Italic,
+% BoldItalicFont = *-BoldItalic,
+% Numbers        = {Proportional},
+% Ligatures      = {TeX, Common},
+% FontFace       = {sb}{n}{*-Semibold},
+% FontFace       = {sb}{it}{*-SemiboldItalic},
+% ]%
+
+
+% \setsansfont{LibertinusSans}[%
+% Extension      = .otf,
+% Path           = fonts/,
+% UprightFont    = *-Regular,
+% BoldFont       = *-Bold,
+% ItalicFont     = *-Italic,
+% Numbers        = {Proportional},
+% Ligatures      = {TeX, Common},
+% ]%
+
 \setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
 }]{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont[Scale=MatchLowercase]{Latin Modern Mono}
+
+\setmonofont{Latin Modern Mono}
 \usepackage{ragged2e} %  "The package should be loaded after the body font and size have been established  for example, after font packages have been loaded
 
+% % https://tex.stackexchange.com/questions/103379/minionpro-semibold-medium
+% \DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+% \DeclareTextFontCommand{\textsb}{\sbseries}
+
+\defaultfontfeatures{ Scale = MatchLowercase }
+\defaultfontfeatures[\rmfamily]{ Scale = 1}
