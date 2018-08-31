@@ -1,0 +1,29 @@
+% -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
+
+\begin{table}[!htbp]
+    \renewcommand{\thetable}{\arabic{table}}
+    \caption
+    [%
+    Theoretical  capacity \&  usable energy  of a  Li-ion cell  for a  few layer
+    choices under a \SI{60}{\ampere} galvanostatic discharge.
+    ]
+    {%
+        Theoretical capacity and usable energy of a Li-ion cell (with parameters
+        given  in  \cref{tbl:CellParams})  for  a  few  layer  choices  under  a
+        \SI{60}{\ampere} galvanostatic discharge.
+    }%
+    \label{tbl:CC_discharge_curves_table}
+    \centering
+    \begin{tabular}{@{} S[table-format=2.0] S[table-format=2.2] S[table-format=1.2] S[table-format=3.2] S[table-format=2.2] @{}}
+        \toprule
+        \multicolumn{1}{@{} l}{$n$} & \multicolumn{1}{c}{\footnotesize \makecell{$Q_\mathrm{n}$ \\ (\si{Ah})}} & \multicolumn{1}{c}{\footnotesize C-rate} & \multicolumn{1}{c}{\footnotesize \makecell{Usable \\ Energy \si{(Wh)}}} & \multicolumn{1}{c @{}}{\footnotesize \makecell{SOC \\ (\si{\percent})}} \\
+        \midrule
+        90 & 48.25 & 1.24 & 166.46 & 9.84  \\
+        70 & 53.99 & 1.11 & 184.80 & 10.26 \\
+        50 & 59.73 & 1.00 & 195.47 & 13.51 \\
+        30 & 65.47 & 0.92 & 101.20 & 58.95 \\
+        10 & 71.21 & 0.84 & 10.15  & 96.22 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
