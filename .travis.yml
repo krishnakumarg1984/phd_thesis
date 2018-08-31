@@ -7,8 +7,8 @@ notifications:
     on_success: never
 cache:
   directories:
-  - "/tmp/texlive"
-  - "$HOME/.texlive"
+  # - "/tmp/texlive"
+  # - "$HOME/.texlive"
   - "$HOME/.cache/pip"
 script:
 - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
@@ -29,7 +29,7 @@ before_install:
 - chmod +x dropbox_uploader.sh
 install:
 - source ./texlive_install.sh
-- pip install --user -U pip
+- pip install --user pip
 - pip install --user Pygments
 env:
   global:

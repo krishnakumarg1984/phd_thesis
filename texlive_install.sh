@@ -119,8 +119,6 @@ tlmgr install   \
     labelschanged \
     latexmk \
     libertine \
-    libertinus \
-    libertinus-otf \
     libertinust1math \
     lineno \
     listings \

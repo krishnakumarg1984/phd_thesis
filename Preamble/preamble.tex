@@ -17,16 +17,10 @@
 
 \input{Preamble/standard_packages}
 
-\usepackage[no-math,silent]{fontspec} % after graphicx ; no-math option so that math-handling is left to unicode-math; silent to completely suppress all warnings
+\usepackage[no-math]{fontspec} % after graphicx ; no-math option so that math-handling is left to unicode-math; silent to completely suppress all warnings (even in log file)
 \usepackage[warnings-off={mathtools-colon}]{unicode-math}
 
-\input{Preamble/font_selection.tex} % for text-fonts only
-
-\setmathfont[bold-style=ISO]{Libertinus Math} % https://github.com/libertinus-fonts/libertinus/issues/20
-
-% \setmathfont[math-style=upright,range={`e,`i}]{Latin Modern Math}
-% \setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{STIX2Math.otf}
-\setmathfont[range={\mathunder,\triangleq,\underbrace},Scale=MatchUppercase]{Latin Modern Math}
+\input{Preamble/font_selection.tex}
 
 \usepackage[british]{babel} % with british, we get OUP hyphenation material for free
 \usepackage[final,activate={true,nocompatibility},factor=1100,stretch=10,shrink=10,babel=true]{microtype} % if using option babel=true, babel must be loaded before microtype

@@ -1,30 +1,31 @@
 %!TEX root = ../main.tex
 % vim:nospell
 
-
-% \setmainfont{LibertinusSerif}[%
-% Extension      = .otf,
-% Path           = ./textfonts/,
-% UprightFont    = *-Regular,
-% BoldFont       = *-Bold,
-% ItalicFont     = *-Italic,
-% BoldItalicFont = *-BoldItalic,
-% Numbers        = {Proportional},
-% Ligatures      = {TeX, Common},
+\setmainfont{LibertinusSerif}[%
+Extension         = .otf,
+Path              = ./fonts/,
+UprightFont       = *-Regular,
+BoldFont          = *-Bold,
+ItalicFont        = *-Italic,
+BoldItalicFont    = *-BoldItalic,
+Numbers           = {Proportional},
+Ligatures         = {TeX, Common},
+SmallCapsFeatures = {Letters=SmallCaps},
 % FontFace       = {sb}{n}{*-Semibold},
 % FontFace       = {sb}{it}{*-SemiboldItalic},
-% ]%
+]%
 
-
-% \setsansfont{LibertinusSans}[%
-% Extension      = .otf,
-% Path           = ./textfonts/,
-% UprightFont    = *-Regular,
-% BoldFont       = *-Bold,
-% ItalicFont     = *-Italic,
-% Numbers        = {Proportional},
-% Ligatures      = {TeX, Common},
-% ]%
+\setsansfont{LibertinusSans}[%
+Extension         = .otf,
+Path              = ./fonts/,
+UprightFont       = *-Regular,
+BoldFont          = *-Bold,
+ItalicFont        = *-Italic,
+BoldItalicFont    = *-BoldItalic,
+Numbers           = {Proportional},
+Ligatures         = {TeX, Common},
+SmallCapsFeatures = {Letters = SmallCaps},
+]%
 
 % \setmainfont[Numbers={Proportional},Ligatures={TeX, Common%, Historic, Contextual, Rare, Discretionary
 % }]{Libertinus Serif}
@@ -33,9 +34,26 @@
 \setmonofont{Latin Modern Mono}
 \usepackage{ragged2e} %  "The package should be loaded after the body font and size have been established  for example, after font packages have been loaded
 
-% https://tex.stackexchange.com/questions/103379/minionpro-semibold-medium
-\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
-\DeclareTextFontCommand{\textsb}{\sbseries}
+% % https://tex.stackexchange.com/questions/103379/minionpro-semibold-medium
+% \DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+% \DeclareTextFontCommand{\textsb}{\sbseries}
 
 \defaultfontfeatures{ Scale = MatchLowercase }
 \defaultfontfeatures[\rmfamily]{ Scale = 1}
+
+% \setmathfont[bold-style = ISO]{LibertinusMath-Regular.otf} % https://github.com/libertinus-fonts/libertinus/issues/20
+\setmathfont{LibertinusMath-Regular.otf}[%
+Path       = ./fonts/,
+bold-style = ISO, % https://github.com/libertinus-fonts/libertinus/issues/20
+]%
+
+\setmathfont{libertinusmath-bold.otf}[%
+Path       = ./fonts/,
+bold-style = ISO, % https://github.com/libertinus-fonts/libertinus/issues/20
+version    = bold,
+]%
+
+% \setmathfont[math-style=upright,range={`e,`i}]{Latin Modern Math}
+% \setmathfont[range={\mathunder,\triangleq},Scale=MatchUppercase]{STIX2Math.otf}
+\setmathfont[range = {\mathunder,\triangleq,\underbrace},Scale = MatchUppercase]{Latin Modern Math}
+
