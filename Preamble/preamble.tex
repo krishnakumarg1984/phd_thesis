@@ -39,10 +39,10 @@
 
 \usepackage{chemformula} % uses tikz arrows
 
-% \addbibresource{backmatter/thesis_refs.bib}
-\ShellEscape{biber --tool backmatter/thesis_refs.bib} % deduplicate bibtex entries
-\addbibresource{backmatter/thesis_refs_bibertool.bib}
-% \setupbibentry{backmatter/thesis_refs.bib}
+% \addbibresource{chapters/backmatter/thesis_refs.bib}
+\ShellEscape{biber --tool chapters/backmatter/thesis_refs.bib} % deduplicate bibtex entries
+\addbibresource{chapters/backmatter/thesis_refs_bibertool.bib}
+% \setupbibentry{chapters/backmatter/thesis_refs.bib}
 
 \input{Preamble/hyperref_related} % hyperref, glossaries etc.
 \input{Preamble/customcommands}
@@ -71,4 +71,4 @@
 % no hyperlink on first use for entries with category=acronym
 \glssetcategoryattribute{acronym}{nohyperfirst}{true} % https://tex.stackexchange.com/questions/434160/line-break-long-glossaries-entry-when-using-hyperref-and-latex-dvips-ps2pdf
 \setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
-\input{frontmatter/acronyms}
+\input{chapters/frontmatter/acronyms}

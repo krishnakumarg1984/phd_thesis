@@ -3,14 +3,14 @@
 
 \input{Preamble/preamble}  % full preamble, including metadata, documentclass, packages, fonts and custom commands
 \includeonly{%
-    introduction/intro,
-    litt_review/litt_review,
-    layer_opt/layer_opt,
-    dra/improved_dra,
-    spm_analysis/spm_analysis,
-    sys_id/sys_id,
-    Appendices/appendix1,
-    Appendices/appendix2,
+    chapters/introduction/intro,
+    chapters/litt_review/litt_review,
+    chapters/layer_opt/layer_opt,
+    chapters/dra/improved_dra,
+    chapters/spm_analysis/spm_analysis,
+    chapters/sys_id/sys_id,
+    chapters/Appendices/appendix1,
+    chapters/Appendices/appendix2,
 }%
 \begin{document}
 \scrollmode
@@ -23,7 +23,7 @@
 \begin{varwidth}[c]{0.4\textwidth}
     % This  work  is  licensed  under  aCreative  Commons  ‘Attribution-NonCommercial-NoDerivs  3.0  Unported’licence
     % https://www.imperial.ac.uk/research-and-innovation/support-for-staff/scholarly-communication/open-access/spiral/licences-and-policies/
-    \includegraphics{backmatter/doclicense-CC-by-nc-nd.pdf}
+    \includegraphics{chapters/backmatter/doclicense-CC-by-nc-nd.pdf}
 \end{varwidth}
 \hfill
 \begin{varwidth}[c]{0.70\textwidth}
@@ -79,12 +79,12 @@ this work.
 \makeatother
 \cleardoublepage
 
-\include{introduction/intro}          % Introduction
-\include{litt_review/litt_review}     % Literature Review
-\include{layer_opt/layer_opt}         % Layer Optimisation
-\include{dra/improved_dra}            % Improved DRA
-\include{spm_analysis/spm_analysis}   % Analysis of SPM
-\include{sys_id/sys_id}               % New Electrolye Model
+\include{chapters/introduction/introduction} % Introduction
+\include{chapters/litt_review/litt_review}   % Literature Review
+\include{chapters/layer_opt/layer_opt}       % Layer Optimisation
+\include{chapters/dra/dra}                   % Improved DRA
+\include{chapters/spm_analysis/spm_analysis} % Analysis of SPM
+\include{chapters/sys_id/sys_id}             % New Electrolye Model
 
 \backmatter
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
@@ -104,8 +104,8 @@ this work.
 
 \begin{appendices} % Using the appendices environment (from appendix package) for more functionality
     \crefalias{chapter}{appchap}
-    \include{Appendices/appendix1}
-    \include{Appendices/appendix2}
+    \include{chapters/Appendices/appendix1}
+    \include{chapters/Appendices/appendix2}
 \end{appendices}
 
 \batchmode
