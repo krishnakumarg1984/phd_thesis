@@ -2,16 +2,16 @@
 % vim:nospell
 
 \input{Preamble/preamble}  % full preamble, including metadata, documentclass, packages, fonts and custom commands
-\includeonly{%
-    chapters/introduction/intro,
-    chapters/litt_review/litt_review,
-    chapters/layer_opt/layer_opt,
-    chapters/dra/improved_dra,
-    chapters/spm_analysis/spm_analysis,
-    chapters/sys_id/sys_id,
-    chapters/Appendices/appendix1,
-    chapters/Appendices/appendix2,
-}%
+% \includeonly{%
+%     chapters/introduction/intro,
+%     chapters/litt_review/litt_review,
+%     chapters/layer_opt/layer_opt,
+%     chapters/dra/improved_dra,
+%     chapters/spm_analysis/spm_analysis,
+%     chapters/sys_id/sys_id,
+%     chapters/Appendices/appendix1,
+%     chapters/Appendices/appendix2,
+% }%
 \begin{document}
 \scrollmode
 
@@ -79,12 +79,12 @@ this work.
 \makeatother
 \cleardoublepage
 
-\include{chapters/introduction/introduction} % Introduction
-\include{chapters/litt_review/litt_review}   % Literature Review
-\include{chapters/layer_opt/layer_opt}       % Layer Optimisation
-\include{chapters/dra/dra}                   % Improved DRA
-\include{chapters/spm_analysis/spm_analysis} % Analysis of SPM
-\include{chapters/sys_id/sys_id}             % New Electrolye Model
+\input{chapters/introduction/introduction} % Introduction
+\input{chapters/litt_review/litt_review}   % Literature Review
+\input{chapters/layer_opt/layer_opt}       % Layer Optimisation
+\input{chapters/dra/dra}                   % Improved DRA
+\input{chapters/spm_analysis/spm_analysis} % Analysis of SPM
+\input{chapters/sys_id/sys_id}             % New Electrolye Model
 
 \backmatter
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
