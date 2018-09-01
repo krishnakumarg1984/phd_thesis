@@ -10,7 +10,7 @@ cache:
   - "/tmp/texlive"
   - "$HOME/.texlive"
   - "$HOME/.cache/pip"
-  # - "$HOME/texmf"
+  - "$HOME/texmf"
 script:
 - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
 # - latexmk -f --shell-escape --bibtex -pdf -interaction=nonstopmode -halt-on-error main.tex # force making the pdf

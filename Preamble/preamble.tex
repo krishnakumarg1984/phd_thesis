@@ -1,9 +1,11 @@
-%!TEX root = ../../main.tex
+%!TEX root = ../main.tex
 % vim:nospell
 
 \RequirePackage{shellesc} % unified shell-escape interface
 \RequirePackage[debrief]{silence}
 \RequirePackage[l2tabu, orthodox]{nag}
+\RequirePackage{xstring}
+\StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
 \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
 \immediate\write18{rm \jobname.xmpdata} % comment for non-*nix systems
 \begin{filecontents*}{\jobname.xmpdata}
