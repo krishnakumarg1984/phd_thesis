@@ -1,0 +1,7 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+% \renewcommand*{\glstextformat}[1]{\textsf{#1}}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % link coloring to match normal text, ie black
+\preto\chapter{\glsresetall} % expand acronyms every chapter https://tex.stackexchange.com/questions/435617/glossaries-expand-acronyms-for-first-time-use-within-each-chapter/435680#435680
+

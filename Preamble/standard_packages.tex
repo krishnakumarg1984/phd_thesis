@@ -9,35 +9,35 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{anyfontsize}              % typically for thesis use; fancy chapter font size and shading
-\usepackage[title,titletoc]{appendix} % add appendices
+\usepackage{anyfontsize} % typically for thesis use; fancy chapter font size and shading
+\usepackage{appendix}    % add appendices
 
-\usepackage[backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true,backrefstyle=three]{biblatex} % seems to have strong dependence on csquotes?
+\usepackage{biblatex}    % seems to have strong dependence on csquotes?
 \usepackage{booktabs}
 
-\usepackage[margin=10pt,font=small,labelfont={bf},labelsep=quad]{caption} % for improved layout of figure captions with extra margin, smaller font than text
+\usepackage{caption}     % for improved layout of figure captions with extra margin, smaller font than text
 \usepackage{checkend}
 
-\usepackage{diffcoeff} % looks pretty useful for any math-oriented document. Leaving it here
+\usepackage{diffcoeff}   % looks pretty useful for any math-oriented document. Leaving it here
 
-\usepackage[normal]{engord}
-\usepackage[inline]{enumitem}
+\usepackage{engord}
+\usepackage{enumitem}
 
-\usepackage{fancyhdr} % Define custom header (before hyperref)
-\usepackage[draft]{fixme}
+\usepackage{fancyhdr}    % Define custom header (before hyperref)
+\usepackage{fixme}
 \usepackage{flafter}
-\usepackage[bottom]{footmisc} % typically for thesis use;
+\usepackage{footmisc}    % typically for thesis use;
 
-\usepackage[luatex,paper=a4paper,hmarginratio=1:1, vmarginratio=1:1, scale=0.75]{geometry}
-\usepackage[local,mark]{gitinfo2}
-\usepackage{graphicx} % important to load before fontspec
+\usepackage{geometry}
+\usepackage{gitinfo2}
+\usepackage{graphicx}    % important to load before fontspec
 
 \usepackage{labelschanged}
 \usepackage{lualatex-math}
 
 \usepackage{makecell}
 \usepackage{mathtools}
-\usepackage[frac,vfrac,multskip]{mathfixs}
+\usepackage{mathfixs}
 \usepackage{multicol}
 \usepackage{multirow}
 
@@ -45,16 +45,15 @@
 
 \usepackage{setspace} % Define line spacing
 
-\usepackage[separate-uncertainty = true,multi-part-units=single,detect-all]{siunitx}
+\usepackage{siunitx}
 \usepackage{subcaption}
 
 \usepackage{titlesec}  % typically for thesis use;
 \usepackage{titletoc}  % typically for thesis use;
 \usepackage{threeparttable}
-\usepackage[nottoc]{tocbibind} % typically for thesis use; correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
+\usepackage{tocbibind} % typically for thesis use; correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
 
-\usepackage[normalem]{ulem}
-% \usepackage{url}
+\usepackage{ulem}
 
 \usepackage{varwidth}
 
@@ -88,3 +87,4 @@
 % \usepackage{tablefootnote}
 % \usepackage{tabularx}
 % \usepackage[table]{xcolor} % loaded by pdfx package (if used) cannot explicitly load colortbl package either before or after
+% \usepackage{url}

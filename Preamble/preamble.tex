@@ -12,40 +12,66 @@
     \input{Preamble/metadata}
 \end{filecontents*}
 
-\documentclass[12pt,a4paper,oneside,openright]{book} % using the book document class
-
 \PassOptionsToPackage{table}{xcolor}      % necessitated by the pdfx package
 \PassOptionsToPackage{luatex}{pdflscape}
 \PassOptionsToPackage{pdfa}{hyperref}
 
+% Pass options to standard packages whenever they get loaded
+\PassOptionsToPackage{title,titletoc}{appendix}
+\PassOptionsToPackage{makeroom}{cancel}
+\PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true,backrefstyle=three}{biblatex}
+\PassOptionsToPackage{margin=10pt,font=small,labelfont={bf},labelsep=quad}{caption}
+\PassOptionsToPackage{normal}{engord}
+\PassOptionsToPackage{inline}{enumitem}
+\PassOptionsToPackage{draft}{fixme}
+\PassOptionsToPackage{bottom}{footmisc}
+\PassOptionsToPackage{luatex,paper=a4paper,hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
+\PassOptionsToPackage{local,mark}{gitinfo2}
+\PassOptionsToPackage{frac,vfrac,multskip}{mathfixs}
+\PassOptionsToPackage{section}{placeins}
+\PassOptionsToPackage{separate-uncertainty = true,multi-part-units=single,detect-all}{siunitx}
+\PassOptionsToPackage{nottoc}{tocbibind}
+\PassOptionsToPackage{normalem}{ulem}
+\PassOptionsToPackage{no-math,quiet}{fontspec}
+\PassOptionsToPackage{warnings-off={mathtools-colon}}{unicode-math}
+\PassOptionsToPackage{british}{babel}
+\PassOptionsToPackage{final,activate={true,nocompatibility},factor=1100,stretch=10,shrink=10,babel=true}{microtype}
+\PassOptionsToPackage{british}{selnolig}
+\PassOptionsToPackage{newfloat=true}{minted}
+\PassOptionsToPackage{minted,most}{tcolorbox}
+\PassOptionsToPackage{modifier={by-nc-nd}}{doclicense}
+
+\documentclass[12pt,a4paper,oneside,openright]{book} % using the book document class
+
 %%%%%%%%%% \usepackage list here %%%%%%%%%%
+
 \usepackage{algpseudocode}  % http://ctan.org/pkg/algorithmicx
 \usepackage{bigints}
-\usepackage[makeroom]{cancel}
+\usepackage{cancel}
 \usepackage{pdfpages}
 \usepackage{tabstackengine}
 
 \input{Preamble/standard_packages} % a bit specific to luatex; including biblatex
 
-\usepackage[no-math,quiet]{fontspec} % after graphicx ; no-math option so that math-handling is left to unicode-math; silent to completely suppress all warnings (even in log file)
-\usepackage[warnings-off={mathtools-colon}]{unicode-math}
+\usepackage{fontspec} % after graphicx ; no-math option so that math-handling is left to unicode-math; silent to completely suppress all warnings (even in log file)
+\usepackage{unicode-math}
 
 \input{Preamble/font_selection.tex}
 
-\usepackage[british]{babel} % with british, we get OUP hyphenation material for free
-\usepackage[final,activate={true,nocompatibility},factor=1100,stretch=10,shrink=10,babel=true]{microtype} % if using option babel=true, babel must be loaded before microtype
-\usepackage[british]{selnolig} % if using babel, this package should go after loading babel
+\usepackage{babel} % with british, we get OUP hyphenation material for free
+\usepackage{microtype} % if using option babel=true, babel must be loaded before microtype
+\usepackage{selnolig} % if using babel, this package should go after loading babel
 
 % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
 \usepackage{float}
 
 % \usepackage[draft=true,newfloat=true]{minted}
 % \usepackage[minted]{tcolorbox}
-\usepackage[newfloat=true]{minted}
-\usepackage[minted,most]{tcolorbox}
+\usepackage{minted}
+\usepackage{tcolorbox}
 
 \usepackage{csquotes} % The fvextra package is loaded by minted, so you should load minted before csquotes
-\usepackage[modifier={by-nc-nd}]{doclicense} % depends on csquotes
+\usepackage{doclicense} % depends on csquotes
 
 \usepackage{chemformula} % uses tikz arrows
 
@@ -56,7 +82,22 @@
 
 \input{Preamble/hyperref_related} % hyperref, glossaries etc.
 
-\input{Preamble/customcommands}
+\input{Preamble/custom_battery_specific_cmds}
+\input{Preamble/custom_colors}
+\input{Preamble/custom_genpurpose_cmds}
+\input{Preamble/custom_cmds_pkg_minted}
+\input{Preamble/custom_cmds_pkg_cancel} % uses a predefined color
+\input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
+\input{Preamble/custom_cmds_graphics}
+\input{Preamble/custom_cmds_pkg_enumitem}
+\input{Preamble/custom_cmds_pkg_fancyheader}
+\input{Preamble/custom_cmds_pkg_siunitx}
+\input{Preamble/custom_cmds_pkg_fxnote}
+\input{Preamble/custom_cmds_pkg_diffcoeff}
+\input{Preamble/custom_cmds_tabularmaterial}
+\input{Preamble/custom_cmds_pkg_cleveref}
+\input{Preamble/custom_cmds_pkg_gitinfo2}
+\input{Preamble/custom_cmds_pkg_glossaries.tex}
 
 % https://tex.stackexchange.com/questions/50830/do-i-have-to-care-about-bad-boxes/50850#50850
 \tolerance=1414

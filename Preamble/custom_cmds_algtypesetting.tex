@@ -1,0 +1,176 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+% For unbroken lines in algorithmicx/algpseudocode when typesetting display math
+
+% other alternative: https://tex.stackexchange.com/questions/110431/problems-with-vertical-lines-in-algorithmicx?noredirect=1&lq=1
+% https://tex.stackexchange.com/questions/301462/why-are-vertical-rules-dashed-sometimes-with-algorithmic-package
+%%%%%%%%%% https://tex.stackexchange.com/questions/350399/indentation-scope-lines-broken-in-algpseudocode%%%%%%%%%
+\newcommand*{\algrule}[1][\algorithmicindent]{\hspace*{.2em}{\color{cbrewerdarkgray}\vrule\vrule
+width 0pt height \baselineskip depth .1618\baselineskip\hspace*{\dimexpr#1-.5em}}}
+
+\makeatletter
+\newcount\ALG@printindent@tempcnta
+\def\ALG@printindent{%
+    \ifnum \theALG@nested>0% is there anything to print
+        \ifx\ALG@text\ALG@x@notext% is this an end group without any text?
+            % do nothing
+    \else
+        \unskip
+        % draw a rule for each indent level
+        \ALG@printindent@tempcnta=1
+        \loop
+        \algrule[\csname ALG@ind@\the\ALG@printindent@tempcnta\endcsname]%
+        \advance \ALG@printindent@tempcnta 1
+        \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax% can't do <=, so add one to RHS and use < instead
+            \repeat
+        \fi
+    \fi
+}%
+% needs etoolbox, but this should have been already loaded with glossaries
+\patchcmd{\ALG@doentity}{\noindent\hskip\ALG@tlm}{\ALG@printindent}{}{\errmessage{failed to patch}}
+\makeatother
+
+\AtBeginEnvironment{algorithmic}{\lineskip0pt}
+%%%%%%%%%% https://tex.stackexchange.com/questions/350399/indentation-scope-lines-broken-in-algpseudocode%%%%%%%%%
+
+
+\algnewcommand\algorithmicinput{\textbf{Initialise:}}
+\algnewcommand\Initialise{\item[\algorithmicinput]}
+
+\algnewcommand\algorithmicdata{\textbf{User data:}}
+\algnewcommand\Userdata{\item[\algorithmicdata]}
+
+\algnewcommand\algorithmicfulllinecomment{\qquad\quad  \scriptsize \textit{Note:}}
+\algnewcommand\FullComment{\item[\algorithmicfulllinecomment]}
+
+\makeatletter
+\algrenewcommand\ALG@beginalgorithmic{\footnotesize}
+\algrenewcommand\algorithmiccomment[2][\footnotesize]{{#1\hfill\(\triangleright\) #2}}
+\makeatother
+
+\algblockdefx[NAME]{ISR}{END}%
+[2][Unknown]{\textbf{begin} \textproc{Interrupt Service Routine} #1(#2)}%
+{\textbf{return} \Comment[\footnotesize]{resume suspended line in \textsc{Main()}}}
+
+\algblockdefx[NAME]{OutputEqn}{EndOutputEqn}%
+[2][\textbf{x}]{\textbf{subroutine} \textproc{ComputeCellVoltage}(#2)}%
+{\textbf{return} $V_\text{cell}$ \Comment[\footnotesize]{resume suspended line in \textproc{Simulate\gls{spm}}}}
+
+\newsavebox{\algboxA}
+\newsavebox{\algboxB}
+
+\makeatletter
+\@addtoreset{algorithm}{chapter}% algorithm counter resets every chapter
+\makeatother
+\renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}% Algorithm # is <chapter>.<algorithm>
+
+\providecommand\algorithmname{algorithm}
+\captionsetup[ruled]{font=small,labelfont={bf},labelsep=quad}
+
+\newcommand{\tempcaption}{}% stores the caption
+\newcommand{\templabel}{}% stores the label
+
+\newenvironment{customalgo}[3][0.7\textwidth]
+{%
+    \begin{minipage}{#1}
+        \begin{algorithm}[H]
+            \centering
+            \gdef\tempcaption{#2}% store the caption so we can use it later
+            \gdef\templabel{#3}% store the label so we can use it later
+            \begin{algorithmic}[1]
+            }%
+            {%
+            \end{algorithmic}
+            \caption{\tempcaption}% use the stored caption
+            \label{\templabel}
+        \end{algorithm}
+    \end{minipage}
+    % \smallskip
+}%
+
+% extent of line-spacing in algorithms
+\let\Algorithm\algorithm
+\renewcommand\algorithm[1][]{\Algorithm[#1]\setstretch{1.2390625}}
+
+% % https://tex.stackexchange.com/questions/64674/coloring-lines-in-an-algorithm
+% \makeatletter
+% \newcommand{\algcolor}[2]{%
+%     \hskip-\ALG@thistlm\colorbox{#1}{\parbox{\dimexpr\linewidth-2\fboxsep}{\hskip\ALG@thistlm\relax #2}}%
+% }
+% \newcommand{\algemph}[1]{\algcolor{cbrewerintergray}{#1}}
+% \makeatother
+
+
+%  https://tex.stackexchange.com/questions/64674/coloring-lines-in-an-algorithm
+\makeatletter
+% code borrowed from Andrew Stacey; See
+% https://tex.stackexchange.com/a/50054/3954
+\tikzset{%
+    remember picture with id/.style={%
+        remember picture,
+        overlay,
+        save picture id=#1,
+    },
+    save picture id/.code={%
+        \edef\pgf@temp{#1}%
+        \immediate\write\pgfutil@auxout{%
+        \noexpand\savepointas{\pgf@temp}{\pgfpictureid}}%
+    },
+    if picture id/.code args={#1#2#3}{%
+        \@ifundefined{save@pt@#1}{%
+            \pgfkeysalso{#3}%
+            }{
+            \pgfkeysalso{#2}%
+        }
+    }
+}
+
+\def\savepointas#1#2{%
+    \expandafter\gdef\csname save@pt@#1\endcsname{#2}%
+}
+
+\def\tmk@labeldef#1,#2\@nil{%
+    \def\tmk@label{#1}%
+    \def\tmk@def{#2}%
+}
+
+\tikzdeclarecoordinatesystem{pic}{%
+    \pgfutil@in@,{#1}%
+    \ifpgfutil@in@%
+        \tmk@labeldef#1\@nil
+    \else
+        \tmk@labeldef#1,(0pt,0pt)\@nil
+    \fi
+    \@ifundefined{save@pt@\tmk@label}{%
+        \tikz@scan@one@point\pgfutil@firstofone\tmk@def
+        }{%
+        \pgfsys@getposition{\csname save@pt@\tmk@label\endcsname}\save@orig@pic%
+        \pgfsys@getposition{\pgfpictureid}\save@this@pic%
+        \pgf@process{\pgfpointorigin\save@this@pic}%
+        \pgf@xa=\pgf@x
+        \pgf@ya=\pgf@y
+        \pgf@process{\pgfpointorigin\save@orig@pic}%
+        \advance\pgf@x by -\pgf@xa
+        \advance\pgf@y by -\pgf@ya
+    }%
+}
+
+\makeatother
+% end of Andrew's code
+
+% main command to draw the colored background
+\newcounter{mymark}
+\newcommand\ColorLine{%
+    \stepcounter{mymark}%
+    \tikz[remember picture with id=mark-\themymark,overlay] {;}%
+    \begin{tikzpicture}[remember picture,overlay]%
+        \filldraw[cbrewerintergray]%
+            let \p1=(pic cs:mark-\themymark),
+            \p2=(current page.east)  in
+            ([xshift=-0.1em,yshift=-1.0ex]0,\y1)  rectangle ++([xshift=-2.525cm]\x2,\baselineskip);
+    \end{tikzpicture}%
+}%
+
+
+

@@ -1,0 +1,51 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+% https://tex.stackexchange.com/questions/304449/combine-minted-and-tcolorbox-for-code-from-file-inputminted/304691#304691
+% https://tex.stackexchange.com/questions/304449/combine-minted-and-tcolorbox-for-code-from-file-inputminted/304975#304975
+\newcounter{filePrg}
+
+\newtcbinputlisting[use counter=filePrg,number within=chapter,list inside=mypyg]{\matlabcodelisting}[3][]{%
+    listing engine=minted,
+    minted language=matlab,
+    % minted style=algol_nu, % xcode,emacs, perldoc, pastie, borland, vs, vim, tango
+    listing file={#2},
+    title=\small{\textbf{Listing \thetcbcounter}\quad {#1}},
+    % fonttitle=\bfseries,
+    listing only,
+    list entry={\protect\numberline{\thetcbcounter} #1},
+    enhanced jigsaw,
+    breakable,
+    % drop fuzzy shadow,
+    minted options={
+        fontsize=\scriptsize,
+        breaklines,
+        autogobble,
+        linenos,
+        numbersep=3mm,
+        mathescape,
+        baselinestretch=1,
+        breakanywhere=true
+    },
+    % colback=offwhite,
+    colback=white,
+    colframe=imperialnavy,
+    % colframe=black,
+    % coltitle=white,
+    % boxrule=0.2mm,
+    left=5mm,
+    overlay={\begin{tcbclipinterior}
+            \fill[imperiallightgray] (frame.south west) rectangle ([xshift=5mm]frame.north west);
+        \end{tcbclipinterior}
+    },
+    label=#3
+}
+
+\pretocmd{\chapter}{\addtocontents{mypyg}{\addvspace{10pt}}}{}{}
+
+\makeatletter % no indent for entries
+\renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{2.3em}}
+\makeatother
+
+
+\SetupFloatingEnvironment{listing}{name=Code snippet} % needs new float package

@@ -1,0 +1,18 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+\setlist[enumerate,itemize,description]{topsep=0em}
+
+\newcounter{descriptcount}
+\newlist{enumdescriptnum}{description}{1}
+\setlist[enumdescriptnum] {%
+    before={\setcounter{descriptcount}{0}%
+    \renewcommand*\thedescriptcount{\alph{descriptcount}.}}
+    ,font=\footnotesize{\bfseries\stepcounter{descriptcount}\thedescriptcount~}
+}
+
+
+\newcommand{\customenum}[2]{
+\item[$ \symbf{#1}\  (\times #2)$]
+}
+

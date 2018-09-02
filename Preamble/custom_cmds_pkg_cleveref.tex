@@ -1,0 +1,11 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+\crefname{listing}{\MakeLowercase{\listingname}}{\MakeLowercase{\listingname s}}
+\crefname{appchap}{appendix}{appendices}
+\crefname{filePrg}{listing}{listings}
+\Crefname{filePrg}{Listing}{Listings}
+
+\newcommand{\crefrangeconjunction}{--}
+\crefrangeformat{equation}{eqs.~(#3#1#4)--(#5#2#6)}
+
