@@ -4,89 +4,88 @@
 \RequirePackage{shellesc} % unified shell-escape interface
 \RequirePackage[debrief]{silence}
 \RequirePackage[l2tabu, orthodox]{nag}
+
 \RequirePackage{xstring}
 \StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
+
 \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
-\immediate\write18{rm \jobname.xmpdata} % comment for non-*nix systems
+\immediate\write18{rm \jobname.xmpdata} % comment out for non-*nix systems
 \begin{filecontents*}{\jobname.xmpdata}
     \input{Preamble/metadata}
 \end{filecontents*}
 
-\PassOptionsToPackage{table}{xcolor}      % necessitated by the pdfx package
+\PassOptionsToPackage{\pdfxopts}{pdfx}
+\PassOptionsToPackage{table}{xcolor}
 \PassOptionsToPackage{luatex}{pdflscape}
 \PassOptionsToPackage{pdfa}{hyperref}
 
-% Pass options to standard packages whenever they get loaded
-\PassOptionsToPackage{title,titletoc}{appendix}
+% Options to these packages are passed to them whenever they get loaded
+\PassOptionsToPackage{title, titletoc}{appendix}
 \PassOptionsToPackage{makeroom}{cancel}
-\PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true,backrefstyle=three}{biblatex}
-\PassOptionsToPackage{margin=10pt,font=small,labelfont={bf},labelsep=quad}{caption}
+\PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true, backrefstyle=three}{biblatex}
+\PassOptionsToPackage{margin=10pt, font=small, labelfont={bf}, labelsep=quad}{caption}
 \PassOptionsToPackage{normal}{engord}
 \PassOptionsToPackage{inline}{enumitem}
 \PassOptionsToPackage{draft}{fixme}
 \PassOptionsToPackage{bottom}{footmisc}
-\PassOptionsToPackage{luatex,paper=a4paper,hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
-\PassOptionsToPackage{local,mark}{gitinfo2}
-\PassOptionsToPackage{frac,vfrac,multskip}{mathfixs}
+\PassOptionsToPackage{luatex, paper=a4paper, hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
+\PassOptionsToPackage{local, mark}{gitinfo2}
+\PassOptionsToPackage{frac, vfrac, multskip}{mathfixs}
 \PassOptionsToPackage{section}{placeins}
-\PassOptionsToPackage{separate-uncertainty = true,multi-part-units=single,detect-all}{siunitx}
+\PassOptionsToPackage{separate-uncertainty = true, multi-part-units=single, detect-all}{siunitx}
 \PassOptionsToPackage{nottoc}{tocbibind}
 \PassOptionsToPackage{normalem}{ulem}
-\PassOptionsToPackage{no-math,quiet}{fontspec}
+\PassOptionsToPackage{no-math, quiet}{fontspec}
 \PassOptionsToPackage{warnings-off={mathtools-colon}}{unicode-math}
 \PassOptionsToPackage{british}{babel}
-\PassOptionsToPackage{final,activate={true,nocompatibility},factor=1100,stretch=10,shrink=10,babel=true}{microtype}
+\PassOptionsToPackage{final, activate={true, nocompatibility}, factor=1100, stretch=10, shrink=10, babel=true}{microtype}
 \PassOptionsToPackage{british}{selnolig}
 \PassOptionsToPackage{newfloat=true}{minted}
-\PassOptionsToPackage{minted,most}{tcolorbox}
+\PassOptionsToPackage{minted, most}{tcolorbox}
 \PassOptionsToPackage{modifier={by-nc-nd}}{doclicense}
+\PassOptionsToPackage{all}{hypcap}
+\PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
+\PassOptionsToPackage{nameinlink}{cleveref}
 
 \documentclass[12pt,a4paper,oneside,openright]{book} % using the book document class
 
-%%%%%%%%%% \usepackage list here %%%%%%%%%%
+%%%%%%%%%% list of packages to be loaded %%%%%%%%%%
 
-\usepackage{algpseudocode}  % http://ctan.org/pkg/algorithmicx
+\usepackage{algpseudocode}         % http://ctan.org/pkg/algorithmicx
 \usepackage{bigints}
 \usepackage{cancel}
 \usepackage{pdfpages}
 \usepackage{tabstackengine}
 
-\input{Preamble/standard_packages} % a bit specific to luatex; including biblatex
+\input{Preamble/standard_packages} % a bit specific to luatex; also includes biblatex
 
-\usepackage{fontspec} % after graphicx ; no-math option so that math-handling is left to unicode-math; silent to completely suppress all warnings (even in log file)
+% \usepackage{fontspec}  % after graphicx and babel; https://tex.stackexchange.com/questions/188222/problem-with-babel-and-fontspec; no-math option (math-handling is left to unicode-math); silent to suppress all warnings (even in log file)
 \usepackage{unicode-math}
+\input{Preamble/custom_cmds_unicode_fontselection} % selection of unicode text and math fonts
 
-\input{Preamble/font_selection.tex}
+\usepackage{ragged2e}  %  Should be loaded after the body font and size have been established  eg, after font packages have been loaded
+\usepackage{microtype} % if using option babel=true, babel must be loaded before microtype; microtype must be loaded after font selection (after fontspec)
 
-\usepackage{babel} % with british, we get OUP hyphenation material for free
-\usepackage{microtype} % if using option babel=true, babel must be loaded before microtype
-\usepackage{selnolig} % if using babel, this package should go after loading babel
+\usepackage{selnolig}  % luatex package;  should go after loading babel
 
-% Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
-\usepackage{float}
-
+\usepackage{float} % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
 % \usepackage[draft=true,newfloat=true]{minted}
 % \usepackage[minted]{tcolorbox}
 \usepackage{minted}
 \usepackage{tcolorbox}
-
-\usepackage{csquotes} % The fvextra package is loaded by minted, so you should load minted before csquotes
-\usepackage{doclicense} % depends on csquotes
-
+\usepackage{csquotes}    % The fvextra package is loaded by minted, so you should load minted before csquotes; has a strong dependency with biblatex
+\usepackage{doclicense}  % depends on csquotes
 \usepackage{chemformula} % uses tikz arrows
 
-% \addbibresource{chapters/backmatter/thesis_refs.bib}
-\ShellEscape{biber --tool chapters/backmatter/thesis_refs.bib} % deduplicate bibtex entries
-\addbibresource{chapters/backmatter/thesis_refs_bibertool.bib}
-% \setupbibentry{chapters/backmatter/thesis_refs.bib}
+\input{Preamble/hyperref_related_packages}  % hyperref, nameref, algoriothm, hypcap, bookmark, glossaries, cleveref, showframe
 
-\input{Preamble/hyperref_related} % hyperref, glossaries etc.
+\input{Preamble/custom_cmds_bibliography}   % 'bib' file goes in here
 
 \input{Preamble/custom_battery_specific_cmds}
 \input{Preamble/custom_colors}
 \input{Preamble/custom_genpurpose_cmds}
 \input{Preamble/custom_cmds_pkg_minted}
-\input{Preamble/custom_cmds_pkg_cancel} % uses a predefined color
+\input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
 \input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
 \input{Preamble/custom_cmds_graphics}
 \input{Preamble/custom_cmds_pkg_enumitem}

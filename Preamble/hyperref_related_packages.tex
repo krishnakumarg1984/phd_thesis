@@ -1,16 +1,9 @@
 %!TEX root = ../main.tex
 % vim: nospell
 
-% \usepackage{footnotebackref} % Breaks footnotemark and footnotetext https://tex.stackexchange.com/questions/78423/how-to-use-the-footnotebackref-package-with-footnotemark-and-footnotetext
-% \usepackage{hyperref}
+\usepackage{pdfx}
+% \usepackage{hyperref} % comment out if using the pdfx package
 
-% \makeatletter
-% \def\extractpdftexversion#1-#2-#3 #4\@nil{#3}
-% \edef\pdftexversion{\expandafter\extractpdftexversion\pdftexbanner\@nil}
-% \makeatother
-
-\usepackage[\pdfxopts]{pdfx}
-% \usepackage{hyperref} % comment if using the pdfx package
 \hypersetup{%
     % bookmarks=true,
     % hyperfigures,
@@ -51,24 +44,22 @@
     urlcolor           = [RGB]{0,62,116}, % imperialblue
 }%
 
-% \usepackage[ocgcolorlinks]{ocgx2} % viewer support is bad. Do not rely on this one.
+
+% ---------- packages to be loaded after hyperref ----------%
+
 \usepackage{nameref}
+\usepackage{algorithm} % http://ctan.org/pkg/algorithms
+\usepackage{hypcap} % to be loaded after hyperref. fix hyperref links to jump directly to Table or Figure
 
-\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+% \usepackage{pdftexcmds} % not required if using pdfx package
+% \usepackage[translate=babel,abbreviations,nomain,indexonlyfirst,acronym,toc,xindy,automake,hyperfirst=false]{glossaries-extra} % should be loaded after hyperref
 
-\usepackage[all]{hypcap} % to be loaded after hyperref. fix hyperref links to jump directly to Table or Figure
-
-% \RequirePackage{calc}     % calculate vertical spacing
-% \usepackage{pdftexcmds} % not required if using pdfx package (since it is already loaded by it)
-% \usepackage[translate=babel,abbreviations,nomain,indexonlyfirst,acronym,toc,xindy,automake,hyperfirst=false]{glossaries-extra} % should be loaded after hyperref % consider 'symbols' package option
-
-\usepackage[nomain,acronym,xindy]{glossaries-extra}% should be loaded after hyperref % consider 'symbols' package option
-
-% \usepackage{minitoc}
+\usepackage{glossaries-extra}% should be loaded after hyperref, but before cleveref % consider 'symbols' option
 
 % \usepackage{hypdestopt} % seems to have problems with pdfx package?
-% Adding package bookmark improves bookmarks handling.
-% More features and faster updated bookmarks.
-\usepackage{bookmark}
-\usepackage[nameinlink]{cleveref}
 
+\usepackage{bookmark} % improves bookmarks handling. % More features and faster updated bookmarks.
+\usepackage{cleveref}
+
+% \usepackage{showframe}
+% \usepackage[noframe]{showframe}
