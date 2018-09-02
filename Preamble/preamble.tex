@@ -46,6 +46,8 @@
 \PassOptionsToPackage{all}{hypcap}
 \PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
 \PassOptionsToPackage{nameinlink}{cleveref}
+\PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
+\PassOptionsToPackage{defaultlines=2, all}{nowindow}
 
 \documentclass[12pt,a4paper,oneside,openright]{book} % using the book document class
 
@@ -79,47 +81,41 @@
 
 \input{Preamble/hyperref_related_packages}  % hyperref, nameref, algoriothm, hypcap, bookmark, glossaries, cleveref, showframe
 
-\input{Preamble/custom_cmds_bibliography}   % 'bib' file goes in here
+% \usepackage[draft,hyphenation,lastparline,nosingleletter,homeoarchy,rivers]{impnattypo}
+\usepackage{impnattypo}
+\usepackage{nowidow}
 
+%---------- end of package loading ----------%
+
+
+\input{Preamble/colors_for_doc}
 \input{Preamble/custom_battery_specific_cmds}
-\input{Preamble/custom_colors}
-\input{Preamble/custom_genpurpose_cmds}
-\input{Preamble/custom_cmds_pkg_minted}
-\input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
 \input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
+\input{Preamble/custom_cmds_bibliography}   % 'bib' file goes in here
 \input{Preamble/custom_cmds_graphics}
+\input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
+\input{Preamble/custom_cmds_pkg_cleveref}
+\input{Preamble/custom_cmds_pkg_diffcoeff}
 \input{Preamble/custom_cmds_pkg_enumitem}
 \input{Preamble/custom_cmds_pkg_fancyheader}
-\input{Preamble/custom_cmds_pkg_siunitx}
 \input{Preamble/custom_cmds_pkg_fxnote}
-\input{Preamble/custom_cmds_pkg_diffcoeff}
-\input{Preamble/custom_cmds_tabularmaterial}
-\input{Preamble/custom_cmds_pkg_cleveref}
 \input{Preamble/custom_cmds_pkg_gitinfo2}
 \input{Preamble/custom_cmds_pkg_glossaries.tex}
-
-% https://tex.stackexchange.com/questions/50830/do-i-have-to-care-about-bad-boxes/50850#50850
-\tolerance=1414
-\hbadness=1414
-\emergencystretch=1.5em
-\hfuzz=0.5pt
-\vfuzz=\hfuzz
-\raggedbottom
-\hyphenpenalty=750
-\frenchspacing
-\binoppenalty=1000 % default 700
-\relpenalty=800     % default 500
-\interfootnotelinepenalty=10000
-% \clubpenalty=10000
-% \widowpenalty=10000
-
-% \usepackage[draft,hyphenation,lastparline,nosingleletter,homeoarchy,rivers]{impnattypo}
-\usepackage[hyphenation,lastparline,nosingleletter]{impnattypo}
-\usepackage[defaultlines=2,all]{nowidow}
-
+\input{Preamble/custom_cmds_pkg_minted}
+\input{Preamble/custom_cmds_pkg_silence}
+\input{Preamble/custom_cmds_pkg_siunitx}
+\input{Preamble/custom_cmds_pkg_titlesec}
+\input{Preamble/custom_cmds_pkg_ulem}
+\input{Preamble/custom_cmds_pkg_witharrows}
+\input{Preamble/custom_cmds_tabularmaterial}
+\input{Preamble/custom_cmds_tikzmarks}
+\input{Preamble/custom_genpurpose_cmds}
+\input{Preamble/esoteric_math_constructs}
+\input{Preamble/esoteric_text_constructs}
+\input{Preamble/custom_latex_settings}
 
 %%%%%%%%%% glossaries-related stuff %%%%%%%%%%%%%%%%%%%%
-\makeglossaries % must be before starting to define any entries for the glossary. And, all glossary definitions (such as for symbols and any other custom glossaries) must come before this.
+\makeglossaries % must be before starting to define any entries for the glossary. And, all new type of glossary (such as for symbols and any other custom glossaries) must be defined before this.
 % no hyperlink on first use for entries with category=acronym
 \glssetcategoryattribute{acronym}{nohyperfirst}{true} % https://tex.stackexchange.com/questions/434160/line-break-long-glossaries-entry-when-using-hyperref-and-latex-dvips-ps2pdf
 \setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty

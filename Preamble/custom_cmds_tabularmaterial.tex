@@ -25,3 +25,38 @@
 
 \makeatother
 
+
+
+\makeatletter
+\newlength{\qrr@dimen@}
+\expandafter\pretocmd\csname tabular*\endcsname{\setlength{\qrr@dimen@}{#1}}{}{}
+\newcommand*{\Rowcolor}[2][\tabcolsep]{%
+    \ifx\relax#1\relax\else
+        \kern-\the\dimexpr#1\relax
+    \fi
+    \makebox[0pt][l]{%
+        \fboxsep=0pt
+        \colorbox{#2}{%
+            \strut\kern\qrr@dimen@
+        }%
+    }%
+    \ifx\relax#1\relax\else
+        \kern\the\dimexpr#1\relax
+    \fi
+    \ignorespaces
+}
+\makeatother
+
+
+% % https://tex.stackexchange.com/questions/34225/different-font-sizes-for-different-rows-in-table/34226
+% \makeatletter
+% \g@addto@macro{\endtabular}{\rowfont{}}% Clear row font
+% \makeatother
+% \newcommand{\rowfonttype}{}% Current row font
+% \newcommand{\rowfont}[1]{% Set current row font
+%     \gdef\rowfonttype{#1}#1%
+% }
+% \newcolumntype{L}{>{\rowfonttype}l}
+
+
+

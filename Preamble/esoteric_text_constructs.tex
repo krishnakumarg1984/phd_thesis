@@ -1,0 +1,27 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+% https://tex.stackexchange.com/questions/75215/automating-the-height-of-a-drop-cap-initial/75218#75218
+% using tikz instead of lettrine package
+\makeatletter
+
+% \RequirePackage{tikz}
+
+\newlength\CLett% Nuova dimensione
+
+\newcommand*\capolettera[2]{% #1 lettera da ingrandire #2 testo in maiuscoletto
+    \par\noindent
+    \setbox8\hbox{\textsc{#2}}%
+    \setbox\z@\hbox{%
+        \resizebox{!}{\dimexpr\baselineskip+\ht8\relax}{%
+        \huge\color{sepiadvipsnames}#1}%
+    }%
+    \CLett=\wd\z@\hangindent\CLett\hangafter-2\relax%
+\raisebox{-\baselineskip}[0pt][0pt]{\llap{\box\z@\kern1pt}}{\box8}}
+
+\makeatother
+% other choices for lettrine are
+% https://tex.stackexchange.com/questions/769/how-can-i-create-documents-in-latex-using-a-calligraphic-first-letter-for-chapte/10260#10260
+% https://tex.stackexchange.com/questions/250474/how-to-use-fancy-dropcaps-with-pdflatex
+% https://tex.stackexchange.com/questions/38108/how-to-increase-the-size-of-first-character-in-a-chapter-drop-caps/38111#38111
+% https://tex.stackexchange.com/questions/145490/how-to-get-libertine-initials-to-work-with-lettrine

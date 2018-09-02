@@ -5,3 +5,20 @@
 \renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % link coloring to match normal text, ie black
 \preto\chapter{\glsresetall} % expand acronyms every chapter https://tex.stackexchange.com/questions/435617/glossaries-expand-acronyms-for-first-time-use-within-each-chapter/435680#435680
 
+% \glsdisablehyper
+% \newglossary[slg]{symbolslist}{syi}{syg}{Symbols}
+
+% \newglossarystyle{custom_acronyms}
+% {
+%     \setglossarystyle{long3colheader}%
+%     \renewcommand*{\glossaryheader}{}%
+%     \renewcommand{\glossentry}[2]{%
+%         \textbf{\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}}
+%         & \glossentrydesc{##1}
+%         & {\hspace*{\fill} ##2}
+%     \tabularnewline}%
+% }
+
+% \renewcommand{\glossarypreamble}{\footnotesize}
+\renewcommand{\glossarypreamble}{\small}
+

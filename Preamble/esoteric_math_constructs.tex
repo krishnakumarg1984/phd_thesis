@@ -1,0 +1,24 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+\makeatletter
+\newcommand{\mathleft}{\@fleqntrue\@mathmargin0pt}
+\newcommand{\mathcenter}{\@fleqnfalse}
+\makeatother
+
+\makeatletter\let\percentchar\@percentchar\makeatother
+\directlua{
+    % define a function that prints 2-letter ordinal strings
+    function myord ( n )     % n: some positive number
+    m = n \percentchar 100 % m = n modulo 100
+    if m>3 and m<21 then tex.sprint ( "th" )
+    elseif m \percentchar 10 == 1 then tex.sprint ( "st" )
+    elseif m \percentchar 10 == 2 then tex.sprint ( "nd" )
+    elseif m \percentchar 10 == 3 then tex.sprint ( "rd" )
+    else tex.sprint ( "th" )
+    end
+    end
+}
+\newcommand\myord[1]{\directlua{myord(#1)}} % LaTeX "wrapper macro"
+\newcommand{\ordfrac}[2]{\nicefrac{#1}{#2\textsuperscript{\myord{#2}}}}
+

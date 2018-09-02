@@ -12,12 +12,15 @@
 \newcommand{\viz}{\textit{viz}. }
 
 \def\Vhrulefill{\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}
+\newcommand*{\xdash}[1][3em]{\rule[0.5ex]{#1}{0.55pt}}
 
 \setlength\parskip{0.75\baselineskip plus0.1\baselineskip  minus0.1\baselineskip}
 
+% https://tex.stackexchange.com/questions/23487/how-can-i-get-roman-numerals-in-text
 \makeatletter
-\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\newcommand*{\romanletter}[1]{\expandafter\@slowromancap\romannumeral #1@}
 \makeatother
+
 
 %---------- inline/display math macros ----------%
 \newcommand*\mean[1]{\overline{#1}}
@@ -104,206 +107,6 @@
 \global\let\tikz@ensure@dollar@catcode=\relax
 \makeatother
 
-\WarningFilter{latex}{Marginpar on page}
-
-\DeclareSIUnit \amphour { Ah }
-\DeclareSIUnit \watthour { Wh }
-\setkeys{Gin}{width=0.75\textwidth} % default width of graphics
-
-\renewcommand*{\bibfont}{\small} % make Bibliography left aligned, not justified
-
-\DeclareSourcemap{
-    \maps[datatype=bibtex]{
-        \map{
-            \step[fieldsource=doi,final]
-            \step[fieldset=url,null]
-        }
-    }
-}
-
-\DefineBibliographyStrings{english}{%
-    backrefpage = {cited on page},% originally "cited on page"
-    backrefpages = {cited on pages},% originally "cited on pages"
-}
-
-\xpatchbibmacro{pageref}{parens}{brackets}{}{}   % helpful to replace parens with brackets for backreferencing with biblatex % needs xpatch
-
-% \renewbibmacro*{pageref}{\iflistundef{pageref}{}{\printtext[brackets]{\printlist[​pageref][-\value{listtotal}]{pageref}}}}
-
-% \titleformat*{\section}{\large\bfseries}
-\titleformat{\section}{\normalfont\fontsize{16}{21}\bfseries}{\thesection}{1em}{}
-
-\DeclareSourcemap{
-    \maps[datatype=bibtex]{
-        \map[overwrite]{
-            \step[fieldsource=month, match=\regexp{\Ajan\Z}, replace=1]
-            \step[fieldsource=month, match=\regexp{\Afeb\Z}, replace=2]
-            \step[fieldsource=month, match=\regexp{\Amar\Z}, replace=3]
-            \step[fieldsource=month, match=\regexp{\Aapr\Z}, replace=4]
-            \step[fieldsource=month, match=\regexp{\Amay\Z}, replace=5]
-            \step[fieldsource=month, match=\regexp{\Ajun\Z}, replace=6]
-            \step[fieldsource=month, match=\regexp{\Ajul\Z}, replace=7]
-            \step[fieldsource=month, match=\regexp{\Aaug\Z}, replace=8]
-            \step[fieldsource=month, match=\regexp{\Asep\Z}, replace=9]
-            \step[fieldsource=month, match=\regexp{\Aoct\Z}, replace=10]
-            \step[fieldsource=month, match=\regexp{\Anov\Z}, replace=11]
-            \step[fieldsource=month, match=\regexp{\Adec\Z}, replace=12]
-        }
-    }
-}
-
-\newcommand*{\xdash}[1][3em]{\rule[0.5ex]{#1}{0.55pt}}
-
-\renewcommand{\ULdepth}{4.0pt}
-\renewcommand{\ULthickness}{0.75pt}
-
-\WithArrowsOptions{displaystyle,tikz={font={\scriptsize}}}
-
-\usetikzlibrary{calc}
-\usetikzlibrary{decorations.pathreplacing}
-
-\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
-
-% Tweak these as necessary
-\newcommand*{\BraceAmplitude}{0.5em}%
-\newcommand*{\BraceAspect}{0.5}%
-\newcommand*{\VerticalOffset}{3.0ex}%
-\newcommand*{\HorizontalOffset}{0.0em}%
-
-
-\NewDocumentCommand{\InsertUnderBrace}{%
-    O{} % #1 = draw options
-    O{} % #2 = optional brace options
-    m   % #3 = left tikzmark
-    m   % #4 = right tikzmark
-    m   % #5 = text to place underbrace
-    }{%
-    \begin{tikzpicture}[overlay,remember picture]
-        \draw [decoration={brace, amplitude=\BraceAmplitude, aspect=\BraceAspect, #2}, decorate, thick, draw=blue, text=black, #1]
-            ($(#4)+(\HorizontalOffset,-\VerticalOffset)$) --
-            ($(#3)+(-\HorizontalOffset,-\VerticalOffset)$)
-            node [below=\VerticalOffset, midway] {#5};
-    \end{tikzpicture}%
-}%
-
-\makeatletter
-\newcommand{\mathleft}{\@fleqntrue\@mathmargin0pt}
-\newcommand{\mathcenter}{\@fleqnfalse}
-\makeatother
-
-% \newcommand{\ordfrac}[2]{\nicefrac{#1}{\textsuperscript{\engordnumber{#2}}}}
-
-\makeatletter\let\percentchar\@percentchar\makeatother
-\directlua{
-    % define a function that prints 2-letter ordinal strings
-    function myord ( n )     % n: some positive number
-    m = n \percentchar 100 % m = n modulo 100
-    if m>3 and m<21 then tex.sprint ( "th" )
-    elseif m \percentchar 10 == 1 then tex.sprint ( "st" )
-    elseif m \percentchar 10 == 2 then tex.sprint ( "nd" )
-    elseif m \percentchar 10 == 3 then tex.sprint ( "rd" )
-    else tex.sprint ( "th" )
-    end
-    end
-}
-\newcommand\myord[1]{\directlua{myord(#1)}} % LaTeX "wrapper macro"
-
-% \newcommand{\myfracA}[2]{\nicefrac{#1}{#2}\textsuperscript{\myord{#2}}}
-\newcommand{\ordfrac}[2]{\nicefrac{#1}{#2\textsuperscript{\myord{#2}}}}
-
-% \glsdisablehyper
-% \newglossary[slg]{symbolslist}{syi}{syg}{Symbols}
-
-% \newglossarystyle{custom_acronyms}
-% {
-%     \setglossarystyle{long3colheader}%
-%     \renewcommand*{\glossaryheader}{}%
-%     \renewcommand{\glossentry}[2]{%
-%         \textbf{\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}}
-%         & \glossentrydesc{##1}
-%         & {\hspace*{\fill} ##2}
-%     \tabularnewline}%
-% }
-
-% \renewcommand{\glossarypreamble}{\footnotesize}
-\renewcommand{\glossarypreamble}{\small}
-
-% \setcounter{minitocdepth}{3}
-
-% https://tex.stackexchange.com/questions/75215/automating-the-height-of-a-drop-cap-initial/75218#75218
-% using tikz instead of lettrine package
-\makeatletter
-
-% \RequirePackage{tikz}
-
-\newlength\CLett% Nuova dimensione
-
-\newcommand*\capolettera[2]{% #1 lettera da ingrandire #2 testo in maiuscoletto
-    \par\noindent
-    \setbox8\hbox{\textsc{#2}}%
-    \setbox\z@\hbox{%
-        \resizebox{!}{\dimexpr\baselineskip+\ht8\relax}{%
-        \huge\color{sepiadvipsnames}#1}%
-    }%
-    \CLett=\wd\z@\hangindent\CLett\hangafter-2\relax%
-\raisebox{-\baselineskip}[0pt][0pt]{\llap{\box\z@\kern1pt}}{\box8}}
-
-\makeatother
-% other choices for lettrine are
-% https://tex.stackexchange.com/questions/769/how-can-i-create-documents-in-latex-using-a-calligraphic-first-letter-for-chapte/10260#10260
-% https://tex.stackexchange.com/questions/250474/how-to-use-fancy-dropcaps-with-pdflatex
-% https://tex.stackexchange.com/questions/38108/how-to-increase-the-size-of-first-character-in-a-chapter-drop-caps/38111#38111
-% https://tex.stackexchange.com/questions/145490/how-to-get-libertine-initials-to-work-with-lettrine
-
-% \newcolumntype{d}[1]{D{.}{.}{#1}}
-
-\makeatletter
-\newlength{\qrr@dimen@}
-\expandafter\pretocmd\csname tabular*\endcsname{\setlength{\qrr@dimen@}{#1}}{}{}
-\newcommand*{\Rowcolor}[2][\tabcolsep]{%
-    \ifx\relax#1\relax\else
-        \kern-\the\dimexpr#1\relax
-    \fi
-    \makebox[0pt][l]{%
-        \fboxsep=0pt
-        \colorbox{#2}{%
-            \strut\kern\qrr@dimen@
-        }%
-    }%
-    \ifx\relax#1\relax\else
-        \kern\the\dimexpr#1\relax
-    \fi
-    \ignorespaces
-}
-\makeatother
-
-\renewcommand{\topfraction}{.85}
-\renewcommand{\bottomfraction}{.7}
-\renewcommand{\textfraction}{.15}
-\renewcommand{\floatpagefraction}{.66}
-\renewcommand{\dbltopfraction}{.66}
-\renewcommand{\dblfloatpagefraction}{.66}
-\setcounter{topnumber}{9}
-\setcounter{bottomnumber}{9}
-\setcounter{totalnumber}{20}
-\setcounter{dbltopnumber}{9}
-
-% https://tex.stackexchange.com/questions/23487/how-can-i-get-roman-numerals-in-text
-\makeatletter
-\newcommand*{\romanletter}[1]{\expandafter\@slowromancap\romannumeral #1@}
-\makeatother
-
-% % https://tex.stackexchange.com/questions/34225/different-font-sizes-for-different-rows-in-table/34226
-% \makeatletter
-% \g@addto@macro{\endtabular}{\rowfont{}}% Clear row font
-% \makeatother
-% \newcommand{\rowfonttype}{}% Current row font
-% \newcommand{\rowfont}[1]{% Set current row font
-%     \gdef\rowfonttype{#1}#1%
-% }
-% \newcolumntype{L}{>{\rowfonttype}l}
-
-
 % To continue roman numbering at the end of the book (for bibliography, appendices etc.)
 
 % \makeatletter
@@ -325,12 +128,3 @@
 %     \@mainmatterfalse
 % }
 % \makeatother
-
-% https://tex.stackexchange.com/questions/1072/which-graphics-formats-can-be-included-in-documents-processed-by-latex-or-pdflat
-% prepend pdf before png
-% \ifpdf
-%     \makeatletter
-%     \let\orig@Gin@extensions\Gin@extensions
-%     \def\Gin@extensions{.pdf,\orig@Gin@extensions} %prepend .pdf before .png
-%     \makeatother
-% \fi

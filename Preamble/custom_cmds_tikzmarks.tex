@@ -1,0 +1,29 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+% Tweak these as necessary
+\newcommand*{\BraceAmplitude}{0.5em}%
+\newcommand*{\BraceAspect}{0.5}%
+\newcommand*{\VerticalOffset}{3.0ex}%
+\newcommand*{\HorizontalOffset}{0.0em}%
+
+
+\NewDocumentCommand{\InsertUnderBrace}{%
+    O{} % #1 = draw options
+    O{} % #2 = optional brace options
+    m   % #3 = left tikzmark
+    m   % #4 = right tikzmark
+    m   % #5 = text to place underbrace
+    }{%
+    \begin{tikzpicture}[overlay,remember picture]
+        \draw [decoration={brace, amplitude=\BraceAmplitude, aspect=\BraceAspect, #2}, decorate, thick, draw=blue, text=black, #1]
+            ($(#4)+(\HorizontalOffset,-\VerticalOffset)$) --
+            ($(#3)+(-\HorizontalOffset,-\VerticalOffset)$)
+            node [below=\VerticalOffset, midway] {#5};
+    \end{tikzpicture}%
+}%
