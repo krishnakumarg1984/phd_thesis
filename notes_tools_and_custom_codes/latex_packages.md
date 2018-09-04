@@ -256,6 +256,7 @@ nowidow
 ocgx
 odsfile
 optional
+overpic
 pagecont
 papermas
 pax
@@ -387,4 +388,5 @@ xspace
 xurl
 xwatermark
 xymtex
+yafoot
 yt4pdf
