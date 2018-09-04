@@ -1,0 +1,65 @@
+%!TEX root = ../main.tex
+% vim: nospell
+
+\usepackage{pdfx}
+% \usepackage{hyperref} % comment out if using the pdfx package
+
+\hypersetup{%
+    % bookmarks=true,
+    % hyperfigures,
+    % hyperindex = true,
+    % pagebackref,
+    % pdfcontactemail    = {krishnak at vt dot edu},
+    % pdfcopyright       = {\textcopyright{} 2018 by Krishnakumar Gopalakrishnan},
+    % pdflang=Englisch,
+    % pdflicenseurl      = {https://creativecommons.org/licenses/by-nc-nd/3.0/},
+    % pdfpagelabels,
+    % pdfpagelayout = OneColumn,
+    % pdfpagemode = UseOutlines,
+    anchorcolor        = black,
+    bookmarksdepth     = 4,
+    bookmarksnumbered  = true,
+    bookmarksopen      = true,
+    bookmarksopenlevel = 0,
+    breaklinks         = true,
+    citecolor          = [RGB]{0,62,116}, % imperialblue
+    colorlinks         = true,
+    final              = true,
+    hyperfootnotes     = false,
+    linkcolor          = [RGB]{0,62,116}, % imperialblue
+    linktocpage        = true,
+    pdfauthor          = {\textcopyright{} Krishnakumar Gopalakrishnan},
+    pdfborderstyle     = {/S/U/W 1},
+    pdfcenterwindow    = true,
+    pdfcreator         = {LuaTeX \luatexversionused and pdfx.sty with options \pdfxopts},
+    pdfdisplaydoctitle = true,
+    pdffitwindow       = true,
+    pdflang            = {en-GB-oed},
+    pdfproducer        = {LuaTeX \luatexversionused and pdfx.sty with options \pdfxopts},
+    pdfstartview       = {Fit},
+    pdftitle           = {Computational modelling of lithium ion batteries for electric vehicle applications: analysis, design and implementation},
+    pdftoolbar         = true,
+    plainpages         = false,
+    unicode            = true,
+    urlcolor           = [RGB]{0,62,116}, % imperialblue
+}%
+
+
+% ---------- packages to be loaded after hyperref ----------%
+
+% \usepackage{nameref}
+% \usepackage{algorithm} % http://ctan.org/pkg/algorithms
+\usepackage{hypcap} % to be loaded after hyperref. fix hyperref links to jump directly to Table or Figure
+
+% \usepackage{pdftexcmds} % not required if using pdfx package
+% \usepackage[translate=babel,abbreviations,nomain,indexonlyfirst,acronym,toc,xindy,automake,hyperfirst=false]{glossaries-extra} % should be loaded after hyperref
+
+\usepackage{glossaries-extra}% should be loaded after hyperref, but before cleveref % consider 'symbols' option
+
+% \usepackage{hypdestopt} % seems to have problems with pdfx package?
+
+\usepackage{bookmark} % improves bookmarks handling. % More features and faster updated bookmarks.
+\usepackage{cleveref}
+
+% \usepackage{showframe}
+% \usepackage[noframe]{showframe}
