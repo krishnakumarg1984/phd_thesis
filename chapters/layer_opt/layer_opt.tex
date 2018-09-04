@@ -69,30 +69,29 @@
     \end{minipage}
 \end{figure}
 
-\clearpage
-\thispagestyle{plain}
-\begin{figure}[p]
-    \begin{minipage}[t]{\pagewidth}
-        \centering
-        \includegraphics[angle=90,scale=0.1]{fig_master_flow_diagramPDF}
-        \caption
-        [%
-        Flow diagram depicting an overview  of the proposed layer optimisation methodology
-        for Li-ion pouch cells.
-        ]%
-        {%
+\afterpage{%
+    \clearpage
+    \thispagestyle{plain}
+    \begin{figure}[p]
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \includegraphics[angle=90,width=\textwidth]{fig_master_flow_diagramPDF}
+            \caption
+            [%
             Flow diagram depicting an overview  of the proposed layer optimisation methodology
-            for Li-ion pouch cells\footnotemark.
-        }%
-        \label{fig:fig_strategy_schematic}
-        \mpfootnotes[1]
-        \footnote{This  figure was  created by  Krishnakumar Gopalakrishnan  who
-            asserts copyright, with intellectual contributions from and the right to
-        use asserted by Ian Campbell.}
-    \end{minipage}
-\end{figure}
-
-% \footnotetext{}
+            for Li-ion pouch cells.
+            ]%
+            {%
+                Flow diagram depicting an overview  of the proposed layer optimisation methodology
+                for Li-ion pouch cells\footnotemark.
+            }%
+            \label{fig:fig_strategy_schematic}
+            \mpfootnotes[1]
+            \vspace*{1.125cm}
+            \footnote{This  figure was  created by  Krishnakumar Gopalakrishnan  who asserts copyright, with intellectual contributions from and the right to use asserted by Ian Campbell.}
+        \end{minipage}
+    \end{figure}
+}%
 
 
 %Honour  code pledge:  This  chapter  plan was  written  without  looking at  the
