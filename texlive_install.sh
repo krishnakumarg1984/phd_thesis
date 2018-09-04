@@ -29,6 +29,7 @@ tlmgr install luatex
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
 tlmgr install   \
+    afterpage \
     aleph \
     algorithmicx \
     algorithms \

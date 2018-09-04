@@ -54,34 +54,32 @@
 
 % uncommment any commented packages before final submission
 \usepackage{afterpage}
-\usepackage{algpseudocode}         % http://ctan.org/pkg/algorithmicx
-\usepackage{bigints}
-\usepackage{cancel}
-\usepackage{pdfpages}
-\usepackage{tabstackengine} % stackmath macro uses this package
+% \usepackage{algpseudocode}  % http://ctan.org/pkg/algorithmicx
+% \usepackage{bigints}
+% \usepackage{cancel}
+% \usepackage{pdfpages}
+% \usepackage{tabstackengine} % stackmath macro uses this package
 
 \input{Preamble/standard_packages} % a bit specific to luatex; also includes biblatex
 
-% \usepackage{fontspec}  % after graphicx and babel; https://tex.stackexchange.com/questions/188222/problem-with-babel-and-fontspec; no-math option (math-handling is left to unicode-math); silent to suppress all warnings (even in log file)
-\usepackage{unicode-math}
+\usepackage{unicode-math} % fontspec after graphicx and babel; https://tex.stackexchange.com/questions/188222/problem-with-babel-and-fontspec; no-math option (math-handling is left to unicode-math); silent to suppress all warnings (even in log file)
 \input{Preamble/custom_cmds_unicode_fontselection} % selection of unicode text and math fonts
 
-% \usepackage{ragged2e}  %  Should be loaded after the body font and size have been established  eg, after font packages have been loaded
+\usepackage{ragged2e}  %  Should be loaded after the body font and size have been established  eg, after font packages have been loaded
 \usepackage{microtype} % if using option babel=true, babel must be loaded before microtype; microtype must be loaded after font selection (after fontspec)
 
 \usepackage{selnolig}  % luatex package;  should go after loading babel
 
-% \usepackage{float} % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
-% % \usepackage[draft=true,newfloat=true]{minted}
-% % \usepackage[minted]{tcolorbox}
-% \usepackage{minted}
-% \usepackage{tcolorbox}
-% \usepackage{csquotes}    % The fvextra package is loaded by minted, so you should load minted before csquotes; has a strong dependency with biblatex
-% \usepackage{chemformula} % uses tikz arrows
+\usepackage{float} % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
+% \usepackage[draft=true,newfloat=true]{minted}
+% \usepackage[minted]{tcolorbox}
+\usepackage{minted}
+\usepackage{tcolorbox}
+\usepackage{csquotes}    % The fvextra package is loaded by minted, so you should load minted before csquotes; has a strong dependency with biblatex
+\usepackage{chemformula} % uses tikz arrows
 
 \input{Preamble/hyperref_related_packages}  % hyperref, nameref, algoriothm, hypcap, bookmark, glossaries, cleveref, showframe
 
-% \usepackage[draft,hyphenation,lastparline,nosingleletter,homeoarchy,rivers]{impnattypo}
 \usepackage{impnattypo}
 \usepackage{nowidow}
 
@@ -90,29 +88,29 @@
 
 %---------- begin custom commands ----------%
 \input{Preamble/colors_for_doc}
-% \input{Preamble/custom_battery_specific_cmds}
-% \input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
+\input{Preamble/custom_battery_specific_cmds}
+\input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
 \input{Preamble/custom_cmds_bibliography}     % 'bib' file goes in here
 \input{Preamble/custom_cmds_graphics}
-% \input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
+\input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
 \input{Preamble/custom_cmds_pkg_cleveref}
-% \input{Preamble/custom_cmds_pkg_diffcoeff}
-% \input{Preamble/custom_cmds_pkg_enumitem}
+\input{Preamble/custom_cmds_pkg_diffcoeff}
+\input{Preamble/custom_cmds_pkg_enumitem}
 \input{Preamble/custom_cmds_pkg_fancyheader}
-% \input{Preamble/custom_cmds_pkg_fxnote}
+\input{Preamble/custom_cmds_pkg_fxnote}
 \input{Preamble/custom_cmds_pkg_gitinfo2}
 \input{Preamble/custom_cmds_pkg_glossaries.tex}
-% \input{Preamble/custom_cmds_pkg_minted}
+\input{Preamble/custom_cmds_pkg_minted}
 \input{Preamble/custom_cmds_pkg_silence}
 \input{Preamble/custom_cmds_pkg_siunitx}
 \input{Preamble/custom_cmds_pkg_titlesec}
-% \input{Preamble/custom_cmds_pkg_ulem}
-% \input{Preamble/custom_cmds_pkg_witharrows}
+\input{Preamble/custom_cmds_pkg_ulem}
+\input{Preamble/custom_cmds_pkg_witharrows}
 \input{Preamble/custom_cmds_tabularmaterial}
-% \input{Preamble/custom_cmds_tikzmarks}
+\input{Preamble/custom_cmds_tikzmarks}
 \input{Preamble/custom_genpurpose_cmds}
-% \input{Preamble/esoteric_math_constructs}
-% \input{Preamble/esoteric_text_constructs}
+\input{Preamble/esoteric_math_constructs}
+\input{Preamble/esoteric_text_constructs}
 \input{Preamble/custom_latex_settings}
 %---------- end custom commands ----------%
 
