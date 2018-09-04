@@ -22,3 +22,23 @@
 \newcommand\myord[1]{\directlua{myord(#1)}} % LaTeX "wrapper macro"
 \newcommand{\ordfrac}[2]{\nicefrac{#1}{#2\textsuperscript{\myord{#2}}}}
 
+% typeset a horizontal vector in inline math
+\stackMath
+\ExplSyntaxOn
+\NewDocumentCommand \vect { s o m }
+{
+    \IfBooleanTF {#1}
+    { \vectaux*{#3} }
+    { \IfValueTF {#2} { \vectaux[#2]{#3} } { \vectaux{#3} } }
+    ^T
+}
+\DeclarePairedDelimiterX \vectaux [1] {\lbrack} {\rbrack}
+{ \, \dbacc_vect:n { #1 } \, }
+\cs_new_protected:Npn \dbacc_vect:n #1
+{
+    \seq_set_split:Nnn \l_tmpa_seq { , } { #1 }
+    \seq_use:Nn \l_tmpa_seq { \enspace }
+}
+\ExplSyntaxOff
+
+
