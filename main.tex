@@ -33,10 +33,11 @@ this work.
 \glsunsetall
 \microtypesetup{protrusion=false} % disables protrusion locally in the document
 % \pdfbookmark[<level>]{<title>}{<dest>}
-\pdfbookmark[section]{\contentsname}{toc}
+% \pdfbookmark[section]{\contentsname}{toc}
+\addtocontents{toc}{\protect{\pdfbookmark[0]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
 \tableofcontents            % print the table of contents
 
-%: ----------------------- list of figures/tables ------------------------
+%: ----------------------- list of figures/tables etc. ------------------------
 \cleardoublepage
 \listoffigures
 \cleardoublepage
