@@ -14,7 +14,8 @@ cache:
 script:
 - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
 # - latexmk -f --shell-escape --bibtex -pdf -interaction=nonstopmode -halt-on-error main.tex # force making the pdf
-- latexmk -f --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex # force making the pdf
+# - latexmk -f --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex # force making the pdf
+- latexmk -quiet -silent -interaction=batchmode -halt-on-error main.tex
 # - latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex
 # - latexmk --shell-escape --bibtex -pdf -interaction=nonstopmode main.tex # debug purposes (be verbose)
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/main-latest.pdf"
