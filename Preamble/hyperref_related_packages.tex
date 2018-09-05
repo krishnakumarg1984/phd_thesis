@@ -2,9 +2,19 @@
 % vim: nospell
 
 \usepackage{pdfx}
+% https://tex.stackexchange.com/questions/449470/pdfx-package-incompatibility-with-bookmark-package-when-using-luatex-engine/449508#449508
+\ifluatex
+    \pdftrue
+\fi
+
 % \usepackage{hyperref} % comment out if using the pdfx package
 
 \hypersetup{%
+    % bookmarks          = true,
+    % bookmarksdepth     = 4,
+    % bookmarksnumbered  = true,
+    % bookmarksopen      = true,
+    % bookmarksopenlevel = 0,
     % hyperfigures,
     % hyperindex = true,
     % pagebackref,
@@ -19,11 +29,6 @@
     % pdfproducer        = {LuaTeX \luatexversionused and pdfx.sty with options \pdfxopts},
     % pdftitle           = {Computational modelling of lithium ion batteries for electric vehicle applications: analysis, design and implementation},
     anchorcolor        = black,
-    bookmarks          = true,
-    bookmarksdepth     = 4,
-    bookmarksnumbered  = true,
-    bookmarksopen      = true,
-    bookmarksopenlevel = 0,
     breaklinks         = true,
     citecolor          = [RGB]{0,62,116}, % imperialblue
     colorlinks         = true,
@@ -55,9 +60,9 @@
 
 \usepackage{glossaries-extra}% should be loaded after hyperref, but before cleveref % consider 'symbols' option
 
-% \usepackage{hypdestopt} % seems to have problems with pdfx package?
+\usepackage{hypdestopt} % seems to have problems with pdfx package?
 
-% \usepackage{bookmark} % improves bookmarks handling. % More features and faster updated bookmarks.
+\usepackage{bookmark} % improves bookmarks handling. % More features and faster updated bookmarks.
 \usepackage{cleveref}
 
 % \usepackage{showframe}

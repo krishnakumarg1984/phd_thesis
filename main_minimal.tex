@@ -33,8 +33,8 @@ this work.
 \glsunsetall
 \microtypesetup{protrusion=false} % disables protrusion locally in the document
 % \pdfbookmark[<level>]{<title>}{<dest>}
-% \pdfbookmark[section]{\contentsname}{toc}
-\addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
+\pdfbookmark[section]{\contentsname}{toc} % with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
+% \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
 \tableofcontents            % print the table of contents
 
 %: ----------------------- list of figures/tables etc. ------------------------
