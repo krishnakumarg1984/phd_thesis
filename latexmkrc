@@ -43,7 +43,7 @@ push @generated_exts, 'acn', 'acr', 'alg';
 push @generated_exts, 'glo', 'gls', 'glg';
 
 
-$pdflatex = 'lualatex %O %S --interaction=batchmode -halt-on-error --shell-escape --bibtex --recorder';
+$pdflatex = 'luajittex \&luajitlatex %O %S --interaction=batchmode -halt-on-error --shell-escape --bibtex --recorder';
 $pdf_mode = 4;
 $postscript_mode = $dvi_mode = 0;
 $clean_ext .= ' %R.ist %R.xdy';

@@ -36,6 +36,8 @@ install:
 - fmtutil -user --byengine luatex
 - git clone https://github.com/u-fischer/lua-font-pond.git
 - cp -R lua-font-pond/texmf ~/texmf
+- luajittex --ini lualatex.ini
+- mv lualatex.fmt luajitlatex.fmt
 - texhash
 env:
   global:
