@@ -263,6 +263,7 @@ pax
 pbox
 pdfcomment
 pdfcrypt
+pdflatexpicscale
 pdflscape
 pdfoverlay
 pdfpages
