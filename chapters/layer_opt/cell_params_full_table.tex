@@ -4,7 +4,18 @@
 
 \begin{table}[!htbp]
     \small
-    \caption[System level simulation conditions \& thermal parameters of  an \glsfmtshort{lco} cell]{Cell parameters and system conditions for a simulating an \glsfmtshort{lco} cell with the \gls{dfn} electrochemical model and a lumped thermal model. The parameters presented here when augmented with the values of the kinetic, geometric and transport properties of the cell (from \cref{tbl:lcoSimParamsSPMp2d} represents the complete information required for all simulations in this layer optimisation framework.}
+    \caption[%
+    System-level simulation conditions \& thermal parameters of  an \glsfmtshort{lco} cell
+    ]%
+    {%
+        Cell   parameters   and   system   conditions  for   a   simulating   an
+        \glsfmtshort{lco} cell  with the  \gls{dfn} electrochemical model  and a
+        lumped thermal model. The parameters  presented here when augmented with
+        the  values  of  the  kinetic, geometric  and  transport  properties  of
+        the  cell (from  \cref{tbl:lcoSimParamsSPMp2d}  represents the  complete
+        information  required for  all  simulations in  this layer  optimisation
+        framework.
+    }%
     \label{tbl:lcoSimParamslayeropt}
     \vspace{-2.6229525pt}
     \begin{threeparttable}
@@ -12,7 +23,6 @@
         \textbf{System Conditions} \\ \smallskip
         \begin{varwidth}[t]{0.48\linewidth}
             \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
-                % \multicolumn{2}{c}{\textbf{System Conditions}} \\
                 \toprule
                 \multicolumn{1}{@{}l}{Parameter} \\
                 \midrule
@@ -26,7 +36,6 @@
         \hfill
         \begin{varwidth}[t]{0.48\linewidth}
             \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
-                % \multicolumn{2}{c}{\textbf{Other Constants}} \\
                 \toprule
                 \multicolumn{1}{@{}l}{Parameter} \\
                 \midrule
@@ -38,9 +47,7 @@
             \end{tabular*}
         \end{varwidth}
 
-        \bigskip
-        % \vspace{-2.6229525pt}
-        % \vfill
+        \medskip
         \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
             \multicolumn{2}{c}{\textbf{Geometric Parameters}} \\
             \toprule
@@ -51,10 +58,9 @@
             Exterior pouch width, $W_\text{pouch}$ \si{(m)}                                               & \tnote{e}\num{99.06e-3}  \\
             Exterior pouch height, $H_\text{pouch}$ \si{(m)}                                              & \tnote{f}\num{10.00e-3}  \\
             Pouch material thickness, $T_\text{pouch}$ \si{(m)}                                           & \tnote{g}\num{160.00e-6} \\
-            %            Combined surface area of cell tabs, $A_\text{tabs}$ \si{(m^2)} & \tnote{x}\num{5.944e-3} \\
             \bottomrule
         \end{tabular*}
-        \bigskip
+        \medskip
         \centering \textbf{Thermal Parameters} \\ \smallskip
         \resizebox{\textwidth}{!}{%
             \begin{tabular}{@{} l l c c c l c r @{}}
@@ -62,37 +68,39 @@
                 \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{c}{Al.\ CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu.\ CC} & \multicolumn{1}{c}{\ch{LiPF_6}} & \multicolumn{1}{r@{}}{Pouch}\\
                 \midrule
 
-                Sp.\ heat capacity, $c_j$ (\si{\joule\per\kilogram\per\kelvin}) & \textsuperscript{h}903  & \textsuperscript{h}1269.2 & \textsuperscript{h}1978.2 & \textsuperscript{h}1437.4 & \textsuperscript{h}385  & \textsuperscript{h}2055.1 & \textsuperscript{i}1464.8 \\
-                Density, $\rho_j$ (\si{\kilogram\per\meter\cubed})              & \textsuperscript{j}2700 & \textsuperscript{k}2291.6 & \textsuperscript{b}1100.0 & \textsuperscript{j}2660.0 & \textsuperscript{l}8960 & \textsuperscript{j}1290.0 & \textsuperscript{m}1150.0 \\
-                Activ.\ energy, diff. ${E_\text{act,s}}_j$ (\si{\joule\per\mole})  & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
-                Activ.\ energy, rxn. ${E_\text{act,k}}_j$ (\si{\joule\per\mole})   & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
+                Sp.\ heat capacity, $c_j$ (\si{\joule\per\kilogram\per\kelvin})   & \textsuperscript{h}903  & \textsuperscript{h}1269.2 & \textsuperscript{h}1978.2 & \textsuperscript{h}1437.4 & \textsuperscript{h}385  & \textsuperscript{h}2055.1 & \textsuperscript{i}1464.8 \\
+                Density, $\rho_j$ (\si{\kilogram\per\meter\cubed})                & \textsuperscript{j}2700 & \textsuperscript{k}2291.6 & \textsuperscript{b}1100.0 & \textsuperscript{j}2660.0 & \textsuperscript{l}8960 & \textsuperscript{j}1290.0 & \textsuperscript{m}1150.0 \\
+                Activ.\ energy, diff. ${E_\text{act,s}}_j$ (\si{\joule\per\mole}) & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
+                Activ.\ energy, rxn. ${E_\text{act,k}}_j$ (\si{\joule\per\mole})  & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
 
                 \bottomrule
             \end{tabular}
         }
-        \bigskip
+        \medskip
         \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
-            \multicolumn{2}{c}{\textbf{Other Cell-Level Parameters}} \\
+            \multicolumn{2}{c}{\textbf{Other Geometric/Cell-Level Parameters}} \\
             \toprule
             \multicolumn{1}{@{}l}{Parameter} \\
             \midrule
 
-            Lumped heat transfer coefficient, $h$ (\si{\watt\per\meter\squared\per\kelvin}) & \tnote{b}150           \\
+            Thickness of pos.\ electrode, $l_\text{Al.}$ \si{(m)}                           & \tnote{f}\num{15e-6}   \\
+            Thickness of neg.\ electrode, $l_\text{Cu.}$ \si{(m)}                           & \tnote{p}\num{10e-6}   \\
             Total tab area, $A_\text{tabs}$ \si{(m^2)}                                      & \tnote{b}\num{5.94e-3} \\
+            Lumped heat transfer coefficient, $h$ (\si{\watt\per\meter\squared\per\kelvin}) & \tnote{b}150           \\
             Initial electrolyte concentration, $c_\text{e,0}$ (\si{\mole\per\meter\cubed})  & \tnote{q}1000          \\
 
             \bottomrule
         \end{tabular*}
 
-        \bigskip
+        \medskip
         \begin{tabular*}{\textwidth}{@{} =P{7.5cm}  +l@{\extracolsep{\fill}}+c +r @{}}
             \multicolumn{4}{c}{\textbf{Spatial Discretisation}} \\
             \toprule
             \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{l}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{r@{}}{Neg}\\
             \midrule
 
-             Nodes, through-thickness (axial), $N_{\text{a}_j}$          & \num{40} & \num{40} & \num{40} \\
-             Nodes, within spherical particle (radial), $N_{\text{r}_j}$ & \num{15} & ---      & \num{15} \\
+            Nodes, through-thickness (axial), $N_{\text{a}_j}$          & \num{40} & \num{40} & \num{40} \\
+            Nodes, within spherical particle (radial), $N_{\text{r}_j}$ & \num{15} & ---      & \num{15} \\
 
             \bottomrule
         \end{tabular*}
