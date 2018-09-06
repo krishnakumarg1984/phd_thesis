@@ -22,13 +22,14 @@
         choices, in a pouch cell of fixed exterior height.
         ]%
         {%
-            Terminal  voltage curves  of a  Li-ion  cell (with  parameters given  in
-            \cref{tbl:CellParams}) under a  \SI{60}{\ampere} galvanostatic discharge
-            beginning from \SI{100}{\percent}  \glsfmtshort{soc} until lower cut-off
-            voltage for a  few layer choices~$n$, in a pouch  cell of fixed exterior
-            height. The maximum usable energy is achieved for an intermediate choice
-            of $n$  that corresponds to  neither the highest nominal  capacity layer
-            configuration  ($n$=\num{10}) nor  the  highest  electrode surface  area
+            Terminal  voltage   curves  of   a  Li-ion  cell   (with  parameters
+            given in  \cref{tbl:lcoSimParamslayeropt}) under  a \SI{60}{\ampere}
+            galvanostatic    discharge    beginning   from    \SI{100}{\percent}
+            \glsfmtshort{soc}  until  lower  cut-off  voltage for  a  few  layer
+            choices~$n$, in a  pouch cell of fixed exterior  height. The maximum
+            usable  energy  is  achieved  for  an  intermediate  choice  of  $n$
+            that  corresponds  to neither  the  highest  nominal capacity  layer
+            configuration ($n$=\num{10}) nor the  highest electrode surface area
             configuration ($n$=\num{90})\footnotemark.
         }%
         \label{fig:fig_CC_discharge_curves}
@@ -69,32 +70,6 @@
     \end{minipage}
 \end{figure}
 
-% \afterpage{%
-%     \clearpage
-%     \thispagestyle{plain}
-%     \begin{figure}[p]
-%         \begin{minipage}[t]{\textwidth}
-%             \centering
-%             \includegraphics[angle=90,width=\textwidth]{fig_master_flow_diagramPDF.pdf}
-%             \caption
-%             [%
-%             Flow diagram depicting an overview  of the proposed layer optimisation methodology
-%             for Li-ion pouch cells.
-%             ]%
-%             {%
-%                 Flow diagram depicting an overview  of the proposed layer optimisation methodology
-%                 for Li-ion pouch cells\footnotemark.
-%             }%
-%             \label{fig:fig_strategy_schematic}
-%             \mpfootnotes[1]
-%             \vspace*{1.125cm}
-%             \footnote{This  figure was  created by  Krishnakumar Gopalakrishnan  who asserts copyright, with intellectual contributions from and the right to use asserted by Ian Campbell.}
-%         \end{minipage}
-%     \end{figure}
-% }%
-
-
-
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
         \centering
@@ -110,11 +85,16 @@
         }%
         \label{fig:fig_strategy_schematic}
         \mpfootnotes[1]
+        % \vspace*{1.125cm}
+        \vspace*{0.7225cm}
         \footnote{This  figure was  created by  Krishnakumar Gopalakrishnan  who
             asserts copyright, with intellectual contributions from and the right to
         use asserted by Ian Campbell.}
     \end{minipage}
 \end{figure}
+
+\section{Lower Cutoff Voltage}\label{sec:cutoff}
+\input{chapters/layer_opt/cell_params_full_table}
 
 %Honour  code pledge:  This  chapter  plan was  written  without  looking at  the
 %manuscript even  once. Only the actual  code commits of LIONSIMBA,  BOLD toolbox

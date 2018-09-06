@@ -9,6 +9,7 @@
 \StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
 
 \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
+% \providecommand{\pdfxopts}{a-1b} % may use options such as a-1a. a-1b
 \immediate\write18{rm \jobname.xmpdata} % comment out for non-*nix systems
 \begin{filecontents*}{\jobname.xmpdata}
     \input{Preamble/metadata}
@@ -20,13 +21,13 @@
 \PassOptionsToPackage{pdfa}{hyperref}
 
 % Options to these packages are passed to them whenever they get loaded
-\PassOptionsToPackage{title, titletoc}{appendix}
-\PassOptionsToPackage{makeroom}{cancel}
+% \PassOptionsToPackage{title, titletoc}{appendix}
+% \PassOptionsToPackage{makeroom}{cancel}
 \PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true, backrefstyle=three}{biblatex}
 \PassOptionsToPackage{margin=10pt, font=small, labelfont={bf}, labelsep=quad}{caption}
-\PassOptionsToPackage{normal}{engord}
+% \PassOptionsToPackage{normal}{engord}
 \PassOptionsToPackage{inline}{enumitem}
-\PassOptionsToPackage{draft}{fixme}
+% \PassOptionsToPackage{draft}{fixme}
 \PassOptionsToPackage{bottom}{footmisc}
 \PassOptionsToPackage{luatex, paper=a4paper, hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
 \PassOptionsToPackage{local, mark}{gitinfo2}
@@ -34,20 +35,20 @@
 \PassOptionsToPackage{section}{placeins}
 \PassOptionsToPackage{separate-uncertainty = true, multi-part-units=single, detect-all}{siunitx}
 \PassOptionsToPackage{nottoc}{tocbibind}
-\PassOptionsToPackage{normalem}{ulem}
+% \PassOptionsToPackage{normalem}{ulem}
 \PassOptionsToPackage{no-math, quiet}{fontspec}
 \PassOptionsToPackage{warnings-off={mathtools-colon}}{unicode-math}
 \PassOptionsToPackage{british}{babel}
-\PassOptionsToPackage{final, activate={true, nocompatibility}, factor=1100, stretch=10, shrink=10, babel=true}{microtype}
-\PassOptionsToPackage{british}{selnolig}
-\PassOptionsToPackage{newfloat=true}{minted}
-\PassOptionsToPackage{minted, most}{tcolorbox}
+% \PassOptionsToPackage{final, activate={true, nocompatibility}, factor=1100, stretch=10, shrink=10, babel=true}{microtype}
+% \PassOptionsToPackage{british}{selnolig}
+% \PassOptionsToPackage{newfloat=true}{minted}
+% \PassOptionsToPackage{minted, most}{tcolorbox}
 \PassOptionsToPackage{all}{hypcap}
 \PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
 \PassOptionsToPackage{depth=4, open=true, openlevel=0, numbered=true}{bookmark}
 \PassOptionsToPackage{nameinlink}{cleveref}
-\PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
-\PassOptionsToPackage{defaultlines=2, all}{nowidow}
+% \PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
+% \PassOptionsToPackage{defaultlines=2, all}{nowidow}
 
 \documentclass[12pt,a4paper,oneside,openright]{book} % using the book document class
 
@@ -66,7 +67,7 @@
 \usepackage{unicode-math} % fontspec after graphicx and babel; https://tex.stackexchange.com/questions/188222/problem-with-babel-and-fontspec; no-math option (math-handling is left to unicode-math); silent to suppress all warnings (even in log file)
 \input{Preamble/custom_cmds_unicode_fontselection} % selection of unicode text and math fonts
 
-% \usepackage{ragged2e}  % should be loaded after the body font and size have been established
+\usepackage{ragged2e}  % should be loaded after the body font and size have been established
 % \usepackage{microtype} % if using option babel=true, babel must be loaded before microtype; microtype must be loaded after font selection (after fontspec)
 % \usepackage{selnolig}  % luatex package;  should go after loading babel
 

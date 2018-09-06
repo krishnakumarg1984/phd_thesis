@@ -1,0 +1,225 @@
+% -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
+% vim:nospell
+
+\begin{table}[!htbp]
+    \small
+    \caption{to do}
+    % \caption[Simulation parameters of  an \glsfmtshort{lco} cell]{Complete set of  parameters for  simulating the
+    %     \gls{p2d} and  \gls{spm} implementations  of an  \gls{lco} cell  (with \ch{LiCoO_2}--\ch{LiC_6} electrode   pair
+    %     and   \ch{LiPF_6}   electrolyte).   The  highlighted   entries represent the  parameters exclusive  to \gls{p2d}
+    %     model.\quad  \protect{$j \in \{\text{pos},\text{sep},\text{neg}\}$}}
+    \label{tbl:lcoSimParamslayeropt}
+    \vspace{-2.6229525pt}
+    \begin{threeparttable}
+        \centering
+        \textbf{System Conditions} \\ \smallskip
+        \begin{varwidth}[t]{0.48\linewidth}
+            \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
+                % \multicolumn{2}{c}{\textbf{System Conditions}} \\
+                \toprule
+                \multicolumn{1}{@{}l}{Parameter} \\
+                \midrule
+
+                Lower cutoff cell voltage, $V_\text{min}$ (\si{\volt}) & \tnote{a}3.50   \\
+                Upper cutoff cell voltage, $V_\text{max}$ (\si{\volt}) & \tnote{b}4.22   \\
+
+                \bottomrule
+            \end{tabular*}
+        \end{varwidth}
+        \hfill
+        \begin{varwidth}[t]{0.48\linewidth}
+            \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
+                % \multicolumn{2}{c}{\textbf{Other Constants}} \\
+                \toprule
+                \multicolumn{1}{@{}l}{Parameter} \\
+                \midrule
+
+                Target cell SOC for fast charge, $z^\ast$ \si{(\%)}                  & \tnote{c}80.00 \\
+                Cell upper temperature limit, $T_\mathrm{max}$ \si{(\degreeCelsius)} & \tnote{d}55.00 \\
+
+                \bottomrule
+            \end{tabular*}
+        \end{varwidth}
+
+        \bigskip
+        % \vspace{-2.6229525pt}
+        % \vfill
+        \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
+            \multicolumn{2}{c}{\textbf{Geometric}} \\
+            \toprule
+            \multicolumn{1}{@{}l}{Parameter} \\
+            \midrule
+            Surface area of pos.\ \& neg.\ electrode overlap within a layer, {$A_\mathrm{elec}$} \si{(m^2)} & \tnote{b}\num{4.19e-2}   \\
+            Exterior pouch length, $L_\mathrm{pouch}$ \si{(m)}                                              & \tnote{e}\num{332.74e-3} \\
+            Exterior pouch width, $W_\mathrm{pouch}$ \si{(m)}                                               & \tnote{e}\num{99.06e-3}  \\
+            Exterior pouch height, $H_\mathrm{pouch}$ \si{(m)}                                              & \tnote{f}\num{10.00e-3}  \\
+            Pouch material thickness, $T_\mathrm{pouch}$ \si{(m)}                                           & \tnote{g}\num{160.00e-6} \\
+            %            Combined surface area of cell tabs, $A_\mathrm{tabs}$ \si{(m^2)} & \tnote{x}\num{5.944e-3} \\
+            \bottomrule
+        \end{tabular*}
+        \bigskip
+        \centering \textbf{Thermal} \\ \smallskip
+        \resizebox{\textwidth}{!}{%
+            % \begin{tabular*}{\textwidth}{@{} P{5.3cm} l c c c l c r @{}}
+            \begin{tabular}{@{} l l c c c l c r @{}}
+                \toprule
+                \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{c}{Al.\ CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu.\ CC} & \multicolumn{1}{c}{$\mathrm{LiPF_6}$} & \multicolumn{1}{r@{}}{Pouch}\\
+                \midrule
+
+                Sp.\ heat capacity, $c_j$ \si{(\joule\per\kilogram\per\kelvin)}  & \textsuperscript{i}903  & \textsuperscript{i}1269.2 & \textsuperscript{i}1978.2 & \textsuperscript{i}1437.4 & \textsuperscript{i}385  & \textsuperscript{i}2055.1 & \textsuperscript{k}1464.8         \\
+                Density, $\rho_j$ \si{(kg.m^{-3})}                             & \textsuperscript{l}2700 & \textsuperscript{m}2291.6 & \textsuperscript{b}1100.0 & \textsuperscript{n}2660.0 & \textsuperscript{l}8960 & \textsuperscript{n}1290.0 & \textsuperscript{o}1150.0         \\
+                Activ.\ energy, diff. ${E_\mathrm{act,s}}_j$ \si{(J.mol^{-1})} & ---           & \textsuperscript{p}5000   & ---             & \textsuperscript{p}5000   & ---           & ---             & \multicolumn{1}{c}{---} \\
+                Activ.\ energy, rxn. ${E_\mathrm{act,k}}_j$ \si{(J.mol^{-1})}  & ---           & \textsuperscript{p}5000   & ---             & \textsuperscript{p}5000   & ---           & ---             & \multicolumn{1}{c}{---} \\
+
+                \midrule
+                % Heat transfer coefficient, $h$ \si{(W.m^{-2}.K^{-1})}          & \multicolumn{7}{c}{\tnote{b}\num{150}}     \\
+                % Total cell tab area, $A_\mathrm{tabs}$ \si{(m^2)}              & \multicolumn{7}{c}{\tnote{b}\num{5.94e-3}} \\
+                % \bottomrule
+            \end{tabular}
+        }
+        % \begin{tabular*}{\textwidth}{@{} =P{7.5cm} @{\extracolsep{\fill}} +l +c +r @{}}
+        %     \multicolumn{4}{c}{\textbf{Thermodynamic, Kinetic, Geometric and Transport Parameters}} \\
+        %     \toprule
+        %     \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{l}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{r@{}}{Neg}\\
+        %     \midrule
+
+        %     \rowstyle{\color{viridistwentybluesix}} Bruggeman coefficient, $\text{brugg}_j$                                                 & \tnote{c}\num{4}        & \tnote{c}\num{4}                               & \tnote{c}\num{4}        \\
+        %     \rowstyle{\color{viridistwentybluesix}} Intrinsic electrolyte diffusivity, $D$ (\si{\meter\squared\per\second})               & \tnote{d}\num{3.22e-10} & \tnote{d}\num{3.22e-10}                        & \tnote{d}\num{3.22e-10} \\
+        %     \rowstyle{\color{viridistwentybluesix}} Intrinsic electrolyte conductivity, $\kappa$ (\si{\siemens\per\meter})                &
+        %     \multicolumn{3}{c}{\textcolor{viridistwentybluesix}{\Vhrulefill{} see table note \emph{e} \& \cref{subsec:basicspmsimsetup} \Vhrulefill{}}}\\
+        %     \rowstyle{\color{viridistwentybluesix}} \ch{Li^+} transference number, $t^0_\text{+}$                                           & \tnote{c}\num{0.363}    & \tnote{c}\num{0.363}                           & \tnote{c}\num{0.363}    \\
+        %     \rowstyle{\color{viridistwentybluesix}} Intrinsic electronic conductivity, $\sigma_j$ (\si{\siemens\per\meter})                 & \tnote{c}\num{100.00}   & ---                                            & \tnote{c}\num{100.00}   \\
+        %     Thickness, $l_j$ (\si{\meter})                                                          & \tnote{c}\num{88e-6}    & \textcolor{viridistwentybluesix}{\tnote{c}\num{25e-6}} & \tnote{f}\num{72e-6}    \\
+        %     Electrolyte porosity, ${\varepsilon}_j$                                                 & \tnote{c}\num{0.385}    & \tnote{c}\num{0.724}                           & \tnote{c}\num{0.485}    \\
+        %     Filler vol.\ fraction, ${\varepsilon}_{\text{fi}_j}$                                    & \tnote{c}\num{0.025}    & ---                                            & \tnote{c}\num{0.033}    \\
+        %     Particle radius, $R_\pj$ (\si{\meter})                                                  & \tnote{c}\num{2e-6}     & ---                                            & \tnote{c}\num{2e-6}     \\
+        %     Specific interfacial surface area, $a_\sj$ (\si{\meter\squared\per\meter\cubed})        & \tnote{g}\num{885e3}    & ---                                            & \tnote{g}\num{723.6e3}  \\
+        %     Electrode diffusivity, $D_{\text{s}_j}$ (\si{\meter\squared\per\second})                & \tnote{c}\num{1e-14}    & ---                                            & \tnote{c}\num{3.9e-14}  \\
+        %     Stoichiometry, 0\% SOC, ${\theta}_{\text{min}_j}$                                       & \tnote{h}\num{0.9917}   & ---                                            & \tnote{h}\num{0.0143}   \\
+        %     Stoichiometry, 100\% SOC, ${\theta}_{\text{max}_j}$                                     & \tnote{c}\num{0.4955}   & ---                                            & \tnote{c}\num{0.8551}   \\
+        %     Max concentration, ${c_\text{s,max}}_j$ (\si{\mole\per\meter\cubed})                    & \tnote{c}\num{51554}    & ---                                            & \tnote{c}\num{30555}    \\
+        %     Reaction rate coefficient, $k_\jr$ (\si{\meter\tothe{2.5}\mole\tothe{-0.5}\per\second}) & \tnote{c}\num{2.33e-11} & ---                                            & \tnote{c}\num{5.03e-11} \\
+        %     Overall active surface area, $A$ (\si{\meter\squared})                                  & \tnote{i}\num{2.053}    & ---                                            & \tnote{i}\num{2.053}    \\
+        %     Open circuit potential, $U_j$ (\si{\volt})                                              & \tnote{k}see table note & ---                                            & \tnote{m}see table note \\
+        %     \bottomrule
+        % \end{tabular*}
+
+        \bigskip
+        \vspace{-2.6229525pt}
+        % \vfill
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % \begin{tabular*}{\textwidth}{@{} =P{7.5cm}  +l@{\extracolsep{\fill}}+c +r @{}}
+        %     \multicolumn{4}{c}{\textbf{Spatial Discretisation}} \\
+        %     \toprule
+        %     \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{l}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{r@{}}{Neg}\\
+        %     \midrule
+
+        %     \rowstyle{\color{viridistwentybluesix}} Nodes, through-thickness (axial), $N_{\text{a}_j}$          & \num{15} & \num{15} & \num{15} \\
+        %     \rowstyle{\color{viridistwentybluesix}} Nodes, within spherical particle (radial), $N_{\text{r}_j}$ & \num{10} & ---      & \num{10} \\
+
+        %     \bottomrule
+        % \end{tabular*}
+
+        \medskip
+        \vspace{-2.6229525pt}
+        % \vfill
+        \begin{tablenotes}[para,flushleft]
+            \begin{scriptsize}
+            \item[a] Calculated as described in \cref{sec:cutoff}
+            \item[b] Assumed
+            \item[c] Ref.~\cite{SAECharging2011}
+            \item[d] Ref.~\cite{Kizilel2009, Lu2013}
+            \item[e] Ref.~\cite{GMBoltBatteryDims}
+		    \item[f] Ref.~\cite{Groger2015}
+            \item[g] Ref.~\cite{Svens2013}
+                % \item[d] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \romanletter{2} in Ref.~\cite{Valoen2005}\\%\fxnote{cross-ref to actual equation}
+                % \item[e] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \romanletter{3} in Ref.~\cite{Valoen2005} at $c_\text{e,0}= \SI{1000}{\mole\per\meter\cubed}$\\
+                % \item[f] Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.
+                % \item[g] Computed as per \cref{eq:specificsurfarea}\\
+                % \item[h] Obtained as residual stoichiometries after a C/\num{500} simulated discharge from \SI{100}{\percent} cell \gls{soc} to \SI{2.7}{V}
+                % \item[i] Chosen so that current density for the electrochemical layer is \SI{29.23}{\ampere\per\meter\squared} for \SI{60}{\ampere} applied current
+            \end{scriptsize}
+            \vspace{1ex}
+            % \item[k] $ \mathcal{U(\theta_\text{pos})} = \textstyle \frac{-4.656 + 88.669\theta_\text{pos}^2 - 401.119\theta_\text{pos}^4 + 342.909\theta_\text{pos}^6 - 462.471\theta_\text{pos}^8 + 433.434\theta_\text{pos}^{10}}{-1 + 18.933\theta_\text{pos}^2 - 79.532\theta_\text{pos}^4 + 37.311\theta_\text{pos}^6 - 73.083\theta_\text{pos}^8 + 95.96\theta_\text{pos}^{10}}$ \hspace*{\fill}\refstepcounter{equation}(\theequation)\label{eq:lcoUocpPos}\\[0.25em]
+            %     \begin{footnotesize}
+            %     \item[m] $\mathcal{U(\theta_\text{neg})} = 0.7222 + 0.1387\theta_\text{neg} + 0.029\theta_\text{neg}^{0.5} - \frac{0.0172}{\theta_\text{neg}} + \frac{0.0019}{\theta_\text{neg}^{1.5}} + 0.2808 e^{(0.9 - 15\theta_\text{neg})} - 0.7984 e^{(0.4465\theta_\text{neg} - 0.4108)}$\hspace*{\fill}\refstepcounter{equation}(\theequation)\label{eq:lcoUocpNeg}\vfill
+            %     \end{footnotesize}
+        \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+% Ian's stuff
+%    \caption{\ Cell and simulation parameters \quad$j \in \{\mathrm{Al}, \mathrm{pos}, \mathrm{sep}, \mathrm{neg}, \mathrm{Cu}, \mathrm{LiPF_6}, \mathrm{pouch}\}$}
+
+
+
+%        \bigskip
+%        % @{\extracolsep{\fill}}
+%        %%%%%%%%%%%%%%%%%%%%%%%%%%% THERMAL PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+%        \bigskip
+
+%        %%%%%%%%%%%%%%%%%%%%%%%%%%% ELECTROCHEMICAL PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        \begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} c c c c r}
+%            \multicolumn{6}{c}{\textbf{Electrochemical}} \\
+%            \toprule
+%            \multicolumn{1}{l}{Parameter} & \multicolumn{1}{c}{Al CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu CC}\\
+%            \midrule
+%            Thickness, $l_j$ \si{(m)} & \tnote{g}\num{15e-6} & eqn~\eqref{eqn:lpos} & \tnote{p}\num{25e-6} & eqn~\eqref{eqn:lneg} & \tnote{p}\num{10e-6} \\
+%            Particle radius, $R_{\mathrm{p}_j}$ \si{(m)} & --- & \tnote{p}\num{2e-6} & --- & \tnote{p}\num{2e-6} & \multicolumn{1}{c}{---} \\
+%            Material vol.\ fraction, $\varepsilon_j$ & --- & \tnote{p}\num{0.590} & \tnote{p}\num{0.276} & \tnote{p}\num{0.482} & \multicolumn{1}{c}{---} \\
+%            Filler vol.\ fraction, ${\varepsilon}_{\mathrm{fi}_j}$ & --- & \tnote{p}\num{0.025} & \tnote{p}\num{0} & \tnote{p}\num{0.033} & \multicolumn{1}{c}{---} \\
+%            Bruggeman coefficient, $\mathrm{brugg}_j$ & --- & \tnote{p}\num{4.00} & \tnote{p}\num{4.00} & \tnote{p}\num{4.00} & \multicolumn{1}{c}{---} \\
+%            Specific interfacial surface area, $a_{\mathrm{s}_j}$ \si{(m^{2}.m^{-3})} & --- & \tnote{p}\num{885e3} & --- & \tnote{p}\num{723.6e3} & \multicolumn{1}{c}{---} \\
+%            Electrolyte diffusivity, $D_j$ \si{(m^2.s^{-1})} & --- & eqn~\eqref{eqn:liquid_diffusion} & eqn~\eqref{eqn:liquid_diffusion} & eqn~\eqref{eqn:liquid_diffusion} & \multicolumn{1}{c}{---} \\
+%            Electrolyte conductivity, $\kappa_j$ \si{(S.m^{-1})} & --- & eqn~\eqref{eqn:liquid_conductivity} & eqn~\eqref{eqn:liquid_conductivity} & eqn~\eqref{eqn:liquid_conductivity} & \multicolumn{1}{c}{---} \\
+%            Electrode diffusivity, $D_{\mathrm{s}_j}$ \si{(m^2.s^{-1})} & --- & \tnote{p}\num{1e-14} & --- & \tnote{p}\num{3.9e-14} & \multicolumn{1}{c}{---} \\
+%            Electronic conductivity, $\sigma_j$ \si{(S.m^{-1})} & \tnote{p}\num{3.55e7} & \tnote{p}\num{100.00} & --- & \tnote{p}\num{100.00} & \tnote{p}\num{5.96e7} \\
+%            Stoichiometry, 0\% SOC, ${\theta}_{\mathrm{min}_j}$ & --- & \tnote{q}\num{0.9917} & --- & \tnote{q}\num{0.0143} & \multicolumn{1}{c}{---} \\
+%            Stoichiometry, 100\% SOC, ${\theta}_{\mathrm{max}_j}$ & --- & \tnote{r}\num{0.4955} & --- & \tnote{r}\num{0.8551} & \multicolumn{1}{c}{---} \\
+%            Max concentration, ${c_\mathrm{s,max}}_j$ \si{(mol.m^{-3})} & --- & \tnote{p}\num{51554} & --- & \tnote{p}\num{30555} & \multicolumn{1}{c}{---} \\
+%            Saturation concen., $c_\mathrm{s,sat}$ \si{(mol.m^{-3})} & --- & --- & --- & \tnote{s}\num{26127.58} & \multicolumn{1}{c}{---} \\
+%            Reaction rate constant, $k_{\mathrm{r}_j}$ \si{(m^{2.5}mol.^{-0.5}s^{-1})} & --- & \tnote{p}\num{2.33e-11} & --- & \tnote{p}\num{5.03e-11} & \multicolumn{1}{c}{---} \\
+%            Li\textsuperscript{+} transference number, $t^0_\mathrm{+}$ & --- & \tnote{p}\num{0.364} & \tnote{p}\num{0.364} & \tnote{p}\num{0.364} & \multicolumn{1}{c}{---} \\
+%            Init. electrolyte conc., $c_\mathrm{e,0}$ \si{(mol.m^{-3})} & --- & \tnote{p}\num{1000} & \tnote{p}\num{1000} & \tnote{p}\num{1000} & \multicolumn{1}{c}{---} \\
+%            Open circuit potential, $U_j$ \si{(V)} & --- & eqn~\eqref{eqn:OCP_pos} & --- & eqn~\eqref{eqn:OCP_neg} & \multicolumn{1}{c}{---} \\
+%            \midrule
+%            Faraday constant, $F$ \si{(C.mol^{-1})} & \multicolumn{5}{c}{\num{96487}} \\
+%            Universal gas constant, $R$ \si{(J.mol^{-1}.K^{-1})} & \multicolumn{5}{c}{\num{8.314}} \\
+%            \bottomrule
+%        \end{tabular*}
+
+%        \bigskip
+%        %%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION PARAMS TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        \begin{tabular*}{\textwidth}{l p{2.6cm} p{2.3cm} p{2.3cm} p{2.3cm} p{2.3cm}}
+%            \multicolumn{6}{p{\textwidth}}{\hspace{0.44\textwidth}\textbf{Discretisation}} \\
+%            \toprule
+%            \multicolumn{1}{l}{Parameter} & \multicolumn{1}{p{2.6cm}}{} & \multicolumn{1}{p{2.3cm}}{Pos} & \multicolumn{1}{p{2.3cm}}{Sep} & \multicolumn{1}{p{2.3cm}}{Neg} & \multicolumn{1}{p{2.3cm}}{} \\
+%            \midrule
+%            Nodes, through-thickness (axial), $N_{\mathrm{a}_j}$ & & \num{40} & \num{40} & \num{40} & \\
+%            Nodes, within spherical particle (radial), $N_{\mathrm{r}_j}$ & & \num{15} & --- & \num{15} & \\
+%            \bottomrule
+%        \end{tabular*}
+
+%        \begin{tablenotes}
+%        \item[h]\mbox{Ref.\cite{Svens2013}}
+%        \item[i]\mbox{Ref.\cite{Chen2005}}
+%        % \item[j]\mbox{Ref.\cite{Guo2010}}
+%        \item[k]Computed based on the values of constituents in \mbox{Ref.\cite{martienssen2006springer}}
+%        \item[l]\mbox{Ref.\cite{martienssen2006springer}}
+%        \item[m]\mbox{Ref.\cite{Jeon2011}}
+%        \item[n]\mbox{Ref.\cite{Lopez2015dens}}
+%        \item[o]\mbox{Ref.\cite{Kim2009}}
+%        \item[p]\mbox{Ref.\cite{Northrop2011}}
+%        \item[q]Obtained via C/\num{500} simulated discharge to \SI{2.7}{V}
+%		\item[r]\mbox{Ref.\cite{Subramanian2009}}
+%        \item[s]$c_\mathrm{s}$ at $z =$ \num{100} \si{\%}
+%        \end{tablenotes}
+
+%    \end{threeparttable}
+%\end{table*}
+
+
+% Upper cell temperature limit, $T_\mathrm{max}$ \si{(\degreeCelsius)} & \tnote{e}\num{55.00} \\\textcolor{viridistwentybluesix}{\emph{Init.}}\ electrolyte conc., $c_\text{e,0}$ (\si{\mole\per\meter\cubed}) & \tnote{c}1000        \\
