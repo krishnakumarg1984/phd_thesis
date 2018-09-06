@@ -96,6 +96,104 @@
 \section{Lower Cutoff Voltage}\label{sec:cutoff}
 \input{chapters/layer_opt/cell_params_full_table}
 
+Figure showing power input
+
+\section{Hybrid Spectral-\glsfmtshort{fv} Scheme}\label{sec:hybridfv-spectral}
+
+Fast  and  accurate  estimation  of   the  solid  phase  lithium  concentration,
+particularly  its   value  at   the  surface  of   electrode  particles   is  an
+inherent  requirement   of  the   layer  optimisation  procedure   presented  in
+Section~\ref{sec:Framework}. The high power densities that result from using low
+layer  counts  necessitate  this  requirement. It  has  been  acknowledged  that
+concentration  calculations employing  polynomial approximations  such as  those
+proposed in~\cite{Santhanagopalan2006a}  lack fidelity at  high charge/discharge
+rates~\cite{Santhanagopalan2006}.  Hence,  a  conventional  full-order  solution
+based on Fick's law of diffusion is appropriate.
+
+With full-order  solid phase  diffusion dynamics,  applying the  \gls{fv} scheme
+(that has  been employed to  discretise all through-thickness \gls{pde}s  in the
+\gls{p2d} model)  results in  a large system  of equations. This  is due  to the
+requirement  of  using  a  high  radial  node  density  per  spherical  particle
+for  improved  accuracy.  Consequently,  the  computational  cost  is  high  and
+simulation  runtime  becomes prohibitive  when  exploring  the search  space  of
+all  possible  layer configurations.  Moreover,  with  a cell-centered  \gls{fv}
+discretisation,  it is  non-trivial to  directly apply  the ionic  flux boundary
+condition  at the  particle surface,  since  it involves  extrapolation from  at
+least  two  other nodes  within  the  particle.  While such  extrapolations  are
+acceptable  in the  axial dimension  --- particularly  with high  node densities
+providing  small values  of $\frac{\Delta  x}{2}$  --- they  are undesirable  in
+the  radial  dimension.  This  is  because  cell's  open  circuit  and  terminal
+voltages strongly depend on the  concentration at the particle surface. Spectral
+methods  offer  a  combination  of  high accuracy  and  speed  while  permitting
+the  use of  a  lower number  of  radial discretisation  nodes.  To implement  a
+spectral  scheme on  a non-periodic  domain, a  Chebyshev discretisation  may be
+applied~\cite{Trefethen2000}.  Bizeray~\etal discretised  all  of the  \gls{p2d}
+model equations using this approach~\cite{Bizeray2015a}. However, this entails a
+bi-directional  mapping of  all  variables between  the  physical and  Chebyshev
+domains, incurring computational overhead.
+
+Here we propose the use of a hybrid formulation of the \gls{p2d} model wherein a
+standard \gls{fv}  scheme in the  axial dimension and  a spectral scheme  in the
+radial domain  are used. By exploiting  the natural separation of  the axial and
+radial  domains, we  \romanletter{1}) retain  the ability  to easily  couple the
+molar  flux  density  at  the  particle surface  through  reformulation  of  the
+boundary conditions  of the solid  diffusion pde and \romanletter{2})  solve for
+solid-phase lithium concentration in the  Chebyshev domain and locally transform
+to  physical domain,  without  requiring  system-wide Chebyshev  reformulations.
+Although  the  proposed  implementation  does not  globally  employ  a  spectral
+scheme, the  combined beneficial  effects of  radial-domain spectral  scheme and
+automatic differentiation of system equations using CasADi~\cite{Andersson2013b}
+facilitates rapid simulation, enabling  layer optimisation on short time-scales.
+Eqns\cref{eqn:defineChebNodes}--\cref{eqn:solidDiffEqChebDomain}  detail the
+steps  leading to  the reformulated  solid  phase diffusion  and its  associated
+boundary condition in the Chebyshev domain.
+
+The Chebyshev collocation nodes defined on a 1D mesh in the radial direction are
+given by\cref{eqn:defineChebNodes}~\cite{Trefethen2000}.
+
+\begin{equation}\label{eqn:defineChebNodes}
+    \tilde{r} = \cos\left(\frac{i\pi}{N_\mathrm{r}}\right), \qquad i = 0, 1, \dots  N_\mathrm{r} \quad \tilde{r} \in [-1, 1]
+\end{equation}
+
+Assuming  constant diffusivity,  and expanding  the derivative  in the  standard
+form   of  the   Fickian  spherical   diffusion  equation   for  each   particle
+(refer~\ref{sec:Supplementary})  we  obtain  \cref{eqn:quotientappliedpde},
+presented along  with its  Neumann boundary  conditions. $j$  is the  molar flux
+density  (\si{mol.m^{-2}.s^{-1}})  and  $R_\mathrm{p}$ is  the  particle  radius
+(\si{m}).
+
+\begin{align}
+    \frac{\partial c_\mathrm{s}}{\partial t} &= D^\mathrm{eff}_\mathrm{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\mathrm{s}}{\partial r} + \frac{\partial^2 c_\mathrm{s}}{\partial r^2} \right) \qquad r \in [0, R_\mathrm{p}]\label{eqn:quotientappliedpde}\\
+\frac{\partial c_\mathrm{s}}{\partial r}\bigg\rvert_{r=0} &= 0\tag{\ref{eqn:quotientappliedpde}a}\\
+    D^\mathrm{eff}_\mathrm{s}\frac{\partial c_\mathrm{s}}{\partial r}\bigg\rvert_{r=R_\mathrm{p}} &= {}-j\tag{\ref{eqn:quotientappliedpde}b}
+\end{align}
+
+{Mapping} $r \in [0,R_\mathrm{p}] \mapsto \tilde{r} \in [-1, 1]$,
+\begin{align}\label{mappingChebDomain}
+    r = \frac{R_\mathrm{p}}{2}(\tilde{r} + 1)
+\end{align}
+
+Applying  \cref{mappingChebDomain}   to  \cref{eqn:quotientappliedpde}
+whilst    retaining    $c_\mathrm{s}$    in   the    physical    space    yields
+\cref{eqn:solidDiffEqChebDomain}.
+
+\begin{align}
+	\frac{\partial c_\mathrm{s}}{\partial t} &= 4 \frac{D^\mathrm{eff}_\mathrm{s}}{R_\mathrm{p}^2} \left( \frac{2}{\tilde{r} + 1} \frac{\partial c_\mathrm{s}}{\partial \tilde{r}} + \frac{\partial^2 c_\mathrm{s}}{\partial {\tilde{r}}^2} \right)\label{eqn:solidDiffEqChebDomain}\\
+	\frac{\partial c_\mathrm{s}}{\partial \tilde{r}}\bigg\rvert_{\tilde{r}=-1} &= 0\tag{\ref{eqn:solidDiffEqChebDomain}a}\\
+	2 \frac{D^\mathrm{eff}_\mathrm{s}}{R_\mathrm{p}} \frac{\partial c_\mathrm{s}}{\partial \tilde{r}}\bigg\rvert_{\tilde{r}=1} &= -j\tag{\ref{eqn:solidDiffEqChebDomain}b}
+\end{align}
+
+During  the iterative  solution process,  the spatial  gradients of  solid phase
+lithium concentration in  \cref{eqn:solidDiffEqChebDomain} are not computed
+through  an  explicit  differentiation   procedure,  but  instead  evaluated  by
+pre-multiplying  the  concentration  values  at   the  collocation  nodes  by  a
+Chebyshev  differentiation  matrix.  This  particular fact  is  responsible  for
+the  inherent  reduction  of  simulation   runtime  achieved  by  introducing  a
+spectral  method.  In the  modified  version  of  LIONSIMBA  used in  the  layer
+optimisation methodology, differentiation matrices of suitable dimension as well
+as  the Chebyshev  collocation nodes  are  generated using  the MATLAB  function
+\texttt{cheb.m}~\cite{Trefethen2000}.
+
 %Honour  code pledge:  This  chapter  plan was  written  without  looking at  the
 %manuscript even  once. Only the actual  code commits of LIONSIMBA,  BOLD toolbox
 %and the data from shared Box folder was used in writing this up.
@@ -181,7 +279,7 @@
 %on tab  cooling, particularly, the uniform  thermal gradient across layers  in a
 %pouch cell, particularly helps to represent an individual cell's electrochemical
 %properties  (composed of  many layers)  through  a representative  study on  one
-%layer  using the  P2D model.  For a  standard surface-cooled  pack design,  this
+%layer  using the  p2d model.  For a  standard surface-cooled  pack design,  this
 %implies  that for  cell modelling,  two dimensions  must be  considered for  the
 %electrochemical and coupled thermal phenomena.
 
@@ -315,7 +413,7 @@
 %a figure and table. How layers place  a role in controlling this trade-off shall
 %be discussed in the subsequent sections.
 
-%\section{Augmentation of P2D parameters}
+%\section{Augmentation of p2d parameters}
 
 %Shed more light on the p2d model. Explain  how they do not model a cell of given
 %capacity, but instead  work on a normalised basis driven  by the applied current
@@ -342,7 +440,7 @@
 %\subsection{Modelling Platform and Preconditioning}
 
 %Couple of  statements about why LIONSIMBA  was chosen as the  modelling platform
-%for implementing the  P2D dynamics. The cell parameters used  are shown in table
+%for implementing the  p2d dynamics. The cell parameters used  are shown in table
 %xx. This cell is henceforth known as the LIONSIMBA cell or Northrop cell.
 
 %Discuss  the missing  elements in  LIONSIMBA only  with respect  to the  present
@@ -579,7 +677,7 @@
 
 %Krishna  also came  up with  the cell's  cutoff study  with respect  to the  the
 %system's  bus bar  voltage, and  will  be cited  here with  examples and  strong
-%backing. There  are a few  preconditioning steps needed  to amend the  P2D model
+%backing. There  are a few  preconditioning steps needed  to amend the  p2d model
 %before  numerical implementation  of the  flow  diagram is  possible. 1.  Fixing
 %aspects of  the code  in LIONSIMBA v1.023  used as the  baseline by  this thesis
 %author. 2.  Addition of the capability  to apply power input  instead of current
@@ -631,7 +729,7 @@
 %by changing the number of nodes within  each mesh to justify the validity of the
 %results. Prove that mesh independence is reached.
 
-%\subsection{Hybrid FV--Spectral Scheme}
+%\subsection{Hybrid fv--Spectral Scheme}
 
 %Completely numerical section.  Highly mathemetical. Explain how  the rational to
 %decimal  truncation of  the unbalanced  twelfth order  finite difference  scheme
