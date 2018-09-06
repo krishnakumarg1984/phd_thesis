@@ -83,14 +83,14 @@ this work.
 % \input{chapters/sys_id/sys_id}             % New Electrolye Model
 
 \backmatter
-% \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
-%     \renewcommand{\bibname}{References} % changes the header; default: Bibliography
-%     % add bib to toc
-%     \cleardoublepage
-%     \phantomsection
-%     \addcontentsline{toc}{chapter}{\bibname}
-%     \printbibliography
-% \end{footnotesize}
+\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
+    % add bib to toc
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+    \printbibliography
+\end{footnotesize}
 
 % Required to maintain continuous arabic numbering
 \makeatletter
@@ -100,7 +100,7 @@ this work.
 
 % \begin{appendices} % Using the appendices environment (from appendix package) for more functionality
 %     \crefalias{chapter}{appchap}
-%     \include{chapters/Appendices/appendix1}
+%     % \include{chapters/Appendices/appendix1}
 %     \include{chapters/Appendices/appendix2}
 % \end{appendices}
 

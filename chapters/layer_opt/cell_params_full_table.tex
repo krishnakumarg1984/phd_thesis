@@ -61,16 +61,15 @@
         \bigskip
         \centering \textbf{Thermal} \\ \smallskip
         \resizebox{\textwidth}{!}{%
-            % \begin{tabular*}{\textwidth}{@{} P{5.3cm} l c c c l c r @{}}
             \begin{tabular}{@{} l l c c c l c r @{}}
                 \toprule
                 \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{c}{Al.\ CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu.\ CC} & \multicolumn{1}{c}{$\mathrm{LiPF_6}$} & \multicolumn{1}{r@{}}{Pouch}\\
                 \midrule
 
-                Sp.\ heat capacity, $c_j$ \si{(\joule\per\kilogram\per\kelvin)}  & \textsuperscript{i}903  & \textsuperscript{i}1269.2 & \textsuperscript{i}1978.2 & \textsuperscript{i}1437.4 & \textsuperscript{i}385  & \textsuperscript{i}2055.1 & \textsuperscript{k}1464.8         \\
-                Density, $\rho_j$ \si{(kg.m^{-3})}                             & \textsuperscript{l}2700 & \textsuperscript{m}2291.6 & \textsuperscript{b}1100.0 & \textsuperscript{n}2660.0 & \textsuperscript{l}8960 & \textsuperscript{n}1290.0 & \textsuperscript{o}1150.0         \\
-                Activ.\ energy, diff. ${E_\mathrm{act,s}}_j$ \si{(J.mol^{-1})} & ---           & \textsuperscript{p}5000   & ---             & \textsuperscript{p}5000   & ---           & ---             & \multicolumn{1}{c}{---} \\
-                Activ.\ energy, rxn. ${E_\mathrm{act,k}}_j$ \si{(J.mol^{-1})}  & ---           & \textsuperscript{p}5000   & ---             & \textsuperscript{p}5000   & ---           & ---             & \multicolumn{1}{c}{---} \\
+                Sp.\ heat capacity, $c_j$ (\si{\joule\per\kilogram\per\kelvin}) & \textsuperscript{h}903  & \textsuperscript{h}1269.2 & \textsuperscript{h}1978.2 & \textsuperscript{h}1437.4 & \textsuperscript{h}385  & \textsuperscript{h}2055.1 & \textsuperscript{i}1464.8 \\
+                Density, $\rho_j$ (\si{\kilogram\per\meter\cubed})              & \textsuperscript{l}2700 & \textsuperscript{k}2291.6 & \textsuperscript{b}1100.0 & \textsuperscript{l}2660.0 & \textsuperscript{j}8960 & \textsuperscript{l}1290.0 & \textsuperscript{o}1150.0 \\
+                Activ.\ energy, diff. ${E_\mathrm{act,s}}_j$ \si{(J.mol^{-1})}  & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
+                Activ.\ energy, rxn. ${E_\mathrm{act,k}}_j$ \si{(J.mol^{-1})}   & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
 
                 \midrule
                 % Heat transfer coefficient, $h$ \si{(W.m^{-2}.K^{-1})}          & \multicolumn{7}{c}{\tnote{b}\num{150}}     \\
@@ -128,11 +127,16 @@
             \begin{scriptsize}
             \item[a] Calculated as described in \cref{sec:cutoff}
             \item[b] Assumed
-            \item[c] Ref.~\cite{SAECharging2011}
+            \item[c] Ref.~\cite{Sae2010}
             \item[d] Ref.~\cite{Kizilel2009, Lu2013}
             \item[e] Ref.~\cite{GMBoltBatteryDims}
 		    \item[f] Ref.~\cite{Groger2015}
             \item[g] Ref.~\cite{Svens2013}
+            \item[h] Ref.~\cite{Chen2005}
+            \item[i] Computed based on the values of constituents in Ref.~\cite{martienssen2006springer}
+            \item[j] Ref.~\cite{martienssen2006springer}
+            \item[k] Ref.~\cite{Jeon2011}
+            \item[l] Ref.~\cite{Guo2010}
                 % \item[d] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \romanletter{2} in Ref.~\cite{Valoen2005}\\%\fxnote{cross-ref to actual equation}
                 % \item[e] Computed at $T_\text{cell} = \SI{298.15}{\kelvin}$ using coefficients from table \romanletter{3} in Ref.~\cite{Valoen2005} at $c_\text{e,0}= \SI{1000}{\mole\per\meter\cubed}$\\
                 % \item[f] Set up for capacity balance of electrodes such that $l_\text{neg} = 1.22 \times l_\text{pos}$ here.
@@ -204,12 +208,6 @@
 %        \end{tabular*}
 
 %        \begin{tablenotes}
-%        \item[h]\mbox{Ref.\cite{Svens2013}}
-%        \item[i]\mbox{Ref.\cite{Chen2005}}
-%        % \item[j]\mbox{Ref.\cite{Guo2010}}
-%        \item[k]Computed based on the values of constituents in \mbox{Ref.\cite{martienssen2006springer}}
-%        \item[l]\mbox{Ref.\cite{martienssen2006springer}}
-%        \item[m]\mbox{Ref.\cite{Jeon2011}}
 %        \item[n]\mbox{Ref.\cite{Lopez2015dens}}
 %        \item[o]\mbox{Ref.\cite{Kim2009}}
 %        \item[p]\mbox{Ref.\cite{Northrop2011}}
