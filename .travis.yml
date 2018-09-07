@@ -20,6 +20,8 @@ script:
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/main-latest.pdf"
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/historic_versions/main-${TRAVIS_COMMIT}.pdf"
 before_install:
+- rm -rf /tmp/texlive
+- rm -rf $HOME/.texlive
 - echo $super_secret_password | gpg --passphrase-fd 0 .dropbox_uploader.gpg
 - mv .dropbox_uploader ~/
 - cd ..
