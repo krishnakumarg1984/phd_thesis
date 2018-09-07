@@ -29,7 +29,6 @@ tlmgr install luatex
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
 tlmgr install   \
-    afterpage \
     aleph \
     algorithmicx \
     algorithms \
@@ -58,7 +57,6 @@ tlmgr install   \
     chkfloat \
     cleveref \
     cmbright \
-    colortbl \
     csquotes \
     ctablestack \
     datatool \
@@ -74,7 +72,6 @@ tlmgr install   \
     etoolbox \
     eulervm \
     excludeonly \
-    fancyhdr \
     fancyvrb \
     filehook \
     fixme \
@@ -88,28 +85,22 @@ tlmgr install   \
     fp \
     framed \
     fvextra \
-    geometry \
     gitinfo2 \
     glossaries \
     glossaries-english \
     glossaries-extra \
     glossaries-german \
-    graphics \
-    hyperref \
     hyphen-german \
     ifetex \
     iffont \
-    ifluatex \
     ifmtarg \
     ifoddpage \
     ifplatform \
     ifsym \
     iftex \
     ifthenx \
-    ifxetex \
     impnattypo \
     import \
-    inputenc \
     isodate \
     iwona \
     kerkis \
@@ -131,7 +122,6 @@ tlmgr install   \
     luacode \
     lualatex-math \
     luaotfload \
-    luatex \
     luatex85 \
     luatexbase \
     luatodonotes \
@@ -160,14 +150,12 @@ tlmgr install   \
     onlyamsmath \
     paracol \
     pdfpages \
-    pdftexcmds \
     pdfx \
     pgf \
     pgfplots \
     placeins \
     plex \
     plex-otf \
-    psnfss \
     pstricks \
     pxfonts \
     realscripts \
@@ -179,7 +167,6 @@ tlmgr install   \
     stackengine \
     stix \
     stix2-otf \
-    stringenc \
     subfig \
     subfiles \
     subfloat \
@@ -205,7 +192,6 @@ tlmgr install   \
     unicode-math \
     units \
     upquote \
-    url \
     varwidth \
     was \
     witharrows \
