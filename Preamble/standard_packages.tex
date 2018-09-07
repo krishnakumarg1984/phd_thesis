@@ -10,7 +10,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{anyfontsize} % typically for thesis use; fancy chapter font size and shading
-% \usepackage{appendix}    % add appendices
+\usepackage{appendix}    % add appendices
 
 \usepackage{babel}       % with british, we get OUP hyphenation material for free
 \usepackage{biblatex}    % seems to have strong dependence on csquotes?
@@ -19,14 +19,14 @@
 \usepackage{caption}     % for improved layout of figure captions with extra margin, smaller font than text
 \usepackage{checkend}
 
-% \usepackage{diffcoeff}   % looks pretty useful for any math-oriented document. Leaving it here
+\usepackage{diffcoeff}   % looks pretty useful for any math-oriented document. Leaving it here
 
-% \usepackage{engord}      % an alternative is to use the fmtcount package
+\usepackage{engord}      % an alternative is to use the fmtcount package
 \usepackage{enumitem}
 
 \usepackage{fancyhdr}    % Define custom header (before hyperref)
-% \usepackage{fixme}
-\usepackage{flafter}     % is a latex builtin; https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
+\usepackage{fixme}
+\usepackage{flafter}
 \usepackage{footmisc}    % typically for thesis use;
 
 \usepackage{geometry}
@@ -49,27 +49,22 @@
 \usepackage{siunitx}
 \usepackage{subcaption}
 
-\usepackage{titlesec}       % typically for thesis use;
-\usepackage{titletoc}       % typically for thesis use;
+\usepackage{titlesec}  % typically for thesis use;
+\usepackage{titletoc}  % typically for thesis use;
 \usepackage{threeparttable}
-\usepackage{tocbibind}      % typically for thesis use; correct page numbers for bib in TOC; nottoc suppresses an entry for TOC itself
+\usepackage{tocbibind} % typically for thesis use; correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
 
-% \usepackage{ulem}
+\usepackage{ulem}
 
 \usepackage{varwidth}
 
-% \usepackage{witharrows}
+\usepackage{witharrows}
 
-% \usepackage{xfrac}
+\usepackage{xfrac}
 \usepackage{xpatch} % example use; helpful to replace parens with brackets for backreferencing with biblatex
 
-
 % ---------- unused packages (but potentially useful) ----------
-% \usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
-% \usepackage[all,warning]{onlyamsmath} % if using Tikz, please include the calc and babel libraries (known incompatibilities)
 % \usepackage[backend=biber, style=ieee, sortlocale=en_GB, maxbibnames=50, url=true, doi=true, eprint=true ]{biblatex}
-% \usepackage[table]{xcolor} % loaded by pdfx package (if used) cannot explicitly load colortbl package either before or after
-% \usepackage{blindtext}
 % \usepackage{chkfloat}
 % \usepackage{cite} % incompatible with biblatex
 % \usepackage{cmdtrack}
@@ -80,12 +75,15 @@
 % \usepackage{layouts} % helpful for computing textwidth, textheight etc
 % \usepackage{lettrine}
 % \usepackage{luabibentry}
+% \usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
 % \usepackage{nccmath}
 % \usepackage{needspace}
 % \usepackage{nolbreaks}
-% \usepackage{ragged2e}  %  Should be loaded after the body font and size have been established  eg, after font packages have been loaded
+% \usepackage[all,warning]{onlyamsmath} % if using Tikz, please include the calc and babel libraries (known incompatibilities)
+% \usepackage{blindtext}
 % \usepackage{soulutf8}
 % \usepackage{subfiles}
 % \usepackage{tablefootnote}
 % \usepackage{tabularx}
+% \usepackage[table]{xcolor} % loaded by pdfx package (if used) cannot explicitly load colortbl package either before or after
 % \usepackage{url}

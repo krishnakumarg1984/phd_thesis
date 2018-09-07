@@ -9,7 +9,6 @@
 \StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
 
 \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
-% \providecommand{\pdfxopts}{a-1b} % may use options such as a-1a. a-1b
 \immediate\write18{rm \jobname.xmpdata} % comment out for non-*nix systems
 \begin{filecontents*}{\jobname.xmpdata}
     \input{Preamble/metadata}
@@ -21,13 +20,13 @@
 \PassOptionsToPackage{pdfa}{hyperref}
 
 % Options to these packages are passed to them whenever they get loaded
-% \PassOptionsToPackage{title, titletoc}{appendix}
-% \PassOptionsToPackage{makeroom}{cancel}
+\PassOptionsToPackage{title, titletoc}{appendix}
+\PassOptionsToPackage{makeroom}{cancel}
 \PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true, backrefstyle=three}{biblatex}
 \PassOptionsToPackage{margin=10pt, font=small, labelfont={bf}, labelsep=quad}{caption}
-% \PassOptionsToPackage{normal}{engord}
+\PassOptionsToPackage{normal}{engord}
 \PassOptionsToPackage{inline}{enumitem}
-% \PassOptionsToPackage{draft}{fixme}
+\PassOptionsToPackage{draft}{fixme}
 \PassOptionsToPackage{bottom}{footmisc}
 \PassOptionsToPackage{luatex, paper=a4paper, hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
 \PassOptionsToPackage{local, mark}{gitinfo2}
@@ -35,32 +34,32 @@
 \PassOptionsToPackage{section}{placeins}
 \PassOptionsToPackage{separate-uncertainty = true, multi-part-units=single, detect-all}{siunitx}
 \PassOptionsToPackage{nottoc}{tocbibind}
-% \PassOptionsToPackage{normalem}{ulem}
+\PassOptionsToPackage{normalem}{ulem}
 \PassOptionsToPackage{no-math, quiet}{fontspec}
 \PassOptionsToPackage{warnings-off={mathtools-colon}}{unicode-math}
 \PassOptionsToPackage{british}{babel}
-% \PassOptionsToPackage{final, activate={true, nocompatibility}, factor=1100, stretch=10, shrink=10, babel=true}{microtype}
-% \PassOptionsToPackage{british}{selnolig}
-% \PassOptionsToPackage{newfloat=true}{minted}
-% \PassOptionsToPackage{minted, most}{tcolorbox}
+\PassOptionsToPackage{final, activate={true, nocompatibility}, factor=1100, stretch=10, shrink=10, babel=true}{microtype}
+\PassOptionsToPackage{british}{selnolig}
+\PassOptionsToPackage{newfloat=true}{minted}
+\PassOptionsToPackage{minted, most}{tcolorbox}
 \PassOptionsToPackage{all}{hypcap}
 \PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
 \PassOptionsToPackage{depth=4, open=true, openlevel=0, numbered=true}{bookmark}
 \PassOptionsToPackage{nameinlink}{cleveref}
-% \PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
-% \PassOptionsToPackage{defaultlines=2, all}{nowidow}
+\PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
+\PassOptionsToPackage{defaultlines=2, all}{nowidow}
 
 \documentclass[12pt,a4paper,oneside,openright]{book} % using the book document class
 
 %%%%%%%%%% list of packages to be loaded %%%%%%%%%%
 
 % uncommment any commented packages before final submission
-% \usepackage{afterpage}
-% \usepackage{algpseudocode}  % http://ctan.org/pkg/algorithmicx
-% \usepackage{bigints}
-% \usepackage{cancel}
-% \usepackage{pdfpages}
-% \usepackage{tabstackengine} % stackmath macro uses this package
+\usepackage{afterpage}
+\usepackage{algpseudocode}  % http://ctan.org/pkg/algorithmicx
+\usepackage{bigints}
+\usepackage{cancel}
+\usepackage{pdfpages}
+\usepackage{tabstackengine} % stackmath macro uses this package
 
 \input{Preamble/standard_packages} % a bit specific to luatex; also includes biblatex
 
@@ -68,15 +67,16 @@
 \input{Preamble/custom_cmds_unicode_fontselection} % selection of unicode text and math fonts
 
 \usepackage{ragged2e}  % should be loaded after the body font and size have been established
-% \usepackage{microtype} % if using option babel=true, babel must be loaded before microtype; microtype must be loaded after font selection (after fontspec)
-% \usepackage{selnolig}  % luatex package;  should go after loading babel
+\usepackage{microtype} % if using option babel=true, babel must be loaded before microtype; microtype must be loaded after font selection (after fontspec)
 
-% \usepackage{float} % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
-% % \usepackage[draft=true,newfloat=true]{minted}
-% % \usepackage[minted]{tcolorbox}
-% \usepackage{minted}
-% \usepackage{tcolorbox}
-% \usepackage{csquotes}    % The fvextra package is loaded by minted, so you should load minted before csquotes; has a strong dependency with biblatex
+\usepackage{selnolig}  % luatex package;  should go after loading babel
+
+\usepackage{float} % Loading order is important here https://tex.stackexchange.com/questions/435529/correct-loading-order-of-package-newfloat-along-with-hyperref-and-algorithmic-pa/435597#435597
+% \usepackage[draft=true,newfloat=true]{minted}
+% \usepackage[minted]{tcolorbox}
+\usepackage{minted}
+\usepackage{tcolorbox}
+\usepackage{csquotes}    % The fvextra package is loaded by minted, so you should load minted before csquotes; has a strong dependency with biblatex
 \usepackage{chemformula} % uses tikz arrows
 
 \input{Preamble/hyperref_related_packages}  % hyperref, nameref, algoriothm, hypcap, bookmark, glossaries, cleveref, showframe
@@ -89,29 +89,29 @@
 
 %---------- begin custom commands ----------%
 \input{Preamble/colors_for_doc}
-% \input{Preamble/custom_battery_specific_cmds}
-% \input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
+\input{Preamble/custom_battery_specific_cmds}
+\input{Preamble/custom_cmds_algtypesetting} % for typesetting of algorithms
 \input{Preamble/custom_cmds_bibliography}     % 'bib' file goes in here
 \input{Preamble/custom_cmds_graphics}
-% \input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
+\input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
 \input{Preamble/custom_cmds_pkg_cleveref}
-% \input{Preamble/custom_cmds_pkg_diffcoeff}
+\input{Preamble/custom_cmds_pkg_diffcoeff}
 \input{Preamble/custom_cmds_pkg_enumitem}
 \input{Preamble/custom_cmds_pkg_fancyheader}
-% \input{Preamble/custom_cmds_pkg_fxnote}
+\input{Preamble/custom_cmds_pkg_fxnote}
 \input{Preamble/custom_cmds_pkg_gitinfo2}
 \input{Preamble/custom_cmds_pkg_glossaries.tex}
-% \input{Preamble/custom_cmds_pkg_minted}
+\input{Preamble/custom_cmds_pkg_minted}
 \input{Preamble/custom_cmds_pkg_silence}
 \input{Preamble/custom_cmds_pkg_siunitx}
 \input{Preamble/custom_cmds_pkg_titlesec}
-% \input{Preamble/custom_cmds_pkg_ulem}
-% \input{Preamble/custom_cmds_pkg_witharrows}
+\input{Preamble/custom_cmds_pkg_ulem}
+\input{Preamble/custom_cmds_pkg_witharrows}
 \input{Preamble/custom_cmds_tabularmaterial}
-% \input{Preamble/custom_cmds_tikzmarks}
+\input{Preamble/custom_cmds_tikzmarks}
 \input{Preamble/custom_genpurpose_cmds}
-% \input{Preamble/esoteric_math_constructs}
-% \input{Preamble/esoteric_text_constructs}
+\input{Preamble/esoteric_math_constructs}
+\input{Preamble/esoteric_text_constructs}
 \input{Preamble/custom_latex_settings}
 %---------- end custom commands ----------%
 
