@@ -1,0 +1,43 @@
+% -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
+% vim:nospell
+
+
+\begin{table}[!htbp]
+	\renewcommand{\thetable}{\arabic{table}a}
+	\centering
+	\caption{Acceleration test parameters (common across xEV platforms)}
+	\label{tbl:CommonVehicleParams}
+	\begin{threeparttable}[t]
+		\centering
+		\begin{tabular}{@{} l  S[table-format=3.2] c @{}}
+			\toprule
+			Parameter & \multicolumn{1}{c}{Value} & Source \\
+			\midrule
+
+			Coefficient of drag for xEV body, $C_\mathrm{d}$                           & 0.31   & {a} \\
+			Frontal area of xEV, $A_\mathrm{v}$ \si{(m^2)}                             & 2.40   & {b} \\
+			Acc.\ time specified by manufacturer, $t_\mathrm{f,man}$ \si{(s)}          & 6.50   & {d} \\
+			Acc.\ time dictated by standards, $t_\mathrm{f,std}$ \si{(s)}              & 6.00   & {c} \\
+			Speed, end of acc. (standards), $v_\mathrm{f,std}$ \si{(m.s^{-1})}         & 8.94   & {e} \\
+			Speed, end of acc. (manufacturer), $v_\mathrm{f,man}$ \si{(m.s^{-1})}      & 26.82  & {f} \\
+			Base speed of  xEV, $v_\mathrm{b}$ \si{(m.s^{-1})}                         & 13.41  & {e} \\
+			Air density at acc.\ test conditions, $\rho_\mathrm{air}$ \si{(kg.m^{-3})} & 1.20   & {f} \\
+			Drivetrain efficiency, $\eta_\mathrm{dt}$                                  & 0.75   & {g} \\
+			Payload, $M_\mathrm{p}$ \si{(kg)}                                          & 150.60 & {c} \\
+			Rolling resistance coefficient of road surface, $C_\mathrm{r}$             & 0.01   & {f} \\
+			Road gradient, $Z$                                                         & 0.00   & {g} \\
+
+			\bottomrule
+		\end{tabular}
+        \begin{tablenotes}[para,flushleft]
+        \item[a]Ref.~\cite{HybridCars2017Drag}
+        \item[b]Calculated from typical \gls{bev} dimensions in~\cite{BoltDimensions}
+        \item[c]Ref.~\cite{ETANTP002-2004}
+        \item[d]Ref.~\cite{BoltOverview}
+        \item[e]Ref.~\cite{Liu2016a}
+        \item[f]Ref.~\cite{EmadiElectric}
+        \item[g]Assumed
+        \end{tablenotes}
+	\end{threeparttable}
+\end{table}
