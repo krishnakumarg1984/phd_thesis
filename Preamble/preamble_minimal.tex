@@ -9,7 +9,6 @@
 \StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
 
 \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
-% \providecommand{\pdfxopts}{a-1b} % may use options such as a-1a. a-1b
 \immediate\write18{rm \jobname.xmpdata} % comment out for non-*nix systems
 \begin{filecontents*}{\jobname.xmpdata}
     \input{Preamble/metadata}
@@ -23,6 +22,7 @@
 % Options to these packages are passed to them whenever they get loaded
 % \PassOptionsToPackage{title, titletoc}{appendix}
 % \PassOptionsToPackage{makeroom}{cancel}
+\PassOptionsToPackage{british}{babel}
 \PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true, backrefstyle=three}{biblatex}
 \PassOptionsToPackage{margin=10pt, font=small, labelfont={bf}, labelsep=quad}{caption}
 % \PassOptionsToPackage{normal}{engord}
@@ -31,14 +31,13 @@
 \PassOptionsToPackage{bottom}{footmisc}
 \PassOptionsToPackage{luatex, paper=a4paper, hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
 \PassOptionsToPackage{local, mark}{gitinfo2}
-\PassOptionsToPackage{frac, vfrac, multskip}{mathfixs}
-\PassOptionsToPackage{section}{placeins}
+% \PassOptionsToPackage{frac, vfrac, multskip}{mathfixs}
+% \PassOptionsToPackage{section}{placeins}
 \PassOptionsToPackage{separate-uncertainty = true, multi-part-units=single, detect-all}{siunitx}
 \PassOptionsToPackage{nottoc}{tocbibind}
 % \PassOptionsToPackage{normalem}{ulem}
 \PassOptionsToPackage{no-math, quiet}{fontspec}
 \PassOptionsToPackage{warnings-off={mathtools-colon}}{unicode-math}
-\PassOptionsToPackage{british}{babel}
 % \PassOptionsToPackage{final, activate={true, nocompatibility}, factor=1100, stretch=10, shrink=10, babel=true}{microtype}
 % \PassOptionsToPackage{british}{selnolig}
 % \PassOptionsToPackage{newfloat=true}{minted}
@@ -81,8 +80,8 @@
 
 \input{Preamble/hyperref_related_packages}  % hyperref, nameref, algoriothm, hypcap, bookmark, glossaries, cleveref, showframe
 
-\usepackage{impnattypo}
-\usepackage{nowidow}
+% \usepackage{impnattypo}
+% \usepackage{nowidow}
 
 %---------- end of package loading ----------%
 

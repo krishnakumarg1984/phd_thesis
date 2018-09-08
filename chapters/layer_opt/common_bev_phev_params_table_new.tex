@@ -6,28 +6,15 @@
 \begin{table}[!htbp]
 	\renewcommand{\thetable}{\arabic{table}a}
 	\centering
-	\caption{Acceleration test parameters (common across xEV platforms)}
+	\caption{Acceleration test parameters (common across \glsfmtshort{xeV} platforms)}
 	\label{tbl:CommonVehicleParams}
 	\sisetup{table-format=3.2, table-number-alignment=center, table-space-text-pre=\textsuperscript{a}, table-space-text-post=\textsuperscript{a}, table-align-text-post=false}
 	\begin{threeparttable}[t]
 		\centering
-		\begin{tabular}{@{} l  S @{}}
+		\begin{tabular*}{0.675\textwidth}{@{} l @{\extracolsep{\fill}}  S @{}}
 			\toprule
 			Parameter \\
 			\midrule
-
-			% Coefficient of drag for xEV body, $C_\mathrm{d}$                           & {\makebox*{00}[r]{\tnote{a}}} 0.31                \\
-			% Frontal area of xEV, $A_\mathrm{v}$ \si{(m^2)}                             & {\makebox*{00}[r]{\tnote{b}}} 2.40                \\
-			% Acc.\ time specified by manufacturer, $t_\mathrm{f,man}$ \si{(s)}          & {\makebox*{00}[r]{\tnote{d}}} 6.50                \\
-			% Acc.\ time dictated by standards, $t_\mathrm{f,std}$ \si{(s)}              & {\makebox*{00}[r]{\tnote{c}}} 6.00                \\
-			% Speed, end of acc. (standards), $v_\mathrm{f,std}$ \si{(m.s^{-1})}         & {\makebox*{00}[r]{\tnote{e}}} 8.94                \\
-			% Speed, end of acc. (manufacturer), $v_\mathrm{f,man}$ \si{(m.s^{-1})}      & {\makebox*{0}[r]{\tnote{f}}} 26.82                \\
-			% Base speed of  xEV, $v_\mathrm{b}$ \si{(m.s^{-1})}                         & {\makebox*{\hspace*{0.5mm}0}[r]{\tnote{e}}} 13.41 \\
-			% Air density at acc.\ test conditions, $\rho_\mathrm{air}$ \si{(kg.m^{-3})} & {\makebox*{\hspace*{0.5mm}00}[r]{\tnote{f}}} 1.20 \\
-			% Drivetrain efficiency, $\eta_\mathrm{dt}$                                  & {\makebox*{00}[r]{\tnote{g}}} 0.75                \\
-			% Payload, $M_\mathrm{p}$ \si{(kg)}                                          & {\hspace*{0.00005mm}{\tnote{c}}} 150.60 \\
-			% Rolling resistance coefficient of road surface, $C_\mathrm{r}$             & {\makebox*{00}[r]{\tnote{f}}} 0.01                \\
-			% Road gradient, $Z$                                                         & {\makebox*{00}[r]{\tnote{g}}} 0.00                \\
 
 			Coefficient of drag for xEV body, $C_\mathrm{d}$                           & 0.31   {\tnote{a}} \\
 			Frontal area of xEV, $A_\mathrm{v}$ \si{(m^2)}                             & 2.40   {\tnote{b}} \\
@@ -43,7 +30,7 @@
 			Road gradient, $Z$                                                         & 0.00   {\tnote{g}} \\
 
 			\bottomrule
-		\end{tabular}
+		\end{tabular*}
         \begin{tablenotes}[para,flushleft]
         \item[a]Ref.~\cite{HybridCars2017Drag}
         \item[b]Calculated from typical \gls{bev} dimensions in~\cite{BoltDimensions}
