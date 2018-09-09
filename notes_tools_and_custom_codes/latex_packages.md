@@ -1,6 +1,7 @@
 % vim: nospell
 
 a2ping utility
+fnbreak
 academicons
 accsup
 adigraph

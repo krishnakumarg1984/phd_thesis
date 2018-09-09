@@ -22,26 +22,26 @@
         \centering
         \textbf{System Conditions} \\ \smallskip
         \begin{varwidth}[t]{0.48\linewidth}
-            \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
+            \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} S[table-format=1.2,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] @{}}
                 \toprule
                 \multicolumn{1}{@{}l}{Parameter} \\
                 \midrule
 
-                Lower cutoff cell voltage, $V_\text{min}$ (\si{\volt}) & \tnote{a}3.50   \\
-                Upper cutoff cell voltage, $V_\text{max}$ (\si{\volt}) & \tnote{b}4.22   \\
+                Lower cutoff cell voltage, $V_\text{min}$ (\si{\volt}) & \Tnote{a} 3.50   \\
+                Upper cutoff cell voltage, $V_\text{max}$ (\si{\volt}) & \Tnote{b} 4.22   \\
 
                 \bottomrule
             \end{tabular*}
         \end{varwidth}
         \hfill
         \begin{varwidth}[t]{0.48\linewidth}
-            \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} r @{}}
+            \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} S[table-format=2.2,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] @{}}
                 \toprule
                 \multicolumn{1}{@{}l}{Parameter} \\
                 \midrule
 
-                Target cell SOC for fast charge, $z^\ast$ \si{(\%)}                  & \tnote{c}80.00 \\
-                Cell upper temperature limit, $T_\text{max}$ \si{(\degreeCelsius)} & \tnote{d}55.00 \\
+                Target cell SOC for fast charge, $z^\ast$ \si{(\%)}                & \Tnote{c} 80.00 \\
+                Cell upper temperature limit, $T_\text{max}$ \si{(\degreeCelsius)} & \Tnote{d} 55.00 \\
 
                 \bottomrule
             \end{tabular*}
@@ -53,25 +53,25 @@
             \toprule
             \multicolumn{1}{@{}l}{Parameter} \\
             \midrule
-            Surface area of pos.\ \& neg.\ electrode overlap within a layer, {$A_\text{elec}$} \si{(m^2)} & \tnote{b}\num{4.19e-2}   \\
-            Exterior pouch length, $L_\text{pouch}$ \si{(m)}                                              & \tnote{e}\num{332.74e-3} \\
-            Exterior pouch width, $W_\text{pouch}$ \si{(m)}                                               & \tnote{e}\num{99.06e-3}  \\
-            Exterior pouch height, $H_\text{pouch}$ \si{(m)}                                              & \tnote{f}\num{10.00e-3}  \\
-            Pouch material thickness, $T_\text{pouch}$ \si{(m)}                                           & \tnote{g}\num{160.00e-6} \\
+            Surface area of pos.\ \& neg.\ electrode overlap within a layer, {$A_\text{elec}$} \si{(m^2)} & \textsuperscript{b}\num{4.19e-2}   \\
+            Exterior pouch length, $L_\text{pouch}$ \si{(m)}                                              & \textsuperscript{e}\num{332.74e-3} \\
+            Exterior pouch width, $W_\text{pouch}$ \si{(m)}                                               & \textsuperscript{e}\num{99.06e-3}  \\
+            Exterior pouch height, $H_\text{pouch}$ \si{(m)}                                              & \textsuperscript{f}\num{10.00e-3}  \\
+            Pouch material thickness, $T_\text{pouch}$ \si{(m)}                                           & \textsuperscript{g}\num{160.00e-6} \\
             \bottomrule
         \end{tabular*}
         \medskip
         \centering \textbf{Thermal Parameters} \\ \smallskip
         \resizebox{\textwidth}{!}{%
-            \begin{tabular}{@{} l l c c c l c r @{}}
+            \begin{tabular}{@{} l S[table-format=4.0,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] S[table-format=4.1,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] S[table-format=4.1,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] S[table-format=4.2,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] S[table-format=4.0,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] S[table-format=4.1,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] S[table-format=4.1,table-space-text-pre=\Tnote{a} ,table-align-text-pre=false] @{}}
                 \toprule
                 \multicolumn{1}{@{}l}{Parameter} & \multicolumn{1}{c}{Al.\ CC} & \multicolumn{1}{c}{Pos} & \multicolumn{1}{c}{Sep} & \multicolumn{1}{c}{Neg} & \multicolumn{1}{c}{Cu.\ CC} & \multicolumn{1}{c}{\ch{LiPF_6}} & \multicolumn{1}{r@{}}{Pouch}\\
                 \midrule
 
-                Sp.\ heat capacity, $c_j$ (\si{\joule\per\kilogram\per\kelvin})   & \textsuperscript{h}903  & \textsuperscript{h}1269.2 & \textsuperscript{h}1978.2 & \textsuperscript{h}1437.4 & \textsuperscript{h}385  & \textsuperscript{h}2055.1 & \textsuperscript{i}1464.8 \\
-                Density, $\rho_j$ (\si{\kilogram\per\meter\cubed})                & \textsuperscript{j}2700 & \textsuperscript{k}2291.6 & \textsuperscript{b}1100.0 & \textsuperscript{j}2660.0 & \textsuperscript{l}8960 & \textsuperscript{j}1290.0 & \textsuperscript{m}1150.0 \\
-                Activ.\ energy, diff. ${E_\text{act,s}}_j$ (\si{\joule\per\mole}) & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
-                Activ.\ energy, rxn. ${E_\text{act,k}}_j$ (\si{\joule\per\mole})  & ---                     & \textsuperscript{p}5000   & ---                       & \textsuperscript{p}5000   & ---                     & ---                       & \multicolumn{1}{c}{---}   \\
+                Sp.\ heat capacity, $c_j$ (\si{\joule\per\kilogram\per\kelvin})   & \Tnote{h} 903  & \Tnote{h} 1269.2 & \Tnote{h} 1978.2 & \Tnote{h} 1437.4 & \Tnote{h} 385  & \Tnote{h} 2055.1 & \Tnote{i} 1464.8 \\
+                Density, $\rho_j$ (\si{\kilogram\per\meter\cubed})                & \Tnote{j} 2700 & \Tnote{k} 2291.6 & \Tnote{b} 1100.0 & \Tnote{j} 2660.0 & \Tnote{l} 8960 & \Tnote{j} 1290.0 & \Tnote{m} 1150.0 \\
+                Activ.\ energy, diff. ${E_\text{act,s}}_j$ (\si{\joule\per\mole}) & {---}                   & \Tnote{p} 5000   & {---}                     & \Tnote{p} 5000   & {---}                   & {---}                     & \multicolumn{1}{c}{---}   \\
+                Activ.\ energy, rxn. ${E_\text{act,k}}_j$ (\si{\joule\per\mole})  & {---}                   & \Tnote{p} 5000   & {---}                     & \Tnote{p} 5000   & {---}                   & {---}                     & \multicolumn{1}{c}{---}   \\
 
                 \bottomrule
             \end{tabular}
@@ -83,11 +83,11 @@
             \multicolumn{1}{@{}l}{Parameter} \\
             \midrule
 
-            Thickness of pos.\ electrode, $l_\text{Al.}$ \si{(m)}                           & \tnote{f}\num{15e-6}   \\
-            Thickness of neg.\ electrode, $l_\text{Cu.}$ \si{(m)}                           & \tnote{p}\num{10e-6}   \\
-            Total tab area, $A_\text{tabs}$ \si{(m^2)}                                      & \tnote{b}\num{5.94e-3} \\
-            Lumped heat transfer coefficient, $h$ (\si{\watt\per\meter\squared\per\kelvin}) & \tnote{b}150           \\
-            Initial electrolyte concentration, $c_\text{e,0}$ (\si{\mole\per\meter\cubed})  & \tnote{q}1000          \\
+            Thickness of pos.\ electrode, $l_\text{Al.}$ \si{(m)}                           & \textsuperscript{f}\num{15e-6}   \\
+            Thickness of neg.\ electrode, $l_\text{Cu.}$ \si{(m)}                           & \textsuperscript{p}\num{10e-6}   \\
+            Total tab area, $A_\text{tabs}$ \si{(m^2)}                                      & \textsuperscript{b}\num{5.94e-3} \\
+            Lumped heat transfer coefficient, $h$ (\si{\watt\per\meter\squared\per\kelvin}) & \textsuperscript{b}150           \\
+            Initial electrolyte concentration, $c_\text{e,0}$ (\si{\mole\per\meter\cubed})  & \textsuperscript{q}1000          \\
 
             \bottomrule
         \end{tabular*}
@@ -113,9 +113,9 @@
             \item[b] Assumed
             \item[c] Ref.~\cite{Sae2010}
             \item[d] Ref.~\cite{Kizilel2009} \\
-            \item[e] Converted from Imperial Units reported in~Ref.~\cite{GMBoltBatteryDims}
-		    \item[f] Table \romanletter{4} of~Ref.~\cite{Groger2015}
-            \item[g] Sum of values in Table 1 of~Ref.~\cite{Svens2013}
+            \item[e] Converted from imperial units reported in~Ref.~\cite{GMBoltBatteryDims}
+		    \item[f] Table~\romanletter{4} of~Ref.~\cite{Groger2015}
+            \item[g] Sum of values in table~1 of~Ref.~\cite{Svens2013}
             \item[h] Ref.~\cite{Chen2005}
             \item[i] Computed from values of constituents (see~\cite{Svens2013}) using Ref.~\cite{martienssen2006springer}
             \item[j] Ref.~\cite{Guo2010} \\

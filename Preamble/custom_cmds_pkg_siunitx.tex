@@ -12,5 +12,7 @@
 \DeclareSIUnit \amphour { Ah }
 \DeclareSIUnit \watthour { Wh }
 
-\robustify\tnote % needs etoolbox which is most probably loaded by other packages such as glossaries*
+% \robustify\tnote
+\newrobustcmd{\Tnote}[1]{\textsuperscript {\TPTtagStyle {#1}}} % needs etoolbox which is most probably loaded by other packages such as glossaries* https://tex.stackexchange.com/questions/449908/align-columns-at-decimal-point-using-siunitx-wherein-each-cell-contains-superscr/449992?noredirect=1#comment1131112_449992
+
 

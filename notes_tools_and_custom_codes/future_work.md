@@ -1,6 +1,7 @@
 * Scaled Newman Model with model equations
 - biblatex check files 
 - list of symbols
+- thumbpdf
 - bode diags
 - To remove color hyperlinking before printing
 - xmpinclude (hyperxmp)
