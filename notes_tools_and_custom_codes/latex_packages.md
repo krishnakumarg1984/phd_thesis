@@ -1,6 +1,7 @@
 % vim: nospell
 
 a2ping utility
+titleps
 academicons
 accsup
 adigraph

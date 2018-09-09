@@ -1,4 +1,3 @@
-* Scaled Newman Model with model equations
 - biblatex check files 
 - list of symbols
 - thumbpdf
@@ -18,6 +17,7 @@
 - Black tombstone for sections
 - verapdf for pdfa validation
 - lualvna
+- titleps
 
 - enhanced spm paper
 - enchanced spm with KF
@@ -26,4 +26,4 @@
 - physics-informed eq circuit model
 - scaling of newman model
 - lionsimba as energy/power/resistance inputs
-
+* Scaled Newman Model with model equations
