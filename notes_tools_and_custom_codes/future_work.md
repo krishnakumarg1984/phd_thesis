@@ -17,6 +17,7 @@
 - dropcap
 - Black tombstone for sections
 - verapdf for pdfa validation
+- lualvna
 
 - enhanced spm paper
 - enchanced spm with KF

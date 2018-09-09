@@ -1,7 +1,6 @@
 % vim: nospell
 
 a2ping utility
-fnbreak
 academicons
 accsup
 adigraph
@@ -158,6 +157,7 @@ floatrow
 flowfram
 flushend
 fmtcount
+fnbreak
 fncychap
 fnpct
 fontawesome5
@@ -215,6 +215,7 @@ lscape
 ltcaption
 lua-check-hyphen
 luabibentry
+lualvna
 makecell
 manyfoot
 marginfit
