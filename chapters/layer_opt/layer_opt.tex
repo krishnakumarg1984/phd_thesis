@@ -18,7 +18,7 @@
 
 \section[Introduction]{Introduction\protect\footnote{\textbf{Attribution      of
         content}  \   The  groundwork   for  converting   the  existing   computer  code
-        (LIONSIMBA~v1.0) into  a suitable form  for layer optimisation was  initiated by
+        (LIONSIMBA~v1.0$x$) into a suitable form for layer optimisation was initiated by
         this  thesis  author,  \mbox{Krishnakumar  Gopalakrishnan}.  However,  with  the
         exception of  the spectral scheme, for  which \mbox{Krishnakumar Gopalakrishnan}
         was  responsible, and  the zero-dimensional  thermal model  for which  \mbox{Ian
@@ -42,23 +42,24 @@ consumer viewpoint, yet another practical issue is the fact that on encountering
 a  `low  battery' scenario  in  a  long  distance  journey, the  charging  times
 required for sufficiently  replenishing the battery to enable  completion of the
 journey are prohibitively  large, to the point of  being non-competitive against
-conventional fossil  fuel powered  vehicles. Unfortunately, these  scenarios are
-not unimaginable with the present state of the art in lithium ion batteries.
+conventional fossil  fuel powered  vehicles.
 
-Hence, improving the \gls{aer} and  providing fast charging capabilities are two
-near-term goals of manufacturers of  electric vehicles. Increasing the \gls{aer}
-necessitates  a battery  pack  with  higher energy  content  in  it while  lower
-charging  times demand  a pack  with  higher power  capability. The  contrasting
-nature of these  goals can be traced all  the way down to the cell  level and is
-presented in \cref{sec:energypowertradeoff}. By trading off the number of layers
-in a  pouch cell against the  content of active electrode  material accommodated
-within it, bespoke cell designs addressing either the energy demand or the power
+Unfortunately,  the  aforementioned  scenarios  are not  unimaginable  with  the
+present  state  of the  art  in  lithium  ion  batteries. Hence,  improving  the
+\gls{aer} and  providing fast charging  capabilities are two near-term  goals of
+manufacturers  of electric  vehicles.  Increasing the  \gls{aer} necessitates  a
+battery pack with  higher energy content in it while  lowering the charging time
+demands a  pack with higher  power capability.  The contrasting nature  of these
+goals can  be traced  all the way  down to  the cell level  and is  presented in
+\cref{sec:energypowertradeoff}. By trading  off the number of layers  in a pouch
+cell  against  the content  of  active  electrode material  accommodated  within
+it,  bespoke cell  designs  addressing either  the energy  demand  or the  power
 demand  can  be  obtained.  In  the  absence  of  accessible  documentation  (as
 either  industry white  papers or  academic literature)  on the  layer selection
 methodologies employed in automotive pouch  cell designs, this author postulates
 that manufacturers  iterate through  an extensive  empirical testing  process of
 prototypes with  a range of  layer choices. In the  view of this  thesis author,
-this  procedure  is not  only  time-consuming,  but  also  likely to  result  in
+this  procedure is  not only  time-consuming, but  is also  likely to  result in
 sub-optimal designs.  This chapter envisages a  model-based engineering solution
 to more  optimal cell designs  by determining  the appropriate number  of layers
 needed  to maximise  its  \emph{usable} energy  while simultaneously  satisfying
@@ -79,15 +80,15 @@ thesis  author, which  sets the  broader  context within  which a  computational
 framework for  determining the optimum  number of  layers for a  specific target
 design shall be formalised and presented in \cref{sec:layeroptframework}.
 
-\subsection{Initial set of assumptions}\label{subsec:layeroptassumptions}
+\subsection{Preliminary assumptions}\label{subsec:layeroptassumptions}
 
-To obtain a balanced loading of both electrodes and to avoid early exhaustion of
-lithium  from  one of  the  electrodes  during  operation,  it is  desirable  to
-carefully  calculate  the  volume  of electrochemical  active  materials  to  be
-accommodated  within  the cell.  This  concept  is  well-known and  is  commonly
+To  obtain a  balanced  loading of  both electrodes  and  to avoid  asymmetrical
+exhaustion  of lithium  from  one  of the  electrodes  during  operation, it  is
+desirable to carefully calculate the  volume of electrochemical active materials
+to be accommodated  within the cell. This concept is  well-known and is commonly
 discussed  in  standard  textbooks in  the  field  such  as  those by  Rahn  and
-Wang~\cite{Rahn2013}  wherein  example  calculations  are  presented  for  block
-(non-porous) electrodes.
+Wang~\cite{Rahn2013} wherein  example calculations are presented  for non-porous
+electrodes.
 
 In  the  case  of  lithium  ion   cells  with  porous  electrodes,  the  concept
 of  electrode-balancing  involves an  additional  variable  \viz{} the  porosity
@@ -100,7 +101,7 @@ as follows.
 
 This  author  visualises  the  integration  of  cell-level  design  optimisation
 (through  an optimal  layer  selection procedure)  into  the overall  drivetrain
-design  by   the  cell  manufacturer   before  a  custom  design   is  delivered
+design  by the  \emph{cell manufacturer}  before  a custom  design is  delivered
 to  vehicle/system  integrators.   Cell  manufacturers,  especially  small-scale
 manufacturers do not necessarily  synthesize each electrochemical component, but
 instead may opt  to source certain raw-materials from  an upstream supply-chain.
@@ -111,49 +112,91 @@ with a fixed extent of calendaring can help to keep costs low. In the absence of
 a concrete  insight into  the procuring process,  this represents  a preliminary
 justification of the author's assumption about constant porosities.
 
-Yet another  redeeming argument to  support the constant porosity  assumption is
-from  a technical  viewpoint. Keeping  material porosities  constant enables  to
-eliminate a degree of freedom in  the design optimisation, thereby narrowing the
-dimensionality of the search space. To the best of the author's knowledge, there
-has not yet been any published  work tackling layer optimisation of pouch cells.
-Obtaining an  initial set of  results through a constant  porosity approximation
-shall provide a solid foundation to build upon. The author therefore sees a high
-research value in  obtaining quick ballpark estimates of an  optimal layer count
-with constant porosities.  Nevertheless, the influence of  varying porosities in
-the design optimisation process is to be acknowledged as an important element in
-future studies.
+From a technical  viewpoint, there exists another redeeming  argument to support
+the constant  porosity assumption. Keeping material  porosities constant enables
+to eliminate a  degree of freedom in the design  optimisation, thereby narrowing
+the dimensionality of  the search space. To the best  of the author's knowledge,
+there has not  yet been any published work tackling  layer optimisation of pouch
+cells.  Building an  initial  infrastructure \viz{}  a computational  framework,
+based upon this constant porosity approximation shall provide a solid foundation
+to build upon and extend for such  real-life use-cases. The author views this as
+a vanguard research  into cell engineering and therefore places  a high value in
+obtaining ballpark  estimates of  an optimal layer  count, albeit  with constant
+porosities. Nevertheless,  the influence of  varying the material  porosities on
+the cell's  performance is to be  quantified. Therefore, prior to  adopting this
+model-based  methodology  for production  yields  at  scale, a  fully-integrated
+design optimisation process  with variable porosities have to  be accounted for.
+In this work, the author restricts the study to constant porosity values, whilst
+acknowledging  variable  porosity designs  as  an  important aspect  for  future
+studies.
 
-Another assumption  in the formulation  of the optimisation methodology  is that
-the pack configuration (series/parallel arrangement  of modules, number of cells
-per module and other system-level  specifications) are held constant throughout.
-This validity of this assumption is easily justified since the cell-level design
-may  be  performed independently  of  the  larger  drivetrain design.  In  fact,
-the  author  postulates  that  present  empirical  cell  designs  are  based  on
-specifications  laid out  by  vehicle manufacturers  and does  not  adhere to  a
-model-oriented integrated  design with the complete  drivetrain. This modularity
-in the  design approach enables  to keep such system-level  parameters constant.
-Yet another assumption in this study is  that the overall height of the pouch is
-held constant. Without such constraints, any arbitrary pouch size can be chosen,
-leading  to an  infinite-dimensional  optimisation problem  wherein no  definite
-optimality criterion exists. This assumption is in-fact enforced by the trend in
-industry \viz{} common-module design wherein the physical dimensions of the pack
-are chosen  a~priori and modularisation of  pack helps in tailoring  of packs to
-cater to different market segments. Extrapolating this common module design down
-to the cell level, it is justifiable to have cells of same height.
+At  a  system level,  the  efficiency  of the  drivetrain  is  considered to  be
+constant. The  drivetrain of  an electric  vehicle consists of  a whole  host of
+electrical as well as mechanical  components such as power electronics, electric
+motors and  transmission. The efficiencies  of each  of these components  have a
+cascading effect  on the overall  drivetrain efficiency. The efficiency  of each
+component  is strongly  dependent upon  the operating  point. For  instance, the
+efficiency of  an electric  motor is  a function of  its torque-speed  curve. In
+practice, it  is rarely easy  to decouple  these efficiencies during  the design
+stage. The datasheet/ technical specification  of each component in the platform
+is required  to make  a comprehensive  multi-physics design  optimisation study.
+This is well beyond the scope of this work and requires access to various design
+blueprints. Therefore,  a constant  efficiency value is  adopted for  this work.
+However, the  proposed optimisation methodology  is a modular one  which implies
+that it can be adapted \eg{} to  include a efficiency value dependent upon power
+delivered  at the  wheels. However,  the biggest  redeeming aspect  is that  the
+constant efficiency does  not influence in any way the  final layer choice. This
+is because  the drivetrain efficiency  comes into play only  during acceleration
+studies and shall be discussed in \cref{sec:resultslayeropt}.
+
+From  a  pack  perspective,  the   primary  assumption  in  the  formulation  of
+the   proposed  optimisation   methodology  is   that  the   pack  configuration
+(series/parallel arrangement  of modules, number  of cells per module  and other
+system-level specifications) are held constant throughout. This validity of this
+assumption  is easily  justified since  the cell-level  design may  be performed
+independently of  the larger drivetrain  design. In fact, the  author postulates
+that  present design  process for  electrified transportation  is a  modular one
+\ie{} empirical cell designs are  developed based on certain specifications laid
+out by vehicle  manufacturers and is not integrated into  the drivetrain design.
+This  modularity  in the  design  approach  enables  to keep  such  system-level
+parameters constant.
+
+A further assumption  in this study is  that the overall height of  the pouch is
+held constant. In  the absence of this constraint, any  arbitrary pouch size can
+be chosen,  leading to an  infinite-dimensional optimisation problem  wherein no
+definite optimality criterion  exists. This assumption is in-fact  enforced by a
+current  trend  in the  automotive  industry  \viz{} adoption  of  common-module
+designs wherein  the physical  dimensions of  the pack  are chosen  a~priori and
+modularisation of pack helps in tailoring  of packs to cater to different market
+segments.  Extending this  philosophy down  to  the cell  level, it  is easy  to
+visualise the  benefits of  having cells of  identical exterior  dimensions. For
+instance, having a  common inventory helps a vehicle manufacturer  to keep costs
+in  check  for  subsequent  design  of drivetrains  \eg{}  in  derivative  model
+families. This  means that, for  any layer choice  to be tried,  the constituent
+components of the cell is to be arranged and contained within the same pouch (of
+fixed  exterior dimensions).  This naturally  leads to  the assumption  that the
+thickness of  the pouch  material used shall  remain constant  throughout, which
+in-turn implies that the overall height  of the electrochemical stack within the
+pouch is constant. The detailed calculations of the stack height is presented in
+\cref{sec:layeroptframework}.
 
 The  current collectors  and the  separator  in each  electrochemical layer  are
 assumed  to  have  uniform  thickness  irrespective  of  the  number  of  layers
-used. Barring  minor manufacturing  variability and tolerances,  this assumption
-is  straightforward  and hence  does  not  require further  justifications.  The
-final assumption  from an  electrochemical point  of view  is that  the relative
-thicknesses of each electrode is held constant to a fixed ratio. This assumption
-requires further  explanation and is discussed  in \cref{sec:layeroptframework}.
-Certain assumptions are to be made about the temperature distribution within the
-layers  owing to  the choice  of cooling  arrangement and  is far  more involved
-to  be  discussed  in  this  introductory section  and  are  also  discussed  in
-\cref{sec:layeroptframework}.
+used. Barring  minor manufacturing variability  and tolerances, this  is factual
+information requiring  no further  justification. The  final assumption  from an
+electrochemical point of view is that the relative thicknesses of each electrode
+is held  constant to a  fixed ratio. This  warrants further explanation,  but is
+ill-suited  for this  introductory discussion.  The details  of this  aspect are
+discussed in  \cref{sec:layeroptframework}. Certain  assumptions are to  be made
+about the  temperature distribution  within the  layers owing  to the  choice of
+cooling arrangement.  This aspect  merits more  than a  cursory listing  in this
+introductory section and hence is discussed in \cref{sec:layeroptframework}.
 
-\subsection{Motivation}
+\subsection{Motivation}\label{subsec:layeroptmotivation}
+
+This section aims to provide a  qualitative description of the effect of varying
+the number of  layers within the cell  and presents the motivation  to embark on
+this layer optimisation effort.
 
 Given the  assumptions listed in \cref{subsec:layeroptassumptions},  it is clear
 that  changing the  number  of layers  in  a pouch  of  fixed thickness  results
@@ -166,29 +209,69 @@ for lithium ions to diffuse through  thick domains. Power handling capability of
 the cell suffers  since ion deficits at electrode surfaces  lead to the collapse
 of its terminal voltage.
 
-Prima facie,  although it appears  that the  absolute lowest possible  number of
-layers (\ie  one layer) is the  best choice for maximising  driving range, there
-exist two other goals that conflict with this design intent. Firstly, there must
-be a  minimum electrode  active surface  area to handle  the power  demands, and
-hence, a minimum number of layers  typically far greater than one. Secondly, the
-acceptable limit on  lifetime degradation of cells places an  upper bound on the
-allowable temperature  rise during vehicle  operation. Increasing the  number of
-layers has a  two-fold mitigating effect on the  temperature-rise experienced by
-the cell.  The \emph{power density} within  each layer is diminished  due to the
-increased  available surface  area,  leading to  reduced  ohmic heat  generation
-within the cell.  With each layer requiring a Al-Cu  current-collector pair, the
-number of heat conduction pathways increases linearly with the number of layers.
-Thus, increasing the number of layers has a beneficial effect on pack lifetime.
+Prima  facie, based  on  the  above discussion,  although  it  appears that  the
+absolute lowest possible  number of layers (\ie{} one layer)  is the best choice
+for maximising  driving range, there  exist two  other goals that  conflict with
+this design  intent. Firstly, there must  be a minimum electrode  active surface
+area  to  handle the  power  demands,  and hence,  a  minimum  number of  layers
+typically far  greater than one. Higher  power capability is achieved  by way of
+larger electrode surface  area and higher electrical  and thermal conductivities
+owing to the presence of more current collectors. Secondly, the acceptable limit
+on  lifetime  degradation of  cells  places  an  upper  bound on  the  allowable
+temperature rise during vehicle operation. Increasing the number of layers has a
+two-fold mitigating effect on the  temperature-rise experienced by the cell. The
+\emph{power  density} within  each  layer  is diminished  due  to the  increased
+available  surface area,  leading to  reduced ohmic  heat generation  within the
+cell. With  each layer requiring a  Al-Cu current-collector pair, the  number of
+heat conduction  pathways increases  linearly with the  number of  layers. Thus,
+increasing the number of layers has a beneficial effect on pack lifetime.
+
+In summary,  for very low number  of layers, there exists  more active material,
+leading  to a  high  energy  capacity. However,  the  reaction  surface area  is
+diminished proportionately leading to lower power capability. Furthermore, owing
+to  the presence  of very  thick electrodes,  current density  within the  solid
+conductive  matrix shall  not be  homogeneous~\cite{Pals1995}, nullifying  a few
+modelling assumption  of the standard \gls{dfn}  model. On the other  hand, very
+high number of layers imply vanishingly thin electrodes and correspondingly less
+active  material  accommodated within  the  cell,  thereby lowering  its  energy
+capacity.
 
 Therefore, there exists  a research question on what constitutes  the best layer
 choice  that straddles  this  trade-off  with the  least  penalty  to the  power
 capability  of  the  cell  whilst simultaneously  having  the  maximum  possible
-capacity. Determining this saddle point needs  to be performed for a curated set
-of power  input/output conditions to  the cell. This  niche problem has  not yet
-been tackled and  motivates the need to  perform a careful design  study
-documented in this chapter.
+capacity. This  saddle point determination needs  to be performed for  a curated
+set of power input/output conditions to the cell. This niche problem has not yet
+been tackled and motivates the need to perform a careful design study documented
+in this chapter.
 
 \subsection{Quantitative demonstration of energy/power trade-off}\label{sec:energypowertradeoffdemo}
+
+The discussion in \cref{subsec:layeroptmotivation} has motivated the need for an
+in-depth exploration  of the energy to  power trade-off expressed as  a function
+of  the number  of  layers.  Before embarking  on  constructing  a framework  to
+optimise the  layer choice by  formalising various constraints that  govern this
+optimality, this section aims to bring out this relationship by applying a fixed
+galvanostatic discharge to  an example cell. Additionally,  the critical concept
+of \emph{usable} energy versus \emph{total} stored energy is also introduced.
+
+A  \gls{lco}  cell  whose  physical  properties  and  simulation  parameters  is
+drawn from  the combined  set of  data from  \cref{tbl:lcoSimParamslayeropt} and
+\cref{tbl:lcoSimParamsSPMp2d}  is used  as the  example  cell. The  only set  of
+values that overlap between these two tables are the cut-off voltages and number
+of nodes  for numerical  discretisation of  the governing  \gls{pdae} equations.
+For  these  conflicting  quantities, \cref{tbl:lcoSimParamslayeropt}  is  chosen
+to  prevail  for  all  simulation  studies in  this  chapter.  Furthermore,  the
+individual  electrode  thicknesses  from  \cref{tbl:lcoSimParamsSPMp2d}  is  not
+directly used,  but instead  calculated for  every layer  choice by  keeping the
+ratio of their relative thicknesses constant.  This aspect shall be explained in
+\cref{sec:layeroptframework}.
+
+\Cref{fig:fig_CC_discharge_curves} illustrates  the influence  of the  number of
+layers  on the  energy and  power  capability of  the example  cell. A  constant
+current discharge  of \SI{60}{\ampere} is applied  to each of the  virtual cells
+each set up with  a different layer configuration with a  total of five distinct
+layer choices  carefully conjured  to provide  an illustration  the energy/power
+trade-off phenomenon.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -218,6 +301,32 @@ documented in this chapter.
         \mbox{Krishnakumar Gopalakrishnan}.}
     \end{minipage}
 \end{figure}
+
+Galvanostatic discharge of a
+LiCoO2/graphite cell with  parameters as shown in table 2  are referred to model
+predictions. The  terminal voltage  of the  cell is  maximum during  the initial
+discharge  with  maximum layer  counts,  eg.  n =  {  90  ,70 },  comprising  of
+comparatively lower resistances.  A reduced capacity compared to n  = 50 results
+due to  inherent lower volume  of active  material. When n  = 10 ,  the terminal
+voltage of the cell  diminishes with voltage cut-off keeping SOC  at 96%. As the
+resistance of  the cells with lesser  layers is significantly high,  it leads to
+high over potentials  with in the cell. The usable  energy under a galvanostatic
+discharge for lesser  layers is compared in  Table. 1. It can be  seen from this
+table that the usable energy which could be extracted is meagre for lesser layer
+counts, however  high the theoretical  capacity Qn  is. Table 1  also highlights
+that the C-rate of the cell varies during a galvanostatic discharge , due to the
+dependence of its nominal capacity on the number of layers n. The ratio of power
+to nominal capacity known as the E-rate varies with n for constant power inputs.
+This is discussed in the remainder of this work. Considering all these factors a
+reasonable  choice of  number of  layers ie.  n =  50, as  one of  the practical
+compromises for the surface area available  for reaction and the total volume of
+active material. This  selection of layer offers the peak  usable energy for the
+given discharge  rate , out  of the  finite layer configurations.  The parabolic
+relationship (downward  opening) between  the usable  energy of  a cell  and its
+number of layers justifies the same.
+
+
+
 \input{chapters/layer_opt/CC_discharge_curves_table.tex}
 
 \begin{figure}[!bp]
@@ -270,7 +379,8 @@ documented in this chapter.
         use asserted by \mbox{Ian Campbell}.}
     \end{minipage}
 \end{figure}
-\subsection{Computational Framework}\label{sec:layeroptframework}
+\section{Computational Framework}\label{sec:layeroptframework}
+\section{Results}\label{sec:resultslayeropt}
 
 %Impart knowledge on energy cell versus power cell with the help of a diagram.
 %Explain the effect of useable energy and power for a given cell with the help of
