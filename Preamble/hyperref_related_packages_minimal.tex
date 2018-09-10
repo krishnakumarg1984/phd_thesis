@@ -1,13 +1,13 @@
 %!TEX root = ../main.tex
 % vim: nospell
 
-\usepackage{pdfx}
-% https://tex.stackexchange.com/questions/449470/pdfx-package-incompatibility-with-bookmark-package-when-using-luatex-engine/449508#449508
-\ifluatex
-    \pdftrue
-\fi
+% \usepackage{pdfx}
+% % https://tex.stackexchange.com/questions/449470/pdfx-package-incompatibility-with-bookmark-package-when-using-luatex-engine/449508#449508
+% \ifluatex
+%     \pdftrue
+% \fi
 
-% \usepackage{hyperref} % comment out if using the pdfx package
+\usepackage{hyperref} % comment out if using the pdfx package
 
 \hypersetup{%
     % bookmarks          = true,
@@ -60,7 +60,7 @@
 
 \usepackage{glossaries-extra}% should be loaded after hyperref, but before cleveref % consider 'symbols' option
 
-\usepackage{hypdestopt} % seems to have problems with pdfx package?
+% \usepackage{hypdestopt} % seems to have problems with pdfx package?
 
 \usepackage{bookmark} % improves bookmarks handling. % More features and faster updated bookmarks.
 \usepackage{cleveref}
