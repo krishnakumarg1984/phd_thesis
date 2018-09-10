@@ -361,7 +361,7 @@ surface area  available for  reaction and  the total  volume of  active material
 accommodated.  This layer  selection offers  the highest  usable energy  for the
 given discharge rate, out of the finite layer configurations considered.
 
-In this  example study, only a  handful of layer choices  were considered, which
+In this  sample study, only  a handful of  layer choices were  considered, which
 represents  only  a  small  possibility  of  the  overall  design  space  to  be
 considered. Furthermore,  thermal considerations were  not explored so  far. For
 robust  cell design,  manufacturers  shall need  a  widely applicable  model-led
@@ -374,6 +374,104 @@ handling capability of a cell for  a specific set of conditions. Furthermore, it
 introduces the  complicating aspect of  \emph{useable} capacity into  what would
 have  otherwise been  a  trivial  exercise, thereby  setting  the  tone for  the
 development of a general layer optimisation framework for pouch cells.
+
+\section{Scope and Context within \glsfmtshort{xeV} Powertrain}
+% contextual setting
+
+A  layer optimization  methodology in  3.1  is proposed  within the  categorized
+powertrain  architecture  of a  typical  xEV  is shown  in  Fig.  2. Omit  those
+components to the left of the battery  pack to decompose the xEV powertrain into
+that for  a BEV. The anticipated  BEV powertrain comprises of  a). battery pack,
+b). three  phase inverter,  c). Permanent Magnet  Synchronous Motor  (PSSM), d).
+gearbox for torque multiplication, and e)  rest of the power train (differential
+shaft  and driven  wheels). Fig.2  describes  all components  in the  powertrain
+schematic and  if all these  components are  taken into consideration,  a series
+plug-in-hybrid configuration is  attained. For partial supply  of the mechanical
+power  and/or to  partially charge  the battery  during propulsion,  a downsized
+Internal  Combustion Engine  (ICE), coupled  to the  pack’s DC  bus through  a
+generator and three-phase rectifier can be  employed as envisaged. The cells are
+designed for the  worst-case operating scenario, without any  power support from
+the ICE, by conducting all discharge simulations of the PHEV with the powertrain
+operating in all-electric mode, viz.  charge-depletion. The applied battery pack
+power source is either fast charging from the mains P fastchg, batt ( Charge) or
+acceleration P acc, batt (discharge) for  both the xEV platforms and is computed
+from the power  required at the wheels, PW, charge  being positive and discharge
+being negative. The PHEV  pack has one string while the BEV  pack has 3 parallel
+strings, and  both have 8  series-connected modules. Identical pack  modules are
+assumed across both xEV platforms. Use  of an identical module facilitates fixed
+exterior geometry of cells. Table 2 shows all pouch cell parameters. There exist
+12 series-connected similar cells in each module with battery circuit symbols as
+shown in Fig.2  at its left. The PHEV  pack contains 33.33% of the  cells in the
+BEV pack, whose architecture being a 96S-3P cell assembly, leaving the PHEV pack
+to a 96S-1P  cell structure. The DC  bus voltage is unaltered as  both the packs
+have  same amount  of series  cells. Uniform  distribution of  power is  assumed
+across the cells within the pack. The power required at the terminal of the pack
+is computed.  From these, a  first - order design  ballparking of the  layers of
+the  cell  is made  through  a  single  cell  simulation. This  process  enables
+reduced simulation runtime  and one cell conditions represent  all. However this
+assumption overlooks  the likelihood of  being defeated in real  time automobile
+operation. But  the modern  advanced battery  management systems  aim so  ( SOC,
+Temperature etc.) employing pack  balancing, temperature governing mechanisms to
+validate  these assumptions.  The cell  to cell  deviations is  minimized for  a
+controlled environment.
+
+\begin{figure}[!bp]
+    \begin{minipage}[t]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{hierarchical_powertrain_to_cell_layer.pdf}
+        \caption
+        [%
+        Vehicle-to-cell hierarchical overview of an electrified powertrain architecture.
+        ]%
+        {%
+            Schematic depicting the vehicle-to-cell hierarchical overview of
+            a typical electrified powertrain architecture. This represents the
+            system-level context within which the proposed layer optimisation framework
+            has been developed. Two \glsfmtshort{xeV} powertrains ---
+            \begin{enumerate*}[label=\itshape\alph*\upshape)]
+                \item a \gls{bev}, and
+                \item a series \gls{phev}
+            \end{enumerate*}
+            are chosen as examples to demonstrate how the methodology facilitates
+            common module designs for such battery packs\footnotemark.
+        }%
+        \label{fig:fig_PowertrainSchematic}
+        \mpfootnotes[1]
+        \footnote{This figure was created by \mbox{Krishnakumar Gopalakrishnan} who
+            asserts copyright, with intellectual contributions from and the right to
+        use asserted by \mbox{Ian Campbell}.}
+    \end{minipage}
+\end{figure}
+A cell within a module having an identical number of layers, n, in the case of a
+single xEV  is shown  in Fig.2  at its centre  foreground. A  tab-cooled thermal
+management system for the cells is envisaged as a criterion to provide i). an 8%
+increase in the  usable capacity of pristine cells versus  that achieved through
+surface cooling,  and ii) as  little as33% of the  loss rate of  usable capacity
+over one thousand cycles which is equivalent to a 3x extension of pack life [7].
+High  powers  are  more  sensitive  to  this  phenomenon  as  witnessed  in  xEV
+acceleration and fast  charging. The electrochemical performance of  the cell is
+least affected since  only small thermal gradients are induced  within the plane
+of  the layers,  along the  longest axis  of the  cell due  to tab  cooling. The
+assumptions such as there is no heat loss  from the surfaces of the cell as well
+as there  is no  thermal gradients  exist across the  thickness, enable  to have
+constant  temperature in  all  n layers  any  1D across  the  cell thickness.  A
+lumped  thermal  cell  model  is  thus  justified  [25].  The  right  foreground
+of  Fig.2  describes  the  simulation  of  a 1D  of  a  cell  layer  across  its
+thickness.  The  system  requirements  at the  vehicle’s  drivetrain  and  the
+thermal/electrochemical behaviour at the electrodes  can suitably be scaled down
+as in  the case of P2D  model to represent  the overall cell. A  convective heat
+transfer  coefficient, h  (refer table  2), analogous  to forced  air convection
+cooling tabs (located  at both ends of  the cell) is used in  both xEV platforms
+[25]. The temperature  of the coolant otherwise called thermal  sink used in the
+thermal management system is denoted by Tsink. This temperature is kept constant
+in all simulations. The bi-directionally  coupled cell temperature - Tcell(t) to
+the electrochemical model changes to achieve variable heat transfer between cell
+and coolant.  The cell’s constituents  and the layer configuration  decide the
+lumped specific heat capacity for computation  as explained in 3.1. Now, the P2D
+model (modified  to handle  power inputs)  as shown in  the right  foreground of
+Fig.2, is explained in 3.2. Appendix A gives the relevant equations.
+
+\section{Computational Framework}\label{sec:layeroptframework}
 
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
@@ -397,7 +495,6 @@ development of a general layer optimisation framework for pouch cells.
         use asserted by \mbox{Ian Campbell}.}
     \end{minipage}
 \end{figure}
-\section{Computational Framework}\label{sec:layeroptframework}
 \section{Results}\label{sec:resultslayeropt}
 
 %Impart knowledge on energy cell versus power cell with the help of a diagram.
