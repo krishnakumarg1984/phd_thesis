@@ -257,21 +257,25 @@ of \emph{usable} energy versus \emph{total} stored energy is also introduced.
 A  \gls{lco}  cell  whose  physical  properties  and  simulation  parameters  is
 drawn from  the combined  set of  data from  \cref{tbl:lcoSimParamslayeropt} and
 \cref{tbl:lcoSimParamsSPMp2d}  is used  as the  example  cell. The  only set  of
-values that overlap between these two tables are the cut-off voltages and number
-of nodes  for numerical  discretisation of  the governing  \gls{pdae} equations.
-For  these  conflicting  quantities, \cref{tbl:lcoSimParamslayeropt}  is  chosen
-to  prevail  for  all  simulation  studies in  this  chapter.  Furthermore,  the
-individual  electrode  thicknesses  from  \cref{tbl:lcoSimParamsSPMp2d}  is  not
-directly used,  but instead  calculated for  every layer  choice by  keeping the
-ratio of their relative thicknesses constant.  This aspect shall be explained in
+values that overlap between these two tables are ---
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item the cut-off voltages, and
+    \item the number of nodes  used for numerical  discretisation of  the governing  \gls{pdae} equations.
+\end{enumerate*}
+For these conflicting quantities,  the values in \cref{tbl:lcoSimParamslayeropt}
+prevail for all simulation studies  in this chapter. Furthermore, the individual
+electrode thicknesses  from \cref{tbl:lcoSimParamsSPMp2d} is not  directly used,
+but  instead  calculated  for  every  layer  choice  by  keeping  the  ratio  of
+their  relative  thicknesses  constant.  This   aspect  shall  be  explained  in
 \cref{sec:layeroptframework}.
 
 \Cref{fig:fig_CC_discharge_curves} illustrates  the influence  of the  number of
-layers  on the  energy and  power  capability of  the example  cell. A  constant
-current discharge  of \SI{60}{\ampere} is applied  to each of the  virtual cells
-each set up with  a different layer configuration with a  total of five distinct
-layer choices  carefully conjured  to provide  an illustration  the energy/power
-trade-off phenomenon.
+layers  on the  energy and  power capability  of the  example cell.  Starting at
+\SI{100}{\percent} \gls{soc},  a constant current discharge  of \SI{60}{\ampere}
+is applied  to a \gls{dfn}  model of the cell  until reaching the  lower cut-off
+voltage. For  each discharge  run, the  model is  reconfigured with  a different
+layer choice. Five distinct layer choices  have been carefully conjured so as to
+provide a clear illustration of the energy/power trade-off phenomenon.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -302,60 +306,74 @@ trade-off phenomenon.
     \end{minipage}
 \end{figure}
 
-Galvanostatic discharge of a
-LiCoO2/graphite cell with  parameters as shown in table 2  are referred to model
-predictions. The  terminal voltage  of the  cell is  maximum during  the initial
-discharge  with  maximum layer  counts,  eg.  n =  {  90  ,70 },  comprising  of
-comparatively lower resistances.  A reduced capacity compared to n  = 50 results
-due to  inherent lower volume  of active  material. When n  = 10 ,  the terminal
-voltage of the cell  diminishes with voltage cut-off keeping SOC  at 96%. As the
-resistance of  the cells with lesser  layers is significantly high,  it leads to
-high over potentials  with in the cell. The usable  energy under a galvanostatic
-discharge for lesser  layers is compared in  Table. 1. It can be  seen from this
-table that the usable energy which could be extracted is meagre for lesser layer
-counts, however  high the theoretical  capacity Qn  is. Table 1  also highlights
-that the C-rate of the cell varies during a galvanostatic discharge , due to the
-dependence of its nominal capacity on the number of layers n. The ratio of power
-to nominal capacity known as the E-rate varies with n for constant power inputs.
-This is discussed in the remainder of this work. Considering all these factors a
-reasonable  choice of  number of  layers ie.  n =  50, as  one of  the practical
-compromises for the surface area available  for reaction and the total volume of
-active material. This  selection of layer offers the peak  usable energy for the
-given discharge  rate , out  of the  finite layer configurations.  The parabolic
-relationship (downward  opening) between  the usable  energy of  a cell  and its
-number of layers justifies the same.
+As  seen  in \cref{fig:fig_CC_discharge_curves},  during  the  initial phase  of
+discharge, the terminal voltage  of the cell is the highest  for the two highest
+layer choices  \ie{} $n  = 90$  and $n=70$. Consistent  with the  explanation in
+\cref{subsec:layeroptmotivation}, these  two layer choices have  thin electrodes
+and hence  comparatively low resistances  leading to only a  small overpotential
+drop within the cell. However, as expected, their total energy is lower than the
+cell with  $n=50$ layers as  evidenced by  their relative run-times  until lower
+cut-off voltage.  This is to  be expected as the  thin electrodes of  these high
+layer-count cells cannot  store a large volume of active  material. Based on the
+explanation  from \cref{subsec:layeroptmotivation},  it  is  expected that  this
+trend will  continue \ie{} the  lower the layer  count, the higher  the run-time
+until cut-off. If this were the case, prima facie it seems that the optimisation
+task is trivial.
 
+Inspecting the discharge curves of lower layer choices brings into limelight the
+concept of \emph{usable} energy. Contrary  to expectations, the discharge curves
+corresponding  to very  low layer  counts in  \cref{fig:fig_CC_discharge_curves}
+terminate even earlier than $n=50$. This is  owing to the fact that although the
+total  stored energy  in cells  with low  layer counts  is much  higher, only  a
+fraction  of it  is  usable.  This aspects  introduces  non-convex dynamics  (as
+discussed below) to an otherwise linear optimisation task.
 
+For  instance,  when $n  =  10$,  the terminal  voltage  of  the cell  collapses
+instantaneously, reaching cut-off  voltage whilst its \gls{soc}  remains as high
+as \SI{96}{\percent}. At very low layer  counts, the thickness of each electrode
+is high. This presents a high resistance  to the flow of charges thereby leading
+to  high overpotential  drops  within the  cell. The  usable  energy under  this
+\SI{60}{\ampere} galvanostatic  discharge for various layer  choices is compared
+in \cref{tbl:CC_discharge_curves_table}. It can be  seen that for very low layer
+counts,  the usable  energy that  can be  extracted is  miniscule, albeit  their
+theoretical  capacity~$Q_n$  are  in-fact  the highest.  The  usable  energy  in
+\SI{}{\watthour} reported in \cref{tbl:CC_discharge_curves_table} is obtained by
+multiplying the integral  of the area under each discharge  curve by the applied
+current \ie{}  \SI{60}{\ampere} with  the appropriate  scaling of  the time-base
+(from minutes to hours).
 
 \input{chapters/layer_opt/CC_discharge_curves_table.tex}
 
-\begin{figure}[!bp]
-    \begin{minipage}[t]{\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{hierarchical_powertrain_to_cell_layer.pdf}
-        \caption
-        [%
-        Vehicle-to-cell hierarchical overview of an electrified powertrain architecture.
-        ]%
-        {%
-            Schematic depicting the vehicle-to-cell hierarchical overview of
-            a typical electrified powertrain architecture. This represents the
-            system-level context within which the proposed layer optimisation framework
-            has been developed. Two \glsfmtshort{xeV} powertrains ---
-            \begin{enumerate*}[label=\itshape\alph*\upshape)]
-                \item a \gls{bev}, and
-                \item a series \gls{phev}
-            \end{enumerate*}
-            are chosen as examples to demonstrate how the methodology facilitates
-            common module designs for such battery packs\footnotemark.
-        }%
-        \label{fig:fig_PowertrainSchematic}
-        \mpfootnotes[1]
-        \footnote{This figure was created by \mbox{Krishnakumar Gopalakrishnan} who
-            asserts copyright, with intellectual contributions from and the right to
-        use asserted by \mbox{Ian Campbell}.}
-    \end{minipage}
-\end{figure}
+\Cref{tbl:CC_discharge_curves_table}  also brings  into view  the fact  that the
+\mbox{C-rate} of the  cell becomes a variable quantity even  for a galvanostatic
+discharge,  due to  the dependence  of  its nominal  capacity on  the number  of
+layers~$n$.  This  represents  a  departure  from  the  norm  in  the  modelling
+community, wherein the performance of cells  are quantified as a function of the
+applied C-rate \eg{}  in \cref{ch:spmanalysis} and \cref{ch:newelectrolytemodel}
+of this  thesis. However,  this preliminary  investigation has  quickly revealed
+that this normalised  quantity does not hold much importance  in any study where
+the number of layers within a pouch cell is varied.
+
+Taking into account  these factors, a reasonable choice of  the number of layers
+in  this specific  \SI{60}{\ampere} galvanostatic  application for  this example
+cell  could  be $n=50$.  This  represents  a  practical compromise  between  the
+surface area  available for  reaction and  the total  volume of  active material
+accommodated.  This layer  selection offers  the highest  usable energy  for the
+given discharge rate, out of the finite layer configurations considered.
+
+In this  example study, only a  handful of layer choices  were considered, which
+represents  only  a  small  possibility  of  the  overall  design  space  to  be
+considered. Furthermore,  thermal considerations were  not explored so  far. For
+robust  cell design,  manufacturers  shall need  a  widely applicable  model-led
+design tool that  can tackle the wide-ranging possible scenarios  that can occur
+in real-life operating conditions. A deterministic set of optimality criteria is
+also to  be formulated. The choice  $n=50$, therefore does not  represent in any
+way the general  optimal layer choice even for this  example cell. However, this
+serves as an illustrative demonstration of the trade-offs in energy versus power
+handling capability of a cell for  a specific set of conditions. Furthermore, it
+introduces the  complicating aspect of  \emph{useable} capacity into  what would
+have  otherwise been  a  trivial  exercise, thereby  setting  the  tone for  the
+development of a general layer optimisation framework for pouch cells.
 
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
