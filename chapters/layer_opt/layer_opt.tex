@@ -12,6 +12,7 @@
 
 \bigskip
 
+\glsunset{xeV}
 
 % A brief  1-2 sentences throwback to  the literature review, referring  what we
 % will say in this chapter.
@@ -378,12 +379,14 @@ development of a general layer optimisation framework for pouch cells.
 \section{Scope and Context within \glsfmtshort{xeV} Powertrain}
 
 It is  important to provide the  contextual setting for this  layer optimisation
-work  since  it  is  nestled  deep   within  the  broader  horizon  of  electric
-drivetrain optimisation. \Cref{fig:fig_PowertrainSchematic} provides a graphical
-overview depicting the hierarchical  architecture of a typical \glsfmtshort{xeV}
-powertrain, from  the system level down  to a single electrochemical  layer. The
-rest of this section describes the scope of this layer optimisation work and its
-integration into this overall architecture.
+work since it is nestled deep  within the broader horizon of electric drivetrain
+optimisation. \Cref{fig:fig_PowertrainSchematic}  provides a  graphical overview
+depicting the hierarchical architecture of  a typical \gls{xeV} powertrain, from
+the  system level  down to  a  single electrochemical  layer. The  rest of  this
+section describes the scope of this  layer optimisation work and its integration
+into this  overall architecture. A further  set of assumptions that  were deemed
+inopportune to be discussed  in \cref{subsec:layeroptassumptions}, is introduced
+at apropos junctures throughout this narrative.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -413,28 +416,29 @@ integration into this overall architecture.
     \end{minipage}
 \end{figure}
 
-The   components   at   the  top   row   of   \cref{fig:fig_PowertrainSchematic}
-represents  the  typical  constituents   of  a  \emph{series}-hybrid  powertrain
-architecture~\cite{Emadi2017}. For partial supply of the mechanical power and/or
-to partially charge the battery during propulsion, a downsized \gls{ice} coupled
-to the pack's DC bus through  a generator and three-phase rectifier is employed.
-While  tackling  the power  handling  requirements,  irrespective of  whether  a
-\gls{bev} or  \gls{phev} powertrain is being  considered, the cells in  the pack
-are to  be designed  for the  worst-case operating  scenario, \ie{}  without any
-power support from the \gls{ice}. This implies that all discharge simulations of
-the \gls{phev} are to be conducted with the powertrain operating in all-electric
-mode  resulting in  a net  charge-depletion. The  only distinction  is that  the
-\emph{magnitude} of power to be handled by  the pack in this worst case scenario
-is vastly different between the \gls{bev}  and \gls{phev} cases. This allows for
-some simplification  and helps  to narrow down  the scope of  the problem  to be
-tackled as explained below.
+\subsection{System-level architecture --- vehicular platforms}
+
+The top row of  \cref{fig:fig_PowertrainSchematic} represents the typical layout
+of a \emph{series}-hybrid powertrain~\cite{Emadi2017}. For partial supply of the
+mechanical  power and/or  to  partially charge  the  battery during  propulsion,
+a  downsized  \gls{ice}  coupled  to  the pack's  DC  bus  through  a  generator
+and  three-phase  rectifier  is  employed. While  tackling  the  power  handling
+requirements, irrespective  of whether a  \gls{bev} or \gls{phev}  powertrain is
+being considered, the  cells in the pack  are to be designed  for the worst-case
+operating  scenario,  \ie{}  without  any  power  support  from  the  \gls{ice}.
+This  implies  that all  discharge  simulations  of  the  \gls{phev} are  to  be
+conducted with the powertrain operating in  all-electric mode resulting in a net
+charge-depletion. The only distinction is  that the \emph{magnitude} of power to
+be handled by the  pack in this worst case scenario  is vastly different between
+the  \gls{bev} and  \gls{phev} cases.  This allows  for some  simplification and
+helps to narrow down the scope of the problem to be tackled as explained below.
 
 Omitting the  components to the  left of the  battery pack (represented  as text
 boxes with light grey border) shall render a powertrain corresponding to that of
 a  \gls{bev}.  The proposed  layer  optimisation  methodology is  developed  and
-presented here  in the context  of this  \gls{bev} powertrain. However,  being a
-modular framework,  the optimisation  methodology may be  readily extended  to a
-\gls{phev} powertrain and shall be discussed in \cref{sec:commonmodulelayeropt}.
+presented in the context of this  \gls{bev} powertrain. However, being a modular
+framework, the optimisation methodology may  be readily extended to a \gls{phev}
+powertrain and shall be discussed in \cref{sec:commonmodulelayeropt}.
 
 As  shown   in  \cref{fig:fig_PowertrainSchematic},  the   \gls{bev}  powertrain
 typically comprises of ---
@@ -446,33 +450,73 @@ typically comprises of ---
     \item the rest of the  powertrain  (differential shaft  and driven  wheels).
 \end{enumerate*}
 Considering the  worst-case scenarios, the  power to  be handled by  the battery
-pack is either  ---
-\begin{enumerate*}
-    \item by fast charging from  the mains~$P^\text{fastchg}_\text{batt}$ (charge), or
-    \item acceleration $P^\text{acc}_\text{batt}$ (discharge) for  both the
-        \acrshort{xeV} platforms and is computed from the power required at the
-        wheels, $P_\text{w}$.
+pack arises due to  ---
+\begin{enumerate*}[label=\roman*)]
+    \item fast charging from  the mains~$P^\text{fastchg}_\text{batt}$ (charge), or
+    \item acceleration  from standstill~$P^\text{acc}_\text{batt}$ (discharge).
 \end{enumerate*}
+The   acceleration  power   is  computed   from  the   power  required   at  the
+wheels,  $P_\text{w}$  (the   details  of  this  calculation   is  presented  in
+\cref{sec:layeroptframework}). The sign convention used  in this chapter is that
+the  charging power  is positive  (and  consequently, the  discharging power  is
+negative).
 
- % charge  being positive and discharge being negative.
-% The \gls{phev} pack has  one string while the \gls{bev} pack has
-% 3 parallel  strings, and  both have 8  series-connected modules.  Identical pack
-% modules  are assumed  across  both xEV  platforms. Use  of  an identical  module
-% facilitates  fixed exterior  geometry of  cells. Table  2 shows  all pouch  cell
-% parameters. There  exist 12 series-connected  similar cells in each  module with
-% battery  circuit symbols  as shown  in Fig.2  at its  left. The  \gls{phev} pack
-% contains 33.33% of  the cells in the \gls{bev} pack,  whose architecture being a
-% 96S-3P cell  assembly, leaving the \gls{phev}  pack to a 96S-1P  cell structure.
-% The DC  bus voltage is unaltered  as both the  packs have same amount  of series
-% cells. Uniform  distribution of  power is  assumed across  the cells  within the
-% pack. The power required at the terminal  of the pack is computed. From these, a
-% first -  order design ballparking of  the layers of  the cell is made  through a
-% single cell simulation. This process  enables reduced simulation runtime and one
-% cell conditions represent all. However  this assumption overlooks the likelihood
-% of being  defeated in real  time automobile  operation. But the  modern advanced
-% battery  management systems  aim  so  ( SOC,  Temperature  etc.) employing  pack
-% balancing, temperature  governing mechanisms to validate  these assumptions. The
-% cell to cell deviations is minimized for a controlled environment.
+\subsection{Battery Pack --- strings, modules and cells}
+
+Delving  into the  battery pack  under  consideration, this  thesis considers  a
+standard  modular  layout wherein  the  \gls{phev}  pack  has one  string  while
+the  \gls{bev}  pack  has  three  parallel strings.  Within  each  string,  both
+vehicular platforms  employ 8~series-connected  modules. Taking  into cognizance
+the  benefits  of common  module  design,  identical  pack modules  are  assumed
+across  both  \gls{xeV}  platforms  which  is  then  extrapolated  to  impose  a
+stronger  condition  of  identical  geometry  for  the  constituent  cells  (see
+\cref{subsec:layeroptassumptions}). The exterior dimensions of the pouch cells
+under consideration is listed in \cref{tbl:lcoSimParamslayeropt}.
+
+Each module consists  of 12~series-connected identical cells  denoted by battery
+circuit symbols (see cyan  filled blocks in \cref{fig:fig_PowertrainSchematic}).
+The \gls{phev}  pack is smaller and  consists of \ordfrac{1}{3} of  the cells in
+the \gls{bev} pack. Assuming that the \gls{bev} pack consists of a \mbox{96S-3P}
+cell  assembly,  this implies  that  the  \gls{phev}  pack  shall conform  to  a
+\mbox{96S-1P} layout. The DC~bus voltage is unaltered since both packs have same
+amount of  series cells. The power  flow is assumed to  be uniformly distributed
+across all  the cells within  the pack(s). At first,  the power required  at the
+terminals of the  pack is computed. From this, a  first-order design ballparking
+of the layers of the cell is made through a single cell simulation. This process
+enables reduced simulation runtime with the conditions of one cell assumed to be
+representative of all cells in the pack.
+
+
+% At  a high-level,  the  essence of  the layer  optimisation  methodology can  be
+% distilled down  to the following sequence.
+
+While  this  assumption of  identical  cell  conditions  across the  pack  seems
+infeasible  at first  glance, three  careful  considerations have  been made  to
+justify  this assumption.  Firstly,  power  (and not  current)  is  used as  the
+stimulus to the cell. This  implies that, despite the \emph{parallel} connection
+of  cells  in  modules,  each  cell experiences  the  same  power.  Even  across
+parallel-connected strings,  the power handled by  each cell shall be  the same.
+This necessitates the  modification of the standard \gls{dfn} model  in order to
+accommodate  power inputs  which  is  discussed in  \cref{sec:innatepowerinput}.
+Secondly, although the current in all cells of a \emph{series} string remain the
+same (by virtue of Kirchoff's current  law), their terminal voltage levels could
+drift away from  each other and becomes  unbalanced over time~\cite{Andrea2010}.
+This naturally  raises questions on  the assumption of identical  conditions for
+all cells. However, this voltage unbalance  is mitigated with the help of modern
+\glspl{bms} that employ  balancing techniques such as  passive bleeder resistors
+or  sophisticated active  dc/dc converters.
+% Since  thermal effects  need to  be considered  for robust  cell design,
+Yet another  adverse effect that poses  a threat to the  assumption of identical
+conditions is the uneven distribution  of cell temperatures. In automotive packs
+employing natural convection, cells that are physically located innermost in the
+string  tend to  get  hotter  than the  outermost  cells.  Through good  thermal
+management design  \eg{} forced cooling  through circulation of  coolant through
+conduits  grooved into  the pack,  thermal balance  may be  achieved. Therefore,
+it  can  be argued  that,  when  operating  in  a well-designed  and  controlled
+environment,  any cell  to cell  deviations  are minimised.  This justifies  the
+global representation of all cells in the pack through a single-cell simulation,
+albeit modifications to the simulation  model are deemed necessary to facilitate
+power inputs.
 
 A cell within a module having an identical number of layers, n, in the case of a
 single xEV  is shown  in Fig.2  at its centre  foreground. A  tab-cooled thermal
@@ -529,6 +573,7 @@ Fig.2, is explained in 3.2. Appendix A gives the relevant equations.
 \end{figure}
 \section{Results}\label{sec:resultslayeropt}
 \section{Common Module Design}\label{sec:commonmodulelayeropt}
+\section{Modification of Standard \glsfmtshort{dfn} Model to Handle Power Inputs}\label{sec:innatepowerinput}
 
 %Impart knowledge on energy cell versus power cell with the help of a diagram.
 %Explain the effect of useable energy and power for a given cell with the help of
@@ -1144,3 +1189,4 @@ as the Chebyshev collocation nodes are generated using the MATLAB function
 %%In the absence of access to cell manufacturing facilities to confirm and test the layer
 %% Immediate adoption in industry.
 
+\glsreset{xeV}
