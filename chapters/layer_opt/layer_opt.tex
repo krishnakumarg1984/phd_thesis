@@ -558,22 +558,22 @@ historically employed for automotive applications. The assumption of tab-cooling
 is an  essential requirement for  upholding the  validity of the  proposed layer
 optimisation scheme, and therefore warrants further justification.
 
-An  exhaustive experimental  study  by  Hunt~\etal~\cite{Hunt2016} compared  tab
-cooling of cells against conventional surface  cooling. It was found that nearly
-an  \SI{8}{\percent} increase  in  the  usable capacity  of  pristine cells  was
-achieved  with tab  cooling  relative  to that  achieved  with surface  cooling.
-Secondly, with surface  cooling, the loss rate of usable  capacity over thousand
-cycles was nearly thrice  of that with tab cooling. This  implies that using tab
-cooling can potentially help to extend the  lifetime of the pack by three times.
-Thirdly,  at higher  discharge rates,  surface cooling  resulting in  a loss  of
-usable capacity  of \SI{9.2}{\percent}  compared to just  \SI{1.2}{\percent} for
-tab cooling.  The simulations  discussed as part  of the  optimisation framework
-reported  in \cref{sec:layeroptframework}  are  intended to  obtain robust  cell
-designs  capable of  handling worst-case  power  inputs. In  this scenario,  tab
-cooling  is  more  appropriate.  Therefore,  this author  has  no  qualms  about
-recommending this specific cooling mechanism to  be used in conjunction with the
-results reported (see \cref{sec:resultslayeropt}) by applying the proposed layer
-optimisation scheme.
+An  experimental study  by  Hunt~\etal~\cite{Hunt2016} compared  tab cooling  of
+cells  against  conventional  surface  cooling.  It was  found  that  nearly  an
+\SI{8}{\percent} increase in the usable  capacity of pristine cells was achieved
+with tab cooling relative to that  achieved with surface cooling. Secondly, with
+surface  cooling, the  loss rate  of usable  capacity over  thousand cycles  was
+nearly thrice of that with tab cooling.  This implies that using tab cooling can
+potentially help to extend the lifetime of  the pack by three times. Thirdly, at
+higher discharge rates,  surface cooling resulting in a loss  of usable capacity
+of \SI{9.2}{\percent} compared  to just \SI{1.2}{\percent} for  tab cooling. The
+simulations  discussed  as  part  of  the  optimisation  framework  reported  in
+\cref{sec:layeroptframework} are intended to  obtain robust cell designs capable
+of  handling worst-case  power inputs.  In this  scenario, tab  cooling is  more
+appropriate.  Therefore,  this author  has  no  qualms about  recommending  this
+specific cooling mechanism  to be used in conjunction with  the results reported
+(see  \cref{sec:resultslayeropt}) by  applying the  proposed layer  optimisation
+scheme.
 
 Apart  from  its  aforementioned  beneficial   effects  on  cell  longevity  and
 performance,  with the  integral  assumption  of tab  cooling,  there exists  an
@@ -595,27 +595,29 @@ of  the cell  has  been  recommended by  Pals  and Newman~\cite{Pals1995}.  This
 represents a good trade-off between accuracy  and simplicity and is deemed to be
 suitable  for this  design  application.  A suitable  value  of convective  heat
 transfer coefficient~$h$  (refer \cref{tbl:lcoSimParamslayeropt})  comparable to
-the magnitudes to  forced air convection is used to  represent the heat transfer
-from the cell to the environment. The heat exchange area is the combined surface
-area of the  two cooling tabs that are  situated at either end of  the cell. The
-temperature of the  coolant (otherwise called thermal sink) used  in the thermal
-management system is denoted by  $T_\text{sink}$. In this work, this temperature
-is  kept  constant  for  all  simulations.  The  bi-directionally  coupled  cell
-temperature - Tcell(t) to the  electrochemical model changes to achieve variable
-heat transfer between cell and coolant.  The cell’s constituents and the layer
-configuration  decide  the lumped  specific  heat  capacity for  computation  as
-explained in 3.1. Now, the P2D model  (modified to handle power inputs) as shown
-in the  right foreground  of Fig.2, is  explained in 3.2.  Appendix A  gives the
-relevant equations.
+the  magnitudes  to  forced  air  convection  is  used  to  represent  the  heat
+transfer  from the  cell  to the  environment.  The heat  exchange  area is  the
+combined  surface area  of the  two  cooling tabs  that are  situated at  either
+end  of  the  cell.  The  temperature  of  the  coolant  (a  thermal  `sink'  in
+thermodynamic  terminology) is  denoted by~$T_\text{sink}$.  In this  work, this
+ambient temperature is held constant during  the course of a simulation run, but
+is allowed to change to different  constant values between set of simulations as
+per  vehicle  testing  standards.  The  details  of  this  aspect  is  discussed
+in  \cref{sec:layeroptframework}. The  material  properties  of the  constituent
+components of each layer coupled with  the total number of layers used determine
+the  lumped  specific heat  capacity.  This  computation  is also  discussed  in
+\cref{sec:layeroptframework}. The assumption  of tab cooling thus  leads to this
+qualitative description  of the lumped thermal  model to be used  for the design
+simulations. Further quantification  by way of relevant model  equations and the
+computation of its constituent parameters of the thermal model shall be embedded
+as an  integral aspect of  the layer optimisation  framework to be  presented in
+\cref{sec:layeroptframework}.
 
-
-
-As a final observation, all layers within the cell are electrically in parallel,
-which implies  that their  terminal voltage are  identical while  the externally
-applied current (or power) is equally divided among the layers.
-
-The  aforementioned  considerations have  important  ramifications  on the  cell
-modelling,  drastically simplifying  it. In  particular, this  implies that  the
+As a final observation, all layers  within the cell are electrically in parallel
+which implies that their terminal voltages are identical. The current (or power)
+at the  cell terminals is  shared equally  among each layer.  The aforementioned
+considerations have important  ramifications on the cell modelling  and helps to
+drastically  simplify  it. Specifically,  these  considerations  imply that  the
 electrochemical  performance  of any  one  layer  is  identical to  every  other
 layer.  Therefore,  in conjunction  with  a  lumped  thermal model,  a  standard
 \gls{p2d}  discretisation  of  the  \gls{dfn}  model  suffices  to  capture  the
@@ -624,8 +626,13 @@ electrochemical behaviour of  the entire cell. The  bottom-right illustration of
 the  cell layer  across its  thickness. The  spheres along  the axial  direction
 represent nodes wherein the solid-phase diffusion  equation is to be solved (see
 \cref{sec:dfnmodel} for a brief overview).  It is this standard \gls{dfn} model,
-suitably  amended to  accept  power inputs  that  will be  the  backbone of  the
-electrochemical aspects of the design simulation.
+suitably  amended to  accept power  inputs,  that will  be the  backbone of  the
+electrochemical  aspects of  the  design simulation.  The electrochemical  model
+shall be strongly  coupled in a bidirectional sense to  the lumped thermal model
+\ie{} the temperature  of the cell shall influence various  cell parameters (see
+\cref{tbl:lcoSimParamslayeropt}) whereas the overpotentials  and currents in the
+cell shall  play a  role in  the rate  of heat  generation and  cell temperature
+simultaneously.
 
 Thus, through a  systematic set of simplifying assumptions  that are justifiable
 in a real-world  design, the system-level requirements at the  pack-level can be
