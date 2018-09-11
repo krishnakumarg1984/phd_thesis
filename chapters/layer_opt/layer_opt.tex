@@ -386,7 +386,14 @@ the  system level  down to  a  single electrochemical  layer. The  rest of  this
 section describes the scope of this  layer optimisation work and its integration
 into this  overall architecture. A further  set of assumptions that  were deemed
 inopportune to be discussed  in \cref{subsec:layeroptassumptions}, is introduced
-at apropos junctures throughout this narrative.
+at apropos junctures throughout this narrative. The overall architecture of an
+\gls{xeV} powertrain can be understood through a systematic, hierarchical
+evaluation at
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item the system-level,
+    \item the pack-level, and
+    \item the cell-level.
+\end{enumerate*}
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -416,7 +423,7 @@ at apropos junctures throughout this narrative.
     \end{minipage}
 \end{figure}
 
-\subsection{System-level architecture --- vehicular platforms}
+\subsection{System-level --- vehicular platforms}
 
 The top row of  \cref{fig:fig_PowertrainSchematic} represents the typical layout
 of a \emph{series}-hybrid powertrain~\cite{Emadi2017}. For partial supply of the
@@ -461,7 +468,7 @@ wheels,  $P_\text{w}$  (the   details  of  this  calculation   is  presented  in
 the  charging power  is positive  (and  consequently, the  discharging power  is
 negative).
 
-\subsection{Pack-level architecture --- strings, modules and cells}
+\subsection{Pack-level --- strings, modules \& cells}
 
 Delving  into the  battery pack  under  consideration, this  thesis considers  a
 standard  modular  layout wherein  the  \gls{phev}  pack  has one  string  while
@@ -519,7 +526,7 @@ global representation of all cells in the pack through a single-cell simulation,
 albeit modifications to the simulation  model are deemed necessary to facilitate
 power inputs.
 
-\subsection{Cell-level architecture --- cooling arrangement and layers}
+\subsection{Cell-level --- layers, cooling, electrochemical \& thermal models}
 
 The    illustration    at     the    centre    of    the     bottom    row    in
 \cref{fig:fig_PowertrainSchematic} shows  a schematic  representation of  a cell
@@ -579,33 +586,48 @@ cooling only  small thermal gradients  are induced  in the planar  direction. In
 this unique scenario,  the thermal effects within the cell  are not large enough
 to warrant a detailed numerical discretisation.  On the other hand, ignoring the
 temperature distribution  of the  cell shall  not lead  to robust  cell designs,
-especially given  that design simulations  involve high magnitudes of  power. In
-such circumstances, a  lumped thermal model of the cell  has been recommended by
-Pals  and Newman~\cite{Pals1995}  and is  deemed to  represent a  good trade-off
-between accuracy and simplicity for this design application. Finally, all layers
-within the cell are electrically in  parallel, which implies that their terminal
-voltage are identical while the externally applied current (or power) is equally
-divided among the layers.
+especially given  that design simulations  involve high magnitudes of  power.
+
+In  situations akin  to  aforementioned circumstances,  a  lumped thermal  model
+of  the cell  has  been  recommended by  Pals  and Newman~\cite{Pals1995}.  This
+represents a good trade-off between accuracy  and simplicity and is deemed to be
+suitable  for this  design  application.  A suitable  value  of convective  heat
+transfer coefficient~$h$  (refer \cref{tbl:lcoSimParamslayeropt})  comparable to
+the magnitudes to  forced air convection is used to  represent the heat transfer
+from the cell to the environment. The heat exchange area is the combined surface
+area of the  two cooling tabs that are  situated at either end of  the cell. The
+temperature of the  coolant (otherwise called thermal sink) used  in the thermal
+management system is denoted by  $T_\text{sink}$. In this work, this temperature
+is  kept  constant  for  all  simulations.  The  bi-directionally  coupled  cell
+temperature - Tcell(t) to the  electrochemical model changes to achieve variable
+heat transfer between cell and coolant.  The cell’s constituents and the layer
+configuration  decide  the lumped  specific  heat  capacity for  computation  as
+explained in 3.1. Now, the P2D model  (modified to handle power inputs) as shown
+in the  right foreground  of Fig.2, is  explained in 3.2.  Appendix A  gives the
+relevant equations.
+
+
+
+As a final observation, all layers within the cell are electrically in parallel,
+which implies  that their  terminal voltage are  identical while  the externally
+applied current (or power) is equally divided among the layers.
 
 The  aforementioned  considerations have  important  ramifications  on the  cell
 modelling,  drastically simplifying  it. In  particular, this  implies that  the
-electrochemical performance of a single layer is identical to every other layer.
+electrochemical  performance  of any  one  layer  is  identical to  every  other
+layer.  Therefore,  in conjunction  with  a  lumped  thermal model,  a  standard
+\gls{p2d}  discretisation  of  the  \gls{dfn}  model  suffices  to  capture  the
+electrochemical behaviour of  the entire cell. The  bottom-right illustration of
+\cref{fig:fig_PowertrainSchematic} presents a  one-dimensional discretisation of
+the  cell layer  across its  thickness. The  spheres along  the axial  direction
+represent nodes wherein the solid-phase diffusion  equation is to be solved (see
+\cref{sec:dfnmodel} for a brief overview).  It is this standard \gls{dfn} model,
+suitably  amended to  accept  power inputs  that  will be  the  backbone of  the
+electrochemical aspects of the design simulation.
 
-The  right  foreground
-of  Fig.2  describes  the  simulation  of  a 1D  of  a  cell  layer  across  its
-thickness.  The  system  requirements  at the  vehicle’s  drivetrain  and  the
-thermal/electrochemical behaviour at the electrodes  can suitably be scaled down
-as in  the case of P2D  model to represent  the overall cell. A  convective heat
-transfer  coefficient, h  (refer table  2), analogous  to forced  air convection
-cooling tabs (located  at both ends of  the cell) is used in  both xEV platforms
-[25]. The temperature  of the coolant otherwise called thermal  sink used in the
-thermal management system is denoted by Tsink. This temperature is kept constant
-in all simulations. The bi-directionally  coupled cell temperature - Tcell(t) to
-the electrochemical model changes to achieve variable heat transfer between cell
-and coolant.  The cell’s constituents  and the layer configuration  decide the
-lumped specific heat capacity for computation  as explained in 3.1. Now, the P2D
-model (modified  to handle  power inputs)  as shown in  the right  foreground of
-Fig.2, is explained in 3.2. Appendix A gives the relevant equations.
+Thus, through a  systematic set of simplifying assumptions  that are justifiable
+in a real-world  design, the system-level requirements at the  pack-level can be
+suitably scaled down to power-density inputs at the layer level.
 
 \section{Computational Framework}\label{sec:layeroptframework}
 
