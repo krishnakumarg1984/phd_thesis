@@ -40,6 +40,7 @@ install:
 - rsync -rvzctlp rsync://contextgarden.net/distribution/current/bin/luatex/linux-64/bin/ /tmp/texlive/bin/x86_64-linux/
 - fmtutil -user --byengine luatex
 # - fmtutil -user --all
+- git config --global http.sslVerify false
 - git clone https://github.com/u-fischer/lua-font-pond.git
 - cp -R lua-font-pond/texmf ~/texmf
 - texhash
