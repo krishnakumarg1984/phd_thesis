@@ -1,7 +1,6 @@
 % vim: nospell
 
 a2ping utility
-titleps
 academicons
 accsup
 adigraph
@@ -262,6 +261,7 @@ optional
 overpic
 pagecont
 papermas
+passivetex
 pax
 pbox
 pdfcomment
@@ -385,6 +385,7 @@ xcolor
 xcomment
 xhfill
 xltabular
+xmltex
 xpatch
 xprintlen
 xsim

@@ -376,44 +376,14 @@ have  otherwise been  a  trivial  exercise, thereby  setting  the  tone for  the
 development of a general layer optimisation framework for pouch cells.
 
 \section{Scope and Context within \glsfmtshort{xeV} Powertrain}
-% contextual setting
 
-A  layer optimization  methodology in  3.1  is proposed  within the  categorized
-powertrain  architecture  of a  typical  xEV  is shown  in  Fig.  2. Omit  those
-components to the left of the battery  pack to decompose the xEV powertrain into
-that for  a BEV. The anticipated  BEV powertrain comprises of  a). battery pack,
-b). three  phase inverter,  c). Permanent Magnet  Synchronous Motor  (PSSM), d).
-gearbox for torque multiplication, and e)  rest of the power train (differential
-shaft  and driven  wheels). Fig.2  describes  all components  in the  powertrain
-schematic and  if all these  components are  taken into consideration,  a series
-plug-in-hybrid configuration is  attained. For partial supply  of the mechanical
-power  and/or to  partially charge  the battery  during propulsion,  a downsized
-Internal  Combustion Engine  (ICE), coupled  to the  pack’s DC  bus through  a
-generator and three-phase rectifier can be  employed as envisaged. The cells are
-designed for the  worst-case operating scenario, without any  power support from
-the ICE, by conducting all discharge simulations of the PHEV with the powertrain
-operating in all-electric mode, viz.  charge-depletion. The applied battery pack
-power source is either fast charging from the mains P fastchg, batt ( Charge) or
-acceleration P acc, batt (discharge) for  both the xEV platforms and is computed
-from the power  required at the wheels, PW, charge  being positive and discharge
-being negative. The PHEV  pack has one string while the BEV  pack has 3 parallel
-strings, and  both have 8  series-connected modules. Identical pack  modules are
-assumed across both xEV platforms. Use  of an identical module facilitates fixed
-exterior geometry of cells. Table 2 shows all pouch cell parameters. There exist
-12 series-connected similar cells in each module with battery circuit symbols as
-shown in Fig.2  at its left. The PHEV  pack contains 33.33% of the  cells in the
-BEV pack, whose architecture being a 96S-3P cell assembly, leaving the PHEV pack
-to a 96S-1P  cell structure. The DC  bus voltage is unaltered as  both the packs
-have  same amount  of series  cells. Uniform  distribution of  power is  assumed
-across the cells within the pack. The power required at the terminal of the pack
-is computed.  From these, a  first - order design  ballparking of the  layers of
-the  cell  is made  through  a  single  cell  simulation. This  process  enables
-reduced simulation runtime  and one cell conditions represent  all. However this
-assumption overlooks  the likelihood of  being defeated in real  time automobile
-operation. But  the modern  advanced battery  management systems  aim so  ( SOC,
-Temperature etc.) employing pack  balancing, temperature governing mechanisms to
-validate  these assumptions.  The cell  to cell  deviations is  minimized for  a
-controlled environment.
+It is  important to provide the  contextual setting for this  layer optimisation
+work  since  it  is  nestled  deep   within  the  broader  horizon  of  electric
+drivetrain optimisation. \Cref{fig:fig_PowertrainSchematic} provides a graphical
+overview depicting the hierarchical  architecture of a typical \glsfmtshort{xeV}
+powertrain, from  the system level down  to a single electrochemical  layer. The
+rest of this section describes the scope of this layer optimisation work and its
+integration into this overall architecture.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -442,6 +412,68 @@ controlled environment.
         use asserted by \mbox{Ian Campbell}.}
     \end{minipage}
 \end{figure}
+
+The   components   at   the  top   row   of   \cref{fig:fig_PowertrainSchematic}
+represents  the  typical  constituents   of  a  \emph{series}-hybrid  powertrain
+architecture~\cite{Emadi2017}. For partial supply of the mechanical power and/or
+to partially charge the battery during propulsion, a downsized \gls{ice} coupled
+to the pack's DC bus through  a generator and three-phase rectifier is employed.
+While  tackling  the power  handling  requirements,  irrespective of  whether  a
+\gls{bev} or  \gls{phev} powertrain is being  considered, the cells in  the pack
+are to  be designed  for the  worst-case operating  scenario, \ie{}  without any
+power support from the \gls{ice}. This implies that all discharge simulations of
+the \gls{phev} are to be conducted with the powertrain operating in all-electric
+mode  resulting in  a net  charge-depletion. The  only distinction  is that  the
+\emph{magnitude} of power to be handled by  the pack in this worst case scenario
+is vastly different between the \gls{bev}  and \gls{phev} cases. This allows for
+some simplification  and helps  to narrow down  the scope of  the problem  to be
+tackled as explained below.
+
+Omitting the  components to the  left of the  battery pack (represented  as text
+boxes with light grey border) shall render a powertrain corresponding to that of
+a  \gls{bev}.  The proposed  layer  optimisation  methodology is  developed  and
+presented here  in the context  of this  \gls{bev} powertrain. However,  being a
+modular framework,  the optimisation  methodology may be  readily extended  to a
+\gls{phev} powertrain and shall be discussed in \cref{sec:commonmodulelayeropt}.
+
+As  shown   in  \cref{fig:fig_PowertrainSchematic},  the   \gls{bev}  powertrain
+typically comprises of ---
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item a battery pack,
+    \item a three phase inverter,
+    \item a \gls{pmsm},
+    \item a gearbox for  torque multiplication, and
+    \item the rest of the  powertrain  (differential shaft  and driven  wheels).
+\end{enumerate*}
+Considering the  worst-case scenarios, the  power to  be handled by  the battery
+pack is either  ---
+\begin{enumerate*}
+    \item by fast charging from  the mains~$P^\text{fastchg}_\text{batt}$ (charge), or
+    \item acceleration $P^\text{acc}_\text{batt}$ (discharge) for  both the
+        \acrshort{xeV} platforms and is computed from the power required at the
+        wheels, $P_\text{w}$.
+\end{enumerate*}
+
+ % charge  being positive and discharge being negative.
+% The \gls{phev} pack has  one string while the \gls{bev} pack has
+% 3 parallel  strings, and  both have 8  series-connected modules.  Identical pack
+% modules  are assumed  across  both xEV  platforms. Use  of  an identical  module
+% facilitates  fixed exterior  geometry of  cells. Table  2 shows  all pouch  cell
+% parameters. There  exist 12 series-connected  similar cells in each  module with
+% battery  circuit symbols  as shown  in Fig.2  at its  left. The  \gls{phev} pack
+% contains 33.33% of  the cells in the \gls{bev} pack,  whose architecture being a
+% 96S-3P cell  assembly, leaving the \gls{phev}  pack to a 96S-1P  cell structure.
+% The DC  bus voltage is unaltered  as both the  packs have same amount  of series
+% cells. Uniform  distribution of  power is  assumed across  the cells  within the
+% pack. The power required at the terminal  of the pack is computed. From these, a
+% first -  order design ballparking of  the layers of  the cell is made  through a
+% single cell simulation. This process  enables reduced simulation runtime and one
+% cell conditions represent all. However  this assumption overlooks the likelihood
+% of being  defeated in real  time automobile  operation. But the  modern advanced
+% battery  management systems  aim  so  ( SOC,  Temperature  etc.) employing  pack
+% balancing, temperature  governing mechanisms to validate  these assumptions. The
+% cell to cell deviations is minimized for a controlled environment.
+
 A cell within a module having an identical number of layers, n, in the case of a
 single xEV  is shown  in Fig.2  at its centre  foreground. A  tab-cooled thermal
 management system for the cells is envisaged as a criterion to provide i). an 8%
@@ -496,6 +528,7 @@ Fig.2, is explained in 3.2. Appendix A gives the relevant equations.
     \end{minipage}
 \end{figure}
 \section{Results}\label{sec:resultslayeropt}
+\section{Common Module Design}\label{sec:commonmodulelayeropt}
 
 %Impart knowledge on energy cell versus power cell with the help of a diagram.
 %Explain the effect of useable energy and power for a given cell with the help of
