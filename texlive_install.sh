@@ -25,6 +25,12 @@ fi
 # Just including texlua so the cache check above works
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
+tlmgr remove --force libertinus-otf
+tlmgr remove --force libertinus
+tlmgr remove --force libertinus-fonts
+tlmgr remove --force libertinus-type1
+tlmgr remove --force libertinust1math
+
 
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
@@ -111,7 +117,6 @@ tlmgr install   \
     labelschanged \
     latexmk \
     libertine \
-    libertinust1math \
     lineno \
     listings \
     listofitems \
