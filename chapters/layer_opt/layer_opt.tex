@@ -1,6 +1,6 @@
 % -*- root: ../../main.tex -*
 %!TEX root = ../../main.tex
-% vim:textwidth=80 fo=cqt
+% vim:textwidth=80 fo=cqt conceallevel=0
 
 \graphicspath{{chapters/layer_opt/figures/}}
 % ----------------------- contents from here ------------------------
@@ -14,7 +14,7 @@
 
 \glsunset{xeV}
 
-% A brief  1-2 sentences throwback to  the literature review, referring  what we
+% A brief  1-2 sentences throwback to  the literature review, referring  what I
 % will say in this chapter.
 
 \section[Introduction]{Introduction\protect\footnote{\textbf{Attribution      of
@@ -679,66 +679,68 @@ model  equations using  this approach.  However, this  entails a  bi-directional
 mapping of all  variables between the physical and  Chebyshev domains, incurring
 computational overhead.
 
-Here we propose the use of a hybrid formulation of the \gls{p2d} model wherein a
-standard \gls{fv} scheme in the axial dimension and a spectral scheme in the
-radial domain are used. By exploiting the natural separation of the axial and
-radial domains, we \romanletter{1}) retain the ability to easily couple the
-molar flux density at the particle surface through reformulation of the
-boundary conditions of the solid diffusion pde and \romanletter{2}) solve for
-solid-phase lithium concentration in the Chebyshev domain and locally transform
-to physical domain, without requiring system-wide Chebyshev reformulations.
-Although the proposed implementation does not globally employ a spectral
-scheme, the combined beneficial effects of radial-domain spectral scheme and
+In this chapter, a hybrid formulation of the \gls{p2d} model is proposed wherein
+a standard \gls{fv} scheme  in the axial dimension and a  spectral scheme in the
+radial domain  are used.  Exploiting this  natural separation  of the  axial and
+radial domains enables to ---
+\begin{enumerate*}[label=\roman*)]
+    \item retain  the   ability  to  easily   couple  the   molar  flux  density   at  the particle  surface  through  reformulation  of the  boundary  conditions  of  the solid  diffusion \gls{pde},  and
+    \item solve  for  solid-phase  lithium  concentration  in  the  Chebyshev  domain  and locally transform  to physical  domain, without requiring  system-wide Chebyshev reformulations.
+\end{enumerate*}
+Although the proposed implementation does  not \emph{globally} employ a spectral
+scheme, the  combined beneficial  effects of  radial-domain spectral  scheme and
 automatic differentiation of system equations using CasADi~\cite{Andersson2013b}
-facilitates rapid simulation, enabling layer optimisation on short time-scales.
-Eqns\cref{eqn:defineChebNodes}--\cref{eqn:solidDiffEqChebDomain} detail the
-steps leading to the reformulated solid phase diffusion and its associated
-boundary condition in the Chebyshev domain.
+facilitates rapid simulation, enabling  layer optimisation on short time-scales.
+\Crefrange{eqn:defineChebNodes}{eqn:solidDiffEqChebDomain}   detail  the   steps
+leading to  the reformulated solid  phase diffusion and its  associated boundary
+condition in the Chebyshev domain.
 
-The Chebyshev collocation nodes defined on a 1D mesh in the radial direction are
-given by\cref{eqn:defineChebNodes}~\cite{Trefethen2000}.
-
+The $N_\text{r}$~Chebyshev collocation nodes, defined on a 1D mesh in the radial
+direction, are given by \cref{eqn:defineChebNodes}~\cite{Trefethen2000}.
 \begin{equation}\label{eqn:defineChebNodes}
-    \tilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \tilde{r} \in [-1, 1]
+    \widetilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \widetilde{r} \in [-1, 1]
 \end{equation}
 
-Assuming constant diffusivity, and expanding the derivative in the standard
-form of the Fickian spherical diffusion equation for each particle
-(refer~\ref{sec:Supplementary}) we obtain \cref{eqn:quotientappliedpde},
-presented along with its Neumann boundary conditions. $j$ is the molar flux
-density (\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius
-(\si{m}).
+Assuming  constant diffusivity,  and expanding  the derivative  in the  standard
+form of  the Fickian  spherical diffusion equation  (see \cref{eq:dfnsoliddiff})
+for  each particle,  we  obtain  \cref{eqn:quotientappliedpde}, presented  along
+with  its   Neumann  boundary   conditions.  $j$~is   the  molar   flux  density
+(\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius (\si{m}).
+\begin{subequations}\label{eqn:quotientappliedpde}
+    \begin{align}
+        \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref{eqn:quotientappliedpde}}\\
+        \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eqn:quotientappliedpdeBCcentre}\\
+        D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eqn:quotientappliedpdeBCsurface}
+    \end{align}
+\end{subequations}
 
-\begin{align}
-    \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\label{eqn:quotientappliedpde}\\
-\frac{\partial c_\text{s}}{\partial r}\bigg\rvert_{r=0} &= 0\tag{\ref{eqn:quotientappliedpde}a}\\
- D^\text{eff}_\text{s}\frac{\partial c_\text{s}}{\partial r}\bigg\rvert_{r=R_\text{p}} &= {}-j\tag{\ref{eqn:quotientappliedpde}b}
-\end{align}
+Mapping $r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]$,
+\begin{equation}\label{mappingChebDomain}
+    r = \frac{R_\text{p}}{2}(\widetilde{r} + 1)
+\end{equation}
 
-{Mapping} $r \in [0,R_\text{p}] \mapsto \tilde{r} \in [-1, 1]$,
-\begin{align}\label{mappingChebDomain}
-    r = \frac{R_\text{p}}{2}(\tilde{r} + 1)
-\end{align}
+Applying \cref{mappingChebDomain} to
+\crefrange{eqn:quotientappliedpde}{eqn:quotientappliedpdeBCsurface} whilst
+retaining $c_\text{s}$ in the physical space yields
+\crefrange{eqn:solidDiffEqChebDomain}{eqn:solidDiffEqChebDomainBCsurface}.
 
-Applying \cref{mappingChebDomain} to \cref{eqn:quotientappliedpde}
-whilst retaining $c_\text{s}$ in the physical space yields
-\cref{eqn:solidDiffEqChebDomain}.
+\begin{subequations}\label{eqn:solidDiffEqChebDomain}
+    \begin{align}
+	    \frac{\partial c_\text{s}}{\partial t}                         & = 4 \frac{D^\text{eff}_\text{s}}{R_\text{p}^2} \left( \frac{2}{\widetilde{r} + 1} \frac{\partial c_\text{s}}{\partial \widetilde{r}} + \frac{\partial^2 c_\text{s}}{\partial {\widetilde{r}}^2} \right)\tag{\ref{eqn:solidDiffEqChebDomain}} \\
+        \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=-1}} & = 0\label{eqn:solidDiffEqChebDomainBCcentre}                                                                                                                                                                                                                \\
+        2 \frac{D^\text{eff}_\text{s}}{R_\text{p}} \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=1}} & = -j\label{eqn:solidDiffEqChebDomainBCsurface}
+    \end{align}
+\end{subequations}
 
-\begin{align}
-	\frac{\partial c_\text{s}}{\partial t} &= 4 \frac{D^\text{eff}_\text{s}}{R_\text{p}^2} \left( \frac{2}{\tilde{r} + 1} \frac{\partial c_\text{s}}{\partial \tilde{r}} + \frac{\partial^2 c_\text{s}}{\partial {\tilde{r}}^2} \right)\label{eqn:solidDiffEqChebDomain}\\
-\frac{\partial c_\text{s}}{\partial \tilde{r}}\bigg\rvert_{\tilde{r}=-1} &= 0\tag{\ref{eqn:solidDiffEqChebDomain}a}\\
-	2 \frac{D^\text{eff}_\text{s}}{R_\text{p}} \frac{\partial c_\text{s}}{\partial \tilde{r}}\bigg\rvert_{\tilde{r}=1} &= -j\tag{\ref{eqn:solidDiffEqChebDomain}b}
-\end{align}
-
-During the iterative solution process, the spatial gradients of solid phase
-lithium concentration in \cref{eqn:solidDiffEqChebDomain} are not computed
-through an explicit differentiation procedure, but instead evaluated by
-pre-multiplying the concentration values at the collocation nodes by a
-Chebyshev differentiation matrix. This particular fact is responsible for
-the inherent reduction of simulation runtime achieved by introducing a
-spectral method. In the modified version of LIONSIMBA used in the layer
-optimisation methodology, differentiation matrices of suitable dimension as well
-as the Chebyshev collocation nodes are generated using the MATLAB function
+During  the iterative  solution process,  the spatial  gradients of  solid phase
+lithium concentration  in \cref{eqn:solidDiffEqChebDomain} in this  case are not
+computed through  an explicit  differentiation procedure  as usual,  but instead
+evaluated by pre-multiplying  the concentration values at  the collocation nodes
+by a  Chebyshev differentiation  matrix. This  particular aspect  is responsible
+for  the inherent  reduction of  simulation  runtime achieved  by introducing  a
+spectral method.  In the updated  version of  LIONSIMBA~v2.0 used in  this layer
+optimisation  methodology, differentiation  matrices of  suitable dimensions  as
+well as the Chebyshev collocation nodes  are generated using the MATLAB function
 \texttt{cheb.m}~\cite{Trefethen2000}.
 
 \input{chapters/layer_opt/common_bev_phev_params_table_new}
@@ -828,7 +830,7 @@ as the Chebyshev collocation nodes are generated using the MATLAB function
 \section{Results}\label{sec:resultslayeropt}
 
 Special emphasis is placed on the \emph{methodology} since the results per se do
-not stand alone outside of the modelling regimen (universe we created).
+not stand alone outside of the modelling regimen (universe I created).
 However, the  value is on  the methodology and  its implementation in  a toolbox
 which is immediately available for download and use by industry to confirm their
 empirical layer designs.
@@ -927,10 +929,10 @@ empirical layer designs.
 
 %\section{Layer Optimisation Framework}
 
-%Basically the pack configuration and the universe in which we worked shall be
+%Basically the pack configuration and the universe in which I worked shall be
 %discussed here with the help of the hierarchical powertrain-to-cell schematic.
 %This will set the context of the problem being tackled. Important concepts that
-%enable the creation of the universe in which we define the problem to be solved
+%enable the creation of the universe in which I define the problem to be solved
 %in discussed and the assumptions involved shall be explained.
 
 %The layer optimisation framework hinges upon the concept of capacity balancing
@@ -1190,7 +1192,7 @@ empirical layer designs.
 %Ian since the whole thing doesn't fit the story of Krishna's work. The
 %polarisation heat concept was initially described by Greg, but anyway let Ian
 %explain it, no problem. Ian may wish to discuss entropic heat generation and a
-%lot of other things we investigated together, but I am not going to dwell on
+%lot of other things I investigated together, but I am not going to dwell on
 %them in the thesis.
 
 
@@ -1261,7 +1263,7 @@ empirical layer designs.
 
 The outcome is that a ready to  use tool is made available to validate empirical
 layer choices.  In the  absence of  access to  cell manufacturing  facilities to
-confirm and test the  layer Immediate adoption in industry, this  is the best we
+confirm and test the  layer Immediate adoption in industry, this  is the best I
 can do. Needs to be prototyped and tested.
 
 \glsreset{xeV}
