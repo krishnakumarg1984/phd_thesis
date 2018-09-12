@@ -237,6 +237,8 @@ high number of layers imply vanishingly thin electrodes and correspondingly less
 active  material  accommodated within  the  cell,  thereby lowering  its  energy
 capacity.
 
+\fxnote{energy versus Power cell from marie's thesis?}
+
 Therefore, there exists  a research question on what constitutes  the best layer
 choice  that straddles  this  trade-off  with the  least  penalty  to the  power
 capability  of  the  cell  whilst simultaneously  having  the  maximum  possible
@@ -746,6 +748,7 @@ well as the Chebyshev collocation nodes  are generated using the MATLAB function
 
 \section{Computational Framework}\label{sec:layeroptframework}
 
+\subsection{Lower Cutoff Voltage}\label{sec:cutoff}
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
         \centering
@@ -779,6 +782,7 @@ However, the  value is on  the methodology and  its implementation in  a toolbox
 which is immediately available for download and use by industry to confirm their
 empirical layer designs.
 
+\input{chapters/layer_opt/cell_params_full_table}
 \input{chapters/layer_opt/common_bev_phev_params_table_new}
 \input{chapters/layer_opt/separate_bev_phev_params_table}
 \input{chapters/layer_opt/acc_results_table}
@@ -839,10 +843,7 @@ empirical layer designs.
 \end{figure}
 \section{Common Module Design}\label{sec:commonmodulelayeropt}
 
-%Impart knowledge on energy cell versus power cell with the help of a diagram.
-%Explain the effect of useable energy and power for a given cell with the help of
-%a figure and table. How layers place a role in controlling this trade-off shall
-%be discussed in the subsequent sections.
+\section{Chapter Plan stuff}
 
 %\section{Augmentation of p2d parameters}
 
@@ -1256,8 +1257,6 @@ empirical layer designs.
 
 %\section{Appendix}
 
-\section{Lower Cutoff Voltage}\label{sec:cutoff}
-\input{chapters/layer_opt/cell_params_full_table}
 
 
 \section{Conclusion}
