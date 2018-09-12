@@ -64,7 +64,7 @@
 % \usepackage{bigints}
 % \usepackage{cancel}
 % \usepackage{pdfpages}
-% \usepackage{tabstackengine} % stackmath macro uses this package
+\usepackage{tabstackengine} % stackmath macro uses this package
 
 \input{Preamble/standard_packages} % a bit specific to luatex; also includes biblatex
 
@@ -98,6 +98,8 @@
 \input{Preamble/custom_cmds_bibliography}     % 'bib' file goes in here
 \input{Preamble/custom_cmds_graphics}
 % \input{Preamble/custom_cmds_pkg_cancel}     % uses a predefined color
+
+\input{Preamble/custom_cmds_pkg_caption}
 \input{Preamble/custom_cmds_pkg_cleveref}
 % \input{Preamble/custom_cmds_pkg_diffcoeff}
 \input{Preamble/custom_cmds_pkg_enumitem}
@@ -114,7 +116,7 @@
 \input{Preamble/custom_cmds_tabularmaterial}
 % \input{Preamble/custom_cmds_tikzmarks}
 \input{Preamble/custom_genpurpose_cmds}
-% \input{Preamble/esoteric_math_constructs}
+\input{Preamble/esoteric_math_constructs}
 % \input{Preamble/esoteric_text_constructs}
 \input{Preamble/custom_latex_settings}
 %---------- end custom commands ----------%
