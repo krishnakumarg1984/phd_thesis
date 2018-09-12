@@ -691,26 +691,27 @@ Although the proposed implementation does  not \emph{globally} employ a spectral
 scheme, the  combined beneficial  effects of  radial-domain spectral  scheme and
 automatic differentiation of system equations using CasADi~\cite{Andersson2013b}
 facilitates rapid simulation, enabling  layer optimisation on short time-scales.
-\Crefrange{eqn:defineChebNodes}{eqn:solidDiffEqChebDomain}   detail  the   steps
+\Crefrange{eq:defineChebNodes}{eq:solidDiffEqChebDomain}   detail  the   steps
 leading to  the reformulated solid  phase diffusion and its  associated boundary
 condition in the Chebyshev domain.
 
 The $N_\text{r}$~Chebyshev collocation nodes, defined on a 1D mesh in the radial
-direction, are given by \cref{eqn:defineChebNodes}~\cite{Trefethen2000}.
-\begin{equation}\label{eqn:defineChebNodes}
+direction, are given by \cref{eq:defineChebNodes}~\cite{Trefethen2000}.
+\begin{equation}\label{eq:defineChebNodes}
     \widetilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \widetilde{r} \in [-1, 1]
 \end{equation}
 
 Assuming  constant diffusivity,  and expanding  the derivative  in the  standard
 form of  the Fickian  spherical diffusion equation  (see \cref{eq:dfnsoliddiff})
-for  each particle,  we  obtain  \cref{eqn:quotientappliedpde}, presented  along
-with  its   Neumann  boundary   conditions.  $j$~is   the  molar   flux  density
+for  each particle,  we  obtain  \cref{eq:quotientappliedpde}, presented  along
+with  its   Neumann  boundary   conditions \cref{eq:quotientappliedpdeBCcentre}
+and \cref{eq:quotientappliedpdeBCsurface}.  $j$~is   the  molar   flux  density
 (\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius (\si{m}).
-\begin{subequations}\label{eqn:quotientappliedpde}
+\begin{subequations}\label{eq:quotientappliedpde}
     \begin{align}
-        \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref{eqn:quotientappliedpde}}\\
-        \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eqn:quotientappliedpdeBCcentre}\\
-        D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eqn:quotientappliedpdeBCsurface}
+        \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref*{eq:quotientappliedpde}}\\
+        \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eq:quotientappliedpdeBCcentre}\\
+        D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eq:quotientappliedpdeBCsurface}
     \end{align}
 \end{subequations}
 
@@ -720,28 +721,63 @@ Mapping $r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]$,
 \end{equation}
 
 Applying \cref{mappingChebDomain} to
-\crefrange{eqn:quotientappliedpde}{eqn:quotientappliedpdeBCsurface} whilst
+\crefrange{eq:quotientappliedpde}{eq:quotientappliedpdeBCsurface} whilst
 retaining $c_\text{s}$ in the physical space yields
-\crefrange{eqn:solidDiffEqChebDomain}{eqn:solidDiffEqChebDomainBCsurface}.
+\crefrange{eq:solidDiffEqChebDomain}{eq:solidDiffEqChebDomainBCsurface}.
 
-\begin{subequations}\label{eqn:solidDiffEqChebDomain}
+\begin{subequations}\label{eq:solidDiffEqChebDomain}
     \begin{align}
-	    \frac{\partial c_\text{s}}{\partial t}                         & = 4 \frac{D^\text{eff}_\text{s}}{R_\text{p}^2} \left( \frac{2}{\widetilde{r} + 1} \frac{\partial c_\text{s}}{\partial \widetilde{r}} + \frac{\partial^2 c_\text{s}}{\partial {\widetilde{r}}^2} \right)\tag{\ref{eqn:solidDiffEqChebDomain}} \\
-        \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=-1}} & = 0\label{eqn:solidDiffEqChebDomainBCcentre}                                                                                                                                                                                                                \\
-        2 \frac{D^\text{eff}_\text{s}}{R_\text{p}} \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=1}} & = -j\label{eqn:solidDiffEqChebDomainBCsurface}
+	    \frac{\partial c_\text{s}}{\partial t}                         & = 4 \frac{D^\text{eff}_\text{s}}{R_\text{p}^2} \left( \frac{2}{\widetilde{r} + 1} \frac{\partial c_\text{s}}{\partial \widetilde{r}} + \frac{\partial^2 c_\text{s}}{\partial {\widetilde{r}}^2} \right)\tag{\ref*{eq:solidDiffEqChebDomain}} \\
+        \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=-1}} & = 0\label{eq:solidDiffEqChebDomainBCcentre}                                                                                                                                                                                                                \\
+        2 \frac{D^\text{eff}_\text{s}}{R_\text{p}} \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=1}} & = -j\label{eq:solidDiffEqChebDomainBCsurface}
     \end{align}
 \end{subequations}
 
 During  the iterative  solution process,  the spatial  gradients of  solid phase
-lithium concentration  in \cref{eqn:solidDiffEqChebDomain} in this  case are not
+lithium concentration  in \cref{eq:solidDiffEqChebDomain}  in this case  are not
 computed through  an explicit  differentiation procedure  as usual,  but instead
 evaluated by pre-multiplying  the concentration values at  the collocation nodes
-by a  Chebyshev differentiation  matrix. This  particular aspect  is responsible
-for  the inherent  reduction of  simulation  runtime achieved  by introducing  a
-spectral method.  In the updated  version of  LIONSIMBA~v2.0 used in  this layer
-optimisation  methodology, differentiation  matrices of  suitable dimensions  as
+by a Chebyshev differentiation matrix. This particular aspect is responsible for
+the inherent reduction of simulation  runtime achieved by introducing a spectral
+method. In the updated version  of LIONSIMBA~v2.0 (created specifically for this
+layer  optimisation work),  differentiation matrices  of suitable  dimensions as
 well as the Chebyshev collocation nodes  are generated using the MATLAB function
 \texttt{cheb.m}~\cite{Trefethen2000}.
+
+\section{Computational Framework}\label{sec:layeroptframework}
+
+\begin{figure}[p]
+    \begin{minipage}[t]{\textwidth}
+        \centering
+        \includegraphics[angle=90, width=\textwidth]{fig_master_flow_diagram}
+        \captionsetup{labelsep=note}
+        \caption
+        [%
+        Flow diagram depicting an overview of the proposed layer optimisation methodology
+        for Li-ion pouch cells.
+        ]%
+        {%
+            Flow diagram depicting an overview of the proposed layer optimisation methodology
+            for Li-ion pouch cells.
+        }%
+        \label{fig:fig_strategy_schematic}
+        \mpfootnotes[1]
+        % \vspace*{1.125cm}
+        \vspace*{0.7225cm}
+        \footnote{This figure was created by \mbox{Krishnakumar Gopalakrishnan} who
+            asserts copyright, with intellectual contributions from and the right to
+        use asserted by \mbox{Ian Campbell}.}
+    \end{minipage}
+\end{figure}
+\afterpage{\clearpage}
+
+\section{Results}\label{sec:resultslayeropt}
+
+Special emphasis is placed on the \emph{methodology} since the results per se do
+not stand alone outside of the modelling regimen (universe I created).
+However, the  value is on  the methodology and  its implementation in  a toolbox
+which is immediately available for download and use by industry to confirm their
+empirical layer designs.
 
 \input{chapters/layer_opt/common_bev_phev_params_table_new}
 \input{chapters/layer_opt/separate_bev_phev_params_table}
@@ -801,41 +837,6 @@ well as the Chebyshev collocation nodes  are generated using the MATLAB function
         \mbox{Krishnakumar Gopalakrishnan}.}
     \end{minipage}
 \end{figure}
-
-\section{Computational Framework}\label{sec:layeroptframework}
-
-\begin{figure}[p]
-    \begin{minipage}[t]{\textwidth}
-        \centering
-        \includegraphics[angle=90, width=\textwidth]{fig_master_flow_diagram}
-        \captionsetup{labelsep=note}
-        \caption
-        [%
-        Flow diagram depicting an overview of the proposed layer optimisation methodology
-        for Li-ion pouch cells.
-        ]%
-        {%
-            Flow diagram depicting an overview of the proposed layer optimisation methodology
-            for Li-ion pouch cells.
-        }%
-        \label{fig:fig_strategy_schematic}
-        \mpfootnotes[1]
-        % \vspace*{1.125cm}
-        \vspace*{0.7225cm}
-        \footnote{This figure was created by \mbox{Krishnakumar Gopalakrishnan} who
-            asserts copyright, with intellectual contributions from and the right to
-        use asserted by \mbox{Ian Campbell}.}
-    \end{minipage}
-\end{figure}
-\section{Results}\label{sec:resultslayeropt}
-
-Special emphasis is placed on the \emph{methodology} since the results per se do
-not stand alone outside of the modelling regimen (universe I created).
-However, the  value is on  the methodology and  its implementation in  a toolbox
-which is immediately available for download and use by industry to confirm their
-empirical layer designs.
-
-
 \section{Common Module Design}\label{sec:commonmodulelayeropt}
 
 %Impart knowledge on energy cell versus power cell with the help of a diagram.
