@@ -1,0 +1,577 @@
+% -*- root: ../../main.tex -*
+%!TEX root = ../../main.tex
+% vim:textwidth=80 fo=cqt conceallevel=0
+
+\graphicspath{{chapters/layer_opt/figures/}}
+% ----------------------- contents from here ------------------------
+
+\chapter{Model-based Design Of Pouch Cells}\label{ch:modelbaseddesign}
+\vspace*{-1em}
+\startcontents[chapters]
+\printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
+
+\bigskip
+
+\glsunset{xeV}
+
+% A brief  1-2 sentences throwback to  the literature review, referring  what I
+% will say in this chapter.
+
+% \section[Introduction]{Introduction\protect\footnote{\textbf{Attribution      of
+%         content}  \   The  groundwork   for  converting   the  existing   computer  code
+%         (LIONSIMBA~v1.0$x$) into a suitable form for layer optimisation was initiated by
+%         this  thesis  author,  \mbox{Krishnakumar  Gopalakrishnan}.  However,  with  the
+%         exception of  the spectral scheme, for  which \mbox{Krishnakumar Gopalakrishnan}
+%         was  responsible, and  the zero-dimensional  thermal model  for which  \mbox{Ian
+%         Campbell} was  responsible, the advancements  inherent to the  enhanced computer
+%         software  (LIONSIMBA~v2.0)  were  made  in  equal  parts  by  \mbox{Krishnakumar
+%         Gopalakrishnan} and \mbox{Ian Campbell}. These  advancements would not have been
+%         possible without the contributions and support of Dr.~Davide Raimondo who served
+%         as an unofficial  supervisor for the work reported in  this chapter. The concept
+%         of layer reconfiguration for energy  and power trade-off, the layer optimisation
+%         framework, and the  source code by which it is  implemented were co-developed in
+%         equal  parts  by  \mbox{Krishnakumar Gopalakrishnan}  and  \mbox{Ian  Campbell}.
+%         \mbox{Krishnakumar Gopalakrishnan} was the  major contributor to the development
+%         of the binary search while \mbox{Ian  Campbell} was the major contributor in the
+%         analysis of results. \mbox{Parvathy  Chittur Subramanianprasad} was instrumental
+%         in  developing the  analytical expression  for  the maximum  possible number  of
+% layers~$n_\text{max}$.}}\label{sec:layeroptintro}
+% \input{chapters/layer_opt/intro_layer_opt}
+
+% \section{Energy/Power Trade-off in Pouch Cells by Layer Selection}\label{sec:energypowertradeoff}
+% \input{chapters/layer_opt/energy_power_tradeoff}
+
+% \section{Scope and Context within \glsfmtshort{xeV} Powertrain}
+% \input{chapters/layer_opt/scope_drivetrain}
+
+\section{Enhancements/Modifications to Numerical Realisation}
+\input{chapters/layer_opt/numerical_enhancements}
+
+%\section{Modification of Standard \glsfmtshort{dfn} Model to Handle Power Inputs}\label{sec:innatepowerinput}
+
+%Figure showing power input
+%\section{Hybrid Spectral-\glsfmtshort{fv} Scheme}\label{sec:hybridfv-spectral}
+
+%Fast  and  accurate  estimation  of   the  solid  phase  lithium  concentration,
+%particularly  its   value  at   the  surface  of   electrode  particles   is  an
+%inherent  requirement   of  the   layer  optimisation  procedure   presented  in
+%\cref{sec:layeroptframework}.   The  high   power  densities   to  be   handled,
+%particularly  at  low   layer  counts  necessitate  this   requirement.  It  has
+%been   acknowledged  that   solid-phase  concentration   calculations  employing
+%polynomial    approximations   lack    fidelity    at   high    charge/discharge
+%rates~\cite{Santhanagopalan2006}.  Hence,  a  conventional  full-order  solution
+%based on Fick's law of diffusion is required for this layer optimisation task.
+
+%With full-order  solid phase  diffusion dynamics,  applying the  \gls{fv} scheme
+%(that has been  employed in LIONSIMBA~v1.0x to  discretise all through-thickness
+%\gls{pde}s of the \gls{p2d} model) results  in a very large system of equations.
+%This is due to the requirement of using a high radial node density per spherical
+%particle for improved accuracy. Consequently, the computational cost is high and
+%simulation  runtime  becomes prohibitive  when  exploring  the search  space  of
+%all  possible  layer configurations.  Moreover,  with  a cell-centered  \gls{fv}
+%discretisation,  it is  non-trivial to  directly apply  the ionic  flux boundary
+%condition at the particle surface, since it involves extrapolation from at least
+%two other nodes within the particle. While such extrapolations are acceptable in
+%the axial  dimension --- particularly  with high node densities  providing small
+%values of $\frac{\Delta x}{2}$ --- they are undesirable in the radial dimension.
+%This  is because  cell's  open  circuit and  terminal  voltages strongly  depend
+%on  the  concentration  at  the  particle  surface.  Spectral  methods  offer  a
+%combination  of high  accuracy and  speed while  permitting the  use of  a lower
+%number  of radial  discretisation nodes.  To implement  a spectral  scheme on  a
+%non-periodic  domain,  a  Chebyshev discretisation~\cite{Trefethen2000}  may  be
+%applied.  Bizeray~\etal{}~\cite{Bizeray2015} discretised  all  of the  \gls{p2d}
+%model  equations using  this approach.  However, this  entails a  bi-directional
+%mapping of all  variables between the physical and  Chebyshev domains, incurring
+%computational overhead.
+
+%In this chapter, a hybrid formulation of the \gls{p2d} model is proposed wherein
+%a standard \gls{fv} scheme  in the axial dimension and a  spectral scheme in the
+%radial domain  are used.  Exploiting this  natural separation  of the  axial and
+%radial domains enables to ---
+%\begin{enumerate*}[label=\roman*)]
+%    \item retain  the   ability  to  easily   couple  the   molar  flux  density   at  the particle  surface  through  reformulation  of the  boundary  conditions  of  the solid  diffusion \gls{pde},  and
+%    \item solve  for  solid-phase  lithium  concentration  in  the  Chebyshev  domain  and locally transform  to physical  domain, without requiring  system-wide Chebyshev reformulations.
+%\end{enumerate*}
+%Although the proposed implementation does  not \emph{globally} employ a spectral
+%scheme, the  combined beneficial  effects of  radial-domain spectral  scheme and
+%automatic differentiation of system equations using CasADi~\cite{Andersson2013b}
+%facilitates rapid simulation, enabling  layer optimisation on short time-scales.
+%\Crefrange{eq:defineChebNodes}{eq:solidDiffEqChebDomain}   detail  the   steps
+%leading to  the reformulated solid  phase diffusion and its  associated boundary
+%condition in the Chebyshev domain.
+
+%The $N_\text{r}$~Chebyshev collocation nodes, defined on a 1D mesh in the radial
+%direction, are given by \cref{eq:defineChebNodes}~\cite{Trefethen2000}.
+%\begin{equation}\label{eq:defineChebNodes}
+%    \widetilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \widetilde{r} \in [-1, 1]
+%\end{equation}
+
+%Assuming  constant diffusivity,  and expanding  the derivative  in the  standard
+%form of  the Fickian  spherical diffusion equation  (see \cref{eq:dfnsoliddiff})
+%for  each particle,  we  obtain  \cref{eq:quotientappliedpde}, presented  along
+%with  its   Neumann  boundary   conditions \cref{eq:quotientappliedpdeBCcentre}
+%and \cref{eq:quotientappliedpdeBCsurface}.  $j$~is   the  molar   flux  density
+%(\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius (\si{m}).
+%\begin{subequations}\label{eq:quotientappliedpde}
+%    \begin{align}
+%        \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref*{eq:quotientappliedpde}}\\
+%        \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eq:quotientappliedpdeBCcentre}\\
+%        D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eq:quotientappliedpdeBCsurface}
+%    \end{align}
+%\end{subequations}
+
+%Mapping $r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]$,
+%\begin{equation}\label{mappingChebDomain}
+%    r = \frac{R_\text{p}}{2}(\widetilde{r} + 1)
+%\end{equation}
+
+%Applying \cref{mappingChebDomain} to
+%\crefrange{eq:quotientappliedpde}{eq:quotientappliedpdeBCsurface} whilst
+%retaining $c_\text{s}$ in the physical space yields
+%\crefrange{eq:solidDiffEqChebDomain}{eq:solidDiffEqChebDomainBCsurface}.
+
+%\begin{subequations}\label{eq:solidDiffEqChebDomain}
+%    \begin{align}
+%	    \frac{\partial c_\text{s}}{\partial t}                         & = 4 \frac{D^\text{eff}_\text{s}}{R_\text{p}^2} \left( \frac{2}{\widetilde{r} + 1} \frac{\partial c_\text{s}}{\partial \widetilde{r}} + \frac{\partial^2 c_\text{s}}{\partial {\widetilde{r}}^2} \right)\tag{\ref*{eq:solidDiffEqChebDomain}} \\
+%        \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=-1}} & = 0\label{eq:solidDiffEqChebDomainBCcentre}                                                                                                                                                                                                                \\
+%        2 \frac{D^\text{eff}_\text{s}}{R_\text{p}} \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=1}} & = -j\label{eq:solidDiffEqChebDomainBCsurface}
+%    \end{align}
+%\end{subequations}
+
+%During  the iterative  solution process,  the spatial  gradients of  solid phase
+%lithium concentration  in \cref{eq:solidDiffEqChebDomain}  in this case  are not
+%computed through  an explicit  differentiation procedure  as usual,  but instead
+%evaluated by pre-multiplying  the concentration values at  the collocation nodes
+%by a Chebyshev differentiation matrix. This particular aspect is responsible for
+%the inherent reduction of simulation  runtime achieved by introducing a spectral
+%method. In the updated version  of LIONSIMBA~v2.0 (created specifically for this
+%layer  optimisation work),  differentiation matrices  of suitable  dimensions as
+%well as the Chebyshev collocation nodes  are generated using the MATLAB function
+%\texttt{cheb.m}~\cite{Trefethen2000}.
+
+%\section{Computational Framework}\label{sec:layeroptframework}
+
+%\subsection{Lower Cutoff Voltage}\label{sec:cutoff}
+%\begin{figure}[p]
+%    \begin{minipage}[t]{\textwidth}
+%        \centering
+%        \includegraphics[angle=90, width=\textwidth]{fig_master_flow_diagram}
+%        \captionsetup{labelsep=note}
+%        \caption
+%        [%
+%        Flow diagram depicting an overview of the proposed layer optimisation methodology
+%        for Li-ion pouch cells.
+%        ]%
+%        {%
+%            Flow diagram depicting an overview of the proposed layer optimisation methodology
+%            for Li-ion pouch cells.
+%        }%
+%        \label{fig:fig_strategy_schematic}
+%        \mpfootnotes[1]
+%        % \vspace*{1.125cm}
+%        \vspace*{0.7225cm}
+%        \footnote{This figure was created by \mbox{Krishnakumar Gopalakrishnan} who
+%            asserts copyright, with intellectual contributions from and the right to
+%        use asserted by \mbox{Ian Campbell}.}
+%    \end{minipage}
+%\end{figure}
+%\afterpage{\clearpage}
+
+%\section{Results}\label{sec:resultslayeropt}
+
+%Special emphasis is placed on the \emph{methodology} since the results per se do
+%not stand alone outside of the modelling regimen (universe I created).
+%However, the  value is on  the methodology and  its implementation in  a toolbox
+%which is immediately available for download and use by industry to confirm their
+%empirical layer designs.
+
+\input{chapters/layer_opt/cell_params_full_table}
+%\input{chapters/layer_opt/common_bev_phev_params_table_new}
+%\input{chapters/layer_opt/separate_bev_phev_params_table}
+%\input{chapters/layer_opt/acc_results_table}
+
+%\begin{figure}[!bp]
+%    \begin{minipage}[t]{\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{fig_generate_heatmap_BEV}
+%        \captionsetup{labelsep=note}
+%        \caption[Optimal cell layer configurations for the \gls{bev}, presented for a range of fast charging powers and thermal conditions]{Optimal cell layer configurations for the \gls{bev}, presented for a range of fast charging powers and thermal conditions.}
+%        \label{fig:fig_generate_heatmap_BEV}
+%        \mpfootnotes[1]
+%        \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
+%            with intellectual contributions from and the right to use asserted by
+%        \mbox{Krishnakumar Gopalakrishnan}.}
+%    \end{minipage}
+%\end{figure}
+
+%\begin{figure*}[!bp]
+%    \begin{minipage}[t]{\textwidth}
+%        \centering \includegraphics[width=\textwidth,trim=4 2 3 4,clip]{fig_capacity_quadrants.pdf}
+%        \captionsetup{labelsep=note}
+%        \caption[The plots in the right column show the nominal cell capacity and charge passed
+%        during \gls{xeV} \gls{cp} charging. Increased rate capability and cell utilisation are positively
+%        correlated with $n$, while the maximum-$q$ layer configuration clearly shifts to higher
+%        values of $n$ with increasing charging powers. The plots in the left column depict
+%        galvanostatic charging scenarios at various currents to highlight the similarity with the
+%        \gls{cp} process. All data obtained at $T_\text{init} =$ \SI{25}{\degreeCelsius},
+%        $T_\text{sink} =$ \SI{25}{\degreeCelsius}.]{The plots in the right column show the nominal cell capacity and charge passed
+%            during \gls{xeV} \gls{cp} charging. Increased rate capability and cell utilisation are positively
+%            correlated with $n$, while the maximum-$q$ layer configuration clearly shifts to higher
+%            values of $n$ with increasing charging powers. The plots in the left column depict
+%            galvanostatic charging scenarios at various currents to highlight the similarity with the
+%            \gls{cp} process. All data obtained at $T_\text{init} =$ \SI{25}{\degreeCelsius},
+%        $T_\text{sink} =$ \SI{25}{\degreeCelsius}.}
+%        \label{fig:fig_CapacityQuadrants}
+%        \mpfootnotes[1]
+%        \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
+%            with intellectual contributions from and the right to use asserted by
+%        \mbox{Krishnakumar Gopalakrishnan}.}
+%    \end{minipage}
+%\end{figure*}
+
+%\begin{figure}[!bp]
+%    \begin{minipage}[t]{\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{fig_generate_heatmap_PHEV}
+%        \captionsetup{labelsep=note}
+%        \caption[Optimal cell layer configurations for the \gls{phev}, presented for a range of
+%        fast charging powers and thermal conditions]{Optimal cell layer configurations for the \gls{phev}, presented for a range of
+%        fast charging powers and thermal conditions.}
+%        \label{fig:fig_generate_heatmap_PHEV}
+%        \mpfootnotes[1]
+%        \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
+%            with intellectual contributions from and the right to use asserted by
+%        \mbox{Krishnakumar Gopalakrishnan}.}
+%    \end{minipage}
+%\end{figure}
+%\section{Common Module Design}\label{sec:commonmodulelayeropt}
+
+%\section{Chapter Plan stuff}
+
+
+%%\section{Layer Optimisation Framework}
+
+%%The layer optimisation framework hinges  upon the concept of capacity balancing
+%%between electrodes.  Explain this nicely  with references and citations  on why
+%%this is important. Helps us make us of the most of the active material invested
+%%into the cell.
+
+%%\subsection{Capacity Balancing}
+
+%%Formula for capacity balance. Show how  the length of the negative electrode is
+%%slightly larger than the positive electrode, but compensated for by the reduced
+%%volume fraction.  Cite other parameter  sets where  this is observed.  They are
+%%nearly equal, but made to be 1.10.% The thickness of the positive electrode was
+%%adjusted accordingly.
+
+%%\subsection{Electrode Thicknesses per layer}
+%%Talk briefly about separator and how its thickness remains constant.
+
+%%With this, show the mathematical derivation of the expression for number of
+%%layers Explain the significance of the outermost layer and how it affects the
+%%formula used Explain how the stack is formed. Report its numerical value. Pouch
+%%thickness and its role along with suitable reference. Show briefly a clever
+%%computer code snippet that encapsulates both cases of odd and even.
+
+%%At this stage, can explain clearly the relationship between the theoretical
+%%capacity and number of layers. Use a graph or a table to highlight the
+%%idea. Useable capacity shall be lower than total capacity due to cutoff
+%%considerations. Explanation.
+
+%%Especially, the derivation of the combined electrode thickness concept, and the
+%%usage of the ratio to obtain one from the other.
+
+%%\subsection{Derivation of analytical \protect{$n_\text{max}$}}
+
+%%The  search space  spans  a finite  number of  layers.  An initial  alternative
+%%considered  was MIDACO.  The detailed  equations and  how they  are derived  go
+%%here. Discuss  for both  odd and  even cases.  However, closed  form analytical
+%%expressions are  now available.  This is  so as  to enable  a binary  search as
+%%discussed in the next section.
+
+%%The optimisation formula and analytical solution shall also be discussed here.
+
+%%%Note: Krishna  is claiming  the idea  generation and  coding in  entirety. The
+%%mixed  %integer  optimisation to  zero  thickness.  narrowing down  the  search
+%%window.  for loop  will also  work.  The optimal  layer  in %this  case is  the
+%%earliest choice  of $n$ in the  for loop for which  the %termination conditions
+%%are correctly satisfied.
+
+%%\subsection{Customised Binary Search}
+
+%%A bi-section based algorithm. Algorithm/binary tree based description with
+%%figure/algo. Discuss the O(log n) speedup.
+
+%%%Note:  One fine  evening, Krishna  increased the  computational speedup  by two
+%%orders of magnitude. Proof in github  and email. While Ian was always interested
+%%in a for-loop approach right from  beginning, Krishna always suggested to use an
+%%optimisation approach.
+
+%%\subsection{Mass recomputation as a function of layers}
+%%Explanation with graph.
+
+%%\subsection{Specific-heat recomputation as a function of layers}
+%%Suitable explanation and plot.
+
+%%Note: Ian congratulated Krishna for mass and specifc heat computation. In his
+%%words, ``You were clever coming up with a scheme wherein mass varies as a
+%%number of layers''. Packaged this up as a function and all. Refer to
+%%computelumpedmassandCpavgforgivenlayerfcn. Can prove git history for this file.
+%%Not only mass recomputations but also mass initial computation was done by
+%%Krishna
+
+%%\subsection{Thermal space permutation of layers.}
+%%Explanation of how the four corner temperatures are tried here. 5 lines of code snippet that packs a punch
+
+%%Note: Krishna read the acceleration specification description,educated Ian and implemented this.
+
+%%\begin{quotation}
+%%Ian: Krishna!. Whoa that small block of code does so much.
+%%\end{quotation}
+
+%%\section{Workflow for Optimal Layer Computation}
+
+%%This section discusses the actual methodology or the procedure in which the
+%%aforementioned ideas are incorporated in a process-like workflow. Introduce the
+%%full-page crazy flow diagram here. Explain how the flow diagram goes through a
+%%methodical approach in arriving at the optimal number of layers. Extensive
+%%forward and backward referencing to sections discussing each modular idea
+%%encountered in the flow path. Discuss how the applied current and power
+%%densities change due to change in overall surface area while the applied
+%%external current/power remains the same.
+
+%%% This will help us to apply current in units rather in current density.
+
+%%The salient cases to be covered are the following.
+
+%%\subsection{Case 1 --- Analysis of Drivecycle Powers}
+
+%%Although from Colorado Boulder lecture notes, Krishna already knew that
+%%acceleration demands the highest power demand on the cell, it needs to be proven
+%%that drive cycles, which are the basis for various fuel efficiency calculations
+%%do not represent this case. Ian did the comparative study of various drivecyles.
+%%Some plots and charts showing various power levels were generated by him.
+%%Krishna does not explicity need to use this section, and is optional to the
+%%story, other than the sake of well-roundedness and demonstrating thoroughness of
+%%the study.
+
+%%Explain that this case is not present in the flow diagram.
+
+%%However, it was Krishna who generated the drivecycle speed vs time and
+%%acceleration versus time results alone and then informed Ian afterwards that it
+%%is now available in the repository. If Ian uses this section, an acknowledgement
+%%will be appropriate.
+
+
+%%\subsection{Case 2 --- Acceleration from standstill}
+
+%%Explanation and computations based on standard vehicle dynamics. Lecture notes
+%%and videos given to Ian by Krishna from Univ of Colorado Boulder The sole value
+%%addition in this case is the specification to adhere to and its implementation
+%%through a cases study. Krishna shall explain this through either-or if-then
+%%case, explanation along with a short code snippet which he implemented alone.
+
+%%Explain the acceleration run in detail, what it entails etc. Walk through the
+%%flow diagram till acc layer results are discussed.
+
+%%Note: The acceleration specification for electrified transport was unearthed by
+%%Krishna (all the interlibrary loan stuff and educated Ian about it). Two
+%%passengers and all that thing. Complete coding.
+
+%%\subsection{Case 3 --- Fast Charging}
+
+%%A brief explanation of the whys and the hows and implications. Explanation of
+%%prevalent standards. Present table of standards etc etc
+
+%%One paragraph review of control algorithms and how this algorithm was chosen.
+%%Brief overview of algorithm. The idea of introducing saturation and pulsed
+%%charging profile. Based on patent at Auburn university. Krishna did literature
+%%review. Flag introduced in code. Code snippet.enablecsnegsaturationlimit.
+%%% Sinusoidal excitation charging.
+
+%%Explanation of why power demand is important (based on charger power electronics).
+%%Finally, walk through of the fast charging section of the schematic.
+
+%%Note: Krishna performed the litt search of this section entirely (proof with
+%%timestamp available). However, Krishna is tentatively not using a detailed litt
+%%review. In kind consideration of Ian's own overarching thesis topic, which
+%%Krishna understands to be something pertinent to fast charging, Krishna can let
+%%Ian use the literature provided proper attribution is in place. For the sake of
+%%completion, the MIDACO based approaching to fast charging showing the pulsing
+%%power is also possible by Ian (just a suggestion).
+
+%%Note: The charger power electronics limit is again my contribution from an EEE
+%%background
+
+%%% \item Review of model-based fast charging control algorithms (how does this go into litt review)
+
+%%\section{Simulation Environment}
+%%Discuss parameters of simulation environment. Discuss with the help of a table
+%%for the BEV case only. Ian can take the PHEV Number of BEV calls designed to
+%%make up the series string.
+
+%%Krishna also came up with the cell's cutoff study with respect to the the
+%%system's bus bar voltage, and will be cited here with examples and strong
+%%backing. There are a few preconditioning steps needed to amend the p2d model
+%%before numerical implementation of the flow diagram is possible. 1. Fixing
+%%aspects of the code in LIONSIMBA v1.023 used as the baseline by this thesis
+%%author. 2. Addition of the capability to apply power input instead of current
+%%input as is common in traditional p2d simulations.
+
+%%Note: All crucial parameters were sourced by Krishna through a literature
+%%review. Especially, the vehicular parameters like classis mass, coefficient of
+%%drag, base speed. Krishna also had to educate Ian about base speed. If an on the
+%%spot quiz is conducted at a conceptual level, this truth can easily be deduced
+%%by the judging authority. Krishna claims the literature review of this topic and
+%%is happy to let Ian use this with proper attribution.
+
+%%\subsection{Preconditioning of Computer Code}
+
+%%Briefly allude to the stoichiometries that was introduced into the computer code
+%%through capacity characterisation simulation.Now possible to start at any SoC.
+%%The other salient amendments and enhancements to the software toolbox is shown
+%%below. Released as 2.0 and link to LIONSIMBA github repo (not BOLD toolbox repo)
+
+%%\subsubsection{Re-parameterisation}
+
+%%Discuss the extensive Reparameterisation undertaken by Krishna by studying
+%%relevant literature. Discuss the changed parameters with respect to Northrop
+%%cell and why. Maybe show a table. This is quite substantial.
+
+%%Conductivity/diffusivity changes. Show how the isothermal and thermal variants
+%%in existing Northrop cell were bogus with plots.
+
+%%Performed comprehensive literature review to replace the dubious/bogus
+%%parameters of the electrode and electrolyte specific heat capacities email proof
+%%PS: Every thermal/material property of the Al/Cu current collectors is very
+%%clear and have been traced out, hand-calculated and validated.
+
+%%\subsubsection{Deterministic initialisation of algebraic variables}
+
+%%Replaced silly fsolve. Numerical explanation here.
+
+%%\subsubsection{Linear interpolation for field variables}
+
+%%Explain how linear interpolation was performed for phis and phie at the edges
+%%of control volumes in electrode and separator. Draw a schematic for this
+%%explanation.
+
+%%\subsubsection*{Convergence Analysis of Computation Mesh}
+%%Report only if Krishna has sufficient time left. Explain simplifying
+%%assumptions. Refer to the table etc Show plot of how terminal voltage is
+%%converging for chosen mesh as a function of number of nodes. Another plot of how
+%%simulation end time converges as a function of number of nodes. Lots of analysis
+%%by changing the number of nodes within each mesh to justify the validity of the
+%%results. Prove that mesh independence is reached.
+
+%%\subsection{Hybrid fv--Spectral Scheme}
+
+%%Completely numerical section. Highly mathemetical. Explain how the rational to
+%%decimal truncation of the unbalanced twelfth order finite difference scheme
+%%messes up numerical conditioning. Show matrices and discuss the drawbacks.
+%%Fornberg matrix did not help. So, spectral scheme was needed.
+
+%%Background study, explanation, analysis, literature review and equation
+%%derivation of spectral scheme Complete contribution of solid-phase diffusion
+%%with spectral methods. Reading textbook, understanding concept, investigation of
+%%applicability, hunting relevant literature, text-writing, hand-derivation of
+%%equations. This complete section was done by Krishna.
+
+%%\subsection{Lumped Thermal Model}
+
+%%Basic discussion of lumped thermal model and justify through citations why here
+%%it might be sufficient for this application. Not originally present in
+%%LIONSIMBA. Present the thermal model here equations here. Discuss what cp avg
+%%means and how it is computed as a here function of number of layers. Explanation
+%%of how tab cooling helps here.
+
+%%Note: Cp avg was calculated and coded by Krishna, as a function of number of
+%%layers. I shall leave the detailed thermal model to Ian, especially since a biot
+%%analysis was performed by him. Anyway, suddenly discussing the thermal model at
+%%depth does not fit the story of my thesis. My hint to Ian would be to emphasise
+%%the thermal model at depth, since anyway he seems to be confident in the biot
+%%analysis. Specifically the value of heat transfer coefficient was empirically
+%%chosen by Ian through simulations. So, I will let him explain that stuff.
+%%However, tab area idea computation using twice the Bolt's tab area was proposed
+%%by Krishna, but overall this thermal stuff, Krishna is willing to bequeath to
+%%Ian since the whole thing doesn't fit the story of Krishna's work. The
+%%polarisation heat concept was initially described by Greg, but anyway let Ian
+%%explain it, no problem. Ian may wish to discuss entropic heat generation and a
+%%lot of other things I investigated together, but I am not going to dwell on
+%%them in the thesis.
+
+
+%%\subsection{Power Input Boundary Conditions}
+
+%%Discuss why power input is needed for layer optimisation. Explain how it is done
+%%currently in state of the art case.
+
+%%Krishna educated Ian about Pletts existing work. Accompanied Ian to the library
+%%and told him to check out that book which I had ordered.
+
+%%Krishna claims a very important thing here. A critical argument on how the
+%%present schemes do not fit into the layer opt methodology.
+
+%%Detailed mathematical derivation. Both Ian and Krishna acknowledge each other's
+%%help in shared derivation and also acknowledge Davide appropriately.
+
+%%Note: Ian might wish to report the two intermediate steps before this solution
+%%was obtained. The 2nd of the 3 approaches was matching current and voltage at
+%%discrete intervals through numerical integration. This was our third approach.
+%%The first approach was too simplistic. So, Ian might wish to skip it.
+
+
+%%\section{Layer Optimisation Results}
+
+%%Show the table only with the extra parameters not present in isothermal model.
+%%In particular, I can remember the thermal parameters of the two electrodes,
+%%separator, pouch, current collectors and electrolyte.
+
+%%Present the results in a horribly bland table format steering well clear of the
+%%heatmap. Krishna's view is that the results do not stand alone by themselves and
+%%if you plonk a layer choice from the heatmap/table into your cell, things are
+%%not expected to work as is. The numbers herein are the result of quite a few
+%%assumptions and hold validity only within the universe in which it was created.
+
+%%However, the framework itself is transferable and is the most valuable component
+%%of the work. A user reading this thesis can easily substitute their own cell
+%%parameters and system-level considerations into the code and obtain results from
+%%it accordingly. This was the working premise of the paper as well, until Ian
+%%decided to write up a bloated explanatory section.
+
+%%Plots of acceleration and fast charging for successful layer count.
+
+%%For PHEV, although common module design will be alluded to, it will not be dwelled on or explained or analysed in depth.
+
+
+%%Note: In Ian's thesis, Krishna seeks attribution for the idea to use a heatmap
+%%since it arose out of Krishna's heavy criticism, bordering on the offensive,
+%%about continuously complaining that our group's plots/charts/graphs do not
+%%exhibit any ``interesting'' twists and turns and fancy illustrations. Apologies
+%%for this. Anyway, the heatmap idea was my suggestion. However, I shall not take
+%%an inch of credit for the implementation as it was entirely Ian's work in coming
+%%up with fancy schemes.
+
+%%Note: Having obtained BEV results, Krishna also set up the full set of
+%%assumptions for the PHEV simulations too before leaving actual numerical
+%%simulations to Ian (and on vacation to India followed by Konstanz). So an
+%%acknowledgement is required if Ian choses to list these assumptions. Ian can
+%%discuss monotonicity issues in PHEV simulation that he found out about.
+
+%%\section{Appendix}
+
+%\section{Conclusion}
+
+%The outcome is that a ready to  use tool is made available to validate empirical
+%layer choices.  In the  absence of  access to  cell manufacturing  facilities to
+%confirm and test the  layer Immediate adoption in industry, this  is the best I
+%can do. Needs to be prototyped and tested.
+
+%\glsreset{xeV}
+
+%\section{To do}
+%\begin{enumerate}
+%    \item BOLD toolbox
+%    \item Call graph in appendix
+%\end{enumerate}
+
