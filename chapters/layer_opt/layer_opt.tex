@@ -35,15 +35,15 @@
         of the binary search while \mbox{Ian  Campbell} was the major contributor in the
         analysis of results. \mbox{Parvathy  Chittur Subramanianprasad} was instrumental
         in  developing the  analytical expression  for  the maximum  possible number  of
-layers~$n_\text{max}$.}}
+layers~$n_\text{max}$.}}\label{sec:layeroptintro}
 
-The issue of `range anxiety' is a pervasive mental blockade for potential buyers
-of electric  vehicles which  in-turn hampers their  widespread adoption.  From a
-consumer viewpoint, yet another practical issue is the fact that on encountering
-a  `low  battery' scenario  in  a  long  distance  journey, the  charging  times
-required for sufficiently  replenishing the battery to enable  completion of the
-journey are prohibitively  large, to the point of  being non-competitive against
-conventional fossil fuel powered vehicles.
+\capolettera{T}{he} issue of `range anxiety'  is a pervasive mental blockade for
+potential buyers  of electric  vehicles which  in-turn hampers  their widespread
+adoption. From  a consumer viewpoint,  yet another  practical issue is  the fact
+that on  encountering a `low battery'  scenario in a long  distance journey, the
+charging  times required  for sufficiently  replenishing the  battery to  enable
+completion  of the  journey  are  prohibitively large,  to  the  point of  being
+non-competitive against conventional fossil fuel powered vehicles.
 
 Unfortunately,  the  aforementioned  scenarios  are not  unimaginable  with  the
 present  state  of the  art  in  lithium  ion  batteries. Hence,  improving  the
@@ -272,13 +272,14 @@ but  instead  calculated  for  every  layer  choice  by  keeping  the  ratio  of
 their  relative  thicknesses  constant.  This   aspect  shall  be  explained  in
 \cref{sec:layeroptframework}.
 
-\Cref{fig:fig_CC_discharge_curves} illustrates  the influence  of the  number of
-layers  on the  energy and  power capability  of the  example cell.  Starting at
-\SI{100}{\percent} \gls{soc},  a constant current discharge  of \SI{60}{\ampere}
-is applied  to a \gls{dfn}  model of the cell  until reaching the  lower cut-off
-voltage. For  each discharge  run, the  model is  reconfigured with  a different
-layer choice. Five distinct layer choices  have been carefully conjured so as to
-provide a clear illustration of the energy/power trade-off phenomenon.
+\Cref{fig:fig_CC_discharge_curves}  illustrates  the  influence  of  the  number
+of  layers   on  the  energy   and  power   capability  of  the   example  cell.
+Starting  at  \SI{100}{\percent}  \gls{soc},  a constant  current  discharge  of
+\SI{60}{\ampere}\footnotemark{}  is applied  to a  \gls{dfn} model  of the  cell
+until reaching the  lower cut-off voltage. For each discharge  run, the model is
+reconfigured  with  a  different  layer  choice.  Five  distinct  layer  choices
+have  been carefully  conjured so  as  to provide  a clear  illustration of  the
+energy/power trade-off phenomenon.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -304,6 +305,10 @@ provide a clear illustration of the energy/power trade-off phenomenon.
         }%
         \label{fig:fig_CC_discharge_curves}
         \mpfootnotes[1]
+        \footnotetext{{The   rationale  behind  choosing   this  specific
+                magnitude  of  applied  current  is   explained  in  the  section  dealing  with
+        \hyperlink{refcellselection}{selection of a  suitable reference capacity cell} (also see \cref{sec:surfareaperlayer}).}}
+
         \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
             with intellectual contributions from and the right to use asserted by
         \mbox{Krishnakumar Gopalakrishnan}.}
@@ -472,7 +477,7 @@ wheels,  $P_\text{w}$  (the   details  of  this  calculation   is  presented  in
 the  charging power  is positive  (and  consequently, the  discharging power  is
 negative).
 
-\subsection{Pack-level --- strings, modules \& cells}
+\subsection{Pack-level --- strings, modules \& cells}\label{sec:packlevelhierarchy}
 
 Delving  into the  battery pack  under  consideration, this  thesis considers  a
 standard  modular  layout wherein  the  \gls{phev}  pack  has one  string  while
@@ -644,6 +649,185 @@ landscape of drivetrain  optimisation, it is now possible to  proceed to the set
 of  numerical  enhancements required  for  the  \gls{dfn}  model to  handle  the
 specific requirements of this layer optimisation task.
 
+\section{Enhancements/Modifications to Numerical Realisation}
+\subsection{Augmentation of parameters to standard \glsfmtshort{dfn} model}
+
+\subsubsection*{Cell capacity and electrochemically active surface area}
+
+The  \gls{p2d} implementation  of  the standard  \gls{dfn}  model lacks  certain
+parameters that are vital to the  layer optimisation process. The cell's nominal
+capacity is a fundamental quantity that gets  altered as the number of layers is
+varied. However, it may be surprising  to discover that this parameter is absent
+in present  research literature  discussing the  \gls{p2d} model.  The rationale
+behind this glaring omission becomes clear  upon closer examination of the model
+equations presented in  \cref{tbl:dfneqns}. These equations do not  operate on a
+cell level, but  instead operate on a  normalised basis \ie{} only  one layer is
+modelled on a  \emph{unit area} basis wherein the stimulus  driving the model is
+the applied current  \emph{density} rather than the total  external current. The
+layer  optimisation task  here faces  a unique  predicament of  adhering to  the
+present modelling paradigm  to retain compatibility with  standard models whilst
+still incorporating  the concept of cell's  capacity as a function  of number of
+layers.
+
+To  tackle the  aforementioned quandary,  it  is key  to realise  that the  core
+parameter  that  varies with  the  number  of layers  in  a  pouch cell  is  the
+\emph{electrochemically  active  cross-sectional surface  area}~$A_\text{cell}$.
+Curiously, published  literature on  physics-based cell  modelling do  not place
+rigorous emphasis on  this key parameter. Most often, to  this author's chagrin,
+this  parameter is  simply  listed in  a  standard table  of  parameters and  is
+typically  sourced from  a historic  parameter-set with  no further  explanation
+provided.
+
+For  a pouch  cell, the  overall electrochemically  active surface  area can  be
+defined as
+\begin{equation}\label{eq:overallarea}
+    A_\text{cell} = n \times A_\text{elec}
+\end{equation}
+where $n$ is  the number of layers and $A_\text{elec}$  is the electrochemically
+active surface area per layer.
+
+\subsubsection*{Surface area per layer}\label{sec:surfareaperlayer}
+
+A literature search reveals that akin  to cell capacity, there is no information
+of  cross-sectional geometry  provided in  articles dealing  with the  \gls{p2d}
+implementation of  the \gls{dfn} model. To  determine the surface area  per face
+(per layer), the author proposes  a new methodology/process involving a sequence
+of  steps, based  on  certain  assumptions and  literature  search. The  process
+involves  selection of  a  real-world cell,  and ultimately  mapping  it to  the
+surface area per  unit face. To the  best knowledge of the  author, this reverse
+parametrisation process,  mapping from  a real-world cell  to a  \gls{p2d} model
+parameter  is unique  and is  claimed  as a  contribution  to the  art which  is
+explained next.
+
+\begin{enumerate}[
+    leftmargin=0pt, itemindent=20pt,
+    labelwidth=15pt, labelsep=5pt, listparindent=0.7cm,
+    align=left]
+\item \hypertarget{refcellselection}{\textbf{Selection of a suitable reference capacity cell}}
+
+    Although  this value  shall not  be used  in the  actual layer  optimisation
+    procedure itself, this is a  crucial first-step towards obtaining a complete
+    parameter set, in particular, to obtain the surface area per layer.
+
+    The focus  of this chapter is  to provide ready-to-use solution  to industry
+    extend  with the  aim of  improving  the current  state of  the art  through
+    optimal layer configuration  of pouch cells. There is a  clear motivation to
+    further increase  cell capacities so as  to maximize driving range,  as laid
+    out in the beginning of this chapter (see \cref{sec:layeroptintro}).
+
+    With  this  guiding  principle,  as  a starting  point  towards  choosing  a
+    reference capacity cell,  a survey was performed to  identify the production
+    \gls{bev}  with  the  highest  driving  range.  As  of  2018,~the  Chevrolet
+    Bolt~\gls{bev} bears this distinction  with a range of \SI{383}{\kilo\meter}
+    as rated  by the  United States Environmental  Protection Agency  (EPA). The
+    specifications of  its battery pack is  listed in Liu~\etal~\cite{Liu2016a}.
+    The  battery pack  of  this  vehicle consists  of  288~cells  arranged in  a
+    96S-3P configuration, in  agreement with the configuration  discussed in the
+    drivetrain  hierarchy  of  \cref{sec:packlevelhierarchy}.
+
+    The    Chevrolet   Bolt    \gls{bev}   pack    has   an    energy   capacity
+    of   \SI{60.0}{\kilo\watthour}    with   a    nominal   pack    voltage   of
+    \SI{350}{\volt}~\cite{Liu2016a}.  However,  for   this  specific  task,  the
+    \si{\amphour} capacity is required. This can be obtained
+    \begin{align}
+        \text{\si{\amphour} capacity of Bolt cell} & = \frac{\text{Pack Energy } (\si{\watthour})}{\text{Nominal pack voltage (V)} \times {\text{Number of cells in parallel}}} \\
+        {}                                         & = \frac{60000}{350 \times 3} \\
+        {}                                         & = \SI{57.14}{\amphour}
+    \end{align}
+
+    \begin{itemize}[ leftmargin=10pt, itemindent=15pt, labelwidth=5pt, labelsep=5pt, listparindent=0.7cm, align=left]
+        \item \textbf{DC bus voltage and revised cell capacity}
+
+            Even  without  a  dc/dc  boost   converter,  robust  design  of  the
+            powertrain during  brown-outs should  allow for  continued operation
+            even   with   a  slightly   diminished   DC   bus  voltage   \approx
+            \SIrange{4}{5}{\percent} lower than nominal~\cite{Maksimovic2012}.
+            Considering a maximum permissible dip of \SI{4}{\percent} in the bus
+            voltage \ie{} \SI{336}{\volt}, the cell's capacity may be refined as
+            \begin{align}
+                \text{\si{\amphour} capacity of Bolt cell} & = \frac{\text{Pack Energy } (\si{\watthour})}{\text{Lowest pack voltage (V)} \times {\text{Number of cells in parallel}}} \\
+                {}                                         & = \frac{60000}{336 \times 3} \\
+                {}                                         & = \SI{59.52}{\amphour}
+            \end{align}
+
+            The reference cell's \si{\amphour} capacity is therefore rounded to
+            \textbf{\SI{60}{\amphour}}\footnote{In the interest of maintaining consistency, this computed capacity is
+                retained for the cell's used in
+                \crefrange{ch:spmanalysis}{ch:newelectrolytemodel} of this thesis. This also explains the use of \SI{60}{\ampere} for
+        the simulations demonstrating energy/power trade-off of
+    \cref{sec:energypowertradeoffdemo} since this current level corresponds to
+the 1C-rate of the cell.}.
+
+        \item \hypertarget{celllowercutoff}{\textbf{Lower cutoff voltage for cells}}
+
+            In  this  layer  optimisation  work, following  the  assumptions  of
+            \cref{subsec:layeroptassumptions},  the  overall pack  configuration
+            remains  unchanged  and  independent   of  layers  within  a  pouch.
+            This  implies that  the undervoltage  threshold for  DC bus  voltage
+            throughout  this   work  shall  remain  fixed   at  \SI{336}{\volt}.
+            Therefore, with  96~series connected  cells in  a string,  the lower
+            cut-off voltage for an  individual cell is \textbf{\SI{3.5}{\volt}}.
+            This  value is  reported in  \cref{tbl:lcoSimParamslayeropt} and  is
+            used as a termination condition  for all simulations as explained in
+            \cref{sec:layeroptframework}.
+
+    \end{itemize}
+
+
+    \end{enumerate}
+
+% \subsection{}
+
+ Furthermore, convincingly explain how a pouch cell thickness of 10 mm
+was used with all the background references.
+
+
+
+%Describe briefly  the process of  mapping a  real-world cell onto  the standard
+\gls{p2d} model. %Note: Northrop to EV mapping code
+
+%\subsection{Modelling Platform and Preconditioning}
+
+%Couple of statements  about why LIONSIMBA was chosen as  the modelling platform
+%for implementing the p2d dynamics. The  cell parameters used are shown in table
+%xx. This cell is henceforth known as the LIONSIMBA cell or Northrop cell.
+
+%Discuss the  missing elements  in LIONSIMBA  only with  respect to  the present
+%problem at hand, \viz{the stoichiometries}.
+
+%\subsubsection*{Stoichiometry Augmentation}
+
+%Discuss the problem first. How LIONSIMBA started always at 85.51 percentage and
+%needed to  do a  discharge down to  zero percent before  having the  ability to
+%charge. For this project, stoichiometries  are vital for capacity determination
+%and  the 1C  current density.  Explain how  stoichiometries were  refined until
+%cut-off for  infinitesimal bleeding discharge current  achieved. Noted relevant
+%values. Explain refinement  of how approximate capacities  reported by Northrop
+%and Subramanian were  refined precisely. Explanation of  remnant capacities and
+%stoichiometries computation. Explanation of  1C current density.parameters init
+%capacity computation code.
+
+%\subsection{Layer Assembly within Pouch Cells}
+%With  the  help  of  Northrop's   layer  assembly  figure,  explain  the  layer
+%configuration/arrangement within a pouch cell. The next task is then identified
+%as computing the number of layers within the reference pouch cell.
+
+%\subsubsection*{Number of Layers of LIONSIMBA aka Northrop cell}
+%Krishna came up with the idea of using integer optimisation for this task. The
+%software MIDACO was also selected by Krishna and explained to Ian. The MIDACO
+%result of the number of layers within the standard cell was now available.
+
+%\subsubsection*{Computation of Surface Area per face, \protect{$A_\text{cell}$}}
+%Show the simple algebraic computation of overall surface area $A$ and the
+%per-face area $A_\text{cell}$. Explain how the area per face shall be a key
+%quantity in the layer optimisation framework discussed later on.
+
+%Layerphoto showing face areas and anode/cathode verhand etc will be shown here
+
+%This concludes the augmented set of parameters added by the author to the basic
+%parameter set  of the DFN  model. The added  numerical value of  parameters are
+%summaried in table xx. Lots The layer optimisation framework and assumptions is
+%described next.
 \section{Modification of Standard \glsfmtshort{dfn} Model to Handle Power Inputs}\label{sec:innatepowerinput}
 
 Figure showing power input
@@ -845,74 +1029,6 @@ empirical layer designs.
 
 \section{Chapter Plan stuff}
 
-%\section{Augmentation of p2d parameters}
-
-%Shed more light on the p2d model. Explain how they do not model a cell of given
-%capacity, but instead work on a  normalised basis driven by the applied current
-%densities rather than the external current.  The parameter that layers within a
-%cell  change  is the  overall  electrochemically  active cross-sectional  area.
-%Criticise  how published  literature  curiously omit  this important  geometric
-%parameter, however  they may be  forgiven in the scope  of their work  since it
-%needs only normalised dynamics. This  parameter comes into light when modelling
-%anything  involving geometries  as  in this  project. This  is  the product  of
-%surface area per face  and the number of layers. To  determine the surface area
-%per face, the author has derived a new methodology/process involving a sequence
-%of  steps, based  on assumptions  and literature  search. The  process involves
-%selection of a  real-world cell, and ultimately mapping it  to the surface area
-%per  unit face.  To the  best  knowledge of  the  author, this  mapping from  a
-%physical cell to the Newman model is  unique and is claimed as the author's own
-%contribution to the art. %Describe briefly  the process of mapping a real-world
-%cell onto the standard \gls{p2d} model. %Note: Northrop to EV mapping code
-
-%\subsection{Modelling Platform and Preconditioning}
-
-%Couple of statements  about why LIONSIMBA was chosen as  the modelling platform
-%for implementing the p2d dynamics. The  cell parameters used are shown in table
-%xx. This cell is henceforth known as the LIONSIMBA cell or Northrop cell.
-
-%Discuss the  missing elements  in LIONSIMBA  only with  respect to  the present
-%problem at hand, \viz{the stoichiometries}.
-
-%\subsubsection*{Stoichiometry Augmentation}
-
-%Discuss the problem first. How LIONSIMBA started always at 85.51 percentage and
-%needed to  do a  discharge down to  zero percent before  having the  ability to
-%charge. For this project, stoichiometries  are vital for capacity determination
-%and  the 1C  current density.  Explain how  stoichiometries were  refined until
-%cut-off for  infinitesimal bleeding discharge current  achieved. Noted relevant
-%values. Explain refinement  of how approximate capacities  reported by Northrop
-%and Subramanian were  refined precisely. Explanation of  remnant capacities and
-%stoichiometries computation. Explanation of  1C current density.parameters init
-%capacity computation code.
-
-%\subsection{Selection of a Suitable Reference Capacity Cell}
-
-%Explanation of how the  Bolt EV cell was selected (state of  the art in driving
-%range) In  particular, explain how the  critical computation of 60  Ah capacity
-%was done. Furthermore, convincingly explain how a pouch cell thickness of 10 mm
-%was used with all the background references.
-
-%\subsection{Layer Assembly within Pouch Cells}
-%With  the  help  of  Northrop's   layer  assembly  figure,  explain  the  layer
-%configuration/arrangement within a pouch cell. The next task is then identified
-%as computing the number of layers within the reference pouch cell.
-
-%\subsubsection*{Number of Layers of LIONSIMBA aka Northrop cell}
-%Krishna came up with the idea of using integer optimisation for this task. The
-%software MIDACO was also selected by Krishna and explained to Ian. The MIDACO
-%result of the number of layers within the standard cell was now available.
-
-%\subsubsection*{Computation of Surface Area per face, \protect{$A_\text{cell}$}}
-%Show the simple algebraic computation of overall surface area $A$ and the
-%per-face area $A_\text{cell}$. Explain how the area per face shall be a key
-%quantity in the layer optimisation framework discussed later on.
-
-%Layerphoto showing face areas and anode/cathode verhand etc will be shown here
-
-%This concludes the augmented set of parameters added by the author to the basic
-%parameter set  of the DFN  model. The added  numerical value of  parameters are
-%summaried in table xx. Lots The layer optimisation framework and assumptions is
-%described next.
 
 %\section{Layer Optimisation Framework}
 

@@ -261,6 +261,7 @@ optional
 overpic
 pagecont
 papermas
+parskip
 passivetex
 pax
 pbox
@@ -379,6 +380,7 @@ verbatim
 versions
 vwcol
 wallpaper
+windows-and-orphans
 witharrows
 wrapfig
 xcolor
