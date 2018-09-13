@@ -51,90 +51,167 @@ parametrisation process,  mapping from  a real-world cell  to a  \gls{p2d} model
 parameter  is unique  and is  claimed  as a  contribution  to the  art which  is
 explained next.
 
-\begin{enumerate}[
-    leftmargin=0pt, itemindent=20pt,
-    labelwidth=15pt, labelsep=5pt, listparindent=0.7cm,
-    align=left]
-\item \hypertarget{refcellselection}{\textbf{Selection of a suitable reference capacity cell}}
+\begin{enumerate}[ label=\textbf{\arabic*}), leftmargin=0pt, itemindent=20pt, labelwidth=15pt, labelsep=5pt, listparindent=0.7cm, align=left]
+    \item \hypertarget{refcellselection}{\textbf{Selection of a suitable reference capacity cell}}
 
-    Although  this value  shall not  be used  in the  actual layer  optimisation
-    procedure itself, this is a  crucial first-step towards obtaining a complete
-    parameter set, in particular, to obtain the surface area per layer.
+        Although  this value  shall not  be used  in the  actual layer  optimisation
+        procedure itself, this is a  crucial first-step towards obtaining a complete
+        parameter set, in particular, to obtain the surface area per layer.
 
-    The focus  of this chapter is  to provide ready-to-use solution  to industry
-    extend  with the  aim of  improving  the current  state of  the art  through
-    optimal layer configuration  of pouch cells. There is a  clear motivation to
-    further increase  cell capacities so as  to maximize driving range,  as laid
-    out in the beginning of this chapter (see \cref{sec:layeroptintro}).
+        The focus  of this chapter is  to provide ready-to-use solution  to industry
+        extend  with the  aim of  improving  the current  state of  the art  through
+        optimal layer configuration  of pouch cells. There is a  clear motivation to
+        further increase  cell capacities so as  to maximize driving range,  as laid
+        out in the beginning of this chapter (see \cref{sec:layeroptintro}).
 
-    With  this  guiding  principle,  as  a starting  point  towards  choosing  a
-    reference capacity cell,  a survey was performed to  identify the production
-    \gls{bev}  with  the  highest  driving  range.  As  of  2018,~the  Chevrolet
-    Bolt~\gls{bev} bears this distinction  with a range of \SI{383}{\kilo\meter}
-    as rated  by the  United States Environmental  Protection Agency  (EPA). The
-    specifications of  its battery pack is  listed in Liu~\etal~\cite{Liu2016a}.
-    The  battery pack  of  this  vehicle consists  of  288~cells  arranged in  a
-    96S-3P configuration, in  agreement with the configuration  discussed in the
-    drivetrain  hierarchy  of  \cref{sec:packlevelhierarchy}.
+        With  this  guiding  principle,  as  a starting  point  towards  choosing  a
+        reference capacity cell,  a survey was performed to  identify the production
+        \gls{bev}  with  the  highest  driving  range.  As  of  2018,~the  Chevrolet
+        Bolt~\gls{bev} bears this distinction  with a range of \SI{383}{\kilo\meter}
+        as rated  by the  United States Environmental  Protection Agency  (EPA). The
+        specifications of  its battery pack is  listed in Liu~\etal~\cite{Liu2016a}.
+        The  battery pack  of  this  vehicle consists  of  288~cells  arranged in  a
+        96S-3P configuration, in  agreement with the configuration  discussed in the
+        drivetrain  hierarchy  of  \cref{sec:packlevelhierarchy}.
 
-    The    Chevrolet   Bolt    \gls{bev}   pack    has   an    energy   capacity
-    of   \SI{60.0}{\kilo\watthour}    with   a    nominal   pack    voltage   of
-    \SI{350}{\volt}~\cite{Liu2016a}.  However,  for   this  specific  task,  the
-    \si{\amphour} capacity is required. This can be obtained
-    \begin{align}
-        \text{\si{\amphour} capacity of Bolt cell} & = \frac{\text{Pack Energy } (\si{\watthour})}{\text{Nominal pack voltage (V)} \times {\text{Number of cells in parallel}}} \\
-        {}                                         & = \frac{60000}{350 \times 3} \\
-        {}                                         & = \SI{57.14}{\amphour}
-    \end{align}
+        The    Chevrolet   Bolt    \gls{bev}   pack    has   an    energy   capacity
+        of   \SI{60.0}{\kilo\watthour}    with   a    nominal   pack    voltage   of
+        \SI{350}{\volt}~\cite{Liu2016a}.  However,  for   this  specific  task,  the
+        \si{\amphour} capacity is required. This can be obtained
+        \begin{align}
+            \text{\si{\amphour} capacity of Bolt cell} & = \frac{\text{Pack Energy } (\si{\watthour})}{\text{Nominal pack voltage (V)} \times {\text{Number of cells in parallel}}} \\
+            {}                                         & = \frac{60000}{350 \times 3} \\
+            {}                                         & = \SI{57.14}{\amphour}
+        \end{align}
 
-    \begin{itemize}[ leftmargin=10pt, itemindent=15pt, labelwidth=5pt, labelsep=5pt, listparindent=0.7cm, align=left]
-        \item \textbf{DC bus voltage and revised cell capacity}
+        \begin{itemize}[ leftmargin=10pt, itemindent=15pt, labelwidth=5pt, labelsep=5pt, listparindent=0.7cm, align=left]
+            \item \textbf{DC bus voltage and revised cell capacity}
 
-            Even  without  a  dc/dc  boost   converter,  robust  design  of  the
-            powertrain during  brown-outs should  allow for  continued operation
-            even   with   a  slightly   diminished   DC   bus  voltage   \approx
-            \SIrange{4}{5}{\percent} lower than nominal~\cite{Maksimovic2012}.
-            Considering a maximum permissible dip of \SI{4}{\percent} in the bus
-            voltage \ie{} \SI{336}{\volt}, the cell's capacity may be refined as
-            \begin{align}
-                \text{\si{\amphour} capacity of Bolt cell} & = \frac{\text{Pack Energy } (\si{\watthour})}{\text{Lowest pack voltage (V)} \times {\text{Number of cells in parallel}}} \\
-                {}                                         & = \frac{60000}{336 \times 3} \\
-                {}                                         & = \SI{59.52}{\amphour}
-            \end{align}
+                Even  without  a  dc/dc  boost   converter,  robust  design  of  the
+                powertrain during  brown-outs should  allow for  continued operation
+                even   with   a  slightly   diminished   DC   bus  voltage   \approx
+                \SIrange{4}{5}{\percent} lower than nominal~\cite{Maksimovic2012}.
+                Considering a maximum permissible dip of \SI{4}{\percent} in the bus
+                voltage \ie{} \SI{336}{\volt}, the cell's capacity may be refined as
+                \begin{align}
+                    \text{\si{\amphour} capacity of Bolt cell} & = \frac{\text{Pack Energy } (\si{\watthour})}{\text{Lowest pack voltage (V)} \times {\text{Number of cells in parallel}}} \\
+                    {}                                         & = \frac{60000}{336 \times 3} \\
+                    {}                                         & = \SI{59.52}{\amphour}
+                \end{align}
 
-            The reference cell's \si{\amphour} capacity is therefore rounded to
-            \textbf{\SI{60}{\amphour}}\footnote{In the interest of maintaining consistency, this computed capacity is
-                retained for the cell's used in
-                \crefrange{ch:spmanalysis}{ch:newelectrolytemodel} of this thesis. This also explains the use of \SI{60}{\ampere} for
-        the simulations demonstrating energy/power trade-off of
-    \cref{sec:energypowertradeoffdemo} since this current level corresponds to
-the 1C-rate of the cell.}.
+                The reference cell's \si{\amphour} capacity is therefore rounded to
+                \textbf{\SI{60}{\amphour}}\footnote{In the interest of maintaining consistency, this computed capacity is
+                    retained for the cell used in
+                    \crefrange{ch:spmanalysis}{ch:newelectrolytemodel} of this thesis. This also explains the use of \SI{60}{\ampere} for
+                    the simulations demonstrating energy/power trade-off of
+                    \cref{sec:energypowertradeoffdemo} since this current level corresponds to
+                the 1C-rate of the cell.}.
 
-        \item \hypertarget{celllowercutoff}{\textbf{Lower cutoff voltage for cells}}
+            \item \hypertarget{celllowercutoff}{\textbf{Lower cutoff voltage for cells}}
 
-            In  this  layer  optimisation  work, following  the  assumptions  of
-            \cref{subsec:layeroptassumptions},  the  overall pack  configuration
-            remains  unchanged  and  independent   of  layers  within  a  pouch.
-            This  implies that  the undervoltage  threshold for  DC bus  voltage
-            throughout  this   work  shall  remain  fixed   at  \SI{336}{\volt}.
-            Therefore, with  96~series connected  cells in  a string,  the lower
-            cut-off voltage for an  individual cell is \textbf{\SI{3.5}{\volt}}.
-            This  value is  reported in  \cref{tbl:lcoSimParamslayeropt} and  is
-            used as a termination condition  for all simulations as explained in
-            \cref{sec:layeroptframework}.
+                In  this  layer  optimisation  work, following  the  assumptions  of
+                \cref{subsec:layeroptassumptions},  the  overall pack  configuration
+                remains  unchanged  and  independent   of  layers  within  a  pouch.
+                This  implies that  the undervoltage  threshold for  DC bus  voltage
+                throughout  this   work  shall  remain  fixed   at  \SI{336}{\volt}.
+                Therefore, with  96~series connected  cells in  a string,  the lower
+                cut-off voltage for an  individual cell is \textbf{\SI{3.5}{\volt}}.
+                This  value is  reported in  \cref{tbl:lcoSimParamslayeropt} and  is
+                used as a termination condition  for all simulations as explained in
+                \cref{sec:layeroptframework}.
 
-    \end{itemize}
+        \end{itemize}
+
+    \item \textbf{Computing electrochemically active surface area for reference cell}
+
+        For             the            cell             properties            in
+        \crefrange{tbl:lcoSimParamsSPMp2d}{tbl:lcoSimParamslayeropt},        the
+        majority                of                 parameters                are
+        sourced           from          Subramanian~\etal~\cite{Subramanian2009}
+        and                Northrop~\etal~\cite{Northrop2011}.                In
+        Northrop~\etal~\cite{Northrop2011},  the   \emph{current  density}  that
+        corresponds to  a 1C-rate discharge  of a  cell with this  parameter set
+        is  reported to  be \approx  \SI{30}{\ampere\per\meter\squared}. In  the
+        author's carefully  designed numerical simulations (very  slow discharge
+        at C/500 from fully charged state until charge depletion), this value is
+        refined to \SI{29.23}{\ampere\per\meter\squared}.
+
+        The task of determining the electrochemically active overall surface
+        area of the reference cell is now straightforward
+        \begin{align}
+            \text{Overall surface area of reference cell}, A_\text{refcell} &= \frac{\text{Cell capacity (\si{\amphour})}}{\text{1C-rate density (\si{\ampere\per\meter\squared})}} \\
+                                                                            &= \frac{60}{29.23} \\
+                                                                            &= \SI{2.053}{\meter\squared}
+        \end{align}
+
+        This  value  is  listed  in  \cref{tbl:lcoSimParamsSPMp2d}  for  use  in
+        \crefrange{ch:spmanalysis}{ch:newelectrolytemodel},  but  is  \emph{not}
+        used  in  this  layer  optimisation   work.  This  is  because,  as  the
+        number  of  layers change,  the  overall  surface  area changes  as  per
+        \cref{eq:overallarea}.
+
+    \item \textbf{Pouch height of reference cell}
+
+        Although the  official press release~\cite{GMBoltBatteryDims}  from the
+        manufacturer  of this  \gls{bev} contains  data on  the cross-sectional
+        geometry  of the  cell,  it does  not report  its  height. Hence,  this
+        information  needs to  be assumed  by extrapolation  from an  alternate
+        source wherein the conditions are similar and therefore, can be applied
+        for this reference cell.
+
+        The  review   article  by   Gr\"oger~\etal~\cite{Groger2015}  discusses
+        various    states    of    the    art   in    energy    densities    of
+        electrode   materials  used   in  various   lithium  ion   chemistries.
+        At   the   time   of   its   publication,   the   areal   capacity   of
+        cells  were  \approx  \SI{2.0}{\milli\amphour\per\centi\meter\squared}.
+        These    authors   recommended    an   areal    capacity   target    of
+        \SI{4.0}{\milli\amphour\per\centi\meter\squared} for  future automotive
+        applications. This  publication also  considers the aspect  of stacking
+        layers  into  pouches  of  certain  geometries.  In  particular,  table
+        \romanletter{4}  of Gr\"oger~\etal~\cite{Groger2015}  considers a  pouch
+        of  \SI{10}{\milli\meter} height,  for which  the aforementioned  areal
+        capacities were calculated.
+
+        In       the        case       of       the        reference       cell
+        under       consideration,       the      areal       capacity       is
+        \begin{equation}
+            \text{Areal capacity of reference cell } = \frac{\SI{60000}{\milli\amphour}}{\SI{20527}{\centi\meter\squared}}  = \SI{2.92}{\milli\amphour\per\centi\meter\squared}
+        \end{equation}
+        which is close  to the desired value in automotive  applications as per
+        the recommendations  in Gr\"oger~\etal. Considering that  the reference
+        cell is  drawn from  the high energy  density Chevrolet  Bolt \gls{bev}
+        cell,  a pouch  height of  \SI{10}{\milli\meter} is  justifiable for
+        this task  and is  reported in \cref{tbl:lcoSimParamslayeropt}.  As per
+        the assumptions discussed in \cref{subsec:layeroptassumptions}, this is
+        held constant throughout the layer optimisation process.
+
+    \item \hypertarget{stackthickness}{\textbf{Compute stack thickness of reference cell}}
+
+        In a  pouch of given height,  the available space to  accommodate layers
+        therein is restricted  by a number of factors. For  instance, the wiring
+        from the  current collectors  to the tabs,  protective elements  such as
+        fuses etc.\ consume space. For instance, the pouch material itself has a
+        finite  thickness  and  hence  after  accounting  for  this,  the  stack
+        thickness  available  for  layer  placement  is  lower  than  the  pouch
+        thickness.
+        \begin{align}
+            \text{Stack thickness}, L_\text{stack} & = \text{Pouch height} - 2\times \text{pouch thickness} \\
+            \text{Stack thickness}, L_\text{stack} & = H_\text{pouch} - 2 T_\text{pouch} \\
+            L_\text{stack}(\si{\milli\meter})      & = 10.0 - 2\times(\num{160e-3}) \\
+            L_\text{stack}                         & = \SI{9.68}{\milli\meter}
+        \end{align}
+
+        The value of stack thickness of  the reference cell is held constant for
+        all layer choices used throughout the entire layer optimisation process.
+
+    \item \textbf{Integer  optimisation to  determine number  of layers within  reference cell}
+
+        The  number of  layers that  can be  accommodated within  any pouch  must be  an
+        integer quantity, since fractional layers do not have a physical meaning.
+
+\end{enumerate}
 
 
-    \end{enumerate}
-
- Furthermore, convincingly explain how a pouch cell thickness of 10 mm
-was used with all the background references.
-
-
-
-%Describe briefly  the process of  mapping a  real-world cell onto  the standard
-\gls{p2d} model. %Note: Northrop to EV mapping code
 
 %\subsection{Modelling Platform and Preconditioning}
 
