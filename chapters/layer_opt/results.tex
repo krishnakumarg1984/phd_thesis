@@ -1,0 +1,74 @@
+% -*- root: ../../main.tex -*
+%!TEX root = ../../main.tex
+% vim:textwidth=80 fo=cqt conceallevel=0
+
+
+%Special emphasis is placed on the \emph{methodology} since the results per se do
+%not stand alone outside of the modelling regimen (universe I created).
+%However, the  value is on  the methodology and  its implementation in  a toolbox
+%which is immediately available for download and use by industry to confirm their
+%empirical layer designs.
+
+\input{chapters/layer_opt/cell_params_full_table}
+%\input{chapters/layer_opt/common_bev_phev_params_table_new}
+%\input{chapters/layer_opt/separate_bev_phev_params_table}
+%\input{chapters/layer_opt/acc_results_table}
+
+\begin{figure}[!bp]
+    \begin{minipage}[t]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig_generate_heatmap_BEV}
+        \captionsetup{labelsep=note}
+        \caption[Optimal cell layer configurations for the \gls{bev}, presented for a range of fast charging powers and thermal conditions]{Optimal cell layer configurations for the \gls{bev}, presented for a range of fast charging powers and thermal conditions.}
+        \label{fig:fig_generate_heatmap_BEV}
+        \mpfootnotes[1]
+        \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
+            with intellectual contributions from and the right to use asserted by
+        \mbox{Krishnakumar Gopalakrishnan}.}
+    \end{minipage}
+\end{figure}
+
+\begin{figure*}[!bp]
+    \begin{minipage}[t]{\textwidth}
+        \centering \includegraphics[width=\textwidth,trim=4 2 3 4,clip]{fig_capacity_quadrants.pdf}
+        \captionsetup{labelsep=note}
+        \caption[The plots in the right column show the nominal cell capacity and charge passed
+        during \gls{xeV} \gls{cp} charging. Increased rate capability and cell utilisation are positively
+        correlated with $n$, while the maximum-$q$ layer configuration clearly shifts to higher
+        values of $n$ with increasing charging powers. The plots in the left column depict
+        galvanostatic charging scenarios at various currents to highlight the similarity with the
+        \gls{cp} process. All data obtained at $T_\text{init} =$ \SI{25}{\degreeCelsius},
+        $T_\text{sink} =$ \SI{25}{\degreeCelsius}.]{The plots in the right column show the nominal cell capacity and charge passed
+            during \gls{xeV} \gls{cp} charging. Increased rate capability and cell utilisation are positively
+            correlated with $n$, while the maximum-$q$ layer configuration clearly shifts to higher
+            values of $n$ with increasing charging powers. The plots in the left column depict
+            galvanostatic charging scenarios at various currents to highlight the similarity with the
+            \gls{cp} process. All data obtained at $T_\text{init} =$ \SI{25}{\degreeCelsius},
+        $T_\text{sink} =$ \SI{25}{\degreeCelsius}.}
+        \label{fig:fig_CapacityQuadrants}
+        \mpfootnotes[1]
+        \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
+            with intellectual contributions from and the right to use asserted by
+        \mbox{Krishnakumar Gopalakrishnan}.}
+    \end{minipage}
+\end{figure*}
+
+
+\begin{figure}[!bp]
+    \begin{minipage}[t]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig_generate_heatmap_PHEV}
+        \captionsetup{labelsep=note}
+        \caption[Optimal cell layer configurations for the \gls{phev}, presented for a range of
+        fast charging powers and thermal conditions]{Optimal cell layer configurations for the \gls{phev}, presented for a range of
+        fast charging powers and thermal conditions.}
+        \label{fig:fig_generate_heatmap_PHEV}
+        \mpfootnotes[1]
+        \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
+            with intellectual contributions from and the right to use asserted by
+        \mbox{Krishnakumar Gopalakrishnan}.}
+    \end{minipage}
+\end{figure}
+
+\subsection{Common Module Design}\label{sec:commonmodulelayeropt}
+

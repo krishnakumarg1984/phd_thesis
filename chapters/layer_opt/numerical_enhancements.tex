@@ -292,3 +292,107 @@ explained next.
 %parameter set  of the DFN  model. The added  numerical value of  parameters are
 %summaried in table xx. Lots The layer optimisation framework and assumptions is
 %described next.
+
+\subsection{Modification of Standard \glsfmtshort{dfn} Model to Handle Power Inputs}\label{sec:innatepowerinput}
+
+%%Figure showing power input
+
+\subsection{Hybrid Spectral-\glsfmtshort{fv} Scheme}\label{sec:hybridfv-spectral}
+
+Fast  and  accurate  estimation  of   the  solid  phase  lithium  concentration,
+particularly  its   value  at   the  surface  of   electrode  particles   is  an
+inherent  requirement   of  the   layer  optimisation  procedure   presented  in
+\cref{sec:layeroptframework}.   The  high   power  densities   to  be   handled,
+particularly  at  low   layer  counts  necessitate  this   requirement.  It  has
+been   acknowledged  that   solid-phase  concentration   calculations  employing
+polynomial    approximations   lack    fidelity    at   high    charge/discharge
+rates~\cite{Santhanagopalan2006}.  Hence,  a  conventional  full-order  solution
+based on Fick's law of diffusion is required for this layer optimisation task.
+
+With full-order  solid phase  diffusion dynamics,  applying the  \gls{fv} scheme
+(that has been  employed in LIONSIMBA~v1.0x to  discretise all through-thickness
+\gls{pde}s of the \gls{p2d} model) results  in a very large system of equations.
+This is due to the requirement of using a high radial node density per spherical
+particle for improved accuracy. Consequently, the computational cost is high and
+simulation  runtime  becomes prohibitive  when  exploring  the search  space  of
+all  possible  layer configurations.  Moreover,  with  a cell-centered  \gls{fv}
+discretisation,  it is  non-trivial to  directly apply  the ionic  flux boundary
+condition at the particle surface, since it involves extrapolation from at least
+two other nodes within the particle. While such extrapolations are acceptable in
+the axial  dimension --- particularly  with high node densities  providing small
+values of $\frac{\Delta x}{2}$ --- they are undesirable in the radial dimension.
+This  is because  cell's  open  circuit and  terminal  voltages strongly  depend
+on  the  concentration  at  the  particle  surface.  Spectral  methods  offer  a
+combination  of high  accuracy and  speed while  permitting the  use of  a lower
+number  of radial  discretisation nodes.  To implement  a spectral  scheme on  a
+non-periodic  domain,  a  Chebyshev discretisation~\cite{Trefethen2000}  may  be
+applied.  Bizeray~\etal{}~\cite{Bizeray2015} discretised  all  of the  \gls{p2d}
+model  equations using  this approach.  However, this  entails a  bi-directional
+mapping of all  variables between the physical and  Chebyshev domains, incurring
+computational overhead.
+
+In this chapter, a hybrid formulation of the \gls{p2d} model is proposed wherein
+a standard \gls{fv} scheme  in the axial dimension and a  spectral scheme in the
+radial domain  are used.  Exploiting this  natural separation  of the  axial and
+radial domains enables to ---
+\begin{enumerate*}[label=\roman*)]
+    \item retain  the   ability  to  easily   couple  the   molar  flux  density   at  the particle  surface  through  reformulation  of the  boundary  conditions  of  the solid  diffusion \gls{pde},  and
+    \item solve  for  solid-phase  lithium  concentration  in  the  Chebyshev  domain  and locally transform  to physical  domain, without requiring  system-wide Chebyshev reformulations.
+\end{enumerate*}
+Although the proposed implementation does  not \emph{globally} employ a spectral
+scheme, the  combined beneficial  effects of  radial-domain spectral  scheme and
+automatic differentiation of system equations using CasADi~\cite{Andersson2013b}
+facilitates rapid simulation, enabling  layer optimisation on short time-scales.
+\Crefrange{eq:defineChebNodes}{eq:solidDiffEqChebDomain}   detail  the   steps
+leading to  the reformulated solid  phase diffusion and its  associated boundary
+condition in the Chebyshev domain.
+
+The $N_\text{r}$~Chebyshev collocation nodes, defined on a 1D mesh in the radial
+direction, are given by \cref{eq:defineChebNodes}~\cite{Trefethen2000}.
+\begin{equation}\label{eq:defineChebNodes}
+    \widetilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \widetilde{r} \in [-1, 1]
+\end{equation}
+
+Assuming  constant diffusivity,  and expanding  the derivative  in the  standard
+form of  the Fickian  spherical diffusion equation  (see \cref{eq:dfnsoliddiff})
+for  each particle,  we  obtain  \cref{eq:quotientappliedpde}, presented  along
+with  its   Neumann  boundary   conditions \cref{eq:quotientappliedpdeBCcentre}
+and \cref{eq:quotientappliedpdeBCsurface}.  $j$~is   the  molar   flux  density
+(\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius (\si{m}).
+\begin{subequations}\label{eq:quotientappliedpde}
+    \begin{align}
+        \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref*{eq:quotientappliedpde}}\\
+        \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eq:quotientappliedpdeBCcentre}\\
+        D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eq:quotientappliedpdeBCsurface}
+    \end{align}
+\end{subequations}
+
+Mapping $r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]$,
+\begin{equation}\label{mappingChebDomain}
+    r = \frac{R_\text{p}}{2}(\widetilde{r} + 1)
+\end{equation}
+
+Applying \cref{mappingChebDomain} to
+\crefrange{eq:quotientappliedpde}{eq:quotientappliedpdeBCsurface} whilst
+retaining $c_\text{s}$ in the physical space yields
+\crefrange{eq:solidDiffEqChebDomain}{eq:solidDiffEqChebDomainBCsurface}.
+
+\begin{subequations}\label{eq:solidDiffEqChebDomain}
+    \begin{align}
+	    \frac{\partial c_\text{s}}{\partial t}                         & = 4 \frac{D^\text{eff}_\text{s}}{R_\text{p}^2} \left( \frac{2}{\widetilde{r} + 1} \frac{\partial c_\text{s}}{\partial \widetilde{r}} + \frac{\partial^2 c_\text{s}}{\partial {\widetilde{r}}^2} \right)\tag{\ref*{eq:solidDiffEqChebDomain}} \\
+        \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=-1}} & = 0\label{eq:solidDiffEqChebDomainBCcentre}                                                                                                                                                                                                                \\
+        2 \frac{D^\text{eff}_\text{s}}{R_\text{p}} \diffp{c_\text{s}}{\widetilde{r}}{\mathrlap{\widetilde{r}=1}} & = -j\label{eq:solidDiffEqChebDomainBCsurface}
+    \end{align}
+\end{subequations}
+
+During  the iterative  solution process,  the spatial  gradients of  solid phase
+lithium concentration  in \cref{eq:solidDiffEqChebDomain}  in this case  are not
+computed through  an explicit  differentiation procedure  as usual,  but instead
+evaluated by pre-multiplying  the concentration values at  the collocation nodes
+by a Chebyshev differentiation matrix. This particular aspect is responsible for
+the inherent reduction of simulation  runtime achieved by introducing a spectral
+method. In the updated version  of LIONSIMBA~v2.0 (created specifically for this
+layer  optimisation work),  differentiation matrices  of suitable  dimensions as
+well as the Chebyshev collocation nodes  are generated using the MATLAB function
+\texttt{cheb.m}~\cite{Trefethen2000}.
+
