@@ -204,58 +204,50 @@ explained next.
         The value of stack thickness of  the reference cell is held constant for
         all layer choices used throughout the entire layer optimisation process.
 
-    \item \textbf{Electrode balancing and computation of electrode thickness ratio}
+    \item \textbf{Determination of number  of layers within  reference cell}
 
-        A key  idea of the layer  optimisation scheme is that  for computing the
-        physical  lengths  of electrode  as  a  function  of number  of  layers,
-        the  ratios  of  their thicknesses~$l_\text{ratio}$  is  held  constant.
-        This  coefficient is  germane to  the concept  of capacity  balancing of
-        electrodes  to equalise  their loading and is computed as follows.
+        The  next  step  is  to  determine  the  number  of  layers  within  the
+        reference pouch  cell~$n_\text{refcell}$.
 
-        Equating  the active material volume of both electrodes,
-        \begin{equation}
-            A_\text{elec,pos}l_\text{pos}  \varepsilon_\text{s,pos} = A_\text{elec,neg}l_\text{neg}  \varepsilon_\text{s,neg} \label{eqn:electrodeCapacity}\\
+        The thickness of a complete electrochemical sandwich multiplied by the
+        number of layers yields the total stack height
+        \begin{equation}\label{eq:stackheightrefcell}
+            n_\text{refcell}\, (l_\text{Al} + l_\text{pos} + l_\text{sep} + l_\text{neg} + l_\text{Cu}) = L_\text{stack}
         \end{equation}
 
-        Neglecting  overhangs   of  the  negative  electrode   (typically  below
-        $\SI{2}{\milli\meter}$ to  avoid plating  at the edges),  both electrode
-        materials have the same cross-sectional area~$A_\text{elec}$. Therefore,
-        \cref{eqn:electrodeCapacity} reduces to
+        The product of  layers and the thickness of  an electrochemical sandwich
+        cannot exceed the  overall stack height. This implies  that the equality
+        in \cref{eq:stackheightrefcell} is  to be changed to  an inequality with
+        the upper  bound of the  computation on the  \gls{lhs} set to  the stack
+        height.
         \begin{align}
-            \cancel{A_\text{elec}}l_\text{pos}  \varepsilon_\text{s,pos} & = \cancel{A_\text{elec}}l_\text{neg}  \varepsilon_\text{s,neg}  \\
-            l_\text{pos}  \varepsilon_\text{s,pos}                       & = l_\text{neg}  \varepsilon_\text{s,neg}\label{eqn:electrodeCapequalarea}
+            n_\text{refcell}\, (l_\text{Al} + l_\text{pos} + l_\text{sep} + l_\text{neg} + l_\text{Cu}) & \le L_\text{stack} \\
+            n_\text{refcell}                                                                            & \le \frac{L_\text{stack}}{l_\text{Al} + l_\text{pos} + l_\text{sep} + l_\text{neg} + l_\text{Cu}}\label{eq:stackheightrefcellmod}
         \end{align}
 
-        For    the   reference    cell   under    consideration,   the    length
-        and   breadth   of    the   cell's   pouch   is    obtained   from   the
-        \gls{bev}  manufacturer~\cite{GMBoltBatteryDims}   and  are   listed  in
-        \cref{tbl:lcoSimParamslayeropt}.  As  a  first-order  approximation  the
-        product of  these dimensions can  be assumed  to be the  active material
-        cross-sectional  area   (although  in  practice,  the   planar  area  of
-        the  stack  needs to  be  slightly  smaller  to be  accommodated  inside
-        the  pouch).  Finally,  in  line   with  the  assumptions  discussed  in
-        \cref{subsec:layeroptassumptions},  similar  to  the pouch  height,  the
-        cross-sectional geometry (length  and breadth) of the cell  is also held
-        constant throughout the layer optimisation process.
+        Since fractional layers do not have  any physical meaning, the number of
+        layers that  can be  accommodated within  any pouch  must be  an integer
+        quantity. Therefore,  $n_\text{refcell}$ is  computed as the  `floor' of
+        the quantity in the \gls{rhs} of \cref{eq:stackheightrefcellmod}
+        \begin{align}
+            n_\text{refcell} &= \floor*{\frac{L_\text{stack}}{l_\text{Al} + l_\text{pos} + l_\text{sep} + l_\text{neg} + l_\text{Cu}}} \\
+            {} &= \floor*{\frac{9.68}{(15 +  72 + 25 + 88 + 10) \times 10^{-3}}} \\
+            n_\text{refcell} &= 46
+        \end{align}
 
-        Owing to the reasons  outlined in \cref{subsec:layeroptassumptions}, the
-        volume fractions of the electrode  materials are assumed to be constant,
-        which  implies  that their  ratio  is  also  a constant.  The  electrode
-        thickness ratio~$l_\text{ratio}$ is obtained as
-        \begin{alignat}{2}
-            l_\text{ratio} & = \frac{l_\text{neg}}{l_\text{pos}} & &\qquad\text{(by definition)}                                                        \\
-            {}             & = \frac{\varepsilon_\text{s,pos}}{\varepsilon_\text{s,neg}} & &\qquad\text{(rearranging \cref{eqn:electrodeCapequalarea})} \\
-            {}             & = \frac{2}{2}\label{eqn:electrodeThicknessRatio}                                                                         \\
-        \end{alignat}
+        The reference cell is thus deemed to consist of 46~layers.
 
-    \item \textbf{Integer  optimisation to  determine number  of layers within  reference cell}
+    \item \textbf{Computation of surface area per layer}
 
-        The number of  layers that can be accommodated within  any pouch must be
-        an  integer quantity,  since fractional  layers do  not have  a physical
-        meaning.
+        Substituting  the values  of  $n_\text{refcell}$ and  $A_\text{refcell}$
+        into  \cref{eq:overallarea}, the  electrochemically active  surface area
+        per layer is obtained as
+        \begin{align}
+            A_\text{elec} & = \frac{A_\text{refcell}}{n_\text{refcell}} \\
+            {}            & = \frac{2.053}{46}                          \\
+        \end{align}
 
 \end{enumerate}
-
 
 
 %\subsection{Modelling Platform and Preconditioning}
