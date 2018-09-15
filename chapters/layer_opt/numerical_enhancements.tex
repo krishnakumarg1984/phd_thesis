@@ -245,7 +245,7 @@ explained next.
         \begin{align}
             A_\text{elec} & = \frac{A_\text{refcell}}{n_\text{refcell}} \\
             {}            & = \frac{\SI{2.053}{\meter\squared}}{46}     \\
-            {}            & = \SI{44.63}{\milli\meter\squared}     \\
+            {}            & = \SI{44.63}{\milli\meter\squared}
         \end{align}
 
         The   surface   area   per   layer    thus   computed   is   listed   in
@@ -258,55 +258,68 @@ explained next.
 
 \end{enumerate}
 
+\subsection{Modification of standard \glsfmtshort{dfn} model to handle power inputs}\label{sec:innatepowerinput}
 
-%\subsection{Modelling Platform and Preconditioning}
+As  discussed  in  \cref{sec:packlevelhierarchy}, for  assuming  identical  cell
+conditions during operation necessitates that the external stimulus to the cells
+is an applied power  value. The cell's terminal voltage as  well as current draw
+can be viewed as a response to  this power input. To simulate this condition for
+achieving a model-based optimal layer design, the standard \gls{dfn} model which
+conventionally handles  current stimuli  has to be  suitably modified  to accept
+power inputs.
 
-%Couple of statements  about why LIONSIMBA was chosen as  the modelling platform
-%for implementing the p2d dynamics. The  cell parameters used are shown in table
-%xx. This cell is henceforth known as the LIONSIMBA cell or Northrop cell.
+Plett~\cite{Plett2016}  suggests  a methodology  for  applying  power inputs  to
+equivalent  circuit models  simulated  at  a fixed  sample  rate. This  involves
+converting the input  power~$P_k$ to a current~$I_k$ using  an equivalent series
+resistance~$R_0$. The value of $R_0$ is  updated at every time index~$k$, as per
+\cref{eq:PlettPower}. $v_k$ is the cell's terminal voltage at present time
+sample $k$, which has been evolved from the  applied current up to and including
+the previous  time step $(k-1)$.
+\begin{equation}\label{eq:PlettPower}
+    I_k = \frac{v_k - \sqrt{v^\text{2}_k - 4R_0P_{k}}}{2R_0}
+\end{equation}
 
-%Discuss the  missing elements  in LIONSIMBA  only with  respect to  the present
-%problem at hand, \viz{the stoichiometries}.
+There are two disadvantages in using  Plett's simplified approach for this layer
+optimisation  study.  Firstly,  this  necessitates  the  quantification  of  the
+electrical resistance  of a \gls{pbm}. Such  an idea is at  loggerheads with the
+fundamental  philosophy of  \glspl{pbm}  which strive  to  represent a  detailed
+picture  of  underlying  phenomena,  as opposed  to  the  system-level  terminal
+behavioural characterisation  facilitated by the \glspl{ecm}.  Translating power
+to current  in this manner also  necessitates a two-pass conversion  between the
+physical  domain and  the electrical  domain ---  a process  likely to  diminish
+modelling  fidelity significantly.  Since the  results from  application of  the
+model shall inform the number of layers  to be used in a real-world cell design,
+such loss of  fidelity is unacceptable. Secondly, the constraint  of using fixed
+time interval  updates implies that  a high-speed adaptive  time-stepping solver
+cannot be used for handling this power input condition. This shall slow down the
+simulation speed considerably since the search space of layer combinations to be
+considered is  fairly large.  Furthermore, the simulations  have to  be repeated
+over  multiple combinations  of  initial and  ambient  temperatures which  shall
+render the model-based design approach to  be too slow and offset its advantages
+over a conventional prototype-based design.
 
-%\subsubsection*{Stoichiometry Augmentation}
+Dees~\etal~\cite{Dees2002}  identified the  requirement  of  having a  \gls{p2d}
+model that  can run on applied  power. However, in the  aforementioned work, the
+relevant  equations for  reformulation  of solid-phase  boundary conditions  are
+not  presented. This  thesis  author  therefore feels  compelled  to provide  an
+independent derivation of reformulating the \gls{p2d} model to facilitate innate
+power input capability. Since the equations  are derived for a single layer, the
+power  \emph{density}, obtained  by scaling  the  applied power  by the  overall
+active cross-sectional area~$A_\text{cell}$ is used as the driving input.
 
-%Discuss the problem first. How LIONSIMBA started always at 85.51 percentage and
-%needed to  do a  discharge down to  zero percent before  having the  ability to
-%charge. For this project, stoichiometries  are vital for capacity determination
-%and  the 1C  current density.  Explain how  stoichiometries were  refined until
-%cut-off for  infinitesimal bleeding discharge current  achieved. Noted relevant
-%values. Explain refinement  of how approximate capacities  reported by Northrop
-%and Subramanian were  refined precisely. Explanation of  remnant capacities and
-%stoichiometries computation. Explanation of  1C current density.parameters init
-%capacity computation code.
-
-%\subsection{Layer Assembly within Pouch Cells}
-%With  the  help  of  Northrop's   layer  assembly  figure,  explain  the  layer
-%configuration/arrangement within a pouch cell. The next task is then identified
-%as computing the number of layers within the reference pouch cell.
-
-%\subsubsection*{Number of Layers of LIONSIMBA aka Northrop cell}
-%Krishna came up with the idea of using integer optimisation for this task. The
-%software MIDACO was also selected by Krishna and explained to Ian. The MIDACO
-%result of the number of layers within the standard cell was now available.
-
-%\subsubsection*{Computation of Surface Area per face, \protect{$A_\text{cell}$}}
-%Show the simple algebraic computation of overall surface area $A$ and the
-%per-face area $A_\text{cell}$. Explain how the area per face shall be a key
-%quantity in the layer optimisation framework discussed later on.
-
-%Layerphoto showing face areas and anode/cathode verhand etc will be shown here
-
-%This concludes the augmented set of parameters added by the author to the basic
-%parameter set  of the DFN  model. The added  numerical value of  parameters are
-%summaried in table xx. Lots The layer optimisation framework and assumptions is
-%described next.
-
-\subsection{Modification of Standard \glsfmtshort{dfn} Model to Handle Power Inputs}\label{sec:innatepowerinput}
+In  the  \gls{p2d}  model,  charge  conservation in  solid  phase  is  given  by
+\cref{eq:solidchargeconserve},  which is  revisited  below.  The subsequent  two
+equations pertain to the corresponding  boundary conditions. In these equations,
+current density~$i$ represents the applied input.
+\begin{align}
+    \frac{\partial}{\partial x} \left(\sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \right) &= a_\text{s} F j(x,t) \tag{\cref{eq:solidchargeconserve} revisited}\\
+    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\substack{x_\text{pos/Alcc}\\x_\text{neg/Cucc}}} &= -i\\
+    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\substack{x_\text{pos/sep}\\x_\text{neg/sep}}} &= 0
+\end{align}
 
 %%Figure showing power input
 
-\subsection{Hybrid Spectral-\glsfmtshort{fv} Scheme}\label{sec:hybridfv-spectral}
+\subsection{Hybrid spectral-\glsfmtshort{fv} scheme}\label{sec:hybridfv-spectral}
 
 Fast  and  accurate  estimation  of   the  solid  phase  lithium  concentration,
 particularly  its   value  at   the  surface  of   electrode  particles   is  an
@@ -404,4 +417,47 @@ method. In the updated version  of LIONSIMBA~v2.0 (created specifically for this
 layer  optimisation work),  differentiation matrices  of suitable  dimensions as
 well as the Chebyshev collocation nodes  are generated using the MATLAB function
 \texttt{cheb.m}~\cite{Trefethen2000}.
+
+%\subsection{Modelling Platform and Preconditioning}
+
+%Couple of statements  about why LIONSIMBA was chosen as  the modelling platform
+%for implementing the p2d dynamics. The  cell parameters used are shown in table
+%xx. This cell is henceforth known as the LIONSIMBA cell or Northrop cell.
+
+%Discuss the  missing elements  in LIONSIMBA  only with  respect to  the present
+%problem at hand, \viz{the stoichiometries}.
+
+%\subsubsection*{Stoichiometry Augmentation}
+
+%Discuss the problem first. How LIONSIMBA started always at 85.51 percentage and
+%needed to  do a  discharge down to  zero percent before  having the  ability to
+%charge. For this project, stoichiometries  are vital for capacity determination
+%and  the 1C  current density.  Explain how  stoichiometries were  refined until
+%cut-off for  infinitesimal bleeding discharge current  achieved. Noted relevant
+%values. Explain refinement  of how approximate capacities  reported by Northrop
+%and Subramanian were  refined precisely. Explanation of  remnant capacities and
+%stoichiometries computation. Explanation of  1C current density.parameters init
+%capacity computation code.
+
+%\subsection{Layer Assembly within Pouch Cells}
+%With  the  help  of  Northrop's   layer  assembly  figure,  explain  the  layer
+%configuration/arrangement within a pouch cell. The next task is then identified
+%as computing the number of layers within the reference pouch cell.
+
+%\subsubsection*{Number of Layers of LIONSIMBA aka Northrop cell}
+%Krishna came up with the idea of using integer optimisation for this task. The
+%software MIDACO was also selected by Krishna and explained to Ian. The MIDACO
+%result of the number of layers within the standard cell was now available.
+
+%\subsubsection*{Computation of Surface Area per face, \protect{$A_\text{cell}$}}
+%Show the simple algebraic computation of overall surface area $A$ and the
+%per-face area $A_\text{cell}$. Explain how the area per face shall be a key
+%quantity in the layer optimisation framework discussed later on.
+
+%Layerphoto showing face areas and anode/cathode verhand etc will be shown here
+
+%This concludes the augmented set of parameters added by the author to the basic
+%parameter set  of the DFN  model. The added  numerical value of  parameters are
+%summaried in table xx. Lots The layer optimisation framework and assumptions is
+%described next.
 
