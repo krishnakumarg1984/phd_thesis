@@ -527,46 +527,5 @@ layer  optimisation work),  differentiation matrices  of suitable  dimensions as
 well as the Chebyshev collocation nodes  are generated using the MATLAB function
 \texttt{cheb.m}~\cite{Trefethen2000}.
 
-%\subsection{Modelling Platform and Preconditioning}
-
-%Couple of statements  about why LIONSIMBA was chosen as  the modelling platform
-%for implementing the p2d dynamics. The  cell parameters used are shown in table
-%xx. This cell is henceforth known as the LIONSIMBA cell or Northrop cell.
-
-%Discuss the  missing elements  in LIONSIMBA  only with  respect to  the present
-%problem at hand, \viz{the stoichiometries}.
-
-%\subsubsection*{Stoichiometry Augmentation}
-
-%Discuss the problem first. How LIONSIMBA started always at 85.51 percentage and
-%needed to  do a  discharge down to  zero percent before  having the  ability to
-%charge. For this project, stoichiometries  are vital for capacity determination
-%and  the 1C  current density.  Explain how  stoichiometries were  refined until
-%cut-off for  infinitesimal bleeding discharge current  achieved. Noted relevant
-%values. Explain refinement  of how approximate capacities  reported by Northrop
-%and Subramanian were  refined precisely. Explanation of  remnant capacities and
-%stoichiometries computation. Explanation of  1C current density.parameters init
-%capacity computation code.
-
-%\subsection{Layer Assembly within Pouch Cells}
-%With  the  help  of  Northrop's   layer  assembly  figure,  explain  the  layer
-%configuration/arrangement within a pouch cell. The next task is then identified
-%as computing the number of layers within the reference pouch cell.
-
-%\subsubsection*{Number of Layers of LIONSIMBA aka Northrop cell}
-%Krishna came up with the idea of using integer optimisation for this task. The
-%software MIDACO was also selected by Krishna and explained to Ian. The MIDACO
-%result of the number of layers within the standard cell was now available.
-
-%\subsubsection*{Computation of Surface Area per face, \protect{$A_\text{cell}$}}
-%Show the simple algebraic computation of overall surface area $A$ and the
-%per-face area $A_\text{cell}$. Explain how the area per face shall be a key
-%quantity in the layer optimisation framework discussed later on.
-
-%Layerphoto showing face areas and anode/cathode verhand etc will be shown here
-
-%This concludes the augmented set of parameters added by the author to the basic
-%parameter set  of the DFN  model. The added  numerical value of  parameters are
-%summaried in table xx. Lots The layer optimisation framework and assumptions is
-%described next.
+\fxnote{Layerphoto showing face areas and anode/cathode overhang?}
 
