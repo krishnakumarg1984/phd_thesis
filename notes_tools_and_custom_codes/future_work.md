@@ -18,6 +18,7 @@
 - verapdf for pdfa validation
 - lualvna
 - titleps
+- Permissions Summary for lionsimba mesh use
 
 - enhanced spm paper
 - enchanced spm with KF

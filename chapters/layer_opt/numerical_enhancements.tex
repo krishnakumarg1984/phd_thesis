@@ -47,9 +47,9 @@ implementation of  the \gls{dfn} model. To  determine the surface area  per face
 of  steps, based  on  certain  assumptions and  literature  search. The  process
 involves  selection of  a  real-world cell,  and ultimately  mapping  it to  the
 surface area per  unit face. To the  best knowledge of the  author, this reverse
-parametrisation process,  mapping from  a real-world cell  to a  \gls{p2d} model
-parameter  is unique  and is  claimed  as a  contribution  to the  art which  is
-explained next.
+parametrisation process  (explained next), mapping  from a real-world cell  to a
+\gls{p2d} parameter, is  a unique idea and  is claimed as a  contribution to the
+art.
 
 \begin{enumerate}[ label=\textbf{\arabic*}), leftmargin=0pt, itemindent=20pt, labelwidth=15pt, labelsep=5pt, listparindent=0.7cm, align=left]
     \item \hypertarget{refcellselection}{\textbf{Selection of a suitable reference capacity cell}}
@@ -313,9 +313,93 @@ equations pertain to the corresponding  boundary conditions. In these equations,
 current density~$i$ represents the applied input.
 \begin{align}
     \frac{\partial}{\partial x} \left(\sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \right) &= a_\text{s} F j(x,t) \tag{\cref{eq:solidchargeconserve} revisited}\\
-    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\substack{x_\text{pos/Alcc}\\x_\text{neg/Cucc}}} &= -i\\
+    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\substack{x_\text{pos/Alcc}\\x_\text{neg/Cucc}}} &= -i\label{eq:solidchargeconservecurrBC}\\
     \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\substack{x_\text{pos/sep}\\x_\text{neg/sep}}} &= 0
 \end{align}
+
+Now,  \cref{eq:undiscretisedPhiSpowerBC}  replaces  the boundary  condition  in
+\cref{eq:solidchargeconservecurrBC}  to use  the  applied  power density~$p$  to
+drive the model.
+
+\begin{equation}\label{eq:undiscretisedPhiSpowerBC}
+\sigma_{\text{eff}_\text{neg}} \left( \phi(x,t) \frac{\partial
+\phi_\text{s}(x,t)}{\partial
+x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
+\sigma_{\text{eff}_\text{pos}} \left( \phi(x,t) \frac{\partial
+\phi_\text{s}(x,t)}{\partial x} \right)\Bigg\rvert_{\mathrlap{x=x_\text{pos/Alcc}}} = p
+\end{equation}
+
+\Crefrange{eq:ctspowerconstraint}{eq:cellpositivity}  represent the  constraints
+pertaining to physical laws and are  fully satisfied in this case.
+\begin{align}
+	vi  - p & = 0 \label{eq:ctspowerconstraint} \\
+	v       & > 0 \label{eq:cellpositivity}
+\end{align}
+\Crefrange{eq:undiscretisedPhiSpowerBC}{eq:cellpositivity} are  then discretised
+for numerical implementation.
+
+\Cref{fig:1d_fv_mesh}  describes  a  schematic  overview  of  a  one-dimensional
+cell-centred  \gls{fv}  discretisation scheme.  Here,  evenly  spaced nodes  are
+considered to form  the support mesh along the through-thickness  dimension of a
+layer. Vertical  lines denote the  edges of  control volumes whereas  the filled
+dots  denote computational  nodes  where the  variables from  \cref{tbl:dfneqns}
+pertaining to the axial direction are solved.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{fv_disc.jpg}
+    \caption[Illustration of a standard cell-centred \gls{fv} discretisation
+    scheme]{Simplified illustration of a standard cell-centred \gls{fv}
+    discretisation scheme. Image reproduced from
+Torchio~\etal~\cite{Torchio2016}.}
+    \label{fig:1d_fv_mesh}
+\end{figure}
+
+\Cref{eq:discretisedPhiS}      represents       the      weak       form      of
+\cref{eq:solidchargeconserve} used on the \gls{fv}  mesh in each control volume,
+wherein subscripts~$k$ and  $k\pm\frac{1}{2}$ denote the $k$\textsuperscript{th}
+\gls{fv} node and its associated left and right edges respectively.
+\begin{equation} \label{eq:discretisedPhiS}
+    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x}\Bigg|_{x_{k-\frac{1}{2}}}^{x_{k+\frac{1}{2}}} = a_\text{s} F j_k(t) \Delta x
+\end{equation}
+
+At this juncture, a simplifying approximation for the solid-phase potentials can
+be considered. In the standard \gls{fv} scheme, the solution values at the faces
+(edges of  control volumes) is  obtained by  interpolating from the  two nearest
+\gls{fv} node values. At the two  extrema, a linear extrapolation from the first
+and last nodes can be considered.  Accounting for this increases the accuracy of
+computations  thereby  providing  good  estimates of  solid  potentials  at  the
+interfaces. However, this comes at the  penalty of a more mathematically complex
+set of boundary  conditions. When using high node densities  in the negative and
+positive electrode  regions (see  \cref{tbl:lcoSimParamslayeropt}), for  the two
+outermost control  volumes, the  values of  $\frac{\Delta x}{2}$  becomes small.
+With a reasonably small mesh interval, the potentials at the cell centres can be
+considered to be  nearly equal to that at their  corresponding current collector
+interfaces. This assumption helps to keep the resulting mathematical expressions
+tractable.
+
+Applying    \cref{eq:discretisedPhiS}    to    the    first    control    volume
+(0\textsuperscript{th} node) in  the positive electrode and to  the last control
+volume (n\textsuperscript{th} node) in the negative electrode,
+\begin{align}
+	\frac{-\sigma_{\text{eff}_\text{pos}} \phi_{\text{s}_0}}{\Delta x_\text{pos}} + \frac{\sigma_{\text{eff}_\text{pos}} \phi_{\text{s}_1}}{\Delta x_\text{pos}} + i &= a_{\text{s}_\text{pos}} F j_0 \Delta x_\text{pos}\label{eq:PhiSappliedBCpos}\\
+	\frac{-\sigma_{\text{eff}_\text{neg}} \phi_{\text{s}_n}}{\Delta x_\text{neg}} + \frac{\sigma_{\text{eff}_\text{neg}} \phi_{\text{s}_{n-1}}}{\Delta x_\text{neg}} - i &= a_{\text{s}_\text{neg}} F j_n \Delta x_\text{neg}\label{eq:PhiSappliedBCneg}
+\end{align}
+
+Subtracting  the resulting  equations of  multiplying \cref{eq:PhiSappliedBCpos}
+with $\phi_{\text{s}_0}$ and \cref{eq:PhiSappliedBCneg} by $\phi_{\text{s}_n}$
+\begin{multline} \label{eq:pinputBCcomplete}
+    \frac{-\sigma_{\text{eff}_\text{pos}} \phi^2_{\text{s}_0}}{\Delta x_\text{pos}} -
+    \frac{\sigma_{\text{eff}_\text{neg}} \phi^2_{\text{s}_n}}{\Delta x_\text{neg}} +
+    \frac{\sigma_{\text{eff}_\text{pos}} \phi_{\text{s}_0} \phi_{\text{s}_1}}{\Delta x_\text{pos}} +
+    \frac{\sigma_{\text{eff}_\text{neg}} \phi_{\text{s}_n} \phi_{\text{s}_{n-1}}}{\Delta x_\text{neg}} \\+ p -
+    a_{\text{s}_\text{pos}} F j_0 x_\text{pos} \phi_{\text{s}_0} - a_{\text{s}_\text{neg}} F j_n x_\text{neg}
+    \phi_{\text{s}_n} = 0
+\end{multline}
+\Cref{eq:pinputBCcomplete} therefore  represents the boundary condition  for the
+solid phase  potential \gls{pde} could  be applied to either  electrode, thereby
+facilitating the application of an input power density to the \gls{p2d} model.
+
 
 %%Figure showing power input
 
