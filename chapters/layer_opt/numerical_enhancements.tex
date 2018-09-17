@@ -323,8 +323,10 @@ Now,  \cref{eq:undiscretisedPhiSpowerBC}  replaces  the boundary  condition  in
 drive the model.
 
 \begin{equation}\label{eq:undiscretisedPhiSpowerBC}
-    \sigma_{\text{eff}_\text{neg}} \left( \phi(x,t) \frac{\partial
-            \phi_\text{s}(x,t)}{\partial x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  - \sigma_{\text{eff}_\text{pos}} \left( \phi(x,t) \frac{\partial \phi_\text{s}(x,t)}{\partial x} \right)\Bigg\rvert_{\mathrlap{x=x_\text{pos/Alcc}}} = p
+    \sigma_{\text{eff}_\text{neg}} \left( \phi_\text{s}(x,t) \frac{\partial
+            \phi_\text{s}(x,t)}{\partial
+            x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
+        \sigma_{\text{eff}_\text{pos}} \left( \phi_\text{s}(x,t) \frac{\partial \phi_\text{s}(x,t)}{\partial x} \right)\Bigg\rvert_{\mathrlap{x=x_\text{pos/Alcc}}} = p
 \end{equation}
 
 \Crefrange{eq:ctspowerconstraint}{eq:cellpositivity}  represent the  constraints
@@ -406,7 +408,7 @@ However, solid  phase potential being a  physical quantity of the  cell needs to
 have a unique solution. Therefore, in order to achieve numerical convergence, an
 additional positivity constraint is imposed.
 \begin{equation}\label{eq:discpositivity}
-	\phi_{s_p} - \phi_{s_n} > 0
+	\phi_{\text{s}_0} - \phi_{\text{s}_n} > 0
 \end{equation}
 
 Finally  since the  input to  the model  is the  applied power  density~$p$, the

@@ -52,7 +52,8 @@ code-base   have  been   provided  by   this  thesis   author.  The   interested
 reader  may  peruse  these  from  the  \texttt{README.md}  file  hosted  on  the
 \href{https://github.com/lionsimbatoolbox/LIONSIMBA}{project's  repository}. The
 complete  parameter set  used  for  simulation of  this  model  is presented  in
-table~\ref{tbl:lcoSimParamslayeropt}.
+table~\ref{tbl:lcoSimParamslayeropt}. All cells are assumed to be in their state
+of equilibrium prior to beginning of simulations.
 
 \input{chapters/layer_opt/cell_params_full_table}
 
@@ -106,10 +107,41 @@ than that for \gls{bev}) is used. This facilitates a smaller \gls{soc} window to
 take into account the higher number of charge-discharge cycles which are typical
 with \gls{phev} designs~\cite{Maksimovic2012}. Both \gls{xeV} platforms are fast
 charged  to a  target  \gls{soc}  of \SI{90}{\percent}  in  \gls{cp} mode.  This
-\gls{soc}  value  corresponds  to  the  charging  targets  of  level~3  charging
+\gls{soc}  value corresponds  to the  end-of-charge target  in level~3  charging
 standards~\cite{SAECharging2011}.
 
-%%%\input{chapters/layer_opt/acc_results_table}
+\subsection{Acceleration studies --- \gls{bev}}
+
+\gls{bev}       acceleration      at       a       worst-case      rate       of
+\SI{4.13}{\meter\per\second\squared} is assumed for simulation. This corresponds
+to the  manufacturer's acceleration specifications  for the \gls{bev}  listed in
+\cref{tbl:CommonVehicleParams}.  The  acceleration  rate  corresponding  to  the
+SAE~J1772 standards is lower than this  rate. Therefore, to obtain a robust cell
+design, the higher of the two acceleration rates needs to be considered.
+
+\Cref{tbl:accResults}  gives the  simulation  results  for various  combinations
+of  $(T_\text{init}, T_\text{sink})$.  These  combinations  of temperatures  for
+traversing  the  thermal  design  space   are  chosen  following  the  SAE~J1772
+guidelines.  The power  densities  with  low numbers  of  layers  lead to  large
+overpotentials resulting in the cell's terminal  voltage to drop lower down than
+$v_\text{min}$, thereby unable to satisfy acceleration requirements. However, at
+higher  $T_\text{init}$, owing  to  the reduction  in  overpotentials, a  larger
+voltage overhead is  available to accommodate polarisation.  For all temperature
+combinations,  the  largest  deviation  from $T_\text{init}$  experienced  by  a
+\gls{bev} cell is a \SI{0.48}{\degreeCelsius}  increase. Consequently, it can be
+concluded that a single isolated acceleration  event does not heat the \gls{bev}
+battery pack, and therefore it can  be assumed that the cell temperature remains
+close  to  that  of the  initial  value.  Similarly,  even  for the  worst  case
+simulation run,  the cell's  \gls{soc} is  depleted only by  a maximum  value of
+\SI{0.32}{\percent}.
+
+\input{chapters/layer_opt/acc_results_table}
+
+The foregoing  discussion has revealed  that the lower cut-off  voltage strongly
+influences  layer  configuration for  acceleration  tests.  Therefore, for  this
+specific design,  $n =  27$ represents  the optimal  layer when  considering the
+acceleration requirements for the \gls{bev} platform.
+
 
 %%\begin{figure}[!bp]
 %%    \begin{minipage}[t]{\textwidth}
