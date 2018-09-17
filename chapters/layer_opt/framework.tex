@@ -60,7 +60,7 @@ schematic.
 The computations for acceleration-based layer  optimisation begins at the anchor
 block labelled `Start Acc.\ Calcs.'.
 
-\subsubsection*{Acceleration rate, final speed and acceleration time}
+\subsubsection*{Determination of acceleration rate, final speed and acceleration time}
 
 The  first   step  is  the  determination   of  the  rate  of   acceleration  to
 be  used  for  the  computing   the  power  requirements  for  accelerating  the
@@ -84,7 +84,7 @@ final speed~$v_\text{f}$  and acceleration time~$t_\text{f}$ to  the values from
 the  appropriate source  depending on  which of  the two  acceleration rates  is
 higher.
 
-\subsubsection*{Acceleration power at the wheels}
+\subsubsection*{Computation of acceleration power at the wheels}
 
 The  next  step  is  to  calculate   the  acceleration  power  required  at  the
 driving wheels~$P_\text{w}$.  Using the  governing equations from  basic vehicle
@@ -112,7 +112,7 @@ Each  of  these  terms   is  explained  in  tables~\ref{tbl:CommonVehicleParams}
 and~\ref{tbl:UniqueVehicleParams}  along with  their  numerical  values used  in
 simulation.
 
-\subsubsection*{Layer dependent vehicle mass}
+\subsubsection*{Computation of layer-dependent vehicle mass}
 
 Changing  the layer  count used  in  each cell  changes  the mass  of the  cell.
 This  in-turn  affects the  mass  of  the  pack,  which further  influences  the
@@ -135,6 +135,30 @@ shown   in   \cref{eq:massofallcells}.   The    computation   of   mass   of   a
 single   cell    $m_\text{cell}$   is    detailed   in   the    section   titled
 \hyperlink{href:layerdependentcellmass}{`Computation  of   layer-dependent  cell
 mass'}.
+
+\subsubsection*{Computation of acceleration power density per layer}
+
+Since the \gls{p2d} equations of the \gls{dfn} model are based upon a normalised
+unit area and is  applicable only to each electrochemical layer,  the goal is to
+compute the  power density experienced  by each layer. This  is arrived at  by a
+sequence of simple scaling steps.
+
+Firstly, the  power demanded at  the pack terminals  is computed by  scaling the
+power  at the  wheels  by the  efficiency  of the  drivetrain.  As explained  in
+\cref{subsec:layeroptassumptions},  the  drivetrain  consists  of  a  number  of
+components, the efficiencies of which depend on the operating point (such as the
+speed and torque  of the electric motor, current drawn  by the power electronics
+etc.). Following the  assumptions detailed in \cref{subsec:layeroptassumptions},
+a  single lumped  efficiency~$\eta_\text{dt}$ can  be used  for the  powertrain.
+The  pack  power  demand  $P^\text{acc}_\text{batt}$  is  then  divided  by  the
+number  of cells  in the  pack $n_\text{cells}$  to obtain  the power  demand at
+the  input of  the cell's  terminals~$p^\text{acc}_\text{cell}$. For  each layer
+choice~$n$, the electrochemically active surface area is computed using by using
+\cref{eq:overallarea},  wherein the  electrochemically active  surface area  per
+layer~$A_\text{elec}$ listed in \cref{tbl:lcoSimParamslayeropt} is held constant
+throughout.  Finally, the  acceleration power  density per  layer~$p^\text{acc}$
+is  computed  by  dividing  $p^\text{acc}_\text{cell}$ by  the  overall  surface
+area~$A_\text{cell}$.
 
 \subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
 
