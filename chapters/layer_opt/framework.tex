@@ -43,15 +43,14 @@ broadly dividing the flow diagram into two parts ---
     \end{minipage}
 \end{figure}
 
-As explained in the legend key of \cref{fig:fig_strategy_schematic}, blocks with
-a light  grey border  represent input  data/parameters for  computations. Blocks
-with a standard black border  represent computations common to both acceleration
-and fast  charging pathways. The design  output is given by  the double-bordered
-block at the bottom centre  of \cref{fig:fig_strategy_schematic}. Other types of
-blocks  and arrows  are  appropriately listed  in  the legend  key.  To aid  the
-understanding of the  layer optimisation framework, the reader  is encouraged to
-correlate  the narrative  in this  section  with the  blocks and  arrows in  the
-schematic.
+As indicated in the legend  for \cref{fig:fig_strategy_schematic}, blocks with a
+light~grey border represent input  data/parameters for computations. Blocks with
+a standard black  border represent computations common to  both acceleration and
+fast charging pathways. The design output  is given by the double-bordered block
+at the bottom centre of \cref{fig:fig_strategy_schematic}. Other types of blocks
+and arrows are appropriately listed in  the legend key. To aid the understanding
+of the layer  optimisation framework, the reader is encouraged  to correlate the
+narrative in this section with the blocks and arrows in the schematic.
 
 
 
@@ -62,27 +61,28 @@ block labelled `Start Acc.\ Calcs.'.
 
 \subsubsection*{Determination of acceleration rate, final speed and acceleration time}
 
-The  first   step  is  the  determination   of  the  rate  of   acceleration  to
-be  used  for  the  computing   the  power  requirements  for  accelerating  the
-\gls{xeV}  from  standstill.  For  the  sake of  claiming  green  subsidies  and
-other  regulatory reasons,  vehicular  standards for  electrified transport  are
-codified by  various regulatory agencies  and standardisation bodies  (\eg{} the
-SAE~J1772 standard~\cite{Sae2010}).  These typically specify a  minimum required
-acceleration  rate for  the vehicle  under consideration  to be  certified as  a
-road-faring electric vehicle. Manufacturers have their own specifications, which
-typically exceed the minimum standards. However, for certain classes of electric
-vehicles such  as golf  carts, the  manufacturer-specified standards  might fall
-below that of a  roadworthy electric vehicle. In this case,  this thesis errs on
-the side of conservative design by choosing the higher of the two values.
+The first step is  the determination of the rate of acceleration  to be used for
+the  computing  the  power  requirements for  accelerating  the  \gls{xeV}  from
+standstill.  For the  sake  of  claiming green  subsidies  and other  regulatory
+reasons,  vehicular   standards  for  electrified  transport   are  codified  by
+various  standardisation bodies  (\eg{} the  SAE~J1772 standard~\cite{Sae2010}).
+The  standards  published  by  these regulatory  agencies  typically  specify  a
+minimum required  acceleration rate  for the vehicle  under consideration  to be
+certified as a road-faring electric vehicle. Vehicle manufacturers often provide
+their  own  specifications,  which  typically exceed  these  minimum  standards.
+However,  for certain  classes  of electric  vehicles such  as  golf carts,  the
+manufacturer-specified standards might fall below  that of a roadworthy electric
+vehicle. This thesis  advocates a conservative design by choosing  the higher of
+the two values.
 
-The   acceleration   rate   is   taken   to   be   the   simple   ratio   of   a
-pre-determined  final  speed~$v_\text{f}$  to  the time  taken  to  attain  that
-speed  from  standstill~$t_\text{f}$.  The  manufacturer-specified  acceleration
-rate~$a_\text{man.}$ is compared against the minimum acceleration rate specified
-by vehicular  standards~$a_\text{std.}$. The two \gls{spdt}  switches assign the
-final speed~$v_\text{f}$  and acceleration time~$t_\text{f}$ to  the values from
-the  appropriate source  depending on  which of  the two  acceleration rates  is
-higher.
+The  acceleration  rate  is  calculated   by  dividing  a  pre-determined  final
+speed~$v_\text{f}$  by the  time~$t_\text{f}$ taken  to attain  that speed  from
+standstill.  The  manufacturer-specified  acceleration  rate~$a_\text{man.}$  is
+compared  against  the minimum  acceleration  rate  specified by  the  governing
+vehicular  standards~$a_\text{std.}$. The  two  \gls{spdt}  switches assign  the
+final speed~$v_\text{f}$ and acceleration time~$t_\text{f}$ to the corresponding
+values from  the appropriate source depending  on which of the  two acceleration
+rates is higher.
 
 \subsubsection*{Computation of acceleration power at the wheels}
 
@@ -103,9 +103,9 @@ dynamics~\cite{Maksimovic2012}, the power at the wheels is given by
 The  individual  components  contributing   to  the  summation  for  wheel-power
 computation   presented   in    \cref{eq:wheelpower}   is   briefly   explained.
 $P_\text{mass}$~represents  the  power  required  to  accelerate  the  vehicle's
-mass.  $P_\text{drag}$~denotes the  power  required to  overcome air  resistance
-while $P_\text{roll}$~represents  that required to overcome  rolling resistance.
-Finally,  $P_\text{grade}$~represents the  power  required to  negotiate a  road
+mass.   $P_\text{drag}$~and  $P_\text{roll}$~denote   the  powers   required  to
+overcome   air  resistance   and  rolling   resistance  respectively.   Finally,
+$P_\text{grade}$~represents   the   power   required   to   negotiate   a   road
 gradient.  Except  for  $M_\text{v}(n)$  which  is  described  next,  all  terms
 in  the  \gls{rhs}  of  \crefrange{eq:masspower}{eq:gradepower}  are  constants.
 Each  of  these  terms   is  explained  in  tables~\ref{tbl:CommonVehicleParams}
@@ -114,11 +114,11 @@ simulation.
 
 \subsubsection*{Computation of layer-dependent vehicle mass}
 
-Changing  the layer  count used  in  each cell  changes  the mass  of the  cell.
-This  in-turn  affects the  mass  of  the  pack,  which further  influences  the
-overall  vehicle  mass.  Thus,  for precise  computation  of~$P_\text{mass}$  in
-\cref{eq:masspower},  $M_\text{v}(n)$  is  the  vehicle's  mass  computed  as  a
-function of number of layers~$n$.
+Changing  the layer  count used  within a  cell changes  its mass.  This in-turn
+affects  the mass  of the  pack, which  further influences  the overall  vehicle
+mass. Hence, for precise  computation of~$P_\text{mass}$ in \cref{eq:masspower},
+$M_\text{v}(n)$  is the  vehicle's  mass computed  as a  function  of number  of
+layers~$n$.
 
 In  the  schematic  of~\cref{fig:fig_strategy_schematic},  this  layer-dependent
 calculation of  mass of all cells  in the pack~$M_\text{cells}$ is  shown by the
@@ -128,13 +128,11 @@ representing the overall number of cells in the pack~$n_\text{cells}$.
     M_\text{cells} = n \times m_\text{cell}
 \end{equation}
 
-The   mass    of   the   vehicle    is   given    by   the   sum    of   chassis
-mass~$M_\text{c}$,  vehicle  payload  $M_\text{p}$, pack  overhead  $M_\text{o}$
-and  the  layer-dependent  mass  of  all  cells  in  the  pack  $M_\text{cells}$
-shown   in   \cref{eq:massofallcells}.   The    computation   of   mass   of   a
-single   cell    $m_\text{cell}$   is    detailed   in   the    section   titled
-\hyperlink{href:layerdependentcellmass}{`Computation  of   layer-dependent  cell
-mass'}.
+The  mass of  the vehicle  is  given by  the sum  of chassis  mass~$M_\text{c}$,
+vehicle payload $M_\text{p}$, pack overhead $M_\text{o}$ and the layer-dependent
+mass   of   all   cells   in   the  pack   $M_\text{cells}$   as   computed   in
+\cref{eq:massofallcells}.   The   computation  of   mass   of   a  single   cell
+$m_\text{cell}$ is detailed in \cref{sec:massofonecell}.
 
 \subsubsection*{Computation of acceleration power density per layer}
 
@@ -150,11 +148,11 @@ components, the efficiencies of which depend on the operating point (such as the
 speed and torque  of the electric motor, current drawn  by the power electronics
 etc.). Following the  assumptions detailed in \cref{subsec:layeroptassumptions},
 a  single lumped  efficiency~$\eta_\text{dt}$ can  be used  for the  powertrain.
-The  pack  power  demand  $P^\text{acc}_\text{batt}$  is  then  divided  by  the
-number  of cells  in the  pack $n_\text{cells}$  to obtain  the power  demand at
-the  input of  the cell's  terminals~$p^\text{acc}_\text{cell}$. For  each layer
-choice~$n$, the electrochemically active surface area is computed using by using
-\cref{eq:overallarea},  wherein the  electrochemically active  surface area  per
+The  power demand  on  the pack~$P^\text{acc}_\text{batt}$  is  then divided  by
+the  number  of  cells  in  the   pack  $n_\text{cells}$  to  obtain  the  power
+demand  at the  input  of the  cell's terminals~$p^\text{acc}_\text{cell}$.  For
+each  layer choice~$n$,  the overall  electrochemically active  surface area  is
+computed  using by  using \cref{eq:overallarea},  wherein the  surface area  per
 layer~$A_\text{elec}$ listed in \cref{tbl:lcoSimParamslayeropt} is held constant
 throughout.  Finally, the  acceleration power  density per  layer~$p^\text{acc}$
 is  computed  by  dividing  $p^\text{acc}_\text{cell}$ by  the  overall  surface
@@ -167,10 +165,10 @@ For the  present layer choice~$n$,  a thermally-coupled \gls{p2d}  simulation is
 performed for a duration of $t_\text{f}$  seconds with the applied power density
 $p^\text{acc}_\text{cell}$ corresponding to the present layer choice as input.
 When the simulation terminates, the cell's condition is compared against three
-criteria ----
+criteria
 \begin{enumerate}
     \item the maximum possible values of cell temperature~$T_\text{max}$,
-    \item the minimum allowed terminal voltage~$V_\text{min}$ and
+    \item the minimum allowed terminal voltage~$V_\text{min}$, and
     \item the lowest allowed cell \gls{soc}~$z_ztext{min}$.
 \end{enumerate}
 This helps to determine whether the cell constructed from the present layer
@@ -178,35 +176,91 @@ choice is able to successfully satisfy the acceleration power demands. These
 comparison operations are represented by decision blocks placed in the leftmost
 region of the schematic in~\cref{fig:fig_strategy_schematic}.
 
-If  any one  of the  three  aforementioned exit  checks fails,  then that  layer
+If  any one  of the  three aforementioned  exit checks  fail, the  present layer
 configuration is deemed  to be not feasible and the  entire workflow is repeated
-by trialling a new layer choice.  A sophisticated search algorithm, described in
-\cref{sec:searchalgo}, is employed  to minimise the number  of iterations needed
-until a successful layer choice is obtained.
+by  trialling a  new  layer  choice. A  sophisticated  search  algorithm, to  be
+described  in~\cref{sec:searchalgo},  is  employed  to minimise  the  number  of
+iterations needed  until a successful layer  choice~$n_\text{opt}^\text{acc}$ is
+obtained. The  above process is  repeated for different combinations  of initial
+and  ambient temperatures~\mbox{$(T_\text{init},  T_\text{sink})$}. The  largest
+successful  layer value  from  all  temperature combinations  is  deemed as  the
+canonical  optimal design  choice  when considering  acceleration demands.  This
+concludes the narrative describing the acceleration-specific pathway.
 
-\subsubsection*{Search algorithm}\label{sec:searchalgo}
+\subsection{Search algorithm}\label{sec:searchalgo}
 
 A  customised binary  search algorithm  is  employed in  the layer  optimisation
-framework. The  binary search  algorithm is  a computationally  efficient search
-algorithm requiring  a worst-case operational  count of $\mathcal{O}(k  \log k)$
-where $k$ is  the overall number of  candidates to be searched.  The same search
-strategy may be  used for both acceleration and fast  charging pathways although
-the method is briefly described here in the context of the acceleration runs.
+framework. The  binary search  is a  computationally efficient  search algorithm
+requiring a worst-case operational count of~$\mathcal{O}(k \log k)$ where $k$ is
+the  overall number  of  layer candidates  to be  searched.  From a  pedagogical
+viewpoint,  the  method  is  briefly  described  here  in  the  context  of  the
+aforementioned acceleration runs.  However, the same search  strategy is equally
+applicable for both acceleration and fast charging pathways.
 
-If   the  three   conditions  described   in  \cref{sec:accexitconditions}   are
-successfully  met,  the output  of  the  binary search  algorithm  is  set to  a
-logical~1.  If any  of these  conditions  fail, then  the output  is assigned  a
-logical~0. Thus, the  search vector in this customised  search strategy consists
-of  only two  possibilities,~0 and~1.  For very  low layer  counts, the  applied
-power  densities  are very  high.  Therefore,  one  of  the exit  conditions  in
-\cref{sec:accexitconditions} is likely to fail.  For very high layer counts, the
-power  densities  are  very  low,  implying  that  acceleration  runs  shall  be
-successful.  There exists  a critical  transition point  \viz{} the  first layer
-count for  which the exit  condition toggles from~0  to~1. Through a  process of
-systematically bisecting the layer search space, the optimal layer value can be
-arrived at. An alternative to using the
+If all the  termination criteria are successfully met, the  output of the binary
+search algorithm is  set to a logical~1.  If any of these  conditions fail, then
+the output  is assigned  a logical~0.  Thus, the search  vector in  this bespoke
+strategy  consists  of only  two  possibilities,~0  and~1. For  ultra-low  layer
+counts, the  applied power densities are  extremely high. Therefore, one  of the
+exit  conditions is  likely  to fail.  For  very high  layer  counts, the  power
+densities are  very low,  implying that acceleration  runs shall  be successful.
+There exists a critical transition point  \viz{} the first layer count for which
+the exit vector toggles from~0 to~1. Through a systematic bisection of the layer
+search  space, the  search algorithm  speedily  converges to  the optimal  layer
+value.  An alternative  to using  the binary  search algorithm  is the  standard
+linear  search  algorithm. This  is  a  simple  search strategy  which  involves
+sequentially iterating  from $n_\text{min}$ to $n_\text{max}$  until arriving at
+the lowest  value $n_\text{opt}^\text{acc}$  that satisfies all  the termination
+criteria. However, a naive use of the linear search algorithm is computationally
+expensive with a worst case operation count of $\mathcal{O}(n)$. Therefore, this
+thesis  author  recommends  the  use  of the  bespoke  binary  search  algorithm
+presented here. The choice of minimum and  maximum values of the search space is
+discussed in \cref{sec:layersearchbounds}.
 
-\subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
+\subsection{Upper and lower bounds on search space}\label{sec:layersearchbounds}
+
+
+It is  helpful to determine  the highest possible number  of layers that  can be
+physically  accommodated in  a stack  of height~$L_\text{stack}$.  For instance,
+this value may be used as the  upper bound to the binary search algorithm (which
+compulsorily requires  such an upper bound)  described in \cref{sec:searchalgo}.
+This can be obtained by defining a  simple integer optimisation task as shown in
+\cref{eq:maxlayersopt}. The objective function here  is to maximise the value of
+the layer  count~$n$ subject to  the physical  constraint that the  thickness of
+negative and positives electrodes remains positive.
+\begin{equation}
+    \begin{aligned}
+        \underset{n \, \in \, \mathbb{N}}{\mathbf{max}} \quad & n                                                                                                                                              \\
+        \text{s.t.} \quad                                     & l_\text{pos} = \left(\frac{L_\text{stack} - L_\text{Al}(n) - L_\text{Cu}(n) - n l_\text{sep}}{n(1 + l_\text{ratio})}\right) > 0 \\
+                                                              & l_\text{neg} = \left(\frac{l_\text{ratio}(L_\text{stack} - L_\text{Al}(n) - L_\text{Cu}(n) - n
+l_\text{sep})}{n(1 + l_\text{ratio})}\right) > 0
+\end{aligned}
+\end{equation}
+
+
+\Cref{eq:analytical_nmax} represents the analytical  closed-form solution to the
+integer optimisation  problem of  \cref{eq:maxlayersopt}. The first  argument to
+the $\max$ function  in \cref{eq:maxlayersopt} represents the  maximum number of
+physically feasible odd layers while  the second argument represents the maximum
+such value  when considering  odd layers.  Therefore, the  greater of  these two
+values is chosen  as the maximum permissible layer  choice~$n_\text{max}$ and is
+used as an input to the search algorithm.
+
+\begin{equation}
+    \label{eq:analytical_nmax}
+    n_\text{max} = \max \left(\floor*{\frac{2\left(L_\text{stack} - l_\text{Cu}\right)}{l_\text{Al}+l_\text{Cu}+2 l_\text{sep}}}, \floor*{\frac{2L_\text{stack} - l_\text{Al} - l_\text{Cu}}{l_\text{Al} + l_\text{Cu} + 2l_\text{sep}}} \right)
+\end{equation}
+
+In the absence of  published information on how minimum layers  is set, there is
+currently no unique  way to determine $n_\text{min}$. Therefore,  for this layer
+optimisation study, the value of $n_\text{min}$  used by the search algorithm is
+currently  set to  one ---  the minimum  physically feasible  number of  layers.
+Design engineers from industry may opt to  tweak this to a higher value based on
+insights gained from present empirical designs.
+
+
+% \subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
+\subsection{Computation of layer-dependent cell mass}\label{sec:massofonecell}
 
 \subsection{Electrode thickness ratio for capacity balancing}\label{sec:electroderatio}
 
