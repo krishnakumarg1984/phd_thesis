@@ -160,6 +160,52 @@ throughout.  Finally, the  acceleration power  density per  layer~$p^\text{acc}$
 is  computed  by  dividing  $p^\text{acc}_\text{cell}$ by  the  overall  surface
 area~$A_\text{cell}$.
 
+\subsubsection*{Thermally-coupled \glsfmtshort{p2d} simulation and exit
+conditions}\label{sec:accexitconditions}
+
+For the  present layer choice~$n$,  a thermally-coupled \gls{p2d}  simulation is
+performed for a duration of $t_\text{f}$  seconds with the applied power density
+$p^\text{acc}_\text{cell}$ corresponding to the present layer choice as input.
+When the simulation terminates, the cell's condition is compared against three
+criteria ----
+\begin{enumerate}
+    \item the maximum possible values of cell temperature~$T_\text{max}$,
+    \item the minimum allowed terminal voltage~$V_\text{min}$ and
+    \item the lowest allowed cell \gls{soc}~$z_ztext{min}$.
+\end{enumerate}
+This helps to determine whether the cell constructed from the present layer
+choice is able to successfully satisfy the acceleration power demands. These
+comparison operations are represented by decision blocks placed in the leftmost
+region of the schematic in~\cref{fig:fig_strategy_schematic}.
+
+If  any one  of the  three  aforementioned exit  checks fails,  then that  layer
+configuration is deemed  to be not feasible and the  entire workflow is repeated
+by trialling a new layer choice.  A sophisticated search algorithm, described in
+\cref{sec:searchalgo}, is employed  to minimise the number  of iterations needed
+until a successful layer choice is obtained.
+
+\subsubsection*{Search algorithm}\label{sec:searchalgo}
+
+A  customised binary  search algorithm  is  employed in  the layer  optimisation
+framework. The  binary search  algorithm is  a computationally  efficient search
+algorithm requiring  a worst-case operational  count of $\mathcal{O}(k  \log k)$
+where $k$ is  the overall number of  candidates to be searched.  The same search
+strategy may be  used for both acceleration and fast  charging pathways although
+the method is briefly described here in the context of the acceleration runs.
+
+If   the  three   conditions  described   in  \cref{sec:accexitconditions}   are
+successfully  met,  the output  of  the  binary search  algorithm  is  set to  a
+logical~1.  If any  of these  conditions  fail, then  the output  is assigned  a
+logical~0. Thus, the  search vector in this customised  search strategy consists
+of  only two  possibilities,~0 and~1.  For very  low layer  counts, the  applied
+power  densities  are very  high.  Therefore,  one  of  the exit  conditions  in
+\cref{sec:accexitconditions} is likely to fail.  For very high layer counts, the
+power  densities  are  very  low,  implying  that  acceleration  runs  shall  be
+successful.  There exists  a critical  transition point  \viz{} the  first layer
+count for  which the exit  condition toggles from~0  to~1. Through a  process of
+systematically bisecting the layer search space, the optimal layer value can be
+arrived at. An alternative to using the
+
 \subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
 
 \subsection{Electrode thickness ratio for capacity balancing}\label{sec:electroderatio}
