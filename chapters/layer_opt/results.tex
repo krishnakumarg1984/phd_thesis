@@ -150,25 +150,6 @@ layer choices for the \gls{bev} and \gls{phev} platforms respectively .
 
 \subsection{Fast charging studies}
 
-Figures~\ref{fig:fig_generate_heatmap_BEV}
-and~\ref{fig:fig_generate_heatmap_PHEV} show  the results produced by  the layer
-optimisation framework  for the \gls{bev} and  \gls{phev} platforms respectively
-when considering fast charging requirements. Each heat~map in these figures show
-the optimal  number of  layers~$n^\text{fastchg}_\text{opt}$ for  every possible
-combination  of initial  and ambient  temperatures for  four different  charging
-powers. In each case, the  values of $n^\text{fastchg}_\text{opt}$ correspond to
-the  temperature  combination  \mbox{$(T_\text{init},T_\text{sink})  =  (15,  5)
-\si{\degreeCelsius}$}  as  shown  in  \cref{fig:fig_generate_heatmap_BEV}.  This
-represents the  least number of  layers required to  fast charge the  pack under
-\gls{cp} conditions until  the target \gls{soc} is reached.  The charging scheme
-additionally considers the constraint that the cell temperature must stay within
-\mbox{$T_\text{max}=  \SI{55}{\degreeCelsius}$}. Furthermore,  its voltage  must
-remain less than or equal  to \mbox{$V_\text{max} = \SI{4.22}{\volt}$}. Finally,
-the charging algorithm is plating-aware \ie{}  the charging stops as soon as the
-concentration at the particle surface reaches the maximum possible concentration
-limit, thereby preventing  lithium plating at the surface  of negative electrode
-particles.
-
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
         \centering
@@ -189,21 +170,25 @@ particles.
     \end{minipage}
 \end{figure}
 
-% \begin{figure}[!bp]
-%     \begin{minipage}[t]{\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{fig_generate_heatmap_PHEV}
-%         \captionsetup{labelsep=note}
-%         \caption[Optimal cell layer configurations for the \gls{phev}, presented for a range of
-%         fast charging powers and thermal conditions]{Optimal cell layer configurations for the \gls{phev}, presented for a range of
-%         fast charging powers and thermal conditions.}
-%         \label{fig:fig_generate_heatmap_PHEV}
-%         \mpfootnotes[1]
-%         \footnote{This figure was created by \mbox{Ian Campbell} who asserts copyright,
-%             with intellectual contributions from and the right to use asserted by
-%         \mbox{Krishnakumar Gopalakrishnan}.}
-%     \end{minipage}
-% \end{figure}
+Figures~\ref{fig:fig_generate_heatmap_BEV}
+and~\ref{fig:fig_generate_heatmap_PHEV} show  the results produced by  the layer
+optimisation framework  for the \gls{bev} and  \gls{phev} platforms respectively
+when considering fast charging requirements. Each heat~map in these figures show
+the optimal  number of  layers~$n^\text{fastchg}_\text{opt}$ for  every possible
+combination  of initial  and ambient  temperatures for  four different  charging
+powers. In each case, the  values of $n^\text{fastchg}_\text{opt}$ correspond to
+the  temperature  combination  \mbox{$(T_\text{init},T_\text{sink})  =  (15,  5)
+\si{\degreeCelsius}$}  as  shown  in  \cref{fig:fig_generate_heatmap_BEV}.  This
+represents the  least number of  layers required to  fast charge the  pack under
+\gls{cp} conditions until  the target \gls{soc} is reached.  The charging scheme
+additionally considers the constraint that the cell temperature must stay within
+\mbox{$T_\text{max}=  \SI{55}{\degreeCelsius}$}. Furthermore,  its voltage  must
+remain less than or equal  to \mbox{$V_\text{max} = \SI{4.22}{\volt}$}. Finally,
+the charging algorithm is plating-aware \ie{}  the charging stops as soon as the
+concentration at the particle surface reaches the maximum possible concentration
+limit, thereby preventing  lithium plating at the surface  of negative electrode
+particles.
+
 
 Thus,   using    the   model-based    design   strategy   presented    in   this
 chapter,   an   effective    cell   design   is   achieved    which   helps   to
@@ -225,7 +210,8 @@ suggests that the number of layers must be large enough to prevent plating.
 passed versus  the number of  layers during fast  charging. In these  plots, the
 theoretical  capacity~$Q_\text{n}$ of  the cell  versus the  layer count~$n$  is
 represented by the linear downward-sloping line.
-\begin{figure*}[p]
+
+\begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
         \centering \includegraphics[width=\textwidth,trim=4 2 3 4,clip]{fig_capacity_quadrants.pdf}
         \captionsetup{labelsep=note}
@@ -248,7 +234,7 @@ represented by the linear downward-sloping line.
             with intellectual contributions from and the right to use asserted by
         \mbox{Krishnakumar Gopalakrishnan}.}
     \end{minipage}
-\end{figure*}
+\end{figure}
 
 For any layer  choice, $Q_\text{n}$ therefore represents the upper  bound on the
 charge  that can  be  passed  during charging.  For  both  constant current  and
