@@ -4,6 +4,21 @@
 
 % \afterpage{\clearpage}
 
+The  methodology adopted  by the  proposed layer  optimisation framework  can be
+explained by  using the  flow diagram in  \cref{fig:fig_strategy_schematic}. The
+power  handled by  the cell  during normal  operation (evaluated  by considering
+various  drivecycles)  is   much  lower  than  that  experienced   by  the  cell
+during  acceleration  (discharge)  and  fast-charging  (charge)  scenarios.  See
+\cref{sec:resultslayeropt} for  a brief  summary of the  peak and  median powers
+across all  standard drivecycles.  Therefore, from a  design perspective,  it is
+sufficient  to consider  the power  requirements  for these  two extreme  cases.
+Hence,  the schematic  in  \cref{fig:fig_strategy_schematic} can  be studied  by
+broadly dividing the flow diagram into two parts ---
+\begin{enumerate*}[label=\roman*)]
+    \item an acceleration pathway primarily consisting of blocks shaded in grey, and
+    \item a fast-charging pathway predominantly composed of blocks shaded in cyan.
+\end{enumerate*}
+
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
         \centering
@@ -28,6 +43,101 @@
     \end{minipage}
 \end{figure}
 
+As explained in the legend key of \cref{fig:fig_strategy_schematic}, blocks with
+a light  grey border  represent input  data/parameters for  computations. Blocks
+with a standard black border  represent computations common to both acceleration
+and fast  charging pathways. The design  output is given by  the double-bordered
+block at the bottom centre  of \cref{fig:fig_strategy_schematic}. Other types of
+blocks  and arrows  are  appropriately listed  in  the legend  key.  To aid  the
+understanding of the  layer optimisation framework, the reader  is encouraged to
+correlate  the narrative  in this  section  with the  blocks and  arrows in  the
+schematic.
+
+
+
+\subsection{Acceleration pathway}
+
+The computations for acceleration-based layer  optimisation begins at the anchor
+block labelled `Start Acc.\ Calcs.'.
+
+\subsubsection*{Acceleration rate, final speed and acceleration time}
+
+The  first   step  is  the  determination   of  the  rate  of   acceleration  to
+be  used  for  the  computing   the  power  requirements  for  accelerating  the
+\gls{xeV}  from  standstill.  For  the  sake of  claiming  green  subsidies  and
+other  regulatory reasons,  vehicular  standards for  electrified transport  are
+codified by  various regulatory agencies  and standardisation bodies  (\eg{} the
+SAE~J1772 standard~\cite{Sae2010}).  These typically specify a  minimum required
+acceleration  rate for  the vehicle  under consideration  to be  certified as  a
+road-faring electric vehicle. Manufacturers have their own specifications, which
+typically exceed the minimum standards. However, for certain classes of electric
+vehicles such  as golf  carts, the  manufacturer-specified standards  might fall
+below that of a  roadworthy electric vehicle. In this case,  this thesis errs on
+the side of conservative design by choosing the higher of the two values.
+
+The   acceleration   rate   is   taken   to   be   the   simple   ratio   of   a
+pre-determined  final  speed~$v_\text{f}$  to  the time  taken  to  attain  that
+speed  from  standstill~$t_\text{f}$.  The  manufacturer-specified  acceleration
+rate~$a_\text{man.}$ is compared against the minimum acceleration rate specified
+by vehicular  standards~$a_\text{std.}$. The two \gls{spdt}  switches assign the
+final speed~$v_\text{f}$  and acceleration time~$t_\text{f}$ to  the values from
+the  appropriate source  depending on  which of  the two  acceleration rates  is
+higher.
+
+\subsubsection*{Acceleration power at the wheels}
+
+The  next  step  is  to  calculate   the  acceleration  power  required  at  the
+driving wheels~$P_\text{w}$.  Using the  governing equations from  basic vehicle
+dynamics~\cite{Maksimovic2012}, the power at the wheels is given by
+\cref{eq:wheelpower}.
+\begin{subequations}\label{eq:wheelpower}
+    \begin{align}
+        P_\text{w}     & = P_\text{mass} + P_\text{drag} + P_\text{roll} + P_\text{grade} \tag{\ref*{eq:wheelpower}}                  \\
+        P_\text{mass}  & = \frac{1}{2} \frac{M_\text{v}(n)}{t_\text{a}} \left(v_\text{b}^2 + v_\text{f}^2\right) \label{eq:masspower} \\
+        P_\text{drag}  & = \frac{1}{2} \left(\rho_\text{air} C_\text{d} A_\text{v}v_\text{f}^3\right) \label{eq:dragpower}            \\
+        P_\text{roll}  & = C_\text{r} M_\text{v}(n) g v_\text{f} \label{eq:rollpower}                                                 \\
+        P_\text{grade} & = M_\text{v}(n) Z g v_\text{f} \label{eq:gradepower}
+    \end{align}
+\end{subequations}
+
+The  individual  components  contributing   to  the  summation  for  wheel-power
+computation   presented   in    \cref{eq:wheelpower}   is   briefly   explained.
+$P_\text{mass}$~represents  the  power  required  to  accelerate  the  vehicle's
+mass.  $P_\text{drag}$~denotes the  power  required to  overcome air  resistance
+while $P_\text{roll}$~represents  that required to overcome  rolling resistance.
+Finally,  $P_\text{grade}$~represents the  power  required to  negotiate a  road
+gradient.  Except  for  $M_\text{v}(n)$  which  is  described  next,  all  terms
+in  the  \gls{rhs}  of  \crefrange{eq:masspower}{eq:gradepower}  are  constants.
+Each  of  these  terms   is  explained  in  tables~\ref{tbl:CommonVehicleParams}
+and~\ref{tbl:UniqueVehicleParams}  along with  their  numerical  values used  in
+simulation.
+
+\subsubsection*{Layer dependent vehicle mass}
+
+Changing  the layer  count used  in  each cell  changes  the mass  of the  cell.
+This  in-turn  affects the  mass  of  the  pack,  which further  influences  the
+overall  vehicle  mass.  Thus,  for precise  computation  of~$P_\text{mass}$  in
+\cref{eq:masspower},  $M_\text{v}(n)$  is  the  vehicle's  mass  computed  as  a
+function of number of layers~$n$.
+
+In  the  schematic  of~\cref{fig:fig_strategy_schematic},  this  layer-dependent
+calculation of  mass of all cells  in the pack~$M_\text{cells}$ is  shown by the
+product of  the signal  labelled $m_\text{cell}$ and  the triangular  gain block
+representing the overall number of cells in the pack~$n_\text{cells}$.
+\begin{equation}\label{eq:massofallcells}
+    M_\text{cells} = n \times m_\text{cell}
+\end{equation}
+
+The   mass    of   the   vehicle    is   given    by   the   sum    of   chassis
+mass~$M_\text{c}$,  vehicle  payload  $M_\text{p}$, pack  overhead  $M_\text{o}$
+and  the  layer-dependent  mass  of  all  cells  in  the  pack  $M_\text{cells}$
+shown   in   \cref{eq:massofallcells}.   The    computation   of   mass   of   a
+single   cell    $m_\text{cell}$   is    detailed   in   the    section   titled
+\hyperlink{href:layerdependentcellmass}{`Computation  of   layer-dependent  cell
+mass'}.
+
+\subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
+
 \subsection{Electrode thickness ratio for capacity balancing}\label{sec:electroderatio}
 
 A key  idea of the layer  optimisation scheme is that  for computing the
@@ -38,16 +148,16 @@ electrodes  to equalise  their loading and is computed as follows.
 
 Equating  the active material volume of both electrodes,
 \begin{equation}
-    A_\text{elec,pos}l_\text{pos}  \varepsilon_\text{s,pos} = A_\text{elec,neg}l_\text{neg}  \varepsilon_\text{s,neg} \label{eqn:electrodeCapacity}\\
+    A_\text{elec,pos}l_\text{pos}  \varepsilon_\text{s,pos} = A_\text{elec,neg}l_\text{neg}  \varepsilon_\text{s,neg} \label{eq:electrodeCapacity}\\
 \end{equation}
 
 Neglecting  overhangs   of  the  negative  electrode   (typically  below
 $\SI{2}{\milli\meter}$ to  avoid plating  at the edges),  both electrode
 materials have the same cross-sectional area~$A_\text{elec}$. Therefore,
-\cref{eqn:electrodeCapacity} reduces to
+\cref{eq:electrodeCapacity} reduces to
 \begin{align}
     \cancel{A_\text{elec}}l_\text{pos}  \varepsilon_\text{s,pos} & = \cancel{A_\text{elec}}l_\text{neg}  \varepsilon_\text{s,neg}  \\
-    l_\text{pos}  \varepsilon_\text{s,pos}                       & = l_\text{neg}  \varepsilon_\text{s,neg}\label{eqn:electrodeCapequalarea}
+    l_\text{pos}  \varepsilon_\text{s,pos}                       & = l_\text{neg}  \varepsilon_\text{s,neg}\label{eq:electrodeCapequalarea}
 \end{align}
 
 For the reference cell under consideration, the length and breadth of the cell's
@@ -73,10 +183,10 @@ which  implies  that their  ratio  is  also  a constant.  The  electrode
 thickness ratio~$l_\text{ratio}$ is obtained as
 \begin{alignat}{2}
     l_\text{ratio} & = \frac{l_\text{neg}}{l_\text{pos}}                                                                                  &  & \qquad\text{(by definition)}                                          \\
-    {}             & = \frac{\varepsilon_\text{s,pos}}{\varepsilon_\text{s,neg}}                                                          &  & \qquad\text{(rearranging \cref{eqn:electrodeCapequalarea})}           \\
+    {}             & = \frac{\varepsilon_\text{s,pos}}{\varepsilon_\text{s,neg}}                                                          &  & \qquad\text{(rearranging \cref{eq:electrodeCapequalarea})}           \\
     {}             & = \frac{1-\varepsilon_\text{pos} - \varepsilon_\text{fi,pos}}{1-\varepsilon_\text{neg} - \varepsilon_\text{fi,neg}}  &  & \qquad\text{(by definition)}                                          \\
     {}             & = \frac{1- 0.385 - 0.025}{1 - 0.485 - 0.033}                                                                         &  & \qquad\text{(substituting values from \cref{tbl:lcoSimParamsSPMp2d})} \\
-    l_\text{ratio} & = 1.22\label{eqn:electrodeThicknessRatio}
+    l_\text{ratio} & = 1.22\label{eq:electrodeThicknessRatio}
 \end{alignat}
 
 % Do not forget to quote the value of cs_sat from layer opt paper table and show
