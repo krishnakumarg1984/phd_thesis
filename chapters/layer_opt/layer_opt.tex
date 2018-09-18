@@ -5,7 +5,28 @@
 \graphicspath{{chapters/layer_opt/figures/}}
 % ----------------------- contents from here ------------------------
 
-\chapter{Model-based Design Of Pouch Cells}\label{ch:modelbaseddesign}
+\chapter[Model-based Design Of Pouch Cells]{%
+    Model-based  Design Of  Pouch Cells\footnote{\textbf{Attribution  of content}  \
+        The  groundwork for  converting the  existing computer  code (LIONSIMBA~v1.0$x$)
+        into  a suitable  form  for  layer optimisation  was  initiated  by this  thesis
+        author, \mbox{Krishnakumar  Gopalakrishnan}. However, with the  exception of the
+        spectral scheme,  for which \mbox{Krishnakumar Gopalakrishnan}  was responsible,
+        and  the  zero-dimensional  thermal  model for  which  \mbox{Ian  Campbell}  was
+        responsible,  the  advancements  inherent  to  the  enhanced  computer  software
+        (LIONSIMBA~v2.0) were made in  equal parts by \mbox{Krishnakumar Gopalakrishnan}
+        and  \mbox{Ian  Campbell}.  These  advancements would  not  have  been  possible
+        without the  contributions and support of  Dr.~Davide Raimondo who served  as an
+        unofficial supervisor  for the  work reported  in this  chapter. The  concept of
+        layer reconfiguration  for energy  and power  trade-off, the  layer optimisation
+        framework, and the  source code by which it is  implemented were co-developed in
+        equal  parts  by  \mbox{Krishnakumar Gopalakrishnan}  and  \mbox{Ian  Campbell}.
+        \mbox{Krishnakumar Gopalakrishnan} was the  major contributor to the development
+        of the binary search while \mbox{Ian  Campbell} was the major contributor in the
+        analysis of results. \mbox{Parvathy  Chittur Subramanianprasad} was instrumental
+        in  developing the  analytical expression  for  the maximum  possible number  of
+    layers~$n_\text{max}$.}%
+}\label{ch:modelbaseddesign}
+
 \vspace*{-1em}
 \startcontents[chapters]
 \printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
@@ -17,25 +38,7 @@
 %% A brief  1-2 sentences throwback to  the literature review, referring  what I
 %% will say in this chapter.
 
-\section[Introduction]{Introduction\protect\footnote{\textbf{Attribution      of
-        content}  \   The  groundwork   for  converting   the  existing   computer  code
-        (LIONSIMBA~v1.0$x$) into a suitable form for layer optimisation was initiated by
-        this  thesis  author,  \mbox{Krishnakumar  Gopalakrishnan}.  However,  with  the
-        exception of  the spectral scheme, for  which \mbox{Krishnakumar Gopalakrishnan}
-        was  responsible, and  the zero-dimensional  thermal model  for which  \mbox{Ian
-        Campbell} was  responsible, the advancements  inherent to the  enhanced computer
-        software  (LIONSIMBA~v2.0)  were  made  in  equal  parts  by  \mbox{Krishnakumar
-        Gopalakrishnan} and \mbox{Ian Campbell}. These  advancements would not have been
-        possible without the contributions and support of Dr.~Davide Raimondo who served
-        as an unofficial  supervisor for the work reported in  this chapter. The concept
-        of layer reconfiguration for energy  and power trade-off, the layer optimisation
-        framework, and the  source code by which it is  implemented were co-developed in
-        equal  parts  by  \mbox{Krishnakumar Gopalakrishnan}  and  \mbox{Ian  Campbell}.
-        \mbox{Krishnakumar Gopalakrishnan} was the  major contributor to the development
-        of the binary search while \mbox{Ian  Campbell} was the major contributor in the
-        analysis of results. \mbox{Parvathy  Chittur Subramanianprasad} was instrumental
-        in  developing the  analytical expression  for  the maximum  possible number  of
-layers~$n_\text{max}$.}}\label{sec:layeroptintro}
+\section[Introduction]{Introduction}\label{sec:layeroptintro}
 \input{chapters/layer_opt/intro_layer_opt}
 
 \section{Energy/Power Trade-off in Pouch Cells by Layer Selection}\label{sec:energypowertradeoff}
