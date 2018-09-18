@@ -169,7 +169,7 @@ criteria
 \begin{enumerate}
     \item the maximum possible values of cell temperature~$T_\text{max}$,
     \item the minimum allowed terminal voltage~$V_\text{min}$, and
-    \item the lowest allowed cell \gls{soc}~$z_ztext{min}$.
+    \item the lowest allowed cell \gls{soc}~$z_\text{min}$.
 \end{enumerate}
 This helps to determine whether the cell constructed from the present layer
 choice is able to successfully satisfy the acceleration power demands. These
@@ -260,51 +260,39 @@ insights gained from present empirical designs.
 
 
 % \subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
-\subsection{Computation of layer-dependent cell mass}\label{sec:massofonecell}
 
 \subsection{Electrode thickness ratio for capacity balancing}\label{sec:electroderatio}
 
-A key  idea of the layer  optimisation scheme is that  for computing the
-physical  lengths  of electrode  as  a  function  of number  of  layers,
-the  ratios  of  their thicknesses~$l_\text{ratio}$  is  held  constant.
-This  coefficient is  germane to  the concept  of capacity  balancing of
-electrodes  to equalise  their loading and is computed as follows.
+A key idea of the layer optimisation  scheme is that, for computing the physical
+lengths of  electrodes as a  function of number of  layers, the ratios  of their
+thicknesses~$l_\text{ratio}$ is  held constant.  This coefficient is  germane to
+the concept of  capacity balancing of electrodes to equalise  their loading. The
+computation of this $l_\text{ratio}$ parameter is discussed here.
 
 Equating  the active material volume of both electrodes,
 \begin{equation}
     A_\text{elec,pos}l_\text{pos}  \varepsilon_\text{s,pos} = A_\text{elec,neg}l_\text{neg}  \varepsilon_\text{s,neg} \label{eq:electrodeCapacity}\\
 \end{equation}
 
-Neglecting  overhangs   of  the  negative  electrode   (typically  below
-$\SI{2}{\milli\meter}$ to  avoid plating  at the edges),  both electrode
-materials have the same cross-sectional area~$A_\text{elec}$. Therefore,
+Neglecting   overhangs    of   the    negative   electrode    (typically   below
+$\SI{2}{\milli\meter}$    to    avoid    plating    at    the    edges),    both
+electrodes  have  the   same  cross-sectional  area~$A_\text{elec}$.  Therefore,
 \cref{eq:electrodeCapacity} reduces to
 \begin{align}
     \cancel{A_\text{elec}}l_\text{pos}  \varepsilon_\text{s,pos} & = \cancel{A_\text{elec}}l_\text{neg}  \varepsilon_\text{s,neg}  \\
     l_\text{pos}  \varepsilon_\text{s,pos}                       & = l_\text{neg}  \varepsilon_\text{s,neg}\label{eq:electrodeCapequalarea}
 \end{align}
 
-For the reference cell under consideration, the length and breadth of the cell's
-pouch is  obtained from the \gls{bev}  manufacturer~\cite{GMBoltBatteryDims} and
-are listed in \cref{tbl:lcoSimParamslayeropt}.
+% For    the     reference    cell     under    consideration,     the    length
+% and    breadth    of    the    cell's   pouch    is    obtained    from    the
+% \gls{bev}    manufacturer~\cite{GMBoltBatteryDims}   and    are   listed    in
+% \cref{tbl:lcoSimParamslayeropt}.
 
-% % double-check if electrode area or overall area or what ? And uncomment later
-% on
+Owing to  the reasons outlined in  \cref{subsec:layeroptassumptions}, the volume
+fractions  of  the  electrode  materials  are  assumed  to  be  constant,  which
+implies  that  their   ratio  is  also  a  constant.   The  electrode  thickness
+ratio~$l_\text{ratio}$ is therefore obtained as
 
-
-% As  a  first-order  approximation  the
-% product of  these dimensions can  be assumed  to be the  active material
-% cross-sectional  area   (although  in  practice,  the   planar  area  of
-% the  stack  needs to  be  slightly  smaller  to be  accommodated  inside
-% the  pouch).  Finally,  in  line   with  the  assumptions  discussed  in
-% \cref{subsec:layeroptassumptions},  similar  to  the pouch  height,  the
-% cross-sectional geometry (length  and breadth) of the cell  is also held
-% constant throughout the layer optimisation process.
-
-Owing to the reasons  outlined in \cref{subsec:layeroptassumptions}, the
-volume fractions of the electrode  materials are assumed to be constant,
-which  implies  that their  ratio  is  also  a constant.  The  electrode
-thickness ratio~$l_\text{ratio}$ is obtained as
 \begin{alignat}{2}
     l_\text{ratio} & = \frac{l_\text{neg}}{l_\text{pos}}                                                                                  &  & \qquad\text{(by definition)}                                          \\
     {}             & = \frac{\varepsilon_\text{s,pos}}{\varepsilon_\text{s,neg}}                                                          &  & \qquad\text{(rearranging \cref{eq:electrodeCapequalarea})}           \\
@@ -313,13 +301,150 @@ thickness ratio~$l_\text{ratio}$ is obtained as
     l_\text{ratio} & = 1.22\label{eq:electrodeThicknessRatio}
 \end{alignat}
 
+\subsection{Computation of electrode thicknesses per layer}
+
+Following  the  assumptions  listed  in  \cref{subsec:layeroptassumptions},  the
+exterior dimensions of the pouch is  held constant. Furthermore, as explained in
+\cref{sec:surfareaperlayer}, the  thickness of the electrochemical  stack within
+the pouch  cell~$L_\text{stack}$ is also  considered to be  constant. Therefore,
+when  the number  of  layers forming  the  stack is  varied,  this implies  that
+the  only quantities  that  may be  allowed  to  vary is  the  thickness of  the
+two  electrodes within  each  layer  \ie{} higher  the  layer  count, lower  the
+electrode  thicknesses  and  vice-versa.  In  this  section,  this  relationship
+between  the  number  of  layers~$n$  and  the  electrode  thicknesses~$l_j\  (j
+\in  {\text{neg},\text{pos}})$   is  quantified  with   the  help  of   the  key
+$l_\text{ratio}$ parameter obtained in \cref{sec:electroderatio}.
+
+Figure~2   of   Northrop~\etal~\cite{Northrop2011}  (partially   reproduced   in
+\cref{fig:topologies})  considers two  possible  configurations  of stacking  up
+layers within a pouch cell. In the first topology shown in \cref{fig:topology1},
+the  outermost   electrodes  are  made   up  of  the  negative   electrode  with
+corresponding copper current collectors.  In the alternative configuration shown
+in \cref{fig:topology2},  the negative electrode  is the outermost  electrode at
+one end of the stack while  the positive electrode forms the outermost electrode
+at its  other end.  Thus, the  two outermost current  collectors are  consist of
+Copper  and  Aluminium  respectively.  The  formulae  derived  here  is  equally
+applicable to both  these cases. Although the use of  positive electrode at both
+extrema of the stack is not studied, the approach presented here may be extended
+to this case without difficulty.
+
+\begin{figure}[!htbp]
+    \centering
+    \begin{subfigure}[b]{0.725\textwidth}
+        %
+        \includegraphics[width=\linewidth]{layer_stack2}
+        %
+        \caption{Topology 1}
+        \label{fig:topology1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.225\textwidth}
+        \includegraphics[width=\linewidth]{layer_stack}
+        \caption{Topology 2}
+        \label{fig:topology2}
+    \end{subfigure}
+    \caption[Two possile topologies for arranging the layers within a pouch
+    cell]
+    {Two possible topologies for arranging the layers within a pouch
+        cell. In the first arrangement shown in the left sub-figure, the two
+        outermost electrodes correspond to the negative electrode and hence have
+        Copper current collectors at both extrema. In the second arrangement
+        shown in the right sub-figure, a heterogeneous arrangement wherein the
+        outermost electrodes are a mix of positive and negative electrode \ie{}
+        the stack contains one Copper current collector and one Aluminium
+    current collector at its either end. Figure adapted from
+Northrop~\etal~\cite{Northrop2011}}
+    \label{fig:topologies}
+\end{figure}
+
+The stack height  may be obtained by  the sum of thicknesses  of the constituent
+regions
+\begin{align}
+    L_\text{stack} &= \sum_jL_j(n) + L_\text{Al}(n) + L_\text{Cu}(n) \qquad\forall \ n \in \mathbb{N},\ j \in \{\text{pos, sep, neg}\} \label{eq:stackThickness}\\
+    \shortintertext{where}
+    L_j(n) &= n l_j\tag{\ref{eq:stackThickness}a}\\
+    L_\text{Al}(n) &=
+    \begin{cases}
+        \left(\frac{n}{2}\right   )   l_\text{Al},& \text{if $n$ is even} \\
+        \left(\frac{n+1}{2}\right )   l_\text{Al},& \text{if $n$ is odd}
+    \end{cases}\tag{\ref{eq:stackThickness}b}\\
+    L_\text{Cu}(n) &= \begin{cases}
+        \left(\frac{n+2}{2}\right )  l_ \text{Cu},& \text{if $n$ is even}\\
+        \left(\frac{n+1}{2}\right )  l_ \text{Cu},& \text{if $n$ is odd}\\
+    \end{cases}\tag{\ref{eq:stackThickness}c}
+\end{align}
+
+The combined thickness of the  two electrode regions in each layer~$l_\text{ce}$
+can be then obtained by rearranging \cref{eq:stackThickness}
+\begin{equation}
+    l_\text{ce} = \frac{L_\text{stack} - \ceil*{0.5(n+1)}l_\text{Cu} - \ceil*{0.5n}l_\text{Al}}{n} - l_\text{sep}\label{eq:combinedElectrodeThickness}\\
+\end{equation}
+
+The individual electrode thicknesses can then be obtained from
+\cref{eq:combinedElectrodeThickness} by substituting $l_\text{ratio}$ and
+performing simple algebraic manipulations
+\begin{align}
+    l_\text{pos} &= \frac{l_\text{ce}}{l_\text{ratio}+1}\label{eq:lpos}\\
+    l_\text{neg} &= l_\text{ce} - l_\text{pos}\label{eq:lneg}
+\end{align}
+
+The   values   of   the   two  electrode   thicknesses   thus   obtained   using
+\Crefrange{eq:lpos}{eq:lneg} are used as the computational domain lengths in the
+\gls{p2d} simulations. Therefore, these thicknesses  have to be recomputed every
+time the trialled number of layers~$n$ is updated by the search algorithm.
+
+\subsection{Computation of layer-dependent cell mass}\label{sec:massofonecell}
+
+The mass of the cell varies as a  function of number of layers. This is because,
+the  thicknesses of  the two  electrode within  each layer  changes each  time a
+different layer choice is simulated. For a given layer choice~$n$, the cell mass
+is computed as per \cref{eq:cellmass}.
+\begin{subequations}\label{eq:cellmass}
+\begin{align}
+     m_\mathrm{cell} &= \sum\limits_{j}m_j + m_\mathrm{Al} + m_\mathrm{Cu} + m_\mathrm{LiPF_6} + m_\mathrm{pouch}, \; j \in  \{\text{pos, sep, neg}\}\tag{\ref*{eq:cellmass}}\\
+     m_j &=   A_\mathrm{elec}  L_j \varepsilon_j\rho_j\label{eq:mj}\\
+      m_\text{Al} &=   A_\mathrm{elec}  L_\text{Al} \rho_\text{Al}\label{eq:Almass}\\
+      m_\text{Cu} &=   A_\mathrm{elec}  L_\text{Cu} \rho_\text{Cu}\label{eq:cumass}\\
+      m_\mathrm{LiPF_6} &=   A_\mathrm{elec} \biggl(\sum\limits_{j} L_j (1-
+      \varepsilon_{\text{fi}_j}-\varepsilon_j)\biggr)\rho_\mathrm{LiPF_6}\label{eq:lipf6mass} \\
+      m_\mathrm{pouch} &= 2H_\mathrm{pouch} L_\mathrm{pouch} W_\mathrm{pouch}
+      \rho_\mathrm{pouch}\label{eq:pouchmass}
+ \end{align}
+\end{subequations}
+
+
+\Cref{eq:cellmass}   consists  of   both   constant  components   as  well   as
+components  that   vary  with   the  number  of   layers.  For   instance,  the
+mass  of  the  electrolyte~$m_\text{LiPF6}$  as  well  as  that  of  the  pouch
+material~$m_\text{pouch}$ are only computed once.
+
+\subsection{Computation of layer-dependent cell specific heat}
+
+A lumped thermal  model of the cell given by  \cref{eq:thermalmodel} is used to
+model  the  thermal  dynamics  of  the  cell.  This  thermal  model  is  coupled
+with  the  electrochemical  model  equations  of the  \gls{p2d}  model  for  the
+simulations  used to  determine  the optimal  layer  configurations. The  cell's
+temperature~$T_\text{cell}(t)$ is also obtained using this lumped thermal model.
+\begin{align}
+	m_\text{cell} c_\text{avg} \frac{dT}{dt} &= -h A_\text{tabs} \left( T(t) - T_\text{sink} \right) + Q_\text{pol} & \label{eq:thermalmodel}\\
+	Q_\text{pol} &= A_\text{cell} \left|i\right|\cdot\left|U - V\right| & \tag{\ref{eq:thermalmodel}a}\\
+	U &= U_\text{pos}(\theta_\text{pos})\big|_{x = x_\text{pos/Alcc}} - U_\text{neg}(\theta_\text{neg})\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}b}\\
+	V &= \phi_\text{s}\big|_{x = x_\text{pos/Alcc}} - \phi_\text{s}\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}c}
+\end{align}
+
+The average specific heat of the cell, $c_\text{avg}$ used in
+\cref{eq:thermalmodel} is a function of the number of layers and is given by
+\cref{eq:spheat}.
+\begin{equation}\label{eq:spheat}
+    c_\mathrm{avg} = \frac{1}{m_\text{cell}} \biggl[\sum_jc_jm_j + c_\text{Al}m_\text{Al} + c_\text{Cu}m_\text{Cu} + c_\mathrm{LiPF_6}m_\mathrm{LiPF_6} + c_\mathrm{pouch}m_\mathrm{pouch}\biggr],\quad j \in \{\text{pos, sep, neg}\}
+\end{equation}
+
+The first  three terms  in~\cref{eq:spheat} is  evaluated as  a function  of the
+number  of  layers~$n$  by  substituting the  appropriate  layer-dependent  mass
+values computed in~\crefrange{eq:mj}{eq:cumass}. The  latter two terms \ie{} the
+specific heats  of the electrolyte material  and the pouch are  held constant as
+their corresponding mass values do not vary with the number of layers used.
+
 % Do not forget to quote the value of cs_sat from layer opt paper table and show
 % calculation inline. Might even go into the code
 
-\subsection{Power inputs considered}
-
-P2D model  equations are developed  for bi-directional input power.  xEV battery
-pack has  constant power input,  if the  installed power capability  of charging
-stations  is  fully  utilised.  Equation  (1)  describes  vehicle  dynamics  for
-acceleration  and  power  demand.  For  fast  charging,  the  power  electronics
-components of all grid chargers possess  a peak power delivery rating.
