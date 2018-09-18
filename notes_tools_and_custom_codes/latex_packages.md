@@ -75,6 +75,7 @@ chemformula
 chemmacros
 childdoc
 chkfloat
+chngcntr
 circuitikz
 cleveref
 clrdblpg
