@@ -54,7 +54,7 @@ narrative in this section with the blocks and arrows in the schematic.
 
 
 
-\subsection{Acceleration pathway}
+\subsection{Acceleration pathway}\label{sec:accpathway}
 
 The computations for acceleration-based layer  optimisation begins at the anchor
 block labelled `Start Acc.\ Calcs.'.
@@ -444,6 +444,74 @@ number  of  layers~$n$  by  substituting the  appropriate  layer-dependent  mass
 values computed in~\crefrange{eq:mj}{eq:cumass}. The  latter two terms \ie{} the
 specific heats  of the electrolyte material  and the pouch are  held constant as
 their corresponding mass values do not vary with the number of layers used.
+
+\subsection{Fast-charging pathway}
+
+The  workflow describing  the optimal  layer calculation  for the  fast charging
+scenario begins  with the  anchor block labelled  `Start Fast-Charge  Calcs.' in
+\cref{fig:fig_strategy_schematic}. The charging algorithm used in this framework
+is based  upon the mobel-based strategy  proposed by Choe~\etal~\cite{Choe2013},
+wherein  the surface  concentration is  never allowed  to exceed  its saturation
+value.  Adopting  this charging  scheme  leads  to  a  robust cell  design  that
+is  resilient  to  lithium  plating.  A  major  departure  from  the  scheme  in
+Choe~\etal~\cite{Choe2013}  is the  fact that  the constant  current phase  used
+therein is  replaced by  a constant power  charging phase. This  is so  that the
+assumption of identical conditions across all  cells in the pack holds true (see
+\cref{subsec:layeroptassumptions} for  details). Furthermore, the  pulsing phase
+used to  top-up the cell's  \gls{soc} in Choe~\etal~\cite{Choe2013}  is omitted.
+This  is because,  the level~3  fast charging  specifications typically  require
+charging to a target \gls{soc} much lower than \SI{100}{\percent}.
+
+At     first,     the    charging     power     applied     at    the     pack's
+terminals~$P_\text{batt}^\text{fastchg}$ is scaled down by the overall number of
+cells in the pack.  This results in the charging power  experienced by each cell
+in  the  pack~$P_\text{cell}^\text{fastchg}$.  Following the  strategy  used  in
+\cref{sec:accpathway}, the power  at the cell's terminals is scaled  down by the
+electrochemically active  overall surface area~$A_\text{cell}$. This  yields the
+power density~$p^{\text{fastchg}}$ experienced by each  layer in the cell and is
+now  amenable  to be  applied  to  the  normalised  \gls{p2d} equations  of  the
+\gls{dfn} model.
+
+\subsubsection*{Thermally-coupled fast-charging simulations and exit conditions}
+
+The thermally-coupled \gls{p2d} model is then invoked. While the simulation
+runs, the cell's state is continually evaluated against various termination
+criteria.
+\begin{enumerate}
+    \item the maximum possible values of cell temperature~$T_\text{max}$,
+    \item the maximum allowed terminal voltage~$V_\text{max}$, and
+    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$\c_text{s,sat}$
+\end{enumerate}
+
+If any  of these three criteria  are violated, the simulation  immediately stops
+and the trialled layer  choice is deemed to not satisfy  the fast charging power
+requirements. The  search algorithm then  updates the layer choice  suitably and
+the entire workflow is repeated.
+
+If the  simulation for  any layer choice  passes the  aforementioned termination
+criteria,  the  \gls{soc}   achieved  by  the  cell  is   compared  against  the
+fast-charging   target~$z^\ast$.  If   $z(t)   >  z^\ast$,   then  the   present
+layer  choice  represents   the  minimum  (and  therefore   optimum)  value  for
+this  specific  fast  charging  application.  The  successful  layer  choice  is
+labelled~$n_\text{opt}^\text{fastchg}$. If the surface concentration has not yet
+reached the saturation limit, then the charge time is compared against the upper
+bound for  fast charging specifications~$t_\text{max}$. If  this preset duration
+has not been reached, then the simulation is allowed to advance further in time,
+with the  aforementioned termination criteria  being applied at  each subsequent
+time-step.
+
+The above process is repeated for  different combinations of initial and ambient
+temperatures~\mbox{$(T_\text{init},  T_\text{sink})$}.  The  largest  successful
+layer value from all temperature combinations is deemed as the canonical optimal
+design choice when  considering the fast charging power  demands. This concludes
+the  narrative describing  the  fast charging  pathway as  well  as the  overall
+methodology adopted in this layer optimisation framework.
+
+Finally, the  maximum of the  layer choices across all  temperature combinations
+from the  acceleration and  fast charging  scenarios is  deemed as  the globally
+optimal number of layers to be used  for this model-led cell design. The results
+obtained by applying this framework to a specific numerical example is presented
+next in \cref{sec:resultslayeropt}.
 
 % Do not forget to quote the value of cs_sat from layer opt paper table and show
 % calculation inline. Might even go into the code
