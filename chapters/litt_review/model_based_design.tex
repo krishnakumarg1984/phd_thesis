@@ -73,22 +73,57 @@ outside of this scope.
 There is  evidence that  computational modelling has  been successfully  used to
 facilitate the development of novel energy storage materials. The review article
 by Islam and Fisher~\cite{Islam2014} provides an overview of the use of computer
-simulation  into  gaining  a  deeper  insight into  the  working  of  new  types
-of  cathode  materials.  The  computer  models referred  to  in  this  work  are
-not  volume-averaged models  at the  cell-level, but  detailed ab-initio  models
-constructed using techniques  such as Density Functional  Theory~(DFT). While it
-is heartening  to see  such a comprehensive  review of  computational techniques
-applied to energy  storage, there are two distinct reasons  why the art reviewed
-therein does  not align  with the goals  of this thesis.  Firstly, in  the works
-reviewed in the  said article, computer simulation is used  primarily to aid the
-understanding needed to develop next generation of energy storage components and
-\emph{not} as a design tool. Secondly, this article uses computational modelling
-to study  structural properties  at the  meso and nano  scales. While  these are
-of  utmost importance  to  researchers involved  in  synthesising prototypes  of
-next  generation  of energy  storage  materials,  they  are not  applicable  for
-production-ready cell-designs at scale. Since this  thesis has a strong focus on
-providing readily  applicable solutions  to industry  for incumbent  lithium ion
-chemistries,  there is  no motivation  to pursue  the methods  discussed in  the
-aforementioned work for the design aspects of this thesis.
+simulation  into gaining  a deeper  insight  into the  working of  new types  of
+cathode  materials. Meng  and Arroyo-de~Domp~\cite{Meng2009}  also surveyed  the
+topic  of using  computational tools  for  ``design and  optimisation of  energy
+storage materials. The computer models referred  to in these review articles are
+not volume-averaged models  operating at the cell-level,  but detailed ab-initio
+models  constructed using  techniques such  as Density  Functional Theory~(DFT).
+While  it is  heartening  to  see such  comprehensive  studies of  computational
+techniques applied to energy storage, there are two distinct reasons why the art
+reviewed therein does not  align with the goals of this  thesis. Firstly, in the
+works  reviewed in  the  aforementioned articles,  computer  simulation is  used
+primarily  to facilitate  researchers' understanding  that can  help to  develop
+the  next generation  of energy  storage components.  The computational  methods
+presented  therein are  \emph{not}  employed as  design  tools. Secondly,  these
+articles use computational modelling to  study structural properties at the meso
+and nano scales. While these are of utmost importance to researchers involved in
+synthesising prototypes of next generation of energy storage materials, they are
+not applicable for production-ready cell-designs at scale. Since this thesis has
+a  strong  focus on  providing  readily  applicable  solutions to  industry  for
+incumbent lithium  ion chemistries, this thesis  author chose not to  pursue the
+methods discussed in  the aforementioned works for the  design studies discussed
+here.
+
+A    holistic   computational    structure    screening    was   performed    by
+Sendek~\etal~\cite{Sendek2017}  to  study  the  suitability  of  12831~candidate
+materials for their suitability as  solid state electrolytes. The same rationale
+presented  by  this thesis  author  \ie{}  rapid  prototyping  is cited  as  the
+motivation behind  this study undertaken  by the authors  of the said  work. The
+study  helped to  narrow down  the viable  family structures  to 21.  This study
+serves as the first concrete example  in this literature survey wherein computer
+simulation is  directly used as  a design tool for  components of a  lithium ion
+cell. The  scope of  this work falls  into the realm  of material  synthesis and
+applied  physics ---  topics outside  the educational  background and  expertise
+of  this  thesis  author.  Nevertheless,  the success  of  this  study  strongly
+motivates  the case  for  performing  a computational  study  of similar  scale.
+Instead of  screening out thousands  of candidate materials, the  work presented
+in  \cref{ch:modelbaseddesign} computationally  screens out  thousands of  layer
+configurations within a pouch cell and provides a simulation-based design tool.
+
+Curiously,  the use  of volume-averaged  models  for design  simulations at  the
+cell-scale \glspl{pbm}  has not  yet gained traction  despite the  prevalence of
+the  popular  \gls{p2d}  implementation  of  the  \gls{dfn}  model  in  academia
+for   applications   such   as  degradation   analysis   and   state-estimation.
+Ramadesigan~\etal~\cite{Ramadesigan2012} postulate that this could be attributed
+to the computational challenges presented by the complex reaction, diffusion and
+kinetics  of lithium  ion batteries  occurring  over different  length and  time
+scales.
+
+For design  problems at the  pack-level, such  as for thermal  management design
+optimisation, tools such as Battery  Design Studio (Cd-adapco), Star-CCM+, ANSYS
+Fluent and COMSOL's Batteries \& Fuel Cells Module have been used in
+
+
 
 
