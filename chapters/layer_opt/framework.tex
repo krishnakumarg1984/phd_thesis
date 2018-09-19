@@ -7,16 +7,16 @@
 The  methodology adopted  by the  proposed layer  optimisation framework  can be
 explained by  using the  flow diagram in  \cref{fig:fig_strategy_schematic}. The
 power  handled by  the cell  during normal  operation (evaluated  by considering
-various  drivecycles)  is   much  lower  than  that  experienced   by  the  cell
-during  acceleration  (discharge)  and  fast-charging  (charge)  scenarios.  See
-\cref{sec:resultslayeropt} for  a brief  summary of the  peak and  median powers
-across all  standard drivecycles.  Therefore, from a  design perspective,  it is
-sufficient  to consider  the power  requirements  for these  two extreme  cases.
-Hence,  the schematic  in  \cref{fig:fig_strategy_schematic} can  be studied  by
-broadly dividing the flow diagram into two parts ---
+various drivecycles)  is much  lower than  that experienced  during acceleration
+(discharge)  and  fast-charging (charge)  scenarios.  \Cref{sec:resultslayeropt}
+provides  a brief  summary of  the peak  and median  powers across  all standard
+drivecycles. Therefore, from a design  perspective, it is sufficient to consider
+the power  requirements for  these two  extreme cases.  Hence, the  schematic in
+\cref{fig:fig_strategy_schematic} can  be studied  by broadly dividing  the flow
+diagram into two parts ---
 \begin{enumerate*}[label=\roman*)]
-    \item an acceleration pathway primarily consisting of blocks shaded in grey, and
-    \item a fast-charging pathway predominantly composed of blocks shaded in cyan.
+    \item an acceleration pathway (primarily consisting of blocks shaded in grey), and
+    \item a fast-charging pathway (predominantly composed of blocks shaded in cyan).
 \end{enumerate*}
 
 \begin{figure}[p]
@@ -43,7 +43,7 @@ broadly dividing the flow diagram into two parts ---
     \end{minipage}
 \end{figure}
 
-As indicated in the legend  for \cref{fig:fig_strategy_schematic}, blocks with a
+As indicated by  the legend in \cref{fig:fig_strategy_schematic},  blocks with a
 light~grey border represent input  data/parameters for computations. Blocks with
 a standard black  border represent computations common to  both acceleration and
 fast charging pathways. The design output  is given by the double-bordered block
@@ -52,8 +52,6 @@ and arrows are appropriately listed in  the legend key. To aid the understanding
 of the layer  optimisation framework, the reader is encouraged  to correlate the
 narrative in this section with the blocks and arrows in the schematic.
 
-
-
 \subsection{Acceleration pathway}\label{sec:accpathway}
 
 The computations for acceleration-based layer  optimisation begins at the anchor
@@ -61,42 +59,41 @@ block labelled `Start Acc.\ Calcs.'.
 
 \subsubsection*{Determination of acceleration rate, final speed and acceleration time}
 
-The first step is  the determination of the rate of acceleration  to be used for
-the  computing  the  power  requirements for  accelerating  the  \gls{xeV}  from
-standstill.  For the  sake  of  claiming green  subsidies  and other  regulatory
-reasons,  vehicular   standards  for  electrified  transport   are  codified  by
-various  standardisation bodies  (\eg{} the  SAE~J1772 standard~\cite{Sae2010}).
-The  standards  published  by  these regulatory  agencies  typically  specify  a
-minimum required  acceleration rate  for the vehicle  under consideration  to be
-certified as a road-faring electric vehicle. Vehicle manufacturers often provide
-their  own  specifications,  which  typically exceed  these  minimum  standards.
-However,  for certain  classes  of electric  vehicles such  as  golf carts,  the
-manufacturer-specified standards might fall below  that of a roadworthy electric
-vehicle. This thesis  advocates a conservative design by choosing  the higher of
-the two values.
+The  first  step is  to  determine  the rate  of  acceleration  to be  used  for
+computing the power requirements for  accelerating an \gls{xeV} from standstill.
+For  various  other  regulatory  reasons, vehicular  standards  for  electrified
+transport are  codified by various  standardisation bodies (\eg{}  the SAE~J1772
+standard~\cite{Sae2010}). The  standards published by these  regulatory agencies
+typically specify  a minimum  required acceleration rate  for the  vehicle under
+consideration  to be  certified as  an electric  vehicle. Additionally,  vehicle
+manufacturers  often provide  their own  specifications, which  typically exceed
+these minimum standards. However, for  certain classes of electric vehicles such
+as golf carts,  the manufacturer-specified standards might fall below  that of a
+roadworthy  electric vehicle.  This thesis  advocates a  conservative design  by
+choosing the higher of the two values.
 
 The  acceleration  rate  is  calculated   by  dividing  a  pre-determined  final
 speed~$v_\text{f}$  by the  time~$t_\text{f}$ taken  to attain  that speed  from
 standstill.  The  manufacturer-specified  acceleration  rate~$a_\text{man.}$  is
 compared  against  the minimum  acceleration  rate  specified by  the  governing
-vehicular  standards~$a_\text{std.}$. The  two  \gls{spdt}  switches assign  the
-final speed~$v_\text{f}$ and acceleration time~$t_\text{f}$ to the corresponding
-values from  the appropriate source depending  on which of the  two acceleration
-rates is higher.
+vehicular   standards~$a_\text{std.}$.  The   two  \gls{spdt}   switches  assign
+the  final  speed~$v_\text{f}$  and  acceleration  time~$t_\text{f}$  using  the
+corresponding values from  the appropriate source depending on which  of the two
+acceleration rates is higher.
 
 \subsubsection*{Computation of acceleration power at the wheels}
 
 The  next  step  is  to  calculate   the  acceleration  power  required  at  the
 driving wheels~$P_\text{w}$.  Using the  governing equations from  basic vehicle
-dynamics~\cite{Maksimovic2012}, the power at the wheels is given by
-\cref{eq:wheelpower}.
+dynamics~\cite{Maksimovic2012}, the power at the wheels of an \gls{xeV} is given
+by \cref{eq:wheelpower}.
 \begin{subequations}\label{eq:wheelpower}
     \begin{align}
         P_\text{w}     & = P_\text{mass} + P_\text{drag} + P_\text{roll} + P_\text{grade} \tag{\ref*{eq:wheelpower}}                  \\
         P_\text{mass}  & = \frac{1}{2} \frac{M_\text{v}(n)}{t_\text{a}} \left(v_\text{b}^2 + v_\text{f}^2\right) \label{eq:masspower} \\
         P_\text{drag}  & = \frac{1}{2} \left(\rho_\text{air} C_\text{d} A_\text{v}v_\text{f}^3\right) \label{eq:dragpower}            \\
-        P_\text{roll}  & = C_\text{r} M_\text{v}(n) g v_\text{f} \label{eq:rollpower}                                                 \\
-        P_\text{grade} & = M_\text{v}(n) Z g v_\text{f} \label{eq:gradepower}
+        P_\text{roll}  & = C_\text{r} M_\text{v}(n)\, g v_\text{f} \label{eq:rollpower}                                                 \\
+        P_\text{grade} & = M_\text{v}(n)\, Z g v_\text{f} \label{eq:gradepower}
     \end{align}
 \end{subequations}
 
@@ -105,20 +102,20 @@ computation   presented   in    \cref{eq:wheelpower}   is   briefly   explained.
 $P_\text{mass}$~represents  the  power  required  to  accelerate  the  vehicle's
 mass.   $P_\text{drag}$~and  $P_\text{roll}$~denote   the  powers   required  to
 overcome   air  resistance   and  rolling   resistance  respectively.   Finally,
-$P_\text{grade}$~represents   the   power   required   to   negotiate   a   road
-gradient.  Except  for  $M_\text{v}(n)$  which  is  described  next,  all  terms
-in  the  \gls{rhs}  of  \crefrange{eq:masspower}{eq:gradepower}  are  constants.
-Each  of  these  terms   is  explained  in  tables~\ref{tbl:CommonVehicleParams}
+$P_\text{grade}$~represents  the power  required to  negotiate a  road gradient.
+Except for $M_\text{v}(n)$  which is described next, all terms  in the \gls{rhs}
+of \crefrange{eq:masspower}{eq:gradepower}  are constants. The  nomenclature for
+each  of  these  terms   is  explained  in  tables~\ref{tbl:CommonVehicleParams}
 and~\ref{tbl:UniqueVehicleParams}  along with  their  numerical  values used  in
 simulation.
 
 \subsubsection*{Computation of layer-dependent vehicle mass}
 
 Changing  the layer  count used  within a  cell changes  its mass.  This in-turn
-affects  the mass  of the  pack, which  further influences  the overall  vehicle
-mass. Hence, for precise  computation of~$P_\text{mass}$ in \cref{eq:masspower},
-$M_\text{v}(n)$  is the  vehicle's  mass computed  as a  function  of number  of
-layers~$n$.
+affects the mass of the pack, which further influences the overall vehicle mass.
+Hence, for  precise computation  of~$P_\text{mass}$ in  \cref{eq:masspower}, the
+vehicle's  mass is  computed  as a  function  of number  of  layers within  each
+cell~$n$.
 
 In  the  schematic  of~\cref{fig:fig_strategy_schematic},  this  layer-dependent
 calculation of  mass of all cells  in the pack~$M_\text{cells}$ is  shown by the
@@ -141,15 +138,15 @@ unit area and is  applicable only to each electrochemical layer,  the goal is to
 compute the  power density experienced  by each layer. This  is arrived at  by a
 sequence of simple scaling steps.
 
-Firstly, the  power demanded at  the pack terminals  is computed by  scaling the
-power  at the  wheels  by the  efficiency  of the  drivetrain.  As explained  in
-\cref{subsec:layeroptassumptions},  the  drivetrain  consists  of  a  number  of
-components, the efficiencies of which depend on the operating point (such as the
-speed and torque  of the electric motor, current drawn  by the power electronics
-etc.). Following the  assumptions detailed in \cref{subsec:layeroptassumptions},
-a  single lumped  efficiency~$\eta_\text{dt}$ can  be used  for the  powertrain.
-The  power demand  on  the pack~$P^\text{acc}_\text{batt}$  is  then divided  by
-the  number  of  cells  in  the   pack  $n_\text{cells}$  to  obtain  the  power
+Firstly, the power demanded  at the pack terminals~$P^\text{acc}_\text{batt}$ is
+computed  by  dividing  the  power  at  the wheels  by  the  efficiency  of  the
+drivetrain.  As explained  in \cref{subsec:layeroptassumptions},  the drivetrain
+consists of  a number  of components,  the efficiencies of  which depend  on the
+operating point  (such as the  speed and torque  of the electric  motor, current
+drawn  by the  power electronics  etc.). Following  the assumptions  detailed in
+\cref{subsec:layeroptassumptions},  a single  lumped efficiency~$\eta_\text{dt}$
+can be  used for the powertrain.  The power demand  on the pack is  then divided
+by  the  number of  cells  in  the pack  $n_\text{cells}$  to  obtain the  power
 demand  at the  input  of the  cell's terminals~$p^\text{acc}_\text{cell}$.  For
 each  layer choice~$n$,  the overall  electrochemically active  surface area  is
 computed  using by  using \cref{eq:overallarea},  wherein the  surface area  per
@@ -161,11 +158,11 @@ area~$A_\text{cell}$.
 \subsubsection*{Thermally-coupled \glsfmtshort{p2d} simulation and exit
 conditions}\label{sec:accexitconditions}
 
-For the  present layer choice~$n$,  a thermally-coupled \gls{p2d}  simulation is
-performed for a duration of $t_\text{f}$  seconds with the applied power density
-$p^\text{acc}_\text{cell}$ corresponding to the present layer choice as input.
-When the simulation terminates, the cell's condition is compared against three
-criteria
+For  the  presently trialled  layer  choice~$n$,  a thermally-coupled  \gls{p2d}
+simulation is performed for a duration  of $t_\text{f}$ seconds with the applied
+power  density $p^\text{acc}_\text{cell}$  corresponding  to  the present  layer
+choice  as input  to  the  model. When  the  simulation  terminates, the  cell's
+condition is compared against three criteria
 \begin{enumerate}
     \item the maximum possible values of cell temperature~$T_\text{max}$,
     \item the minimum allowed terminal voltage~$V_\text{min}$, and
@@ -200,22 +197,23 @@ applicable for both acceleration and fast charging pathways.
 If all the  termination criteria are successfully met, the  output of the binary
 search algorithm is  set to a logical~1.  If any of these  conditions fail, then
 the output  is assigned  a logical~0.  Thus, the search  vector in  this bespoke
-strategy  consists  of only  two  possibilities,~0  and~1. For  ultra-low  layer
-counts, the  applied power densities are  extremely high. Therefore, one  of the
-exit  conditions is  likely  to fail.  For  very high  layer  counts, the  power
-densities are  very low,  implying that acceleration  runs shall  be successful.
-There exists a critical transition point  \viz{} the first layer count for which
-the exit vector toggles from~0 to~1. Through a systematic bisection of the layer
-search  space, the  search algorithm  speedily  converges to  the optimal  layer
-value.  An alternative  to using  the binary  search algorithm  is the  standard
-linear  search  algorithm. This  is  a  simple  search strategy  which  involves
-sequentially iterating  from $n_\text{min}$ to $n_\text{max}$  until arriving at
-the lowest  value $n_\text{opt}^\text{acc}$  that satisfies all  the termination
-criteria. However, a naive use of the linear search algorithm is computationally
-expensive with a worst case operation count of $\mathcal{O}(n)$. Therefore, this
-thesis  author  recommends  the  use  of the  bespoke  binary  search  algorithm
-presented here. The choice of minimum and  maximum values of the search space is
-discussed in \cref{sec:layersearchbounds}.
+strategy consists of only two boolean possibilities. For ultra-low layer counts,
+the  applied power  densities are  extremely high.  Therefore, one  of the  exit
+conditions is  likely to fail. For  very high layer counts,  the power densities
+are very low,  implying that acceleration runs shall always  be successful. When
+considering layer counts from the lowest to the highest, there exists a critical
+transition point \viz{} the first layer  count for which the exit vector toggles
+from~0  to~1.  Through  a  systematic  bisection  of  the  layer  search  space,
+the  search  algorithm  speedily  converges  to  the  optimal  layer  value.  An
+alternative to using  the binary search algorithm is the  standard linear search
+algorithm.  This  is  a  simple  search  strategy  which  involves  sequentially
+iterating from  $n_\text{min}$ to  $n_\text{max}$ until  arriving at  the lowest
+value  $n_\text{opt}^\text{acc}$ that  satisfies all  the termination  criteria.
+However, a naive use of the linear search algorithm is computationally expensive
+with a  worst case operation  count of $\mathcal{O}(n)$. Therefore,  this thesis
+author recommends the use of the bespoke binary search algorithm presented here.
+The choice  of minimum and  maximum values of the  search space is  discussed in
+\cref{sec:layersearchbounds}.
 
 \subsection{Upper and lower bounds on search space}\label{sec:layersearchbounds}
 
@@ -226,9 +224,9 @@ this value may be used as the  upper bound to the binary search algorithm (which
 compulsorily requires  such an upper bound)  described in \cref{sec:searchalgo}.
 This can be obtained by defining a  simple integer optimisation task as shown in
 \cref{eq:maxlayersopt}. The objective function here  is to maximise the value of
-the layer  count~$n$ subject to  the physical  constraint that the  thickness of
-negative and positives electrodes remains positive.
-\begin{equation}
+the layer count~$n$  subject to the physical constraint that  the thicknesses of
+both electrodes always remains positive.
+\begin{equation}\label{eq:maxlayersopt}
     \begin{aligned}
         \underset{n \, \in \, \mathbb{N}}{\mathbf{max}} \quad & n                                                                                                                                              \\
         \text{s.t.} \quad                                     & l_\text{pos} = \left(\frac{L_\text{stack} - L_\text{Al}(n) - L_\text{Cu}(n) - n l_\text{sep}}{n(1 + l_\text{ratio})}\right) > 0 \\
@@ -239,24 +237,26 @@ l_\text{sep})}{n(1 + l_\text{ratio})}\right) > 0
 
 
 \Cref{eq:analytical_nmax} represents the analytical  closed-form solution to the
-integer optimisation  problem of  \cref{eq:maxlayersopt}. The first  argument to
-the $\max$ function  in \cref{eq:maxlayersopt} represents the  maximum number of
-physically feasible odd layers while  the second argument represents the maximum
-such value  when considering  odd layers.  Therefore, the  greater of  these two
-values is chosen  as the maximum permissible layer  choice~$n_\text{max}$ and is
-used as an input to the search algorithm.
-
+integer optimisation problem of \cref{eq:maxlayersopt}.
 \begin{equation}
     \label{eq:analytical_nmax}
     n_\text{max} = \max \left(\floor*{\frac{2\left(L_\text{stack} - l_\text{Cu}\right)}{l_\text{Al}+l_\text{Cu}+2 l_\text{sep}}}, \floor*{\frac{2L_\text{stack} - l_\text{Al} - l_\text{Cu}}{l_\text{Al} + l_\text{Cu} + 2l_\text{sep}}} \right)
 \end{equation}
 
-In the absence of  published information on how minimum layers  is set, there is
-currently no unique  way to determine $n_\text{min}$. Therefore,  for this layer
-optimisation study, the value of $n_\text{min}$  used by the search algorithm is
-currently  set to  one ---  the minimum  physically feasible  number of  layers.
-Design engineers from industry may opt to  tweak this to a higher value based on
-insights gained from present empirical designs.
+The  first   argument  to  the  $\max$   function  in  \cref{eq:analytical_nmax}
+represents the maximum number of physically feasible odd layers while the second
+argument  represents  the  maximum  such  value  when  considering  odd  layers.
+Therefore, the greater of these two  values is chosen as the maximum permissible
+layer choice~$n_\text{max}$ and is used as an input to the search algorithm.
+
+
+In  the absence  of published  information on  how the  minimum layers  within a
+pouch  cell is  currently set,  there is  presently no  unique way  to determine
+$n_\text{min}$.  Therefore, for  this  layer optimisation  study,  the value  of
+$n_\text{min}$ used  by the  search algorithm  is currently set  to one  --- the
+minimum physically feasible number of layers. Design engineers from industry may
+opt  to tweak  this to  a higher  value based  on insights  gained from  present
+empirical designs.
 
 
 % \subsubsection*{\hypertarget{href:layerdependentcellmass}{Computation of layer-dependent cell mass}}\label{sec:massofonecell}
@@ -265,9 +265,9 @@ insights gained from present empirical designs.
 
 A key idea of the layer optimisation  scheme is that, for computing the physical
 lengths of  electrodes as a  function of number of  layers, the ratios  of their
-thicknesses~$l_\text{ratio}$ is  held constant.  This coefficient is  germane to
-the concept of  capacity balancing of electrodes to equalise  their loading. The
-computation of this $l_\text{ratio}$ parameter is discussed here.
+thicknesses~$l_\text{ratio}$, is  held constant. This coefficient  is germane to
+the concept  of capacity balancing of  electrodes with a view  to equalise their
+loading. The computation of this $l_\text{ratio}$ parameter is discussed here.
 
 Equating  the active material volume of both electrodes,
 \begin{equation}
@@ -304,29 +304,26 @@ ratio~$l_\text{ratio}$ is therefore obtained as
 \subsection{Computation of electrode thicknesses per layer}
 
 Following  the  assumptions  listed  in  \cref{subsec:layeroptassumptions},  the
-exterior dimensions of the pouch is  held constant. Furthermore, as explained in
+exterior dimensions of the pouch are held constant. Furthermore, as explained in
 \cref{sec:surfareaperlayer}, the  thickness of the electrochemical  stack within
-the pouch  cell~$L_\text{stack}$ is also  considered to be  constant. Therefore,
-when  the number  of  layers forming  the  stack is  varied,  this implies  that
-the  only quantities  that  may be  allowed  to  vary is  the  thickness of  the
+the pouch cell~$L_\text{stack}$,  is also considered to  be constant. Therefore,
+when the  number of layers  forming the stack is  varied, this implies  that the
+only  quantities that  may  be allowed  to  change are  the  thicknesses of  the
 two  electrodes within  each  layer  \ie{} higher  the  layer  count, lower  the
 electrode  thicknesses  and  vice-versa.  In  this  section,  this  relationship
 between  the  number  of  layers~$n$  and  the  electrode  thicknesses~$l_j\  (j
 \in  {\text{neg},\text{pos}})$   is  quantified  with   the  help  of   the  key
 $l_\text{ratio}$ parameter obtained in \cref{sec:electroderatio}.
 
-Figure~2   of   Northrop~\etal~\cite{Northrop2011}  (partially   reproduced   in
-\cref{fig:topologies})  considers two  possible  configurations  of stacking  up
+Figure~2 of Northrop~\etal~\cite{Northrop2011}  (suitably adapted and reproduced
+in \cref{fig:topologies})  considers two possible configurations  of stacking up
 layers within a pouch cell. In the first topology shown in \cref{fig:topology1},
-the  outermost   electrodes  are  made   up  of  the  negative   electrode  with
-corresponding copper current collectors.  In the alternative configuration shown
-in \cref{fig:topology2},  the negative electrode  is the outermost  electrode at
-one end of the stack while  the positive electrode forms the outermost electrode
-at its  other end.  Thus, the  two outermost current  collectors are  consist of
-Copper  and  Aluminium  respectively.  The  formulae  derived  here  is  equally
-applicable to both  these cases. Although the use of  positive electrode at both
-extrema of the stack is not studied, the approach presented here may be extended
-to this case without difficulty.
+the outermost current collectors are of copper. In the alternative configuration
+shown in  \cref{fig:topology2}, a copper  current collector occupies one  end of
+the  stack while  an aluminium  current collector  occupies its  other end.  The
+formulae derived  here is equally applicable  to both these cases.  Although the
+use of aluminium current collectors at both extrema of the stack is not studied,
+the approach presented here may be easily extended to this case.
 
 \begin{figure}[!htbp]
     \centering
@@ -345,20 +342,18 @@ to this case without difficulty.
     \end{subfigure}
     \caption[Two possile topologies for arranging the layers within a pouch
     cell]
-    {Two possible topologies for arranging the layers within a pouch
-        cell. In the first arrangement shown in the left sub-figure, the two
-        outermost electrodes correspond to the negative electrode and hence have
-        Copper current collectors at both extrema. In the second arrangement
-        shown in the right sub-figure, a heterogeneous arrangement wherein the
-        outermost electrodes are a mix of positive and negative electrode \ie{}
-        the stack contains one Copper current collector and one Aluminium
-    current collector at its either end. Figure adapted from
-Northrop~\etal~\cite{Northrop2011}}
+    {Two possible topologies for arranging the layers within a pouch cell. In
+        the first arrangement shown in the left sub-figure, the two outermost
+        layers have Copper current collectors at both extrema. The second arrangement shown in the
+        right sub-figure depicts a heterogeneous arrangement wherein the
+        outermost current collectors are Copper at one end and Aluminium
+        at its other end. Figure adapted from
+    Northrop~\etal~\cite{Northrop2011}}
     \label{fig:topologies}
 \end{figure}
 
 The stack height  may be obtained by  the sum of thicknesses  of the constituent
-regions
+regions.
 \begin{align}
     L_\text{stack} &= \sum_jL_j(n) + L_\text{Al}(n) + L_\text{Cu}(n) \qquad\forall \ n \in \mathbb{N},\ j \in \{\text{pos, sep, neg}\} \label{eq:stackThickness}\\
     \shortintertext{where}
@@ -380,23 +375,23 @@ can be then obtained by rearranging \cref{eq:stackThickness}
     l_\text{ce} = \frac{L_\text{stack} - \ceil*{0.5(n+1)}l_\text{Cu} - \ceil*{0.5n}l_\text{Al}}{n} - l_\text{sep}\label{eq:combinedElectrodeThickness}\\
 \end{equation}
 
-The individual electrode thicknesses can then be obtained from
-\cref{eq:combinedElectrodeThickness} by substituting $l_\text{ratio}$ and
-performing simple algebraic manipulations
+The    individual     electrode    thicknesses    can    then     be    obtained
+from   \cref{eq:combinedElectrodeThickness}   by    suitably   substituting   in
+$l_\text{ratio}$ and performing simple algebraic manipulations.
 \begin{align}
     l_\text{pos} &= \frac{l_\text{ce}}{l_\text{ratio}+1}\label{eq:lpos}\\
     l_\text{neg} &= l_\text{ce} - l_\text{pos}\label{eq:lneg}
 \end{align}
 
 The   values   of   the   two  electrode   thicknesses   thus   obtained   using
-\Crefrange{eq:lpos}{eq:lneg} are used as the computational domain lengths in the
-\gls{p2d} simulations. Therefore, these thicknesses  have to be recomputed every
+\Crefrange{eq:lpos}{eq:lneg}  are used  as computational  domain lengths  in the
+\gls{p2d} simulations. Therefore,  these thicknesses have to  be recomputed each
 time the trialled number of layers~$n$ is updated by the search algorithm.
 
 \subsection{Computation of layer-dependent cell mass}\label{sec:massofonecell}
 
 The mass of the cell varies as a  function of number of layers. This is because,
-the  thicknesses of  the two  electrode within  each layer  changes each  time a
+the thicknesses  of the  two electrodes  within each layer  changes each  time a
 different layer choice is simulated. For a given layer choice~$n$, the cell mass
 is computed as per \cref{eq:cellmass}.
 \begin{subequations}\label{eq:cellmass}
@@ -413,36 +408,36 @@ is computed as per \cref{eq:cellmass}.
 \end{subequations}
 
 
-\Cref{eq:cellmass}   consists  of   both   constant  components   as  well   as
-components  that   vary  with   the  number  of   layers.  For   instance,  the
-mass  of  the  electrolyte~$m_\text{LiPF6}$  as  well  as  that  of  the  pouch
-material~$m_\text{pouch}$ are only computed once.
+\Cref{eq:cellmass}   consists   of  both   constant   components   as  well   as
+components   that  vary   with  the   number  of   layers.  For   instance,  the
+mass  of  the  electrolyte~$m_\text{LiPF6}$  as   well  as  that  of  the  pouch
+material~$m_\text{pouch}$ are constants and are computed only once.
 
 \subsection{Computation of layer-dependent cell specific heat}\label{sec:spheat}
 
-A lumped thermal  model of the cell given by  \cref{eq:thermalmodel} is used to
+A lumped  thermal model of the  cell given by \cref{eq:thermalmodel}  is used to
 model  the  thermal  dynamics  of  the  cell.  This  thermal  model  is  coupled
 with  the  electrochemical  model  equations  of the  \gls{p2d}  model  for  the
 simulations  used to  determine  the optimal  layer  configurations. The  cell's
-temperature~$T_\text{cell}(t)$ is also obtained using this lumped thermal model.
+temperature~$T_\text{cell}(t)$ is also obtained from this lumped thermal model.
 \begin{align}
-	m_\text{cell} c_\text{avg} \frac{dT}{dt} &= -h A_\text{tabs} \left( T(t) - T_\text{sink} \right) + Q_\text{pol} & \label{eq:thermalmodel}\\
-	Q_\text{pol} &= A_\text{cell} \left|i\right|\cdot\left|U - V\right| & \tag{\ref{eq:thermalmodel}a}\\
-	U &= U_\text{pos}(\theta_\text{pos})\big|_{x = x_\text{pos/Alcc}} - U_\text{neg}(\theta_\text{neg})\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}b}\\
-	V &= \phi_\text{s}\big|_{x = x_\text{pos/Alcc}} - \phi_\text{s}\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}c}
+	m_\text{cell} c_\text{avg} \frac{dT_\text{cell}}{dt} &= -h A_\text{tabs} \left( T_\text{cell}(t) - T_\text{sink} \right) + Q_\text{pol} & \label{eq:thermalmodel}\\
+	Q_\text{pol} &= A_\text{cell} \abs{i}\cdot \abs{U - V} & \tag{\ref{eq:thermalmodel}a}\\
+	U &= U_\text{pos}(\theta_\text{pos})\big|_{\mathrlap{x = x_\text{pos/Alcc}}} \qquad - U_\text{neg}(\theta_\text{neg})\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}b}\\
+	V &= \phi_\text{s}\big|_{\mathrlap{x = x_\text{pos/Alcc}}} \qquad - \phi_\text{s}\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}c}
 \end{align}
 
-The average specific heat of the cell, $c_\text{avg}$ used in
-\cref{eq:thermalmodel} is a function of the number of layers and is given by
+The   average   specific   heat   of    the   cell,   $c_\text{avg}$   used   in
+\cref{eq:thermalmodel} is  a function of  the number of  layers and is  given by
 \cref{eq:spheat}.
 \begin{equation}\label{eq:spheat}
     c_\mathrm{avg} = \frac{1}{m_\text{cell}} \biggl[\sum_jc_jm_j + c_\text{Al}m_\text{Al} + c_\text{Cu}m_\text{Cu} + c_\mathrm{LiPF_6}m_\mathrm{LiPF_6} + c_\mathrm{pouch}m_\mathrm{pouch}\biggr],\quad j \in \{\text{pos, sep, neg}\}
 \end{equation}
 
-The first  three terms  in~\cref{eq:spheat} is  evaluated as  a function  of the
+The first  three terms in~\cref{eq:spheat}  are evaluated  as a function  of the
 number  of  layers~$n$  by  substituting the  appropriate  layer-dependent  mass
 values computed in~\crefrange{eq:mj}{eq:cumass}. The  latter two terms \ie{} the
-specific heats  of the electrolyte material  and the pouch are  held constant as
+specific heats of the electrolyte material and the pouch are held constant since
 their corresponding mass values do not vary with the number of layers used.
 
 \subsection{Fast-charging pathway}
@@ -450,17 +445,18 @@ their corresponding mass values do not vary with the number of layers used.
 The  workflow describing  the optimal  layer calculation  for the  fast charging
 scenario begins  with the  anchor block labelled  `Start Fast-Charge  Calcs.' in
 \cref{fig:fig_strategy_schematic}. The charging algorithm used in this framework
-is based  upon the mobel-based strategy  proposed by Choe~\etal~\cite{Choe2013},
+is based  upon the model-based strategy  proposed by Choe~\etal~\cite{Choe2013},
 wherein  the surface  concentration is  never allowed  to exceed  its saturation
 value.  Adopting  this charging  scheme  leads  to  a  robust cell  design  that
 is  resilient  to  lithium  plating.  A  major  departure  from  the  scheme  in
 Choe~\etal~\cite{Choe2013}  is the  fact that  the constant  current phase  used
-therein is  replaced by  a constant power  charging phase. This  is so  that the
-assumption of identical conditions across all  cells in the pack holds true (see
+therein is replaced  by a constant power  phase. This is so  that the assumption
+of  identical  conditions  across  all  cells   in  the  pack  holds  true  (see
 \cref{subsec:layeroptassumptions} for  details). Furthermore, the  pulsing phase
 used to  top-up the cell's  \gls{soc} in Choe~\etal~\cite{Choe2013}  is omitted.
 This  is because,  the level~3  fast charging  specifications typically  require
-charging to a target \gls{soc} much lower than \SI{100}{\percent}.
+charging to a  target \gls{soc} that is typically  well below \SI{100}{\percent}
+(see \cref{tbl:lcoSimParamslayeropt}).
 
 At     first,     the    charging     power     applied     at    the     pack's
 terminals~$P_\text{batt}^\text{fastchg}$ is scaled down by the overall number of
@@ -470,17 +466,17 @@ in  the  pack~$P_\text{cell}^\text{fastchg}$.  Following the  strategy  used  in
 electrochemically active  overall surface area~$A_\text{cell}$. This  yields the
 power density~$p^{\text{fastchg}}$ experienced by each  layer in the cell and is
 now  amenable  to be  applied  to  the  normalised  \gls{p2d} equations  of  the
-\gls{dfn} model.
+\gls{dfn} model (that has been suitably modified to handle power inputs).
 
 \subsubsection*{Thermally-coupled fast-charging simulations and exit conditions}
 
-The thermally-coupled \gls{p2d} model is then invoked. While the simulation
-runs, the cell's state is continually evaluated against various termination
-criteria.
+After computing  the power  density per  layer, the  thermally-coupled \gls{p2d}
+model  is  then  invoked.  While  the  simulation  runs,  the  cell's  state  is
+continually evaluated against various termination criteria.
 \begin{enumerate}
     \item the maximum possible values of cell temperature~$T_\text{max}$,
     \item the maximum allowed terminal voltage~$V_\text{max}$, and
-    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$\c_text{s,sat}$
+    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$\c_\text{s,sat}$
 \end{enumerate}
 
 If any  of these three criteria  are violated, the simulation  immediately stops
@@ -497,21 +493,21 @@ labelled~$n_\text{opt}^\text{fastchg}$. If the surface concentration has not yet
 reached the saturation limit, then the charge time is compared against the upper
 bound for  fast charging specifications~$t_\text{max}$. If  this preset duration
 has not been reached, then the simulation is allowed to advance further in time,
-with the  aforementioned termination criteria  being applied at  each subsequent
-time-step.
+with the aforementioned  termination criteria being continuously  tested at each
+subsequent time-step.
 
 The above process is repeated for  different combinations of initial and ambient
 temperatures~\mbox{$(T_\text{init},  T_\text{sink})$}.  The  largest  successful
 layer value from all temperature combinations is deemed as the canonical optimal
 design choice when  considering the fast charging power  demands. This concludes
-the  narrative describing  the  fast charging  pathway as  well  as the  overall
-methodology adopted in this layer optimisation framework.
+the  narrative describing  the  fast charging  pathway.
 
 Finally, the  maximum of the  layer choices across all  temperature combinations
 from the  acceleration and  fast charging  scenarios is  deemed as  the globally
-optimal number of layers to be used  for this model-led cell design. The results
-obtained by applying this framework to a specific numerical example is presented
-next in \cref{sec:resultslayeropt}.
+optimal  number of  layers  to be  used  for this  model-led  cell design.  This
+concludes the overall narrative describing the layer optimisation framework. The
+results obtained by applying this methodology to a specific numerical example is
+presented next in \cref{sec:resultslayeropt}.
 
 % Do not forget to quote the value of cs_sat from layer opt paper table and show
 % calculation inline. Might even go into the code
