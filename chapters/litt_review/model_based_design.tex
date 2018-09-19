@@ -2,4 +2,66 @@
 %!TEX root = ../../main.tex
 % vim:textwidth=80 fo=cqt
 
+% As discussed  in \cref{ch:intro},  there is  a growing  need to  replace replace
+% fossil  fuel-based  vehicles  with   cleaner  alternatives  wherein  Lithium-ion
+% batteries hold  much promise.  The next generation  of battery  powered vehicles
+% shall  require  higher  energy  density  batteries  without  compromising  power
+% density. Furthermore,  the costs of the  on-board battery pack shall  have to be
+% considerably lowered.
+
+% Researchers in the field have aimed to bring about improvements to the incumbent
+% lithium ion battery technology by focussing on various aspects.
+
+% Modifications are  attempted  through various  approaches i)  through
+% fundamental material advances [  2 , 3 ], ii) new chemistries [  4 ], iii) novel
+% cell designs and  manufacturing techniques [ 5 ], iv)  system design or reducing
+% the costs of assembly [ 6 , 7  ], and v) improved controller design for advanced
+% battery management systems [8].
+
+In sharp contrast to the cornucopia of published literature dealing with reduced
+order  modelling  of cells  (see  \cref{sec:classificationscheme}),  there is  a
+relative paucity of prior art that discuss model-based cell design. This section
+aims to critically evaluate this sparse pool of knowledge.
+
+At  the  outset, it  is  important  to clarify  this  thesis  author's views  on
+model-based design in general and why this topic was chosen as an aspect of this
+thesis.  In  the  recent  decades,  industries  pertaining  to  different  walks
+of  life,  cutting  across  any  one  discipline,  have  begun  to  establish  a
+model-led product/process development culture. For instance, a broad overview of
+industrial  research  policy by  Thomke~\cite{Thomke1998}  towards  the turn  of
+the  last millennium  provides  quantifiable evidence  that  a simulation  based
+design approach  in the  automotive industry  has had a  positive impact  in the
+crash-worthiness of resulting  vehicular designs. At a high  level, the benefits
+of any model-based design are ---
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item reducing the number of design iterations thereby speeding up the time to a production-ready prototype, and
+    \item improved understanding of the variables influencing design gained by formalising empirical/ad-hoc knowledge.
+\end{enumerate*}
+Finally, it is a well-known fact that, computer-time is cheaper than human time.
+Therefore, with  a simulation-oriented design  approach, it is often  cheaper to
+explore Monte~Carlo-like design scenarios  using a computer model than iterating
+over  a  series  of  rudimentary  prototypes  in  the  lab.  Finally,  once  the
+results  predicted by  the model  has stabilised  enough to  satisfy the  design
+specifications,  prototyping can  be  attempted, thereby  reducing  the time  to
+market.
+
+The   aforementioned    views   of    the   thesis    author   is    echoed   by
+Becker~\etal~\cite{Becker2005}  who  present  a   persuasive  view  that,  since
+it  becomes  essential  to  have   a  deeper  understanding  of  the  simulation
+tools  to successfully  employ a  model-led  design, this  can trigger  sweeping
+changes percolating  into the  very core  of the  problem-solving culture  in an
+organisation. Although relatively  at its infancy when it comes  to cell design,
+model-based  designs have  been applied  at the  pack-level in  the past  and is
+therefore not a  newcomer to the battery  industry in general. In  the middle of
+the last  decade, a clarion  call to the industry  to adopt simulation  tools in
+battery  engineering was  issued  by Spotnitz~\cite{Spotnitz2005}.  In the  said
+article,  the author  questioned  the anachronistic  industry  trend of  relying
+heavily on `making and testing' rather than aiming to understand the fundamental
+governing equations  and principles  of a  battery and  using this  know-how for
+design. Spotnitz~\cite{Spotnitz2005}  further argues  that using  \glspl{pbm} of
+batteries could provide  reliable understanding of their behaviour,  and that as
+the  understanding of  the  community steadily  grows, it  could  bring about  a
+significant speed-up of battery development.
+
+
 
