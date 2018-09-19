@@ -6,14 +6,14 @@
 At the outset, it is worth mentioning that the focus of this chapter
 is on the layer optimisation \emph{methodology} itself. The results
 as such do not stand alone outside of the modelling universe with all
-the inherent assumptions discussed thus far. Presently, the value added
+its inherent assumptions discussed thus far. Presently, the value added
 by this work is its ready adaptability to industry through its modular
 design. A numerical implementation in the form of a toolbox\footnote{The
 \gls{bold} Toolbox is made available for download from GitHub. \\
 \mbox{\href{https://github.com/ImperialCollegeESE/BOLD_Toolbox}{\includegraphics
 [width=0.025\textwidth]{github.pdf}}} \url{
 https://github.com/ImperialCollegeESE/BOLD_Toolbox}} is also provided
-which is immediately available for download and use by industry. This author
+which is immediately available for download and use by relevant stakeholders. This author
 recommends that until the tool matures, cell manufacturers substitute their own
 parameters and adjust other numerical coefficients suitably so that the toolbox
 supplements, rather than supplants present empirical layer designs. Hence, the
@@ -37,9 +37,9 @@ https://github.com/lionsimbatoolbox/LIONSIMBA}}.
 
 The  rationale  behind  choosing  this  specific  software  to  implement  layer
 optimisation  is  as  follows.  The LIONSIMBA~v1.0x  toolbox  has  already  been
-validated against  the results of DUALFOIL~\cite{Dualfoil1998}  codes (which can
-be considered as the present benchmark  standard). The toolbox is implemented in
-the  MATLAB programming  language.  Since  this chapter  has  a strong  industry
+validated against  the results of the  DUALFOIL~\cite{Dualfoil1998} codes (which
+can be considered as the present benchmark standard). The toolbox is implemented
+in the  MATLAB programming language.  Since this  chapter has a  strong industry
 focus,  the  omnipresence  of  MATLAB  in industry,  its  mature  code-base  and
 familiarity  was  a strong  motivator  in  the  adoption  of this  toolbox.  The
 simulation  speeds using  LIONSIMBA  have been  shown to  be  comparable to  the
@@ -71,16 +71,19 @@ respectively. For  instance, \SI{50.83}{\kilo\watt} is the  peak discharge power
 while \SI{14.20}{\kilo\watt} is the median  discharge power for various standard
 drive  cycles.  Even with  the  assumption  that \SI{100}{\percent}  of  braking
 energy  can  be  recovered,  the  peak  and  median  charging  powers  are  only
-\SI{43.13}{\kilo\watt} and \SI{26.03}{\kilo\watt}  respectively. Considering the
-acceleration  parameters  in~\cref{tbl:CommonVehicleParams}  for  the  \gls{bev}
-pack, \SI{181.45}{\kilo\watt}  is the  power requirement  for acceleration  of a
-fixed vehicle  mass on a  flat road  surface. Four distinct  fast-charging power
-levels \viz{} \SI{50}{\kilo\watt}, \SI{80}{\kilo\watt}, \SI{110}{\kilo\watt} and
-\SI{130}{\kilo\watt}  are considered  in this  study.  This is  in adherence  to
-the  minimum  and maximum  values  of  level~3  rating  as suggested  by  Yilmaz
-and~Krein~\cite{Yilmaz2012}. Furthermore, near-term fast charging goals laid out
-in  literature~\cite{Ashique2017,Srdic2016} and  the  peak  power capability  of
-charging infrastructure further justify these choices.
+\SI{43.13}{\kilo\watt} and \SI{26.03}{\kilo\watt}  respectively. The discharging
+and charging powers experienced by the  pack during acceleration and fast charge
+are significantly higher as seen below.
+
+Considering  the acceleration  parameters in~\cref{tbl:CommonVehicleParams}  for
+the  \gls{bev}  pack,  \SI{181.45}{\kilo\watt}  is  the  power  requirement  for
+acceleration  of a  fixed vehicle  mass on  a flat  road surface.  Four distinct
+fast-charging  power  levels  \viz{}  \SI{50}{\kilo\watt},  \SI{80}{\kilo\watt},
+\SI{110}{\kilo\watt} and \SI{130}{\kilo\watt} are considered in this study. This
+is in adherence to the minimum and maximum values of level~3 rating as suggested
+by  Yilmaz  and~Krein~\cite{Yilmaz2012}.  Furthermore, near-term  fast  charging
+goals  laid out  in literature~\cite{Ashique2017,Srdic2016}  and the  peak power
+capability of charging infrastructure further justify these choices.
 
 \input{chapters/layer_opt/separate_bev_phev_params_table}
 
@@ -90,15 +93,15 @@ For  the  acceleration  tests,  the  initial cell  \gls{soc}  has  been  set  to
 case  starting  \gls{soc} \ie{}  \SI{40}{\percent},  a  conservative design  can
 be  achieved.  The  chassis  mass  of  the  vehicle  as  well  as  the  mass  of
 two  passengers   at  75.3  kg   each~\cite{Sae2010}  is  considered   for  both
-\gls{xeV}  platforms. The  pack mass  is  computed as  a function  of number  of
-layers  as described  in~\cref{sec:layeroptframework}. The  vehicle manufacturer
-General  Motors  Inc.\ suggests  the  mass  value of  the  GM  Ecotec series  of
-engines~\cite{motortrendEcotec} to  use for the  \gls{phev} which consists  of a
-range-extending  \gls{ice}.  The  mass  of  the  Bolt  \gls{bev}  pack  reported
-in~\cite{ChevyBoltSpecs} minus  the computed mass  of the overall cells  used in
-the pack  gives the overhead mass  of the \gls{bev} pack.  The \gls{phev} pack's
-overhead mass  is determined by suitably  scaling the mass by  the proportion of
-reduction in the number of cells used.
+\gls{xeV}  platforms.  The  pack  mass  is computed  as  a  function  of  number
+of  layers as  described in~\cref{sec:layeroptframework}.  Vehicle manufacturers
+General  Motors  Inc.\, provide  the  mass  value of  the  GM  Ecotec series  of
+engines~\cite{motortrendEcotec} that can  be used for the  \gls{phev} case which
+consists of  a range-extending \gls{ice}.  The mass  of the Bolt  \gls{bev} pack
+reported in~\cite{ChevyBoltSpecs} minus  the computed mass of  the overall cells
+used in the pack  gives the overhead mass of the  \gls{bev} pack. The \gls{phev}
+pack's  overhead  mass  is  determined  by suitably  scaling  the  mass  by  the
+proportion of reduction in the number of cells used.
 
 For the \gls{bev}  platform, a fast-charging scheme operated on  a \gls{cp} mode
 with an initial  \gls{soc} of \SI{20}{\percent} is employed. In  the case of the
@@ -128,17 +131,17 @@ platforms. The following discussion is applicable for both vehicular platforms.
 The  specific combinations  of temperatures  for traversing  the thermal  design
 space are  chosen following the  SAE~J1772 guidelines. The high  power densities
 resulting from  low numbers of layers  lead to large overpotentials  causing the
-cell's terminal voltage  to drop lower down than  $V_\text{min}$, thereby unable
-to satisfy acceleration requirements.  However, at higher $T_\text{init}$, owing
-to the  reduction in overpotentials, a  larger voltage overhead is  available to
+cell's terminal  voltage to  drop lower than  $V_\text{min}$, thereby  unable to
+satisfy acceleration requirements. However,  at higher $T_\text{init}$, owing to
+the  reduction in  overpotentials, a  larger  voltage overhead  is available  to
 accommodate the  internal polarisation  drop. For all  temperature combinations,
-the largest deviation from $T_\text{init}$ experienced  by a \gls{bev} cell is a
-\SI{0.48}{\degreeCelsius}  increase. Consequently,  it can  be concluded  that a
+the largest deviation from $T_\text{init}$  experienced by the \gls{bev} cell is
+a \SI{0.48}{\degreeCelsius} increase.  Consequently, it can be  concluded that a
 single isolated acceleration event does not heat the \gls{bev} battery pack, and
 therefore the cell  temperature remains close to that of  the initial value. The
 \gls{phev} cell  experiences higher  power levels  and although  its temperature
 increases  much  higher  than  the corresponding  \gls{bev}  cell,  the  maximum
-temperature during acceleration  run remains well below the  upper cutoff limit.
+temperature  during acceleration  remains  well below  the  upper cutoff  limit.
 Furthermore, even  for the worst  case simulation  run, the cell's  \gls{soc} is
 depleted only by  a maximum value of \SI{0.32}{\percent} for  the \gls{bev} cell
 and by a slightly higher value for the \gls{phev} cell.
@@ -148,7 +151,7 @@ influences  layer   configuration  for   acceleration  tests.   Therefore,  when
 considering acceleration requirements, $n = 27$ and $n=69$ represent the optimal
 layer choices for the \gls{bev} and \gls{phev} platforms respectively .
 
-\subsection{Fast charging studies}
+\subsection{Fast-charging studies}
 
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
@@ -171,11 +174,11 @@ layer choices for the \gls{bev} and \gls{phev} platforms respectively .
 \end{figure}
 
 Figures~\ref{fig:fig_generate_heatmap_BEV}
-and~\ref{fig:fig_generate_heatmap_PHEV} show  the results produced by  the layer
+and~\ref{fig:fig_generate_heatmap_PHEV} shows the results  produced by the layer
 optimisation framework  for the \gls{bev} and  \gls{phev} platforms respectively
-when considering fast charging requirements. Each heat~map in these figures show
-the optimal  number of  layers~$n^\text{fastchg}_\text{opt}$ for  every possible
-combination  of initial  and ambient  temperatures for  four different  charging
+when  considering fast  charging requirements.  Each heat~map  in these  figures
+show  the optimal  number  of  layers~$n^\text{fastchg}_\text{opt}$ for  various
+combinations of  initial and  ambient temperatures  for four  different charging
 powers. In each case, the  values of $n^\text{fastchg}_\text{opt}$ correspond to
 the  temperature  combination  \mbox{$(T_\text{init},T_\text{sink})  =  (15,  5)
 \si{\degreeCelsius}$}  as  shown  in  \cref{fig:fig_generate_heatmap_BEV}.  This
@@ -225,8 +228,8 @@ represented by the linear downward-sloping line.
             correlated with $n$, while the maximum-$q$ layer configuration clearly shifts to higher
             values of $n$ with increasing charging powers. The plots in the left column depict
             galvanostatic charging scenarios at various currents to highlight the similarity with the
-            \gls{cp} process. All data obtained at $T_\text{init} =$ \SI{25}{\degreeCelsius},
-            $T_\text{sink} =$ \SI{25}{\degreeCelsius}.
+            \gls{cp} process. All data obtained at \mbox{$T_\text{init} =$
+            \SI{25}{\degreeCelsius}, $T_\text{sink} =$ \SI{25}{\degreeCelsius}}.
         }
         \label{fig:fig_CapacityQuadrants}
         \mpfootnotes[1]
@@ -238,24 +241,24 @@ represented by the linear downward-sloping line.
 
 For any layer  choice, $Q_\text{n}$ therefore represents the upper  bound on the
 charge  that can  be  passed  during charging.  For  both  constant current  and
-constant power  charging, the locus  of the  actual charge passed~$q$  lies much
-below  this theoretical  nominal capacity.  For very  low layer  counts, as  the
-number of layers  decreases, the power density drops rapidly  which implies that
-the rate of heating  is low. This allows for more charge  to be passed. However,
-at  ultra-low  layer  counts,  the  overpotential due  to  the  cell's  internal
-resistance is  quite high. Therefore,  hitting the  upper bound on  the terminal
-voltage is the reason for the failure  of these layer choices. This is indicated
-by the narrow $V_\text{max}$-limited region in \cref{fig:fig_CapacityQuadrants}.
-For an intermediate range of layer  choices, the rate of power-density drop with
-layer count begins to flatten, thereby  leading to a plating-limited region. For
-these layer choices,  the surface concentration starts to  exceed the saturation
-value  before  any thermal  or  voltage  limits  are reached.  Finally,  further
-increasing  the layer  count beyond  an intermediate  optimal value  leads to  a
-linear drop in the cell's charge accepting capability. During fast charging with
-the chosen power levels, although these  layer choices do not reach the thermal,
-voltage or concentration limits, they are  unable to attain the target \gls{soc}
-of \SI{80}{\percent}.  This is simply due  to the lower nominal  capacity of the
-these cells. There  is no benefit whatsoever in designing  cells in this region.
+constant power  charging, the locii of  actual charge passed~$q$ lie  much below
+this theoretical nominal  capacity. For very low layer counts,  as the number of
+layers decreases, the power density drops rapidly which implies that the rate of
+heating is low. This allows for more  charge to be passed. However, at ultra-low
+layer counts, the  overpotential due to the cell's internal  resistance is quite
+high.  Therefore,  hitting the  upper  bound  on  the  terminal voltage  is  the
+reason  for  the failure  of  these  layer choices.  This  is  indicated by  the
+narrow $V_\text{max}$-limited region in \cref{fig:fig_CapacityQuadrants}. For an
+intermediate range of  layer choices, the rate of power-density  drop with layer
+count begins to flatten, thereby leading  to a plating-limited region. For these
+layer choices, the  surface concentration starts to exceed  the saturation value
+before any  thermal or voltage  limits are reached. Finally,  further increasing
+the layer count beyond  an intermediate optimal value leads to  a linear drop in
+the cell's  charge accepting  capability. During fast  charging with  the chosen
+power levels, although these layer choices  do not reach the thermal, voltage or
+concentration  limits,  they  are  unable  to attain  the  target  \gls{soc}  of
+\SI{80}{\percent}. This is simply due to the lower nominal capacity of the these
+cells.  There is  no  benefit  whatsoever in  designing  cells  in this  region.
 \Cref{fig:fig_CapacityQuadrants} provides  clues to  the design engineer  on the
 degree  of optimisation  that can  be achieved  by careful  design choices.  For
 instance, by tuning certain design parameters, such as using electrode materials
