@@ -21,7 +21,10 @@ desirable to carefully calculate the  volume of electrochemical active materials
 to be accommodated  within the cell. This concept is  well-known and is commonly
 discussed  in  standard  textbooks in  the  field  such  as  those by  Rahn  and
 Wang~\cite{Rahn2013} wherein  example calculations are presented  for non-porous
-electrodes.
+electrodes. The study  by Ramadesigan~\etal~\cite{Ramadesigan2012} also supports
+the  statement that  capacity  matching  of anode  and  cathode  materials is  a
+standard practice in cell design.
+
 
 In  the  case  of  lithium  ion   cells  with  porous  electrodes,  the  concept
 of  electrode-balancing  involves an  additional  variable  \viz{} the  porosity
@@ -49,21 +52,24 @@ design study.
 
 From a technical  viewpoint, there exists another redeeming  argument to support
 the constant  porosity assumption. Keeping material  porosities constant enables
-to eliminate one  degree of freedom from the design  optimisation study, thereby
-narrowing the  dimensionality of the search  space. To the best  of the author's
-knowledge, there has not yet been any published work tackling layer optimisation
-of pouch cells.  Building an initial infrastructure in terms  of a computational
-framework that is based upon this constant porosity approximation shall at least
-provide  a solid  foundation to  build upon  for such  real-life use-cases.  The
-author foresees  this study  as a  vanguard research  into cell  engineering and
-therefore places  a high  value in  obtaining ballpark  estimates of  an optimal
-layer count, albeit with constant  porosities. Nevertheless, for real-world use,
-the influence of varying the material porosities on the cell's performance is to
-be  quantified.  Hence,  prior  to adopting  this  model-based  methodology  for
-production yields at scale, a  fully-integrated design optimisation process with
-variable porosities  has to be  developed. Therefore,  in this work,  the author
-restricts the study  to constant porosity values,  whilst acknowledging variable
-porosity designs as an important aspect for future studies.
+to  eliminate  one  degree  of  freedom  from  the  design  optimisation  study,
+thereby narrowing  the dimensionality of  the search space.  To the best  of the
+author's knowledge,  there has not  yet been  any published work  tackling layer
+optimisation  of  pouch  cells.  Building an  initial  infrastructure  in  terms
+of  a  computational  framework  that  is  based  upon  this  constant  porosity
+approximation  shall at  least  provide a  solid foundation  to  build upon  for
+such  real-life  use-cases.  The  author  foresees  this  study  as  a  vanguard
+research into  cell engineering and therefore  places a high value  in obtaining
+ballpark estimates of  an optimal layer count, albeit  with constant porosities.
+Ramadesigan~\etal~\cite{Ramadesigan2012} present  an opinion that the  choice of
+porosities of electrode  materials is currently being done on  a trial and error
+basis. Nevertheless, for  real-world use, the influence of  varying the material
+porosities  on the  cell's  performance is  to be  quantified.  Hence, prior  to
+adopting  this  model-based  methodology  for  production  yields  at  scale,  a
+fully-integrated design optimisation process with  variable porosities has to be
+developed. Therefore, in  this work, the author restricts the  study to constant
+porosity values, whilst acknowledging variable  porosity designs as an important
+aspect for future studies.
 
 At  a  system level,  the  efficiency  of the  drivetrain  is  considered to  be
 constant. The  drivetrain of  an electric  vehicle consists of  a whole  host of
@@ -122,11 +128,14 @@ stack  within the  pouch is  constant. The  detailed calculations  of the  stack
 height is presented in \cref{sec:surfareaperlayer}.
 
 The  current collectors  and the  separator  in each  electrochemical layer  are
-assumed to  have uniform thickness  irrespective of  the number of  layers used.
-Barring minor manufacturing variability and  tolerances, these values are merely
-factual data  requiring no further  justification. The final assumption  from an
-electrochemical point of view is that the relative thicknesses of each electrode
-is held  constant to a  fixed ratio. This  warrants further explanation,  but is
+assumed  to  have  uniform  thickness  irrespective  of  the  number  of  layers
+used.  Barring  minor manufacturing  variability  and  tolerances, these  values
+are  merely  factual data  requiring  no  further justification.  For  instance,
+a  constant  separator thickness  was  used  in  the design  optimisation  study
+by  Newman~\cite{Newman1995}.  The  final  assumption  from  an  electrochemical
+point  of view,  introduced specifically  for the  first time  in literature  by
+this  thesis author,  is  that the  relative thicknesses  of  each electrode  is
+held  constant to  a  fixed ratio.  This warrants  further  explanation, but  is
 ill-suited  for this  introductory discussion.  The details  of this  aspect are
 discussed  in  \cref{sec:electroderatio}. Certain  assumptions  are  to be  made
 about the  temperature distribution  within the  layers owing  to the  choice of
