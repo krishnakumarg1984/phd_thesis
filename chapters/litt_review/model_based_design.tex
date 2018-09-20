@@ -132,10 +132,12 @@ two parameters  optimised are electrode  thicknesses and porosities.  This study
 makes the assumption that electrode kinetics  are fast relative to diffusion and
 furthermore ignores local concentration  gradients. A reaction-zone model, which
 considers  that reactions  occur in  a narrowly  confined area  was used  as the
-underlying model. The separator thickness was assumed to be fixed. Although this
-work  is highly  valuable from  the point  of view  of its  pioneering technical
-contributions, it is  not clear whether the reaction-zone model  is adequate for
-representing present lithium ion chemistries.
+underlying  model. The  separator  thickness was  assumed to  be  fixed and  the
+specific energy  of the cell was  maximised. However, this work  does not impose
+any constraints on the extent of specific power that can be drawn from the cell.
+Nevertheless, this seminal effort provided the key guidance to other researchers
+that  electrode thicknesses  and porosities  can be  considered as  the critical
+design variables to be optimised for in a cell design.
 
 Arora~\etal~\cite{Arora1999}  used an  electrochemical  model  to inform  design
 decisions on cell parameters such as particle size, electrode thickness and mass
@@ -165,6 +167,44 @@ typically restrict the number of  degrees of freedom available for optimisation.
 Nevertheless, this scheme is valuable  from a long-term research perspective and
 merits attention by researchers interested in model-based design.
 
+The  design study  by  Xue~\etal~\cite{Xue2013a} represents  a  rare example  of
+a  model-led  design study  in  electrified  transportation.  In this  work,  an
+electrochemical cell model  \viz{} the \gls{p2d} model  was successfully adapted
+to  perform the  design optimisation  of a  \gls{phev}. Although  the underlying
+model operates at the cell-scale, this study considers a pack-level optimisation
+through  a  series-parallel  combination  of  cells.  Furthermore,  an  advanced
+numerical  algorithm in  the  form  of a  hybrid  solver  \ie{} a  gradient-free
+optimiser  in conjunction  with a  gradient-based optimiser  was used.  Albeit a
+unique example in the context of vehicular application, this work falls slightly
+outside the  scope of  this thesis wherein  the design is  confined at  the cell
+level. The aforementioned work takes into account pack-level constraints such as
+safety limits as well as energy and power levels. Furthermore, even the presence
+of layers within each cell  were considered.
+
+
+The  system-level  constraints   considered  in  Xue~\etal~\cite{Xue2013a}  were
+instrumental   in  informing   the  choice   of  constraints   in  this   thesis
+author's  design  study  presented in  \cref{ch:modelbaseddesign}.  However,  in
+the  aforementioned article,  the  translation from  pack-level into  cell-level
+quantities does not account for secondary  effects \ie{} the influence layers on
+pack mass  (a quantity that is  optimised in the  said work) is not  studied. In
+this  thesis  author's  simulations,  it  became clear  that  such  effects  are
+significant enough that they cannot be neglected.
+
+A critical issue in the approach by Xue~\etal~\cite{Xue2013a} is that the number
+of design variables were excessively large which necessitated the use of complex
+numerical algorithms.  The said work  assumes that the  cell design shall  be an
+integral  part  of the  pack  optimisation.  However,  in this  thesis  author's
+understanding,  it  appears  that  cells  are  designed  independently  by  cell
+manufacturers, that merely  adhere to specifications~\cite{Maksimovic2012}. Pack
+configuration decisions such as the  choice of number of series-parallel modules
+in  the vehicular  pack are  undertaken at  a system  level in  conjunction with
+the  rest  of  the  drivetrain specifications  by  vehicle  manufacturers.  This
+natural  separation  of the  real-world  paradigm  helps  to decouple  the  cell
+design  from  the  pack  design  thereby  drastically  reducing  the  number  of
+degrees  of  freedom and  simplifying  the  optimisation  task.  This is  a  key
+assumption in  this thesis author's design  optimisation study and is  listed in
+\cref{subsec:layeroptassumptions}.
 
 
 
