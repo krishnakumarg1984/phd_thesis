@@ -343,7 +343,7 @@
             \draw[->,name path=nmaxpath] (computenmax.west) -| (iterativesearch.-35);
             \draw[vecArrow] (constantdomainlengths) -- (computenmax.north -| constantdomainlengths);
             \node[controlnode,anchor=west] at (epsilons.west |- computenmax)(computelratio) {Compute $l_\mathrm{ratio}$};
-            % % \node[controlnode] at (searchterminatedcheckacc -| scalebysurfacearea) (bisectupwards) {$L=n^{(i)}+1$\\$n^{(i)} = n^{(i)}+1$};
+            % % \node[controlnode] at (searchterminatedcheckacc -| scalebysurfacearea) (bisectdownwards) {$L=n^{(i)}+1$\\$n^{(i)} = n^{(i)}+1$};
 
             % \node[scale=1,controlnode,below = of iterativesearch.south west,anchor=west] (computenmin) {$n_\mathrm{min}=1$};
             \node[scale=1,controlnode,above = of iterativesearch] (computenmin) {$n_\mathrm{min}=1$};
@@ -376,18 +376,19 @@
             \draw[->] (I1) -| ($(scalebysurfaceareafastchg.west)+(-18.0mm,-3mm)$) |- (scalebysurfaceareafastchg.210) node[above,very near end,xshift=0mm,yshift=-0.5mm,below] {$\scriptstyle{A_\mathrm{cell}}$};
             \draw (I1) arc [start angle=0,end angle=-180,radius=\radius];
 
-            \draw[->,name path=failurepath] (acctempcheck.east) -- ++(7mm,0) node[midway] {\small no} |- node[above,pos=0.7] {\tiny Bisect} node[below,pos=0.75] {\tiny Downwards} (iterativesearch.west);
+            \draw[->,name path=failurepath] (acctempcheck.east) -- ++(7mm,0) node[midway] {\small no} |- node[above,pos=0.7] {\scriptsize Bisect} node[below,pos=0.75] {\scriptsize Upwards} (iterativesearch.west);
             \draw (accVoltagecheck.east) -- ++(7.1mm,0) node[midway] {\small no} ;
             \draw (accsoccheck.south) -- ++(0,-9mm) node[midway] {\small no} -| ($(accVoltagecheck.east)+(7.1mm,0)$);
-            % \draw[->,name path=failurepath3] (accsoccheck.east) -- ++(7.69mm,0) node[midway] {\small no} |- node[ near end] {\tiny Bisect } node[ near end,below] {\tiny Downwards} (iterativesearch.west);
+            % \draw[->,name path=failurepath3] (accsoccheck.east) -- ++(7.69mm,0) node[midway] {\small no} |- node[ near end] {\tiny Bisect } node[ near end,below] {\tiny Upwards} (iterativesearch.west);
 
             % \draw[name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-9mm,0) node[midway,above] {\small no} -| ++(0,-142.00mm) -| ($(accsoccheck.east)+(13.2mm,0)$);
             % \draw[name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-9mm,0) node[midway,above] {\small no} -| ++(0,-146.05mm) -- (accsoccheck);
             \draw [->] (iterativesearch) -- (searchconverged);
-            % \draw[name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-10mm,0) node[midway,above] {\small no} -| ++(0,-151.75mm) -| (bisectdownwards.south);
+            % \draw[name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-10mm,0) node[midway,above] {\small no} -| ++(0,-151.75mm) -| (bisectupwards.south);
             \draw [name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-9mm,0) node[midway,above] {\small no} |- ($(accsoccheck.south)+(0,-9mm)$);
             \draw (fastchgvoltagecheck.west) -- ++(-9.3mm,0) node[midway,above] {\small no} ;
-            \draw (fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,left] {\small no} -- ($(accsoccheck.south)+(0,-9mm)$);
+            % \draw (fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,left] {\small no} -- ($(accsoccheck.south)+(0,-9mm)$);
+            % \draw (fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,left] {\small no} -- ($(accsoccheck.south)+(222mm,-9mm)$) |- node[midway,left] {\small no} (fastchgtargetcheck.west);
 
             \path [name path=timeoutpath] (timecheck.west) -- ++(-5mm,0);
             \path [name intersections={of = saturatedsurfacepath and timeoutpath}];
@@ -414,13 +415,16 @@
             % \coordinate (I2)  at (intersection-2);
             \draw  (accsoccheck.east) -- node[above,xshift=0mm] {\footnotesize yes} ($(accsoccheck.east)+(6.75mm,0)$);
             \draw  ($(accsoccheck.east)+(6.75mm,0)$) arc [start angle=180,end angle=0, radius=1mm] ($(accsoccheck.east)+(8.75mm,0)$) -- (storefeasiblesolution);
-            \draw [->] (storefeasiblesolution) -- node[above,rotate=-90] {\tiny Bisect} node[below,rotate=-90] {\tiny Upwards} (storefeasiblesolution |- iterativesearch.south);
+            \draw [->] (storefeasiblesolution) -- node[above,rotate=-90] {\scriptsize Bisect} node[below,rotate=-90] {\scriptsize Downwards} (storefeasiblesolution |- iterativesearch.south);
 
             \draw [->] (fastchgtargetcheck.west) -- node [above] {\small yes} ++(-9mm,0mm) arc [start angle=0,end angle=180,radius=1mm] -- (storefeasiblesolution);
 
             % \node [accnode,right=of accsoccheck,yshift=-8.0mm] (noptacc) {$n\mathrm{^{acc}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
             \node [accnode,below = of storefeasiblesolution.south west,anchor=west] (noptacc) {$n\mathrm{^{acc}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
             \node [fastchgnode,xshift=0mm,anchor=east] at (noptacc-| computelratio.east) (noptfastchg) {$n\mathrm{^{fastchg}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
+            \node[controlnode,align=center,inner sep=2pt,anchor=east]  at ($(noptfastchg.east)+(27mm,0)$) (exitcondition2) {\scriptsize exit \\ \scriptsize condn.$=2$};
+            \draw [->](fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,right] {\small no} -| (exitcondition2.south);
+            \draw  (exitcondition2.north) |- (fastchgtargetcheck.west);
 
             \draw [->] (searchconverged.south) -- node [right] {\small yes} ++(0,-12.0mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-11.5mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-3mm) -| (noptacc.50);
             \draw [->] (searchconverged.south) -- node [right] {\small yes} ++(0,-12.0mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-11.5mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-3mm) -| (noptfastchg.140);
