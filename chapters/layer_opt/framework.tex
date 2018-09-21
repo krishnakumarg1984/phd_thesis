@@ -274,12 +274,12 @@ A  customised binary  search algorithm  is designed  for the  layer optimisation
 framework.  Binary  search  is  a  computationally  efficient  search  algorithm
 requiring a worst-case  operational count of~$\mathcal{O}(\log k)$  where $k$ is
 the  overall  number  of  layer  candidates  to  be  searched~\cite{Cormen2009}.
-However, this  algorithm only  works when  the array to  be searched  is already
-sorted in either ascending or  descending order. By recognising the relationship
-between the  magnitude of power density  applied versus the factors  that deem a
-layer suitable  or unsuitable  for the  application, a  customised set  of `exit
-conditions'  that  meet  the  aforementioned  sorted-array  requirement  can  be
-enforced.  This  specific  mapping  is  a  unique  idea  and  is  claimed  as  a
+However, this  algorithm is  applicable only  when the array  to be  searched is
+already  sorted in  either ascending  or  descending order.  By recognising  the
+relationship between the  magnitude of power density applied  versus the factors
+that deem a  layer suitable or unsuitable for the  application, a customised set
+of `exit conditions'  that meet the aforementioned  sorted-array requirement can
+be  enforced. This  specific  mapping is  a  unique  idea and  is  claimed as  a
 contribution by this thesis author to the art.
 
 This search  strategy is  equally applicable (with  small modifications  to exit
@@ -331,7 +331,7 @@ deemed to be at the critical transition point wherein the exit condition toggles
 from 0~to~1 and  hence, minimal customisation is needed in  the computer code to
 handle these two cases.  The handling of exit condition~2 is  shown in the lower
 rightmost portion of \cref{fig:fig_strategy_schematic}. Despite being a failure,
-from the search algorithms point of view, this is treated as a success, with the
+from the search algorithms point of view  this is treated as a success, with the
 only difference  being the  assignment of  the exit  condition value  purely for
 logging and debugging purposes.
 
@@ -343,9 +343,9 @@ sequentially iterating  from $n_\text{min}$ to $n_\text{max}$  until arriving at
 the lowest  value $n_\text{opt}^\text{acc}$  that satisfies all  the termination
 criteria. However, a naive use of the linear search algorithm is computationally
 expensive with a worst case operation count of $\mathcal{O}(n)$. Therefore, this
-thesis  author  recommends  the  use  of the  bespoke  binary  search  algorithm
-presented here.  The choice of  minimum and maximum  values of the  layer search
-space is discussed in \cref{sec:layersearchbounds}.
+thesis author  recommends the use  of the  bespoke binary search  algorithm. The
+choice of minimum and maximum values for  the layer search space is discussed in
+\cref{sec:layersearchbounds}.
 
 \subsection{Upper and lower bounds on search space}\label{sec:layersearchbounds}
 
