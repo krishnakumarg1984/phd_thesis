@@ -7,8 +7,8 @@ notifications:
     on_success: never
 cache:
   directories:
-  # - "/tmp/texlive"
-  # - "$HOME/.texlive"
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
   - "$HOME/.cache/pip"
   # - "$HOME/texmf"
 script:
@@ -39,11 +39,15 @@ install:
 - pip install --user Pygments
 - rsync -rvzctlp rsync://contextgarden.net/distribution/current/bin/luatex/linux-64/bin/ /tmp/texlive/bin/x86_64-linux/
 - fmtutil -user --byengine luatex
-# - fmtutil -user --all
-# - git config --global http.sslVerify false
+- fmtutil -user --all
+- git config --global http.sslVerify false
 # - git clone https://github.com/u-fischer/lua-font-pond.git
 # - cp -R lua-font-pond/texmf ~/texmf
-# - texhash
+- git clone https://github.com/u-fischer/luaotfload.git
+- cd luaotfload
+- git checkout dev-2.9
+- cp -R texmf ~/texmf
+- texhash
 env:
   global:
     secure: oeNBy31e33khf2pJ9Pcu7jRqkohP6REswQgdtwEHOW/OIcyieNe8ZTn5i81leMhoLCkHdGQH2jZfO10JREJzK+ycOQew5yeQ1/LGtF3kOhjX6322t0WfNMM2/XlJntCiHOGrWp+C0IbqYPisyLmK5Ta3bE5L6VepykRtz1TyQM0dsON8E9J7dZZs7TPbWkTRXabFwip+MygZLugvGkihfgVKgQUU3XXjEd+jrNyDUL1xp9qMdxqASfD2dj9dSEzoQ5qGW4Sp3Paw4AHGaEDfDBbfGYUjJwL2rOchrmUotPYnY57IBPjNrOMeommBGJbZrn4HeSDhdTXOdXMvid7//WRuBzGMmZEJbI+2fshLip2KX3t6dnqF8ynGBmbR1RWqsdCnuiSOekixQPMCBjIMgLDH2AJcE8NGLxRUGhZW/pWSZcvr7ZpGc8liriCwGG6vwwEtQBTyhJMa7Xj+O9UHl1ruYDC+DC17gDLlpHX2G922cappLxSgbJF8NMZEsa7IlUzzadXLE2rTcVLwiNeAlc+WAtHOlPY2gGk+aPF8exRUDi9XqzP6oa9johYkg+EP1zAkN43Ss99FDl1ChQPZnNpLVUSNPfys3XCPlmkSSM8bdgfP0ftz++y59X0Nkyii9A8f7HDgwmzrZav7GeXKZC2z08Looi6SFfDVSEIp2a8=
