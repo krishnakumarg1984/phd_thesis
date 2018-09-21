@@ -47,6 +47,7 @@ install:
 - cd luaotfload
 - git checkout dev-2.9
 - cp -R texmf ~/texmf
+- cd ..
 - texhash
 env:
   global:
