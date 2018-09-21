@@ -8,10 +8,10 @@ contrasting effects  on its energy  storage and power handling  capabilities. In
 this section,  a high-level  intuitive explanation of  this phenomenon  is first
 offered, before  delving into  a detailed  presentation of  this effect  and its
 implications for a specific  example cell in \cref{sec:energypowertradeoffdemo}.
-Interwoven into the  narrative is a set of simplifying  assumptions made by this
-thesis  author, which  sets the  broader  context within  which a  computational
-framework for  determining the optimum  number of  layers for a  specific target
-design shall be formalised and presented in \cref{sec:layeroptframework}.
+Interwoven  into  the  narrative  is  a set  of  simplifying  assumptions  which
+establishes  the broader  context  within which  a  computational framework  for
+determining the optimum  number of layers for a specific  target design shall be
+formalised (to be discussed in \cref{sec:layeroptframework}).
 
 \subsection{Preliminary assumptions}\label{subsec:layeroptassumptions}
 
@@ -67,9 +67,9 @@ basis. Nevertheless, for  real-world use, the influence of  varying the material
 porosities  on the  cell's  performance is  to be  quantified.  Hence, prior  to
 adopting  this  model-based  methodology  for  production  yields  at  scale,  a
 fully-integrated design optimisation process with  variable porosities has to be
-developed. Therefore, in  this work, the author restricts the  study to constant
-porosity values, whilst acknowledging variable  porosity designs as an important
-aspect for future studies.
+developed. Therefore, in this work, the study is restricted to constant porosity
+values, whilst  acknowledging variable porosity  designs as an  important aspect
+for future studies.
 
 At  a  system level,  the  efficiency  of the  drivetrain  is  considered to  be
 constant. The  drivetrain of  an electric  vehicle consists of  a whole  host of
@@ -242,7 +242,7 @@ values that overlap between these two tables are ---
 \end{enumerate*}
 For these conflicting quantities,  the values in \cref{tbl:lcoSimParamslayeropt}
 prevail for all simulation studies  in this chapter. Furthermore, the individual
-electrode thicknesses  from \cref{tbl:lcoSimParamsSPMp2d} is not  directly used,
+electrode thicknesses from \cref{tbl:lcoSimParamsSPMp2d}  are not directly used,
 but  instead  calculated  for  every  layer  choice  by  keeping  the  ratio  of
 their  relative  thicknesses  constant.  This   aspect  shall  be  explained  in
 \cref{sec:electroderatio}.
@@ -252,9 +252,9 @@ of  layers   on  the  energy   and  power   capability  of  the   example  cell.
 Starting  at  \SI{100}{\percent}  \gls{soc},  a constant  current  discharge  of
 \SI{60}{\ampere}\footnotemark{}  is applied  to a  \gls{dfn} model  of the  cell
 until reaching the  lower cut-off voltage. For each discharge  run, the model is
-reconfigured  with  a  different  layer  choice.  Five  distinct  layer  choices
-have  been carefully  conjured so  as  to provide  a clear  illustration of  the
-energy/power trade-off phenomenon.
+reconfigured with  a different  layer choice. Five  distinct layer  choices have
+been carefully chosen so as to  provide a clear illustration of the energy/power
+trade-off phenomenon.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -304,7 +304,7 @@ trend  will continue  \mbox{\ie{} the}  lower the  layer count,  the higher  the
 run-time until  cut-off. If this  were the case,  prima~facie it seems  that the
 layer optimisation task is trivial.
 
-Inspecting the discharge curves of lower layer choices brings into limelight the
+Inspecting the  discharge curves of  lower layer  choices brings into  light the
 concept of \emph{usable} energy. Contrary  to expectations, the discharge curves
 corresponding  to very  low layer  counts in  \cref{fig:fig_CC_discharge_curves}
 terminate even earlier than $n=50$. This is  owing to the fact that although the
