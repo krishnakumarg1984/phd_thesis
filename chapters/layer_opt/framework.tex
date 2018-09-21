@@ -4,6 +4,8 @@
 
 % \afterpage{\clearpage}
 
+\subsection{Introduction and guidelines for flow diagram traversal}
+
 The  methodology adopted  by the  proposed layer  optimisation framework  can be
 explained by  using the  flow diagram in  \cref{fig:fig_strategy_schematic}. The
 power  handled by  the cell  during normal  operation (evaluated  by considering
@@ -47,10 +49,19 @@ As indicated by  the legend in \cref{fig:fig_strategy_schematic},  blocks with a
 light~grey border represent input  data/parameters for computations. Blocks with
 a standard black  border represent computations common to  both acceleration and
 fast charging pathways. The design output  is given by the double-bordered block
-at the bottom centre of \cref{fig:fig_strategy_schematic}. Other types of blocks
-and arrows are appropriately listed in  the legend key. To aid the understanding
-of the layer  optimisation framework, the reader is encouraged  to correlate the
-narrative in this section with the blocks and arrows in the schematic.
+at  the  bottom  centre  of \cref{fig:fig_strategy_schematic}.  Other  types  of
+blocks  and arrows  are  appropriately listed  in  the legend  key.  To aid  the
+understanding of the  layer optimisation framework, the reader  is encouraged to
+correlate  the narrative  in this  section  with the  blocks and  arrows in  the
+schematic.  The  acceleration  and  fast  charging  pathways  are  not  amenable
+for  standalone comprehension  and  are to  be parsed  in  conjunction with  the
+flow  of  control through  the  infrastructure  blocks  as  if the  entire  flow
+diagram  is a  single  cohesive unit.  These `control'  blocks,  common to  both
+pathways  in \cref{fig:fig_strategy_schematic},  govern how  these two  pathways
+are  to be  traversed  with the  presently trialled  layer  choice and  quantify
+the  suitable  reformulations needed  whenever  a  new  layer  choice is  to  be
+used.  The  computational aspects  covered  by  these  blocks are  described  in
+\crefrange{sec:searchalgo}{sec:spheat}.
 
 \subsection{Acceleration pathway}\label{sec:accpathway}
 
@@ -184,36 +195,157 @@ successful  layer value  from  all  temperature combinations  is  deemed as  the
 canonical  optimal design  choice  when considering  acceleration demands.  This
 concludes the narrative describing the acceleration-specific pathway.
 
+
+\subsection{Fast-charging pathway}\label{sec:fastchgpathway}
+
+The  workflow describing  the optimal  layer calculation  for the  fast charging
+scenario begins  with the  anchor block labelled  `Start Fast-Charge  Calcs.' in
+\cref{fig:fig_strategy_schematic}. The charging algorithm used in this framework
+is based  upon the model-based strategy  proposed by Choe~\etal~\cite{Choe2013},
+wherein  the surface  concentration is  never allowed  to exceed  its saturation
+value.  Adopting  this charging  scheme  leads  to  a  robust cell  design  that
+is  resilient  to  lithium  plating.  A  major  departure  from  the  scheme  in
+Choe~\etal~\cite{Choe2013}  is the  fact that  the constant  current phase  used
+therein is replaced  by a constant power  phase. This is so  that the assumption
+of  identical  conditions  across  all  cells   in  the  pack  holds  true  (see
+\cref{subsec:layeroptassumptions} for  details). Furthermore, the  pulsing phase
+used to  top-up the cell's  \gls{soc} in Choe~\etal~\cite{Choe2013}  is omitted.
+This  is because,  the level~3  fast charging  specifications typically  require
+charging to a  target \gls{soc} that is typically  well below \SI{100}{\percent}
+(see \cref{tbl:lcoSimParamslayeropt}).
+
+At     first,     the    charging     power     applied     at    the     pack's
+terminals~$P_\text{batt}^\text{fastchg}$ is scaled down by the overall number of
+cells in the pack.  This results in the charging power  experienced by each cell
+in  the  pack~$P_\text{cell}^\text{fastchg}$.  Following the  strategy  used  in
+\cref{sec:accpathway}, the power  at the cell's terminals is scaled  down by the
+electrochemically active  overall surface area~$A_\text{cell}$. This  yields the
+power density~$p^{\text{fastchg}}$ experienced by each  layer in the cell and is
+now  amenable  to be  applied  to  the  normalised  \gls{p2d} equations  of  the
+\gls{dfn} model (that has been suitably modified to handle power inputs).
+
+\subsubsection*{Thermally-coupled fast-charging simulations and exit conditions}
+
+After computing  the power  density per  layer, the  thermally-coupled \gls{p2d}
+model  is  then  invoked.  While  the  simulation  runs,  the  cell's  state  is
+continually evaluated against various termination criteria.
+\begin{enumerate}
+    \item the maximum possible values of cell temperature~$T_\text{max}$,
+    \item the maximum allowed terminal voltage~$V_\text{max}$, and
+    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$\c_\text{s,sat}$
+\end{enumerate}
+
+If any  of these three criteria  are violated, the simulation  immediately stops
+and the trialled layer  choice is deemed to not satisfy  the fast charging power
+requirements. The  search algorithm then  updates the layer choice  suitably and
+the entire workflow is repeated.
+
+If the  simulation for  any layer choice  passes the  aforementioned termination
+criteria,  the  \gls{soc}   achieved  by  the  cell  is   compared  against  the
+fast-charging   target~$z^\ast$.  If   $z(t)   >  z^\ast$,   then  the   present
+layer  choice  represents   the  minimum  (and  therefore   optimum)  value  for
+this  specific  fast  charging  application.  The  successful  layer  choice  is
+labelled~$n_\text{opt}^\text{fastchg}$. If the surface concentration has not yet
+reached the saturation limit, then the charge time is compared against the upper
+bound for  fast charging specifications~$t_\text{max}$. If  this preset duration
+has not been reached, then the simulation is allowed to advance further in time,
+with the aforementioned  termination criteria being continuously  tested at each
+subsequent time-step.
+
+The above process is repeated for  different combinations of initial and ambient
+temperatures~\mbox{$(T_\text{init},  T_\text{sink})$}.  The  largest  successful
+layer value from all temperature combinations is deemed as the canonical optimal
+design choice when  considering the fast charging power  demands. This concludes
+the  narrative describing  the  fast charging  pathway.
+
+Finally, the  maximum of the  layer choices across all  temperature combinations
+from the  acceleration and  fast charging  scenarios is  deemed as  the globally
+optimal  number of  layers  to be  used  for this  model-led  cell design.  This
+concludes the overall narrative describing the layer optimisation framework. The
+results obtained by applying this methodology to a specific numerical example is
+presented next in \cref{sec:resultslayeropt}.
+
+% Do not forget to quote the value of cs_sat from layer opt paper table and show
+% calculation inline. Might even go into the code
+
 \subsection{Search algorithm}\label{sec:searchalgo}
 
-A  customised binary  search algorithm  is  employed in  the layer  optimisation
-framework. The  binary search  is a  computationally efficient  search algorithm
-requiring a worst-case operational count of~$\mathcal{O}(k \log k)$ where $k$ is
-the  overall number  of  layer candidates  to be  searched.  From a  pedagogical
-viewpoint,  the  method  is  briefly  described  here  in  the  context  of  the
-aforementioned acceleration runs.  However, the same search  strategy is equally
-applicable for both acceleration and fast charging pathways.
+A  customised binary  search algorithm  is designed  for the  layer optimisation
+framework.  Binary  search  is  a  computationally  efficient  search  algorithm
+requiring a worst-case  operational count of~$\mathcal{O}(\log k)$  where $k$ is
+the  overall  number  of  layer  candidates  to  be  searched~\cite{Cormen2009}.
+However, this  algorithm only  works when  the array to  be searched  is already
+sorted in either ascending or  descending order. By recognising the relationship
+between the  magnitude of power density  applied versus the factors  that deem a
+layer suitable  or unsuitable  for the  application, a  customised set  of `exit
+conditions'  that  meet  the  aforementioned  sorted-array  requirement  can  be
+enforced.  This  specific  mapping  is  a  unique  idea  and  is  claimed  as  a
+contribution by this thesis author to the art.
 
-If all the  termination criteria are successfully met, the  output of the binary
-search algorithm is  set to a logical~1.  If any of these  conditions fail, then
-the output  is assigned  a logical~0.  Thus, the search  vector in  this bespoke
-strategy consists of only two boolean possibilities. For ultra-low layer counts,
-the  applied power  densities are  extremely high.  Therefore, one  of the  exit
-conditions is  likely to fail. For  very high layer counts,  the power densities
-are very low,  implying that acceleration runs shall always  be successful. When
-considering layer counts from the lowest to the highest, there exists a critical
-transition point \viz{} the first layer  count for which the exit vector toggles
-from~0  to~1.  Through  a  systematic  bisection  of  the  layer  search  space,
-the  search  algorithm  speedily  converges  to  the  optimal  layer  value.  An
-alternative to using  the binary search algorithm is the  standard linear search
-algorithm.  This  is  a  simple  search  strategy  which  involves  sequentially
-iterating from  $n_\text{min}$ to  $n_\text{max}$ until  arriving at  the lowest
-value  $n_\text{opt}^\text{acc}$ that  satisfies all  the termination  criteria.
-However, a naive use of the linear search algorithm is computationally expensive
-with a  worst case operation  count of $\mathcal{O}(n)$. Therefore,  this thesis
-author recommends the use of the bespoke binary search algorithm presented here.
-The choice  of minimum and  maximum values of the  search space is  discussed in
-\cref{sec:layersearchbounds}.
+This search  strategy is  equally applicable (with  small modifications  to exit
+conditions as explained next) for both acceleration and fast charging pathways.
+
+\subsubsection*{Binary search for acceleration pathway}
+
+If all the termination criteria are  successfully met, the exit condition is set
+to a  value of~1. If any  of these conditions  fail, then the exit  condition is
+assigned a value of~0. Thus, the search vector in this bespoke strategy consists
+of only two boolean possibilities. For ultra-low layer counts, the applied power
+densities are extremely high. Therefore, one of the exit conditions is likely to
+fail. For  very high layer  counts, the power  densities are very  low, implying
+that acceleration runs shall always be successful. When considering layer counts
+from the lowest to the highest,  there exists a critical transition point \viz{}
+the first layer count  for which the exit vector toggles  from~0 to~1. Through a
+systematic bisection  of the layer  search space, the search  algorithm speedily
+converges to the optimal layer value.
+
+\subsubsection*{Binary search for fast-charging pathway}
+
+If all  the fast-charging  termination criteria are  successfully met,  the exit
+condition is  set to  a value  of~1. For  violating any  of the  following three
+failure conditions (see \cref{sec:fastchgpathway}) \viz{} exceeding
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item upper cutoff temperature  and/or,
+    \item upper cutoff voltage and/or
+    \item the maximum allowed charging despite encountering surface saturation,
+\end{enumerate*}
+the exit condition is  assigned the value of~0. The search  array is bisected by
+using  this failed  layer  choice as  the  new lower  bound.  If no  termination
+criterion is  violated, then  the presently  trialled layer  choice is  deemed a
+success and the exit condition is set to 1. The search space is narrowed down by
+using the current layer choice as the new upper bound.
+
+However,  there exists  an additional  third possibility  for the  fast charging
+case.  If the  aforementioned termination  criteria  are not  violated, but  the
+charging process fails to meet  the target \gls{soc} specification, this implies
+that the number of layers used is too high (see \cref{fig:fig_CapacityQuadrants}
+and \cref{sec:resultslayeropt} for  a brief explanation of this  case). The exit
+condition corresponding to this failure mode is assigned a value of~2. Thus, the
+search vector in this bespoke strategy  consists of three distinct numbered exit
+conditions. Despite being a failure, from  the perspective of narrowing down the
+search space,  exit condition~2 is treated  in the same way  as exit condition~1
+\ie{} the trialled layer choice is deemed to be too high.
+
+Akin to the acceleration pathway, the  optimal layer choice for fast charging is
+deemed to be at the critical transition point wherein the exit condition toggles
+from 0~to~1 and  hence, minimal customisation is needed in  the computer code to
+handle these two cases.  The handling of exit condition~2 is  shown in the lower
+rightmost portion of \cref{fig:fig_strategy_schematic}. Despite being a failure,
+from the search algorithms point of view, this is treated as a success, with the
+only difference  being the  assignment of  the exit  condition value  purely for
+logging and debugging purposes.
+
+\subsubsection*{Alternative search algorithm --- linear search}
+
+A  simpler alternative  to using  the binary  search algorithm  is the  standard
+linear  search  algorithm. This  is  a  simple  search strategy  which  involves
+sequentially iterating  from $n_\text{min}$ to $n_\text{max}$  until arriving at
+the lowest  value $n_\text{opt}^\text{acc}$  that satisfies all  the termination
+criteria. However, a naive use of the linear search algorithm is computationally
+expensive with a worst case operation count of $\mathcal{O}(n)$. Therefore, this
+thesis  author  recommends  the  use  of the  bespoke  binary  search  algorithm
+presented here.  The choice of  minimum and maximum  values of the  layer search
+space is discussed in \cref{sec:layersearchbounds}.
 
 \subsection{Upper and lower bounds on search space}\label{sec:layersearchbounds}
 
@@ -444,76 +576,4 @@ number  of  layers~$n$  by  substituting the  appropriate  layer-dependent  mass
 values computed in~\crefrange{eq:mj}{eq:cumass}. The  latter two terms \ie{} the
 specific heats of the electrolyte material and the pouch are held constant since
 their corresponding mass values do not vary with the number of layers used.
-
-\subsection{Fast-charging pathway}
-
-The  workflow describing  the optimal  layer calculation  for the  fast charging
-scenario begins  with the  anchor block labelled  `Start Fast-Charge  Calcs.' in
-\cref{fig:fig_strategy_schematic}. The charging algorithm used in this framework
-is based  upon the model-based strategy  proposed by Choe~\etal~\cite{Choe2013},
-wherein  the surface  concentration is  never allowed  to exceed  its saturation
-value.  Adopting  this charging  scheme  leads  to  a  robust cell  design  that
-is  resilient  to  lithium  plating.  A  major  departure  from  the  scheme  in
-Choe~\etal~\cite{Choe2013}  is the  fact that  the constant  current phase  used
-therein is replaced  by a constant power  phase. This is so  that the assumption
-of  identical  conditions  across  all  cells   in  the  pack  holds  true  (see
-\cref{subsec:layeroptassumptions} for  details). Furthermore, the  pulsing phase
-used to  top-up the cell's  \gls{soc} in Choe~\etal~\cite{Choe2013}  is omitted.
-This  is because,  the level~3  fast charging  specifications typically  require
-charging to a  target \gls{soc} that is typically  well below \SI{100}{\percent}
-(see \cref{tbl:lcoSimParamslayeropt}).
-
-At     first,     the    charging     power     applied     at    the     pack's
-terminals~$P_\text{batt}^\text{fastchg}$ is scaled down by the overall number of
-cells in the pack.  This results in the charging power  experienced by each cell
-in  the  pack~$P_\text{cell}^\text{fastchg}$.  Following the  strategy  used  in
-\cref{sec:accpathway}, the power  at the cell's terminals is scaled  down by the
-electrochemically active  overall surface area~$A_\text{cell}$. This  yields the
-power density~$p^{\text{fastchg}}$ experienced by each  layer in the cell and is
-now  amenable  to be  applied  to  the  normalised  \gls{p2d} equations  of  the
-\gls{dfn} model (that has been suitably modified to handle power inputs).
-
-\subsubsection*{Thermally-coupled fast-charging simulations and exit conditions}
-
-After computing  the power  density per  layer, the  thermally-coupled \gls{p2d}
-model  is  then  invoked.  While  the  simulation  runs,  the  cell's  state  is
-continually evaluated against various termination criteria.
-\begin{enumerate}
-    \item the maximum possible values of cell temperature~$T_\text{max}$,
-    \item the maximum allowed terminal voltage~$V_\text{max}$, and
-    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$\c_\text{s,sat}$
-\end{enumerate}
-
-If any  of these three criteria  are violated, the simulation  immediately stops
-and the trialled layer  choice is deemed to not satisfy  the fast charging power
-requirements. The  search algorithm then  updates the layer choice  suitably and
-the entire workflow is repeated.
-
-If the  simulation for  any layer choice  passes the  aforementioned termination
-criteria,  the  \gls{soc}   achieved  by  the  cell  is   compared  against  the
-fast-charging   target~$z^\ast$.  If   $z(t)   >  z^\ast$,   then  the   present
-layer  choice  represents   the  minimum  (and  therefore   optimum)  value  for
-this  specific  fast  charging  application.  The  successful  layer  choice  is
-labelled~$n_\text{opt}^\text{fastchg}$. If the surface concentration has not yet
-reached the saturation limit, then the charge time is compared against the upper
-bound for  fast charging specifications~$t_\text{max}$. If  this preset duration
-has not been reached, then the simulation is allowed to advance further in time,
-with the aforementioned  termination criteria being continuously  tested at each
-subsequent time-step.
-
-The above process is repeated for  different combinations of initial and ambient
-temperatures~\mbox{$(T_\text{init},  T_\text{sink})$}.  The  largest  successful
-layer value from all temperature combinations is deemed as the canonical optimal
-design choice when  considering the fast charging power  demands. This concludes
-the  narrative describing  the  fast charging  pathway.
-
-Finally, the  maximum of the  layer choices across all  temperature combinations
-from the  acceleration and  fast charging  scenarios is  deemed as  the globally
-optimal  number of  layers  to be  used  for this  model-led  cell design.  This
-concludes the overall narrative describing the layer optimisation framework. The
-results obtained by applying this methodology to a specific numerical example is
-presented next in \cref{sec:resultslayeropt}.
-
-% Do not forget to quote the value of cs_sat from layer opt paper table and show
-% calculation inline. Might even go into the code
 
