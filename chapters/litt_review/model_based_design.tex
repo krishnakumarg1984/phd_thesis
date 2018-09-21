@@ -68,9 +68,9 @@ significant speed-up of battery development.
 The nature and  scope of `model-based design' as intended  by this thesis author
 needs to  be clarified. Since  this thesis focuses exclusively  on physics-based
 modelling, the term  `model' pertains to \glsfirst{pbm}s and  not \glspl{ecm} or
-any  other type  of  battery  models (such  as  other empirical/ad-hoc  models).
-Therefore, the  survey of literature  here does  not include any  design efforts
-outside of this scope.
+any other type of battery models  (such as other empirical/ad-hoc models such as
+surrogate models). Therefore, the survey of literature here does not include any
+design efforts outside of this scope.
 
 There is  evidence that  computational modelling has  been successfully  used to
 facilitate the development of novel energy storage materials. The review article
@@ -147,25 +147,25 @@ early vanguard in applying a successful model-based design for cells.
 
 At the other  end of the spectrum, a  comprehensive multi-objective optimisation
 for optimal design of batteries was  recently proposed by Changhong Liu and~ Lin
-Liu~\cite{Liu2017b}.  This optimisation  involved  a comprehensive  multiphysics
-model  of  the  cell where  a  number  of  design  variables such  as  electrode
-thicknesses, porosities  and particle sizes  were considered. The  objectives of
-optimization were  to maximize discharge  specific power and specific  energy as
-well  as minimizing  capacity loss.  The  model was  solved by  using a  genetic
-algorithm scheme. While this work is certainly  the first of its kind in using a
-formal mathematical  optimisation framework for  cell design, in the  opinion of
-this thesis author,  the complexity of the problem is  excessively high --- both
-mathematically and  computationally. For  instance, with three  design variables
-considered,  it  requires  a  careful interpretation  of  the  resulting  pareto
-front  to  distinguish their  relative  importance.  While prima~facie  this  is
-not  an  issue, the  question  of  resolving the  pareto  front  for cells  with
-different parameter sets needs to  be addressed. The optimisation algorithm used
-is  an  exotic genetic  algorithm  to  be run  on  a  parallel cluster.  From  a
-near-term industrial application viewpoint, this scheme is less attractive since
-real-world  constraints, such  as supply-chain  dictated raw-material  sourcing,
-typically restrict the number of  degrees of freedom available for optimisation.
-Nevertheless, this scheme is valuable  from a long-term research perspective and
-merits attention by researchers interested in model-based design.
+Liu~\cite{Liu2017b}. This optimisation involved a multiphysics model of the cell
+where a number of design variables such as electrode thicknesses, porosities and
+particle sizes were considered. The  objectives of optimization were to maximize
+discharge  specific power  and specific  energy as  well as  minimizing capacity
+loss. The model was solved by using  a genetic algorithm scheme. While this work
+is certainly the  first of its kind in using  a formal mathematical optimisation
+framework for cell design, in the  opinion of this thesis author, the complexity
+of the problem is excessively  high --- both mathematically and computationally.
+For  instance, with  three design  variables considered,  it requires  a careful
+interpretation  of the  resulting  pareto front  to  distinguish their  relative
+importance. While  prima~facie this is not  an issue, the question  of resolving
+the pareto front for cells with  different parameter sets needs to be addressed.
+The optimisation algorithm  used is an exotic  genetic algorithm to be  run on a
+parallel cluster. From a near-term industrial application viewpoint, this scheme
+is less attractive  since real-world constraints, such  as supply-chain dictated
+raw-material  sourcing, typically  restrict  the number  of  degrees of  freedom
+available  for  optimisation.  Nevertheless,  this scheme  is  valuable  from  a
+long-term research perspective and merits attention by researchers interested in
+model-based design.
 
 The  design study  by  Xue~\etal~\cite{Xue2013a} represents  a  rare example  of
 a  model-led  design study  in  electrified  transportation.  In this  work,  an
