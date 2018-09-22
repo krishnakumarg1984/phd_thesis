@@ -19,6 +19,7 @@
 - lualvna
 - titleps
 - Permissions Summary for lionsimba mesh use
+- check for undefined references
 
 - enhanced spm paper
 - enchanced spm with KF
