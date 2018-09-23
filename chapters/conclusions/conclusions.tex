@@ -28,19 +28,60 @@ discussed in-line at the appropriate junctures embedded into the narrative.
 \Cref{ch:modelbaseddesign} presented  a computational framework to  optimise the
 number  of electrochemical  layers to  be  used within  a  pouch cell  so as  to
 maximise its usable energy while  meeting specific power demands. In particular,
-this chapter discussed a model-based  deterministic approach to optimally design
-cells that can be subjected to fast-charging without the concerns of plating. In
-the  context of  electric  vehicle  applications, using  this  approach has  the
-potential  to alleviate  the two  immediate  concerns of  consumers viz{}  range
-anxiety and long charging times.
+this  helped to  construct  a model-based  deterministic  approach to  optimally
+design cells  that can  be subjected  to fast-charging  without the  concerns of
+plating. In  the context of  electric vehicle applications, using  this approach
+has the  potential to alleviate  the two  immediate concerns of  consumers viz{}
+range anxiety and long charging times.
+
+From a  perspective of technical  advancements to the underlying  \gls{pbm}, the
+standard form  of the \gls{p2d} model  has been suitably modified  to facilitate
+a  direct  application of  input  power  densities.  This was  achieved  through
+reformulation of the boundary conditions on the solid-phase potential \gls{pde}.
+Although  this innate  power input  capability has  been claimed  as purportedly
+developed,  its independent  derivation  and  accessible documentation  provided
+herein shall help  other researchers to apply this in  a straight-forward manner
+for vehicle drivecycles, acceleration tests and power-based charging protocols.
+
+This investigation also  revealed that the fast charging  process determines the
+optimal layer  configuration instead of  either acceleration runs  or drivecycle
+requirements. This may  help to counter the current trend  in publications which
+often rely  primarily upon a  drivecycle-based dynamic input current  profile to
+evaluate various  aspects of cell  modelling such as predicting  degradation and
+for advanced control and estimation  algorithms. While validation against such a
+dynamic input profile  is certainly vital, for future  advancements dealing with
+aspects  of  cell  design  or plating-related  degradation,  validation  against
+fast-charging power profiles is absolutely essential.
 
 To facilitate immediate adoption by relevant stakeholders, the concepts presents
-in the aforementioned optimisation framework has been realised in computer code
-and presented in the form of an open-source design
+in the aforementioned optimisation framework  has been realised in computer code
+and presented  in the form  of an  open-source design toolbox,  \gls{bold}. This
+toolbox  was  applied to  the  optimal  layer design  of  an  example cell  from
+literature to  obtain two sets  of power-dependent optimal  layer configurations
+for two drivetrains  --- a \gls{bev} and a \gls{phev}.  By suitably adapting the
+numerical values  of parameters to  a real-world cell, model-based  cell designs
+can be  obtained, which can potentially  help to eliminate the  current trend of
+over-engineering of cells using conservative empirical designs.
 
-a design toolbox  \viz{}
-\gls{bold} has been  eliminating  cell  over-engineering,  increasing  xEV  AER,  replacing  involved
-experimental reiterations consuming a lot of time, reducing EV cost for both xEV
-and cell manufacturers has been devised.
+However,  in the  interest of  simplicity  and to  lay the  foundation for  such
+model-based cell designs, the scope of this work was intentionally narrowed down
+to solely focus on changing the  layer configurations within cells. In doing so,
+certain assumptions  were made that might  have to be revisited  and potentially
+relaxed before its application to real-world cell designs.
+
+
+
+
+By  reducing the  time  for final  prototyping
+through replacement  of expensive  experimental iterations,  cost-effective cell
+manufacturing paradigms can  be ushered, which can be passed  on to customers of
+electric vehicles. This in-turn can  help to accelerate the mass-market adoption
+of electrified transport.
+
+This approach reduces the cost as well as time expenditure required by an
+automotive OEM. This adds a new xEV to their product range, speeding up  for a
+cleaner, safer and  decarbonised transport.
+
+
 
 % through   . that can  help to unleash  the latent  potential of lithium ion batteries has been studied
