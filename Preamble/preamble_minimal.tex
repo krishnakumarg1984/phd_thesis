@@ -123,8 +123,10 @@
 %---------- end custom commands ----------%
 
 %%%%%%%%%% glossaries-related stuff %%%%%%%%%%%%%%%%%%%%
-% \makeglossaries % must be before starting to define any entries for the glossary. And, all new type of glossary (such as for symbols and any other custom glossaries) must be defined before this.
+\makeglossaries % must be before starting to define any entries for the glossary. And, all new type of glossary (such as for symbols and any other custom glossaries) must be defined before this.
 \glssetcategoryattribute{acronym}{nohyperfirst}{true} % no hyperlink on first use for entries with category=acronym % https://tex.stackexchange.com/questions/434160/line-break-long-glossaries-entry-when-using-hyperref-and-latex-dvips-ps2pdf
 \setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
 \input{chapters/frontmatter/acronyms}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+
 
