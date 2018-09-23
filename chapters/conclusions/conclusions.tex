@@ -8,7 +8,7 @@
 \clearpage
 \chapter{Conclusions}\label{ch:conclusions}
 \startcontents[chapters]
-\printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
+\printcontents[chapters]{}{1}{\setcounter{tocdepth}{2}}
 
 \bigskip
 
@@ -20,10 +20,13 @@ are presented  in this  chapter. The \gls{p2d}  implementation of  the \gls{dfn}
 model was used  as the backbone of  all modelling efforts in  this thesis. Based
 upon the  invaluable experience gained during  the course of this  research, and
 specifically from the  findings presented herein, key areas  of \glspl{pbm} that
-can benefit  from further  study in  the future are  also identified.  These are
-discussed in-line at the appropriate junctures embedded into the narrative.
+can benefit from further study in the future are also identified.
 
-\section{Using \glsfmtshortpl{pbm} as a Design Tool}
+% These are discussed in-line at the appropriate junctures embedded into the narrative.
+
+\section{\glsfmtlongpl{pbm} as a Design Tool}
+
+\subsection{Conclusions from model-based design study}\label{sec:modelbasedconclusion}
 
 \Cref{ch:modelbaseddesign} presented  a computational framework to  optimise the
 number  of electrochemical  layers to  be  used within  a  pouch cell  so as  to
@@ -33,6 +36,16 @@ design cells  that can  be subjected  to fast-charging  without the  concerns of
 plating. In  the context of  electric vehicle applications, using  this approach
 has the  potential to alleviate  the two  immediate concerns of  consumers viz{}
 range anxiety and long charging times.
+
+To facilitate immediate adoption by relevant stakeholders, the concepts presents
+in the aforementioned optimisation framework  has been realised in computer code
+and presented  in the form  of an  open-source design toolbox,  \gls{bold}. This
+toolbox  was  applied to  the  optimal  layer design  of  an  example cell  from
+literature to  obtain two sets  of power-dependent optimal  layer configurations
+for two drivetrains  --- a \gls{bev} and a \gls{phev}.  By suitably adapting the
+numerical values  of parameters to  a real-world cell, model-based  cell designs
+can be  obtained, which can potentially  help to eliminate the  current trend of
+over-engineering of cells using conservative empirical designs.
 
 From a  perspective of technical  advancements to the underlying  \gls{pbm}, the
 standard form  of the \gls{p2d} model  has been suitably modified  to facilitate
@@ -53,35 +66,81 @@ dynamic input profile  is certainly vital, for future  advancements dealing with
 aspects  of  cell  design  or plating-related  degradation,  validation  against
 fast-charging power profiles is absolutely essential.
 
-To facilitate immediate adoption by relevant stakeholders, the concepts presents
-in the aforementioned optimisation framework  has been realised in computer code
-and presented  in the form  of an  open-source design toolbox,  \gls{bold}. This
-toolbox  was  applied to  the  optimal  layer design  of  an  example cell  from
-literature to  obtain two sets  of power-dependent optimal  layer configurations
-for two drivetrains  --- a \gls{bev} and a \gls{phev}.  By suitably adapting the
-numerical values  of parameters to  a real-world cell, model-based  cell designs
-can be  obtained, which can potentially  help to eliminate the  current trend of
-over-engineering of cells using conservative empirical designs.
+The  study also  provided important  guidelines about  the role  of the  thermal
+environment on cell performance. It became  clear that at very low temperatures,
+a high  number of layers was  required for satisfying a  specific charging power
+level relative  to that  needed at  moderate thermal  environments such  as room
+temperatures. A practical  takeaway from this conclusion is that  it suffices to
+use a low number of layers in  vehicles to be sold in territories with perennial
+moderate  temperature  conditions, which  imply  a  higher \gls{aer}  for  these
+vehicles.
 
-However,  in the  interest of  simplicity  and to  lay the  foundation for  such
-model-based cell designs, the scope of this work was intentionally narrowed down
-to solely focus on changing the  layer configurations within cells. In doing so,
-certain assumptions  were made that might  have to be revisited  and potentially
-relaxed before its application to real-world cell designs.
+Finally, this design study revealed that the speed at which lithium intercalates
+into the negative  electrode during charging limits the  charge-addition rate to
+the cell and hence to the pack. Lowering the charging times of electric vehicles
+necessitates the  use of  higher charging powers.  However, this  necessitates a
+high  number of  layers to  absorb the  overpotentials and  to provide  adequate
+number of  thermal conduction pathways  (owing to  the higher number  of current
+collectors) to dissipate the additional heat generated. Consequently, this has a
+detrimental effect on the capacity and hence, the \gls{aer} of the vehicle.
+
+\subsection{Future work informed by  the optimal layer design framework}
+
+As     a     direct     inference     of     the     final     conclusion     in
+\cref{sec:modelbasedconclusion}, assuming that  the electric grid infrastructure
+is  adequately equipped  to cope  with  the surge  in future  power demands  for
+charging  of  electric vehicles,  the  solid  state  diffusion at  the  negative
+electrode becomes the bottleneck. It  is therefore important for future research
+to  focus  on the  development  of  new  materials  for the  negative  electrode
+possessing much higher  solid phase diffusion coefficients,  particularly at low
+temperatures.
+
+From a perspective of improving the framework itself, at the outset, it is clear
+that the plating threshold assessment can be made more accurate by incorporating
+the solid phase diffusion coefficient as  function of \gls{soc}. In the interest
+of simplicity and  to lay the foundation for such  model-based cell designs, the
+scope of this  work was intentionally narrowed down to  solely focus on changing
+the layer  configurations within  cells. In doing  so, certain  assumptions were
+made  that  might have  to  be  revisited  and  potentially relaxed  before  its
+application to real-world cell designs.
+
+For instance, adherence to the specific type of cooling phenomena used \ie{} tab
+cooling, is one of  the stronger assumptions used in this  work. The benefits of
+this cooling  type has  been enumerated,  and it is  desirable that  future pack
+designs adopt it. However, the vast majority of battery packs use surface-cooled
+designs. This means  that temperature for all layers within  the pouch shall not
+be the same,  which further implies that  it longer suffices to  simulate just a
+single layer. Therefore,  the framework needs to be suitably  modified to handle
+multiple layer choices concurrently.
+
+Furthermore,  using surface  cooling shall  invalidate the  assumption of  small
+thermal gradients along the planar axis of  the cell. This means that the lumped
+thermal model  shall no longer  be accurate  to model the  temperature evolution
+of  the cell.  Furthermore,  the differential  temperature  evolution along  the
+cross-sectional direction  shall influence the transport  and kinetic properties
+of the  cell. This electrochemical-thermal  coupling along the  planar direction
+shall necessitate adding another spatial  dimension to the underlying \gls{pbm},
+thereby rendering the  presently used \gls{p2d} model ineffective.  With the aim
+of minimising  the optimising  run-times, future  research may  focus on  how to
+adapt the present infrastructure to handle this.
+
+%porosities
+
+\section{Closing Remarks}
+
+% closing remarks
+% Parametrisation is a problem as well.
+% solid-state diffusion is a problem informed by two chapters. Need advanced
+% materials
+% By  reducing the  time  for final  prototyping
+% through replacement  of expensive  experimental iterations,  cost-effective cell
+% manufacturing paradigms can  be ushered, which can be passed  on to customers of
+% electric vehicles. This in-turn can  help to accelerate the mass-market adoption
+% of electrified transport.
+
+% This approach reduces the cost as well as time expenditure required by an
+% automotive OEM. This adds a new xEV to their product range, speeding up  for a
+% cleaner, safer and  decarbonised transport.
 
 
-
-
-By  reducing the  time  for final  prototyping
-through replacement  of expensive  experimental iterations,  cost-effective cell
-manufacturing paradigms can  be ushered, which can be passed  on to customers of
-electric vehicles. This in-turn can  help to accelerate the mass-market adoption
-of electrified transport.
-
-This approach reduces the cost as well as time expenditure required by an
-automotive OEM. This adds a new xEV to their product range, speeding up  for a
-cleaner, safer and  decarbonised transport.
-
-
-
-% through   . that can  help to unleash  the latent  potential of lithium ion batteries has been studied
+% % through   . that can  help to unleash  the latent  potential of lithium ion batteries has been studied
