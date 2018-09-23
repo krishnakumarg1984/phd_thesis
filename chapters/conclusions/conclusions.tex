@@ -139,9 +139,6 @@ by the  framework is an important  step to be undertaken  before its large-scale
 deployment.
 
 
-
-
-
 \section{Analysis of Salient Physics-based \glsfmtlongpl{rom}}
 
 Chapters~\ref{ch:improveddra} and~\ref{ch:spmanalysis} of  this thesis primarily
@@ -193,24 +190,25 @@ in  future  \gls{bms}  applications.  The  proposed  scheme  also  empowers  the
 \gls{rom}  framework to  tackle  other cell  chemistries  with slower  diffusion
 coefficients or  even those with completely  different rate-limiting mechanisms.
 The improved \gls{dra}  method therefore opens up a wide  range of possibilities
-and  prima~facie looks  capable of  bringing the  goal of  physics-based battery
-model implementation in a high performance real-time \gls{bms}, a step closer to
-realisation.
+and  prima~facie appears promising.
 
 Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
 streamlining  of  the reduced  order  modelling  workflow through  the  improved
 \gls{dra},  there  exists a  fundamental  deficiency  in this  hybrid  modelling
-approach  that impede  its  effective deployment  as the  plant  model in  state
-estimation tasks. This aspect was already discussed in \cref{ch:littreview}, and
-is  reiterated here.  The  entries in  the  matrices of  the  final state  space
-model  depend on  the linearisation  point  of \gls{soc}  and temperature.  This
-linearisation requirement adversely affects the usability of the model for state
-estimation tasks, wherein the \gls{soc} is in fact an unknown quantity and is to
-be  estimated.  This  cyclic  dependency between  the  linearisation  point  and
-the  state-estimation quantity  makes  the  use of  this  model questionable  in
-a  demanding  application such  as  in  embedded \glspl{bms}  on-board  electric
-vehicles.
-
+approach  that impede  its near-term  adoption in  state estimation  tasks. This
+aspect was already discussed in \cref{ch:littreview} and is reiterated here. The
+entries  in  the  matrices  of  the  final  state  space  model  depend  on  the
+linearisation point of \gls{soc} and temperature. This linearisation requirement
+adversely affects the usability of the model for state estimation tasks, wherein
+the \gls{soc} is in fact an unknown quantity and is to be estimated. This cyclic
+dependency  between the  linearisation point  and the  state-estimation quantity
+makes the use of  this model questionable in a demanding  application such as in
+embedded \glspl{bms} on-board electric vehicles. Therefore, the immediate future
+step is to analyse  the stability of this internal feedback  loop. Once this has
+been performed,  researchers may consider to  engage in the process  of adapting
+the derivation of this hybrid  state-space \gls{rom} approach to higher C-rates,
+in conjunction  with the numerical  benefits afforded by the  improved \gls{dra}
+developed here.
 
 \section{Closing Remarks}
 
@@ -227,6 +225,9 @@ vehicles.
 % This approach reduces the cost as well as time expenditure required by an
 % automotive OEM. This adds a new xEV to their product range, speeding up  for a
 % cleaner, safer and  decarbonised transport.
+
+% capable of bringing the goal  of physics-based battery model implementation in
+% a high performance real-time \gls{bms}, a step closer to realisation.
 
 
 % % through   . that can  help to unleash  the latent  potential of lithium ion batteries has been studied
