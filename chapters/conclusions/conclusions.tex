@@ -26,7 +26,7 @@ can benefit from further study in the future are also identified.
 
 \section{\glsfmtlongpl{pbm} as a Design Tool}
 
-\subsection{Conclusions from model-based design study}\label{sec:modelbasedconclusion}
+\subsection{Conclusions from the model-based design study}\label{sec:modelbasedconclusion}
 
 \Cref{ch:modelbaseddesign} presented  a computational framework to  optimise the
 number  of electrochemical  layers to  be  used within  a  pouch cell  so as  to
@@ -144,7 +144,7 @@ deployment.
 
 \section{Analysis of Salient Physics-based \glsfmtlongpl{rom}}
 
-\Cref{ch:improveddra}  and   \cref{ch:spmanalysis}  of  this   thesis  primarily
+Chapters~\ref{ch:improveddra} and~\ref{ch:spmanalysis} of  this thesis primarily
 focussed on performing an in-depth analysis of two distinct \glspl{pbm} from two
 distinct perspectives.  In \cref{ch:improveddra}, the hybrid  \gls{rom} obtained
 by  using the  \gls{dra}  is analysed  to  investigate its  \emph{computational}
@@ -154,7 +154,63 @@ perspective of \emph{modelling accuracy} \ie{} its ability to faithfully compute
 the  system-level quantities  of the  cell such  as its  \gls{soc} and  terminal
 voltage. The conclusions drawn from these analyses are presented here.
 
-\subsection{Conclusions of analysing the \glsfmtshort{dra}-based state-space \glsfmtshort{rom}}
+\subsection{Conclusions from analysis of the \glsfmtshort{dra}-based state-space \glsfmtshort{rom}}
+
+In  \cref{ch:improveddra},  the \gls{svd}  of  a  large Block-Hankel  matrix  is
+identified as a key computational bottleneck in applying the classical \gls{dra}
+procedure for the hybrid \gls{rom} discussed  therein. It is concluded that this
+bottleneck arises due to the slow  dynamics of solid phase diffusion which leads
+to the aforementioned large sized Block-Hankel matrices.
+
+To mitigate this  bottleneck, an improved \gls{dra} scheme  was presented, whose
+centrepiece is an iterative \gls{svd}  algorithm. This algorithm was obtained as
+a  combination of  the Golyandina-Usevich  and Lanczos  algorithms discussed  in
+\cref{ch:improveddra}.  The results  of applying  the improved  \gls{dra} scheme
+demonstrate  a significant  performance improvement  achieved by  using the  new
+method  without trading-off  model  fidelity.  At a  single  operating point  of
+\gls{soc}  and temperature,  for  a  Hankel block  size  of~8000, the  \gls{rom}
+workflow incorporating the improved  \gls{dra} is approximately 100~times faster
+than  that employing  classical \gls{dra}.  On a  standard computer  workstation
+whose  specifications  are  given in  \cref{ch:improveddra},  for  100~operating
+points  (combinations of  10~\gls{soc}  and temperature  values), obtaining  the
+\gls{rom}  required  only 6~hours  using  the  improved \gls{dra},  whereas  the
+classical  \gls{dra} consumed  666~hours  (27~days). Furthermore,  for the  same
+block-size, the  improved \gls{dra} is demonstrated  to be superior in  terms of
+memory efficiency, drastically reducing the memory requirements from 112~GB down
+to  2~GB.  Finally,  the  improved  \gls{dra}  demonstrates  superior  modelling
+accuracy  when implemented  even in  moderately equipped  computing environments
+such as standard consumer-grade laptops.
+
+\subsection{Future outlook for the \glsfmtshort{dra}-based hybrid state-space \glsfmtshort{rom}}
+
+The improved  \gls{dra} method  proposed in  \cref{ch:improveddra} opens  up the
+possibility of  applying the  hybrid \gls{rom}  modelling procedure  to physical
+quantities in other locations within the  cell's geometry \eg{} in the middle of
+the electrode region,  without being hindered by  computational limitations that
+would  have otherwise  rendered  it intractable.  Furthermore, high  sample-rate
+\glspl{rom} capable  of handling  highly dynamic load  profiles can  be deployed
+in  future  \gls{bms}  applications.  The  proposed  scheme  also  empowers  the
+\gls{rom}  framework to  tackle  other cell  chemistries  with slower  diffusion
+coefficients or  even those with completely  different rate-limiting mechanisms.
+The improved \gls{dra}  method therefore opens up a wide  range of possibilities
+and  prima~facie looks  capable of  bringing the  goal of  physics-based battery
+model implementation in a high performance real-time \gls{bms}, a step closer to
+realisation.
+
+Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
+streamlining  of  the reduced  order  modelling  workflow through  the  improved
+\gls{dra},  there  exists a  fundamental  deficiency  in this  hybrid  modelling
+approach  that impede  its  effective deployment  as the  plant  model in  state
+estimation tasks. This aspect was already discussed in \cref{ch:littreview}, and
+is  reiterated here.  The  entries in  the  matrices of  the  final state  space
+model  depend on  the linearisation  point  of \gls{soc}  and temperature.  This
+linearisation requirement adversely affects the usability of the model for state
+estimation tasks, wherein the \gls{soc} is in fact an unknown quantity and is to
+be  estimated.  This  cyclic  dependency between  the  linearisation  point  and
+the  state-estimation quantity  makes  the  use of  this  model questionable  in
+a  demanding  application such  as  in  embedded \glspl{bms}  on-board  electric
+vehicles.
+
 
 \section{Closing Remarks}
 
@@ -174,3 +230,8 @@ voltage. The conclusions drawn from these analyses are presented here.
 
 
 % % through   . that can  help to unleash  the latent  potential of lithium ion batteries has been studied
+
+% achieve the latent  potential and wide applicability  of the
+% physics-based reduced order Li-ion battery model.
+
+

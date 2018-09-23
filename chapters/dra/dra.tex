@@ -675,38 +675,39 @@ laptops.
 	\end{tabular}
 \end{table}
 
-The  proposed  method opens  up  the  possibility  of modelling  other  physical
-quantities  in  the   cell's  geometry  without  being   hindered  by  computing
-limitations. Furthermore, high sample-rate models  to handle highly dynamic load
-profiles  can be  deployed in  future  \gls{bms} applications.  The scheme  also
-empowers the \gls{rom} framework to tackle  cells with slower dynamics and other
-chemistries  with different  rate-limiting  mechanisms.  The improved  \gls{dra}
-method therefore  opens up a  wide range of  possibilities and looks  capable of
-bringing  the goal  of  physics-based  battery model  implementation  in a  high
-performance real-time \gls{bms}, a step closer to realisation.
+% The  proposed  method opens  up  the  possibility  of modelling  other  physical
+% quantities  in  the   cell's  geometry  without  being   hindered  by  computing
+% limitations. Furthermore, high sample-rate models  to handle highly dynamic load
+% profiles  can be  deployed in  future  \gls{bms} applications.  The scheme  also
+% empowers the \gls{rom} framework to tackle  cells with slower dynamics and other
+% chemistries  with different  rate-limiting  mechanisms.  The improved  \gls{dra}
+% method therefore  opens up a  wide range of  possibilities and looks  capable of
+% bringing  the goal  of  physics-based  battery model  implementation  in a  high
+% performance real-time \gls{bms}, a step closer to realisation.
 
-Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
-streamlining  of  the reduced  order  modelling  workflow through  the  improved
-\gls{dra},  there  exists a  fundamental  deficiency  in this  hybrid  modelling
-approach  that impede  its  effective deployment  as the  plant  model in  state
-estimation tasks. This aspect was already discussed in \cref{ch:littreview}, and
-is  reiterated here.  The  entries in  the  matrices of  the  final state  space
-model  depend on  the linearisation  point  of \gls{soc}  and temperature.  This
-linearisation requirement adversely affects the usability of the model for state
-estimation tasks, wherein the \gls{soc} is in fact an unknown quantity and is to
-be  estimated.  This  cyclic  dependency between  the  linearisation  point  and
-the  state-estimation quantity  makes  the  use of  this  model questionable  in
-a  demanding  application such  as  in  embedded \glspl{bms}  on-board  electric
-vehicles.
+% Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
+% streamlining  of  the reduced  order  modelling  workflow through  the  improved
+% \gls{dra},  there  exists a  fundamental  deficiency  in this  hybrid  modelling
+% approach  that impede  its  effective deployment  as the  plant  model in  state
+% estimation tasks. This aspect was already discussed in \cref{ch:littreview}, and
+% is  reiterated here.  The  entries in  the  matrices of  the  final state  space
+% model  depend on  the linearisation  point  of \gls{soc}  and temperature.  This
+% linearisation requirement adversely affects the usability of the model for state
+% estimation tasks, wherein the \gls{soc} is in fact an unknown quantity and is to
+% be  estimated.  This  cyclic  dependency between  the  linearisation  point  and
+% the  state-estimation quantity  makes  the  use of  this  model questionable  in
+% a  demanding  application such  as  in  embedded \glspl{bms}  on-board  electric
+% vehicles.
 
 This  chapter  concludes  with  the  view  that,  although  the  bottlenecks  in
 Lee~\etal~\cite{Lee2012a}  revealed   by  this   in-depth  analysis   have  been
-effectively tackled in  this chapter, the underlying model itself  is not robust
-enough for implementation. Furthermore, the  model derivation is convoluted with
-the derivation being performed in the frequency domain and implementation in the
-time-domain. This  thesis author is of  the opinion that a  simple, yet accurate
-model derived  and implemented entirely in  time-domain is the need  of the hour
-for encouraging  the automotive industry  to adapt physics-based  battery models
-onto on-board  \glspl{bms} of  electric vehicles.  In the  quest to  fulfil this
-need, an  analysis of the  simplest time-domain  physics based model  \viz{} the
-\gls{spm} is presented next in \cref{ch:spmanalysis}.
+effectively tackled  in this chapter,  owing to the circular  dependency between
+the linearisation point and model parameters, the underlying model itself is not
+robust enough for immediate implementation. Furthermore, the model derivation is
+convoluted  with the  derivation being  performed  in the  frequency domain  and
+implementation in the  time-domain. This thesis author is of  the opinion that a
+simple, yet  accurate model derived  and implemented entirely in  time-domain is
+the  need  of  the  hour  for  encouraging  the  automotive  industry  to  adapt
+physics-based battery models onto on-board  \glspl{bms} of electric vehicles. In
+the quest to  fulfil this need, an analysis of  the simplest time-domain physics
+based model \viz{} the \gls{spm} is presented next in \cref{ch:spmanalysis}.
