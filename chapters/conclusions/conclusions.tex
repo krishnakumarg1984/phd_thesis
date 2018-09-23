@@ -122,9 +122,39 @@ of the  cell. This electrochemical-thermal  coupling along the  planar direction
 shall necessitate adding another spatial  dimension to the underlying \gls{pbm},
 thereby rendering the  presently used \gls{p2d} model ineffective.  With the aim
 of minimising  the optimising  run-times, future  research may  focus on  how to
-adapt the present infrastructure to handle this.
+adapt the proposed computational infrastructure from this thesis to handle this.
 
-%porosities
+For  real-world cell  designs, it  is prudent  to examine  the examine  the role
+of  variable  porosities  to  achieve  the balancing  of  active  materials  per
+layer.  Since  the computational  framework  developed  in  this thesis  uses  a
+modular  approach, in  the future,  the  constant volume-fractions  used in  the
+methodology  could simply  be replaced  by values  informed by  optimal porosity
+computations. For this purpose, researchers could investigate the feasibility of
+adapting  a suitable  scheme from  the available  pool of  literature that  have
+focussed  on  using  model-based  porosity  optimisation~\cite{Xue2013,Xue2014a,
+Christensen2006}. Finally, experimental prototyping is  an important step in any
+cell  design and  it  is  no exception  here  either. Therefore,  experimentally
+applying the desired power levels to confirm the optimal layer choices predicted
+by the  framework is an important  step to be undertaken  before its large-scale
+deployment.
+
+
+
+
+
+\section{Analysis of Salient Physics-based \glsfmtlongpl{rom}}
+
+\Cref{ch:improveddra}  and   \cref{ch:spmanalysis}  of  this   thesis  primarily
+focussed on performing an in-depth analysis of two distinct \glspl{pbm} from two
+distinct perspectives.  In \cref{ch:improveddra}, the hybrid  \gls{rom} obtained
+by  using the  \gls{dra}  is analysed  to  investigate its  \emph{computational}
+bottlenecks.  In \cref{ch:spmanalysis},  an  in-depth analysis  of the  simplest
+time-domain physics-based \gls{rom} --- the  \gls{spm} --- is presented from the
+perspective of \emph{modelling accuracy} \ie{} its ability to faithfully compute
+the  system-level quantities  of the  cell such  as its  \gls{soc} and  terminal
+voltage. The conclusions drawn from these analyses are presented here.
+
+\subsection{Conclusions of analysing the \glsfmtshort{dra}-based state-space \glsfmtshort{rom}}
 
 \section{Closing Remarks}
 
