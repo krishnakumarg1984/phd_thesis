@@ -32,15 +32,15 @@
 \cleardoublepage
 \glsunsetall
 % \microtypesetup{protrusion=false} % disables protrusion locally in the document
-\pdfbookmark[section]{\contentsname}{toc} % with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf % \pdfbookmark[<level>]{<title>}{<dest>}
-% \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
-\tableofcontents            % print the table of contents
-
-%: ----------------------- list of figures/tables etc. ------------------------
-\cleardoublepage
-\listoffigures
-\cleardoublepage
-\listoftables
+% \pdfbookmark[section]{\contentsname}{toc} % with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf % \pdfbookmark[<level>]{<title>}{<dest>}
+% % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
+% \tableofcontents            % print the table of contents
+%
+% %: ----------------------- list of figures/tables etc. ------------------------
+% \cleardoublepage
+% \listoffigures
+% \cleardoublepage
+% \listoftables
 % \cleardoublepage
 % \listofalgorithms
 % \addcontentsline{toc}{chapter}{List of Algorithms}
@@ -50,7 +50,7 @@
 % % \tcblistof[\chapter*]{mypyg}{List of Program Code}  % for minted/tcolorbox algorithms and code
 % \endgroup
 % \cleardoublepage
-% \glsresetall
+\glsresetall
 % \begingroup
 % % \setlength\LTleft{-5pt}
 % % \printglossaries
@@ -81,7 +81,7 @@
 % \setcounter{chapter}{5}
 % \input{chapters/sys_id/sys_id}             % New Electrolye Model
 \setcounter{chapter}{6}
-\input{chapters/conclusions/conclusions}     % New Electrolye Model
+\input{chapters/conclusions/conclusions}   % Conclusions
 
 \backmatter % References
 \begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
