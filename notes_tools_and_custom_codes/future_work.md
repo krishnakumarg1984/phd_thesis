@@ -20,6 +20,7 @@
 - titleps
 - Permissions Summary for lionsimba mesh use
 - check for undefined references
+- generally check and match references
 
 - enhanced spm paper
 - enchanced spm with KF
