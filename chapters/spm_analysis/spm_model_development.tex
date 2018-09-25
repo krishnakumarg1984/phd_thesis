@@ -1,137 +1,132 @@
-% -*- root: ../main.tex -*-
-%!TEX root = ../main.tex
-% this file is called up by main.tex
-% content in this file will be fed into the main document
+% -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
 % vim:textwidth=80 fo=cqt
 
 In  order  to  establish  a  context  for the  author's  work  to  be  discussed
 in  \cref{ch:newelectrolytemodel},  it  is  imperative  to  provide  a  holistic
 presentation of the basic \gls{spm} modelling art. The conventional \gls{spm} is
-the  simplest of  all  time domain  \glspl{pbm}  and the  rest  of this  section
-provides an expository treatment of its modelling rubrics.
+the simplest of  all time domain \glspl{pbm}. The rest  of this section provides
+this  author's  digested  summary  of  its  modelling  rubrics  based  upon  the
+keen  insights  gained from  perusing  the  vanguard  literature in  this  topic
+\eg{}~\cite{Santhanagopalan2006,Santhanagopalan2006a,DiDomenico2010} as  well as
+the derivative works based upon them.
 
 \subsection{Geometry}\label{subsec:basicspmgeometry}
 
 A  description  of   the  working  principle  of  the  cell   was  presented  in
-\cref{subsec:liionchemistry} and  is not  repeated here.  The \gls{spm},  as the
-name suggests, models  the electrochemical phenomena along  the thickness $l_j$,
-\jinnegpos{} of  each porous electrode  by a representative  spherical particle.
-Thus  the two  distinct solid  phase  porous materials  of the  cell, \ie{}  the
-negative  and  positive  electrodes,  are  idealised as  two  spheres  of  radii
-$r_\text{neg}$ and  $r_\text{pos}$ respectively.  \Cref{fig:sandwichtospm} shows
-the geometrical origins of the basic \gls{spm}.
+\cref{subsec:liionchemistry} and  is not  repeated here.  The \gls{spm}  aims to
+capture the electrochemical phenomena along the thickness~$l_j$,~\jinnegpos{} of
+each  porous electrode  by a  representative  spherical particle.  Thus the  two
+distinct  solid  phase porous  regions  of  the  cell,  \ie{} the  negative  and
+positive electrode regions, are idealised as two spheres of radii~$R_\text{neg}$
+and~$R_\text{pos}$ respectively.
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption[Schematic illustration depicting geometrical origins of the
-    \glsfmtshort{spm}]
-    {Schematic illustration depicting the geometrical origins of the \gls{spm}.
-        The \gls{spm} is obtained through a degenerate spatial discretisation of one
-        electrochemical layer within a typical Li-ion pouch cell. The axial direction
-        along the cell's thickness is denoted by $x(t)$, whilst the pseudo-dimension
-        along the radial depth of each electrode particle is denoted by $r(t)$. In the
-        basic \gls{spm}, the active material of each porous electrode is represented by
-        one representative spherical particle, thus entirely eliminating the spatial
-    dimension along the axial direction.}
-    \label{fig:sandwichtospm}
-\end{figure}
 
-In  this  reformulated  arrangement,  the  spatial  dimension  along  the  axial
-thickness  of  each  electrode  degenerates   to  a  single  point.  Hence,  the
-concentration of Lithium within each electrode $c_{\text{s}_j}$, \jinnegpos{} is
-only a  function of the radial  position $r_j$, \jinnegpos{} along  the depth of
-their representative spherical particle, and time, $t$. The surface area of each
+\Cref{fig:sandwichtospm}   shows   the   geometrical  origins   of   the   basic
+\gls{spm}.  In  this   arrangement,  the  spatial  dimension   along  the  axial
+thickness  of   each  electrode   degenerates  to  a   single  point   which  is
+represented  by  a sphere.  Hence,  the  concentration  of Lithium  within  each
+electrode~$c_{\text{s}_j}$,~\jinnegpos{}  is  only  a  function  of  the  radial
+position~$r_j$,~\jinnegpos{}  and  the  time~$t$.   The  surface  area  of  each
 representative sphere is scaled appropriately,  such that they are equivalent to
 the  active area  of the  corresponding  porous electrodes.  Thus the  \gls{spm}
 accounts  for  the  reduced  volume-fraction  arising  due  to  the  microporous
-structure of the solid phase. Hence,  the storage capacity of the representative
-particles match that of the corresponding electrodes. The overarching assumption
-of the \gls{spm} modelling philosophy is that the electrochemical performance of
-these representative  electrodes are  sufficient to model  the behaviour  of the
-cell at its terminals. The \gls{spm}  thus employs the coarsest possible spatial
-discretisation of the cell's thickness with the goal of minimising computational
-burden.
+structure  of  the   solid  phase  and  hence,  the  storage   capacity  of  the
+representative  particles  match  that  of  the  corresponding  electrodes.  The
+overarching  assumption  of  the  \gls{spm} modelling  philosophy  is  that  the
+electrochemical performance of these representative electrodes are sufficient to
+model the behaviour of the cell at its terminals. The \gls{spm} thus employs the
+coarsest possible spatial  discretisation of the cell's thickness  with the goal
+of minimising computational burden.
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics{spm_geometry}
+    \caption[Schematic illustration depicting geometrical origins of the
+    \glsfmtshort{spm}]
+    {%
+        Schematic illustration depicting the geometrical origins of the basic
+        \gls{spm}. The model is obtained through a degenerate spatial
+        discretisation of one electrochemical layer of a  pouch cell.  The
+        active material of each porous electrode is represented by one
+        representative spherical particle, thus entirely eliminating the spatial
+        dimension along the axial direction. Image reproduced
+        from Moura~\etal~\cite{Moura2012}.
+    }%
+    \label{fig:sandwichtospm}
+\end{figure}
 
 \subsection{Scope and Assumptions}\label{subsec:basicspmassumptions}
 
-Having established the geometrical representation of the model, it is imperative
-to  establish  its  aims  and  scope.  This  section  discusses  the  subset  of
-physical  phenomena  that can  be  captured  by  the  model and  enumerates  the
+Having described the  geometrical representation of the model,  it is imperative
+to establish its  aims and scope. This section discusses  the subset of physical
+phenomena  that can  be  captured  by the  basic  \gls{spm}  and enumerates  the
 inherent assumptions in model derivation.  The validity of these assumptions and
-their  effects on  model accuracy  shall be  examined in  the results  presented
-in \cref{subsec:simresultsbasicspm}.  As  a  broad outline  of  the  \glspl{spm}
-scope,  the model  attributes the  cell  polarisation to  two dominant  physics,
-\viz{} reaction  kinetics and solid  phase transport phenomena,  \ie{} diffusion
-dynamics.
+their effects  on model accuracy shall  be examined in the  results presented in
+\cref{subsec:simresultsbasicspm}. As  a broad  outline of  its scope,  the model
+attributes  the  cell polarisation  to  two  dominant physics,  \viz{}  reaction
+kinetics and solid phase transport phenomena, \ie{} diffusion dynamics.
 
 
 The  \gls{spm}  assumes that  charge  transfer  happens throughout  the  surface
 of  each  representative  spherical  particle where  intercalation  occurs.  The
 electronic  conductivity of  the solid  phase is  assumed to  be high  enough to
-ignore the  spatial distribution of  charge, \ie{} the local  volumetric current
+ignore the  spatial distribution  of charge \ie{}  the local  volumetric current
 density is assumed  to be uniform along the thickness  of each porous electrode.
 This assumption is  motivated by the early calculations performed  by Newman and
 Tobias~\cite{Newman1962} in their stand-alone  analysis of current distributions
-in porous electrodes, wherein a volume-averaged molar flux is deemed sufficient.
-This uniform current density assumption implies that all of the particles in the
-electrode active material are in parallel.
-
-
-In the  \gls{spm}, solid phase  diffusion dynamics  are solved by  assuming this
-averaged electrochemical  reaction rate.  In the simulation  study by  Smith and
-Wang~\cite{Smith2006},  it  is  reported  that,  soon  after  the  beginning  of
-discharge, solid phase concentration and ionic flux become nearly independent of
-spatial position, and  Lithium diffusion in solid particles may  be driven by an
-averaged molar flux at the surface.
+in porous electrodes, wherein a volume-averaged molar flux was deemed sufficient
+throughout  the  thickness  of  the  electrode.  This  uniform  current  density
+assumption implies  that all of the  particles in the electrode  active material
+are  in parallel.  Solid  phase  diffusion dynamics  within  each electrode  are
+therefore solved by assuming this averaged electrochemical reaction rate. In the
+simulation study  by Smith and~Wang~\cite{Smith2006},  it is reported  that soon
+after  the beginning  of discharge,  solid  phase concentration  and ionic  flux
+become nearly  independent of  spatial position, and  that Lithium  diffusion in
+solid particles may be driven by an averaged molar flux at the surface.
 
 
 Based  on the  discussion thus  far, it  is clear  that the  \gls{spm} does  not
-attempt  to model  all physical  processes within  the cell.  The model  assumes
-instantaneous  charge transport  from one  electrode  to the  other through  the
-solution phase.  This implies that  electrolytic diffusion is  sufficiently fast
-(relative to  diffusion in the solid  phase). Thus, mass transport  phenomena in
-the electrolyte are not considered.
+attempt to  model all  physical processes  within the  cell. In  particular, the
+model assumes  instantaneous charge  transport from one  electrode to  the other
+through  the  solution  phase.  This  implies  that  electrolytic  diffusion  is
+sufficiently  fast  (relative to  diffusion  in  the  solid phase).  Thus,  mass
+transport  phenomena  in  the  electrolyte  have been  neglected  in  the  basic
+\gls{spm}.
 
 
-During the  operation of the  cell, the  \gls{spm} assumes that  the electrolyte
-concentration  $c_\text{e}$ remains  constant at  its equilibrium  initial value
-$c_{\text{e},0}$ throughout  the cell thickness. Neglecting  local concentration
-gradients  in the  solution phase,  together  with ignoring  its mass  transport
-phenomena implies that  the current in the electrolyte does  not vary over space
-and time. Hence,  in the conventional \gls{spm} there is  no contribution of the
-solution  phase to  internal  overpotentials and  electrolyte  dynamics have  no
-influence on the cell's terminal voltage.
+During   the  operation   of  the   cell,   the  \gls{spm}   assumes  that   the
+electrolyte  concentration~$c_\text{e}$  remains  constant  at  its  equilibrium
+initial value~$c_{\text{e},0}$  throughout the cell thickness.  Neglecting local
+concentration gradients in  the solution phase, together with  ignoring its mass
+transport phenomena, implies  that the current in the electrolyte  does not vary
+over  space  and  time.  Hence,  in  the  conventional  \gls{spm}  there  is  no
+contribution of the solution phase  to internal overpotentials \ie{} electrolyte
+dynamics have  no influence on the  cell's terminal voltage. The  \gls{spm} also
+ignores any  variations in material  porosities in each  electrode. Furthermore,
+all solid phase diffusivities and  kinetic parameters are held constant. Thermal
+effects are assumed to be negligible and no degradation effects are attempted to
+be modelled in the basic \gls{spm} formulation.
+
+These  simplifying  assumptions  are  made  so as  to  facilitate  the  ease  of
+implementing a  \gls{pbm}, without incurring  the heavy computational  cost that
+typically accompanies it. The impact of these assumptions on the accuracy of the
+model shall  be examined in \cref{subsec:simresultsbasicspm}  and later sections
+presents prior research that strives to  straddle the fine balance between model
+sophistication and computational complexity.
+
+\subsection{Governing  Equations}\label{subsec:basicspmgoverningeqns}
+% {Governing  Equations\protect\footnote{In  this
+% section,   only  those   simplifications  to   mathematical  notations   arising
+% due  to  assumptions  discussed  in \cref{subsec:basicspmassumptions}  shall  be
+% introduced   in-line.   For  a   comprehensive   reference   to  the   notations
+% used,   please  refer   to   nomenclature   list  in   the~\nameref{ch:glossary}
+% chapter.  Notations  introduced  solely  for   this  section  are  also  covered
+% here.}}
 
 
-Finally,  the  \gls{spm}  ignores  any   variations  in  material  porosity  and
-ionic-flow tortuosity  along the axial  direction of the cell.  This facilitates
-the  usage of  a constant  effective diffusion  coefficient for  the electrolyte
-phase. Furthermore,  all solid  phase diffusivities  and kinetic  parameters are
-held constant. Thermal  effects are assumed to be negligible  and no degradation
-effects are attempted to be modelled.
-
-
-These  simplifying assumptions  are  made so  as to  enable  the formulation  of
-a  physics-based  model  without  incurring  a  heavy  computational  cost.  The
-impact  of these  assumptions on  the accuracy  of the  model shall  be examined
-in \cref{subsec:simresultsbasicspm}  and later  sections presents  research that
-strives  to  straddle   the  fine  balance  between   model  sophistication  and
-computational complexity.
-
-
-\subsection[Governing  Equations]{Governing  Equations\protect\footnote{In  this
-section,   only  those   simplifications  to   mathematical  notations   arising
-due  to  assumptions  discussed  in \cref{subsec:basicspmassumptions}  shall  be
-introduced   in-line.   For  a   comprehensive   reference   to  the   notations
-used,   please  refer   to   nomenclature   list  in   the~\nameref{ch:glossary}
-chapter.  Notations  introduced  solely  for   this  section  are  also  covered
-here.}}\label{subsec:basicspmgoverningeqns}
-
-
-As discussed  in \cref{subsec:basicspmgeometry}, the \gls{spm}  primarily models
-the  cell's dynamics  due to  solid phase  diffusion and  reaction kinetics,  in
+As discussed  in \cref{subsec:basicspmassumptions},  the \gls{spm}  captures the
+cell's dynamics arising  due to solid phase diffusion and  reaction kinetics, in
 addition to embedding the contribution of equilibrium thermodynamics.
 
 \subsubsection*{Solid Phase Diffusion}
@@ -139,76 +134,81 @@ addition to embedding the contribution of equilibrium thermodynamics.
 Conservation of \ch{Li^0} in the electrodes can be obtained by assuming that the
 movement of neutral  atoms within the solid phase is  primarily due to diffusion
 within particles.  This diffusion  phenomena is induced  due to  a concentration
-gradient  that  exists  between  the  surface and  interior/core  of  the  solid
-phase  particles. Based  on  the  geometrical assumptions  of  the \gls{spm}  as
-discussed in \cref{subsec:basicspmgeometry}, \ie{} owing  to the lack of spatial
-discretisation in the axial direction $x$, the concentration of \ch{Li^0} in the
-two electrodes $c_\sj(x,r,t)$,  reduces to a function of  the radial co-ordinate
-$r$ and  time $t$,  and is  denoted by $c_\sj(r,t)$,  \jinnegpos{}. To  keep the
-notation tractable, this explicit  spatio-temporal radial dependence is omitted,
-further simplifying the representation to $c_\sj$.
+gradient that  exists between the surface  and interior/core of the  solid phase
+particles. Based on the geometrical assumptions of the \gls{spm} as discussed in
+\cref{subsec:basicspmgeometry} \ie{} owing to the lack of spatial discretisation
+in  the  axial  direction~$x$,  the  concentrations  of  \ch{Li^0}  in  the  two
+electrodes~$c_\sj(x,r,t)$, reduce  to a  function of the  radial co-ordinate~$r$
+and time~$t$, and is denoted by~$c_\sj(r,t)$,~\jinnegpos{}. To keep the notation
+tractable, this  explicit spatio-temporal radial dependence  is omitted, further
+simplifying the representation  to~$c_\sj$. We start with the  derivation of the
+solid-phase diffusion equation \cref{eq:dfnsoliddiff} in \cref{tbl:dfneqns}, and
+then proceed  to the simplifications  of its boundary conditions  facilitated by
+the \gls{spm} assumptions.
 
-Diffusion effects  in the solid phase can be modelled  by applying  classical
-Fickian dynamics given by
+Diffusion  in the  solid phase  can be  modelled by  applying classical  Fickian
+dynamics~\cite{Fick1995} given by
 \begin{equation}\label{eq:cartesiandiffusion}
-    \diffp{c_\sj}{t} = ∇\! ⋅ \left(D_\sj\, ∇ c_\sj \right)\qquad \jinnegpos{}\footnotemark{}
+    \diffp{c_\sj}{t} = ∇\! ⋅ \left(D_\sj\, ∇ c_\sj \right)\qquad \jinnegpos{}%\footnotemark{}
 \end{equation}
-\footnotetext{For  the  sake of  brevity,  in  rest  of  the equations  in  this
-section,  the  explicit  definition  for   each  subsequent  occurrence  of  the
-subscripted variable $j$ shall be omitted. It is implied that \jinnegpos{} since
-these  equations describe  solid phase  diffusion in  the negative  and positive
-electrodes.}  The divergence  of  a vector  field  $\mathbf{F}(r,θ,ϕ)$ can  be
-expressed in spherical co-ordinates as
+% \footnotetext{For  the  sake of  brevity,  in  rest  of  the equations  in  this
+% section,  the  explicit  definition  for   each  subsequent  occurrence  of  the
+% subscripted variable $j$ shall be omitted. It is implied that \jinnegpos{} since
+% these  equations describe  solid phase  diffusion in  the negative  and positive
+% electrodes.}
+The  divergence of  a vector  field  $\mathbf{F}(r,θ,ϕ)$ can  be expressed  in
+spherical co-ordinates as
 \begin{equation}\label{eq:fullsphericaldiv}
     ∇ ⋅ \mathbf{F} = \frac{1}{r^2}\diffp{\left(r^2 F_r\right)}{r} +
     \frac{1}{r \sin θ}\diffp{\left(\sin θ\:  F_θ\right)}{θ}
     + \frac{1}{r \sin θ}\diffp{F_ϕ}{ϕ}
 \end{equation}
-where $r$ denotes the radial magnitude, $θ$ the polar angle and $ϕ$, the
-azimuthal angle. $F_r, F_θ$ and $F_ϕ$ denote the corresponding
-components of the vector field $\mathbf{F}$.
+where  $r$~denotes the  radius,  $θ$~the polar  angle,  and $ϕ$~the  azimuthal
+angle. $F_r, F_θ$ and $F_ϕ$~denote  the corresponding components of the vector
+field~$\mathbf{F}$.
 
 The centre  of the  co-ordinate system  for each electrode  is aligned  with the
 centre of  its representative spherical particle.  Due to symmetry in  the polar
-and  azimuthal axes,  the  divergence  becomes a  function  of  only the  radial
-position and \cref{eq:fullsphericaldiv} reduces to
+and the  azimuthal axes, the  divergence becomes a  function of only  the radial
+position. \Cref{eq:fullsphericaldiv} therefore reduces to
 \begin{equation}\label{eq:reducedsphericaldiv}
     ∇ ⋅ \mathbf{F} = \frac{1}{r^2}\diffp{\left(r^2 F_r\right)}{r}
 \end{equation}
-Applying the divergence operator of \cref{eq:reducedsphericaldiv}
-in \cref{eq:cartesiandiffusion} yields
+Applying     the     \gls{rhs}     of     the     divergence     operator     of
+\cref{eq:reducedsphericaldiv} in \cref{eq:cartesiandiffusion} yields
 \begin{equation}\label{eq:csdiffusioneqn}
     \diffp{c_\sj}{t} = \frac{1}{r^2}\diffp*{\left(r^2 D_\sj\, ∇ c_\sj \right)}{r}
 \end{equation}
-As   per  the   assumption   of   uniform  diffusivity   in   the  solid   phase
-(see \cref{subsec:basicspmassumptions}), \cref{eq:csdiffusioneqn} becomes
+As   per  the   assumption  of   uniform   diffusivity  in   the  solid   phase,
+\cref{eq:csdiffusioneqn} becomes
 \begin{align}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 ∇ c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
     \intertext{Applying the gradient operator of \cref{eq:csdiffusionconstdiffusivity} along
     the radial direction $r$ results in}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
 \end{align}
-\Cref{eq:csdiffusionfinal}  represents  the   mass-balance  equation  describing
-solid  phase  diffusion in  each  electrode.  The  potential at  each  electrode
+\Cref{eq:csdiffusionfinal} represents  a mass-balance equation  describing solid
+phase diffusion  in each electrode  and is  identical to the  governing equation
+\cref{eq:dfnsoliddiff} from \cref{tbl:dfneqns}. The  potential at each electrode
 depends  on   the  solid  phase  surface   concentration~$c_\sjsurf$  \ie{}  the
-\ch{Li^0} concentration $c_\sj(r,t)$ evaluated  at $r=R_\pj$, \jinnegpos{} where
-$R_\text{p}$ represents  the equivalent radius of  each representative spherical
-particle.  Diffusion in  the solid  phase is  driven by  concentration gradients
-induced due  to intercalation  flux density  at the  particle surface,  which is
-examined next.
+\ch{Li^0} concentration~$c_\sj(r,t)$  evaluated at~$r=R_\pj$,~\jinnegpos{} where
+$R_\pj$~represents  the  equivalent  radius  of  each  representative  spherical
+particle.
 
 Due to spherical symmetry,  flux at the centre of the  particle is considered to
-be zero
+be zero.
 \begin{equation}\label{eq:csfluxcentre}
     \diffp{c_\sj}{r}{\mathrlap{r=0}} = 0
 \end{equation}
-The   surface  of   each   particle  experiences   a   pore-wall  flux   density
-driven  by  reaction  kinetics.  Based   on  the  \gls{spm}  geometry  discussed
-in \cref{subsec:basicspmgeometry}  the spatial  dependence  of  this molar  flux
-density  $j_\nj(x,t)$  is  eliminated  and can  be  represented  as  $j_\nj(t)$,
-\jinnegpos{}. For the sake of brevity,  the explicit temporal dependence is also
-omitted  resulting in  a simplified  notation  $j_\nj$. Hence,  at the  particle
-surface
+
+Diffusion in the solid phase is driven by concentration gradients induced due to
+intercalation flux  density at the  particle surface  \ie{} the surface  of each
+particle experiences a pore-wall flux density driven by reaction kinetics. Based
+on  the  \gls{spm}  geometry discussed  in  \cref{subsec:basicspmgeometry},  the
+spatial dependence of this molar  flux density~$j_\nj(x,t)$ is eliminated and it
+can  therefore  be  represented  as~$j_\nj(t)$,~\jinnegpos{}. For  the  sake  of
+brevity,  its  explicit temporal  dependence  is  also  omitted resulting  in  a
+simplified notation $j_\nj$. Hence, at the particle surface
 \begin{equation}\label{eq:csfluxsurface}
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} = -j_\nj
 \end{equation}
@@ -219,119 +219,85 @@ Charge   conservation   in   solid   phase    is   applied   to   evaluate   the
 \gls{rhs}  in \cref{eq:csfluxsurface},   a  detailed  derivation  of   which  is
 presented  in  Domenico~\etal~\cite{DiDomenico2010}.  In  summary,  by  assuming
 a  uniform   charge  density   throughout  the   thickness  of   each  electrode
-(see \cref{subsec:basicspmassumptions}), \cref{eq:csfluxsurface} becomes
+(see \cref{subsec:basicspmassumptions}), we get
 \begin{align}
     j_\nj(t)                       &= ± \frac{I(t)}{A \, l_j a_\sj F}\label{eq:uniformcurrdensity}   \qquad \jinnegposordered
-    \shortintertext{Substituting \cref{eq:uniformcurrdensity} in \cref{eq:csfluxsurface},}
+    \intertext{Substituting \cref{eq:uniformcurrdensity} in \cref{eq:csfluxsurface}}
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} &= ∓ \frac{I}{A \, l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
-wherein   the  load   current  $I(t)   >  0$   for  discharge,   whose  explicit
-time-dependence has been  omitted in \cref{eq:csfluxsurfacefinal} for consistent
+wherein  the  load current  \mbox{$I(t)  >  0$}  for discharge,  whose  explicit
+time-dependence has been omitted  in \cref{eq:csfluxsurfacefinal} for consistent
 notation  with the  \gls{lhs}.  The positive  and negative  signs  apply to  the
 negative  and  positive  electrode  respectively as  indicated  by  the  ordered
 pair  \jinnegposordered.  In   the  interest  of  completeness,   it  should  be
-noted  that  the   term  involving  the  Faraday's  constant   in  the  gls{rhs}
-of \cref{eq:uniformcurrdensity} is  $nF$, where $n$  is the number  of electrons
+noted  that  the  term  involving  the Faraday  constant  in  the  \gls{rhs}  of
+\cref{eq:uniformcurrdensity}  is~$nF$,  where  $n$~is the  number  of  electrons
 transferred  during the  reaction.  However, since  this  thesis only  discusses
-lithium-ion chemistries  where $n=1$, this  is implicitly conveyed and  shall be
-omitted for all possible occurrences.
+lithium-ion chemistries  where~$n=1$, this is  implicitly conveyed and  shall be
+omitted for all potential occurrences.
 
 The \gls{soc} of the cell can be obtained from the bulk concentration of lithium
-in either the negative or positive electrode. By convention, negative electrode
-is used in computations.
+in  either the  negative  or  positive electrode.  By  convention, the  negative
+electrode is used for this computation.
 \begin{equation}\label{eq:socinitialdefn}
     z(t) = \frac{3}{c_\snegmax}∫_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
 \end{equation}
-Given  an  initial  cell  \gls{soc}  $z(0)  =  z_0$  at  rest,  the  equilibrium
+Given an  initial cell  \gls{soc}~\mbox{$z(0) = z_0$}  at rest,  the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
     c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(θ_\maxj - θ_\minj \right) + θ_\minj \bigg]
 \end{equation}
 
 \Cref{eq:csdiffusionfinal},          its         corresponding          boundary
-conditions~\eqref{eq:csfluxcentre}  \&~\eqref{eq:csfluxsurfacefinal} along  with
-initial   condition~\eqref{eq:csfluxinitialcondition}   provide   the   complete
-description   of  time-domain   evolution   of  lithium   in  the   conventional
-\gls{spm}   for  a   given  applied   current  profile   $I(t)$.  Considerations
-for  efficient   numerical  simulation   of  this   system  is   presented  next
-in \cref{subsec:basicspmgeometry}.
+conditions~\eqref{eq:csfluxcentre} and~\eqref{eq:csfluxsurfacefinal}  along with
+initial   condition~\eqref{eq:csfluxinitialcondition},   provide  the   complete
+description of  time-domain evolution of  lithium in the  conventional \gls{spm}
+for  a  given  applied  current  profile~$I(t)$.  Considerations  for  efficient
+numerical simulation of this system is presented next.
+
+%  in \cref{subsec:basicspmgeometry}.
 
 
 \subsubsection*{Further Reduction in Dimensionality}\label{subsec:basicspmfurtherdimensionalityreduction}
 
-A  naive approach  to numerically  solving  the solid  phase diffusion  equation
-is  to  discretise each  of  the  two  representative  particles in  the  radial
-direction  as  shown   in \cref{fig:radialdiscretisation}.  A  three-dimensional
-cut-away view  of the division  of the solid  particle into sub-shells  is shown
-in \cref{subfig:radialdisc3d}. Whilst  this schematic conforms to  the \gls{spm}
-geometry presented in \cref{subsec:basicspmgeometry}, it is easier to provide an
-annotated illustration using the 2D visualisation of \cref{subfig:radialdisc2d}.
-However, it should  be noted that the actual numerical  computation is performed
-using a  one-dimensional mesh, congruent  with the 1D radial  diffusion equation
-of \cref{eq:csdiffusionfinal}.  \Cref{subfig:radialdisc1d}   shows  a  schematic
-illustration of this computational domain.
-\begin{figure}[!htbp]
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics{placeholder_images/example-image-golden.pdf}
-        \caption{cutaway view depicting spherical shells}
-        \label{subfig:radialdisc3d}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics{placeholder_images/example-image-golden.pdf}
-        \caption{2D view wherein shells are depicted as concentric rings}
-        \label{subfig:radialdisc2d}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics{placeholder_images/example-image-golden.pdf}
-        \caption{schematic of 1D computational domain}
-        \label{subfig:radialdisc1d}
-    \end{subfigure}
-    \caption{Radial discretisation scheme for solid phase diffusion.}
-    \label{fig:radialdiscretisation}
-\end{figure}
-
-Given  the elaborate  simplifications  made to  remove  spatial resolution  from
-the  axial  direction,  the  efficacy   of  using  a  radial  discretisation  is
-rendered  questionable, particularly  within the  scope of  embedding the  model
-in  an  online  simulation  and state-estimation  environment.  Since  diffusion
-in  each  spherical  particle  is   modelled  by  well-known  Fickian  dynamics,
-several attempts  have been  made to obtain  an approximate  analytical solution
-for  the  solid phase  concentration  in  both  electrodes.  In the  context  of
-\gls{spm}  modelling,  the  earliest  such  work,  \ie{}  a  comparison  of  the
-discretised  version  with  an  approximate analytical  solution  was  performed
-by  Santhanagopalan~\etal~\cite{Santhanagopalan2006}.  Zhang and  White  provide
-a   comparative  evaluation   of  the   various  approximation   methods  in   a
-dimensionless analysis  study~\cite{Zhang2007}, a summary of  which is presented
-in \cref{tbl:solidphaseapprox}.
+A naive approach to numerically solving the solid phase diffusion equation is to
+discretise each of the two representative particles in the radial direction~$r$.
+Given the elaborate  simplifications made to remove spatial  resolution from the
+axial  direction, the  efficacy of  using  a radial  discretisation is  rendered
+questionable, particularly within the scope of  embedding the model in an online
+simulation and  state-estimation environment. Since diffusion  in each spherical
+particle is modelled by the well-known Fickian dynamics~\cite{Fick1995}, several
+attempts have  been made to  obtain an  approximate analytical solution  for the
+solid phase concentration in both electrodes.
+% In  the  context  of  \gls{spm}  modelling, the  earliest  such  work,  \ie{}  a
+% comparison of  the discretised version  with an approximate  analytical solution
+% was performed by Santhanagopalan~\etal~\cite{Santhanagopalan2006}.
+In a  dimensionless analysis study,  Zhang and White~\cite{Zhang2007}  provide a
+comparative  evaluation of  the various  approximation methods  for solid  phase
+diffusion, a summary of which is presented in \cref{tbl:solidphaseapprox}.
 
 \input{chapters/spm_analysis/solid_phase_approx_table}
 
-The  computational  requirements, \viz{}  storage  and  CPU times  of  Duhamel's
-superposition  method  was found  to  be  excessively  high to  warrant  further
-interest in it. The original diffusion length method proposed by Wang~\etal{} is
-valid  only  after the  diffusion  layer  builds up  to  its  steady state,  and
-hence leads  to significant  errors in transient  conditions. Although  Wang and
-Srinivasan introduced  an empirical  correction factor  to the  diffusion length
-to  extend  its validity  to  short-time  scale  operations, this  affected  the
-convergence of the method to the exact solution for steady state conditions. The
-pseudo steady  state solution proposed by  Liu uses a finite  integral transform
-technique  to eliminate  the  radial dependence  of  solid phase  concentration.
-However,   this  method   uses  computations   involving  infinite   summations,
-exponential and  trigonometric quantities,  which makes  it less  attractive for
-online implementations.
+In  the   aforementioned  study,   the  computational  burden,   \viz{}  storage
+requirements and  CPU times of  Duhamel's superposition  method was found  to be
+excessively  high to  warrant further  interest  in it.  The original  diffusion
+length method proposed  by Wang~\etal{} is valid only after  the diffusion layer
+builds  up  to its  steady  state,  and hence  leads  to  significant errors  in
+transient  conditions.  Although Wang  and  Srinivasan  introduced an  empirical
+correction factor to  the diffusion length to extend its  validity to short-time
+scale operations, this  affected the convergence of the method  for steady state
+conditions.  The pseudo  steady state  solution proposed  by Liu  uses a  finite
+integral  transform  technique  to  eliminate the  radial  dependence  of  solid
+phase concentration.  However, this method uses  computations involving infinite
+summations,  exponential  and trigonometric  quantities,  which  in this  thesis
+author's view, makes it less attractive for online implementations.
 
 The   literature   on   polynomial  methods   by   Subramanian~\etal{}   provide
-detailed derivations  of \engordnumber{2} and  \engordnumber{4}~order polynomial
+detailed derivations  of \engordnumber{2}~and  \engordnumber{4}~order polynomial
 approximations.  The  \engordnumber{2}~order solution  was  found  to have  poor
 performance for transient  behaviour, similar to that of  the original diffusion
 length method.  However, higher  order polynomial  approximations were  found to
-provide an acceptable  level of performance for both transient  and steady state
+provide acceptable  levels of  performance for both  transient and  steady state
 conditions and shall be examined further.
 
 The  polynomial   approximation  method  describes  the   dynamic  evolution  of
