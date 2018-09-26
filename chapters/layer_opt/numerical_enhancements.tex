@@ -410,7 +410,6 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     \begin{equation}\label{eq:discpositivity}
 	    \phi_{\text{s}_0} - \phi_{\text{s}_n} > 0
     \end{equation}
-
     Finally,   since   the  input   to   the   model   is  the   applied   power
     density~$p$,  the  current  density  within  each  layer~$i$,  needs  to  be
     solved  for.  This   is  facilitated  by  employing   the  discretised  form
@@ -492,20 +491,23 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     \begin{equation}\label{eq:defineChebNodes}
         \widetilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \widetilde{r} \in [-1, 1]
     \end{equation}
-
     Assuming constant diffusivity, expanding the derivative in the standard form
     of the Fickian spherical diffusion equation (see \cref{eq:dfnsoliddiff}) for
     each particle, we obtain  \cref{eq:quotientappliedpde}, presented along with
     its Neumann  boundary conditions, eqs.~\eqref{eq:quotientappliedpdeBCcentre}
     and~\eqref{eq:quotientappliedpdeBCsurface}.  $j$~is the  molar flux  density
     (\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius (\si{m}).
+    \begingroup
+    \allowdisplaybreaks
     \begin{subequations}\label{eq:quotientappliedpde}
         \begin{align}
+            \SwapAboveDisplaySkip
             \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref*{eq:quotientappliedpde}}\\
             \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eq:quotientappliedpdeBCcentre}\\
             D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eq:quotientappliedpdeBCsurface}
         \end{align}
     \end{subequations}
+    \endgroup
 
     Mapping $r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]$,
     \begin{equation}\label{mappingChebDomain}

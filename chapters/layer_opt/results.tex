@@ -23,11 +23,16 @@ process, this  author chooses  to deliberately limit  the discussion  around the
 
 \subsection{Modelling Platform and Preconditioning}\label{sec:platformlionsimba}
 
-The thermally-coupled, \gls{p2d} electrochemical cell model used for
-simulating each layer choice is implemented in MATLAB~\cite{matlab}, using
-a heavily-modified version of the LIONSIMBA toolbox~\cite{Torchio2016}.
-The work reported in this chapter helped to advance the toolbox from~v1.0x
-to~v2.0. The updated computer codes to which this author heavily contributed,
+\input{chapters/layer_opt/cell_params_full_table}
+
+The   complete   parameter   set   used   for   simulation   is   presented   in
+\cref{tbl:lcoSimParamslayeropt}.  All   cells  are   assumed  to  be   in  their
+equilibrium  state prior  to  beginning of  simulations. The  thermally-coupled,
+\gls{p2d}  electrochemical  model  used  for simulating  each  layer  choice  is
+implemented  in MATLAB~\cite{matlab}  using  a heavily-modified  version of  the
+LIONSIMBA toolbox~\cite{Torchio2016}.  The work reported in  this chapter helped
+to advance the  toolbox from~v1.0x to~v2.0. The updated computer  codes to which
+this author heavily contributed,
 is available from the project's official repository\footnote{LIONSIMBA~v2:
 \mbox{\href{https://github.com/lionsimbatoolbox/LIONSIMBA}{\includegraphics
 [width=0.025\textwidth]{github.pdf}}} \url{
@@ -44,19 +49,13 @@ simulation  speeds using  LIONSIMBA  have been  shown to  be  comparable to  the
 FORTRAN  implementation  of  DUALFOIL,  primarily  owing  to  the  sophisticated
 computation  of  the  analytical  Jacobian   of  the  system  through  automatic
 differentiation~\cite{Torchio2016}.  In  addition  to  fundamental  enhancements
-to   the  modelling   platform  presented   in~\cref{sec:numericalenhancements},
+to  the   modelling  platform  presented   in  \cref{sec:numericalenhancements},
 numerous  bug fixes  and  other  minor enhancements  to  the original  LIONSIMBA
-code-base   have  been   provided  by   this  thesis   author.  The   interested
-reader  may  peruse  these  from  the  \texttt{README.md}  file  hosted  on  the
-\href{https://github.com/lionsimbatoolbox/LIONSIMBA}{project's  repository}. The
-complete  parameter set  used  for  simulation of  this  model  is presented  in
-table~\ref{tbl:lcoSimParamslayeropt}.  All  cells are  assumed  to  be in  their
-equilibrium state prior to beginning of simulations.
-
-\input{chapters/layer_opt/cell_params_full_table}
+code-base  have  been  provided  by   this  thesis  author.  Interested  readers
+may  peruse   these  from  the   \texttt{README.md}  file  from   the  project's
+\href{https://github.com/lionsimbatoolbox/LIONSIMBA}{repository}.
 
 \subsection{\glsfmtshort{xeV} configurations}
-
 
 \input{chapters/layer_opt/common_bev_phev_params_table_new}
 
@@ -69,19 +68,20 @@ that  experienced during  the  two  extreme cases  of  discharging and  charging
 is  the median  discharge power  for various  standard drive  cycles. Even  with
 the  assumption that  \SI{100}{\percent}  of braking  energy  can be  recovered,
 the  peak  and  median  charging  powers  are  only  \SI{43.13}{\kilo\watt}  and
-\SI{26.03}{\kilo\watt}  respectively.   The  discharging  and   charging  powers
-experienced by  the pack during  acceleration and fast charge  are significantly
-higher as seen below.
+\SI{26.03}{\kilo\watt}  respectively.
 
-Considering  the acceleration  parameters in~\cref{tbl:CommonVehicleParams}  for
-the  \gls{bev}  pack,  \SI{181.45}{\kilo\watt}  is  the  power  requirement  for
-acceleration  of a  fixed vehicle  mass on  a flat  road surface.  Four distinct
-fast-charging  power  levels  \viz{}  \SI{50}{\kilo\watt},  \SI{80}{\kilo\watt},
-\SI{110}{\kilo\watt} and \SI{130}{\kilo\watt} are considered in this study. This
-is in adherence to the minimum and maximum values of level~3 rating as suggested
-by  Yilmaz  and~Krein~\cite{Yilmaz2012}.  Furthermore, near-term  fast  charging
-goals  laid out  in literature~\cite{Ashique2017,Srdic2016}  and the  peak power
-capability of charging infrastructure further justify these choices.
+The   discharging  and   charging  powers   experienced  by   the  pack   during
+acceleration and  fast charge  are significantly  higher than  those experienced
+with  any  standard  drivecycle.  Considering  the  acceleration  parameters  in
+\cref{tbl:CommonVehicleParams} for  the \gls{bev}  pack, \SI{181.45}{\kilo\watt}
+is   the  power   requirement  for   acceleration  of   a  fixed   vehicle  mass
+on   a   flat  road   surface.   Four   distinct  fast-charging   power   levels
+\viz{}   \SI{50}{\kilo\watt},   \SI{80}{\kilo\watt},  \SI{110}{\kilo\watt}   and
+\SI{130}{\kilo\watt}  are considered  in this  study.  This is  in adherence  to
+the  minimum  and maximum  values  of  level~3  rating  as suggested  by  Yilmaz
+and~Krein~\cite{Yilmaz2012}. Furthermore, near-term fast charging goals laid out
+in  literature~\cite{Ashique2017,Srdic2016} and  the  peak  power capability  of
+charging infrastructure further justify these choices.
 
 \input{chapters/layer_opt/separate_bev_phev_params_table}
 
@@ -91,8 +91,8 @@ For  the  acceleration  tests,  the  initial cell  \gls{soc}  has  been  set  to
 case  starting  \gls{soc} \ie{}  \SI{40}{\percent},  a  conservative design  can
 be  achieved.  The  chassis  mass  of  the  vehicle  as  well  as  the  mass  of
 two  passengers   at  75.3  kg   each~\cite{Sae2010}  is  considered   for  both
-\gls{xeV}  platforms.  The  pack  mass  is computed  as  a  function  of  number
-of  layers as  described in~\cref{sec:layeroptframework}.  Vehicle manufacturers
+\gls{xeV}  platforms. The  pack mass  is  computed as  a function  of number  of
+layers  as  described  in  \cref{sec:layeroptframework}.  Vehicle  manufacturers
 General  Motors  Inc.\, provide  the  mass  value of  the  GM  Ecotec series  of
 engines~\cite{motortrendEcotec} that can  be used for the  \gls{phev} case which
 consists of  a range-extending \gls{ice}.  The mass  of the Bolt  \gls{bev} pack
@@ -100,6 +100,7 @@ reported in~\cite{ChevyBoltSpecs} minus  the computed mass of  the overall cells
 used in the pack  gives the overhead mass of the  \gls{bev} pack. The \gls{phev}
 pack's  overhead  mass  is  determined  by suitably  scaling  the  mass  by  the
 proportion of reduction in the number of cells used.
+
 
 For the \gls{bev}  platform, a fast-charging scheme operated on  a \gls{cp} mode
 with an initial  \gls{soc} of \SI{20}{\percent} is employed. In  the case of the
@@ -214,20 +215,20 @@ represented by the linear downward-sloping line.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
-        \centering \includegraphics[width=\textwidth,trim=4 2 3 4,clip]{fig_capacity_quadrants.pdf}
+        \centering
+        \includegraphics[width=0.998046875\textwidth,trim=4 2 3 4,clip]{fig_capacity_quadrants.pdf}
         \captionsetup{labelsep=note}
         \caption[
         Nominal capacity and charge passed versus layer count for ---
         \emph{a}) constant current  charging and \emph{b}) constant power  charging
         ]
         {
-            The plots in the right column show the nominal cell capacity and charge passed
-            during \gls{xeV} \gls{cp} charging. Increased rate capability and cell utilisation are positively
-            correlated with $n$, while the maximum-$q$ layer configuration clearly shifts to higher
-            values of $n$ with increasing charging powers. The plots in the left column depict
-            galvanostatic charging scenarios at various currents to highlight the similarity with the
-            \gls{cp} process. All data obtained at \mbox{$T_\text{init} =$
-            \SI{25}{\degreeCelsius}, $T_\text{sink} =$ \SI{25}{\degreeCelsius}}.
+            The right column shows nominal cell capacity and charge passed
+            during \gls{cp} charging. Rate capability and cell utilisation are positively
+            correlated with $n$. With increasing power levels, the optimal layer configuration shifts to higher
+            values of $n$. Similar behaviour is observed for galvanostatic
+            charging (left column). Plotted for \mbox{$T_\text{init} =
+            T_\text{sink} = \SI{25}{\degreeCelsius}$}.
         }
         \label{fig:fig_CapacityQuadrants}
         \mpfootnotes[1]

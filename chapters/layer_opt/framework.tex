@@ -100,6 +100,7 @@ dynamics~\cite{Maksimovic2012}, the power at the wheels of an \gls{xeV} is given
 by \cref{eq:wheelpower}.
 \begin{subequations}\label{eq:wheelpower}
     \begin{align}
+        \SwapAboveDisplaySkip
         P_\text{w}     & = P_\text{mass} + P_\text{drag} + P_\text{roll} + P_\text{grade} \tag{\ref*{eq:wheelpower}}                  \\
         P_\text{mass}  & = \frac{1}{2} \frac{M_\text{v}(n)}{t_\text{a}} \left(v_\text{b}^2 + v_\text{f}^2\right) \label{eq:masspower} \\
         P_\text{drag}  & = \frac{1}{2} \left(\rho_\text{air} C_\text{d} A_\text{v}v_\text{f}^3\right) \label{eq:dragpower}            \\
@@ -128,7 +129,7 @@ Hence, for  precise computation  of~$P_\text{mass}$ in  \cref{eq:masspower}, the
 vehicle's  mass is  computed  as a  function  of number  of  layers within  each
 cell~$n$.
 
-In  the  schematic  of~\cref{fig:fig_strategy_schematic},  this  layer-dependent
+In  the  schematic  of \cref{fig:fig_strategy_schematic},  this  layer-dependent
 calculation of  mass of all cells  in the pack~$M_\text{cells}$ is  shown by the
 product of  the signal  labelled $m_\text{cell}$ and  the triangular  gain block
 representing the overall number of cells in the pack~$n_\text{cells}$.
@@ -179,15 +180,15 @@ condition is compared against three criteria
     \item the minimum allowed terminal voltage~$V_\text{min}$, and
     \item the lowest allowed cell \gls{soc}~$z_\text{min}$.
 \end{enumerate}
-This helps to determine whether the cell constructed from the present layer
-choice is able to successfully satisfy the acceleration power demands. These
-comparison operations are represented by decision blocks placed in the leftmost
-region of the schematic in~\cref{fig:fig_strategy_schematic}.
+This helps  to determine  whether the  cell constructed  from the  present layer
+choice is  able to  successfully satisfy the  acceleration power  demands. These
+comparison operations are represented by  decision blocks placed in the leftmost
+region of the schematic in \cref{fig:fig_strategy_schematic}.
 
 If  any one  of the  three aforementioned  exit checks  fail, the  present layer
 configuration is deemed  to be not feasible and the  entire workflow is repeated
 by  trialling a  new  layer  choice. A  sophisticated  search  algorithm, to  be
-described  in~\cref{sec:searchalgo},  is  employed  to minimise  the  number  of
+described  in  \cref{sec:searchalgo}, is  employed  to  minimise the  number  of
 iterations needed  until a successful layer  choice~$n_\text{opt}^\text{acc}$ is
 obtained. The  above process is  repeated for different combinations  of initial
 and  ambient temperatures~\mbox{$(T_\text{init},  T_\text{sink})$}. The  largest
@@ -426,7 +427,6 @@ Owing to  the reasons outlined in  \cref{subsec:layeroptassumptions}, the volume
 fractions  of  the  electrode  materials  are  assumed  to  be  constant,  which
 implies  that  their   ratio  is  also  a  constant.   The  electrode  thickness
 ratio~$l_\text{ratio}$ is therefore obtained as
-
 \begin{alignat}{2}
     l_\text{ratio} & = \frac{l_\text{neg}}{l_\text{pos}}                                                                                  &  & \qquad\text{(by definition)}                                          \\
     {}             & = \frac{\varepsilon_\text{s,pos}}{\varepsilon_\text{s,neg}}                                                          &  & \qquad\text{(rearranging \cref{eq:electrodeCapequalarea})}           \\
@@ -574,9 +574,9 @@ The   average   specific   heat   of    the   cell,   $c_\text{avg}$   used   in
     c_\mathrm{avg} = \frac{1}{m_\text{cell}} \biggl[\sum_jc_jm_j + c_\text{Al}m_\text{Al} + c_\text{Cu}m_\text{Cu} + c_\mathrm{LiPF_6}m_\mathrm{LiPF_6} + c_\mathrm{pouch}m_\mathrm{pouch}\biggr],\quad j \in \{\text{pos, sep, neg}\}
 \end{equation}
 
-The first  three terms in~\cref{eq:spheat}  are evaluated  as a function  of the
-number  of  layers~$n$  by  substituting the  appropriate  layer-dependent  mass
-values computed in~\crefrange{eq:mj}{eq:cumass}. The  latter two terms \ie{} the
+The first  three terms in  \cref{eq:spheat} are evaluated  as a function  of the
+number of layers~$n$ by substituting the appropriate layer-dependent mass values
+computed  in  \crefrange{eq:mj}{eq:cumass}.  The  latter  two  terms  \ie{}  the
 specific heats of the electrolyte material and the pouch are held constant since
 their corresponding mass values do not vary with the number of layers used.
 
