@@ -4,20 +4,20 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
-The  equations   presented  in \cref{sec:spmmodeldevelopment}   are  well-known,
+The  equations  presented   in  \cref{sec:spmmodeldevelopment}  are  well-known,
 self-sufficient and  fully descriptive so  as to implement the  basic \gls{spm}.
-Although  numerical implementation  of  circuit-oriented cell  models have  been
-considered~\cite{Plett2004,Plett2004a,Plett2004b,Plett2006}, there  has yet been
-no treatment  of this critical  aspect in \gls{spm} modelling  literature. Since
-this thesis has a strong focus  towards enabling the use of physics-based models
-in an embedded environment, at least the numerical aspects of implementing these
-equations needs  to be  discussed. The finer  details and  practical engineering
-consideration of  real-time programming,  in particular  the integration  of the
-cell model into the pack and its  interaction with other elements and aspects of
-a typical vehicular  drivetrain controller is beyond the scope  of this academic
-work. Nevertheless, the  discussion here aims to lower the  barrier to real-time
-implementation and is a  unique contribution of this work in  the context of the
-cell modelling art.
+Although discrete-time numerical implementation  of circuit-oriented cell models
+have been considered~\cite{Plett2004,Plett2004a,Plett2004b,Plett2006}, there has
+been  no such  treatment  of this  critical aspect  in  the \gls{spm}  modelling
+literature. Since  this thesis has  a strong focus  towards enabling the  use of
+physics-based models in an embedded  environment, at least the numerical aspects
+of implementing  these equations  need to  be discussed.  The finer  details and
+practical engineering considerations of real-time programming, in particular the
+integration of  the cell model into  the pack and its  interaction with upstream
+components and other  such aspects of a typical  vehicular drivetrain controller
+is beyond  the scope of  this academic  work. Nevertheless, the  discussion here
+aims  to  lower  the  barrier  to  real-time  implementation  and  is  a  unique
+contribution in the context of the cell modelling art.
 
 \subsection{Continuous-time Implementation}
 \subsubsection*{Analytical solution}
