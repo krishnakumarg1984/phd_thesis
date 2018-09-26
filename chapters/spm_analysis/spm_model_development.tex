@@ -168,10 +168,10 @@ where  $r$~denotes the  radius,  $θ$~the polar  angle,  and $ϕ$~the  azimuthal
 angle. $F_r, F_θ$ and $F_ϕ$~denote  the corresponding components of the vector
 field~$\mathbf{F}$.
 
-The origin  of the  co-ordinate system  at each electrode  is aligned  with the
-centre of  its representative spherical particle.  Due to symmetry in  the polar
-and the  azimuthal axes, the  divergence becomes a  function of only  the radial
-position. \Cref{eq:fullsphericaldiv} therefore reduces to
+The  co-ordinate  origin  at  each  electrode is  aligned  with  the  centre  of
+its  representative  spherical  particle.  Due  to symmetry  in  the  polar  and
+azimuthal axes, the  divergence becomes a function of only  the radial position.
+\Cref{eq:fullsphericaldiv} therefore reduces to
 \begin{equation}\label{eq:reducedsphericaldiv}
     ∇ ⋅ \mathbf{F} = \frac{1}{r^2}\diffp{\left(r^2 F_r\right)}{r}
 \end{equation}
@@ -185,7 +185,7 @@ As   per  the   assumption  of   uniform   diffusivity  in   the  solid   phase,
 \begin{align}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 ∇ c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
     \intertext{Applying the gradient operator of \cref{eq:csdiffusionconstdiffusivity} along
-    the radial direction $r$}
+    the radial direction $r$,}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
 \end{align}
 \Cref{eq:csdiffusionfinal} represents  a mass-balance equation  describing solid

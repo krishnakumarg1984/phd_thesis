@@ -273,19 +273,22 @@ efficiency of the chip.
 
 \begin{figure}[!htbp]
     \centering
-    \hrulefill
+    \includegraphics{timing_diagram_small}
     \caption[Timeline of \glsfmtshort{bms} activities over multiple CPU cycles of a real-time
-    controller]{A timeline view of CPU activities within each sample time
-        depicting the repeating blocks of the execution sequence is shown over a
-        larger horizon. The vast majority of the CPU cycle is spent in idling or
-    background tasks. The servicing of \gls{isr} occupies a relatively small fraction.}
+    controller]{A compressed timeline of CPU execution cycles showing details of
+        activities within each sample interval. The execution sequence is shown
+        over a larger horizon so as to illustrate the proportion of `activity
+        time' relative to the `idle time'. The vast majority of the CPU cycle is
+        spent in idling or background tasks. The servicing of the \gls{isr}
+        occupies a relatively small fraction of each CPU cycle. Image
+    reproduced from Plett~\cite{PlettECE5540_02}.}
     \label{fig:timingdiagramSmall}
 \end{figure}
 
 For  Li-ion  cell  modelling,  a  sampling interval  of  $T_s  =  1$\si{\second}
 is   commonly  used,   thus  aiming   to   capture  the   cell  dynamics   below
 \SI{1}{\hertz}\footnote{In  the ideal  case, according  to the  Nyquist sampling
-theorem. However, in practice the frequency  range is lower.}. The CPUs clock is
+theorem.  In practice, the frequency  range is smaller.}. The CPUs clock is
 several \si{\MHz}, a vast  majority of which is spent in  background tasks or in
 sleep mode. Furthermore,  a low-latency \gls{isr} code is employed  in the tasks
 of reading the  \gls{adc} value, evaluating the model equations  and writing any
@@ -304,27 +307,26 @@ omitted in this thesis for discrete-time formulation of the \gls{spm} model.
 
 \subsection{Discrete-Time \glsfmtshort{spm} Formulation}
 
+% \Cref{fig:blockdiagctsdisc} shows  a block  diagram representation of  the plant
+% model its associated input and output signals.
 
-
-\Cref{fig:blockdiagctsdisc} shows  a block  diagram representation of  the plant
-model its associated input and output signals. Due to the sampling and \gls{zoh}
-operation  at  the  \gls{adc}  input  to  the  system,  the  input  signals  are
-transformed  from  being  simple  continuous time  quantities  to  discrete-time
-sequences,  \ie{} $u(t)  \mapsto  u[k]$  and $y(t)  \mapsto  y[k]$,  where $k  =
-0,1,\dots,∞$ is the sample index  corresponding to the continuous time instant
-$t_k  = kT_s$.  The continuous  time plant  model represented  by the  \gls{ode}
-system of \cref{eq:threestatesmatrixvec} is replaced  by a discrete-time process
+Due  to the  sampling and  \gls{zoh} operations  at the  \gls{adc} input  to the
+system,  the input  to the  \gls{spm} is  transformed from  a simple  continuous
+time signal  to discrete-time  sequences, \ie{}  \mbox{$u(t) \mapsto  u[k]$} and
+\mbox{$y(t)  \mapsto  y[k]$}, where  \mbox{$k  =  0,1,\dots,∞$}~is the  sample
+index  corresponding  to  the   continuous  time  instant~\mbox{$t_k  =  kT_s$}.
+The  continuous  time  plant  model  represented  by  the  \gls{ode}  system  of
+\cref{eq:threestatesmatrixvec} is therefore replaced  by a discrete-time process
 and modelled by a \emph{difference} equation which is to be determined.
 
-\begin{figure}[!htbp]
-    \centering
-    % show block diagram cross-referencing equation and a question mark for the
-    % dt system
-    \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption[Block-diagram of continuous and discrete-time systems]{Block-diagram of the plant model and associated signals of a continuous-time system and its discrete-time counterpart}
-    \label{fig:blockdiagctsdisc}
-\end{figure}
-
+% \begin{figure}[!htbp]
+%     \centering
+%     % show block diagram cross-referencing equation and a question mark for the
+%     % dt system
+%     \includegraphics{placeholder_images/example-image-golden.pdf}
+%     \caption[Block-diagram of continuous and discrete-time systems]{Block-diagram of the plant model and associated signals of a continuous-time system and its discrete-time counterpart}
+%     \label{fig:blockdiagctsdisc}
+% \end{figure}
 
 Consider       the       general      continuous-time       solution       given
 by \cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k  =
@@ -384,9 +386,10 @@ whose elements are simply the scalar exponentials of the original entries.
     0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 \\
     0                            & 0                            & 0
 \end{bmatrix} T_s \right)
-\end{equation}
-\begin{equation}\label{eq:A_d}
-A_d =
+% \end{equation}
+% \begin{equation}\label{eq:A_d}
+% A_d
+=
 \begin{bmatrix}
     e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                    & 0 \\
     0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} T_s} & 0 \\
@@ -395,9 +398,10 @@ A_d =
 \end{equation}
 \begin{equation}\label{eq:B_dinit}
     B_d = \int_{0}^{T_s}e^{A \eta}B \,{d\eta}
-\end{equation}
-\begin{equation}\label{eq:B_dintermediate}
-    B_d =\bigint_{0}^{T_s} \left( \begin{bmatrix}
+% \end{equation}
+    % \begin{equation}\label{eq:B_dintermediate}
+    % B_d
+    =\bigint_{0}^{T_s} \left( \begin{bmatrix}
             e^{-30\frac{D_\spos}{R_\ppos^2} \eta} & 0                                    & 0 \\
             0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} \eta} & 0 \\
             0                                    & 0                                    & 1
