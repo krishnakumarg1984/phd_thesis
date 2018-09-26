@@ -305,22 +305,22 @@ the  volume  averaged concentration
 \begin{equation}
     c_\sjavg(t)  = \frac{1}{Ω}  ∫\limits_Ω c_\sj(r,t)\,  dΩ
 \end{equation}
-as a function of the applied  load current $I(t)$. Here, $Ω$ represents the
-volume  of the  spherical  particle. For  notational  brevity, $c_\sjavg(t)$  is
-shortened to $\mean{c}_\sj$ whilst dropping its explicit time dependence.
+as  a function  of the  applied load  current~$I(t)$. Here,  $Ω$~represents the
+volume  of  the spherical  particle.  For  notational brevity,  $c_\sjavg(t)$~is
+shortened to $\mean{c}_\sj$~whilst also dropping its explicit time dependence.
 
 The \engordnumber{4}~order polynomial approximation assumes that the solid phase
-concentration $c_\sj(r,t)$ is a quartic function of the radial co-ordinate $r$
-\begin{equation}
+concentration~$c_\sj(r,t)$ is a quartic function of the radial co-ordinate~$r$.
+\begin{equation}\label{eq:fourthorderpoly}
     c_\sj(r,t) = a(t) + b(t)\left(\frac{r}{R_\pj}\right)^2 + d(t) \left(\frac{r}{R_\pj}\right)^4
 \end{equation}
 
-The     derivation     of     the      coefficients     $a(t),     b(t)$     and
+The    detailed   derivation    of   the    coefficients   $a(t),    b(t)$   and
 $c(t)$     is     provided    in     Subramanian~\etal{}~\cite{Subramanian2005}.
 \Cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}    summarise   the
-governing   equations   obtained    by   applying   the   \engordnumber{4}~order
-polynomial        approximation        to         the        system        given
-by \cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
+governing equations  obtained by applying the  \engordnumber{4}~order polynomial
+approximation of \cref{eq:fourthorderpoly}  to the system of  equations given by
+\cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
 \begingroup
 \allowdisplaybreaks
 \begin{align}
@@ -329,30 +329,38 @@ by \cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
     35\frac{D_\sj}{R_\pj}\left(c_\sjsurf - \mean{c}_\sj\right) - 8D_\sj \mean{q}_j                &= -j_\nj \label{eq:csurffromcsavg}
 \end{align}%
 \endgroup
-where $\mean{q}_j(t)$  represents the  volume averaged concentration  flux, that
-defines the average change of concentration  with respect to the radial position
-$r$.
+where $\mean{q}_j(t)$~represents  the volume  averaged concentration  flux, that
+defines  the  average  change  of  concentration  with  respect  to  the  radial
+position~$r$.
 
-As   per \cref{eq:uniformcurrdensity},   the   interfacial   flux   density   is
-proportional to  the applied current. Hence \cref{eq:csmeanevolution}  implies a
-simple linear  relationship between the  rate evolution of evolution  of average
-\ch{Li^0} concentration within each spherical  particle and the applied current.
-This further implies that the \gls{soc} of the cell has a linear rate-dependence
-on the externally applied current. Furthermore, due to the elimination of radial
-discretisation, the  computation of \gls{soc}  given by \cref{eq:socinitialdefn}
-reduces  to  the   tasks  of  first  computing  the  ratio   of  bulk  (average)
-concentration to surface concentration and then  adjusting it to account for the
-useable  stoichiometry limits  for that  electrode. Thus,  the \gls{soc}  of the
-\gls{spm} can be computed as
+As   per  \cref{eq:uniformcurrdensity},   the   interfacial   flux  density   is
+proportional to  the applied current. Hence  \cref{eq:csmeanevolution} implies a
+simple linear relationship between the applied current and the rate of evolution
+of average \ch{Li^0} concentration within  each spherical particle. This further
+implies  that the  \gls{soc} of  the cell  has a  linear rate-dependence  on the
+externally  applied  current. Furthermore,  due  to  the elimination  of  radial
+discretisation, the computation of \gls{soc}, given by \cref{eq:socinitialdefn},
+reduces to the task of first computing the ratio of bulk (average) concentration
+to  surface concentration  and  then adjusting  it to  account  for the  useable
+stoichiometry limits for the relevant electrode. Thus, the cell's \gls{soc}
+% as predicted by the \gls{spm}
+can be computed as
 \begin{equation}\label{eq:soccomputation}
     z = \frac{\tfrac{\mean{c}_\sneg}{c_\snegmax} - θ_\minneg}{θ_\maxneg - θ_\minneg}
 \end{equation}
-where $\mean{c}_\sneg$ is obtained by solving \cref{eq:csmeanevolution} for the
+where $\mean{c}_\sneg$~is obtained by  solving \cref{eq:csmeanevolution} for the
 negative electrode.
 
-The \engordnumber{4}~order  polynomial approximation  strikes a  balance between
-the three modelling pivots---computational complexity, mathematical tractability
-and numerical accuracy, and has been adopted in this work.
+In   the  views   of   this  author,   this  \engordnumber{4}~order   polynomial
+approximation   proposed  by   Subramanian~\etal~\cite{Subramanian2005}  strikes
+an  acceptable  balance  between   the  three  modelling  pivots ---
+\begin{enumerate*}[label=\roman*)]
+    \item computational complexity,
+    \item mathematical  tractability, and
+    \item numerical accuracy
+\end{enumerate*}
+and has therefore  been adopted for all \gls{spm} simulations  presented in this
+work.
 
 At   the   end   of    this   dimension-reduction   step,   spatial   dependence
 is   completely  eliminated,   yielding   a  zero-order   (in  space)   physical
@@ -366,9 +374,9 @@ of \cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
 
 The equilibrium potential of a porous electrode is a thermodynamic property that
 depends on the extent of lithiation in the outermost interstitial sites near the
-solid-electrolyte interface.  This surface  stoichiometry $θ_j$ is  obtained by
-computing the surface  concentration (see \cref{eq:csurffromcsavg}) and dividing
-by the maximum lithiation capacity of that electrode.
+\gls{sei} layer. This surface stoichiometry~$θ_j$  for an electrode is obtained
+by  computing the  surface  concentration  (using \cref{eq:csurffromcsavg})  and
+dividing by the maximum lithiation capacity of that electrode.
 \begin{equation}
     θ_j = \frac{c_\sjsurf}{c_\sjmax}
 \end{equation}
@@ -376,44 +384,44 @@ by the maximum lithiation capacity of that electrode.
 Although based upon the theoretical foundation  laid out by the Nernst equation,
 owing  to a  multitude of  complex phase  transitions, the  potential of  porous
 electrodes  (with respect  to metallic  lithium) is  usually given  as empirical
-functions of its surface stoichiometry.
+functions of its surface stoichiometry~\cite{Reddy2011,Rahn2013}.
 \begin{equation}\label{eq:ocpstoichiometry}
     U_j(t) = \mathcal{U}_j\left(θ_j(t)\right)
 \end{equation}
-where  the  empirical relationships  $\mathcal{U}_j$  are  typically high  order
-polynomials  or rational  functions fitted  to relaxation  data from  \gls{gitt}
-experiments on half-cells~\cite{Birkl2015a,Ecker2015}.
+where  the  empirical  relationships~$\mathcal{U}_j$ are  typically  high  order
+polynomials  or rational  functions  that  are fitted  to  relaxation data  from
+\gls{gitt} experiments on half-cells~\cite{Birkl2015a,Ecker2015}.
 
 In the \gls{spm},  the cell's \gls{ocp} is obtained by  subtracting the negative
-electrode  equilibrium  potential  $U_\text{neg}$ from  its  positive  electrode
-counterpart $U_\text{pos}$.
+electrode  equilibrium  potential~$U_\text{neg}$  from  its  positive  electrode
+counterpart~$U_\text{pos}$.
 \begin{equation}\label{eq:ocpdefinition}
     U_\text{ocp} = U_\text{pos} - U_\text{neg}
 \end{equation}
 Even though the  concept of \gls{ocp} is defined only  in equilibrium conditions
 when no  current flows,  the individual electrode  potentials themselves  form a
-significant component of the cell's terminal voltage $V(t)$.
+significant component of the cell's terminal voltage~$V(t)$.
 
 \subsubsection*{Reaction Kinetics}
 
 In the \gls{spm}, the reaction kinetics in each spherical electrode is modelled
-using the Butler-Volmer expression \cref{eq:butlervolmer}
+using the Butler-Volmer expression (see \cref{eq:butlervolmer}).
 \begin{align}
     j_\nj   &= j_{0_j} \left[ \exp\left( \frac{\left(1-α\right) F η_j}{R T}\right) -  \exp\left( \frac{-α F η_j}{R T}\right)\right] \label{eq:bvwithalpha} \\
     \shortintertext{where}
     j_{0_j} &= k_\jr c_\text{e}^{1-α} c_\sjsurf^{α} \left(c_\sjmax - c_\sjsurf\right)^{1-α}
 \end{align}
 
-The  equilibrium rate  of  forward  and backward  reactions  at both  electrodes
-is  assumed  to  be  equal.  With   charge  transfer  coefficient  $α  =  0.5$,
+The equilibrium  rate of forward  and backward  reactions at both  electrodes is
+assumed  to  be  equal.  With charge  transfer  coefficient~\mbox{$α  =  0.5$},
 \cref{eq:bvwithalpha} simplifies to
 \begin{equation}\label{eq:BVwithalphahalf}
     j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F η_j}{2 R T}\right)
 \end{equation}
 
-The    expression    for   overpotential    $η_j$    can    be   obtained    by
-rearranging \cref{eq:BVwithalphahalf}    whilst    substituting   for    $j_\nj$
-from \cref{eq:uniformcurrdensity} and is given by
+The  expression   for  overpotential~$η_j$   can  be   obtained  rearranging by
+\cref{eq:BVwithalphahalf}     whilst     substituting    for     $j_\nj$~from by
+\cref{eq:uniformcurrdensity} and is given                                     by
 \begin{equation}\label{eq:overpotential_j}
     η_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A \, l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
 \end{equation}
@@ -429,11 +437,11 @@ Starting from the definition of the overpotential of each electrode
     η_\text{neg} &= ϕ_\sneg - \cancelto{0}{ϕ_\eneg} - U_\text{neg} \label{eq:negoverpotential}
 \end{align}
 Within      each      electrode       domain,      the      contribution      of
-electrolyte     potential     to      the     overpotential     is     neglected
-(see \cref{subsec:basicspmgeometry,subsec:basicspmassumptions} for  exclusion of
-electrolyte dynamics).
+electrolyte    potential    to    the   overpotential    is    neglected    (see
+\cref{subsec:basicspmgeometry,subsec:basicspmassumptions} for a brief discussion
+on the exclusion of electrolyte dynamics).
 
-Subtracting \cref{eq:negoverpotential}   from \cref{eq:posoverpotential}
+Subtracting \cref{eq:negoverpotential}   from \cref{eq:posoverpotential},
 % whilst substituting for $U_j$ from \cref{eq:ocpstoichiometry}
 \begin{align}
     η_\text{pos} - η_\text{neg} &= \underbrace{ϕ_\spos - ϕ_\sneg}_{V_\text{cell}} - U_\text{pos} + U_\text{neg}\label{eq:overpotentialdifference}\\
@@ -442,23 +450,26 @@ Subtracting \cref{eq:negoverpotential}   from \cref{eq:posoverpotential}
 \end{align}
 % \mathcal{U}_\text{pos}\left(θ_\text{pos}\right) - \mathcal{U}_\text{neg}\left(θ_\text{neg}\right)
 In the  basic \gls{spm},  \cref{eq:cellterminalvoltagebasic} is used  to compute
-the   cell's  terminal   voltage  under   load.  Although   the  time-dependence
-notation  is  omitted  here,  it   is  worth  reiterating  that  all  quantities
-in \cref{eq:cellterminalvoltagebasic} are functions of time.
+the cell's terminal voltage under  load. Although their explicit time-dependence
+notation  is omitted  in  the notation  here,  it is  worth  reminding that  all
+quantities in \cref{eq:cellterminalvoltagebasic} are indeed continuous functions
+of time.
 
 \subsubsection*{State Space Representation}\label{subsec:basicspmstatespace}
 
 For control  oriented applications, it is  imperative to have a  classical state
 space representation  that collates  all intermediate equations  and definitions
 presented  thus  far into  a  single  system  of  equations that  describes  the
-evolution of solid concentration and terminal voltage over time as a function of
-the  external load  current. However,  the non-linearities  in the  equation for
-terminal  voltage  (see \cref{eq:cellterminalvoltagebasic})  imply  that  it  is
-not  possible to  represent  the  \gls{spm} as  the  classical \gls{lti}  system
-of \cref{eq:LTIstatespace}. Instead, the \gls{spm} can be summarised by a system
-of linear state equations together with the single non-linear output equation.
+evolution of solid concentration and terminal  voltage over time, expressed as a
+response to the  external current input~$I(t)$. However,  the non-linearities in
+the equation for terminal voltage \ie{} \cref{eq:cellterminalvoltagebasic} imply
+that it is  not possible to represent  the \gls{spm} in the form  of a classical
+\gls{lti}  system  of \cref{eq:LTIstatespace}.  Instead,  the  \gls{spm} can  be
+summarised  by a  system  of linear  state equations  together  with the  single
+non-linear output equation.
 
-The state equation is given by
+Rearranging  \cref{eq:qmeanevolution,eq:csurffromcsavg}, the  state equation  is
+obtained as
 \begin{equation}\label{eq:fourstatesmatrixvec}
     \setstackgap{L}{1.5\baselineskip}
     \fixTABwidth{T}
@@ -507,19 +518,21 @@ which corresponds to the classical \gls{lti} form
 \begin{equation}
     \dot{\mathbf{x}} = A\,\mathbf{x} + B\,\mathbf{u} \\
 \end{equation}
-where      $\mathbf{x}     =      \vect{\mean{q}_\text{pos},\mean{q}_\text{neg},
-\mean{c}_\spos,  \mean{c}_\sneg},   \,  x   ∈  \mathbb{R}^{4  \times   1}$  is
-the  state  vector.  The  scalar   system  input,  $\mathbf{u}  ∈  \mathbb{R}$
-is  the  applied  current  $I(t)$.  The  system  matrix,  $A  ∈  \mathbb{R}^{4
-\times  4}$  and  input  matrix,  $B ∈  \mathbb{R}^{4  \times  1}$  are  shown
-in \cref{eq:fourstatesmatrixvec}.
+where    \mbox{$\mathbf{x}   =    \vect{\mean{q}_\text{pos},\mean{q}_\text{neg},
+\mean{c}_\spos,  \mean{c}_\sneg},   \,  x  ∈  \mathbb{R}^{4   \times  1}$}  is
+the  state  vector.  The  scalar system  input~$\mathbf{u}  ∈  \mathbb{R}$  is
+the  applied  current~$I(t)$.  The  system matrix~$A  ∈  \mathbb{R}^{4  \times
+4}$  and  input  matrix~$B  ∈  \mathbb{R}^{4 \times  1}$  are  also  shown  in
+\cref{eq:fourstatesmatrixvec}.
 
 For state estimation and controller design purposes, it is important to keep the
 number  of elements  in the  state vector  as small  as possible  by eliminating
-redundant variables.  Di~Dominico~\etal{}~\cite{DiDomenico2010} noted  that with
-output voltage as the only measured quantity, the observablity of the four-state
-model of \cref{eq:fourstatesmatrixvec} is  adversely affected. Consequently, the
-following state-reduction approach is proposed.
+redundant  variables.  For  instance,  Di~Dominico~\etal{}~\cite{DiDomenico2010}
+noted that with  output voltage as the only measured  quantity, the observablity
+of   the  four-state   model  of   \cref{eq:fourstatesmatrixvec}  is   adversely
+affected.  To tackle  this issue,  a  state-reduction approach  was proposed  by
+Di~Domenico~\etal~\cite{DiDomenico2010},  which  hinges  upon the  principle  of
+material balance.
 
 The total number of moles of lithium in the system is given by
 \begin{equation}\label{eq:totallithiummoles}
@@ -536,30 +549,31 @@ procedure    outlined   in \cref{subsec:basicspmfurtherdimensionalityreduction},
                  &= ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos + ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg
 \end{align}
 Assuming  no  loss  of  cycleable   lithium  or  other  degradation  mechanisms,
-the  total   number  of   moles  of   lithium  in   the  system   is  conserved,
-\ie{}    $\diff{n_\text{Li}}{t}    =    0$.    Substituting    this    condition
-in \cref{eq:totallithiumsimplified}
+the   total  number   of  moles   of  lithium   in  the   system  is   conserved
+\ie{}   $\diff{n_\text{Li}}{t}   =   0$.    Substituting   this   condition   in
+\cref{eq:totallithiumsimplified},
 \begin{align}
     0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t} \\
     \diff*{\mean{c}_\spos}{t}  &= -\diff*{\mean{c}_\sneg}{t} \label{eq:bulkconcrelationship}
 \end{align}
 
-As   per \cref{eq:bulkconcrelationship},  the   time  evolution   of  the   bulk
+As  per   \cref{eq:bulkconcrelationship},  the   time  evolution  of   the  bulk
 concentration  of one  electrode can  be obtained  as a  function of  the other.
-Furthermore, Di~Domenico~\etal{}  show that the  diffusion dynamics of  the bulk
-concentrations can be algebraically related through their stoichiometric factors
-as
+Furthermore, Di~Domenico~\etal{}~\cite{DiDomenico2010}  show that  the diffusion
+dynamics of the  bulk concentrations can be algebraically  related through their
+stoichiometric factors as
 \begin{equation}\label{eq:csposbulkfromcsnegbulk}
     \mean{c}_\spos(t) = c_\sposmax \, \bigg[\frac{\mean{c}_\sneg(t)- θ_\minneg
     c_\snegmax}{\left(θ_\maxneg - θ_\minneg\right)c_\snegmax} \left(θ_\maxpos - θ_\minpos \right) + θ_\minpos \bigg]
 \end{equation}
 
-Hence,  it is  possible to  eliminate the  bulk concentration  of either  of the
-electrodes  from  the state-equation  to  arrive  at a  three-state  description
-of  the  model  dynamics.  In   extant  lithium-ion  chemistries,  the  negative
-electrode is  considered to  be the  limiting electrode and  is hence  is chosen
-here~\cite{Arora1999}. Thus, it is retained in the state vector, thereby leading
-to the final form of the state dynamics of the conventional \gls{spm}
+Hence, it  is possible  to eliminate the  bulk concentration of  any one  of the
+electrodes from the state-equation to arrive at a three-state description of the
+model dynamics. In  extant lithium-ion chemistries, owing to  its proclivity for
+lithium deposition during  charging, the negative electrode is  considered to be
+the limiting electrode (See  Arora~\etal~\cite{Arora1999}). Hence it is retained
+in the state vector, thereby leading to  the final form of the state dynamics of
+the conventional \gls{spm} as
 \begin{equation}\label{eq:threestatesmatrixvec}
     \setstackgap{L}{1.5\baselineskip}
     \fixTABwidth{T}
@@ -595,16 +609,16 @@ to the final form of the state dynamics of the conventional \gls{spm}
     I(t)
 \end{equation}
 
-The measured variable $y ∈ \mathbb{R}$ is the cell's terminal voltage
-$V(t)$ and is expressed as a non-linear  scalar function of the state vector and
-the load current.
+The  measured   variable~\mbox{$y  ∈  \mathbb{R}$}  is   the  cell's  terminal
+voltage~$V(t)$ and  is expressed as  a non-linear  scalar function of  the state
+vector and the load current.
 \begin{equation}\label{eq:spmoutputeqn}
-    y = h(\mathbf{x}(t),u(t))
+    y = h\left(\mathbf{x}(t),u(t)\right)
 \end{equation}
 The output  equation given by \cref{eq:spmoutputeqn} includes  a non-zero direct
 feedthrough dependency  of the voltage  on the input current,  thereby modelling
 the resistive component of the cell's  impedance. The full expression for output
-voltage is given by
+voltage is given by expanding \cref{eq:cellterminalvoltagebasic} as
 \begin{multline}
     V_\text{cell}(t) = \frac{2 R T}{F }\sinh^{-1} \left( \frac{- I(t)}{2 A
     l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e} c_\spossurf(t)
@@ -614,23 +628,24 @@ voltage is given by
     + \mathcal{U}_\text{pos}\left(c_\spossurf(t)\right) -
     \mathcal{U}_\text{neg}\left(c_\snegsurf(t)\right)\label{eq:spmbasicoutputvoltagefinal}
 \end{multline}
-wherein  the solid  phase surface  concentration at  each electrode  $c_\sjsurf$
-is   obtained  from   its   corresponding  bulk   concentration  $c_\sjavg$   by
-rearranging \cref{eq:csurffromcsavg} and is given by
+wherein the solid  phase surface concentration at  each electrode~$c_\sjsurf$ is
+obtained  from its  corresponding bulk  concentration~$c_\sjavg$ by  rearranging
+\cref{eq:csurffromcsavg} and is given by
 \begin{align}
     c_\spossurf &= \mean{c}_\spos  + \frac{8R_\ppos}{35} \mean{q}_\text{pos}
     +\frac{R_\ppos}{35 D_\spos A \, l_\text{pos} a_\spos F} I(t)
     \label{eq:csurfposfromcavgpos}\\
     c_\snegsurf &= \mean{c}_\sneg  + \frac{8R_\pneg}{35} \mean{q}_\text{neg} -\frac{R_\pneg}{35 D_\sneg A \, l_\text{neg} a_\sneg F} I(t)\label{eq:csurfnegfromcavgneg}
 \end{align}
-where $I(t) > 0 $ for discharge.
+where \mbox{$I(t) > 0 $} for discharge.
 
-Given   the  initial   \gls{soc}  of   the   cell  $z(0)$,   the  initial   bulk
-concentration  of   the  negative  electrode  at   equilibrium  $c_\sneg(0)$  is
-obtained  by \cref{eq:csfluxinitialcondition}. The  initial  value  of the  mean
-radial  concentration  flux   in  both  electrodes  $q_j(0)   =  0$.  Therefore,
-the  initial  state  vector  is $\vect{0,0,c_\sneg(0)}$.  Thus,  the  system  of
-equations \crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}  form  a
+Given   the   initial  \gls{soc}   of   the   cell~$z(0)$,  the   initial   bulk
+concentration   of   the    negative   electrode   at   equilibrium~$c_\sneg(0)$
+is   obtained  by   \cref{eq:csfluxinitialcondition}.  The   initial  value   of
+the   mean   radial   concentration   flux    in   both   electrodes   is   zero
+\ie{}~\mbox{$q_j(0)    =   0$}.    Therefore,   the    initial   state    vector
+is~$\vect{0,0,c_\sneg(0)}$.   Thus,   the   system   of   equations   given   by
+\crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}  form  a  complete
 state-space representation of the conventional \gls{spm}. This state-space model
-can be simulated as an \gls{ivp} or  used as the plant model in control-oriented
-applications such as for dynamic state estimation.\nopagebreak[4]
+can be  simulated as a  standalone \gls{ivp} or embedded  as the plant  model in
+control-oriented applications such as for dynamic state estimation.
