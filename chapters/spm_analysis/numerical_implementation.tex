@@ -379,26 +379,26 @@ matrix, $B_d$.
 Since the only non-zero entries of the matrix lie along its main diagonal, \ie{}
 its modes  are decoupled, the  matrix exponential  reduces to a  diagonal matrix
 whose elements are simply the scalar exponentials of the original entries.
-\begin{equation}\label{eq:A_dinit}
+\begin{gather}
     A_d = e^{A T_s} = \exp\left(
-\begin{bmatrix}
-    -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
-    0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 \\
-    0                            & 0                            & 0
-\end{bmatrix} T_s \right)
-% \end{equation}
-% \begin{equation}\label{eq:A_d}
-% A_d
-=
-\begin{bmatrix}
-    e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                    & 0 \\
-    0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} T_s} & 0 \\
-    0                                    & 0                                    & 1
-\end{bmatrix}
-\end{equation}
-\begin{equation}\label{eq:B_dinit}
+        \begin{bmatrix}
+            -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
+            0                            & -30\frac{D_\sneg}{R_\pneg^2} & 0 \\
+            0                            & 0                            & 0
+    \end{bmatrix} T_s \right)
+    % \end{equation}
+    % \begin{equation}\label{eq:A_d}
+    % A_d
+    =
+    \begin{bmatrix}
+        e^{-30\frac{D_\spos}{R_\ppos^2} T_s} & 0                                    & 0 \\
+        0                                    & e^{-30\frac{D_\sneg}{R_\pneg^2} T_s} & 0 \\
+        0                                    & 0                                    & 1
+    \end{bmatrix} \label{eq:A_dinit} \\
+    % \end{equation}
+    % \begin{equation}
     B_d = \int_{0}^{T_s}e^{A \eta}B \,{d\eta}
-% \end{equation}
+    % \end{equation}
     % \begin{equation}\label{eq:B_dintermediate}
     % B_d
     =\bigint_{0}^{T_s} \left( \begin{bmatrix}
@@ -410,20 +410,20 @@ whose elements are simply the scalar exponentials of the original entries.
             \frac{45}{2} \frac{\hphantom{-}1}{R_\ppos^2 A \, l_\text{pos} a_\spos F} \\
             \frac{45}{2} \frac{-1}{R_\pneg^2 A \, l_\text{neg} a_\sneg F} \\
             \hphantom{\frac{45}{2}} \frac{-3}{R_\pneg  A \, l_\text{neg} a_\sneg F}
-    \end{bmatrix} \right) \, d\eta
-\end{equation}
-\begin{equation}\label{eq:B_d}
+    \end{bmatrix} \right) \, d\eta \label{eq:B_dinit} \\
+% \end{gather}
+% \begin{equation}
     B_d = \begin{bmatrix}
         \hphantom{-}\frac{3}{4} \frac{1 - \exp\left(-30\frac{D_\spos}{R_\ppos^2}\right)T_s}{D_\spos A \, l_\text{pos} a_\spos F} \\[1em]
         -\frac{3}{4} \frac{1 -
         \exp\left(-30\frac{D_\sneg}{R_\pneg^2}\right)T_s}{D_\sneg A \, l_\text{neg} a_\sneg F} \\[1em]
         \hphantom{-}\hphantom{\frac{3}{4}} \frac{-3 T_s}{R_\pneg  A \, l_\text{neg} a_\sneg F}
-    \end{bmatrix}
-\end{equation}
+    \end{bmatrix} \label{eq:B_d}
+\end{gather}
 
-The    discrete-time    matrix-vector    system    presented    in \cref{eq:A_d}
-and \cref{eq:B_d} have not  been presented in existing literature,  but is vital
-to understanding  the implementation  of the  \gls{spm} in  digital controllers.
+The  discrete-time  matrix-vector  system  presented  in  \cref{eq:A_dinit}  and
+\cref{eq:B_d} have  not been presented in  existing literature, but is  vital to
+understanding  the  implementation  of  the \gls{spm}  in  digital  controllers.
 Although, simpler  alternatives such as  Forward Euler methods are  available to
 approximate the time-derivative  of the state vector, they  suffer from problems
 such as increasing  rate of local truncation error  per time-step, necessitating
@@ -460,17 +460,17 @@ and vector-addition routines.
 
 \input{chapters/spm_analysis/algo_disctime_spm}
 
-Since  there  is  a  reasonable   probability  that  some  researchers  in  more
-fundamental  areas   of  science  and  engineering,   \eg{}  those  specialising
-in  electrochemical  engineering,  might  not   be  familiar  with  the  nuances
-of  the   matrix  exponential  and  discrete-time   matrix  computations  (refer
-to  line~\ref{algLine:computeAdBd}  in \cref{alg:disctimespm}).   A  snippet  of
-\textsc{MATLAB} code clarifying the computation  of the discrete-time system and
-input matrices,  $A_d$ and  $B_d$ is given  in \cref{codesnippet:computeAdBd}. A
-full  code  listing of  an  example  discrete-time \gls{spm}  implementation  in
+This  thesis takes  an  inclusive view  taking into  account  that some  battery
+researchers whose  focus is on fundamental  aspects of lithium ion  cells, \eg{}
+those specialising in  electrochemistry, might not be familiar  with the nuances
+of  the  matrix exponential  and  discrete-time  matrix computations  (refer  to
+line~\ref{algLine:computeAdBd} in \cref{alg:disctimespm}).  Therefore, a snippet
+of \textsc{MATLAB} code  clarifying the computation of  the discrete-time system
+and input matrices, $A_d$ and  $B_d$ is given in \cref{codesnippet:computeAdBd}.
+A  full code  listing of  an example  discrete-time \gls{spm}  implementation in
 \textsc{MATLAB} is provided in \cref{sc:disctimespm}.
 
-\begin{listing}
+\begin{listing}[!htbp]
 \begin{minted}[mathescape,autogobble,bgcolor=mintedbg,escapeinside=||,texcomments=true]{matlab}
 % Returns $A_d$ and $B_d$ matrices
 A_cts = [-30*Ds_pos/(R_pos^2),                    0, 0; ...
@@ -501,7 +501,7 @@ discrete fourier analysis  lies in the specialised engineering  domain of signal
 processing and falls outside  the scope of the thesis. The  results of the basic
 \gls{spm} are presented next in \cref{sec:basicspmsimresults}.
 
-\FloatBarrier
+% \FloatBarrier
 
 % % https://tex.stackexchange.com/questions/113719/cleveref-fails-to-reference-algorithms
 

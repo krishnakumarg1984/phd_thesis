@@ -26,7 +26,7 @@
             \State Allocate storage of size $\mathbb{R}^{N_\text{max}\times 1}$ for each simulation variable
             \State Compute $\mean{c}_\sneg$[1] as per \cref{eq:csfluxinitialcondition}
             \State $I[1] \gets I_\text{1C} \times  \text{C-rate}[1], \quad \mathbf{x}[1] \gets \vect{0,0, \mean{c}_\sneg[1]}$ \Comment{ $\text{C-rate}[1]$ from profile}
-            \State \ColorLine{Compute $A_d$ and $B_d$ \Comment{as per \cref{eq:A_d} and \cref{eq:B_d}}}\label{algLine:computeAdBd}
+            \State \ColorLine{Compute $A_d$ and $B_d$ \Comment{as per \cref{eq:A_dinit} and \cref{eq:B_d}}}\label{algLine:computeAdBd}
             \State $V_\text{cell}[1] \gets \textsc{ComputeCellVoltage}(\textbf{x}[1],I[1],\texttt{params})$ \Comment{from direct feedthrough}
             \For{$k \gets 2 : N_\text{max}$}
                 \State $I[k] \gets $ interpolate from profile using \gls{zoh}
