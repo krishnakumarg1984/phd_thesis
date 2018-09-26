@@ -5,11 +5,11 @@
 In  order  to  establish  a  context  for the  author's  work  to  be  discussed
 in  \cref{ch:newelectrolytemodel},  it  is  imperative  to  provide  a  holistic
 presentation of the basic \gls{spm} modelling art. The conventional \gls{spm} is
-the simplest of  all time domain \glspl{pbm}. The rest  of this section provides
-this  author's  digested  summary  of  its  modelling  rubrics  based  upon  the
-keen  insights  gained from  perusing  the  vanguard  literature in  this  topic
-\eg{}~\cite{Santhanagopalan2006,Santhanagopalan2006a,DiDomenico2010} as  well as
-the derivative works based upon them.
+the  simplest  of  all  time  domain  \glspl{pbm}.  The  rest  of  this  section
+provides  this author's  digested summary  of its  modelling rubrics  based upon
+the  keen  insights  gained  from  perusing  the  vanguard  literature  in  this
+topic~\cite{Santhanagopalan2006,Santhanagopalan2006a,DiDomenico2010} as  well as
+their relevant derivative works.
 
 \subsection{Geometry}\label{subsec:basicspmgeometry}
 
@@ -104,9 +104,9 @@ over  space  and  time.  Hence,  in  the  conventional  \gls{spm}  there  is  no
 contribution of the solution phase  to internal overpotentials \ie{} electrolyte
 dynamics have  no influence on the  cell's terminal voltage. The  \gls{spm} also
 ignores any  variations in material  porosities in each  electrode. Furthermore,
-all solid phase diffusivities and  kinetic parameters are held constant. Thermal
-effects are assumed to be negligible and no degradation effects are attempted to
-be modelled in the basic \gls{spm} formulation.
+all solid phase diffusivities and kinetic parameters are held constant. Finally,
+all thermal effects are assumed to  be negligible and no degradation effects are
+attempted to be modelled in the basic \gls{spm} formulation.
 
 These  simplifying  assumptions  are  made  so as  to  facilitate  the  ease  of
 implementing a  \gls{pbm}, without incurring  the heavy computational  cost that
@@ -126,8 +126,9 @@ sophistication and computational complexity.
 
 
 As discussed  in \cref{subsec:basicspmassumptions},  the \gls{spm}  captures the
-cell's dynamics arising  due to solid phase diffusion and  reaction kinetics, in
-addition to embedding the contribution of equilibrium thermodynamics.
+cell's dynamics arising due to diffusion  and kinetics at the two representative
+spherical electrodes. It also accounts for the contribution of their equilibrium
+thermodynamics to the cell's \gls{ocp}.
 
 \subsubsection*{Solid Phase Diffusion}
 
@@ -167,7 +168,7 @@ where  $r$~denotes the  radius,  $θ$~the polar  angle,  and $ϕ$~the  azimuthal
 angle. $F_r, F_θ$ and $F_ϕ$~denote  the corresponding components of the vector
 field~$\mathbf{F}$.
 
-The centre  of the  co-ordinate system  for each electrode  is aligned  with the
+The origin  of the  co-ordinate system  at each electrode  is aligned  with the
 centre of  its representative spherical particle.  Due to symmetry in  the polar
 and the  azimuthal axes, the  divergence becomes a  function of only  the radial
 position. \Cref{eq:fullsphericaldiv} therefore reduces to
@@ -184,7 +185,7 @@ As   per  the   assumption  of   uniform   diffusivity  in   the  solid   phase,
 \begin{align}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 ∇ c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
     \intertext{Applying the gradient operator of \cref{eq:csdiffusionconstdiffusivity} along
-    the radial direction $r$ results in}
+    the radial direction $r$}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
 \end{align}
 \Cref{eq:csdiffusionfinal} represents  a mass-balance equation  describing solid
@@ -226,19 +227,18 @@ a  uniform   charge  density   throughout  the   thickness  of   each  electrode
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} &= ∓ \frac{I}{A \, l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
 wherein  the  load current  \mbox{$I(t)  >  0$}  for discharge,  whose  explicit
-time-dependence has been omitted  in \cref{eq:csfluxsurfacefinal} for consistent
-notation  with the  \gls{lhs}.  The positive  and negative  signs  apply to  the
-negative  and  positive  electrode  respectively as  indicated  by  the  ordered
-pair  \jinnegposordered.  In   the  interest  of  completeness,   it  should  be
-noted  that  the  term  involving  the Faraday  constant  in  the  \gls{rhs}  of
-\cref{eq:uniformcurrdensity}  is~$nF$,  where  $n$~is the  number  of  electrons
-transferred  during the  reaction.  However, since  this  thesis only  discusses
-lithium-ion chemistries  where~$n=1$, this is  implicitly conveyed and  shall be
-omitted for all potential occurrences.
+time-dependence  has  been  omitted in  \cref{eq:csfluxsurfacefinal}  for  being
+consistent notation with the \gls{lhs}. The positive and negative signs apply to
+the negative  and positive  electrode respectively as  indicated by  the ordered
+pair \jinnegposordered. It  should be noted that the term  involving the Faraday
+constant in the \gls{rhs}  of \cref{eq:uniformcurrdensity} is~$nF$, where $n$~is
+the number  of electrons  transferred during the  reaction. However,  since this
+thesis only  discusses lithium-ion  chemistries where~$n=1$, this  is implicitly
+conveyed and shall be omitted for all potential occurrences.
 
 The \gls{soc} of the cell can be obtained from the bulk concentration of lithium
 in  either the  negative  or  positive electrode.  By  convention, the  negative
-electrode is used for this computation.
+electrode is used.
 \begin{equation}\label{eq:socinitialdefn}
     z(t) = \frac{3}{c_\snegmax}∫_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
 \end{equation}
@@ -292,13 +292,14 @@ phase concentration.  However, this method uses  computations involving infinite
 summations,  exponential  and trigonometric  quantities,  which  in this  thesis
 author's view, makes it less attractive for online implementations.
 
-The   literature   on   polynomial  methods   by   Subramanian~\etal{}   provide
-detailed derivations  of \engordnumber{2}~and  \engordnumber{4}~order polynomial
-approximations.  The  \engordnumber{2}~order solution  was  found  to have  poor
-performance for transient  behaviour, similar to that of  the original diffusion
-length method.  However, higher  order polynomial  approximations were  found to
-provide acceptable  levels of  performance for both  transient and  steady state
-conditions and shall be examined further.
+The         literature         on          polynomial         methods         by
+Subramanian~\etal{}~\cite{Subramanian2005} provide  detailed derivations  of the
+\engordnumber{2}~and   \engordnumber{4}~order  polynomial   approximations.  The
+\engordnumber{2}~order solution was found to have poor performance for transient
+behaviour, similar  to that  of the original  diffusion length  method. However,
+higher order polynomial  approximations were found to  provide acceptable levels
+of  performance  for  both  transient  and steady  state  conditions  and  shall
+therefore be examined further.
 
 The  polynomial   approximation  method  describes  the   dynamic  evolution  of
 the  volume  averaged concentration
@@ -436,10 +437,9 @@ Starting from the definition of the overpotential of each electrode
     η_\text{pos} &= ϕ_\spos - \cancelto{0}{ϕ_\epos} - U_\text{pos} \label{eq:posoverpotential} \\
     η_\text{neg} &= ϕ_\sneg - \cancelto{0}{ϕ_\eneg} - U_\text{neg} \label{eq:negoverpotential}
 \end{align}
-Within      each      electrode       domain,      the      contribution      of
-electrolyte    potential    to    the   overpotential    is    neglected    (see
-\cref{subsec:basicspmgeometry,subsec:basicspmassumptions} for a brief discussion
-on the exclusion of electrolyte dynamics).
+Within  each electrode  domain,  the contribution  of  electrolyte potential  is
+neglected  (see \cref{subsec:basicspmgeometry,subsec:basicspmassumptions}  for a
+brief discussion on the exclusion of electrolyte dynamics).
 
 Subtracting \cref{eq:negoverpotential}   from \cref{eq:posoverpotential},
 % whilst substituting for $U_j$ from \cref{eq:ocpstoichiometry}
@@ -548,9 +548,9 @@ procedure    outlined   in \cref{subsec:basicspmfurtherdimensionalityreduction},
                 \\
                  &= ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos + ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg
 \end{align}
-Assuming  no  loss  of  cycleable   lithium  or  other  degradation  mechanisms,
-the   total  number   of  moles   of  lithium   in  the   system  is   conserved
-\ie{}   $\diff{n_\text{Li}}{t}   =   0$.    Substituting   this   condition   in
+Assuming    no    loss   of    cycleable    lithium    or   other    degradation
+mechanisms,  the   total  number  of   moles  of   lithium  in  the   system  is
+conserved   \ie{}   $\diff{n_\text{Li}}{t}   =  0$.   Substituting   this   into
 \cref{eq:totallithiumsimplified},
 \begin{align}
     0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t} \\
@@ -619,6 +619,7 @@ The output  equation given by \cref{eq:spmoutputeqn} includes  a non-zero direct
 feedthrough dependency  of the voltage  on the input current,  thereby modelling
 the resistive component of the cell's  impedance. The full expression for output
 voltage is given by expanding \cref{eq:cellterminalvoltagebasic} as
+
 \begin{multline}
     V_\text{cell}(t) = \frac{2 R T}{F }\sinh^{-1} \left( \frac{- I(t)}{2 A
     l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e} c_\spossurf(t)
