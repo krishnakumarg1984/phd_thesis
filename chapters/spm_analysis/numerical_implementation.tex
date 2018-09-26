@@ -240,7 +240,7 @@ typical example  of such an  interrupt driven process  is the evaluation  of the
         handling of \gls{isr} requests pertinent to cell models. Other
         background tasks performed by the CPU is de-emphasised. Moreover, the
         integration of the  \gls{bms} software loop within  the larger  scope of
-        a master  vehicular controller is not shown. Image adapted from
+        a master  vehicular controller is not shown. Illustration adapted from
     Southward~\cite{Southward2011}.}
     \label{fig:timingdiagramBig}
 \end{figure}
@@ -280,7 +280,7 @@ efficiency of the chip.
         over a larger horizon so as to illustrate the proportion of `activity
         time' relative to the `idle time'. The vast majority of the CPU cycle is
         spent in idling or background tasks. The servicing of the \gls{isr}
-        occupies a relatively small fraction of each CPU cycle. Image
+        occupies a relatively small fraction of each CPU cycle. Diagram
     reproduced from Plett~\cite{PlettECE5540_02}.}
     \label{fig:timingdiagramSmall}
 \end{figure}
@@ -476,7 +476,7 @@ A  full code  listing of  an example  discrete-time \gls{spm}  implementation in
 A_cts = [-30*Ds_pos/(R_pos^2),                    0, 0; ...
                             0, -30*Ds_neg/(R_neg^2), 0; ...
                             0,                    0, 0];
-% $A_d = e^{A T_s}$ \fontfamily{libertinus}\selectfont(see \crefrange{eq:A_dinit}{eq:A_d})
+% $A_d = e^{A T_s}$ \fontfamily{libertinus}\selectfont(see \cref{eq:A_dinit})
 A_disc = expm(A_cts*Ts); % $\mathtt{expm}$ command computes the matrix exponential
 
 B_cts = [ (45/2)/(R_pos^2*a_pos*L_pos*F*A); ...

@@ -6,16 +6,17 @@
 
 In this  section, the performance  of the  basic \gls{spm} is  discussed through
 desktop  simulation and  by comparison  against a  standard \gls{dfn}  benchmark
-model  incorporating  the  full  \gls{p2d}\footnote{In this  thesis,  the  terms
-\gls{p2d} and  \gls{dfn} are  used synonymously. This  is because,  although the
-\gls{dfn}  model equations  are originally  derived and  is applicable  in three
-dimensions, its  most common implementation  is the pseudo-two  dimensional case
-wherein dynamics of  all variables other than solid  concentration are evaluated
-along  the  through-thickness direction  of  the  cell  (direction of  the  most
-significant charge  transport). The  solid diffusion equation  is computed  in a
-spherical co-ordinate system on a  separate pseudo-dimension and is coupled with
-the  axial  co-ordinates through  the  boundary  flux  at  the surface  of  each
-particle.} dynamics.
+model incorporating the full \gls{p2d} dynamics.
+
+% \footnote{In  this   thesis,  the  terms   \gls{p2d}  and  \gls{dfn}   are  used
+% synonymously.  This   is  because,   although  the  \gls{dfn}   model  equations
+% are  originally  derived  and  is  applicable  in  three  dimensions,  its  most
+% common  implementation  is  the  pseudo-two dimensional  case  wherein  dynamics
+% of  all  variables  other  than  solid concentration  are  evaluated  along  the
+% through-thickness  direction of  the  cell (direction  of  the most  significant
+% charge  transport). The  solid diffusion  equation  is computed  in a  spherical
+% co-ordinate system on a separate pseudo-dimension  and is coupled with the axial
+% co-ordinates through the boundary flux at the surface of each particle.}
 
 \subsection{Cell Parametrisation}\label{subsec:spmp2dparametrisation}
 \input{chapters/spm_analysis/cell_params_table}
@@ -27,11 +28,11 @@ in  a   solution  of   \gls{ec}/\gls{dmc}/\gls{emc}  in   a  1:1:1   ratio.  The
 standard  set  of  \gls{dfn}  parameters have  been  extensively  described  and
 documented  in  literature.  The   detailed  characterisation  of  the  physical
 properties  of  lithium-ion  cells  falls  outside the  scope  of  this  thesis.
-Here, the  vast majority  of electrochemical  parameters, \viz{}  the geometric,
+Here,  the vast  majority of  electrochemical parameters  \viz{} the  geometric,
 thermodynamic, kinetic  and transport properties  of the cell have  been sourced
-from  Subramanian~\etal{}~\cite{Subramanian2009}.   The  significance   of  each
-of  the  parameters  in  the  context of  the  modelling  assumptions  discussed
-in \cref{subsec:basicspmassumptions} is examined.
+from  Subramanian~\etal{}~\cite{Subramanian2009}. The  significance  of each  of
+the  parameters  in  the  context  of the  modelling  assumptions  discussed  in
+\cref{subsec:basicspmassumptions} is examined.
 
 The simulation parameters that are applicable exclusively to the \gls{p2d} model
 are shown as  highlighted text in \cref{tbl:lcoSimParamsSPMp2d}. It  can be seen
@@ -59,8 +60,8 @@ requirements is provided here.
     experimentally  characterised   and  provided  as  a   table  of  polynomial
     coefficients  by  Valøen  and  Reimers~\cite{Valoen2005}.  Evaluating  this
     polynomial  at a  cell  temperature of  \SI{298.15}{\kelvin}  results in  an
-    intrinsic diffusivity of \SI{3.22e-10}{\meter\squared\per\second}. Since the
-    intrinsic  diffusivity is  a material  property  and is  independent of  the
+    intrinsic  diffusivity of  \SI{3.22e-10}{\meter\squared\per\second}. As  the
+    intrinsic  diffusivity is  a material  property  independent of  the
     region within the cell, it needs to be parametrised only once.
 
     \customenum{\scalebox{1.35}{$\kappa$}}{1}   Like    the   diffusivity,   the
@@ -103,13 +104,12 @@ Prima facie, it may seem that electrolyte porosities and filler volume fractions
 do  not  influence the  \gls{spm}  model.  However,  they  do have  an  indirect
 bearing  on arriving  at a  critical parameter,  \viz{} the  solid phase  volume
 fraction, $\varepsilon_\sj$. This parameter is  required to compute the specific
-interfacial  surface  area  of  the  electrodes  $a_\sj$,  \ie{}  the  effective
-electrode area exposed  to reaction and is an important  entity in the \gls{spm}
-model  equations  presented  in \cref{subsec:basicspmgoverningeqns}.  The  solid
-phase volume fractions are also required in simulating the \gls{p2d} model owing
-to  the  need for  computing  the  effective  electronic conductivities  of  the
-electrodes.\fxnote{cross-reference to  specific Newman equations here}.  They are
-calculated as
+interfacial surface area of the electrodes $a_\sj$ \ie{} the effective electrode
+area  exposed to  reaction and  is an  important entity  in the  \gls{spm} model
+equations  presented  in  \cref{subsec:basicspmgoverningeqns}. The  solid  phase
+volume fractions  are also required in  simulating the \gls{p2d} model  owing to
+the need for computing the effective electronic conductivities of the electrodes
+(see \cref{eq:solidchargeconserve}). They are calculated as
 \begin{equation}
     \varepsilon_\sj = 1 - \varepsilon_j - \varepsilon_{\text{fi}_j}
 \end{equation}
@@ -122,8 +122,8 @@ respectively. The specific interfacial surface areas are then calculated as
     a_\sj = \varepsilon_\sj \frac{4 \pi R_\pj^2}{\frac{4}{3} \pi R_\pj^3} = \frac{3\varepsilon_\sj}{R_\pj}
 \end{equation}
 
-As    discussed   in    the   assumptions    made   during    model   derivation
-(see \cref{subsec:basicspmassumptions})  and consistent  with the  assumed model
+As   discussed  in   the   assumptions  made   during   model  derivation   (see
+\cref{subsec:basicspmassumptions})  and   consistent  with  the   assumed  model
 geometry,  the  parameters  not  covered  by  the  \gls{spm}  pertain  to  those
 describing electrolyte dynamics and distribution  of electronic charge along the
 axial  thickness  direction  of  the  cell. Properties  such  as  the  intrinsic
@@ -135,10 +135,10 @@ the two electrodes  do not play any  role in the model  dynamics. The porosities
 and Bruggeman  coefficients in \cref{tbl:lcoSimParamsSPMp2d} serve  as modifying
 factors  of  the  intrinsic  conductivities  and  diffusivities  leading  to  an
 effective value  within each  region of the  electrochemical layer.  Thus, their
-relevance is also  rendered void in the case of  the basic \gls{spm} simulation.
-The  thickness of  the  separator  material only  plays  a  role in  electrolyte
-behaviour.  By the  model geometry  presented in \cref{subsec:basicspmgeometry},
-this parameter also falls outside the scope of the basic \gls{spm}.
+relevance  is  also  rendered  void  for the  basic  \gls{spm}  simulation.  The
+thickness of the separator material only  plays a role in electrolyte behaviour.
+By  the   model  geometry  presented  in   \cref{subsec:basicspmgeometry},  this
+parameter also falls outside the scope of the basic \gls{spm}.
 
 The  thicknesses  of the  electrodes  are  optimised  for equal  loading,  \ie{}
 to  achieve  a   balance  in  their  individual  capacities   to  store  \ch{Li}
@@ -157,24 +157,13 @@ Geometrical considerations  then imply  that the  cross-sectional area  (or face
 area) of the two electrodes must be  the same. However, due to the consideration
 of  avoiding  plating  at  the  edges  due  to  microscopic  malformations,  the
 design  is done  such as  to have  a small  overhang of  the negative  electrode
-layer,  \approx\SI{2}{\milli\meter}  with  respect  to  the  positive  electrode
-layer\fxnote{citation  needed}  as  shown  in \cref{fig:anodeoverhangpouchcell}.
-Nevertheless, the  active surface area is  just the common overlap  area between
-the two  electrodes, and hence  $A_\text{elec}$ is equal to  the cross-sectional
-area of the positive electrode.
+layer,  below  \SI{2}{\milli\meter}  with  respect  to  the  positive  electrode
+layer~\cite{Bond2017} (see \cref{fig:anodeoverhangpouchcell}). Nevertheless, the
+active surface area is just the  common overlap area between the two electrodes,
+and hence $A_\text{elec}$  is equal to the cross-sectional area  of the positive
+electrode.
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption[Stacking of layers within a pouch cell]
-    {Image showing the stacking of layers within a pouch cell. For the negative
-        electrodes, there is a small overhang (\approx\SI{2}{mm}) at the
-        edges with respect to the positive electrodes. This design choice
-    helps to avoid plating of lithium at the edges.}
-    \label{fig:anodeoverhangpouchcell}
-\end{figure}
-
-Thus, \cref{eq:basiccapacitybalance}                                     reduces
+Thus,                   \cref{eq:basiccapacitybalance}                   reduces
 to                      $\frac{l_\text{neg}}{l_\text{pos}}                     =
 \frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}}    =    1.22$,    yielding
 $l_\text{neg} = \SI{72}{\micro\meter}$.
@@ -194,15 +183,14 @@ cross-sectional area of  all layers ($n$ is the number  of electrochemical (pos,
 sep,  neg)  triplets)  stacked  into  the pouch  cell.  In  both  the  \gls{p2d}
 and  \gls{spm}  models,  this  parameter  serves  to  scale  the  external  load
 current  down  to  the  current  density  experienced  by  each  electrochemical
-layer. A value of  \approx\SI{30}{\ampere\per\meter\squared} was reported in the
-results section of  Subramanian~\etal{}~\cite{Subramanian2009}. When considering
-a  \SI{60}{\amphour} pouch  cell with  \SI{10}{\milli\meter} exterior  thickness
-and  using  the  parameters  reported  in~\cite{Subramanian2009},  this  results
-in  a cross-sectional  area of  \SI{2.053}{\meter\squared}\fxnote{to add:  refer
-to  layer  optimisation  chapter   for  detailed  derivation}.  Considering  the
-equalisation of capacity  loading, with the newly chosen thickness  value of the
-negative  electrode, the  1C-rate  capacity  of the  cell  has  been revised  to
-\SI{29.23}{\ampere\per\meter\squared}.
+layer.  A   value  of  \approx\SI{30}{\ampere\per\meter\squared}   was  reported
+in  the  results  section  of  Subramanian~\etal{}~\cite{Subramanian2009}.  When
+considering a  \SI{60}{\amphour} pouch cell with  \SI{10}{\milli\meter} exterior
+thickness   and  using   the   parameters  reported   in~\cite{Subramanian2009},
+this  results  in  a  cross-sectional area  of  \SI{2.053}{\meter\squared}  (see
+\cref{sec:p2daugmentations}). Considering the  equalisation of capacity loading,
+with the  newly chosen thickness  value of  the negative electrode,  the 1C-rate
+capacity of the cell has been revised to \SI{29.23}{\ampere\per\meter\squared}.
 
 On  simulating  the \gls{p2d}  model  with  a  trickle bleeding  type  discharge
 corresponding   to   a  current   of   C/500   and   logging  the   data   every
@@ -210,24 +198,24 @@ corresponding   to   a  current   of   C/500   and   logging  the   data   every
 datasheets  for \protect{\gls{lco}}  chemistries,  this value  is considered  to
 correspond to \SI{0}{\percent} \protect{\gls{soc}}.}, the remnant concentrations
 in  the two  electrodes  were noted.  The  corresponding residual  stoichiometry
-values  are reported  in \cref{tbl:lcoSimParamsSPMp2d}  and  is consistent  with
-typical values reported in literature for \gls{lco} chemistries.\fxnote{citation
-needed here.}  This validation is  important, since below  certain stoichiometry
-thresholds, the spinel/olivine  structure of the electrodes  can become unstable
-and collapse\fxnote{citation needed?}.
+values are reported in \cref{tbl:lcoSimParamsSPMp2d}.
+
+% and is  consistent with  typical values reported  in literature  for \gls{lco}
+% chemistries.\fxnote{citation needed here.} This validation is important, since
+% below certain  stoichiometry thresholds,  the spinel/olivine structure  of the
+% electrodes can become unstable and collapse\fxnote{citation needed?}.
 
 Since   the   cell   behaviour   is   considered   isothermal,   the   parameter
-table     in \cref{tbl:lcoSimParamsSPMp2d}     omits     activation     energies
-for    the   various    diffusivities    and    conductivities   of    materials
-(see \cref{subsec:basicspmsimsetup}  for  further thermal  considerations).  For
-this  reason, \cref{tbl:lcoSimParamsSPMp2d}  does  not  include  other  material
-properties such  as specific  heats, and  thermal conductivities.  No properties
-of  the  current  collectors  appear  in  the  isothermal  model  equations  for
-both  the \gls{p2d}  and  \gls{spm}  models and  hence  are  omitted. All  other
-electrochemical  properties,   \viz{}  stoichiometries   at  \SI{100}{\percent},
-maximum concentrations, diffusivities, reaction  rate coefficients and \gls{ocp}
-of  the two  electrodes remain  invariant  between the  \gls{p2d} and  \gls{spm}
-models. \nopagebreak[4]
+table   in   \cref{tbl:lcoSimParamsSPMp2d}   omits   activation   energies   for
+the    various   diffusivities    and   conductivities    of   materials    (see
+\cref{subsec:basicspmsimsetup}  for further  thermal  considerations). For  this
+reason, \cref{tbl:lcoSimParamsSPMp2d} does not include other material properties
+such as specific heats, and thermal conductivities. No properties of the current
+collectors appear in  the isothermal model equations for both  the \gls{p2d} and
+\gls{spm} models  and hence are  omitted. All other  electrochemical properties,
+\viz{} stoichiometries at  \SI{100}{\percent} \gls{soc}, maximum concentrations,
+diffusivities, reaction  rate coefficients and  \gls{ocp} of the  two electrodes
+remain invariant between the \gls{p2d} and \gls{spm} models.
 
 \subsection{Simulation Setup}\label{subsec:basicspmsimsetup}
 
@@ -244,10 +232,10 @@ dynamic  load  currents  that  might  bring the  voltage  below  this  threshold
 momentarily. If a low-enough value is  not chosen, a system-level shutdown shall
 be  initiated  despite possessing  the  ability  to  continue to  operate  after
 recovery  of terminal  voltage.  In this  case, choosing  a  cut-off voltage  of
-\SI{2.5}{\volt}  does  not  damage  the  cell  since  checks  are  in  place  to
-monitor  the \gls{soc}  and trigger  cut-off in  the event  of charge  depletion
-(see \cref{alg:ctstimespm,alg:disctimespm}).  Northrop~\etal~\cite{Northrop2011}
-use this value, although no explanation is given for the choice.
+\SI{2.5}{\volt} does  not damage the cell  since checks are in  place to monitor
+the  \gls{soc}  and trigger  cut-off  in  the  event  of charge  depletion  (see
+\cref{alg:ctstimespm,alg:disctimespm}).  Northrop~\etal~\cite{Northrop2011}  use
+this value, although no specific explanation is given for this choice.
 
 The  upper   cut-off  voltage   of  the  cell   is  chosen   at  \SI{4.3}{\volt}
 \ie{}  \approx\SI{100}{\milli\volt} higher  than  the  equilibrium \gls{ocp}  at
@@ -320,8 +308,7 @@ in \cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 
 \Cref{fig:kappavsCeandT} shows  a surface  plot of the  electrolyte conductivity
 as  a function  of  initial concentration  $c_\text{e,0}$  and cell  temperature
-$T_\text{cell}$.\fxnote{comment on how the variation in the direction of temp is
-less significant to that around conc} In particular,
+$T_\text{cell}$. The following salient observations are noted.
 \begin{enumerate}%[label=\emph{\alph*})]
     \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$ is uniform over the axial space $x$ and
     \item only isothermal cell behaviour is considered, \ie{} $T(t) = T_\text{cell}$.
@@ -360,20 +347,19 @@ noted that while  the electrolyte concentration in the  \gls{p2d} model exhibits
 both spatial  and temporal  variations during the  simulation, in  the \gls{spm}
 model, it remains constant throughout.
 
-The      reduction      in      parametrisation      requirements      discussed
-in \cref{subsec:spmp2dparametrisation}    is   only    one   of    the   factors
-contributing  to   the  simplicity   and  ease   of  simulation.   As  discussed
-in \cref{subsec:basicspmgeometry},   an   important  computational   requirement
-that   is  present   in   the  \gls{p2d}   model,   but  completely   eliminated
-from  the   \gls{spm}  is  the   requirement  of  discretisation.   As  reported
-in \cref{tbl:lcoSimParamsSPMp2d},  with  15 nodes  per  region  along the  axial
-direction  and  with 10  shells  per  electrode  in  the radial  direction,  the
-\gls{p2d}  model under  simulation  achieves mesh  independence  to a  tolerance
-of  \approx\SI{2}{\percent} for  the  range of  C-rates  considered. For  higher
-C-rates, coupling  a thermal  model is of  higher importance  than incorporating
-further   meshing  refinements.   The   discretisation-related  parameters   are
-specific  to  the   \gls{p2d}  model  and  is   hence,  highlighted  accordingly
-in \cref{tbl:lcoSimParamsSPMp2d}.
+The     reduction    in     parametrisation     requirements    discussed     in
+\cref{subsec:spmp2dparametrisation}    is    only    one    of    the    factors
+contributing  to  the  simplicity  and  ease  of  simulation.  As  discussed  in
+\cref{subsec:basicspmgeometry}, an  important computational requirement  that is
+present in the \gls{p2d} model, but  completely eliminated from the \gls{spm} is
+the requirement of discretisation. As reported in \cref{tbl:lcoSimParamsSPMp2d},
+with  15 nodes  per region  along the  axial direction  and with  10 shells  per
+electrode in the radial direction, the \gls{p2d} model under simulation achieves
+mesh  independence  to a  tolerance  of  \approx\SI{2}{\percent} for  the  range
+of  C-rates  considered.  For  higher  C-rates,  coupling  a  thermal  model  is
+of  higher  importance  than  incorporating  further  meshing  refinements.  The
+discretisation-related parameters  are specific to  the \gls{p2d} model  and are
+highlighted accordingly in \cref{tbl:lcoSimParamsSPMp2d}.
 
 \subsubsection*{Capacity Characterisation}\label{subsubsec:capcharspmp2d}
 
