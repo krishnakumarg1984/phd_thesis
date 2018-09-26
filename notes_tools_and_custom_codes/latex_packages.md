@@ -79,6 +79,7 @@ chngcntr
 circuitikz
 cleveref
 clrdblpg
+clrstrip
 codesection
 colonequals
 colortbl
