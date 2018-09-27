@@ -126,6 +126,7 @@ tlmgr install   \
     ltxnew \
     luacode \
     lualatex-math \
+    lualibs \
     luaotfload \
     luatex85 \
     luatexbase \
