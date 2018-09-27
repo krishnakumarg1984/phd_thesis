@@ -1,36 +1,86 @@
 % -*- root: ../../main.tex -*-
 %!TEX root = ../../main.tex
 
+% \begin{landscape}
+%     \makeatletter \PLS@RemoveRotate
+%     \centering
+%     % \begin{longtable}{@{} l  l p{8.65cm} l c c p{2.5cm} @{}}
+%     \begin{longtable}{|l|l|l|}
+%         \caption{Summary of permissions for reuse of third-party copyrighted material\label{tbl:permissionstable}}
+%         \hline \multicolumn{1}{|c|}{\textbf{First column}} & \multicolumn{1}{c|}{\textbf{Second column}} & \multicolumn{1}{c|}{\textbf{Third column}} \\ \hline
+%         \endfirsthead
+
+%         \multicolumn{3}{c}%
+%         {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+%         \hline \multicolumn{1}{|c|}{\textbf{First column}} & \multicolumn{1}{c|}{\textbf{Second column}} & \multicolumn{1}{c|}{\textbf{Third column}} \\ \hline
+%         \endhead
+
+%         \hline \multicolumn{3}{|r|}{{Continued on next page}} \\ \hline
+%         \endfoot
+
+%         \hline \hline
+%         \endlastfoot
+
+%         One & abcdef ghjijklmn & 123.456778 \\
+%         One & abcdef ghjijklmn & 123.456778 \\
+%         One & abcdef ghjijklmn & 123.456778 \\
+%         One & abcdef ghjijklmn & 123.456778 \\
+
+%         % \bottomrule
+%         % \endgroup
+%         % \end{scriptsize}
+%     \end{longtable}
+% \end{landscape}
+
+\pagestyle{empty}
 \begin{landscape}
-    \def\pdfpageattr#1{}  % prevent pdflscape giving a hint to the viewer to rotate the page for display (chat with David Carlisle)
-    \begin{table}[!htbp]
-        \caption{Summary of permissions for reuse of third-party copyrighted material}
-        \label{tbl:permissionstable}
-        \centering
-	    \begin{scriptsize}
-	        \begingroup
-	        \renewcommand{\arraystretch}{2}
-	        \begin{tabular*}{\linewidth}{@{} l  l p{8.65cm} l c c p{2.5cm} @{}}
-                \toprule
-                \multicolumn{1}{c}{\makecell{Page \\ no.}} & \makecell{Usage in \\ thesis} & \makecell{Source \\ \vphantom{of work}} & \makecell{Copyright holder \& \\ Contact (organisations only)} & \makecell{Permission \\ requested on} & \makecell{Have \\ permission?} & \makecell{Permission \\ remarks} \\
-                \midrule
+    \makeatletter \PLS@RemoveRotate % from chat with Ulrike Fischer
+    \centering
+    \begin{scriptsize}
+        \begingroup
+        \renewcommand{\arraystretch}{2}
+        \begin{longtable}[c]{@{} l  l p{8.65cm} l c c p{2.5cm} @{}}
+            \caption{Summary of permissions for reuse of third-party copyrighted material} \label{tbl:permissionstable} \\
 
-                \Cpageref{fig:energyvspowercell}         & \Cref{fig:energyvspowercell}          & \fullcite{VonSrbik2015}   & \Citeauthor*{VonSrbik2015}          & N/A                            & Yes                                 & CC-BY-NC-ND                                           \\
-                \Cpageref{fig:fig_CC_discharge_curves}   & \Cref{fig:fig_CC_discharge_curves}    & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
-                \Cpageref{fig:1d_fv_mesh}                & \Cref{fig:1d_fv_mesh}                 & \fullcite{Torchio2016}    & \Citeauthor{Torchio2016}            & \DTMdate{2018-09-28}           & Yes                                 & \makecell[lt]{`Rightslink' service                    \\ agreement attached}  \\
-                \Cpageref{fig:anodeoverhangpouchcell}    & \Cref{fig:anodeoverhangpouchcell}     & \fullcite{Bond2017}       & \Citeauthor{Bond2017}               & N/A                            & Yes                                 & CC-BY                                                 \\
-                \Cpageref{fig:topologies}                & \Cref{fig:topologies}                 & \fullcite{Northrop2011}   & \Citeauthor{Northrop2011}           & \DTMdate{2018-09-27}           & Yes                                 & \makecell[lt]{`Rightslink' service                    \\ agreement attached}  \\
-                \Cpageref{fig:fig_generate_heatmap_BEV}  & \Cref{fig:fig_generate_heatmap_BEV}   & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
-                \Cpageref{fig:fig_generate_heatmap_PHEV} & \Cref{fig:fig_generate_heatmap_PHEV}  & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
-                \Cpageref{fig:fig_CapacityQuadrants}     & \Cref{fig:fig_CapacityQuadrants}      & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
-                \Cpageref{ch:improveddra}                & \makecell[lt]{All figures, tables    \\ and captions             \\ of \cref{ch:improveddra}}           & \fullcite{Gopalakrishnan2017}  & \makecell[lt]{The American Society \\ of Mechanical Engineers                                                          \\ (ASME)               \\ \href{mailto:copyright@asme.com}{copyright@asme.com}} & \DTMdate{2016-04-19}              & Yes         & \makecell[lt]{Copyright \\ agreement} \\
-                \Cpageref{fig:sandwichtospm}             & \Cref{fig:sandwichtospm}              & \fullcite{Moura2012}      & \makecell[lt]{The American Society \\ of Mechanical Engineers       \\ (ASME)                             \\ \href{mailto:copyright@asme.com}{copyright@asme.com}}  & \DTMdate{2018-09-25}  & Pending                                               & \makecell[lt]{`Rightslink' order \\ submitted} \\
-                \Cpageref{fig:timingdiagramBig}          & \Cref{fig:timingdiagramBig}           & \fullcite{Southward2011}  & \Citeauthor*{Southward2011}         & \DTMdate{2018-09-26}           & Pending                             & \makecell[lt]{Email request                           \\ sent}                \\
+            \toprule
+            \multicolumn{1}{c}{\makecell{Page \\ no.}} & \makecell{Usage in \\ thesis} & \makecell{Source \\ \vphantom{of work}} & \makecell{Copyright holder \& \\ Contact (organisations only)} & \makecell{Permission \\ requested on} & \makecell{Have \\ permission?} & \makecell{Permission \\ remarks} \\
+            \midrule
+            \endfirsthead
 
-                \bottomrule
-            \end{tabular*}
-            \endgroup
-        \end{scriptsize}
-    \end{table}
+            \multicolumn{7}{c}%
+            {{\bfseries \tablename\ \thetable{} --- \normalfont continued from previous page}} \\
+            \toprule
+            \multicolumn{1}{c}{\makecell{Page \\ no.}} & \makecell{Usage in \\ thesis} & \makecell{Source \\ \vphantom{of work}} & \makecell{Copyright holder \& \\ Contact (organisations only)} & \makecell{Permission \\ requested on} & \makecell{Have \\ permission?} & \makecell{Permission \\ remarks} \\
+            \midrule
+            \endhead
+
+            \midrule
+            \multicolumn{7}{ r }{{Continued on next page}} \\
+            \bottomrule
+            \endfoot
+
+            \bottomrule
+            \endlastfoot
+
+            \Cpageref{fig:energyvspowercell}         & \Cref{fig:energyvspowercell}          & \fullcite{VonSrbik2015}   & \Citeauthor*{VonSrbik2015}          & N/A                            & Yes                                 & CC-BY-NC-ND                                           \\
+            \Cpageref{fig:fig_CC_discharge_curves}   & \Cref{fig:fig_CC_discharge_curves}    & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
+            \Cpageref{fig:1d_fv_mesh}                & \Cref{fig:1d_fv_mesh}                 & \fullcite{Torchio2016}    & \Citeauthor{Torchio2016}            & \DTMdate{2018-09-28}           & Yes                                 & \makecell[lt]{`Rightslink' service                    \\ agreement attached}  \\
+            \Cpageref{fig:anodeoverhangpouchcell}    & \Cref{fig:anodeoverhangpouchcell}     & \fullcite{Bond2017}       & \Citeauthor{Bond2017}               & N/A                            & Yes                                 & CC-BY                                                 \\
+            \Cpageref{fig:topologies}                & \Cref{fig:topologies}                 & \fullcite{Northrop2011}   & \Citeauthor{Northrop2011}           & \DTMdate{2018-09-27}           & Yes                                 & \makecell[lt]{`Rightslink' service                    \\ agreement attached}  \\
+            \Cpageref{fig:fig_generate_heatmap_BEV}  & \Cref{fig:fig_generate_heatmap_BEV}   & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
+            \Cpageref{fig:fig_generate_heatmap_PHEV} & \Cref{fig:fig_generate_heatmap_PHEV}  & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
+            \Cpageref{fig:fig_CapacityQuadrants}     & \Cref{fig:fig_CapacityQuadrants}      & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
+            \Cpageref{ch:improveddra}                & \makecell[lt]{All figures, tables    \\ and captions             \\ of \cref{ch:improveddra}}           & \fullcite{Gopalakrishnan2017}  & \makecell[lt]{The American Society \\ of Mechanical Engineers                               \\ (ASME)               \\ \href{mailto:copyright@asme.com}{copyright@asme.com}} & \DTMdate{2016-04-19}              & Yes         & \makecell[lt]{Copyright \\ agreement} \\
+            \Cpageref{fig:sandwichtospm}             & \Cref{fig:sandwichtospm}              & \fullcite{Moura2012}      & \makecell[lt]{The American Society \\ of Mechanical Engineers       \\ (ASME)                             \\ \href{mailto:copyright@asme.com}{copyright@asme.com}}  & \DTMdate{2018-09-25}  & Pending                                               & \makecell[lt]{`Rightslink' order \\ submitted} \\
+            \Cpageref{fig:timingdiagramBig}          & \Cref{fig:timingdiagramBig}           & \fullcite{Southward2011}  & \Citeauthor*{Southward2011}         & \DTMdate{2018-09-26}           & Pending                             & \makecell[lt]{Email request                           \\ sent}                \\
+
+
+            \Cpageref{fig:energyvspowercell}         & \Cref{fig:energyvspowercell}          & \fullcite{VonSrbik2015}   & \Citeauthor*{VonSrbik2015}          & N/A                            & Yes                                 & CC-BY-NC-ND                                           \\
+            \Cpageref{fig:fig_CC_discharge_curves}   & \Cref{fig:fig_CC_discharge_curves}    & Unpublished work          & Ian D.\ Campbell                    & \DTMdate{2018-09-28}           & Yes                                 & Written agreement                                     \\
+            \Cpageref{fig:1d_fv_mesh}                & \Cref{fig:1d_fv_mesh}                 & \fullcite{Torchio2016}    & \Citeauthor{Torchio2016}            & \DTMdate{2018-09-28}           & Yes                                 & \makecell[lt]{`Rightslink' service                    \\ agreement attached}  \\
+            \Cpageref{fig:anodeoverhangpouchcell}    & \Cref{fig:anodeoverhangpouchcell}     & \fullcite{Bond2017}       & \Citeauthor{Bond2017}               & N/A                            & Yes                                 & CC-BY                                                 \\
+
+        \end{longtable}
+        \endgroup
+    \end{scriptsize}
 \end{landscape}
-
