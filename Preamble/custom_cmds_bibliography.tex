@@ -44,6 +44,19 @@
     }
 }
 
+
+% https://tex.stackexchange.com/questions/113039/trying-to-suppress-urls-with-biblatex-using-a-simple-persons-method
+% \AtEveryCitekey{\clearfield{url}}
+
+% https://tex.stackexchange.com/questions/46787/is-there-a-way-to-prevent-urls-from-appearing-in-biblatex-citations
+\AtEveryCitekey{%
+    \clearfield{url}%
+    \clearfield{urlyear}%
+    \clearfield{doi}%
+}%
+\renewbibmacro*{in:}{}
+
+
 % https://tex.stackexchange.com/questions/24979/citing-authors-full-name-in-biblatex
 \DeclareCiteCommand*{\citeauthor}
 {\defcounter{maxnames}{99}%
@@ -56,3 +69,5 @@
     \printnames{labelname}}
     {\multicitedelim}
     {\usebibmacro{postnote}}
+
+
