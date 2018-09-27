@@ -7,14 +7,13 @@ notifications:
     on_success: never
 cache:
   directories:
-  - "/tmp/texlive"
-  - "$HOME/.texlive"
+  # - "/tmp/texlive"
+  # - "$HOME/.texlive"
   - "$HOME/.cache/pip"
   # - "$HOME/texmf"
 script:
 - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
 - cp icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc /tmp/texlive/texmf-dist/tex/latex/pdfx/
-# - cp pdfx.sty /tmp/texlive/texmf-dist/tex/latex/pdfx/
 - texhash
 # - latexmk -f --shell-escape --bibtex -pdf -interaction=nonstopmode -halt-on-error main.tex # force making the pdf
 - latexmk -f --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex # force making the pdf
@@ -40,14 +39,12 @@ install:
 - rsync -rvzctlp rsync://contextgarden.net/distribution/current/bin/luatex/linux-64/bin/ /tmp/texlive/bin/x86_64-linux/
 - fmtutil -user --byengine luatex
 - fmtutil -user --all
-- git config --global http.sslVerify false
-# - git clone https://github.com/u-fischer/lua-font-pond.git
-# - cp -R lua-font-pond/texmf ~/texmf
-- git clone https://github.com/u-fischer/luaotfload.git
-- cd luaotfload
-- git checkout dev-2.9
-- cp -R texmf ~/texmf
-- cd ..
+# - git config --global http.sslVerify false
+# - git clone https://github.com/u-fischer/luaotfload.git
+# - cd luaotfload
+# - git checkout dev-2.9
+# - cp -R texmf ~/texmf
+# - cd ..
 - texhash
 env:
   global:
