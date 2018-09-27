@@ -161,7 +161,7 @@ formulation
     && \notag
 \end{flalign}
 that is amenable  for controller design and for  further system-level simulation
-studies  \eg{} as  a component  in the  energy-storage subsystem  of a  (hybrid)
+studies  \eg~as  a component  in the  energy-storage subsystem  of a  (hybrid)
 electric vehicle drivetrain.
 
 
@@ -254,10 +254,10 @@ the  final  state  space  model  thus  obtained  is  simple  to  implement,  the
 classical \gls{dra} scheme suffers from significant computational bottlenecks in
 forming the  required block-Hankel  matrices during the  model-derivation phase.
 A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
-structure of  these Hankel  matrices was  proposed by  this thesis  author \ie~
-Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers the
-requirements for computational memory and  processing power. The details of this
-contribution shall be presented in \cref{ch:improveddra} of this thesis.
+structure  of  these  Hankel  matrices   was  proposed  by  this  thesis  author
+\ie~Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers
+the requirements for  computational memory and processing power.  The details of
+this contribution shall be presented in \cref{ch:improveddra} of this thesis.
 
 
 In both the original as well  as the improved \gls{dra}, the eigenfunction modal
@@ -366,13 +366,13 @@ the IEEE conference paper}
 % model.  This  modelling  effort  is  a direct  application  of  the  gains  in
 % computing  efficiency  through  the  application  of  the  improved  \gls{dra}
 % reported  in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the  detailed
-% coverage  of  which  is  performed in \cref{ch:chapter3}.  This  work  intends
-% to  address  the  hitherto  unexplored   gap  in  impedance  modelling \ie~
-% the  absence  of   an  equivalent  impedance  model  that   accounts  for  the
-% impedance contribution  from all  electrochemical quantities in  the \gls{p2d}
+% coverage  of  which is  performed  in  \cref{ch:chapter3}. This  work  intends
+% to  address  the  hitherto  unexplored  gap  in  impedance  modelling  \ie~the
+% absence  of an  equivalent impedance  model  that accounts  for the  impedance
+% contribution   from   all   electrochemical  quantities   in   the   \gls{p2d}
 % model.  This  physics-informed   impedance  model  can  be   extended  to  fit
-% parameter  values  of  components  in   an  equivalent  circuit  model,  \eg{}
-% by  using  a standard  Levenberg-Marquardt  non-linear  least squares  fitting
+% parameter  values  of  components  in  an equivalent  circuit  model  \eg~  by
+% using  a   standard  Levenberg-Marquardt  non-linear  least   squares  fitting
 % algorithm~\cite{Levenberg1944, Marquardt1963}.
 
 
@@ -438,7 +438,7 @@ to  reformulate the  original  \gls{p2d}  model equations  towards  the goal  of
 simplifying  them to  as much  extent  as possible.  In contrast  to the  hybrid
 models, all tasks involved in both model derivation and final implementation are
 carried out  entirely within the time  domain. While a subset  of prior research
-has focussed only  on simplifying certain aspects of the  cell's dynamics, \eg{}
+has focussed only  on simplifying certain aspects of the  cell's dynamics \eg~
 diffusion in the two electrodes, other published works have aimed at providing a
 simplified  description of  the  time domain  evolution  of \emph{all}  physical
 quantities of the cell. An evaluation  of the salient literature based upon both
@@ -549,7 +549,7 @@ significance in this context.
 In all  non-uniform discretisation schemes  discussed here, the  implications of
 using  a non-adaptive  support mesh  obtained by  the placement  of nodes  whose
 locations are optimised a~priori, must be considered carefully. For instance, in
-the prolonged operation of the cell  with a net unidirectional charge flow \eg{}
+the prolonged operation of the cell  with a net unidirectional charge flow \eg~
 in an  electric vehicle  application, the reaction  front drifts  from separator
 back towards the current collectors. This is due to the exhaustion of lithium at
 the surface  of particles near the  separator interfaces. In this  scenario, the

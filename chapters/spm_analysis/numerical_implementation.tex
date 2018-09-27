@@ -63,7 +63,7 @@ terminal voltage.
 The procedure described  thus far has a practical limitation.  The input current
 $I(t)$  to the  cell has  been defined  as a  continuous quantity.  Although for
 the  purpose of  characterising  the cell's  behaviour, it  is  possible to  use
-pre-determined continuous-functions as load profiles (\eg{}~sinusoidal waveforms
+pre-determined continuous-functions as load profiles (\eg~sinusoidal waveforms
 for virtual \gls{eis} testing), it is desirable to evaluate the model's response
 to typical real-life conditions. In a vehicular application, only the samples of
 cell current measured by sensors at  discrete-time intervals are reported to the
@@ -78,12 +78,12 @@ Runge-Kutta,  Collocation and  Backward  Differentiation  Formula are  available
 to  efficiently  handle  such  \glspl{ode}. Given  that  lithium  concentrations
 vary smoothly  over time  without abrupt  discontinuities, a  standard non-stiff
 solver  of  moderate   order  shall  suffice.  A  single  line   of  code  using
-\textsc{MATLAB}'s ode45  solver can  implement this  time integration,  \eg{} \\
+\textsc{MATLAB}'s ode45  solver can  implement this  time integration \eg~\\
 \mintinline{matlab}{[~,x_new] =  ode45(@(t,x) stateEqn(x,Ik,spm_params), t_span,
 x_old); }
 
 Since  the direction  of applied  current  is susceptible  to sudden  reversals,
-(\eg{}  due to  acceleration and  braking events  for a  vehicular application),
+(\eg~due to  acceleration and  braking events  for a  vehicular application),
 the  solver   needs  to   be  stopped  and   re-started  every   sample  period.
 \Cref{alg:ctstimespm} shows the  sequence of operations in  a desktop simulation
 of  the  continuous time  \gls{spm}  on  a  digital  computer. The  source  code
@@ -256,7 +256,7 @@ interrupts  and  simultaneously sends  and  acknowledgement  to the  appropriate
 sensor  which  reloads  its  timer.  The  \gls{spm}  model  equations  are  then
 evaluated in software and resulting  computational variables such as voltage and
 concentrations  is used  in other  activities such  as state  estimator. If  the
-\gls{bms} also performs control tasks, \eg{}~regulating the coolant-flow rate or
+\gls{bms} also performs control tasks \eg~regulating the coolant-flow rate or
 \gls{ice} state-toggling such  as in the hysteresis control of  a series hybrid,
 these control outputs are written to the relevant \glspl{dac}.
 
@@ -364,7 +364,7 @@ expression for $B_d$ is obtained as
     B_d &= A^{-1}(A_d - I_n)B && \text{(if $A^{-1}$ exists)}
 \end{align}
 For the continuous time system matrix $A$ of the \gls{spm}, its determinant is
-zero \ie~
+zero
 \begin{equation}
 \begin{vsmallmatrix}
     -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
@@ -376,8 +376,8 @@ and hence  is not invertible.  This necessitates  an explicit evaluation  of the
 integral in \cref{eq:disctimefulleqn} for computation of the discrete-time input
 matrix, $B_d$.
 
-Since the only non-zero entries of the matrix lie along its main diagonal \ie~
-its modes  are decoupled, the  matrix exponential  reduces to a  diagonal matrix
+Since  the only  non-zero entries  of  the matrix  lie along  its main  diagonal
+\ie~its modes are decoupled, the matrix exponential reduces to a diagonal matrix
 whose elements are simply the scalar exponentials of the original entries.
 \begin{gather}
     A_d = e^{A T_s} = \exp\left(
@@ -461,7 +461,7 @@ and vector-addition routines.
 \input{chapters/spm_analysis/algo_disctime_spm}
 
 This  thesis takes  an  inclusive view  taking into  account  that some  battery
-researchers whose  focus is on fundamental  aspects of lithium ion  cells, \eg{}
+researchers whose  focus is on fundamental  aspects of lithium ion  cells \eg~
 those specialising in  electrochemistry, might not be familiar  with the nuances
 of  the  matrix exponential  and  discrete-time  matrix computations  (refer  to
 line~\ref{algLine:computeAdBd} in \cref{alg:disctimespm}).  Therefore, a snippet

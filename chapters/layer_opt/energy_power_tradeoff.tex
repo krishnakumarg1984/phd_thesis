@@ -28,8 +28,8 @@ standard practice in cell design.
 
 In  the  case of  lithium  ion  cells with  porous  electrodes,  the concept  of
 electrode-balancing  involves  an additional  variable  \viz{}  the porosity  of
-the  active  materials.  The  roles   of  porosity  and  its  corollaries  \ie~
-the  material  volume  fraction  and filler/binder  fraction  are  discussed  in
+the  active  materials.  The  roles  of porosity  and  its  corollaries  \ie~the
+material   volume  fraction   and  filler/binder   fraction  are   discussed  in
 \cref{subsec:spmp2dparametrisation}.  In this  work,  a  major assumption  about
 material porosities  (and hence active-material/filler volume  fraction) is that
 they are held constant. The rationale behind using this simplified assumption is
@@ -85,7 +85,7 @@ to make  a comprehensive multiphysics-based  design optimisation study.  This is
 well  beyond the  scope  of this  work  and requires  access  to various  design
 blueprints. Therefore, a constant lumped  efficiency value for the drivetrain is
 adopted  for this  work. However,  the  proposed optimisation  methodology is  a
-modular one  which implies that  it can be suitably  adapted \eg{} to  include a
+modular one  which implies that  it can be suitably  adapted \eg~to  include a
 efficiency  value dependent  upon power  delivered at  the wheels.  However, the
 biggest redeeming  aspect (observed after the  completion of the study)  is that
 using a constant  efficiency value did not influence the  final layer choice for
@@ -118,7 +118,7 @@ modularising the  pack helps in  tailoring them  suitably to cater  to different
 market segments. Extending this philosophy down to the cell level, it is easy to
 visualise the  benefits of  having cells of  identical exterior  dimensions. For
 instance, having a  common inventory helps a vehicle manufacturer  to keep costs
-in check  for subsequent designs  \eg{} for  derivative model families  of their
+in check  for subsequent designs  \eg~for  derivative model families  of their
 product  portfolio. This  means that,  for  any layer  choice to  be tried,  the
 constituent components  of the cell is  to be arranged and  contained within the
 same  pouch  (of  fixed  exterior  dimensions).  This  naturally  leads  to  the
@@ -298,7 +298,7 @@ of   applied    current   is   explained    in   the   section    dealing   with
 
 As  seen  in \cref{fig:fig_CC_discharge_curves},  during  the  initial phase  of
 discharge, the terminal voltage  of the cell is the highest  for the two highest
-layer choices  \ie~$n  = 90$  and $n=70$. Consistent  with the  explanation in
+layer  choices \ie~$n  =  90$ and  $n=70$. Consistent  with  the explanation  in
 \cref{subsec:layeroptmotivation}, these  two layer choices have  thin electrodes
 and  hence  comparatively low  resistances  leading  to  only a  small  internal
 overpotential drop. However,  as expected, their total energy is  lower than the
@@ -306,9 +306,9 @@ cell with  $n=50$ layers as  evidenced by  their relative run-times  until lower
 cut-off voltage.  This is to  be expected as the  thin electrodes of  these high
 layer count cells cannot  store a large volume of active  material. Based on the
 explanation  from \cref{subsec:layeroptmotivation},  it  is  expected that  this
-trend  will continue  \mbox{\ie~the}  lower the  layer count,  the higher  the
-run-time until  cut-off. If this  were the case,  prima~facie it seems  that the
-layer optimisation task is trivial.
+trend will continue \ie~the lower the layer count, the higher the run-time until
+cut-off. If this were the case, prima~facie it seems that the layer optimisation
+task is trivial.
 
 Inspecting the  discharge curves of  lower layer  choices brings into  light the
 concept of \emph{usable} energy. Contrary  to expectations, the discharge curves
@@ -329,7 +329,7 @@ counts,  the usable  energy that  can be  extracted is  miniscule, albeit  their
 theoretical  capacity~$Q_n$  are  in-fact  the highest.  The  usable  energy  in
 \SI{}{\watthour} reported in \cref{tbl:CC_discharge_curves_table} is obtained by
 multiplying the integral  of the area under each discharge  curve by the applied
-current (\SI{60}{\ampere}) with the appropriate scaling of the time-base ( \ie~
+current (\SI{60}{\ampere}) with  the appropriate scaling of  the time-base (\ie~
 conversion from minutes to hours).
 
 \input{chapters/layer_opt/CC_discharge_curves_table.tex}
@@ -339,7 +339,7 @@ conversion from minutes to hours).
 discharge,  due to  the dependence  of  its nominal  capacity on  the number  of
 layers~$n$. This represents a departure from the norm in the modelling community
 wherein the  performance of cells  are quantified as  a function of  the applied
-C-rate  \eg{} in  chapters~\ref{ch:spmanalysis} and~\ref{ch:newelectrolytemodel}
+C-rate  \eg~in  chapters~\ref{ch:spmanalysis} and~\ref{ch:newelectrolytemodel}
 of  this thesis.  However, the  preliminary investigation  thus far  has quickly
 revealed that  this normalised  quantity does  not hold  much importance  in any
 study where the number of layers within a pouch cell is varied.
