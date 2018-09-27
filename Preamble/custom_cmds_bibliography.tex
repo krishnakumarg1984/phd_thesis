@@ -71,3 +71,22 @@
     {\usebibmacro{postnote}}
 
 
+\renewcommand*{\mkbibnamefirst}[1]{\edef\firstname{#1}\expandafter\first{\firstname}}
+
+\def\bibnamedelima{ }%
+\def\bibnamedelimb{ }%
+
+\makeatletter
+\def\@empty{}
+\def\first#1{\expandafter\@first#1 \@nil}
+\def\@first#1 #2\@nil{#1\addspace%
+  \if\relax\detokenize{#2}\relax\else\@initials#2\@nil\fi}
+\def\initials#1{\expandafter\@initials#1 \@nil}
+\def\@initials#1 #2\@nil{%
+  \initial{#1}%
+  \def\NextName{#2}%
+  \ifx\@empty\NextName\relax%
+  \else\bibinitdelim \@initials#2\@nil\fi}
+\def\initial#1{\expandafter\@initial#1\@nil}
+\def\@initial#1#2\@nil{#1\bibinitperiod}
+\makeatother
