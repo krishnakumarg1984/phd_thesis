@@ -76,12 +76,12 @@ characteristics and criterion upon which models are to be evaluated}
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
 description of physical  phenomena that is lower in  computational complexity by
-an arbitrary  magnitude than the original  \gls{dfn} model can be  considered as
-a  candidate  for further  investigation.  In  the  absence  of a  canonical  or
-quantitative definition of what constitutes a reduced order model, the number of
-candidate family  of models  to consider is  overwhelmingly large.  In practice,
-the  constraints and  challenges  imposed  by the  scope  of  this work,  \viz{}
-suitability  for  real-time  implementation,  limits  the  choice  of  candidate
+an  arbitrary magnitude  than the  original  \gls{dfn} model  can be  considered
+as  a  candidate for  further  investigation.  In  the  absence of  a  canonical
+or  quantitative definition  of  what  constitutes a  reduced  order model,  the
+number of  candidate family of  models to  consider is overwhelmingly  large. In
+practice, the  constraints and  challenges imposed  by the  scope of  this work,
+\viz~suitability for  real-time implementation,  limits the choice  of candidate
 modelling  families.  For  instance,   models  relying  primarily  on  classical
 finite  difference~\cite{Smith2006}, Galerkin's  approximation~\cite{Dao2012} or
 Galerkin's  projection~\cite{Fan2016,Fan2018}  methods  for  transformation  and
@@ -180,7 +180,7 @@ embedded applications.
 
 Several attempts have been undertaken to  improve and extend the ideas pioneered
 in Smith~\etal{}  For instance,  Lee~\etal{}~\cite{Lee2012a,Lee2012}~addressed a
-critical  missing  aspect,  \viz{}  the derivation  of  transcendental  transfer
+critical  missing  aspect,  \viz~the derivation  of  transcendental  transfer
 functions  for  both the  electrolyte  concentration  and its  potential.  These
 transfer  functions  were  obtained  by  using  a  Sturm-Liouville  approach  by
 retaining the first five modes of  an eigenfunction expansion procedure which is
@@ -361,18 +361,18 @@ the IEEE conference paper}
 
 % Removed as per Greg's advice and review/feedback
 
-% \Cref{ch:futurework} briefly presents the author's latest work and preliminary
-% results  towards  obtaining  a  similar  physics-informed  equivalent  circuit
-% model.  This  modelling  effort  is  a direct  application  of  the  gains  in
-% computing  efficiency  through  the  application  of  the  improved  \gls{dra}
-% reported  in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the  detailed
-% coverage  of  which is  performed  in  \cref{ch:chapter3}. This  work  intends
-% to  address  the  hitherto  unexplored  gap  in  impedance  modelling  \ie~the
-% absence  of an  equivalent impedance  model  that accounts  for the  impedance
-% contribution   from   all   electrochemical  quantities   in   the   \gls{p2d}
-% model.  This  physics-informed   impedance  model  can  be   extended  to  fit
-% parameter  values  of  components  in  an equivalent  circuit  model  \eg~  by
-% using  a   standard  Levenberg-Marquardt  non-linear  least   squares  fitting
+% \Cref{ch:futurework}   briefly  presents   the   author's   latest  work   and
+% preliminary results  towards obtaining  a similar  physics-informed equivalent
+% circuit  model.  This  modelling  effort   is  a  direct  application  of  the
+% gains  in  computing  efficiency  through  the  application  of  the  improved
+% \gls{dra}  reported  in Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the
+% detailed  coverage of  which  is performed  in  \cref{ch:chapter3}. This  work
+% intends  to  address  the  hitherto  unexplored  gap  in  impedance  modelling
+% \ie~the  absence   of  an  equivalent   impedance  model  that   accounts  for
+% the  impedance  contribution  from   all  electrochemical  quantities  in  the
+% \gls{p2d}  model.  This  physics-informed  impedance  model  can  be  extended
+% to  fit  parameter  values  of  components  in  an  equivalent  circuit  model
+% \eg~by using  a standard Levenberg-Marquardt non-linear  least squares fitting
 % algorithm~\cite{Levenberg1944, Marquardt1963}.
 
 
@@ -433,16 +433,17 @@ outweigh their drawbacks.
 
 
 \subsection{Time-domain  \glsfmtshort{rom}s}
+
 The working rubric of all time  domain \glspl{rom} typically consist of attempts
 to  reformulate the  original  \gls{p2d}  model equations  towards  the goal  of
 simplifying  them to  as much  extent  as possible.  In contrast  to the  hybrid
 models, all tasks involved in both model derivation and final implementation are
 carried out  entirely within the time  domain. While a subset  of prior research
-has focussed only  on simplifying certain aspects of the  cell's dynamics \eg~
-diffusion in the two electrodes, other published works have aimed at providing a
-simplified  description of  the  time domain  evolution  of \emph{all}  physical
-quantities of the cell. An evaluation  of the salient literature based upon both
-these approaches is performed here.
+has  focussed  only  on  simplifying  certain aspects  of  the  cell's  dynamics
+\eg~diffusion  in  the two  electrodes,  other  published  works have  aimed  at
+providing a  simplified description of  the time domain evolution  of \emph{all}
+physical quantities of  the cell. An evaluation of the  salient literature based
+upon both these approaches is performed here.
 
 
 In  this discussion,  the  modelling approaches  that  entail computations  with
@@ -549,10 +550,10 @@ significance in this context.
 In all  non-uniform discretisation schemes  discussed here, the  implications of
 using  a non-adaptive  support mesh  obtained by  the placement  of nodes  whose
 locations are optimised a~priori, must be considered carefully. For instance, in
-the prolonged operation of the cell  with a net unidirectional charge flow \eg~
-in an  electric vehicle  application, the reaction  front drifts  from separator
-back towards the current collectors. This is due to the exhaustion of lithium at
-the surface  of particles near the  separator interfaces. In this  scenario, the
+the prolonged operation of the cell with a net unidirectional charge flow \eg~in
+an electric vehicle  application, the reaction front drifts  from separator back
+towards the current collectors. This is due  to the exhaustion of lithium at the
+surface  of particles  near  the  separator interfaces.  In  this scenario,  the
 solutions  produced by  these models  could be  worse than  simpler models  with
 uniform mesh-density. Although  adaptive meshing strategies can  be employed for
 desktop simulation  with minimal effort,  it remains to be  seen if this  can be
@@ -740,6 +741,6 @@ field include
 \end{itemize}
 This research was  performed through an iterative cycle of  analysis, design and
 simulation-based verification  and shall be  elucidated in a  discourse spanning
-two chapters \viz{} \cref{ch:spmanalysis} and \cref{ch:newelectrolytemodel}.
+two chapters \viz~\cref{ch:spmanalysis} and \cref{ch:newelectrolytemodel}.
 
 
