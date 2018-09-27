@@ -7,8 +7,8 @@ notifications:
     on_success: never
 cache:
   directories:
-  # - "/tmp/texlive"
-  # - "$HOME/.texlive"
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
   - "$HOME/.cache/pip"
   # - "$HOME/texmf"
 script:
