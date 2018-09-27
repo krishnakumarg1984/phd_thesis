@@ -1,3 +1,4 @@
+- citeauthor
 - remove colour from hyperlinks
 - biblatex check files 
 - list of symbols
