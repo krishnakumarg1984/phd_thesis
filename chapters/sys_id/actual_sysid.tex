@@ -9,9 +9,9 @@ In a classical system identification  task, the discrete-time transfer functions
 for the systems  under consideration need to be  determined. These discrete-time
 transfer functions are  based on Z-transforms in the  frequency domain. However,
 for the purpose of working in time-domain, an analogous linear operator $q$ that
-performs a  forward shift on  its input \ie{} $  {q u[k] \longmapsto  u[k+1]} $.
+performs a  forward shift on  its input \ie~$  {q u[k] \longmapsto  u[k+1]} $.
 Similarly, applying the  backward shift operator $ q^{-1} $  on the input yields
-its value at the previous time-step \ie{} $ {q^{-1} u[k] \longmapsto u[k-1]}$.
+its value at the previous time-step \ie~$ {q^{-1} u[k] \longmapsto u[k-1]}$.
 
 \begin{figure}[!htbp]
     \centering
@@ -56,7 +56,7 @@ coefficients in $G(q)$ and $H(q)$ respectively.
 
 
 In  this  system  identification  task  at hand,  the  output  measurements  are
-collected from a  \emph{noise-free} simulation of the \gls{p2d}  model \ie{} the
+collected from a  \emph{noise-free} simulation of the \gls{p2d}  model \ie~the
 disturbance transfer operator in \cref{eq:outputwithsysandnoise} is zero
 \begin{align}
     y[k] &= G(q)u[k] + \cancelto{0}{H(q)}e[k]
@@ -72,7 +72,7 @@ Thus, the system identification task becomes one that of estimating
     \item The number of feedback coefficients (poles) $n_a$.
     \item The pole locations $a_1, a_2 \dots a_{n_a}$.
 \end{enumerate}
-for  each  of  the  two  transfer operators  $G_1(q)$  and  $G_2(q)$  \ie{}  the
+for  each  of  the  two  transfer operators  $G_1(q)$  and  $G_2(q)$  \ie~the
 electrolyte  time-evolution subsystems  in the  negative and  positive electrode
 region respectively.
 
@@ -84,12 +84,12 @@ response of the systems under consideration.
 In \cref{fig:linearity},   step  inputs   of   $I_1   =  \SI{60}{\ampere},   I_2
 =    \SI{12}{\ampere},$   and    $I_3   =    \SI{36}{\ampere}$   were    applied
 to    the   two    subsystems.    Inspecting   closely    all   the    responses
-\ie{}   $\widetilde{Q}_{\text{e,n}_1},    \widetilde{Q}_{\text{e,n}_2}   $   and
+\ie~$\widetilde{Q}_{\text{e,n}_1},    \widetilde{Q}_{\text{e,n}_2}   $   and
 $\widetilde{Q}_{\text{e,n}_3}$    in    the     negative    electrode    region,
 and    $\widetilde{Q}_{\text{e,p}_1},    \widetilde{Q}_{\text{e,p}_2}   $    and
 $\widetilde{Q}_{\text{e,p}_3}$  in the  positive electrode  region, it  is clear
 that all these outputs start exactly at  zero. Therefore, there is no delay term
-to be considered for the transfer operators \ie{} $n_k = 0$ for both subsystems.
+to be considered for the transfer operators \ie~$n_k = 0$ for both subsystems.
 
 \subsection{Choice of model structure}\label{subsec:modelstrucchoice}
 
@@ -142,7 +142,7 @@ response data.
     \caption[Bode magnitude plots of the electrolyte time-evolution sub-systems]{%
         Bode magnitude  plots showing the  estimated frequency response  for the
         two  subsystems under  consideration.  The frequency  response data  was
-        obtained  through a spectral  analysis \ie{}  by computing  the ratios  of
+        obtained  through a spectral  analysis \ie~by computing  the ratios  of
         spectra of the de-biased input  and output sequences. The sequences were
         smoothed using a Hanning window before computing the ratio.
     }%
@@ -476,7 +476,7 @@ clearly illustrated.
 
 The  poles of \cref{eq:finaldisctfneg}  lie  very close  to their  corresponding
 counterparts of \cref{eq:finaldisctfpos}  in the  stable region of  the Z-domain
-\ie{}  within   the  unit  circle.   This  confirms  the  hypothesis   that  the
+\ie~within   the  unit  circle.   This  confirms  the  hypothesis   that  the
 time-evolution subsystems  in these  two regions  exhibit similar  dynamics. The
 slight differences in  the pole locations could be attributed  to the variations
 in  the  physical  parameters  pertaining  to the  two  electrode  regions.  The

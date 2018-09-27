@@ -15,7 +15,7 @@ non-linearities in
     \item the Butler-Volmer reaction kinetics (see \cref{eq:butlervolmer}), and
     \item the \glspl{ocp} of the two electrodes (see \cref{eq:lcoUocpPos} and \cref{eq:lcoUocpPos}).
 \end{enumerate*}
-However,  we are  dealing with  a much  narrower scope  \ie{} the  systems under
+However,  we are  dealing with  a much  narrower scope  \ie~the  systems under
 consideration  are just  the two  sub-system entities  (one per  electrode) that
 transform the  applied current at  a particular  time-step to the  overall moles
 per  unit area  of  \ch{Li^+}  ions in  the  corresponding  electrode region  of
@@ -29,7 +29,7 @@ reproduced here after  being suitably adapted to the notation  of the subsystems
 at hand.
 \begin{enumerate}
     \item Apply input $u_1(t) = I(t)$ to the system and measure the outputs $Q_{\text{e,n}_1}\!(t)$ and $Q_{\text{e,p}_1}\!(t)$.
-    \item Apply a delayed version of the input by $\tau$ seconds \ie{} $u_2(t) = I(t-\tau)$ to the system and measure the outputs $Q_{\text{e,n}_2}\!(t)$ and $Q_{\text{e,n}_2}\!(t)$.
+    \item Apply a delayed version of the input by $\tau$ seconds \ie~$u_2(t) = I(t-\tau)$ to the system and measure the outputs $Q_{\text{e,n}_2}\!(t)$ and $Q_{\text{e,n}_2}\!(t)$.
     \item If $Q_{\text{e,n}_2}\!(t)$ = $Q_{\text{e,n}_1}\!(t-\tau)$ and
         $Q_{\text{e,p}_2}\!(t)$ = $Q_{\text{e,p}_1}\!(t-\tau)$ for all possible
         delays $\tau$, as well as for all choice of input signals $I(t)$, then the systems are time-invariant.
@@ -117,7 +117,7 @@ that occur  when operating close  to the noise  floor of the  machine's floating
 point units.
 
 Similar to  the case demonstrated  here, all  tests for time-invariance  for all
-permutations of  the chosen operating  conditions passed successfully  \ie{} the
+permutations of  the chosen operating  conditions passed successfully  \ie~the
 delayed  version of  the original  output  signals accurately  matched with  the
 responses  to  the corresponding  delayed  input  (down to  machine  precision),
 thereby confirming the time-variance of  the subsystems considered in the system
@@ -133,7 +133,7 @@ signal  in this  case is  the applied  load current  $I(t)$, which  can be  both
 positive  (during discharge)  and  negative  (during charge).  The  mean of  the
 training profile is  \SI{-1.167}{\ampere} and that of the  validation profile is
 \SI{-0.3273}{\ampere}. Clearly,  the mean values  are dependent upon  the actual
-current profile used. The appropriately de-biased signal \ie{} $\widetilde{I}(t)
+current profile used. The appropriately de-biased signal \ie~$\widetilde{I}(t)
 = I(t) - \bar{I}(t)$ is to be used  for training and validation data sets in the
 system identification procedure. For the purpose  of linearity analysis, it is a
 standard practice to simply apply a step change in input (from zero) and measure
@@ -234,7 +234,7 @@ linearity.
         this visualisation, constant current inputs are used throughout. The top
         row of plots shows $\widetilde{Q}_{\text{e,n}}$ and
         $\widetilde{Q}_{\text{e,p}}$ for two step inputs $I_1(t) =
-        \SI{60}{\ampere}$ and $I_2(t) = \SI{12}{\ampere}$ \ie{} discharge with
+        \SI{60}{\ampere}$ and $I_2(t) = \SI{12}{\ampere}$ \ie~discharge with
         1C and C/5 currents respectively. The second row of plots shows
         $\widetilde{Q}_{\text{e,n}_3}$ and $\widetilde{Q}_{\text{e,p}_3}$  for
         $I_3 = \SI{36}{\ampere}$, where $I_3 = \alpha I_1 + \beta I_2$ with
@@ -256,14 +256,14 @@ constant  currents  and  integer  scaling  factors are  used  for  the  sake  of
 illustration.  The  plots   in  the  left  column  deal   with  the  electrolyte
 time-evolution  subsystem  in  the  negative electrode  region.  Similarly,  the
 plots  in  the  right  column  deal with  the  corresponding  subsystem  in  the
-positive electrode region.  A discharge current of 1C  \ie{} \SI{60}{\ampere} is
+positive electrode region.  A discharge current of 1C  \ie~\SI{60}{\ampere} is
 first  applied  and  the  corresponding  outputs  $\widetilde{Q}_{\text{e,n}_1}$
 and   $\widetilde{Q}_{\text{e,p}_1}$  are   obtained.   Secondly,  a   discharge
-current   of   C/5   \ie{}   is    applied   and   the   corresponding   outputs
+current   of   C/5   \ie~is    applied   and   the   corresponding   outputs
 $\widetilde{Q}_{\text{e,n}_2}$ and  $\widetilde{Q}_{\text{e,p}_2}$ are obtained.
 These set of responses are plotted  in the top row of \cref{fig:linearity}. Now,
 a  third  value  of  input  current $I_3$,  computed  as  a  linear  combination
-of  the  previous  input  currents  \ie{}  $I_3 =  \alpha  I_1  +  \beta  I_2  $
+of  the  previous  input  currents  \ie~$I_3 =  \alpha  I_1  +  \beta  I_2  $
 is  applied.  For  illustrative  purposes, the  integer  set  $(\alpha,\beta)  =
 (1,-2)$  was  chosen  for  the   scaling  coefficients,  which  implies  $I_3  =
 \SI{12}{\ampere}$. The corresponding  outputs $\widetilde{Q}_{\text{e,n}_3}$ and

@@ -104,7 +104,7 @@ Prima facie, it may seem that electrolyte porosities and filler volume fractions
 do  not  influence the  \gls{spm}  model.  However,  they  do have  an  indirect
 bearing  on arriving  at a  critical parameter,  \viz{} the  solid phase  volume
 fraction, $\varepsilon_\sj$. This parameter is  required to compute the specific
-interfacial surface area of the electrodes $a_\sj$ \ie{} the effective electrode
+interfacial surface area of the electrodes $a_\sj$ \ie~the effective electrode
 area  exposed to  reaction and  is an  important entity  in the  \gls{spm} model
 equations  presented  in  \cref{subsec:basicspmgoverningeqns}. The  solid  phase
 volume fractions  are also required in  simulating the \gls{p2d} model  owing to
@@ -140,7 +140,7 @@ thickness of the separator material only  plays a role in electrolyte behaviour.
 By  the   model  geometry  presented  in   \cref{subsec:basicspmgeometry},  this
 parameter also falls outside the scope of the basic \gls{spm}.
 
-The  thicknesses  of the  electrodes  are  optimised  for equal  loading \ie{}
+The  thicknesses  of the  electrodes  are  optimised  for equal  loading \ie~
 to  achieve  a   balance  in  their  individual  capacities   to  store  \ch{Li}
 atoms.  The  thickness  of  the  positive  electrode  is  chosen  as  the  value
 from~Subramanian~\etal{}~\cite{Subramanian2009}. The  thickness of  the negative
@@ -171,7 +171,7 @@ $l_\text{neg} = \SI{72}{\micro\meter}$.
 At first, it  may be surprising to  note that the values of  the particle radius
 $R_\pj$ used in  both the \gls{p2d} and \gls{spm} remain  identical. However, it
 is important  to note that  the \gls{p2d} equations  of the \gls{dfn}  model are
-cast in  a normalised  form \ie{}  already set  up to  account for  the overall
+cast in  a normalised  form \ie~already set  up to  account for  the overall
 capacity of the  cell under consideration implicitly through usage  of a current
 density  (per unit  area) for  its  simulation. Furthermore,  this explains  why
 increasing the  number of  discretisation nodes does  not increase  the modelled
@@ -224,7 +224,7 @@ parameters influencing simulation setup.
 
 The lower  cut-off voltage  of the  cell is chosen  to be  \SI{2.5}{\volt}. This
 is  deliberately  kept  lower  than  the voltage  corresponding  to  the  cell's
-\SI{0}{\percent} \ie{}  \SI{2.7}{\volt}.  If set  above  \SI{2.7}{\volt}  even
+\SI{0}{\percent} \ie~\SI{2.7}{\volt}.  If set  above  \SI{2.7}{\volt}  even
 at  infinitesimally small  discharge  currents, the  cell  would cut-off  before
 achieving complete discharge. Choosing a value lower than \SI{2.7}{V} means that
 the cell gets a chance to recover its terminal voltage, despite spikes in highly
@@ -238,7 +238,7 @@ the  \gls{soc}  and trigger  cut-off  in  the  event  of charge  depletion  (see
 this value, although no specific explanation is given for this choice.
 
 The  upper   cut-off  voltage   of  the  cell   is  chosen   at  \SI{4.3}{\volt}
-\ie{}  \approx\SI{100}{\milli\volt} higher  than  the  equilibrium \gls{ocp}  at
+\ie~\approx\SI{100}{\milli\volt} higher  than  the  equilibrium \gls{ocp}  at
 \SI{100}{\percent} \gls{soc}. There are several  reasons for this smaller margin
 at the upper end of the voltage spectrum.
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
@@ -279,7 +279,7 @@ thesis, as  the primary goal  is to obtain  a physics based  model incorporating
 electrochemical principles amenable for embedded application. Hence, the thermal
 dependence  of parameters  through an  Arrhenius-type relationship  is also  not
 considered. Future work could  include performing thermally coupled simulations,
-\ie{}  incorporating   thermally  dependent   parameters  and   simplified  heat
+\ie~incorporating   thermally  dependent   parameters  and   simplified  heat
 generation expressions, \eg{} a lumped thermal  model could be employed for both
 the \gls{spm} and \gls{p2d} and their performances may be compared.
 
@@ -311,7 +311,7 @@ as  a function  of  initial concentration  $c_\text{e,0}$  and cell  temperature
 $T_\text{cell}$. The following salient observations are noted.
 \begin{enumerate}%[label=\emph{\alph*})]
     \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$ is uniform over the axial space $x$ and
-    \item only isothermal cell behaviour is considered \ie{} $T(t) = T_\text{cell}$.
+    \item only isothermal cell behaviour is considered \ie~$T(t) = T_\text{cell}$.
 \end{enumerate}
 Hence, \cref{eq:kappavsCeandT} reduces to
 \begin{multline}\label{eq:kappavsCeinitandTcell}
@@ -405,7 +405,7 @@ Current sensors in battery cycler equipment use high-precision (typically 15--18
 bit) \glspl{adc}  and are  able to  offer high  \glspl{snr} except  at ultra-low
 currents. The main difficulty with using very low C-rates is that it drastically
 slows down the  characterisation procedure. Using a discharge  current of C/100,
-\ie{}  \SI{0.6}{\ampere} in  this case,  results in  a characterisation  time of
+\ie~\SI{0.6}{\ampere} in  this case,  results in  a characterisation  time of
 \SI{100}{\hour} or  \approx 4$\sfrac{1}{4}$ days (excluding soak-times  and other
 set-up related  activities). Furthermore, for accurate  coulomb-counting, a high
 data logging  rate is needed,  resulting in  large file sizes  and corresponding
@@ -558,7 +558,7 @@ higher than its \gls{p2d} counterpart.
         \glsfmtshort{p2d} and \glsfmtshort{spm} models for various constant
         discharge rates. The column on the right shows the error of the
         \glsfmtshort{soc} computed by the \glsfmtshort{spm} with respect to that
-        computed by the \glsfmtshort{p2d} model \ie{} $ \varepsilon_\text{soc}
+        computed by the \glsfmtshort{p2d} model \ie~$ \varepsilon_\text{soc}
         = {z_\text{p2d}} - z_\text{spm} $. The \glsfmtshort{spm} remains quite
     accurate even at moderate currents such as 3C.}
     \label{fig:cnstdischgspmp2dsoc}
@@ -625,7 +625,7 @@ standard rate of 1C is used.
     \glsfmtshort{spm} for 1C constant current charge]{Time evolution of voltage
         and \glsfmtshort{soc} (top row) of the \glsfmtshort{p2d} and
         \glsfmtshort{spm} models upon charging with a constant current of 1C,
-        \ie{} \SI{60}{\ampere} starting at \SI{0}{\percent} \glsfmtshort{soc}.
+        \ie~\SI{60}{\ampere} starting at \SI{0}{\percent} \glsfmtshort{soc}.
         The bottom row shows the percentage in terminal voltage and
         \glsfmtshort{soc} respectively of the \glsfmtshort{spm} with respect to
     the \glsfmtshort{p2d} model.}
@@ -634,7 +634,7 @@ standard rate of 1C is used.
 
 The top row of \cref{fig:cnstchgspmp2d} shows  the evolution of terminal voltage
 and \gls{soc}  of the \gls{p2d} and  \gls{spm} models under an  applied charging
-current of  1C \ie{} \SI{60}{\ampere}.  The constant-voltage charging  phase is
+current of  1C \ie~\SI{60}{\ampere}.  The constant-voltage charging  phase is
 not shown. The bottom row shows  the corresponding errors of the \gls{spm} model
 with respect  to the reference  \gls{p2d} benchmark. The corollary  behaviour of
 the constant current discharge behaviour  is observed here. The terminal voltage

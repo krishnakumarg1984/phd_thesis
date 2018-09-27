@@ -17,7 +17,7 @@ A  description  of   the  working  principle  of  the  cell   was  presented  in
 \cref{subsec:liionchemistry} and  is not  repeated here.  The \gls{spm}  aims to
 capture the electrochemical phenomena along the thickness~$l_j$,~\jinnegpos{} of
 each  porous electrode  by a  representative  spherical particle.  Thus the  two
-distinct  solid  phase porous  regions  of  the  cell \ie{} the  negative  and
+distinct  solid  phase porous  regions  of  the  cell \ie~the  negative  and
 positive electrode regions, are idealised as two spheres of radii~$R_\text{neg}$
 and~$R_\text{pos}$ respectively.
 
@@ -65,13 +65,13 @@ inherent assumptions in model derivation.  The validity of these assumptions and
 their effects  on model accuracy shall  be examined in the  results presented in
 \cref{subsec:simresultsbasicspm}. As  a broad  outline of  its scope,  the model
 attributes  the  cell polarisation  to  two  dominant physics,  \viz{}  reaction
-kinetics and solid phase transport phenomena \ie{} diffusion dynamics.
+kinetics and solid phase transport phenomena \ie~diffusion dynamics.
 
 
 The  \gls{spm}  assumes that  charge  transfer  happens throughout  the  surface
 of  each  representative  spherical  particle where  intercalation  occurs.  The
 electronic  conductivity of  the solid  phase is  assumed to  be high  enough to
-ignore the  spatial distribution  of charge \ie{}  the local  volumetric current
+ignore the  spatial distribution  of charge \ie~the local  volumetric current
 density is assumed  to be uniform along the thickness  of each porous electrode.
 This assumption is  motivated by the early calculations performed  by Newman and
 Tobias~\cite{Newman1962} in their stand-alone  analysis of current distributions
@@ -101,7 +101,7 @@ initial value~$c_{\text{e},0}$  throughout the cell thickness.  Neglecting local
 concentration gradients in  the solution phase, together with  ignoring its mass
 transport phenomena, implies  that the current in the electrolyte  does not vary
 over  space  and  time.  Hence,  in  the  conventional  \gls{spm}  there  is  no
-contribution of the solution phase  to internal overpotentials \ie{} electrolyte
+contribution of the solution phase  to internal overpotentials \ie~electrolyte
 dynamics have  no influence on the  cell's terminal voltage. The  \gls{spm} also
 ignores any  variations in material  porosities in each  electrode. Furthermore,
 all solid phase diffusivities and kinetic parameters are held constant. Finally,
@@ -137,7 +137,7 @@ movement of neutral  atoms within the solid phase is  primarily due to diffusion
 within particles.  This diffusion  phenomena is induced  due to  a concentration
 gradient that  exists between the surface  and interior/core of the  solid phase
 particles. Based on the geometrical assumptions of the \gls{spm} as discussed in
-\cref{subsec:basicspmgeometry} \ie{} owing to the lack of spatial discretisation
+\cref{subsec:basicspmgeometry} \ie~owing to the lack of spatial discretisation
 in  the  axial  direction~$x$,  the  concentrations  of  \ch{Li^0}  in  the  two
 electrodes~$c_\sj(x,r,t)$, reduce  to a  function of the  radial co-ordinate~$r$
 and time~$t$, and is denoted by~$c_\sj(r,t)$,~\jinnegpos{}. To keep the notation
@@ -191,7 +191,7 @@ As   per  the   assumption  of   uniform   diffusivity  in   the  solid   phase,
 \Cref{eq:csdiffusionfinal} represents  a mass-balance equation  describing solid
 phase diffusion  in each electrode  and is  identical to the  governing equation
 \cref{eq:dfnsoliddiff} from \cref{tbl:dfneqns}. The  potential at each electrode
-depends  on   the  solid  phase  surface   concentration~$c_\sjsurf$  \ie{}  the
+depends  on   the  solid  phase  surface   concentration~$c_\sjsurf$  \ie~the
 \ch{Li^0} concentration~$c_\sj(r,t)$  evaluated at~$r=R_\pj$,~\jinnegpos{} where
 $R_\pj$~represents  the  equivalent  radius  of  each  representative  spherical
 particle.
@@ -203,7 +203,7 @@ be zero.
 \end{equation}
 
 Diffusion in the solid phase is driven by concentration gradients induced due to
-intercalation flux  density at the  particle surface  \ie{} the surface  of each
+intercalation flux  density at the  particle surface  \ie~the surface  of each
 particle experiences a pore-wall flux density driven by reaction kinetics. Based
 on  the  \gls{spm}  geometry discussed  in  \cref{subsec:basicspmgeometry},  the
 spatial dependence of this molar  flux density~$j_\nj(x,t)$ is eliminated and it
@@ -269,7 +269,7 @@ simulation and  state-estimation environment. Since diffusion  in each spherical
 particle is modelled by the well-known Fickian dynamics~\cite{Fick1995}, several
 attempts have  been made to  obtain an  approximate analytical solution  for the
 solid phase concentration in both electrodes.
-% In  the  context  of  \gls{spm}  modelling, the  earliest  such  work \ie{}  a
+% In  the  context  of  \gls{spm}  modelling, the  earliest  such  work \ie~a
 % comparison of  the discretised version  with an approximate  analytical solution
 % was performed by Santhanagopalan~\etal~\cite{Santhanagopalan2006}.
 In a  dimensionless analysis study,  Zhang and White~\cite{Zhang2007}  provide a
@@ -462,7 +462,7 @@ space representation  that collates  all intermediate equations  and definitions
 presented  thus  far into  a  single  system  of  equations that  describes  the
 evolution of solid concentration and terminal  voltage over time, expressed as a
 response to the  external current input~$I(t)$. However,  the non-linearities in
-the equation for terminal voltage \ie{} \cref{eq:cellterminalvoltagebasic} imply
+the equation for terminal voltage \ie~\cref{eq:cellterminalvoltagebasic} imply
 that it is  not possible to represent  the \gls{spm} in the form  of a classical
 \gls{lti}  system  of \cref{eq:LTIstatespace}.  Instead,  the  \gls{spm} can  be
 summarised  by a  system  of linear  state equations  together  with the  single
@@ -550,7 +550,7 @@ procedure    outlined   in \cref{subsec:basicspmfurtherdimensionalityreduction},
 \end{align}
 Assuming    no    loss   of    cycleable    lithium    or   other    degradation
 mechanisms,  the   total  number  of   moles  of   lithium  in  the   system  is
-conserved   \ie{}   $\diff{n_\text{Li}}{t}   =  0$.   Substituting   this   into
+conserved   \ie~$\diff{n_\text{Li}}{t}   =  0$.   Substituting   this   into
 \cref{eq:totallithiumsimplified},
 \begin{align}
     0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t} \\
@@ -644,7 +644,7 @@ Given   the   initial  \gls{soc}   of   the   cell~$z(0)$,  the   initial   bulk
 concentration   of   the    negative   electrode   at   equilibrium~$c_\sneg(0)$
 is   obtained  by   \cref{eq:csfluxinitialcondition}.  The   initial  value   of
 the   mean   radial   concentration   flux    in   both   electrodes   is   zero
-\ie{}~\mbox{$q_j(0)    =   0$}.    Therefore,   the    initial   state    vector
+\ie~\mbox{$q_j(0)    =   0$}.    Therefore,   the    initial   state    vector
 is~$\vect{0,0,c_\sneg(0)}$.   Thus,   the   system   of   equations   given   by
 \crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}  form  a  complete
 state-space representation of the conventional \gls{spm}. This state-space model

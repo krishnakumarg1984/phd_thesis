@@ -254,7 +254,7 @@ the  final  state  space  model  thus  obtained  is  simple  to  implement,  the
 classical \gls{dra} scheme suffers from significant computational bottlenecks in
 forming the  required block-Hankel  matrices during the  model-derivation phase.
 A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
-structure of  these Hankel  matrices was  proposed by  this thesis  author \ie{}
+structure of  these Hankel  matrices was  proposed by  this thesis  author \ie~
 Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers the
 requirements for computational memory and  processing power. The details of this
 contribution shall be presented in \cref{ch:improveddra} of this thesis.
@@ -367,7 +367,7 @@ the IEEE conference paper}
 % computing  efficiency  through  the  application  of  the  improved  \gls{dra}
 % reported  in  Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the  detailed
 % coverage  of  which  is  performed in \cref{ch:chapter3}.  This  work  intends
-% to  address  the  hitherto  unexplored   gap  in  impedance  modelling \ie{}
+% to  address  the  hitherto  unexplored   gap  in  impedance  modelling \ie~
 % the  absence  of   an  equivalent  impedance  model  that   accounts  for  the
 % impedance contribution  from all  electrochemical quantities in  the \gls{p2d}
 % model.  This  physics-informed   impedance  model  can  be   extended  to  fit
@@ -484,7 +484,7 @@ In the \gls{dfn} model, the evolution of lithium in the solid phase is described
 by the classical  diffusion equation given by  Fick's first law~\cite{Fick1995}.
 In order  to solve for  this concentration profile  in full-order models,  it is
 required to discretise every spherical particle (represented by the placement of
-a  node  in  the  axial  \ie{} through-thickness  direction)  along  its  radial
+a  node  in  the  axial  \ie~through-thickness  direction)  along  its  radial
 direction (pseudo  dimension). This  additional discretisation along  the pseudo
 dimension dramatically increases the overall  number of discretisation nodes and
 adversely  affects  computational  efficiency.  The impact  of  such  high  node
@@ -515,7 +515,7 @@ Suthar~\etal{}~\cite{Suthar2014}  replaced  Jacobi  polynomials  with  Chebyshev
 polynomials to  extend the  applicability of the  resulting \gls{rom}  to higher
 C-rates. Bizeray~\etal{}~\cite{Bizeray2015} provide a  detailed treatment of the
 usage  of Chebyshev  discretisation for  the full  \gls{p2d} model  on a  global
-scale \ie{} along both the axial and radial directions for all equations of the
+scale \ie~along both the axial and radial directions for all equations of the
 \gls{dfn}  model. A  Lagrangian-like integral  method was  proposed by  Rahn and
 Wang~\cite{Rahn2013}  to  deal  with  electrolyte  and  solid-state  diffusions.
 However, this method works well only at low C-rates.
@@ -540,7 +540,7 @@ through  a corresponding  inverse transformation.  Although this  bi-directional
 transformation  is  purely  algebraic  in nature,  the  requirement  of  running
 a  spatially  resolved  model  coupled  with  the  overheads  of  such  variable
 transformations   render   these  class   of   models   unsuitable  for   online
-implementation. The contribution  of Lee~\etal~\cite{Lee2012a,Lee2012} \ie{} the
+implementation. The contribution  of Lee~\etal~\cite{Lee2012a,Lee2012} \ie~the
 ability to solve for any electrochemical variable at arbitrary spatial locations
 by completely eliminating the need for spatial discretisation assumes particular
 significance in this context.
@@ -667,7 +667,7 @@ of the \gls{pwl} fit. Since  this computationally intensive step occurs offline,
 it does not  adversely affect the real-time performance of  the model. The final
 \gls{rom}  is implemented  using  standard state-space  matrices. However,  this
 model  also exhibits  the primary  drawback of  all hybrid  modelling approaches
-\ie{} a complete lack of physical  interpretation of its parameters. As with any
+\ie~a complete lack of physical  interpretation of its parameters. As with any
 other \gls{rom} involving \gls{soc}-based linearisation points, the stability of
 the model  to uncertainties in  physical parameters is questionable.  A detailed
 sensitivity analysis  of the knot  placement scheme's output to  such parametric

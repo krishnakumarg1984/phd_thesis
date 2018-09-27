@@ -71,12 +71,12 @@ approach   for   describing  its   spatial   profile.   Such  an   approach   is
 motivated   by    the   keen    observation   that   the    baseline   quadratic
 approximation  model  has  a  natural  `pause'  in  its  model  description.  To
 clarify, \crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}  form a  tightly
-coupled  square  system  \ie{}  a  set   of  seven  linear  equations  in  seven
+coupled  square  system  \ie~a  set   of  seven  linear  equations  in  seven
 unknowns.   In   this   system,   the   time   evolution   of   $Q_{\text{e,}j}$
 are   described  through   a  separate   system  of   first  order   \glspl{ode}
 given by \crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic}.  In a
 practical  implementation,  these  \glspl{ode}  are solved  independently  in  a
-decoupled  manner \ie{}  by  using  the coefficients  obtained  from the  linear
+decoupled  manner \ie~by  using  the coefficients  obtained  from the  linear
 system of \crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration} in the previous
 time-step. The  author's hypothesis is that  by taking advantage of  the natural
 break  in the  operational  sequence which  involves  two separate  computations
@@ -96,11 +96,11 @@ time-evolution model of the electrolyte concentration dynamics.
 
 Based  upon the  experience  gained  in dealing  with  the literature  presented
 in \cref{sec:electrolyteinclusion}, it is  the author's view that,  owing to the
-complex behaviour of electrolyte, a  naive top-down approach \ie{} including all
+complex behaviour of electrolyte, a  naive top-down approach \ie~including all
 the physics upfront followed by a  systematic simplification, might only yield a
 model that is  mathematically intractable for adoption in  an embedded \gls{bms}
 environment.  The baseline  quadratic  approximation method  has  proven that  a
-bottom-up approach \ie{} pre-assuming a simplified structure for the final model
+bottom-up approach \ie~pre-assuming a simplified structure for the final model
 and adapting its coefficients to  physical constraints yields a viable candidate
 for describing electrolyte dynamics and  for later inclusion in the conventional
 \gls{spm}.
@@ -121,7 +121,7 @@ exhausted   by  this   stage  (refer \cref{subsec:quadraticsimresultsanalysis}).
 Although \crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}     are    derived
 from     the      \gls{dfn}     model,      the     coefficients      of     the
 diffusivities   in    the   \gls{rhs}   of    the   next   set    of   equations
-\ie{} \crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic},   merely
+\ie~\crefrange{eq:negliionmolesquadratic}{eq:posliionmolesquadratic},   merely
 involve  substitutions  of the  spatial  derivatives  of the  assumed  quadratic
 expression.
 
@@ -134,8 +134,8 @@ derivative evaluation which in-turn depends  on the correctness of the quadratic
 functions~(\crefrange{eq:cenquadreduced}{eq:cepquadreduced})  themselves. It  is
 not feasible to quantify the magnitude of error introduced in the time-evolution
 of concentration  given a small-signal  perturbation in the coefficients  of the
-quadratic spatial  computation \ie{} the  implicit coupling between them  is not
-transparent. Since the quadratic approximation  itself is not perfect \ie{} does
+quadratic spatial  computation \ie~the  implicit coupling between them  is not
+transparent. Since the quadratic approximation  itself is not perfect \ie~does
 not capture the  spatial gradient \emph{exactly} as the \gls{p2d}  model as seen
 in \cref{fig:spatialionicconc1C}, the internal coupling of coefficients leads to
 errors in time-evolution computation.
@@ -145,7 +145,7 @@ spatial  derivative of  concentration  and its  temporal evolution  counterpart.
 Inspired by the fact that the  quadratic approximation model had almost achieved
 the desired goals with
 \begin{enumerate}[label=\emph{\alph*})]
-    \item a bottoms-up approach \ie{} assuming some model structure a~priori, and
+    \item a bottoms-up approach \ie~assuming some model structure a~priori, and
     \item not bound by any physical considerations due to the exhaustion of governing equations
 \end{enumerate}
 led  the author  to  broach a  suitable modelling  concept  that exhibits  these
