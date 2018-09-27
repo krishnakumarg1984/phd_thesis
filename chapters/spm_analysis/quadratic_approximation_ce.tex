@@ -36,7 +36,7 @@ derivations, but rather aids it by keeping the notations compact.
 \begin{figure}[!htbp]
     \captionsetup{singlelinecheck=off}
     \centering
-    \includegraphics{placeholder_images/example-image-golden.pdf}
+    \includegraphics{co_ord_sys}
     \caption[Co-ordinate systems for quadratic approximation of
     electrolyte concentration]{Schematic diagram of the electrochemical sandwich
         consisting of
@@ -46,10 +46,12 @@ derivations, but rather aids it by keeping the notations compact.
             \item positive electrode
         \end{enumerate*} depicting the co-ordinate system used in deriving the
         quadratic approximation profile. The global spatial co-ordinate is $x
-        \in \{0,l_\text{tot}\}$, where $l_\text{tot} = l_\text{neg} +
-        l_\text{sep} + l_\text{pos}$. Local co-ordinate systems specific to each
+        \in \{0,L\}$, where \mbox{$L = l_\text{tot} = l_\text{neg} + l_\text{sep} +
+        l_\text{pos}$}. Local co-ordinate systems~$z$ specific to each
         region are also defined. It should be noted that the positive
-    electrode's local co-ordinate axis direction is reversed.}
+        electrode's local co-ordinate axis direction is reversed with respect to
+        the global co-ordinate axis. Illustration reproduced from
+    Deng~\etal~\cite{Deng2018}.}
     \label{fig:coordsquadapprox}
 \end{figure}
 
@@ -121,7 +123,7 @@ functions,  the  derivation  naturally  progresses  towards  seeking  a  set  of
 the  second   order  \glspl{ode}  of \cref{eq:dfnliquiddiff}   (for  electrodes)
 and \cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
-this sequence of steps for the negative electrode region
+this sequence of steps for the negative electrode region,
 \mathleft
 \begin{equation}
     \begin{WithArrows}[b]
@@ -157,16 +159,16 @@ In    order    to   evaluate    the    integral    term   in    the    \gls{rhs}
 of \cref{eq:negliionmolestoreduce}    and \cref{eq:posliionmolestoreduce},   the
 solid  phase  charge  conservation  equation~(\cref{eq:solidchargeconserve})  is
 integrated  along the  local  co-ordinate  axis of  the  negative electrode  and
-positive electrode respectively
+positive electrode respectively.
 \begin{align}
     \int_0^{l_\text{n}} j_\text{n}\, dz & =  \frac{I}{a_\snsub A F} \label{eq:negfluxintegral}\\
     \int_0^{l_\text{p}} j_\text{p}\, dz & =  \frac{-I}{a_\spsub A F}\label{eq:posfluxintegral}
 \end{align}
 
-Substituting \crefrange{eq:negfluxintegral}{eq:posfluxintegral}
-into \crefrange{eq:negliionmolestoreduce}{eq:posliionmolestoreduce}
-respectively
+Substituting       \crefrange{eq:negfluxintegral}{eq:posfluxintegral}       into
+\crefrange{eq:negliionmolestoreduce}{eq:posliionmolestoreduce} respectively,
 \begin{align}
+    \allowdisplaybreaks
     \diff*{Q_\text{e,s}}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} - (1 - t^0_\text{+}) \cancel{a_\snsub} \frac{I}{\cancel{a_\snsub} A F} \\
     \diff*{Q_\text{e,p}}{t} &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \cancel{a_\spsub} \frac{-I}{\cancel{a_\spsub} A F}
 \end{align}
@@ -178,8 +180,8 @@ which leads to the general expressions  for the cross-sectional molar density of
     \diff*{Q_\text{e,s}}{t} & = D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolesgen}                                             \\
     \diff*{Q_\text{e,p}}{t} & = D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} - (1 - t^0_\text{+}) \frac{I}{A F}\label{eq:posliionmolesgen}
     \intertext{Substituting the assumed quadratic expressions for electrolyte concentrations in
-        each of the three region, \ie{} \crefrange{eq:cenquadreduced}{eq:cepquadreduced}
-    in the above system,\ie{} \crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
+        each of the three regions \crefrange{eq:cenquadreduced}{eq:cepquadreduced}
+    in the above system \ie{}~\crefrange{eq:negliionmolesgen}{eq:posliionmolesgen}}
     \diff*{Q_\text{e,n}}{t} & = 2 a_2 l_\text{n} D_\effn + (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:negliionmolesquadratic}                                \\
     \diff*{Q_\text{e,s}}{t} & = 2 a_5 l_\text{s} D_\effs\label{eq:sepliionmolesquadratic}                                                                                                     \\
     \diff*{Q_\text{e,p}}{t} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
@@ -218,8 +220,8 @@ The             system             of             three             \glspl{ode},
 with  \crefrange{eq:Qeninit}{eq:Qepinit}  representing the  initial  conditions,
 form   an    \gls{ivp}.   \Crefrange{eq:cecontinuitynegsep}{eq:Qepbyintegration}
 represent a square system of seven linear algebraic equations with seven unknown
-coefficients  which  needs to  be  solved  at  each time-step.  These  algebraic
-constraints coupled with the aforementioned \gls{ivp} form a \gls{dae} system.
+coefficients which must be solved at each time-step. These algebraic constraints
+coupled with the aforementioned \gls{ivp} form a \gls{dae} system.
 
 There are now two choices for proceeding  with solution of the system. The naive
 approach  would be  to  solve  the \gls{dae}  using  advanced \gls{dae}  solvers
@@ -268,7 +270,7 @@ in \cref{alg:disctimespm}.
 
 \input{chapters/spm_analysis/algo_quadratic_ce}
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{quadratic_ce_approx_spatial_1C.pdf}
     \caption[Spatial distribution of electrolyte concentration for 1C
@@ -283,6 +285,7 @@ in \cref{alg:disctimespm}.
 
 
 \subsubsection*{Simulation results}\label{subsubsec:simresultsbaselinequad}
+
 \Cref{fig:spatialionicconc1C} shows  the spatial distribution of  \ch{Li^+} ions
 in electrolyte  along the  thickness of  the cell at  various snapshots  of time
 obtained by simulation  of the \gls{p2d} and the  quadratic approximation models
@@ -291,7 +294,7 @@ the reference benchmark.  During the initial transient  phase, the concentration
 profile within each electrode region exhibits a characteristic inflection point.
 During this phase,  the concentration profile computed by  the parabolic profile
 exhibits  a  large deviation  in  terms  of  percentage  error at  each  spatial
-location. However, with the passage of time, as a \gls{qss} is established, this
+location. However, with the passage of time, as a \gls{qss}~is established, this
 inflection point flattens out, and the quadratic approximation becomes closer to
 the  true  concentration value  at  each  spatial  location. Similar  trends  in
 behaviour is  exhibited for discharge and  charging at higher C-rates  and these

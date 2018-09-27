@@ -240,7 +240,7 @@ this value, although no specific explanation is given for this choice.
 The  upper   cut-off  voltage   of  the  cell   is  chosen   at  \SI{4.3}{\volt}
 \ie{}  \approx\SI{100}{\milli\volt} higher  than  the  equilibrium \gls{ocp}  at
 \SI{100}{\percent} \gls{soc}. There are several  reasons for this smaller margin
-at the upper end of the voltage spectrum
+at the upper end of the voltage spectrum.
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries low
     probabilities},itemsep=1ex]
 
@@ -373,23 +373,25 @@ simulation has a capacity of \SI{60}{\amphour}.
 
 Present literature  in battery modelling, both  for the \gls{dfn} model  and for
 the  \gls{spm}  do not  discuss  any  aspect  of capacity  characterisation.  In
-particular, parameters such  as as the geometric surface area  of cells and even
-their  1C-rate are  often  not  listed in  publications.  This  practice can  be
-attributed  to the  fact that  all one-dimensional  and \glsfmtlong{p2d}  models
-operate on  a per-layer basis, using  an applied current \emph{density}.  Many a
-time,  researchers assume  a  unit  surface area  for  the  cell. This  implicit
-normalisation  is amenable  to  those  studies which  strive  to make  numerical
-comparisons between  models through simulation. However,  it leads to a  lack of
-clarity on  the actual capacity of  the cells being modelled.  Furthermore, when
-comparing with experimental  data from a real cell, such  works resort to ad-hoc
-techniques such as empirical curve-fitting for obtaining the surface area. Often
-the source of such parametrisation is not made clear. \Cref{ch:modelbaseddesign}
-documents  the details  of  obtaining  the overall  surface  area  of cells  and
-arriving at the C-rate per layer of the specific cell under consideration. Since
-the \gls{dfn}  model does  not explicitly  model the  cell capacity,  the author
-is  compelled  to  provide  a  brief  explanation  on  how  a  simple  numerical
-characterisation for determining cell capacity given a \emph{complete} parameter
-list. \fxnote{citations needed for each accusation.}
+particular,  parameters such  as  as the  geometric surface  area  of cells  and
+even  their 1C-rate  are often  not listed  in publications.  This practice  can
+be  attributed  to  the  fact  that  all  one-dimensional  and  \glsfmtlong{p2d}
+models operate  on a per-layer  basis, using an applied  current \emph{density}.
+Many  a  time,  researchers assume  a  unit  surface  area  for the  cell.  This
+implicit  normalisation  is amenable  to  those  studies  which strive  to  make
+numerical comparisons  between models through  simulation. However, it  leads to
+a  lack  of  clarity  on  the  actual capacity  of  the  cells  being  modelled.
+Furthermore, when comparing with experimental data  from a real cell, such works
+resort to  ad-hoc techniques such  as empirical curve-fitting for  obtaining the
+surface  area. Often  the  source of  such parametrisation  is  not made  clear.
+\Cref{sec:p2daugmentations}  documents  the  details of  obtaining  the  overall
+surface area of cells and arriving at  the C-rate per layer of the specific cell
+under consideration.  Since the  \gls{dfn} model does  not explicitly  model the
+cell capacity,  the author is  compelled to provide  a brief explanation  on how
+a  simple  numerical characterisation  for  determining  cell capacity  given  a
+\emph{complete} parameter list.
+
+%\fxnote{citations needed for each accusation.}
 
 For experimental capacity characterisation of cells, the standard practice is to
 apply a very small discharge  current beginning at \SI{100}{\percent} \gls{soc},
@@ -405,7 +407,7 @@ currents. The main difficulty with using very low C-rates is that it drastically
 slows down the  characterisation procedure. Using a discharge  current of C/100,
 \ie{}  \SI{0.6}{\ampere} in  this case,  results in  a characterisation  time of
 \SI{100}{\hour} or  \approx 4$\sfrac{1}{4}$ days (excluding soak-times  and other
-set-up related  activities). Furthermore, for accurate  coloumb-counting, a high
+set-up related  activities). Furthermore, for accurate  coulomb-counting, a high
 data logging  rate is needed,  resulting in  large file sizes  and corresponding
 difficulties in post-processing them.  Considering moderate buffer-sizes used in
 data logging modules of typical  cell-cycler software (shared between channels),
@@ -420,11 +422,11 @@ a   discharge   current    of   \SI{0.6}{\ampere}   was   performed\footnote{All
 computations  were  performed  on   a  64-bit  Hewlett-Packard~Z840  workstation
 with   a   \mbox{16-core}   \mbox{\text{Intel}\textsuperscript{\textregistered}}
 \mbox{Xeon\textsuperscript{\textregistered}}     \mbox{E5-2640~v3}     (Haswell)
-processor   clocked  at   a  base   frequency  of   \SI{2.60}{\giga\hertz}  with
-\SI{128}{\giga\byte} DDR4~RAM at 1866~MT/sec.}. If  the assumed cell capacity is
-indeed consistent with  the model parameters, then this corresponds  to a C-rate
-of 1/100. Therefore, both the \gls{p2d} and \gls{spm} should run for exactly 100
-hours before cut-off due to charge depletion.
+processor clocked  at \SI{2.60}{\giga\hertz} with  \SI{128}{\giga\byte} DDR4~RAM
+at 1866~MT/sec.}.  If the assumed  cell capacity  is indeed consistent  with the
+model parameters,  then this corresponds to  a C-rate of 1/100.  Therefore, both
+the \gls{p2d} and \gls{spm} should run  for exactly 100 hours before cut-off due
+to charge depletion.
 
 \input{chapters/spm_analysis/char_sim_table.tex}
 
@@ -483,9 +485,8 @@ error  vector. The  mean  and \gls{rms}  error values  indicate  an accuracy  of
 $\mathcal{O}\left(10\right)\si{\milli\volt}$. It should be noted that throughout
 the simulation,  the voltage  response of  the \gls{spm}  remains above  that of
 \gls{p2d}, thereby leading  to a negative value for the  mean voltage error. For
-continuous  and  pseudo-continuous  quantities such  as  time-domain  simulation
-outputs of physical  variables, the \gls{mae} is a suitable  error metric and is
-defined as
+continuous  quantities  such  as  time-domain  simulation  outputs  of  physical
+variables, the \gls{mae} is a suitable error metric and is defined as
 \begin{equation}
     \varepsilon_\text{\scriptsize \glsfmtshort{mae}} = \frac{\Sigma_{i=1}^{n}\abs{\varepsilon_i}}{n}
 \end{equation}
@@ -536,19 +537,19 @@ the \gls{spm} either due to hitting lower cut-offs of either terminal voltage or
 \gls{soc} (see \cref{fig:cnstdischgspmp2dsoc}).  Consequently, the  error vector
 is defined only for the common time-region before cut-off.
 
-In \cref{fig:cnstdischgspmp2dvoltage},  the  column  on   the  right  shows  the
+In  \cref{fig:cnstdischgspmp2dvoltage},  the  column  on  the  right  shows  the
 percentage error  in the voltage response  of the \gls{spm} with  respect to the
 \gls{p2d} model.  At very  low C-rates  below \approx0.5C,  the voltage-response
 performance of the \gls{spm} is acceptable. However, the performance degradation
 is rapid above this C-rate. It is clear that the error in the \gls{spm} response
 is monotonic and unidirectional. This indicates  that the source of the error is
 due  to  unmodelled dynamics.  In  particular,  as  discussed in  the  modelling
-assumptions  of \cref{subsec:basicspmassumptions},  the  \gls{spm}  ignores  the
-electrolyte dynamics.  Thus, the  overpotential (internal  voltage drop)  in the
-electrolyte  is not  modelled,  which results  in the  terminal  voltage of  the
-\gls{spm} being always higher than its \gls{p2d} counterpart.
+assumptions  of  \cref{subsec:basicspmassumptions},  the \gls{spm}  ignores  the
+electrolyte  dynamics.  Thus,  the  overpotential  in  the  electrolyte  is  not
+modelled, which  results in the terminal  voltage of the \gls{spm}  being always
+higher than its \gls{p2d} counterpart.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{const_curr_dischg_soc.pdf}
     \caption[\glsfmtshort{soc} computed by \glsfmtshort{p2d} and
@@ -651,11 +652,10 @@ note  that the  error in  \gls{soc} remains  exactly around  the same  magnitude
 For automotive applications, it is  important to characterise the performance of
 the  cell  model  under  dynamic load  conditions.  Several  standard  vehicular
 driveycles  have been  defined and  adopted  by regulatory  agencies across  the
-world.\fxnote{need to list some examples and cite references?} These drivecycles
-describe  the  profile  of the  vehicle's  speed  as  a  function of  time.  For
-all  drivecycles,  the  speed  versus  time   data  is  given  in  intervals  of
-\SI{1}{\second}, and is  therefore consistent with the sample  interval used for
-the simulation (see \cref{tbl:lcoSimParamsSPMp2d}).
+world.  These drivecycles  describe  the profile  of the  vehicle's  speed as  a
+function of time.  For all drivecycles, the  speed versus time data  is given in
+intervals  of  \SI{1}{\second}, and  is  therefore  consistent with  the  sample
+interval used for the simulation (see \cref{tbl:lcoSimParamsSPMp2d}).
 
 The \gls{udds} is  one such well-known drivecycle, originally  introduced by the
 United  States  Environmental Protection  Agency  that  represents city  driving
@@ -679,18 +679,20 @@ traversal of  the drivecycle  then corresponds to  the following  events. During
 acceleration phases,  the cell experiences  a sharp discharge spike  of current.
 Similarly,  assuming that  regenerative braking  is employed,  each deceleration
 event corresponds to a charging current. Thus a current versus time dynamic load
-profile can be obtained. The details of this conversion for a specific \gls{bev}
-platform is  discussed in~?\fxnote{fix this to  point to layer opt  chapter}. To
-briefly summarise the conversion process, the computed power profile of the cell
-is divided by  its nominal voltage and  suitably scaled so that the  peak of the
-the current profile  corresponds to a discharge current of  3C. Considering that
-all of  braking energy cannot  be recovered due to  losses at the  wheels, brake
-discs  and  other  mechanical  components,  a  regenerative  braking  factor  of
-\SI{85}{\percent}  (the  fraction  of  recoverable power)  is  assumed  for  the
-charging  scenario. As  seen in \cref{fig:uddsspeedvstimecycle},  the \gls{udds}
-profile is  highly dynamic  consisting of  many sets  of rapid  acceleration and
-braking  events. Hence,  this  drivecycle is  chosen  to provide  representative
-results of the model's performance to dynamic inputs.
+profile  can be  obtained.  To  briefly summarise  the  conversion process,  the
+computed  power profile  of  the cell  is  divided by  its  nominal voltage  and
+suitably scaled  so that the  peak of the the  current profile corresponds  to a
+discharge  current of  3C.  Considering that  all of  braking  energy cannot  be
+recovered  due  to losses  at  the  wheels,  brake  discs and  other  mechanical
+components,  a regenerative  braking factor  of \SI{85}{\percent}  (the fraction
+of  recoverable  power)  is  assumed  for the  charging  scenario.  As  seen  in
+\cref{fig:uddsspeedvstimecycle},  the  \gls{udds}   profile  is  highly  dynamic
+consisting  of  many sets  of  rapid  acceleration  and braking  events.  Hence,
+this  drivecycle is  chosen to  provide  representative results  of the  model's
+performance to dynamic inputs.
+
+% The details  of this conversion for  a specific \gls{bev} platform  is discussed
+% in~?\fxnote{fix this to point to layer opt chapter}.
 
 \begin{figure}[!htbp]
     \centering
@@ -704,27 +706,27 @@ results of the model's performance to dynamic inputs.
 \end{figure}
 
 \Cref{fig:uddssimp2dspmresults}  shows   the  simulation  results   obtained  by
-applying the  \gls{udds} current input profile  (top row) to both  the \gls{p2d}
-and  \gls{spm}  models. The  simulation  is  started at  \SI{50}{\percent}  cell
-\gls{soc}. This is  representative of the median point for  the operating window
-of \gls{soc} swing for both  \glspl{bev} and \glspl{phev}. Although regenerative
-braking is  employed, due to  the reduced occurrence  of braking events  as well
-as  considering efficiencies  of  the  drivetrain, as  with  any driveycle,  the
-\gls{udds} run  also results  in a  net-discharge. The  cell's \gls{soc}  at the
-termination  of the  \gls{udds} run  is \approx\SI{6}{\percent}  lower than  its
-starting value.
+applying  the   \gls{udds}  current  input   profile  (top  row)  to   both  the
+\gls{p2d} and \gls{spm}  models. The simulation is  started at \SI{50}{\percent}
+cell~\gls{soc}. This  is representative  of the median  point for  the operating
+window  of  \gls{soc} swing  for  both  \glspl{bev} and  \glspl{phev}.  Although
+regenerative  braking is  employed, due  to  the reduced  occurrence of  braking
+events  as well  as  considering efficiencies  of the  drivetrain,  as with  any
+driveycle,  the \gls{udds}  run  also  results in  a  net-discharge. The  cell's
+\gls{soc} at  the termination of  the \gls{udds} run  is \approx\SI{6}{\percent}
+lower than its starting value.
 
 % \FloatBarrier
-The  voltage  output from  the  models  is plotted  in  the  middle row  whereas
-the  bottom  row  shows  the  evolution  of  the  cell's  \gls{soc}  over  time.
-Consistent with the error trends observed  in the constant current discharge and
-charge  simulations, the  error  in terminal  voltage is  high  whereas that  in
-\gls{soc} is  very low for  the dynamic load  case too. Following  convention in
-prevalent  literature,  the  voltage  error metrics  are  reported  directly  in
+
+The voltage output from the models is  plotted in the middle row. The bottom row
+shows  the  evolution  of  the  cell's  \gls{soc}  over  time.  Consistent  with
+the  error  trends  observed  in  the  constant  current  discharge  and  charge
+simulations, the error in terminal voltage  is high whereas that in \gls{soc} is
+low.  In  this  work,  the  voltage  error  metrics  are  reported  directly  in
 units  of  \si{\milli\volt} for  the  dynamic  simulation run.  Furthermore,  it
 is  a  standard  practice  to  report  the  \gls{rms}  error  for  such  dynamic
-load  profiles  and  is  included  in the  summary  of  error  metrics  reported
-in \cref{tbl:errorsummaryuddsdischgspmp2d}.
+load  profiles and  is included  in  the summary  of error  metrics reported  in
+\cref{tbl:errorsummaryuddsdischgspmp2d}.
 
 \input{chapters/spm_analysis/udds_errs_spm_p2d_table.tex}
 
