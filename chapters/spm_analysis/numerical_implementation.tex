@@ -312,7 +312,7 @@ omitted in this thesis for discrete-time formulation of the \gls{spm} model.
 
 Due  to the  sampling and  \gls{zoh} operations  at the  \gls{adc} input  to the
 system,  the input  to the  \gls{spm} is  transformed from  a simple  continuous
-time signal  to discrete-time  sequences, \ie{}  \mbox{$u(t) \mapsto  u[k]$} and
+time signal  to discrete-time  sequences \ie{}  \mbox{$u(t) \mapsto  u[k]$} and
 \mbox{$y(t)  \mapsto  y[k]$}, where  \mbox{$k  =  0,1,\dots,∞$}~is the  sample
 index  corresponding  to  the   continuous  time  instant~\mbox{$t_k  =  kT_s$}.
 The  continuous  time  plant  model  represented  by  the  \gls{ode}  system  of
@@ -340,7 +340,7 @@ Substituting these relationships into \cref{eq:genanalyticctssoln},
     \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}B \mathbf{u}(τ)\,dτ \label{eq:intermediatediscrete}
 \end{equation}
 With the  \gls{zoh} scheme  discussed here, $u(\tau)$  remains constant  from $k
-T_s$ to $(k+1)T_s$,  and is equal to $u(kT_s)$, \ie{}  $u[k]$. Consider a change
+T_s$ to $(k+1)T_s$,  and is equal to $u(kT_s)$ \ie{}  $u[k]$. Consider a change
 of variable definition  for the dummy variable of integration  $\tau$ as $\eta =
 (k+1)T_s -  \tau$. Thus,  $\tau = (k+1)T_s  - \eta$. Hence,  $d \tau  = -d\eta$.
 Substituting these into \cref{eq:intermediatediscrete},
@@ -364,7 +364,7 @@ expression for $B_d$ is obtained as
     B_d &= A^{-1}(A_d - I_n)B && \text{(if $A^{-1}$ exists)}
 \end{align}
 For the continuous time system matrix $A$ of the \gls{spm}, its determinant is
-zero, \ie{}
+zero \ie{}
 \begin{equation}
 \begin{vsmallmatrix}
     -30\frac{D_\spos}{R_\ppos^2} & 0                            & 0 \\
@@ -376,7 +376,7 @@ and hence  is not invertible.  This necessitates  an explicit evaluation  of the
 integral in \cref{eq:disctimefulleqn} for computation of the discrete-time input
 matrix, $B_d$.
 
-Since the only non-zero entries of the matrix lie along its main diagonal, \ie{}
+Since the only non-zero entries of the matrix lie along its main diagonal \ie{}
 its modes  are decoupled, the  matrix exponential  reduces to a  diagonal matrix
 whose elements are simply the scalar exponentials of the original entries.
 \begin{gather}
