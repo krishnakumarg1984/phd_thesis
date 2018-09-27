@@ -1,4 +1,4 @@
-- citeauthor
+- check for nbsp for gls
 - remove colour from hyperlinks
 - biblatex check files 
 - list of symbols
