@@ -6,15 +6,20 @@
     \label{tbl:permissionstable}
     \centering
 	\begin{scriptsize}
-	    \begin{tabular}{l l l p{8.5cm} p{3cm} c c l}
+	    \begingroup
+	    \renewcommand{\arraystretch}{2}
+	    \begin{tabular}{@{} l l l p{8.65cm} l c c p{2.5cm} @{}}
             \toprule
-            \multicolumn{1}{c}{\makecell{Page \\ no.}}  &  \makecell{Type of \\ work} & \makecell{Usage in \\ thesis} & \makecell{Source \\ \vphantom{of work}} & \makecell{Copyright holder \\ \& contact} & \makecell{Permission \\ requested on} & \makecell{Have \\ permission?} & \makecell{Permission \\ remarks}\\
+            \multicolumn{1}{c}{\makecell{Page \\ no.}} & \makecell{Type of \\ work} & \makecell{Usage in \\ thesis} & \makecell{Source \\ \vphantom{of work}} & \makecell{Copyright holder \& \\ Contact (organisations only)} & \makecell{Permission \\ requested on} & \makecell{Have \\ permission?} & \makecell{Permission \\ remarks} \\
             \midrule
 
-            \cpageref{fig:energyvspowercell} & figure & \Cref{fig:energyvspowercell} & \fullcite{VonSrbik2015} & \Citeauthor*{VonSrbik2015}  Contact information  not available & N/A  & Yes & CC-BY-NC-ND\\
+            \cpageref{fig:energyvspowercell}       & figure & \Cref{fig:energyvspowercell}       & \fullcite{VonSrbik2015} & \Citeauthor*{VonSrbik2015} & N/A                  & Yes & CC-BY-NC-ND                       \\
+            \cpageref{fig:fig_CC_discharge_curves} & figure & \Cref{fig:fig_CC_discharge_curves} & Unpublished work        & Ian D.\ Campbell           & \DTMdate{2018-09-28} & Yes & Written agreement                 \\
+            \cpageref{fig:1d_fv_mesh}              & figure & \Cref{fig:1d_fv_mesh}              & \fullcite{Torchio2016}  & \Citeauthor{Torchio2016}   & \DTMdate{2018-09-28} & Yes & \makecell[l]{`Rightslink' service \\ agreement attached} \\
 
             \bottomrule
         \end{tabular}
+        \endgroup
     \end{scriptsize}
 \end{sidewaystable}
 
