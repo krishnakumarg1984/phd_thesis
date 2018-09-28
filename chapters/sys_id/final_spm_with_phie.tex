@@ -117,11 +117,11 @@ solution resistance.
     \includegraphics{contribution_to_phie_1C.pdf}
     \caption[%
     Contribution to electrolyte overpotential from the gradient-induced polarisation
-    term and the bulk solution resistance term for a 1C discharge
+    term and the bulk solution resistance term for a 1C~discharge
     ]%
     {%
         Contribution to the overpotential in the electrolyte from each of the
-        two terms in \cref{eq:electrolytepdwithcenew} for a 1C discharge. The
+        two terms in \cref{eq:electrolytepdwithcenew} for a 1C~discharge. The
         bulk solution resistance is approximated as a constant value determined
         by the equilibrium initial concentration. The concentration dependent
         polarisation term governs the dynamic behaviour of the overall
@@ -135,8 +135,7 @@ solution resistance.
 
 \Cref{fig:contributiontophiefromtwoterms} shows the  contribution to the overall
 potential drop~$\phi_\text{e,pos}$ and~$\phi_\text{e,neg}$ in  the electrolyte
-from  each  of  the  two  terms  in \cref{eq:electrolytepdwithcenew}  for  a  1C
-discharge. The bulk  solution resistance is constant owing to  the fact that the
+from  each  of  the  two  terms  in \cref{eq:electrolytepdwithcenew}  for  a  1C~discharge. The bulk  solution resistance is constant owing to  the fact that the
 initial  electrolyte concentration  is  used in  computing  the effective  ionic
 conductivities in the three regions of  the cell. The gradient induced diffusion
 polarisation term, however has a stronger contribution in both the transient and
@@ -169,12 +168,12 @@ obtained from the \gls{p2d} model.
     \includegraphics{phie_delta_cnst_1C.pdf}
     \caption[%
     Electrolyte  overpotential  computed  by the  \glsfmtshort{p2d}  and  system
-    identification models for a 1C discharge
+    identification models for a 1C~discharge
     ]%
     {%
         Comparison    of    electrolyte    overpotential   computed    by    the
         \gls{p2d}     model    and     the    system     identification    model
-        (using \cref{eq:electrolytepdwithcenew}) for a  1C discharge. During the
+        (using \cref{eq:electrolytepdwithcenew}) for a  1C~discharge. During the
         transient phase, the profile obtained by the system identification model
         closely matches that of the \gls{p2d} model. The mismatch in the initial
         overpotential does not arise to the  use of a constant concentration for
@@ -189,8 +188,7 @@ obtained from the \gls{p2d} model.
 \end{figure}
 
 \Cref{fig:phiedeltacnst1C} shows  a comparison of the  electrolyte overpotential
-computed  by   the  \gls{p2d}  and   system  identification  models  for   a  1C
-discharge. There  is a discrepancy  in the  initial offset of  the overpotential
+computed  by   the  \gls{p2d}  and   system  identification  models  for   a  1C~discharge. There  is a discrepancy  in the  initial offset of  the overpotential
 value.  However,  this  cannot  be  attributed   to  the  use  of  the  constant
 concentration  approximation   in  the   computation  of   ionic  conductivities
 in \cref{eq:electrolytepdwithcenew}.  This   is  because,  at   equilibrium  the
@@ -313,7 +311,7 @@ output of the basic \gls{spm} is also considered here.
 \subsubsection*{Constant Current Inputs}
 
 The  voltage  accuracy of  the  newly  developed  composite \gls{spm}  is  first
-evaluated for  the standard test  case of 1C  discharge current starting  from a
+evaluated for  the standard test  case of 1C~discharge current starting  from a
 cell \gls{soc} of \SI{100}{\percent}.
 
 \begin{figure}[!htbp]
@@ -321,10 +319,10 @@ cell \gls{soc} of \SI{100}{\percent}.
     \includegraphics{composite_spm_vcell_1C.pdf}
     \caption[%
     Comparison  of  terminal  voltages  of  composite  \glsfmtshort{spm},  basic
-    \glsfmtshort{spm} and the \glsfmtshort{p2d} model for a 1C discharge
+    \glsfmtshort{spm} and the \glsfmtshort{p2d} model for a 1C~discharge
     ]%
     {%
-        Voltage output  of various \glspl{spm}  for a 1C discharge  beginning at
+        Voltage output  of various \glspl{spm}  for a 1C~discharge  beginning at
         \SI{100}{\percent} \gls{soc} (top  plot). Since it does  not account for
         electrolyte overpotentials,  the voltage  profile computed by  the basic
         \gls{spm} lies above that of the benchmark \gls{p2d} model. On the other
@@ -342,7 +340,7 @@ cell \gls{soc} of \SI{100}{\percent}.
 \end{figure}
 
 \Cref{fig:voltageoutputcompareallSPMs1C}  shows the  terminal voltage  output of
-various \glspl{spm} for a 1C discharge beginning at \SI{100}{\percent} \gls{soc}
+various \glspl{spm} for a 1C~discharge beginning at \SI{100}{\percent} \gls{soc}
 (top  plot). Since  it  does  not account  for  electrolyte overpotentials,  the
 voltage profile computed by the basic \gls{spm} lies above that of the benchmark
 \gls{p2d}  model. On  the  other hand,  the composite  \gls{spm}  tends to  over
@@ -357,12 +355,12 @@ in \cref{tbl:errorsummarycntcurrdischgallspms}.
 \input{chapters/sys_id/final_spm_1C_error_table}
 
 In  each of  the error  statistic considered,  the composite  \gls{spm} performs
-significantly better than the basic \gls{spm} for the 1C discharge case.
+significantly better than the basic \gls{spm} for the 1C~discharge case.
 
 One   of   the   biggest   drawbacks   of   the   conventional   \gls{spm}   was
 its    poor    voltage    accuracy    at    moderate    C-rates    above    0.5C
 (see \cref{tbl:errorsummarycntcurrdischgspmp2d}). The high accuracy achieved for
-the 1C rate  seems to indicate that  the composite \gls{spm} is  indeed a viable
+the 1C~rate  seems to indicate that  the composite \gls{spm} is  indeed a viable
 solution for all  high C-rates, especially given the backdrop  of its methodical
 derivation steeped in systems theory.
 

@@ -56,9 +56,9 @@ However, in the interest of completeness, this author systematically applied the
 aforementioned test procedure with every  combination arising from the choice of
 ten time-delay values and the following six current profiles ---
 \begin{enumerate*}[label=\emph{\alph*})]
-    \item constant current 1C discharge,
-    \item constant current 3C discharge,
-    \item constant current 1C charge,
+    \item constant current 1C~discharge,
+    \item constant current 3C~discharge,
+    \item constant current 1C~charge,
     \item \gls{udds} input profile with peak amplitude of 3C,
     \item training profile used in system identification (see \cref{fig:sysidtrainingcurrent}), and
     \item validation profile used in system identification (see \cref{fig:sysidvalidationcurrent}).
@@ -198,10 +198,10 @@ input~$I_3(t)$ can be either positive or negative. The composite signal $I_3(t)$
 was obtained by taking a random combination  of any two of the following current
 profiles ---
 \begin{enumerate*}[label=\emph{\alph*})]
-    \item step input with a constant current 1C discharge,
-    \item step input with a constant current discharge at C/5,
-    \item step input with a constant current 1C charge,
-    \item step input with a constant current charge at C/5,
+    \item step input with a constant current 1C~discharge,
+    \item step input with a constant current discharge at~C/5,
+    \item step input with a constant current 1C~charge,
+    \item step input with a constant current charge at~C/5,
     % \item de-biased training profile used in system identification (see \cref{fig:sysidtrainingcurrent}), and
     % \item de-biased validation profile used in system identification (see \cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
@@ -209,7 +209,7 @@ profiles ---
 The  scaling  factors~$\alpha$  and   $\beta$  were  restricted  to  the  range~$[-1.25,1.25]$ in consideration of limiting the peak applied current to within a~\pm 3C  window ---  the operating  condition for most  \glspl{bev}, so  that the
 isothermal assumption for the model shall remain valid. This peak current corner
 case occurs when the pseudo-random generator chooses both scaling factors at the
-selected range's limits for the 1C constant current discharge or charging cases.
+selected range's limits for the 1C~constant current discharge or charging cases.
 The limited  range of the  scaling factors are also  motivated by the  fact that
 most real-world systems remain linear only within a certain operating window. In
 particular, care  must be taken to  ensure that the cell's  \gls{soc} during the
@@ -234,7 +234,7 @@ linearity.
         this visualisation, constant current inputs are used throughout. The top
         row of plots shows $\widetilde{Q}_{\text{e,n}}$ and
         $\widetilde{Q}_{\text{e,p}}$ for two step inputs~${I_1(t) =
-        \SI{60}{\ampere}}$ and $I_2(t) = \SI{12}{\ampere}$ \ie~discharge with~1C and C/5 currents respectively. The second row of plots shows
+        \SI{60}{\ampere}}$ and $I_2(t) = \SI{12}{\ampere}$ \ie~discharge with~1C and C/5~currents respectively. The second row of plots shows
         $\widetilde{Q}_{\text{e,n}_3}$ and $\widetilde{Q}_{\text{e,p}_3}$  for
         ${I_3 = \SI{36}{\ampere}}$, where $I_3 = \alpha I_1 + \beta I_2$ with~${(\alpha,\beta) = (1,-2)}$. The last row of plots overlays these
         quantities with the manually computed linear combination of their two
@@ -254,7 +254,7 @@ constant  currents  and  integer  scaling  factors are  used  for  the  sake  of
 illustration.  The  plots   in  the  left  column  deal   with  the  electrolyte
 time-evolution  subsystem  in  the  negative electrode  region.  Similarly,  the
 plots  in  the  right  column  deal with  the  corresponding  subsystem  in  the
-positive electrode region.  A discharge current of 1C  \ie~\SI{60}{\ampere} is
+positive electrode region.  A discharge current of~1C  \ie~\SI{60}{\ampere} is
 first  applied  and  the  corresponding  outputs~$\widetilde{Q}_{\text{e,n}_1}$
 and   $\widetilde{Q}_{\text{e,p}_1}$  are   obtained.   Secondly,  a   discharge
 current   of   C/5   \ie~is    applied   and   the   corresponding   outputs~$\widetilde{Q}_{\text{e,n}_2}$ and  $\widetilde{Q}_{\text{e,p}_2}$ are obtained.
