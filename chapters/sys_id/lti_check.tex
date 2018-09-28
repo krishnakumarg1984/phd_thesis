@@ -206,18 +206,20 @@ profiles ---
     % \item de-biased validation profile used in system identification (see \cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}
 
-The  scaling  factors~$\alpha$  and   $\beta$  were  restricted  to  the  range~$[-1.25,1.25]$ in consideration of limiting the peak applied current to within a~\pm 3C window ---  the operating  condition for most  \glspl{bev}, so  that the
-isothermal assumption for the model shall remain valid. This peak current corner
-case occurs when the pseudo-random generator chooses both scaling factors at the
-selected range's limits for the 1C~constant current discharge or charging cases.
-The limited  range of the  scaling factors are also  motivated by the  fact that
-most real-world systems remain linear only within a certain operating window. In
-particular, care  must be taken to  ensure that the cell's  \gls{soc} during the
-linearity test  remains within  its physical limits  for any  initial \gls{soc}.
-Furthermore, localised  saturation or depletion  of ions for  extended durations
-must be avoided. Hence  it can be concluded that, with the  chosen range for the
-scaling  factors,  if  the  two subsystems  under  consideration  remain  linear
-everywhere below  a peak  current of~\pm 3C  in the  isothermal case,  then the
+The   scaling   factors~$\alpha$   and    $\beta$   were   restricted   to   the
+range~$[-1.25,1.25]$ in  consideration of limiting  the peak applied  current to
+within a~\pm 3C window --- the operating condition for most \glspl{bev}, so that
+the isothermal  assumption for the model  shall remain valid. This  peak current
+corner case occurs when the pseudo-random generator chooses both scaling factors
+at the selected range's limits for the 1C~constant current discharge or charging
+cases. The limited range  of the scaling factors are also  motivated by the fact
+that  most real-world  systems remain  linear  only within  a certain  operating
+window. In  particular, care must be  taken to ensure that  the cell's \gls{soc}
+during the  linearity test remains  within its  physical limits for  any initial
+\gls{soc}. Furthermore, localised  saturation or depletion of  ions for extended
+durations must be avoided. Hence it can be concluded that, with the chosen range
+for the scaling factors, if the two subsystems under consideration remain linear
+everywhere  below a  peak current  of~\pm 3C  in the  isothermal case,  then the
 linearity  tests are  considered as  passed.  Future extensions  to undertake  a
 temperature-dependent  system  identification  exercise can  potentially  use  a
 first-order Taylor  expansion about this  operating window. The  discussion thus
