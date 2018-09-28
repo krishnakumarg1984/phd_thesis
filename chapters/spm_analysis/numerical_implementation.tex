@@ -38,12 +38,12 @@ Newton-type iteration scheme.} is given by
     % \SwapAboveDisplaySkip
     \mathbf{x}(t) &= e^{A (t-t_0)}\mathbf{x}(t_0) + \int_{t_0}^{t}e^{A (t-τ)}B \mathbf{u}(τ)\,dτ \label{eq:genanalyticctssoln}
     \\
-    \shortintertext{With a standard \gls{ivp}, $t_0 = 0$}
+    \shortintertext{With a standard \gls{ivp},~${t_0 = 0}$}
     \mathbf{x}(t) &= e^{A t}\mathbf{x}(0) + \underbrace{\int_{0}^{t}e^{A (t-τ)}B \mathbf{u}(τ)\,dτ}_{\text{convolution integral}}\label{eq:analyticalctssoln}
 \end{align}
 \endgroup
 
-The matrix exponential $e^{At}$ is known as the state-transition matrix and is
+The matrix exponential~$e^{At}$ is known as the state-transition matrix and is
 defined as
 \begin{equation}
     e^{A t} ≜ \mathcal{L}^{-1}\left\{(s I - A)^{-1}\right\}
@@ -61,9 +61,9 @@ for that time-step.
 
 \subsubsection*{Numerical considerations for continuous time implementation}
 
-The procedure described  thus far has a practical limitation.  The input current
-$I(t)$  to the  cell has  been defined  as a  continuous quantity.  Although for
-the  purpose of  characterising  the cell's  behaviour, it  is  possible to  use
+The  procedure  described  thus  far  has  a  practical  limitation.  The  input
+current~$I(t)$ to the  cell has been defined as a  continuous quantity. Although
+for the  purpose of characterising the  cell's behaviour, it is  possible to use
 pre-determined continuous-functions  as load profiles  (\eg~sinusoidal waveforms
 for virtual \gls{eis} testing), it is desirable to evaluate the model's response
 to typical real-life conditions. In a vehicular application, only \emph{samples}
@@ -238,7 +238,7 @@ outputs and is discussed next.
     \includegraphics[width=\textwidth]{timing_diagram_large}
     \caption[Timing diagram of a real-time software loop of a \glsfmtshort{bms}]
     {Timing diagram of a real-time software loop of a \gls{bms}. The sequence of
-        events within one sample period $T_s$ in relation to the base clock of
+        events within one sample period~$T_s$ in relation to the base clock of
         the controller is shown. Particular emphasis is placed on depicting the
         handling of \gls{isr} requests pertinent to cell models. Other
         background tasks performed by the CPU are de-emphasised. Moreover, the
@@ -290,7 +290,7 @@ power efficiency of the chip.
     \label{fig:timingdiagramSmall}
 \end{figure}
 
-For  Li-ion  cell  modelling,  a  sampling interval  of  $T_s  =  1$\si{\second}
+For  Li-ion  cell  modelling,  a  sampling  interval  of~$T_s  =  1$\si{\second}
 is   commonly  used,   thus  aiming   to   capture  the   cell  dynamics   below
 \SI{500}{\milli\hertz}\footnote{In  the ideal  case,  according  to the  Nyquist
 sampling theorem. In practice, the frequency range is smaller.}. The CPU's clock
@@ -304,7 +304,7 @@ The overall implication of such a scheme  is that any \emph{delays} owing to the
 sample and  hold process  at the model  input and outputs  can be  neglected. In
 conventional sampled-data systems, control delays may be analysed by considering
 a multiplicative factor of $e^{-sλ}$ in the Laplace domain transfer function of
-the system.  Delay parameters of  $λ = 0.5  T_s$ or $λ  = 1 T_s$  are commonly
+the system. Delay parameters of ${λ = 0.5  T_s}$ or ${λ = 1 T_s}$ are commonly
 employed  as  conservative estimates.  However,  owing  to  the small  CPU  load
 factors, in this thesis this delay term is omitted for discrete-time formulation
 of the \gls{spm}.
@@ -333,8 +333,7 @@ is  therefore   replaced  by   a  discrete-time  process   and  modelled   by  a
 % \end{figure}
 
 Consider       the       general      continuous-time       solution       given
-by \cref{eq:genanalyticctssoln}. Let $t_0 = k T_s$ and $t = (k+1)T_s$, where $k  =
-0,1,\dots,∞$. Therefore,
+by \cref{eq:genanalyticctssoln}. Let ${t_0 = k T_s}$ and ${t = (k+1)T_s}$, where ${k  = 0,1,\dots,∞}$. Therefore,
 \begin{alignat}{2}
     x(t_0) & = x(kT_s)     & & \equiv x[k] \\
     x(t)   & = x((k+1)T_s) & & \equiv x[k+1]
@@ -343,10 +342,9 @@ Substituting these relationships into \cref{eq:genanalyticctssoln},
 \begin{equation}
     \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}B \mathbf{u}(τ)\,dτ \label{eq:intermediatediscrete}
 \end{equation}
-With  the  \gls{zoh} scheme  discussed  here,  $u(\tau)$ remains  constant  from
-$k  T_s$  to $(k+1)T_s$,  and  is  equal  to  $u(kT_s)$ \ie~$u[k]$.  Consider  a
+With  the  \gls{zoh} scheme  discussed  here,  $u(\tau)$~remains  constant  from~$k  T_s$  to~$(k+1)T_s$,  and  is  equal  to  $u(kT_s)$ \ie~$u[k]$.  Consider  a
 change-of-variable definition  for the dummy  variable of integration  $\tau$ as
-$\eta =  (k+1)T_s -  \tau$. Thus,  $\tau = (k+1)T_s  - \eta$.  Hence, $d  \tau =
+${\eta =  (k+1)T_s -  \tau}$. Thus,  $\tau = (k+1)T_s  - \eta$.  Hence, $d  \tau =
 -d\eta$. Substituting these into \cref{eq:intermediatediscrete},
 \begin{align}
     \mathbf{x}[k+1] &= e^{A T_s}\mathbf{x}[k] + \left[\int_{T_s}^{0}e^{A \eta }B \right] u[k]\,{-d\eta}\\
@@ -360,14 +358,14 @@ difference equation
 \begin{equation}\label{eq:discgenericLTI}
     \mathbf{x}[k+1] = A_d x[k] + B_d u[k]
 \end{equation}
-where $A_d = e^{A T_s}$ and $B_d = \int_{0}^{T_s}e^{A \eta}B
-\,{d\eta}$.
+where ${A_d = e^{A T_s}}$ and ${B_d = \int_{0}^{T_s}e^{A \eta}B
+\,{d\eta}}$.
 If the continuous-time system matrix~$A$ is invertible, a closed form
 expression for $B_d$ is obtained as
 \begin{align}
     B_d &= A^{-1}(A_d - I_n)B && \text{(if $A^{-1}$ exists)}
 \end{align}
-For the continuous time system matrix $A$ of the \gls{spm}, its determinant is
+For the continuous time system matrix~$A$ of the \gls{spm}, its determinant is
 zero.
 \begin{equation}
 \begin{vsmallmatrix}
@@ -446,7 +444,7 @@ state  dynamics  presented  here  is  highly  efficient  and  directly  amenable
 for  use  in   classical  state-vector  algorithms.  For   the  cell's  terminal
 voltage   computation,   the   basic   structure  and   form   of   the   output
 equation  given  by  \cref{eq:spmoutputeqn}  remains  intact,  except  that  the
-continuous  time   variables  $\left(\mathbf{x}(t),  u(t)\right)$  need   to  be
+continuous  time   variables~$\left(\mathbf{x}(t),  u(t)\right)$  need   to  be
 replaced  by  their discrete-time  counterparts  in  the corresponding  equation
 set  \ie~\crefrange{eq:spmbasicoutputvoltagefinal}{eq:csurfnegfromcavgneg}.  The
 discrete-time output function~$h_d$ is evaluated \emph{after} updating the state
@@ -457,7 +455,7 @@ vector (through \cref{eq:discgenericLTI}).
 
 The complete sequence of steps for implementing the discrete-time variant of the
 \gls{spm} is given in \cref{alg:disctimespm}. In particular, it can be seen that
-the  discrete-time system  and input  matrices,  $A_d$ and~$B_d$  can be  easily
+the  discrete-time system  and input  matrices,~$A_d$ and~$B_d$  can be  easily
 pre-computed from  the parameter set  using the matrix exponential  approach. In
 \textsc{MATLAB}, this  can be achieved  by passing  the arguments of  the matrix
 exponential to the  `\verb+expm+' command. The vectorised  implementation of the
@@ -473,7 +471,7 @@ battery researchers whose  focus is on fundamental aspects of  lithium ion cells
 nuances  of the  matrix exponential  and discrete-time  matrix computations  (in
 line~\nolink{\ref{algLine:computeAdBd}}  of \cref{alg:disctimespm}).  Therefore,
 a  snippet   of  \textsc{MATLAB}   code  clarifying   the  computation   of  the
-discrete-time   system   and   input   matrices,  $A_d$   and~$B_d$   is   given
+discrete-time   system   and   input   matrices,~$A_d$   and~$B_d$   is   given
 in   \cref{codesnippet:computeAdBd}.  A   full  code   listing  of   an  example
 discrete-time  \gls{spm}  implementation  in   \textsc{MATLAB}  is  provided  in
 \cref{sc:disctimespm}.
@@ -497,7 +495,7 @@ B_disc(1) = B_cts(1)*(exp(A_cts(1,1)*Ts)-1)/A_cts(1,1);
 B_disc(2) = B_cts(2)*(exp(A_cts(2,2)*Ts)-1)/A_cts(2,2);
 B_disc(3) = B_cts(3)*Ts;
 \end{minted}
-\caption{Computation of discrete-time matrices $A_d$ and $B_d$ in
+\caption{Computation of discrete-time matrices~$A_d$ and $B_d$ in
 \textsc{MATLAB}}
 \label{codesnippet:computeAdBd}
 \end{listing}

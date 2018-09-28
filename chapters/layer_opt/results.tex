@@ -123,7 +123,7 @@ SAE~J1772 standards is lower than this  rate. Therefore, to obtain a robust cell
 design, the higher of the two acceleration rates needs to be considered.
 
 \Cref{tbl:accResults}  gives the  simulation  results  for various  combinations
-of  $(T_\text{init},  T_\text{sink})$  for  both the  \gls{bev}  and  \gls{phev}
+of~${(T_\text{init},  T_\text{sink})}$  for  both the  \gls{bev}  and  \gls{phev}
 platforms. The following discussion is applicable for both vehicular platforms.
 
 \input{chapters/layer_opt/acc_results_table}
@@ -131,11 +131,11 @@ platforms. The following discussion is applicable for both vehicular platforms.
 The  specific combinations  of temperatures  for traversing  the thermal  design
 space are  chosen following the  SAE~J1772 guidelines. The high  power densities
 resulting from  low numbers of layers  lead to large overpotentials  causing the
-cell's terminal  voltage to  drop lower than  $V_\text{min}$, thereby  unable to
-satisfy acceleration requirements. However,  at higher $T_\text{init}$, owing to
+cell's terminal  voltage to  drop lower than~$V_\text{min}$, thereby  unable to
+satisfy acceleration requirements. However,  at higher~$T_\text{init}$, owing to
 the  reduction in  overpotentials, a  larger  voltage overhead  is available  to
 accommodate the  internal polarisation  drop. For all  temperature combinations,
-the largest deviation from $T_\text{init}$  experienced by the \gls{bev} cell is
+the largest deviation from~$T_\text{init}$  experienced by the \gls{bev} cell is
 a \SI{0.48}{\degreeCelsius} increase.  Consequently, it can be  concluded that a
 single isolated acceleration event does not heat the \gls{bev} battery pack, and
 therefore the cell  temperature remains close to that of  the initial value. The
@@ -148,7 +148,7 @@ and by a slightly higher value for the \gls{phev} cell.
 
 The foregoing  discussion has revealed  that the lower cut-off  voltage strongly
 influences  layer   configuration  for   acceleration  tests.   Therefore,  when
-considering acceleration requirements, $n = 27$ and $n=69$ represent the optimal
+considering acceleration requirements, ${n = 27}$ and ${n=69}$ represent the optimal
 layer choices for the \gls{bev} and \gls{phev} platforms respectively .
 
 \subsection{Fast-charging studies}
@@ -179,7 +179,7 @@ optimisation framework  for the \gls{bev} and  \gls{phev} platforms respectively
 when  considering fast  charging requirements.  Each heat~map  in these  figures
 show  the optimal  number  of  layers~$n^\text{fastchg}_\text{opt}$ for  various
 combinations of  initial and  ambient temperatures  for four  different charging
-powers. In each case, the  values of $n^\text{fastchg}_\text{opt}$ correspond to
+powers. In each case, the  values of~$n^\text{fastchg}_\text{opt}$ correspond to
 the  temperature  combination~${(T_\text{init},T_\text{sink})  =  (15,  5)
 \si{\degreeCelsius}}$  as  shown  in  \cref{fig:fig_generate_heatmap_BEV}.  This
 represents the  least number of  layers required to  fast charge the  pack under
@@ -226,8 +226,8 @@ represented by the linear downward-sloping line.
         {
             The right column shows nominal cell capacity and charge passed
             during \gls{cp} charging. Rate capability and cell utilisation are positively
-            correlated with $n$. With increasing power levels, the optimal layer configuration shifts to higher
-            values of $n$. Similar behaviour is observed for galvanostatic
+            correlated with~$n$. With increasing power levels, the optimal layer configuration shifts to higher
+            values of~$n$. Similar behaviour is observed for galvanostatic
             charging (left column). Plotted for~${T_\text{init} =
             T_\text{sink} = \SI{25}{\degreeCelsius}}$.
         }
@@ -239,7 +239,7 @@ represented by the linear downward-sloping line.
     \end{minipage}
 \end{figure}
 
-For any layer  choice, $Q_\text{n}$ therefore represents the upper  bound on the
+For any layer  choice, $Q_\text{n}$~therefore represents the upper  bound on the
 charge  that can  be  passed  during charging.  For  both  constant current  and
 constant power  charging, the locii of  actual charge passed~$q$ lie  much below
 this theoretical nominal  capacity. For very low layer counts,  as the number of
@@ -248,7 +248,7 @@ heating is low. This allows for more  charge to be passed. However, at ultra-low
 layer counts, the  overpotential due to the cell's internal  resistance is quite
 high.  Therefore,  hitting the  upper  bound  on  the  terminal voltage  is  the
 reason  for  the failure  of  these  layer choices.  This  is  indicated by  the
-narrow $V_\text{max}$-limited region in \cref{fig:fig_CapacityQuadrants}. For an
+narrow \mbox{$V_\text{max}$-limited} region in \cref{fig:fig_CapacityQuadrants}. For an
 intermediate range of  layer choices, the rate of power-density  drop with layer
 count begins to flatten, thereby leading  to a plating-limited region. For these
 layer choices, the  surface concentration starts to exceed  the saturation value
@@ -270,7 +270,7 @@ application's demands.
 From  the results  discussed thus  far, it  is evident  that it  is the  thermal
 environment  that  governs   the  optimal  cell  layer   configuration  in  both
 acceleration and fast charging studies and for both vehicular platforms. For all
-charging powers simulated, $n^\text{fastchg}_\text{opt}$  is the highest for the
+charging powers simulated, $n^\text{fastchg}_\text{opt}$~is the highest for the
 coldest temperature  combination~${(T_\text{init},T_\text{sink}) =  (15, 5)
 \si{\degreeCelsius}}$. This is due to  the slow rate of electrochemical reaction
 and diffusion  at cold  temperatures. The thinner  electrodes from  using higher

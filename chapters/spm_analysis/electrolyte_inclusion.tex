@@ -39,7 +39,7 @@ in \cref{eq:cellterminalvoltagebasic} is modified as
 \begin{equation}
     V_\text{cell} = η_\text{pos} - η_\text{neg} + U_\text{pos} - U_\text{neg} - I R_\text{eq}
 \end{equation}
-where  $R_\text{eq}$  is the  equivalent  resistance  newly introduced.  In  the
+where  $R_\text{eq}$~is  the  equivalent  resistance newly  introduced.  In  the
 opinion of  this thesis  author, this  approach is too  simplistic and  does not
 generalise well. Even if giving up  physics-based model origins can be tolerated
 for one  or two subsystems  within the model,  the equivalent resistance  is not
@@ -49,13 +49,13 @@ introduced  to account  for the  complex mass  and charge  transport within  the
 electrolyte  places a  disproportionately large  weight on  the accuracy  of the
 curve-fitting process. Non-linear fits as proposed in Guo~\etal{} are inherently
 problematic  in nature  as  the optimisation  routine may  converge  to a  local
-minimum.  The specific  form and  nature \eg~the convexity  of the  proposed
-hypothesis function  is not discussed. It  is also not guaranteed  that the same
-fitting  function  is  applicable  to  a different  cell  with  another  set  of
-parameters. Finally,  the correction  term being resistive  in nature  is zeroth
-order \ie~cannot account  for  the  frequency  dependent behaviour  of  the
+minimum.  The  specific  form  and  nature \eg~the  convexity  of  the  proposed
+hypothesis  function is  not  discussed.  It is  also  not  guaranteed that  the
+same  fitting function  is  applicable  to a  different  cell  with another  set
+of  parameters.  Finally, the  correction  term  being  resistive in  nature  is
+zeroth order  \ie~cannot account  for the frequency  dependent behaviour  of the
 electrolyte's  dynamics. This  approach is  more suited  for small-scale  static
-corrections that do not depend on the current \eg~to account for a few tens of
+corrections that do not  depend on the current \eg~to account for  a few tens of
 microvolts due to a constant contact resistance of the current collectors.
 
 % \fxnote{later on, as a capstone work, mention how I was inspired}
@@ -69,10 +69,10 @@ electrolyte overpotential. The potential drop in the electrolyte is given by
 and   can   be   substituted    into   the   subtraction   operation   involving
 \cref{eq:posoverpotential}  and  \cref{eq:negoverpotential}   in  computing  the
 overall  overpotential   of  \cref{eq:overpotentialdifference}  and   hence  the
-terminal   voltage.   The  effective   conductivity   of   the  electrolyte   in
-a   given   region   \jinpossepneg{},   within   the   cell,   is   defined   as
-$\kappa_\effj(c_e) = \kappa(c_e)\, \varepsilon_j^{\text{brugg}_j}$. As discussed
-in  \cref{subsec:basicspmsimsetup},  the  intrinsic   and  hence  the  effective
+terminal  voltage. The  effective conductivity  of  the electrolyte  in a  given
+region  \jinpossepneg{},  within  the cell,  is  defined  as~${\kappa_\effj(c_e)
+=    \kappa(c_e)\,    \varepsilon_j^{\text{brugg}_j}}$.    As    discussed    in
+\cref{subsec:basicspmsimsetup},   the   intrinsic   and  hence   the   effective
 electrolyte conductivity is a function of the concentration of \ch{Li^+} ions in
 the  electrolyte.  Di  Domenico~\etal{}  did  not  discuss  the  spatio-temporal
 calculation  of  electrolyte  concentration.  It   is  likely  that  a  constant
@@ -228,19 +228,19 @@ Luo~\etal~\cite{Luo2013} derived  a parabolic  approximation of  the electrolyte
 concentration  distribution along  the  thickness of  the  cell. The  derivation
 is  obtained  for  the case  of  steady-state  wherein  the  rate of  change  of
 concentration  is  zero.  However,  the  author  of  this  thesis  is  sceptical
-about  this   since  in  the   simulations  performed  there  is   no  situation
-other  than  prior  to  application  of current  that  this  exact  steady-state
-condition is  satisfied. In  the \gls{qss} profile  concept discussion  based on
-on \cref{fig:ce1cdischgwithzoom},  it  is  clear that  only  the  \emph{spatial}
-profile reaches  a shape that can  be potentially described by  a mathematically
-invariant   family   of  curves.   The   electrolyte   concentration  is   still
-\emph{time-varying} and therefore violates the static time-evolution assumption.
-Although  Luo~\etal{}  do  not  explicitly acknowledge  this,  they  provide  an
-extension for  general operating  conditions by introducing  exponential scaling
-functions  $f_n(t)$ and  $f_p(t)$ while  retaining the  assumption of  parabolic
-spatial behaviour.  The computation of  certain time-constants in  these scaling
-functions  are  not  elucidated  nor  is  a  summary  of  procedural  steps  for
-determination of the aforementioned scaling functions provided.
+about  this since  in  the simulations  performed there  is  no situation  other
+than  prior to  application of  current that  this exact  steady-state condition
+is  satisfied.  In  the  \gls{qss}   profile  concept  discussion  based  on  on
+\cref{fig:ce1cdischgwithzoom}, it is clear  that only the \emph{spatial} profile
+reaches a shape that can be  potentially described by a mathematically invariant
+family of curves. The electrolyte concentration is still \emph{time-varying} and
+therefore violates the static time-evolution assumption. Although Luo~\etal{} do
+not explicitly acknowledge this, they provide an extension for general operating
+conditions  by introducing  exponential scaling  functions~$f_n(t)$ and~$f_p(t)$
+while retaining the  assumption of parabolic spatial  behaviour. The computation
+of certain time-constants in these scaling functions are not elucidated nor is a
+summary  of procedural  steps for  determination of  the aforementioned  scaling
+functions provided.
 
 
 In a subsequent paper by  the same authors \ie~Luo~\etal~\cite{Luo2013a}, the
@@ -258,11 +258,11 @@ quantities such as time-constants involved in the polarization potential term.
 
 A modified version of the electrolyte model proposed in Luo~\etal~\cite{Luo2013}
 was  used  in Zou~\etal~\cite{Zou2016a}  for  observer  design in  an  \gls{soc}
-estimation application. The modification  essentially consists of truncating the
-complex  expression  in~\cite{Luo2013}  consisting of  six  coefficients,  $p_1$
-through $p_6$ to just two, and elimination of the aforementioned time-constants.
+estimation  application. The  modification  essentially  consists of  truncating
+the complex  expression in~\cite{Luo2013}  consisting of  six coefficients~$p_1$
+through~$p_6$ to just two, and elimination of the aforementioned time-constants.
 However, to  the disappointment  of the  author of this  thesis, the  claim that
-truncation to  $n=2$ terms is sufficient  to describe the dynamics  proved to be
+truncation to  $n=2$~terms is sufficient to  describe the dynamics proved  to be
 optimistic for  the parameter set considered.  In my attempts to  reproduce this
 work, an  arbitrary scaling  factor was  needed to  correct for  the electrolyte
 potential drop  and match  the \gls{p2d} simulations.  The requirement  for such
@@ -276,7 +276,7 @@ After  completing  the  simulations  with  the  aforementioned  scaling  factors
 and  continuing  in  the  quest  for other  alternatives,  the  author  of  this
 thesis  made  an observation  that  other  researchers  have  had to  resort  to
 similar techniques  for describing the electrolyte  overpotential. For instance,
-Han~\etal~\cite{Han2015a} use  a similar  scaling factor,  $p<0$ for  the entire
+Han~\etal~\cite{Han2015a}  use a  similar  scaling factor~$p<0$  for the  entire
 expression   of  \cref{eq:electrolytepdwithce}   representing  the   electrolyte
 overpotential   using  the   polynomial  approximation   approach  proposed   by
 Rahimian~\etal~\cite{KhaleghiRahimian2013}.  However, these  unexplained scaling

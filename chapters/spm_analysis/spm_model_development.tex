@@ -157,7 +157,7 @@ dynamics~\cite{Fick1995} given by
 % subscripted variable $j$ shall be omitted. It is implied that \jinnegpos{} since
 % these  equations describe  solid phase  diffusion in  the negative  and positive
 % electrodes.}
-The  divergence of  a vector  field  $\mathbf{F}(r,θ,ϕ)$ can  be expressed  in
+The  divergence of  a vector  field~$\mathbf{F}(r,θ,ϕ)$ can  be expressed  in
 spherical co-ordinates as
 \begin{equation}\label{eq:fullsphericaldiv}
     ∇ ⋅ \mathbf{F} = \frac{1}{r^2}\diffp{\left(r^2 F_r\right)}{r} +
@@ -185,7 +185,7 @@ As   per  the   assumption  of   uniform   diffusivity  in   the  solid   phase,
 \begin{align}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 ∇ c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
     \intertext{Applying the gradient operator of \cref{eq:csdiffusionconstdiffusivity} along
-    the radial direction $r$,}
+    the radial direction~$r$,}
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
 \end{align}
 \Cref{eq:csdiffusionfinal} represents  a mass-balance equation  describing solid
@@ -209,7 +209,7 @@ on  the  \gls{spm}  geometry discussed  in  \cref{subsec:basicspmgeometry},  the
 spatial dependence of this molar  flux density~$j_\nj(x,t)$ is eliminated and it
 can  therefore  be  represented  as~$j_\nj(t)$,~\jinnegpos{}. For  the  sake  of
 brevity,  its  explicit temporal  dependence  is  also  omitted resulting  in  a
-simplified notation $j_\nj$. Hence, at the particle surface
+simplified notation~$j_\nj$. Hence, at the particle surface
 \begin{equation}\label{eq:csfluxsurface}
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} = -j_\nj
 \end{equation}
@@ -316,8 +316,8 @@ concentration~$c_\sj(r,t)$ is a quartic function of the radial co-ordinate~$r$.
     c_\sj(r,t) = a(t) + b(t)\left(\frac{r}{R_\pj}\right)^2 + d(t) \left(\frac{r}{R_\pj}\right)^4
 \end{equation}
 
-The    detailed   derivation    of   the    coefficients   $a(t),    b(t)$   and
-$c(t)$     is     provided    in     Subramanian~\etal{}~\cite{Subramanian2005}.
+The    detailed   derivation    of   the    coefficients~${a(t),    b(t)
+\text{ and } c(t)}$     is     provided    in     Subramanian~\etal{}~\cite{Subramanian2005}.
 \Cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}    summarise   the
 governing equations  obtained by applying the  \engordnumber{4}~order polynomial
 approximation of \cref{eq:fourthorderpoly}  to the system of  equations given by
@@ -521,8 +521,8 @@ which corresponds to the classical \gls{lti} form
 where~${\mathbf{x}   =    \vect{\mean{q}_\text{pos},\mean{q}_\text{neg},
 \mean{c}_\spos,  \mean{c}_\sneg},   \,  x  ∈  \mathbb{R}^{4   \times  1}}$  is
 the  state  vector.  The  scalar system  input~$\mathbf{u}  ∈  \mathbb{R}$  is
-the  applied  current~$I(t)$.  The  system matrix~$A  ∈  \mathbb{R}^{4  \times
-4}$  and  input  matrix~$B  ∈  \mathbb{R}^{4 \times  1}$  are  also  shown  in
+the  applied  current~$I(t)$.  The  system matrix~${A  ∈  \mathbb{R}^{4  \times
+4}}$  and  input  matrix~$B  ∈  \mathbb{R}^{4 \times  1}$  are  also  shown  in
 \cref{eq:fourstatesmatrixvec}.
 
 For state estimation and controller design purposes, it is important to keep the
@@ -550,7 +550,7 @@ procedure    outlined   in \cref{subsec:basicspmfurtherdimensionalityreduction},
 \end{align}
 Assuming    no    loss   of    cycleable    lithium    or   other    degradation
 mechanisms,  the   total  number  of   moles  of   lithium  in  the   system  is
-conserved   \ie~$\diff{n_\text{Li}}{t}   =  0$.   Substituting   this   into
+conserved   \ie~${\diff{n_\text{Li}}{t}   =  0}$.   Substituting   this   into
 \cref{eq:totallithiumsimplified},
 \begin{align}
     0                          &= \phantom{+} \diff*{ε_\spos \, l_\text{pos}\, A \, \mean{c}_\spos }{t} + \diff*{ε_\sneg \, l_\text{neg}\, A \, \mean{c}_\sneg }{t} \\

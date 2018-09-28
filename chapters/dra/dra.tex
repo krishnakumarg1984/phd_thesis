@@ -219,14 +219,14 @@ generic dense matrix ${\ensuremath{A\in\mathbb{R}^{m \times n},m\geq n}}$ is the
 two-stage  Golub-Kahan-Reinsch  method~\cite{Golub2013}.  In  the  first  stage,
 ${A\in\mathbb{R}^{m \times n}}$~is  reduced to an upper bidiagonal  form. In the
 second  stage, \gls{svd}  of  this  upper bidiagonal  matrix~${B\in\mathbb{R}^{m
-\times n}}$  is computed using an  iterative procedure such as  the Demmel-Kahan
-method~\cite{Golub2013}. If  stage~\romanletter{1} of the  \gls{svd} computation
-employs   $\mathbb{R}$-Bidiagonalisation~\cite{Golub2013},   then  the   overall
-process  is referred  to as~\mbox{$\mathbb{R}$-\gls{svd}}.  This is  the fastest
-known full  \gls{svd} computation  method that  may be  applied to  this battery
-modelling  problem. The  \textsc{dgesvd}  algorithm,  originally implemented  in
-\textsc{LAPACK}~\cite{Anderson1999}, employs  this method. This has  been ported
-to  many  numerical  computation  packages   such  as  MATLAB,  GNU  Octave  and
+\times   n}}$  is   computed  using   an   iterative  procedure   such  as   the
+Demmel-Kahan method~\cite{Golub2013}. If  stage~\romanletter{1} of the \gls{svd}
+computation  employs~$\mathbb{R}$-Bidiagonalisation~\cite{Golub2013},  then  the
+overall  process is  referred to  as~\mbox{$\mathbb{R}$-\gls{svd}}. This  is the
+fastest known  full \gls{svd}  computation method  that may  be applied  to this
+battery modelling problem. The \textsc{dgesvd} algorithm, originally implemented
+in  \textsc{LAPACK}~\cite{Anderson1999},  employs  this method.  This  has  been
+ported to  many numerical computation  packages such  as MATLAB, GNU  Octave and
 Scilab.  Several  numerical  libraries  such  as NAG  and  Intel  MKL  also  use
 the  \textsc{dgesvd}  codes  due  to its  acclaimed  stability,  robustness  and
 versatility.  The MATLAB  implementation `\texttt{\textbf{svd}}'  is also  based
@@ -235,21 +235,21 @@ upon \textsc{dgesvd} and  hence this can be considered as  the de-facto baseline
 
 The    operation    count    for    computing   the    singular    values    and
 vectors    of    a    generic    dense    matrix~${\ensuremath{A\in\mathbb{R}^{m
-\times   n},m\geq    n}}$   using    the   $\mathbb{R}$-\gls{svd}    method   is
-${\ensuremath{4m^{2}n+22n^{3}}}$~\cite{Golub2013}.    Markov    parameters    of
+\times   n},m\geq   n}}$    using   the   \mbox{$\mathbb{R}$-\gls{svd}}   method
+is~${\ensuremath{4m^{2}n+22n^{3}}}$~\cite{Golub2013}.   Markov   parameters   of
 $x$~transfer functions  and $N$~time-samples  yields a Block-Hankel  matrix with
-$m=x N$ rows and $n=N$ columns. Hence,
+$m=x N$~rows and $n=N$~columns. Hence,
 \begin{alignat}{2}
     \text{\glsfmtshort{cpu} Operation  Count} & = & \,4\left(xN\right){}^{2}N+22N^{3}\nonumber \\
                                               & = & \,2N^{3}\left(11+2x^{2}\right)\label{eq:cpu_op_count}
 \end{alignat}
-Thus  the \gls{cpu}  operation  count scales  as  $\mathcal{O}(N^{3})$ with  the
-number of Markov time-samples~$N$ and as $\mathcal{O}(x^{2})$ with the number of
+Thus  the  \gls{cpu} operation  count  scales  as~${\mathcal{O}(N^{3})}$ with  the
+number of Markov time-samples~$N$ and as ${\mathcal{O}(x^{2})}$ with the number of
 transfer  functions~$x$ being  modelled. The  \gls{rom} computed  in Lee~\etal{}
 uses  28~transfer functions  wherein  the Markov  parameters  are collected  for
 \SI{16000}{\second}  with  a sampling  interval  of  \SI{1}{\second}. Thus,  the
 \gls{cpu}  operation  count for  performing  this  computation is  approximately
-$\mathcal{O}(16000^{3})\approx 4 \times 10^{12}$ floating point operations.
+${\mathcal{O}(16000^{3})\approx 4 \times 10^{12}}$~floating point operations.
 
 \subsection{Summary Effect of Computational Bottlenecks}\label{subsec:Summary-Effect-of}
 
@@ -317,8 +317,8 @@ is critically examined with the following scientific rationale.
         It  is not  necessary to  perform a  \emph{full} \gls{svd}  operation in
         order  to  achieve order  reduction.  When  an  upper bound  on  desired
         system order  can be  decided a  priori, it is  sufficient to  compute a
-        \emph{truncated} \gls{svd}  yielding the first few  dominant triplets of
-        $U, \Sigma \text{ and } V$.
+        \emph{truncated}  \gls{svd} yielding  the  first  few dominant  triplets
+        of~${U, \Sigma \text{ and } V}$.
 \end{enumerate}
 Thus,  forming the  large Block-Hankel  matrix  and computing  its \gls{svd}  is
 identified as an avoidable bottleneck in the classical \gls{dra}method. This can
@@ -419,8 +419,8 @@ order battery modelling.
 	\item Compute the element-wise product of this newly created matrix with
 	    the 2-D \gls{fft} of Markov parameter matrix.
 	\item Reshape the resulting matrix back to a column vector.
-	\item Extract the first $L$ elements from this vector, wherein $L=K x$.
-	    $K$ represents the desired block-Hankel size and $x$ represents
+	\item Extract the first $L$~elements from this vector, wherein~${L=K x}$.
+	    $K$~represents the desired block-Hankel size and $x$~represents
 	    the number of transfer functions being modelled.
 \end{enumerate}
 
@@ -570,7 +570,7 @@ cell   dynamics  and   hence   is  restricted   to   2500~Hankel  blocks.   This
 necessitates early  truncation of Markov parameters  at \SI{5000}{\second}. From
 \cref{fig:markov_cse_pos}, the truncation residue  at \SI{5000}{\second} for the
 unit-pulse response of solid surface concentration at positive current collector
-is $\SI{-0.0087}{\mole\per\meter\cubed}$. The truncation errors in the \gls{mpm}
+is~$\SI{-0.0087}{\mole\per\meter\cubed}$. The truncation errors in the \gls{mpm}
 directly translate  to errors in  computed singular values,  adversely affecting
 accuracy of  simulated cell  variables. It  must be noted  that the  accuracy of
 simulation results  reported here  does not  bear a  causal relationship  to the

@@ -73,7 +73,7 @@ requirements is provided here.
     is independent  of the region within  the cell. Unlike the  diffusivity, the
     electrolyte conductivity  is a strong  function of its  ionic concentration.
     Thus, the polynomial proposed by Valøen and Reimers~\cite{Valoen2005} needs
-    to  be evaluated  at  $T_\text{cell}= \SI{298.15}{\kelvin}$  and  has to  be
+    to  be evaluated  at~$T_\text{cell}= \SI{298.15}{\kelvin}$  and  has to  be
     updated during the  simulation as salt concentration  within the electrolyte
     changes over time. A discussion on the choice of initial concentration is
     provided in \cref{subsec:basicspmsimsetup}.
@@ -107,8 +107,8 @@ pronounced.
 Prima facie, it may seem that electrolyte porosities and filler volume fractions
 do  not  influence the  \gls{spm}  model.  However,  they  do have  an  indirect
 bearing  on arriving  at a  critical parameter,  \viz~the  solid phase  volume
-fraction, $\varepsilon_\sj$. This parameter is  required to compute the specific
-interfacial surface area of the electrodes $a_\sj$ \ie~the effective electrode
+fraction~$\varepsilon_\sj$. This parameter is  required to compute the specific
+interfacial surface area of the electrodes~$a_\sj$ \ie~the effective electrode
 area  exposed to  reaction and  is an  important entity  in the  \gls{spm} model
 equations  presented  in  \cref{subsec:basicspmgoverningeqns}. The  solid  phase
 volume fractions  are also required in  simulating the \gls{p2d} model  owing to
@@ -117,10 +117,11 @@ the need for computing the effective electronic conductivities of the electrodes
 \begin{equation}
     \varepsilon_\sj = 1 - \varepsilon_j - \varepsilon_{\text{fi}_j}
 \end{equation}
-where $\varepsilon_j$  and $\varepsilon_{\text{fi}_j}$  are the  electrolyte and
+where~$\varepsilon_j$  and~$\varepsilon_{\text{fi}_j}$  are the  electrolyte and
 filler  volume-fraction  within  the  respective electrode  regions.  Using  the
-values from \cref{tbl:lcoSimParamsSPMp2d} results in $\varepsilon_\spos = 0.590$
-and  $\varepsilon_\sneg  =  0.482$  for the  positive  and  negative  electrodes
+values from \cref{tbl:lcoSimParamsSPMp2d} results in~${\varepsilon_\spos =
+0.590}$
+and  ${\varepsilon_\sneg  =  0.482}$~for the  positive  and  negative  electrodes
 respectively. The specific interfacial surface areas are then calculated as
 \begin{equation}\label{eq:specificsurfarea}
     a_\sj = \varepsilon_\sj \frac{4 \pi R_\pj^2}{\frac{4}{3} \pi R_\pj^3} = \frac{3\varepsilon_\sj}{R_\pj}
@@ -164,26 +165,24 @@ design  is done  such as  to have  a small  overhang of  the negative  electrode
 layer,  below  \SI{2}{\milli\meter}  with  respect  to  the  positive  electrode
 layer~\cite{Bond2017} (see \cref{fig:anodeoverhangpouchcell}). Nevertheless, the
 active surface area is just the  common overlap area between the two electrodes,
-and hence $A_\text{elec}$  is equal to the cross-sectional area  of the positive
+and hence $A_\text{elec}$~is equal to the cross-sectional area  of the positive
 electrode.
 
-Thus,                   \cref{eq:basiccapacitybalance}                   reduces
-to                      $\frac{l_\text{neg}}{l_\text{pos}}                     =
-\frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}}    =    1.22$,    yielding
-$l_\text{neg} = \SI{72}{\micro\meter}$.
+Thus, \cref{eq:basiccapacitybalance} reduces to~${\frac{l_\text{neg}}{l_\text{pos}} =
+\frac{\varepsilon_\text{pos}}{\varepsilon_\text{neg}} = 1.22}$,~yielding~${l_\text{neg} = \SI{72}{\micro\meter}}$.
 
-At first, it  may be surprising to  note that the values of  the particle radius
-$R_\pj$ used in  both the \gls{p2d} and \gls{spm} remain  identical. However, it
-is important  to note that  the \gls{p2d} equations  of the \gls{dfn}  model are
-cast in  a normalised  form \ie~already set  up to  account for  the overall
-capacity of the  cell under consideration implicitly through usage  of a current
-density  (per unit  area) for  its  simulation. Furthermore,  this explains  why
-increasing the  number of  discretisation nodes does  not increase  the modelled
+At  first,  it may  be  surprising  to note  that  the  values of  the  particle
+radius~$R_\pj$  used  in both  the  \gls{p2d}  and \gls{spm}  remain  identical.
+However, it is  important to note that the \gls{p2d}  equations of the \gls{dfn}
+model  are cast  in a  normalised form  \ie~already set  up to  account for  the
+overall capacity of  the cell under consideration implicitly through  usage of a
+current density (per  unit area) for its simulation.  Furthermore, this explains
+why increasing the number of discretisation nodes does not increase the modelled
 capacity, but  instead serves to improves  the simulation accuracy owing  to the
 enhanced spatial resolution.
 
-The  overall  active  surface  area  $A  =  n  A_\text{elec}$  is  the  combined
-cross-sectional area of  all layers ($n$ is the number  of electrochemical (pos,
+The  overall  active  surface  area~${A  = n  A_\text{elec}}$  is  the  combined
+cross-sectional area of  all layers ($n$~is the number  of electrochemical (pos,
 sep,  neg)  triplets)  stacked  into  the pouch  cell.  In  both  the  \gls{p2d}
 and  \gls{spm}  models,  this  parameter  serves  to  scale  the  external  load
 current  down  to  the  current  density  experienced  by  each  electrochemical
@@ -310,12 +309,12 @@ in \cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
     \label{fig:kappavsCeandT}
 \end{figure}
 
-\Cref{fig:kappavsCeandT} shows  a surface  plot of the  electrolyte conductivity
-as  a function  of  initial concentration  $c_\text{e,0}$  and cell  temperature
-$T_\text{cell}$. The following salient observations are noted.
+\Cref{fig:kappavsCeandT}   shows    a   surface   plot   of    the   electrolyte
+conductivity  as a  function  of initial  concentration~$c_\text{e,0}$ and  cell
+temperature~$T_\text{cell}$. The following salient observations are noted.
 \begin{enumerate}%[label=\emph{\alph*})]
-    \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$ is uniform over the axial space $x$ and
-    \item only isothermal cell behaviour is considered \ie~$T(t) = T_\text{cell}$.
+    \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$~is uniform over the axial space~$x$ and
+    \item only isothermal cell behaviour is considered \ie~${T(t) = T_\text{cell}}$.
 \end{enumerate}
 Hence, \cref{eq:kappavsCeandT} reduces to
 \begin{multline}\label{eq:kappavsCeinitandTcell}
@@ -324,9 +323,9 @@ Hence, \cref{eq:kappavsCeandT} reduces to
     c_\text{e,0}^2 \bigr)T_\text{cell}\\
 	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e,0})T_\text{cell}^2\right)^2
 \end{multline}
-As   inferred   from \cref{fig:kappavsCeandT},  the   electrolyte   conductivity
-$\kappa$   is   a  smooth   function   of   $c_\text{e}$  and   $T_\text{cell}$.
-Thus \cref{eq:kappavsCeinitandTcell}  can be  effectively  visualised through  a
+As inferred from \cref{fig:kappavsCeandT}, the electrolyte conductivity~$\kappa$
+is   a    smooth   function   of   $c_\text{e}$    and   $T_\text{cell}$.   Thus
+\cref{eq:kappavsCeinitandTcell}   can  be   effectively  visualised   through  a
 parametric plot of $\kappa$ vs  $c_\text{e}$ with $T_\text{cell}$ as the varying
 parameter as seen in \cref{fig:kappavsce}.
 
@@ -335,16 +334,16 @@ parameter as seen in \cref{fig:kappavsce}.
     \includegraphics{m2t_kappa_ce_parametric_T.pdf}
     \caption[Electrolyte conductivity versus concentration at various cell
     temperatures]{Electrolyte conductivity versus equilibrium concentration at
-        various cell temperatures. At ${T_\text{cell} = \SI{298.15}{\kelvin}}$,
+        various cell temperatures. At~${T_\text{cell} = \SI{298.15}{\kelvin}}$,
         the maximum value of electrolyte conductivity corresponds to a salt
     concentration of \SI{1000}{\mol\per\meter\cubed}.}
     \label{fig:kappavsce}
 \end{figure}
 
-From \cref{fig:kappavsce},       it        is       evident        that       at
-$T_\text{cell}=\SI{298.15}{\kelvin}$,   the   maximum   value   of   electrolyte
-conductivity is attained at  $c_\text{e} = \SI{1000}{\mole\per\meter\cubed}$. It
-is advantageous  to operate  the cell  around this salt  concentration so  as to
+From        \cref{fig:kappavsce},        it        is        evident        that
+at~${T_\text{cell}=\SI{298.15}{\kelvin}}$,  the  maximum  value  of  electrolyte
+conductivity is  attained at~${c_\text{e}  = \SI{1000}{\mole\per\meter\cubed}}$.
+It is advantageous to  operate the cell around this salt  concentration so as to
 minimise  the  cell's  overall  resistance.  Hence,  the  initial  concentration
 $c_\text{e,0}$ is  chosen to  be \SI{1000}{\mole\per\meter\cubed}. It  should be
 noted that while  the electrolyte concentration in the  \gls{p2d} model exhibits
@@ -408,15 +407,16 @@ from its  capacity, it is  required to  apply an infinitesimal  bleeding current
 Current sensors in battery cycler equipment use high-precision (typically 15--18
 bit) \glspl{adc}  and are  able to  offer high  \glspl{snr} except  at ultra-low
 currents. The main difficulty with using very low C-rates is that it drastically
-slows down the  characterisation procedure. Using a discharge  current of C/100,
-\ie~\SI{0.6}{\ampere} in  this case,  results in  a characterisation  time of
-\SI{100}{\hour} or  \approx 4$\sfrac{1}{4}$ days (excluding soak-times  and other
-set-up related  activities). Furthermore, for accurate  coulomb-counting, a high
-data logging  rate is needed,  resulting in  large file sizes  and corresponding
-difficulties in post-processing them.  Considering moderate buffer-sizes used in
-data logging modules of typical  cell-cycler software (shared between channels),
-and  to  avoid  excessively  large wait-times  for  characterisation,  discharge
-currents of C/20--C/25 are usually deemed sufficient.
+slows  down  the  characterisation  procedure.  Using  a  discharge  current  of
+C/100,  \ie~\SI{0.6}{\ampere}  in  this  case,  results  in  a  characterisation
+time  of  \SI{100}{\hour}   or  \mbox{\approx  4$\sfrac{1}{4}$}~days  (excluding
+soak-times  and  other set-up  related  activities).  Furthermore, for  accurate
+coulomb-counting, a  high data logging rate  is needed, resulting in  large file
+sizes  and  corresponding  difficulties  in  post-processing  them.  Considering
+moderate  buffer-sizes  used in  data  logging  modules of  typical  cell-cycler
+software (shared  between channels), and  to avoid excessively  large wait-times
+for  characterisation,  discharge  currents  of C/20--C/25  are  usually  deemed
+sufficient.
 
 In    order   to    validate    that   the    choice    of   model    parameters
 result   in   an   intended   capacity  of   \SI{60}{\amphour},   an   analogous
@@ -436,14 +436,14 @@ to charge depletion.
 
 Capacity validation through computer simulation  is not bound by the limitations
 of the experimental approach discussed earlier. Using 64-bit IEEE floating point
-arithmetic, quantities as low as $\mathcal{O}(10^{-16})$ can be safely computed,
-nullifying  any \gls{snr}  issues. \Cref{tbl:charSimspmp2d}  summarises the  key
-data  from  this  simulation  run.  For  accurate  coulomb  counting,  the  data
+arithmetic,  quantities  as  low  as  ${\mathcal{O}(10^{-16})}$  can  be  safely
+computed, nullifying  any \gls{snr} issues.  \Cref{tbl:charSimspmp2d} summarises
+the key data  from this simulation run. For accurate  coulomb counting, the data
 logging  interval  is set  to  \SI{50}{\milli\second}.  Both the  \gls{p2d}  and
 \gls{spm} model ran close to 100~hours.  The small deviations from this expected
 termination  time  can  be attributed  to  the  fact  that  the current  is  not
 arbitrarily small with  the pragmatic goal of obtaining results  in a reasonable
-time. As seen in \cref{tbl:charSimspmp2d}, even  the \emph{combined} CPU time to
+time. As seen in \cref{tbl:charSimspmp2d},  even the \emph{combined} CPU time to
 simulate both  the \gls{p2d}  and \gls{spm}  models is  two orders  of magnitude
 lower than  real-time. The only  issue that remains to  be addressed is  that of
 considerable memory and  storage requirements due to  high-rate data-logging for
@@ -481,21 +481,20 @@ defined as
 \begin{equation}
     \varepsilon_v = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}
 \end{equation}
-The absolute maximum  error is of $\mathcal{O}\left(100\right)\si{\milli\volt}$,
-which occurs  towards the end of  discharge. Although this represents  the worst
-case  upper  bound  on  the  error,  this  is  not  strictly  representative  of
-the  overall error  behaviour  as evidenced  by the  standard  deviation of  the
-error  vector. The  mean  and \gls{rms}  error values  indicate  an accuracy  of
-$\mathcal{O}\left(10\right)\si{\milli\volt}$. It should be noted that throughout
-the simulation,  the voltage  response of  the \gls{spm}  remains above  that of
-\gls{p2d}, thereby leading  to a negative value for the  mean voltage error. For
-continuous  quantities  such  as  time-domain  simulation  outputs  of  physical
-variables, the \gls{mae} is a suitable error metric and is defined as
-\begin{equation}
-    \varepsilon_\text{\scriptsize \glsfmtshort{mae}} = \frac{\Sigma_{i=1}^{n}\abs{\varepsilon_i}}{n}
-\end{equation}
-and is consistent  with the order of  magnitude of the \gls{rms}  and mean error
-metrics as well as with the standard deviation of the error vector.
+The absolute maximum  error is of~$\mathcal{O}\left(100\right)\si{\milli\volt}$,
+which  occurs  towards  the  end  of discharge.  Although  this  represents  the
+worst  case upper  bound  on  the error,  this  is  not strictly  representative
+of  the  overall  error  behaviour   as  evidenced  by  the  standard  deviation
+of  the  error  vector.  The  mean   and  \gls{rms}  error  values  indicate  an
+accuracy~of ${\mathcal{O}\left(10\right)\si{\milli\volt}}$.  It should  be noted
+that throughout  the simulation, the  voltage response of the  \gls{spm} remains
+above  that of  \gls{p2d}, thereby  leading  to a  negative value  for the  mean
+voltage error. For continuous quantities  such as time-domain simulation outputs
+of physical variables, the \gls{mae} is a suitable error metric and is
+defined as  \begin{equation} \varepsilon_\text{\scriptsize  \glsfmtshort{mae}} =
+\frac{\Sigma_{i=1}^{n}\abs{\varepsilon_i}}{n}  \end{equation} and  is consistent
+with the order of  magnitude of the \gls{rms} and mean error  metrics as well as
+with the standard deviation of the error vector.
 
 Thus,  a common  foundation  for  further simulations  has  been established  by
 confirming  that  the  two  models  indeed  simulate  a  cell  with  a  capacity

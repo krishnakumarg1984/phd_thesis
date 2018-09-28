@@ -1,3 +1,5 @@
+- check overfull/underfull, and use sloppypar
+- check undefined references
 - check for nbsp for gls
 - remove colour from hyperlinks
 - biblatex check files 

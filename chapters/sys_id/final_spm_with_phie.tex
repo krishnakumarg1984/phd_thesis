@@ -134,7 +134,7 @@ solution resistance.
 \end{figure}
 
 \Cref{fig:contributiontophiefromtwoterms} shows the  contribution to the overall
-potential drop  $\phi_\text{e,pos}$ and  $\phi_\text{e,neg}$ in  the electrolyte
+potential drop~$\phi_\text{e,pos}$ and~$\phi_\text{e,neg}$ in  the electrolyte
 from  each  of  the  two  terms  in \cref{eq:electrolytepdwithcenew}  for  a  1C
 discharge. The bulk  solution resistance is constant owing to  the fact that the
 initial  electrolyte concentration  is  used in  computing  the effective  ionic
@@ -271,8 +271,8 @@ reaction overpotential in each of the two porous electrode regions is given by
     η_\text{pos} &= ϕ_\spos - ϕ_\epos - U_\text{pos} \label{eq:posoverpotentialoverall} \\% \tag{\cref{eq:posoverpotential} revisited}\\
     η_\text{neg} &= ϕ_\sneg - ϕ_\eneg - U_\text{neg} \label{eq:negoverpotentialoverall} %\tag{\cref{eq:negoverpotential} revisited}
 \end{align}
-wherein the contribution from the electrolyte potential terms $ϕ_\epos$ and
-$ϕ_\eneg$ are no longer to be neglected.
+wherein  the  contribution  from   the  electrolyte  potential  terms~$ϕ_\epos$
+and~$ϕ_\eneg$ are no longer to be neglected.
 
 Subtracting \cref{eq:negoverpotentialoverall}
 from \cref{eq:posoverpotentialoverall}
@@ -284,7 +284,7 @@ V_\text{cell} &= η_\text{pos} - η_\text{neg} + \underbrace{ϕ_\epos -
 U_\text{neg}\label{eq:intermediatevoltagewithphie}
 \end{align}
 
-Substituting for $\Delta \phi_\text{e}$ from \cref{eq:electrolytepdwithcenew} in
+Substituting for ${\Delta \phi_\text{e}}$ from \cref{eq:electrolytepdwithcenew} in
 into \cref{eq:intermediatevoltagewithphie},  and  expanding  each of  its  terms
 (see derivation of \cref{eq:spmbasicoutputvoltagefinal}  for details), the final
 expression for the cell's terminal voltage is obtained as
@@ -394,7 +394,7 @@ electrolyte   overpotential.   Specifically,  computational   difficulties   are
 encountered    when   computing    the    concentration   dependent    diffusion
 overpotential \cref{eq:electrolytepdwithcenew}. In the case  of ion depletion at
 the positive  current collector,  the argument of  the logarithmic  term becomes
-zero which leads to a non-feasible computation ($-\infty$). Ion depletion at the
+zero which leads to a non-feasible computation~($-\infty$). Ion depletion at the
 negative current collector  is equally detrimental to  the computation. However,
 this scenario has  a lower probability owing to the  low C-rates during charging
 operation (see \cref{subsec:basicspmsimsetup}).  Furthermore, in the  absence of

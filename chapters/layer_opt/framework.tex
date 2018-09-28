@@ -131,17 +131,16 @@ cell~$n$.
 
 In  the  schematic  of \cref{fig:fig_strategy_schematic},  this  layer-dependent
 calculation of  mass of all cells  in the pack~$M_\text{cells}$ is  shown by the
-product of  the signal  labelled $m_\text{cell}$ and  the triangular  gain block
+product of  the signal  labelled~$m_\text{cell}$ and  the triangular  gain block
 representing the overall number of cells in the pack~$n_\text{cells}$.
 \begin{equation}\label{eq:massofallcells}
     M_\text{cells} = n \times m_\text{cell}
 \end{equation}
 
 The  mass of  the vehicle  is  given by  the sum  of chassis  mass~$M_\text{c}$,
-vehicle payload $M_\text{p}$, pack overhead $M_\text{o}$ and the layer-dependent
-mass   of   all   cells   in   the  pack   $M_\text{cells}$   as   computed   in
-\cref{eq:massofallcells}.   The   computation  of   mass   of   a  single   cell
-$m_\text{cell}$ is detailed in \cref{sec:massofonecell}.
+vehicle payload~$M_\text{p}$, pack overhead~$M_\text{o}$ and the layer-dependent
+mass   of   all   cells   in   the  pack~$M_\text{cells}$   as   computed   in
+\cref{eq:massofallcells}.   The   computation  of   mass   of   a  single   cell~$m_\text{cell}$ is detailed in \cref{sec:massofonecell}.
 
 \subsubsection*{Computation of acceleration power density per layer}
 
@@ -158,7 +157,7 @@ operating point  (such as the  speed and torque  of the electric  motor, current
 drawn  by the  power electronics  etc.). Following  the assumptions  detailed in
 \cref{subsec:layeroptassumptions},  a single  lumped efficiency~$\eta_\text{dt}$
 can be  used for the powertrain.  The power demand  on the pack is  then divided
-by  the  number of  cells  in  the pack  $n_\text{cells}$  to  obtain the  power
+by  the  number of  cells  in  the pack~$n_\text{cells}$  to  obtain the  power
 demand  at the  input  of the  cell's terminals~$p^\text{acc}_\text{cell}$.  For
 each  layer choice~$n$,  the overall  electrochemically active  surface area  is
 computed  using by  using \cref{eq:overallarea},  wherein the  surface area  per
@@ -171,8 +170,8 @@ area~$A_\text{cell}$.
 conditions}\label{sec:accexitconditions}
 
 For  the  presently trialled  layer  choice~$n$,  a thermally-coupled  \gls{p2d}
-simulation is performed for a duration  of $t_\text{f}$ seconds with the applied
-power  density $p^\text{acc}_\text{cell}$  corresponding  to  the present  layer
+simulation is performed for a duration  of $t_\text{f}$~seconds with the applied
+power  density~$p^\text{acc}_\text{cell}$  corresponding  to  the present  layer
 choice  as input  to  the  model. When  the  simulation  terminates, the  cell's
 condition is compared against three criteria
 \begin{enumerate}
@@ -243,7 +242,7 @@ the entire workflow is repeated.
 
 If the  simulation for  any layer choice  passes the  aforementioned termination
 criteria,  the  \gls{soc}   achieved  by  the  cell  is   compared  against  the
-fast-charging   target~$z^\ast$.  If   $z(t)   >  z^\ast$,   then  the   present
+fast-charging   target~$z^\ast$.  If~${z(t)   >  z^\ast}$,   then  the   present
 layer  choice  represents   the  minimum  (and  therefore   optimum)  value  for
 this  specific  fast  charging  application.  The  successful  layer  choice  is
 labelled~$n_\text{opt}^\text{fastchg}$. If the surface concentration has not yet
@@ -273,7 +272,7 @@ presented next in \cref{sec:resultslayeropt}.
 
 A  customised binary  search algorithm  is designed  for the  layer optimisation
 framework.  Binary  search  is  a  computationally  efficient  search  algorithm
-requiring a worst-case  operational count of~$\mathcal{O}(\log k)$  where $k$ is
+requiring a worst-case  operational count of~$\mathcal{O}(\log k)$  where $k$~is
 the  overall  number  of  layer  candidates  to  be  searched~\cite{Cormen2009}.
 However, this  algorithm is  applicable only  when the array  to be  searched is
 already  sorted in  either ascending  or  descending order.  By recognising  the
@@ -340,10 +339,10 @@ logging and debugging purposes.
 
 A  simpler alternative  to using  the binary  search algorithm  is the  standard
 linear  search  algorithm. This  is  a  simple  search strategy  which  involves
-sequentially iterating  from $n_\text{min}$ to $n_\text{max}$  until arriving at
-the lowest  value $n_\text{opt}^\text{acc}$  that satisfies all  the termination
+sequentially iterating  from~$n_\text{min}$ to~$n_\text{max}$  until arriving at
+the lowest  value~$n_\text{opt}^\text{acc}$  that satisfies all  the termination
 criteria. However, a naive use of the linear search algorithm is computationally
-expensive with a worst case operation count of $\mathcal{O}(n)$. Therefore, this
+expensive with a worst case operation count of~$\mathcal{O}(n)$. Therefore, this
 thesis author  recommends the use  of the  bespoke binary search  algorithm. The
 choice of minimum and maximum values for  the layer search space is discussed in
 \cref{sec:layersearchbounds}.
@@ -376,7 +375,7 @@ integer optimisation problem of \cref{eq:maxlayersopt}.
     n_\text{max} = \max \left(\floor*{\frac{2\left(L_\text{stack} - l_\text{Cu}\right)}{l_\text{Al}+l_\text{Cu}+2 l_\text{sep}}}, \floor*{\frac{2L_\text{stack} - l_\text{Al} - l_\text{Cu}}{l_\text{Al} + l_\text{Cu} + 2l_\text{sep}}} \right)
 \end{equation}
 
-The  first   argument  to  the  $\max$   function  in  \cref{eq:analytical_nmax}
+The  first   argument  to  the  $\max$~function  in  \cref{eq:analytical_nmax}
 represents the maximum number of physically feasible odd layers while the second
 argument  represents  the  maximum  such  value  when  considering  odd  layers.
 Therefore, the greater of these two  values is chosen as the maximum permissible
@@ -384,8 +383,7 @@ layer choice~$n_\text{max}$ and is used as an input to the search algorithm.
 
 
 In  the absence  of published  information on  how the  minimum layers  within a
-pouch  cell is  currently set,  there is  presently no  unique way  to determine
-$n_\text{min}$.  Therefore, for  this  layer optimisation  study,  the value  of
+pouch  cell is  currently set,  there is  presently no  unique way  to determine~$n_\text{min}$.  Therefore, for  this  layer optimisation  study,  the value  of
 $n_\text{min}$ used  by the  search algorithm  is currently set  to one  --- the
 minimum physically feasible number of layers. Design engineers from industry may
 opt  to tweak  this to  a higher  value based  on insights  gained from  present
@@ -410,7 +408,7 @@ Equating  the active material volume of both electrodes,
 \end{equation}
 
 While  stacking the  layers  within a  pouch cell,  for  the negative  electrode
-layers, there exists  an extra overhang of $(<~\SI{2}{mm})$ with  respect to the
+layers, there exists  an extra overhang of~${(<~\SI{2}{mm})}$ with  respect to the
 positive  electrode layers.  \Cref{fig:anodeoverhangpouchcell}  shows a  CT~scan
 depicting the two-dimensional longitudinal-sections with a close-up view of this
 overhang region. This is a design feature  and helps to avoid plating of lithium
@@ -423,8 +421,7 @@ at the edges.
     electrode]
     {CT~scan showing the two-dimensional longitudinal-sections from the edge of
         the pouch cell with a close-up view of the graphite overhang region. For
-        the negative electrode layers, there is an extra overhang of
-        $(<~\SI{2}{mm})$ with respect to the positive electrode layers. This
+        the negative electrode layers, there is an extra overhang of~${(<~\SI{2}{mm})}$ with respect to the positive electrode layers. This
         design feature helps to avoid plating of lithium at the edges. Image
     reproduced from Bond~\etal~\cite{Bond2017}.}
     \label{fig:anodeoverhangpouchcell}
@@ -588,7 +585,7 @@ temperature~$T_\text{cell}(t)$ is also obtained from this lumped thermal model.
 	V &= \phi_\text{s}\big|_{\mathrlap{x = x_\text{pos/Alcc}}} \qquad - \phi_\text{s}\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}c}
 \end{align}
 
-The   average   specific   heat   of    the   cell,   $c_\text{avg}$   used   in
+The   average   specific   heat   of    the   cell~$c_\text{avg}$   used   in
 \cref{eq:thermalmodel} is  a function of  the number of  layers and is  given by
 \cref{eq:spheat}.
 \begin{equation}\label{eq:spheat}

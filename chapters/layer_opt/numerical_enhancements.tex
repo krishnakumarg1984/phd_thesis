@@ -34,7 +34,7 @@ defined as
 \begin{equation}\label{eq:overallarea}
     A_\text{cell} = n \times A_\text{elec}
 \end{equation}
-where $n$ is the number of layers and $A_\text{elec}$ is the active surface area
+where $n$~is the number of layers and $A_\text{elec}$~is the active surface area
 per layer.
 
 \subsubsection*{Surface area per layer}\label{sec:surfareaperlayer}
@@ -206,7 +206,7 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
     \item \textbf{Determination of number  of layers within  reference cell}
 
         The  next  step  is  to  determine  the  number  of  layers  within  the
-        reference pouch  cell,~$n_\text{refcell}$. The  thickness of  a complete
+        reference pouch  cell~$n_\text{refcell}$. The  thickness of  a complete
         electrochemical sandwich multiplied  by the number of  layers yields the
         total stack height
         \begin{equation}\label{eq:stackheightrefcell}
@@ -225,7 +225,7 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
 
         Since fractional layers do not have  any physical meaning, the number of
         layers that  can be  accommodated within  any pouch  must be  an integer
-        quantity. Therefore,  $n_\text{refcell}$ is  computed as the  `floor' of
+        quantity. Therefore,  $n_\text{refcell}$~is  computed as the  `floor' of
         the quantity in the \gls{rhs} of \cref{eq:stackheightrefcellmod}
         \begin{align}
             n_\text{refcell} &= \floor*{\frac{L_\text{stack}}{l_\text{Al} + l_\text{pos} + l_\text{sep} + l_\text{neg} + l_\text{Cu}}} \\
@@ -274,7 +274,7 @@ resistance~$R_0$. The  value of $R_0$ is  updated at each time  index~$k$ as per
     I_k = \frac{v_k - \sqrt{v^\text{2}_k - 4R_0P_{k}}}{2R_0}
 \end{equation}
 where $v_k$ is the  cell's terminal voltage at time index  $k$, evolved from the
-applied current up to and including the $(k-1)^\text{th}$ time step.
+applied current up to and including the $(k-1)^\text{th}$~time step.
 
 There  are  two disadvantages  in  using  Plett's  simplified approach  for  the
 proposed layer optimisation study. Firstly, this necessitates the quantification
@@ -357,7 +357,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
 
     \Cref{eq:discretisedPhiS}      represents     the      weak     form      of
     \cref{eq:solidchargeconserve}  applied   on  the  \gls{fv}  mesh   for  each
-    control  volume, wherein  subscripts~$k$  and  $k\pm\frac{1}{2}$ denote  the
+    control  volume, wherein  subscripts~$k$  and~$k\pm\frac{1}{2}$ denote  the
     $k$\textsuperscript{th}  \gls{fv} node  and  its associated  left and  right
     edges respectively.
     \begin{equation} \label{eq:discretisedPhiS}
@@ -375,7 +375,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     the  penalty  of  a  mathematically  complex  set  of  boundary  conditions.
     When  using high  node  densities  in the  negative  and positive  electrode
     regions (see \cref{tbl:lcoSimParamslayeropt}), for the two outermost control
-    volumes, the values of $\frac{\Delta x}{2}$ becomes small. With a reasonably
+    volumes, the values of~$\frac{\Delta x}{2}$ become small. With a reasonably
     small mesh interval, the potentials at the cell centres can be considered to
     be nearly equal to that at their corresponding current collector interfaces.
     This  assumption  helps  to  keep  the  resulting  mathematical  expressions
@@ -389,8 +389,8 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
 	    \frac{-\sigma_{\text{eff}_\text{neg}} \phi_{\text{s}_n}}{\Delta x_\text{neg}} + \frac{\sigma_{\text{eff}_\text{neg}} \phi_{\text{s}_{n-1}}}{\Delta x_\text{neg}} - i &= a_{\text{s}_\text{neg}} F j_n \Delta x_\text{neg}\label{eq:PhiSappliedBCneg}
     \end{align}
 
-    Multiplying    \cref{eq:PhiSappliedBCpos}    by   $\phi_{\text{s}_0}$    and
-    \cref{eq:PhiSappliedBCneg} by $\phi_{\text{s}_n}$ and subtracting,
+    Multiplying    \cref{eq:PhiSappliedBCpos}    by~$\phi_{\text{s}_0}$    and
+    \cref{eq:PhiSappliedBCneg} by~$\phi_{\text{s}_n}$ and subtracting,
     \begin{multline} \label{eq:pinputBCcomplete}
         \frac{-\sigma_{\text{eff}_\text{pos}} \phi^2_{\text{s}_0}}{\Delta x_\text{pos}} -
         \frac{\sigma_{\text{eff}_\text{neg}} \phi^2_{\text{s}_n}}{\Delta x_\text{neg}} +
@@ -456,8 +456,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     apply  the ionic  flux boundary  condition  at the  particle surface,  since
     this  involves  extrapolation from  at  least  two  other nodes  within  the
     particle. While  such extrapolations are  acceptable in the  axial dimension
-    ---  particularly  with  high  node  densities  providing  small  values  of
-    $\frac{\Delta x}{2}$ --- they are  undesirable in the radial dimension. This
+    ---  particularly  with  high  node  densities  providing  small  values  of~$\frac{\Delta x}{2}$ --- they are  undesirable in the radial dimension. This
     is because the cell's \gls{ocp} and terminal voltage strongly depends on the
     concentration at the particle surface.  Spectral methods offer a combination
     of  high accuracy  and speed  while  permitting the  use of  a lower  number
@@ -485,7 +484,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     leading  up to  the reformulated  solid phase  diffusion and  its associated
     boundary conditions in the Chebyshev domain.
 
-    The  $N_\text{r}$~Chebyshev   collocation  nodes,  defined  on   a  1D  mesh
+    The $N_\text{r}$~Chebyshev   collocation  nodes,  defined  on   a  1D  mesh
     in   the   radial   direction,  are   given   by   \cref{eq:defineChebNodes}
     (see~\cite{Trefethen2000}).
     \begin{equation}\label{eq:defineChebNodes}
@@ -496,7 +495,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     each particle, we obtain  \cref{eq:quotientappliedpde}, presented along with
     its Neumann  boundary conditions, eqs.~\eqref{eq:quotientappliedpdeBCcentre}
     and~\eqref{eq:quotientappliedpdeBCsurface}.  $j$~is the  molar flux  density
-    (\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$ is the particle radius (\si{m}).
+    (\si{mol.m^{-2}.s^{-1}}) and $R_\text{p}$~is the particle radius (\si{m}).
     \begingroup
     \allowdisplaybreaks
     \begin{subequations}\label{eq:quotientappliedpde}
@@ -509,14 +508,14 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     \end{subequations}
     \endgroup
 
-    Mapping $r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]$,
+    Mapping ${r \in [0,R_\text{p}] \mapsto \widetilde{r} \in [-1, 1]}$,
     \begin{equation}\label{mappingChebDomain}
         r = \frac{R_\text{p}}{2}(\widetilde{r} + 1)
     \end{equation}
 
     Applying \cref{mappingChebDomain} to
     \crefrange{eq:quotientappliedpde}{eq:quotientappliedpdeBCsurface} whilst
-    retaining $c_\text{s}$ in the physical space yields
+    retaining $c_\text{s}$~in the physical space yields
     \crefrange{eq:solidDiffEqChebDomain}{eq:solidDiffEqChebDomainBCsurface}.
     \begin{subequations}\label{eq:solidDiffEqChebDomain}
         \begin{align}
