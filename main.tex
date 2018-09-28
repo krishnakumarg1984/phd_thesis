@@ -87,7 +87,8 @@ this work.
 \input{chapters/conclusions/conclusions}   % Conclusions
 
 \backmatter
-\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+\begin{footnotesize} % Bibliography/References
+    \singlespacing
     \renewcommand{\bibname}{References} % changes the header; default: Bibliography
     % add bib to toc
     \cleardoublepage
@@ -102,6 +103,8 @@ this work.
 \makeatother
 \cleardoublepage
 
+
+% \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 \begin{appendices} % Using the appendices environment (from appendix package) for more functionality
     \crefalias{chapter}{appchap}
     \include{chapters/Appendices/appendix1}
