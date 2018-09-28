@@ -20,7 +20,7 @@
 \usepackage{checkend}
 
 % \usepackage[datesep=/,useregional]{datetime2}
-\usepackage[datesep=/,style=ddmmyyyy]{datetime2}
+\usepackage[datesep=/,style=ddmmyyyy]{datetime2} % must be loaded before gitinfo2
 % \DTMsetdatestyle{en-GB-numeric}
 \usepackage{diffcoeff}   % looks pretty useful for any math-oriented document. Leaving it here
 
@@ -33,7 +33,7 @@
 \usepackage{footmisc}    % typically for thesis use;
 
 \usepackage{geometry}
-\usepackage{gitinfo2}
+\usepackage{gitinfo2}    % if using datetime2, that package must be loaded before gitinfo2
 \usepackage{graphicx}    % important to load before fontspec
 
 \usepackage{labelschanged}
