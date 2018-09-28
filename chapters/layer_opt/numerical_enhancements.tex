@@ -236,7 +236,7 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
 
     \item \textbf{Computation of surface area per layer}
 
-        Substituting  the values  of  $n_\text{refcell}$ and  $A_\text{refcell}$
+        Substituting  the values  of~$n_\text{refcell}$ and  $A_\text{refcell}$
         into  \cref{eq:overallarea}, the  electrochemically active  surface area
         per layer is obtained as
         \begin{align}
@@ -268,12 +268,12 @@ power inputs.
 Plett~\cite{Plett2016}  suggests  a methodology  for  applying  power inputs  to
 equivalent circuit models  for simulation at a fixed sample  rate. This involves
 converting the input  power~$P_k$ to a current~$I_k$ using  an equivalent series
-resistance~$R_0$. The  value of $R_0$ is  updated at each time  index~$k$ as per
+resistance~$R_0$. The  value of~$R_0$ is  updated at each time  index~$k$ as per
 \cref{eq:PlettPower}.
 \begin{equation}\label{eq:PlettPower}
     I_k = \frac{v_k - \sqrt{v^\text{2}_k - 4R_0P_{k}}}{2R_0}
 \end{equation}
-where $v_k$ is the  cell's terminal voltage at time index  $k$, evolved from the
+where $v_k$~is the  cell's terminal voltage at time index  $k$, evolved from the
 applied current up to and including the $(k-1)^\text{th}$~time step.
 
 There  are  two disadvantages  in  using  Plett's  simplified approach  for  the

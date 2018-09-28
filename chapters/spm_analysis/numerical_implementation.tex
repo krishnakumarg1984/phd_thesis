@@ -303,8 +303,8 @@ as the \gls{spm} helps in achieving a low-latency throughput for the \gls{isr}.
 The overall implication of such a scheme  is that any \emph{delays} owing to the
 sample and  hold process  at the model  input and outputs  can be  neglected. In
 conventional sampled-data systems, control delays may be analysed by considering
-a multiplicative factor of $e^{-sλ}$ in the Laplace domain transfer function of
-the system. Delay parameters of ${λ = 0.5  T_s}$ or ${λ = 1 T_s}$ are commonly
+a multiplicative factor of~$e^{-sλ}$ in the Laplace domain transfer function of
+the system. Delay parameters of~${λ = 0.5  T_s}$ or ${λ = 1 T_s}$ are commonly
 employed  as  conservative estimates.  However,  owing  to  the small  CPU  load
 factors, in this thesis this delay term is omitted for discrete-time formulation
 of the \gls{spm}.
@@ -361,7 +361,7 @@ difference equation
 where ${A_d = e^{A T_s}}$ and ${B_d = \int_{0}^{T_s}e^{A \eta}B
 \,{d\eta}}$.
 If the continuous-time system matrix~$A$ is invertible, a closed form
-expression for $B_d$ is obtained as
+expression for~$B_d$ is obtained as
 \begin{align}
     B_d &= A^{-1}(A_d - I_n)B && \text{(if $A^{-1}$ exists)}
 \end{align}

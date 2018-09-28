@@ -360,8 +360,8 @@ coefficients~$(a_1, a_2,  \dots a_{n_a})$ and ${(b_1, b_2, \dots  , b_{n_b} )}$,
 randomised  multi-start  algorithm was  used.  For  the two  transfer  functions
 identified, no distinction is made  between whether the \gls{armax} structure or
 Box-Jenkins structure was  used to arrive at the coefficients.  Since the output
-magnitudes of $\widetilde{Q}_{\text{e,n}}$  and $\widetilde{Q}_{\text{e,p}}$ are
-of~$\mathcal{O}{10^{-3}}$,  a  constant  scaling   factor  of  ${k  =  1000}$  is
+magnitudes of~$\widetilde{Q}_{\text{e,n}}$  and $\widetilde{Q}_{\text{e,p}}$ are
+of~$\mathcal{O}{10^{-3}}$,  a  constant  scaling   factor  of~${k  =  1000}$  is
 used  to  bring the  order  of  magnitude of  output  data  values to  unity.  A
 well-chosen  scaling factor  is often  vital  to the  convergence of  non-linear
 optimisation algorithms.  Since the system  is linear, this constant  gain shall
@@ -411,7 +411,7 @@ The final identified transfer functions (for the scaled output) are
     \includegraphics{p2d_sysid_train_qen.pdf}
     \caption[$\widetilde{Q}_{\text{e,n}}(t)$ outputs from \glsfmtshort{p2d} and
     identified transfer function for training profile]{%
-        Time-evolution of $\widetilde{Q}_{\text{e,n}}$ computed using the
+        Time-evolution of~$\widetilde{Q}_{\text{e,n}}$ computed using the
         \glsfmtshort{p2d} model  and the identified transfer function
         of \cref{eq:finaldisctfneg} (scaled by 0.001) with the synthetic
         training input profile of \cref{fig:sysidtrainingcurrent}. The output
@@ -456,7 +456,7 @@ clearly illustrated.
     \includegraphics{p2d_sysid_val_qep.pdf}
     \caption[$\widetilde{Q}_{\text{e,p}}(t)$ outputs from \glsfmtshort{p2d} and
     identified transfer function for training profile]{%
-        Time-evolution of $\widetilde{Q}_{\text{e,p}}$ computed using the
+        Time-evolution of~$\widetilde{Q}_{\text{e,p}}$ computed using the
         \glsfmtshort{p2d} model  and the identified transfer function
         of \cref{eq:finaldisctfpos} (scaled by 0.001) with the synthetic
         validation input profile of \cref{fig:sysidvalidationcurrent}. The output
@@ -511,7 +511,7 @@ Starting from the generic structure of the identified transfer functions (see \c
     ,xoffset=-4mm
     ]
     G(z) &= \frac{b_1z^{-1} + \dots + b_{n_b}z^{-{n_b}}}{1 + a_1z^{-1} + \dots + a_{n_a}z^{-{n_a}}} \Arrow{Replace with analogous \\ transfer operator $q=z$ \\ in time domain} \notag\\
-    G(q) &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Apply the definition\\ of $G(q)$ on the \glsfmtshort{lhs}}\notag \\
+    G(q) &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Apply the definition\\ of~$G(q)$ on the \glsfmtshort{lhs}}\notag \\
     \frac{y[k]}{u[k]} &= \frac{b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}} \Arrow{Cross-multiply}\notag \\
     \left(1 + a_1q^{-1} + \dots + a_{n_a}q^{-{n_a}}\right)y[k] &= \left(b_1q^{-1} + \dots + b_{n_b}q^{-{n_b}}\right)u[k] \Arrow{Expand on both sides} \notag \\
     y[k] + a_1q^{-1}y[k] + \dots + a_{n_a}q^{-{n_a}}y[k] &= b_1q^{-1}u[k] + \dots + b_{n_b}q^{-{n_b}}u[k] \Arrow{Apply the definition\\ $q^{-p}x[k] = x[k-p]$}\notag \\
