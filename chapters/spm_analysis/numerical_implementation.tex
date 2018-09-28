@@ -333,7 +333,7 @@ is  therefore   replaced  by   a  discrete-time  process   and  modelled   by  a
 % \end{figure}
 
 Consider       the       general      continuous-time       solution       given
-by \cref{eq:genanalyticctssoln}. Let ${t_0 = k T_s}$ and ${t = (k+1)T_s}$, where ${k  = 0,1,\dots,∞}$. Therefore,
+by \cref{eq:genanalyticctssoln}. Let ${t_0 = k T_s}$ and ${t = (k+1)T_s}$, where~${k  = 0,1,\dots,∞}$. Therefore,
 \begin{alignat}{2}
     x(t_0) & = x(kT_s)     & & \equiv x[k] \\
     x(t)   & = x((k+1)T_s) & & \equiv x[k+1]
@@ -343,8 +343,7 @@ Substituting these relationships into \cref{eq:genanalyticctssoln},
     \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}B \mathbf{u}(τ)\,dτ \label{eq:intermediatediscrete}
 \end{equation}
 With  the  \gls{zoh} scheme  discussed  here,  $u(\tau)$~remains  constant  from~$k  T_s$  to~$(k+1)T_s$,  and  is  equal  to  $u(kT_s)$ \ie~$u[k]$.  Consider  a
-change-of-variable definition  for the dummy  variable of integration  $\tau$ as
-${\eta =  (k+1)T_s -  \tau}$. Thus,  $\tau = (k+1)T_s  - \eta$.  Hence, $d  \tau =
+change-of-variable definition  for the dummy  variable of integration  $\tau$ as~${\eta =  (k+1)T_s -  \tau}$. Thus,  $\tau = (k+1)T_s  - \eta$.  Hence, $d  \tau =
 -d\eta$. Substituting these into \cref{eq:intermediatediscrete},
 \begin{align}
     \mathbf{x}[k+1] &= e^{A T_s}\mathbf{x}[k] + \left[\int_{T_s}^{0}e^{A \eta }B \right] u[k]\,{-d\eta}\\

@@ -113,17 +113,14 @@ the following sequence of steps.
         electrode are numerically integrated over the corresponding electrode
         thicknesses using trapezoidal rule.
     \item The resulting integral value is multiplied with the porosity of the
-        corresponding electrode region to obtain $Q_{\text{e,n}_\text{train}}(t)$ and
-        $Q_{\text{e,p}_\text{train}}(t)$.
+        corresponding electrode region to obtain $Q_{\text{e,n}_\text{train}}(t)$ and~$Q_{\text{e,p}_\text{train}}(t)$.
     \item These quantities are then de-biased by subtracting their initial
-        values to obtain $\widetilde{Q}_{\text{e,n}_\text{train}}(t)$ and
-        $\widetilde{Q}_{\text{e,p}_\text{train}}(t)$.
+        values to obtain $\widetilde{Q}_{\text{e,n}_\text{train}}(t)$ and~$\widetilde{Q}_{\text{e,p}_\text{train}}(t)$.
 \end{enumerate}
 
 The        same        procedure        is        repeated        for        the
 validation       current      profile       of \cref{fig:sysidvalidationcurrent}
-to         obtain         $\widetilde{Q}_{\text{e,n}_\text{val}}(t)$         and
-$\widetilde{Q}_{\text{e,n}_\text{val}}(t)$.  These data  sets are  used for  all
+to         obtain         $\widetilde{Q}_{\text{e,n}_\text{val}}(t)$         and~$\widetilde{Q}_{\text{e,n}_\text{val}}(t)$.  These data  sets are  used for  all
 subsequent sub-tasks involved in this system identification exercise.
 
 In  order to  reduce  the search  window for  the  coefficient determination  in
@@ -330,7 +327,7 @@ In the \gls{mdl} criterion, this cost function is modified to
 \end{equation}
 
 For the two subsystems at hand, both  criteria converged to the same choices for
-the coefficient orders,  yielding ${n_a = 4,  n_b = 4}$ and ${n_k  = 0}$. Therefore,
+the coefficient orders,  yielding ${n_a = 4,  n_b = 4}$ and~${n_k  = 0}$. Therefore,
 these values  were used as the  starting points for the  non-linear optimisation
 algorithms  used in  determining  the  exact pole  and  zero  locations for  the
 discrete-time transfer functions which is described next.
