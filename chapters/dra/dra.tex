@@ -89,12 +89,12 @@ Fuller   and   Newman~\cite{Doyle1993a,Fuller1994}\footnote{hereafter   referred
 The   block   diagram   in  \cref{fig:traditional_ROM_Workflow}   depicts   this
 thesis  author's   summary  presentation  of  the   overall  modelling  workflow
 in   Lee~\etal{}.   Firstly,  the   governing   \gls{pdae}   equations  of   the
-\gls{dfn}  model  (see \cref{tbl:dfneqns})  are  linearised  about an  operating
-point   of  \gls{soc}   and  temperature.   Then,  closed-form   Laplace  domain
-transcendental  transfer  functions  of  all the  internal  physical  quantities
-$\left(\phi_{s},\phi_{e},c_{s},c_{e},j\right)$  at   different  cell  locations,
-are  derived  using applied  current  as  the  input.  A detailed  treatment  of
-this  analytical  derivation  is  presented  in  Lee~\etal~\cite{Lee2012a}.  The
+\gls{dfn}   model    (see   \cref{tbl:dfneqns})   are   linearised    about   an
+operating  point  of  \gls{soc}   and  temperature.  Then,  closed-form  Laplace
+domain  transcendental   transfer  functions   of  all  the   internal  physical
+quantities~$\left(\phi_{s},\phi_{e},c_{s},c_{e},j\right)$   at  different   cell
+locations, are derived using applied current  as the input. A detailed treatment
+of  this analytical  derivation is  presented in  Lee~\etal~\cite{Lee2012a}. The
 authors  proposed  a novel  \glsfirst{dra}  scheme~\cite{Lee2012b}  in order  to
 transform  these  transcendental  transfer  functions  to  standard  state-space
 representation.  Sublevel-1   of  \cref{fig:traditional_ROM_Workflow}   shows  a
@@ -105,7 +105,7 @@ whose  computation steps  are  shown  via the  exploded  view  in sublevel-2  of
 \cref{fig:traditional_ROM_Workflow}.  Then,  the Markov  parameters  (unit-pulse
 response) of  this \gls{simo}  linear system of  battery transfer  functions are
 computed\footnote{A  ubiquitous concept  in linear  systems and  control theory,
-    Markov parameters  represent the discrete-time  unit pulse response of  a linear
+Markov parameters  represent the discrete-time  unit pulse response of  a linear
 system.}.  They  form the  entries  of  a Block-Hankel  matrix~\cite{Ljung1998},
 wherein each block  element is a column  vector of the set  of Markov parameters
 at  a  given  time-step.  A  key  computation  in  the  Ho-Kalman  algorithm  is
@@ -173,8 +173,8 @@ following reasons.
     \label{fig:markov_cse_pos}
 \end{figure}
 
-Considering the combined  influence of these effects, if  $x$ transfer functions
-are to  be modelled  and $N$  time-samples of  each Markov  parameter are  to be
+Considering the combined  influence of these effects,  if $x$~transfer functions
+are  to be  modelled and  $N$~time-samples of  each Markov  parameter are  to be
 captured, the corresponding size of the Block-Hankel matrix~$H$ is
 \begin{equation}
     \text{Size}(H)\sim \mathcal{O}(x N^2)\text{ entries}
@@ -189,11 +189,11 @@ Lee~\etal~\cite{Lee2012a}  modelled 28~transfer  functions representing  various
 electrochemical  variables at  the current  collector and  separator interfaces.
 Each Markov  parameter is  a 28~element  column vector.  16000~time-samples were
 obtained at  a sample-rate of  \SI{1}{\hertz}, allowing sufficient time  for the
-Markov parameters of  the slowest dynamics \ie~solid  surface concentration to
-settle to an  acceptably low magnitude. The Block-Hankel matrix  thus formed has
-8000~blocks,  each  block  consisting  of 28~elements  \ie~has  $8000  \times
+Markov parameters  of the  slowest dynamics  \ie~solid surface  concentration to
+settle  to an  acceptably low  magnitude.  The Block-Hankel  matrix thus  formed
+has  8000~blocks, each  block  consisting of  28~elements  \ie~has $8000  \times
 28=224000$~rows  and 8000~columns.  Hence,  the overall  number  of elements  in
-the  Block-Hankel  matrix is  $224000  \times  8000=1.79 \times  10^{9}$.  Using
+the  Block-Hankel matrix  is~${224000  \times 8000=1.79  \times 10^{9}}$.  Using
 double-precision  arithmetic, its  storage requirement  can be  estimated to  be
 \approx \SI{27}{\giga\byte}.
 
@@ -214,19 +214,19 @@ remains a persistent issue.
 
 \subsection{Classical \glsfmtshort{dra} --- \glsfmtshort{cpu} Operation Count}\label{subsec:Traditional-DRA--CPU}
 
-The most  widely used numerical  algorithm for  computing the full  \gls{svd} of
-a  generic  dense  matrix $\mbox{\ensuremath{A\in\mathbb{R}^{m  \times  n},m\geq
-n}}$  is  the  two-stage  Golub-Kahan-Reinsch  method~\cite{Golub2013}.  In  the
-first  stage $A\in\mathbb{R}^{m  \times n}$  is reduced  to an  upper bidiagonal
-form.  In  the  second  stage,   \gls{svd}  of  this  upper  bidiagonal  matrix,
-$B\in\mathbb{R}^{m  \times n}$  is computed  using an  iterative procedure  such
-as  the Demmel-Kahan  method~\cite{Golub2013}. If  stage~\romanletter{1} of  the
-\gls{svd}  computation employs  $\mathbb{R}$-Bidiagonalisation~\cite{Golub2013},
-then the overall  process is referred to as $\mathbb{R}$-\gls{svd}.  This is the
-fastest known  full \gls{svd}  computation method  that may  be applied  to this
-battery modelling problem. The \textsc{dgesvd} algorithm, originally implemented
-in  \textsc{LAPACK}~\cite{Anderson1999},  employs  this method.  This  has  been
-ported to  many numerical computation  packages such  as MATLAB, GNU  Octave and
+The most widely  used numerical algorithm for computing the  full \gls{svd} of a
+generic dense matrix ${\ensuremath{A\in\mathbb{R}^{m \times n},m\geq n}}$ is the
+two-stage  Golub-Kahan-Reinsch  method~\cite{Golub2013}.  In  the  first  stage,
+${A\in\mathbb{R}^{m \times n}}$~is  reduced to an upper bidiagonal  form. In the
+second  stage, \gls{svd}  of  this  upper bidiagonal  matrix~${B\in\mathbb{R}^{m
+\times n}}$  is computed using an  iterative procedure such as  the Demmel-Kahan
+method~\cite{Golub2013}. If  stage~\romanletter{1} of the  \gls{svd} computation
+employs   $\mathbb{R}$-Bidiagonalisation~\cite{Golub2013},   then  the   overall
+process  is referred  to as~\mbox{$\mathbb{R}$-\gls{svd}}.  This is  the fastest
+known full  \gls{svd} computation  method that  may be  applied to  this battery
+modelling  problem. The  \textsc{dgesvd}  algorithm,  originally implemented  in
+\textsc{LAPACK}~\cite{Anderson1999}, employs  this method. This has  been ported
+to  many  numerical  computation  packages   such  as  MATLAB,  GNU  Octave  and
 Scilab.  Several  numerical  libraries  such  as NAG  and  Intel  MKL  also  use
 the  \textsc{dgesvd}  codes  due  to its  acclaimed  stability,  robustness  and
 versatility.  The MATLAB  implementation `\texttt{\textbf{svd}}'  is also  based
@@ -234,9 +234,9 @@ upon \textsc{dgesvd} and  hence this can be considered as  the de-facto baseline
 \gls{svd} code.
 
 The    operation    count    for    computing   the    singular    values    and
-vectors   of  a   generic   dense  matrix   $\mbox{\ensuremath{A\in\mathbb{R}^{m
+vectors    of    a    generic    dense    matrix~${\ensuremath{A\in\mathbb{R}^{m
 \times   n},m\geq    n}}$   using    the   $\mathbb{R}$-\gls{svd}    method   is
-$\mbox{\ensuremath{4m^{2}n+22n^{3}}}$~\cite{Golub2013}.  Markov   parameters  of
+${\ensuremath{4m^{2}n+22n^{3}}}$~\cite{Golub2013}.    Markov    parameters    of
 $x$~transfer functions  and $N$~time-samples  yields a Block-Hankel  matrix with
 $m=x N$ rows and $n=N$ columns. Hence,
 \begin{alignat}{2}

@@ -226,7 +226,7 @@ a  uniform   charge  density   throughout  the   thickness  of   each  electrode
     \intertext{Substituting \cref{eq:uniformcurrdensity} in \cref{eq:csfluxsurface}}
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} &= ∓ \frac{I}{A \, l_j a_\sj F}\label{eq:csfluxsurfacefinal} \qquad \jinnegposordered
 \end{align}
-wherein  the  load current  \mbox{$I(t)  >  0$}  for discharge,  whose  explicit
+wherein  the  load current~${I(t)  >  0}$  for discharge,  whose  explicit
 time-dependence  has  been  omitted in  \cref{eq:csfluxsurfacefinal}  for  being
 consistent notation with the \gls{lhs}. The positive and negative signs apply to
 the negative  and positive  electrode respectively as  indicated by  the ordered
@@ -242,7 +242,7 @@ electrode is used.
 \begin{equation}\label{eq:socinitialdefn}
     z(t) = \frac{3}{c_\snegmax}∫_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
 \end{equation}
-Given an  initial cell  \gls{soc}~\mbox{$z(0) = z_0$}  at rest,  the equilibrium
+Given an  initial cell  \gls{soc}~${z(0) = z_0}$  at rest,  the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
     c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(θ_\maxj - θ_\minj \right) + θ_\minj \bigg]
@@ -414,7 +414,7 @@ using the Butler-Volmer expression (see \cref{eq:butlervolmer}).
 \end{align}
 
 The equilibrium  rate of forward  and backward  reactions at both  electrodes is
-assumed  to  be  equal.  With charge  transfer  coefficient~\mbox{$α  =  0.5$},
+assumed  to  be  equal.  With charge  transfer  coefficient~${α  =  0.5}$,
 \cref{eq:bvwithalpha} simplifies to
 \begin{equation}\label{eq:BVwithalphahalf}
     j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F η_j}{2 R T}\right)
@@ -518,8 +518,8 @@ which corresponds to the classical \gls{lti} form
 \begin{equation}
     \dot{\mathbf{x}} = A\,\mathbf{x} + B\,\mathbf{u} \\
 \end{equation}
-where    \mbox{$\mathbf{x}   =    \vect{\mean{q}_\text{pos},\mean{q}_\text{neg},
-\mean{c}_\spos,  \mean{c}_\sneg},   \,  x  ∈  \mathbb{R}^{4   \times  1}$}  is
+where~${\mathbf{x}   =    \vect{\mean{q}_\text{pos},\mean{q}_\text{neg},
+\mean{c}_\spos,  \mean{c}_\sneg},   \,  x  ∈  \mathbb{R}^{4   \times  1}}$  is
 the  state  vector.  The  scalar system  input~$\mathbf{u}  ∈  \mathbb{R}$  is
 the  applied  current~$I(t)$.  The  system matrix~$A  ∈  \mathbb{R}^{4  \times
 4}$  and  input  matrix~$B  ∈  \mathbb{R}^{4 \times  1}$  are  also  shown  in
@@ -609,7 +609,7 @@ the conventional \gls{spm} as
     I(t)
 \end{equation}
 
-The  measured   variable~\mbox{$y  ∈  \mathbb{R}$}  is   the  cell's  terminal
+The  measured   variable~${y  ∈  \mathbb{R}}$  is   the  cell's  terminal
 voltage~$V(t)$ and  is expressed as  a non-linear  scalar function of  the state
 vector and the load current.
 \begin{equation}\label{eq:spmoutputeqn}
@@ -638,15 +638,15 @@ obtained  from its  corresponding bulk  concentration~$c_\sjavg$ by  rearranging
     \label{eq:csurfposfromcavgpos}\\
     c_\snegsurf &= \mean{c}_\sneg  + \frac{8R_\pneg}{35} \mean{q}_\text{neg} -\frac{R_\pneg}{35 D_\sneg A \, l_\text{neg} a_\sneg F} I(t)\label{eq:csurfnegfromcavgneg}
 \end{align}
-where \mbox{$I(t) > 0 $} for discharge.
+where~${I(t) > 0}$ for discharge.
 
-Given   the   initial  \gls{soc}   of   the   cell~$z(0)$,  the   initial   bulk
-concentration   of   the    negative   electrode   at   equilibrium~$c_\sneg(0)$
-is   obtained  by   \cref{eq:csfluxinitialcondition}.  The   initial  value   of
-the   mean   radial   concentration   flux    in   both   electrodes   is   zero
-\ie~\mbox{$q_j(0)    =   0$}.    Therefore,   the    initial   state    vector
-is~$\vect{0,0,c_\sneg(0)}$.   Thus,   the   system   of   equations   given   by
-\crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}  form  a  complete
-state-space representation of the conventional \gls{spm}. This state-space model
-can be  simulated as a  standalone \gls{ivp} or embedded  as the plant  model in
-control-oriented applications such as for dynamic state estimation.
+Given the initial  \gls{soc} of the cell~$z(0)$, the  initial bulk concentration
+of   the  negative   electrode  at   equilibrium~$c_\sneg(0)$  is   obtained  by
+\cref{eq:csfluxinitialcondition}.  The   initial  value   of  the   mean  radial
+concentration flux  in both  electrodes is zero  \ie~${q_j(0) =  0}$. Therefore,
+the  initial  state  vector  is~$\vect{0,0,c_\sneg(0)}$.  Thus,  the  system  of
+equations given by \crefrange{eq:csposbulkfromcsnegbulk}{eq:csurfnegfromcavgneg}
+form a complete  state-space representation of the  conventional \gls{spm}. This
+state-space model  can be  simulated as  a standalone  \gls{ivp} or  embedded as
+the  plant model  in control-oriented  applications  such as  for dynamic  state
+estimation.

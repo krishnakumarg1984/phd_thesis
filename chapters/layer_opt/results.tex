@@ -180,13 +180,13 @@ when  considering fast  charging requirements.  Each heat~map  in these  figures
 show  the optimal  number  of  layers~$n^\text{fastchg}_\text{opt}$ for  various
 combinations of  initial and  ambient temperatures  for four  different charging
 powers. In each case, the  values of $n^\text{fastchg}_\text{opt}$ correspond to
-the  temperature  combination  \mbox{$(T_\text{init},T_\text{sink})  =  (15,  5)
-\si{\degreeCelsius}$}  as  shown  in  \cref{fig:fig_generate_heatmap_BEV}.  This
+the  temperature  combination~${(T_\text{init},T_\text{sink})  =  (15,  5)
+\si{\degreeCelsius}}$  as  shown  in  \cref{fig:fig_generate_heatmap_BEV}.  This
 represents the  least number of  layers required to  fast charge the  pack under
 \gls{cp} conditions until  the target \gls{soc} is reached.  The charging scheme
-additionally considers the constraint that the cell temperature must stay within
-\mbox{$T_\text{max}=  \SI{55}{\degreeCelsius}$}. Furthermore,  its voltage  must
-remain less than or equal  to \mbox{$V_\text{max} = \SI{4.22}{\volt}$}. Finally,
+additionally considers the constraint that the cell temperature must stay
+within~${T_\text{max}=  \SI{55}{\degreeCelsius}}$. Furthermore,  its voltage  must
+remain less than or equal  to~${V_\text{max} = \SI{4.22}{\volt}}$. Finally,
 the charging algorithm is plating-aware \ie~the charging stops as soon as the
 concentration at the particle surface reaches the maximum possible concentration
 limit, thereby preventing  lithium plating at the surface  of negative electrode
@@ -228,8 +228,8 @@ represented by the linear downward-sloping line.
             during \gls{cp} charging. Rate capability and cell utilisation are positively
             correlated with $n$. With increasing power levels, the optimal layer configuration shifts to higher
             values of $n$. Similar behaviour is observed for galvanostatic
-            charging (left column). Plotted for \mbox{$T_\text{init} =
-            T_\text{sink} = \SI{25}{\degreeCelsius}$}.
+            charging (left column). Plotted for~${T_\text{init} =
+            T_\text{sink} = \SI{25}{\degreeCelsius}}$.
         }
         \label{fig:fig_CapacityQuadrants}
         \mpfootnotes[1]
@@ -271,8 +271,8 @@ From  the results  discussed thus  far, it  is evident  that it  is the  thermal
 environment  that  governs   the  optimal  cell  layer   configuration  in  both
 acceleration and fast charging studies and for both vehicular platforms. For all
 charging powers simulated, $n^\text{fastchg}_\text{opt}$  is the highest for the
-coldest temperature  combination \mbox{$(T_\text{init},T_\text{sink}) =  (15, 5)
-\si{\degreeCelsius}$}. This is due to  the slow rate of electrochemical reaction
+coldest temperature  combination~${(T_\text{init},T_\text{sink}) =  (15, 5)
+\si{\degreeCelsius}}$. This is due to  the slow rate of electrochemical reaction
 and diffusion  at cold  temperatures. The thinner  electrodes from  using higher
 layer count enable fast charging without saturating the surface of the electrode
 particles. For the  fast charging scenarios considered here,  the optimal number
