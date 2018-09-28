@@ -22,3 +22,7 @@
 % \renewcommand{\glossarypreamble}{\footnotesize}
 \renewcommand{\glossarypreamble}{\small}
 
+% https://tex.stackexchange.com/questions/118182/selectively-turn-off-hyperref-links-for-citations
+\newcommand*{\nolink}[1]{%
+      {\protect\NoHyper#1\protect\endNoHyper}%
+  }
