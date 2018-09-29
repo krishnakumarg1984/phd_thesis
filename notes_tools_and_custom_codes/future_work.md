@@ -27,6 +27,8 @@
 - check for undefined references
 - generally check and match references
 - edit the path to main.tex in every file
+- Plett permissions
+- Fill CC-BY-NC-ND with a splash of colour
 
 - enhanced spm paper
 - enchanced spm with KF
