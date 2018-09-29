@@ -28,41 +28,26 @@ purposes and that they  do not alter, transform or build upon  it. For any reuse
 or redistribution,  researchers must make clear  to others the licence  terms of
 this work.
 
-\renewcommand{\baselinestretch}{0.75}\normalsize
 %: ----------------------- table of contents ------------------------
+\renewcommand{\baselinestretch}{0.3}\normalsize
 \cleardoublepage
 \glsunsetall
 \microtypesetup{protrusion=false} % disables protrusion locally in the document
-% \pdfbookmark[<level>]{<title>}{<dest>}
-\pdfbookmark[section]{\contentsname}{toc} % with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
-% \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
-\tableofcontents            % print the table of contents
+\pdfbookmark[section]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
+\tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
 
 %: ----------------------- list of figures/tables etc. ------------------------
 \cleardoublepage
+\onehalfspacing
 \listoffigures
 \cleardoublepage
 \listoftables
 \cleardoublepage
-\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
-\listofalgorithms
-\addcontentsline{toc}{chapter}{List of Algorithms}
-% \cleardoublepage
-\begingroup
-\parskip=0pt
-\tcblistof[\chapter*]{mypyg}{List of Program Code}
-\endgroup
-\cleardoublepage
+% https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
+{\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup  \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
 \glsresetall
 \begingroup
-% \setlength\LTleft{-5pt}
-% \printglossaries
-\singlespacing
 \printglossary[type=acronym,title={List of Acronyms},nonumberlist,style=super]\label{ch:glossary}
-% \printglossary[type=abbreviation, title={List of Acronyms}]\label{ch:glossary} % basic style
-% \printglossary[type=acronym, style = superragged3colheader, title={List of Acronyms}]\label{ch:glossary}
-% \printglossary[type=acronym, style = custom_acronyms,title={List of Acronyms}]\label{ch:glossary}
-% \printglossary[type=acronym, style = super,title={List of Acronyms}]\label{ch:glossary}
 \endgroup
 \microtypesetup{protrusion=true} % re-enables protrusion
 
