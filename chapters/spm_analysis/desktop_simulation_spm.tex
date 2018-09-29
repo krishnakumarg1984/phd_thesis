@@ -313,11 +313,15 @@ in \cref{eq:kappavsCeandT} was obtained for the electrolyte conductivity.
 conductivity  as a  function  of initial  concentration~$c_\text{e,0}$ and  cell
 temperature~$T_\text{cell}$. For the modelling task at hand, relevant aspects of
 this  material property  can be  better understood  through the  simplifications
-afforded by the simulation conditions applicable here \ie{}
-\begin{enumerate}%[label=\emph{\alph*})]
-    \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$~is uniform over the axial space~$x$, and
+afforded by the simulation conditions applicable here.
+\begin{varwidth}{\textwidth}
+    \begin{enumerate}[topsep=1em,itemsep=0.1ex,partopsep=1em,parsep=1em]
+    \item At  equilibrium  initial condition ($t=0$), $c_\text{e}$~is uniform
+        over the axial space~$x$, and \vspace*{-0.75em}
     \item only isothermal cell behaviour is considered \ie~${T(t) = T_\text{cell}(0)= T_\text{cell}}$.
 \end{enumerate}
+\end{varwidth}
+
 Hence, \cref{eq:kappavsCeandT} reduces to
 \begin{multline}\label{eq:kappavsCeinitandTcell}
     \kappa_j =  10^{-4} c_\text{e,0} \bigl(-10.5 + \num{0.668e-3} c_\text{e,0} + \num{0.494e-6}  c_\text{e,0}^2\\
@@ -442,7 +446,11 @@ logging  interval  is set  to~\SI{50}{\milli\second}.  Both the  \gls{p2d}  and
 \gls{spm} model ran close to 100~hours.  The small deviations from this expected
 termination  time  can  be attributed  to  the  fact  that  the current  is  not
 arbitrarily small with  the pragmatic goal of obtaining results  in a reasonable
-time. As seen in \cref{tbl:charSimspmp2d},  even the \emph{combined} CPU time to
+time.
+
+\input{chapters/spm_analysis/char_sim_table.tex}
+
+As seen in \cref{tbl:charSimspmp2d},  even the \emph{combined} CPU time to
 simulate both  the \gls{p2d}  and \gls{spm}  models is  two orders  of magnitude
 lower than  real-time. The only  issue that remains to  be addressed is  that of
 considerable memory and  storage requirements due to  high-rate data-logging for
@@ -457,9 +465,6 @@ generally difficult to characterise. In this context, the experimental procedure
 of  high-precision  coulomb counting  assumes  a  practical significance  as  it
 requires no  knowledge of  the cell's parameters  other than  the manufacturer's
 datasheet.
-
-\input{chapters/spm_analysis/char_sim_table.tex}
-
 
 
 \Cref{fig:capcharspmp2d}  shows  the  voltage  response  of  the  \gls{spm}  and
@@ -520,17 +525,17 @@ is used  as a  reference benchmark  for comparisons.  It is  difficult to  use a
 common  time-scale for  the horizontal  axes of  the plots  since the  run-times
 differ by two orders of magnitude for the C-rates considered.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{const_curr_dischg_voltage.pdf}
     \caption[Voltage responses of \glsfmtshort{p2d} and \glsfmtshort{spm} to
     constant current discharge]{Voltage responses of the \glsfmtshort{p2d} and
         \glsfmtshort{spm} models to various constant discharge rates. The left
         column column shows the time-domain voltage response of the \gls{spm}
-        plotted against the benchmark \gls{p2d} response. The column on the
+        plotted against the benchmark \glsfmtshort{p2d} response. The column on the
         right shows the percentage voltage error of the \glsfmtshort{spm} with
         respect to the \glsfmtshort{p2d} model. The performance of the
-        \glsfmtshort{spm} degrades considerably at discharge currents above~0.5C.}
+        \glsfmtshort{spm} degrades considerably at discharge currents above just~0.5C.}
     \label{fig:cnstdischgspmp2dvoltage}
 \end{figure}
 
@@ -598,13 +603,13 @@ explanation.
 
 Referring to \cref{eq:soccomputation}, it is  seen that the \glsfmtshort{soc} of
 the cell  is directly proportional  to the  bulk (average) concentration  in the
-negative  electrode.  Hence  the  plots  of \cref{fig:cnstdischgspmp2dsoc}  also
+negative  electrode.  Hence  the plots  of  \cref{fig:cnstdischgspmp2dsoc}  also
 represent the solid  phase concentration with a constant scaling  factor. As per
-the assumptions listed  in \cref{subsec:basicspmassumptions}, the only transport
+the assumptions listed in  \cref{subsec:basicspmassumptions}, the only transport
 phenomena  modelled in  the \gls{spm}  is  solid phase  diffusion. However,  for
 computation of the terminal  voltage, the electrolyte overpotential contribution
-has  been   omitted  (see \cref{eq:posoverpotential,eq:negoverpotential}).  This
-explains  why  the  voltage  accuracy  suffers  while  the  open-loop  \gls{soc}
+has  been  omitted  (see  \cref{eq:posoverpotential,eq:negoverpotential}).  This
+explains  why  the  voltage  accuracy suffers,  while  the  open-loop  \gls{soc}
 computation  remains  accurate.  The  high accuracy  of  \gls{soc}  (and  hence,
 solid-phase  concentration)   computation  also  validates  the   usage  of  the
 \engordnumber{4} order polynomial  approximation in the place of  Fick's law for
@@ -621,11 +626,13 @@ leading to strong deviations of the estimated \gls{soc}.
 \subsubsection*{Constant current charge}\label{subsubsec:cnstcurrchgsim}
 
 The \gls{cccv} charging  profile is a widely adopted  standard charging strategy
-for charging lithium  ion cells. In the constant current  phase, a charging rate
-of~1C is  used as an accepted baseline, although  faster charging strategies are
-being actively sought  after both in academia and in  particular, the automotive
-industry. For establishing the charging performance of the basic \gls{spm}, the
-standard rate of~1C is used.
+for charging lithium ion cells~\cite{Andrea2010}. In the constant current phase,
+a charging rate of~1C is used  as an accepted baseline, although faster charging
+strategies are presently being actively sought after.
+
+% both in academia and in  particular, the automotive industry. For establishing
+% the charging  performance of the basic  \gls{spm}, the standard rate  of~1C is
+% used.
 
 \begin{figure}[!htbp]
     \centering
@@ -641,20 +648,21 @@ standard rate of~1C is used.
     \label{fig:cnstchgspmp2d}
 \end{figure}
 
-The top row of \cref{fig:cnstchgspmp2d} shows  the evolution of terminal voltage
+The top row of \cref{fig:cnstchgspmp2d}  shows the evolution of terminal voltage
 and \gls{soc}  of the \gls{p2d} and  \gls{spm} models under an  applied charging
-current of~1C \ie~\SI{60}{\ampere}.  The constant-voltage charging  phase is
-not shown. The bottom row shows  the corresponding errors of the \gls{spm} model
-with respect  to the reference  \gls{p2d} benchmark. The corollary  behaviour of
-the constant current discharge behaviour  is observed here. The terminal voltage
-of the \gls{spm} remains below the  \gls{p2d} model throughout. This is expected
-since, to  account for the electrolyte  voltage drop in the  \gls{p2d}, a higher
-terminal voltage needs  to be applied. The voltage error  is thus unidirectional
-and remains positive (opposite to  that observed for the corresponding discharge
-case).  Similarly,  the \gls{soc}  plots  overlap  very closely  validating  the
-underlying polynomial approximation of solid  phase diffusion. It is striking to
-note  that the  error in  \gls{soc} remains  exactly around  the same  magnitude
-(\approx\SI{0.1}{\percent}) in both the charging and discharging cases.
+current of~1C  \ie~\SI{60}{\ampere}. The constant-voltage charging  phase is not
+shown. The bottom row shows the corresponding errors of the \gls{spm} model with
+respect to  the reference  \gls{p2d} benchmark. The  corollary behaviour  of the
+constant current discharge  behaviour is observed here. The  terminal voltage of
+the \gls{spm}  remains below  the \gls{p2d} model  throughout. This  is expected
+since, to  account for the  electrolyte voltage  drop modelled in  the \gls{p2d}
+dynamics, a  higher terminal voltage needs  to be applied. The  voltage error is
+thus  unidirectional and  remains positive  (opposite to  that observed  for the
+corresponding  discharge  case). Similarly,  the  \gls{soc}  plots overlap  very
+closely,  thereby validating  the underlying  polynomial approximation  of solid
+phase diffusion.  It is  striking to  note that the  error in  \gls{soc} remains
+exactly  around  the  same  magnitude (\approx\SI{0.1}{\percent})  in  both  the
+charging and discharging cases.
 
 \subsubsection*{Dynamic input profile}\label{subsubsec:dynamicspmp2dsim}
 
@@ -662,17 +670,21 @@ For automotive applications, it is  important to characterise the performance of
 the  cell  model  under  dynamic load  conditions.  Several  standard  vehicular
 driveycles  have been  defined and  adopted  by regulatory  agencies across  the
 world.  These drivecycles  describe  the profile  of the  vehicle's  speed as  a
-function of time.  For all drivecycles, the  speed versus time data  is given in
-intervals  of  \SI{1}{\second}, and  is  therefore  consistent with  the  sample
-interval used for the simulation (see \cref{tbl:lcoSimParamsSPMp2d}).
+function of time.  The profile of speed versus time  of drivecycles is typically
+available in intervals of \SI{1}{\second},  and is therefore consistent with the
+sample interval used for the simulation (see \cref{tbl:lcoSimParamsSPMp2d}).
 
 The \gls{udds} is  one such well-known drivecycle, originally  introduced by the
 United  States  Environmental Protection  Agency  that  represents city  driving
-conditions which can  be applied to a typical mid-sized  passenger vehicle. This
-cycle  has  been  widely  adopted  by  regulatory  agencies  across  the  world.
-\Cref{fig:uddsspeedvstimecycle}  shows  the  \gls{udds} drivecycle  wherein  the
-vehicle's speed has been converted to  SI units for use in further computations.
-One complete drivecycle runs for 1369~seconds.
+conditions  which can  be  applied  to a  typical  mid-sized passenger  vehicle.
+%  This  cycle  has  been  widely adopted  by  regulatory  agencies  across  the
+world. \Cref{fig:uddsspeedvstimecycle}  shows the \gls{udds}  drivecycle wherein
+the  vehicle's  speed  has  been  converted  to SI  units  for  use  in  further
+computations.  One  complete  drivecycle runs  for~\SI{1369}{\second}.  As  seen
+in  \cref{fig:uddsspeedvstimecycle}, the  \gls{udds} profile  is highly  dynamic
+consisting  of  many sets  of  rapid  acceleration  and braking  events.  Hence,
+this  drivecycle is  chosen to  provide  representative results  of the  model's
+performance to dynamic inputs.
 
 \begin{figure}[!htbp]
     \centering
@@ -682,23 +694,21 @@ One complete drivecycle runs for 1369~seconds.
 \end{figure}
 
 In  an  all-electric  drivetrain  wherein  lithium  ion  batteries  provide  the
-propulsion power, the speed profile can  be converted to a corresponding current
-profile  experienced  by  the  cell. Therefore,  from  the  cell's  perspective,
-traversal of  the drivecycle  then corresponds to  the following  events. During
-acceleration phases,  the cell experiences  a sharp discharge spike  of current.
-Similarly,  assuming that  regenerative braking  is employed,  each deceleration
-event corresponds to a charging current. Thus a current versus time dynamic load
-profile  can be  obtained.  To  briefly summarise  the  conversion process,  the
-computed  power profile  of  the cell  is  divided by  its  nominal voltage  and
-suitably scaled  so that the  peak of the the  current profile corresponds  to a
-discharge  current of~3C.  Considering that  all of  braking  energy cannot  be
-recovered  due  to losses  at  the  wheels,  brake  discs and  other  mechanical
-components,  a regenerative  braking factor  of \SI{85}{\percent}  (the fraction
-of  recoverable  power)  is  assumed  for the  charging  scenario.  As  seen  in
-\cref{fig:uddsspeedvstimecycle},  the  \gls{udds}   profile  is  highly  dynamic
-consisting  of  many sets  of  rapid  acceleration  and braking  events.  Hence,
-this  drivecycle is  chosen to  provide  representative results  of the  model's
-performance to dynamic inputs.
+propulsion power, the speed profile can be suitably converted to a corresponding
+current  profile  experienced by  the  cell  through  the application  of  basic
+governing   equations  from   vehicle   dynamics  (see   \cref{sec:accpathway}).
+Therefore,  from  the  cell's  perspective, traversal  of  the  drivecycle  then
+corresponds  to  the following  events.  During  acceleration phases,  the  cell
+experiences  a  sharp  discharge  spike of  current.  Similarly,  assuming  that
+regenerative  braking is  employed,  each deceleration  event  corresponds to  a
+charging  current. Thus  a  current  versus time  dynamic  load  profile can  be
+obtained. To  briefly summarise the  conversion process used here,  the computed
+power profile of the cell is divided  by its nominal voltage and suitably scaled
+so that the peak  of the the current profile corresponds  to a discharge current
+of~3C. Considering that all the braking energy cannot be recovered due to losses
+at  the wheels,  brake discs  and  other mechanical  components, a  regenerative
+braking  factor of  \SI{85}{\percent}  (the fraction  of  recoverable power)  is
+assumed for  the charging scenario.
 
 % The details  of this conversion for  a specific \gls{bev} platform  is discussed
 % in~?\fxnote{fix this to point to layer opt chapter}.
@@ -715,27 +725,27 @@ performance to dynamic inputs.
 \end{figure}
 
 \Cref{fig:uddssimp2dspmresults}  shows   the  simulation  results   obtained  by
-applying  the   \gls{udds}  current  input   profile  (top  row)  to   both  the
-\gls{p2d} and \gls{spm}  models. The simulation is  started at \SI{50}{\percent}
-cell~\gls{soc}. This  is representative  of the median  point for  the operating
-window  of  \gls{soc} swing  for  both  \glspl{bev} and  \glspl{phev}.  Although
-regenerative  braking is  employed, due  to  the reduced  occurrence of  braking
-events  as well  as  considering efficiencies  of the  drivetrain,  as with  any
-driveycle,  the \gls{udds}  run  also  results in  a  net-discharge. The  cell's
-\gls{soc} at  the termination of  the \gls{udds} run  is \approx\SI{6}{\percent}
-lower than its starting value.
+applying   the   \gls{udds}   current   input  profile   (top   row)   to   both
+the   \gls{p2d}   and  \gls{spm}   models.   The   simulation  is   started   at
+\SI{50}{\percent}  cell~\gls{soc}. This  is representative  of the  median point
+for  the  operating   window  of  \gls{soc}  swing  for   both  \glspl{bev}  and
+\glspl{phev}~\cite{Maksimovic2012}. Although  regenerative braking  is employed,
+due  to  the  reduced  occurrence  of braking  events  as  well  as  considering
+efficiencies of  the drivetrain, as  with any driveycle, the  \gls{udds} profile
+also results in a net-discharge. The  cell's \gls{soc} at the termination of the
+\gls{udds} run is \approx\SI{6}{\percent} lower than its starting value.
 
 % \FloatBarrier
 
-The voltage output from the models is  plotted in the middle row. The bottom row
-shows  the  evolution  of  the  cell's  \gls{soc}  over  time.  Consistent  with
-the  error  trends  observed  in  the  constant  current  discharge  and  charge
-simulations, the error in terminal voltage  is high whereas that in \gls{soc} is
-low.  In  this  work,  the  voltage  error  metrics  are  reported  directly  in
-units  of  \si{\milli\volt} for  the  dynamic  simulation run.  Furthermore,  it
-is  a  standard  practice  to  report  the  \gls{rms}  error  for  such  dynamic
-load  profiles and  is included  in  the summary  of error  metrics reported  in
-\cref{tbl:errorsummaryuddsdischgspmp2d}.
+The  voltage  output   from  the  models  is  plotted  in   the  middle  row  of
+\cref{fig:uddssimp2dspmresults}.  The  bottom row  shows  the  evolution of  the
+cell's \gls{soc}  over time. Consistent  with the  error trends observed  in the
+constant current discharge and charge simulations, the error in terminal voltage
+is  high whereas  that in  \gls{soc} is  low. In  this work,  the voltage  error
+metrics  are reported  directly in  units  of \si{\milli\volt}  for the  dynamic
+simulation run. Furthermore,  it is a standard practice to  report the \gls{rms}
+error for such dynamic load profiles and is therefore included in the summary of
+error metrics reported in \cref{tbl:errorsummaryuddsdischgspmp2d}.
 
 \input{chapters/spm_analysis/udds_errs_spm_p2d_table.tex}
 
