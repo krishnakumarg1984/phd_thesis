@@ -211,7 +211,7 @@ computations need to be performed with high priority.
     \glsfmtshort{bms}]{Overview of the real-time software implementation of a typical
         \gls{bms}. Through an interrupt-driven architecture for time-critical tasks as
         as state estimation and control, the same processor can be
-        efficiently utilised by employing its idle CPU cycles for background
+        efficiently utilised by employing its idle \glsfmtshort{cpu} cycles for background
     tasks such as diagnostics, fault logging and book-keeping.}
     \label{fig:basicRTCsoftwarearch}
 \end{figure}
@@ -241,7 +241,7 @@ outputs and is discussed next.
         events within one sample period~$T_s$ in relation to the base clock of
         the controller is shown. Particular emphasis is placed on depicting the
         handling of \gls{isr} requests pertinent to cell models. Other
-        background tasks performed by the CPU are de-emphasised. Moreover, the
+        background tasks performed by the \glsfmtshort{cpu} are de-emphasised. Moreover, the
         integration of the  \gls{bms} software loop within  the larger  scope of
         a master  vehicular controller is not shown. Illustration adapted from
     Southward~\cite{Southward2011}.}
@@ -270,22 +270,22 @@ relevant \glspl{dac}.
 
 \subsection{Sample Delay Considerations}
 
-\Cref{fig:timingdiagramSmall}  shows a  vertically  compressed view  of all  CPU
-activities across a larger  time horizon. The CPU's load factor  is the ratio of
-time spent in foreground  requests to its idling time. While  a high load factor
-is beneficial in terms of efficient usage of resources, it adversely affects the
-power efficiency of the chip.
+\Cref{fig:timingdiagramSmall}  shows   a  vertically  compressed  view   of  all
+\gls{cpu} activities across  a larger time horizon. The  \gls{cpu}'s load factor
+is the ratio  of time spent in  foreground requests to its idling  time. While a
+high load  factor is  beneficial in  terms of efficient  usage of  resources, it
+adversely affects the power efficiency of the chip.
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics{timing_diagram_small}
-    \caption[Timeline of \glsfmtshort{bms} activities over multiple CPU cycles of a real-time
+    \caption[Timeline of \glsfmtshort{bms} activities over multiple \glsfmtshort{cpu} cycles of a real-time
     controller]{A compressed timeline of CPU execution cycles showing details of
         activities within each sample interval. The execution sequence is shown
         over a larger horizon so as to illustrate the proportion of `activity
-        time' relative to the `idle time'. The vast majority of the CPU cycle is
+        time' relative to the `idle time'. The vast majority of the \glsfmtshort{cpu} cycle is
         spent in idling or background tasks. The servicing of the \gls{isr}
-        occupies a relatively small fraction of each CPU cycle. Diagram
+        occupies a relatively small fraction of each \gls{cpu} cycle. Diagram
     reproduced from Plett~\cite{PlettECE5540_02}.}
     \label{fig:timingdiagramSmall}
 \end{figure}
@@ -293,19 +293,20 @@ power efficiency of the chip.
 For  Li-ion  cell  modelling,  a  sampling  interval  of~$T_s  =  1$\si{\second}
 is   commonly  used,   thus  aiming   to   capture  the   cell  dynamics   below
 \SI{500}{\milli\hertz}\footnote{In  the ideal  case,  according  to the  Nyquist
-sampling theorem. In practice, the frequency range is smaller.}. The CPU's clock
-used is of  several \si{\MHz}, a vast  majority of which is  spent in background
-tasks or in sleep mode. Furthermore, a low-latency \gls{isr} code is employed in
-the tasks  of reading the  \gls{adc} value,  evaluating the model  equations and
-writing any control outputs to the  \gls{dac}. Using a simplified \gls{pbm} such
-as the \gls{spm} helps in achieving a low-latency throughput for the \gls{isr}.
+sampling theorem. In practice, the frequency range is smaller.}. The \gls{cpu}'s
+clock  used is  of several  \si{\MHz},  a vast  majority  of which  is spent  in
+background tasks or in sleep mode.  Furthermore, a low-latency \gls{isr} code is
+employed  in the  tasks of  reading the  \gls{adc} value,  evaluating the  model
+equations and writing  any control outputs to the \gls{dac}.  Using a simplified
+\gls{pbm} such as the \gls{spm} helps  in achieving a low-latency throughput for
+the \gls{isr}.
 
 The overall implication of such a scheme  is that any \emph{delays} owing to the
 sample and  hold process  at the model  input and outputs  can be  neglected. In
 conventional sampled-data systems, control delays may be analysed by considering
 a multiplicative factor of~$e^{-sλ}$ in the Laplace domain transfer function of
 the system. Delay parameters of~${λ = 0.5  T_s}$ or ${λ = 1 T_s}$ are commonly
-employed  as  conservative estimates.  However,  owing  to  the small  CPU  load
+employed as conservative  estimates. However, owing to the  small \gls{cpu} load
 factors, in this thesis this delay term is omitted for discrete-time formulation
 of the \gls{spm}.
 

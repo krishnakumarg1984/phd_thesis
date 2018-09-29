@@ -19,25 +19,25 @@ computational  simplicity of  equivalent-circuit models  (see \cref{subsec:ecms}
 and \cref{subsec:pbms}  for an overview). A  number of approaches to  reduce the
 computational complexity  of the \glspl{pbm}  have been explored  in literature.
 Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
-categories of reduced order \glspl{pbm} for lithium ion batteries. However, this
-work  does  not aim  to  classify  models  based on  time-vs-frequency  domains.
-Fan~\etal{}~\cite{Fan2015}  conducted  a  review   of  reduced  order  modelling
-methods, but only provide a generic overview of deriving and implementing models
-in these  dual domains  without an  expository analysis  of the  implications of
-these modelling  choices. Unlike  Jokar~\etal~\cite{Jokar2016}, this  review did
-not aim to provide a classification of various reduced order models, but instead
-emphasises  on  a broad  survey  of  relevant  methodologies and  tools  towards
-\emph{obtaining} them.  Hence, neither  of these works  provide an  insight into
-the  rubrics and  implications  of the  choice  of either  of  these domains  to
-underpin  the  \glspl{rom}. Although  in  principle  the transformation  between
-them  is  often  a straightforward  mathematical  exercise,  \fxnote{citation(s)
-needed?}availability of models for final  implementation in the time domain aids
-immediate uptake by  industry for adoption in online  \glspl{bms}. The treatment
-of \gls{rom} from  this aspect is so  germane to the central  hypothesis of this
-chapter,\fxnote{``can a simple time domain model  do the job?''} that the author
-of this thesis feels compelled to undertake a simpler classification exercise of
-the existing modelling  art, within the context of their  suitability for online
-implementation.
+categories of reduced order \glspl{pbm}  for lithium ion batteries. However, the
+aforesaid  work does  not  aim  to classify  models  based on  time-vs-frequency
+domains.  Fan~\etal{}~\cite{Fan2015}   conducted  a  review  of   reduced  order
+modelling  methods,  but  only  provide  a  generic  overview  of  deriving  and
+implementing models in these dual domains  without an expository analysis of the
+implications  of these  modelling choices.  Unlike Jokar~\etal~\cite{Jokar2016},
+this review  did not aim  to provide a  classification of various  reduced order
+models, but instead  emphasises on a broad survey of  relevant methodologies and
+tools  towards \emph{obtaining}  them.  Hence, neither  of  these works  provide
+an  insight  into  the  rubrics  and   implications  of  the  choice  of  either
+of  these  domains  to  underpin  the \glspl{rom}.  Although  in  principle  the
+transformation between  them is  often a straightforward  mathematical exercise,
+\fxnote{citation(s) needed?}availability  of models for final  implementation in
+the  time domain  aids  immediate  uptake by  industry  for  adoption in  online
+\glspl{bms}. The  treatment of \gls{rom} from  this aspect is so  germane to the
+central hypothesis of  this chapter,\fxnote{``can a simple time  domain model do
+the  job?''} that  the author  of  this thesis  feels compelled  to undertake  a
+simpler  classification  exercise of  the  existing  modelling art,  within  the
+context of their suitability for online implementation.
 
 
 In this discussion,  various modelling methodologies and  their resultant models
@@ -131,7 +131,7 @@ earliest published  instance wherein all  the dynamics  of the full  order model
 were completely retained  in the frequency domain. This  was facilitated through
 the use of  transcendental transfer functions that helped to  avoid the accuracy
 degradation brought about by truncation  techniques such as Padé approximation.
-In the first  stage of the model  derivation detailed in this  work, a composite
+In the first  stage of the model  derivation detailed in this  article, a composite
 impedance model for the frequency range of interest from \SIrange{0}{10}{\hertz}
 was  obtained.  This was  then  converted  to  a \engordnumber{12}  order  state
 space  model using  the technique  of residue  grouping and  truncation, thereby
@@ -326,7 +326,7 @@ solution methods, for each subsystem of  the \gls{dfn} model. The formulation of
 the final model is  not clearly illustrated and in the views  of this author, is
 not easily  comprehensible. In the  absence of  actual source code,  a numerical
 example  or pseudo-code  of the  model reduction  workflow could  have immensely
-helped with the reproducibility of the results claimed in the work.
+helped with the reproducibility of the results claimed in the publication.
 
 In summary, the  concept of hybrid \glspl{rom} is  certainly promising, although
 more work is required to address the  present gaps, most prominently the need to
@@ -408,11 +408,11 @@ trade-offs in  accuracy was  demonstrated to be  achievable from  a system-level
 simulation  perspective.  A drawback  of  this  approach  is that  key  physical
 parameters such as  solid and electrolyte diffusion  coefficients are attributed
 to the  two electrodes through ad-hoc,  non-verifiable assumptions. Furthermore,
-in  this work,  notable discrepancies  exist in  the values  of parameters  such
-as  electrolyte  conductivity  (obtained  through  calculations  from  \gls{eis}
-measurements) to that typically reported  in literature. \fxnote{have not talked
-about SPM  inspired eq circuit model.  Is it necessary  to do so?. How  to frame
-this. There are a few references that belongs to this kind}
+in  the  aforesaid  article,  notable  discrepancies  exist  in  the  values  of
+parameters such as electrolyte  conductivity (obtained through calculations from
+\gls{eis} measurements)  to that typically reported  in literature. \fxnote{have
+not talked about SPM  inspired eq circuit model. Is it necessary  to do so?. How
+to frame this. There are a few references that belongs to this kind}
 
 
 It must be acknowledged that presently  there exists no modelling candidate that
@@ -528,22 +528,22 @@ Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2018} undertook a  hybrid approach by
 retaining a  standard finite volume  discretisation in the axial  domain, whilst
 adopting  the  Chebyshev  discretisation  only  for  the  critical  solid  phase
 diffusion  component in  the  radial  direction. The  details  of  this work  is
-presented in  the context of the  author's research methodology on  delivering a
-model-based  pouch  cell  design  discussed  in  \cref{ch:modelbaseddesign}.  In
-pseudo-spectral  methods, the  \gls{p2d}  equations,  their boundary  conditions
-and  corresponding  field  variables   are  mathematically  transformed  to  the
-Chebyshev   space  within   which  they   are  solved.   The  details   of  this
-transformation  is  presented in  the  context  of the  author's  aforementioned
-work  in \cref{sec:hybridfv-spectral}  for the  solid-phase diffusion  equation.
-Finally,  these solved  quantities  are  converted back  to  the physical  space
-through  a corresponding  inverse transformation.  Although this  bi-directional
-transformation  is  purely  algebraic  in nature,  the  requirement  of  running
-a  spatially  resolved  model  coupled  with  the  overheads  of  such  variable
-transformations   render   these  class   of   models   unsuitable  for   online
-implementation. The contribution  of Lee~\etal~\cite{Lee2012a,Lee2012} \ie~the
-ability to solve for any electrochemical variable at arbitrary spatial locations
-by completely eliminating the need for spatial discretisation assumes particular
-significance in this context.
+presented in the context of the research methodology on delivering a model-based
+pouch cell  design discussed  in \cref{ch:modelbaseddesign}.  In pseudo-spectral
+methods, the  \gls{p2d} equations,  their boundary conditions  and corresponding
+field variables  are mathematically  transformed to  the Chebyshev  space within
+which they  are solved. The details  of this transformation is  presented in the
+context  of the  author's  aforementioned  work in  \cref{sec:hybridfv-spectral}
+for  the  solid-phase  diffusion  equation.  Finally,  these  solved  quantities
+are  converted  back to  the  physical  space  through a  corresponding  inverse
+transformation.   Although   this   bi-directional  transformation   is   purely
+algebraic  in nature,  the requirement  of  running a  spatially resolved  model
+coupled  with  the  overheads  of such  variable  transformations  render  these
+class  of   models  unsuitable  for  online   implementation.  The  contribution
+of   Lee~\etal~\cite{Lee2012a,Lee2012}  \ie~the   ability  to   solve  for   any
+electrochemical   variable  at   arbitrary  spatial   locations  by   completely
+eliminating the need for  spatial discretisation assumes particular significance
+in this context.
 
 
 In all  non-uniform discretisation schemes  discussed here, the  implications of
@@ -705,20 +705,20 @@ and is analysed in detail in \cref{ch:spmanalysis}.
 
 
 Haran~\etal{}~\cite{Haran1998}  proposed a  highly simplified  representation of
-porous  electrodes for  the metal  hydride cell  chemistry. In  this work,  each
-porous electrode  was represented as  a single spherical particle.  This concept
-was adopted for lithium ion batteries  by Ning and Popov~\cite{Ning2004} and has
-since  become quite  popular.  Models employing  this  lumped representation  of
-electrodes are referred to as  \glsfmtlong{spm}s (\gls{spm}s). These models have
-three  advantages.  Since they  involve  only  a  subset  of parameters  of  the
-original \gls{dfn}  model, most of them  being geometric quantities that  can be
-directly measured without extensive  chemical or electrical testing, \glspl{spm}
-are  easier to  parametrise than  other physics-based  \glspl{rom}. Furthermore,
-they  are computationally  cheap, especially  when coupled  with the  polynomial
-approximation  for solving  the  solid diffusion  equation  for each  electrode.
-Finally, all model parameters in  the \gls{spm} retain their physical character,
-aiding in  a direct and  intuitive understanding  of physical parameters  on the
-cell's operation.
+porous  electrodes  for the  metal  hydride  cell  chemistry. In  the  aforesaid
+article,  each   porous  electrode  was   represented  as  a   single  spherical
+particle.  This concept  was  adopted  for lithium  ion  batteries  by Ning  and
+Popov~\cite{Ning2004} and has since become  quite popular. Models employing this
+lumped  representation  of  electrodes  are  referred  to  as  \glsfmtlong{spm}s
+(\gls{spm}s).  These  models have  three  advantages.  Since they  involve  only
+a  subset  of  parameters  of  the   original  \gls{dfn}  model,  most  of  them
+being  geometric quantities  that  can be  directly  measured without  extensive
+chemical  or electrical  testing,  \glspl{spm} are  easier  to parametrise  than
+other physics-based  \glspl{rom}. Furthermore,  they are  computationally cheap,
+especially when coupled with the  polynomial approximation for solving the solid
+diffusion  equation for  each electrode.  Finally, all  model parameters  in the
+\gls{spm}  retain their  physical character,  aiding in  a direct  and intuitive
+understanding of physical parameters on the cell's operation.
 
 This concludes  the author's review of  literature of the various  reduced order
 modelling  strategies. Based  on the  wealth  of information  gleaned from  this

@@ -103,18 +103,18 @@ discussed in the aforementioned works for the design studies discussed herein.
 A      holistic      computational      screening     was      performed      by
 Sendek~\etal~\cite{Sendek2017}  to  study  the  suitability  of  12831~candidate
 materials for their  suitability as solid state  electrolytes in electrochemical
-cells. These authors  cite the same rationale of this  thesis author \ie~rapid
+cells. These  authors cite the  same rationale  of this thesis  author \ie~rapid
 prototyping, as the  motivation behind this model-based  design simulations. The
 study  helped to  narrow the  initial candidate  pool down  to 21~viable  family
 structures. This effort  serves as a concrete example in  this literature survey
 wherein computer simulation is directly used  as a design tool for components of
-a lithium  ion cell. The  scope of  this work falls  into the realm  of material
-synthesis and applied physics ---  topics outside the educational background and
-expertise  of this  thesis  author.  Nevertheless, the  success  of this  effort
-strongly  motivates the  case for  performing a  computational study  of similar
-scale, wherein  instead of screening  out thousands of candidate  materials, the
-framework  presented in  \cref{ch:modelbaseddesign} computationally  screens out
-thousands of layer configurations within a pouch cell.
+a lithium  ion cell. The  scope of  the aforesaid work  falls into the  realm of
+material  synthesis  and applied  physics  ---  topics outside  the  educational
+background and  expertise of  this thesis author.  Nevertheless, the  success of
+this effort  strongly motivates  the case for  performing a  computational study
+of  similar scale,  wherein  instead  of screening  out  thousands of  candidate
+materials, the framework presented in \cref{ch:modelbaseddesign} computationally
+screens out thousands of layer configurations within a pouch cell.
 
 Curiously,  the  use  of  volume-averaged   models  for  design  simulations  of
 \glspl{pbm} at  the cell-scale has not  yet gained sufficient traction.  This is
@@ -129,73 +129,73 @@ have nevertheless been reported in literature, which are examined next.
 \subsection{State of the art in cell-scale model-led design optimisations}
 
 The pioneering  work by Newman~\cite{Newman1995}  was the  first of its  kind to
-develop a  scheme to  optimise cell  design based  on an  electrochemical model.
-The  two  parameters optimised  in  this  work  were electrode  thicknesses  and
-porosities. This  study makes  the assumption that  electrode kinetics  are fast
-relative to diffusion, and furthermore  ignores local concentration gradients. A
-reaction-zone model, which considers that reactions occur in a narrowly confined
-area, was used  as the underlying model. The separator  thickness was assumed to
-be fixed and the  specific energy of the cell was  maximised. However, this work
-does not  impose any  constraints on the  extent of specific  power that  can be
-drawn from the cell. Nevertheless, this seminal effort provided the key guidance
-to other researchers that electrode thicknesses and porosities can be considered
-as the critical design variables to be  optimised for in a cell design. Building
-upon the  foundation laid  by the  aforementioned study,  a few  other model-led
-design efforts  have been  published. However,  in order  to provide  a focussed
-review,  only a  subset  of the  prior  art  that is  deemed  pertinent for  the
-model-based design  of \emph{pouch} cells for  \emph{automotive} applications is
-considered here.
+develop a scheme to optimise cell  design based on an electrochemical model. The
+two parameters optimised  were electrode thicknesses and  porosities. This study
+makes the assumption that electrode kinetics are fast relative to diffusion, and
+furthermore ignores local concentration  gradients. A reaction-zone model, which
+considers that  reactions occur  in a  narrowly confined area,  was used  as the
+underlying  model. The  separator  thickness was  assumed to  be  fixed and  the
+specific energy of the cell was  maximised. However, the aforesaid work does not
+impose any constraints  on the extent of  specific power that can  be drawn from
+the cell. Nevertheless,  this seminal effort provided the key  guidance to other
+researchers that electrode  thicknesses and porosities can be  considered as the
+critical design  variables to be optimised  for in a cell  design. Building upon
+the foundation  laid by the aforementioned  study, a few other  model-led design
+efforts have  been published. However,  in order  to provide a  focussed review,
+only a  subset of  the prior art  that is deemed  pertinent for  the model-based
+design of  \emph{pouch} cells  for \emph{automotive} applications  is considered
+here.
 
 Arora~\etal~\cite{Arora1999}  used an  electrochemical  model  to inform  design
 decisions on cell parameters such as particle size, electrode thickness and mass
 ratio. Furthermore, the model thus obtained was used to optimise the cell design
 against the  risk of Lithium  plating. Cells  are susceptible to  plating during
 fast charging and hence a key aspect to consider in the cell design for electric
-vehicles. This thesis author considers this work to be a vanguard in model-based
-design  for cells  that is  potentially applicable  for vehicular  applications.
-Nevertheless, the  aspect of  stacking layers  inside pouch  cells and  how this
-influences the optimisation of the  aforementioned design variables has not been
-studied.
+vehicles. This  thesis author considers  this contribution  to be a  vanguard in
+model-based  design  for cells  that  is  potentially applicable  for  vehicular
+applications. Nevertheless, the aspect of stacking layers inside pouch cells and
+how this influences the optimisation  of the aforementioned design variables has
+not been studied.
 
 Xue~\etal~\cite{Xue2013}  presented a  simulation based  design study  wherein a
-cell design was  optimised using a gradient-based  algorithm. Specifically, this
-work dealt with a numerical framework for providing automated design outputs for
-maximising  the cell's  energy  density whilst  meeting  specific power  density
-requirements. This  criterion appears to  be highly  relevant in the  context of
-cell design for  electric vehicles and hence,  was adopted as the  basis for the
-layer  optimisation framework  presented in  \cref{ch:modelbaseddesign}. In  the
-aforementioned work, various power levels  were also tried. However, these power
-requirements were computed indirectly rather  than a direct reformulation of the
-underlying \gls{p2d} model to accept power density inputs.
+cell design  was optimised using  a gradient-based algorithm.  Specifically, the
+said  work dealt  with  a  numerical framework  for  providing automated  design
+outputs for maximising  the cell's energy density whilst  meeting specific power
+density  requirements. This  criterion  appears  to be  highly  relevant in  the
+context of cell design for electric vehicles and hence, was adopted as the basis
+for the layer optimisation framework presented in \cref{ch:modelbaseddesign}. In
+the aforementioned  work, various power  levels were also tried.  However, these
+power requirements were  computed indirectly rather than  a direct reformulation
+of the underlying \gls{p2d} model to accept power density inputs.
 
 % reformulated to account for applied power density. Particularly notable is the
 % absence of relevant boundary conditions to the governing \glspl{pde}.
 
 
-The  design study  by Xue~\etal~\cite{Xue2014}  represents a  rare example  of a
-model-led design study performed in  the backdrop of electrified transportation.
-In  this work,  an electrochemical  cell model  \viz~the  \gls{p2d} model  was
-successfully  adapted  to  perform  the design  optimisation  of  a  \gls{phev}.
-Although the underlying  model operates at the cell-scale,  this study considers
-a  pack-level  optimisation  through  a series-parallel  combination  of  cells.
-Furthermore, an advanced numerical algorithm in  the form of a hybrid solver was
-used  which used  a  unique scheme  of employing  a  gradient-free optimiser  in
-conjunction with  a gradient-based optimiser.  Albeit a standout example  in the
-context of vehicular application, this work  falls slightly outside the scope of
-this thesis  wherein the  design study is  strictly confined to  be at  the cell
-level. The aforementioned work takes into account pack-level constraints such as
-safety limits  as well as  energy and  power levels. Furthermore,  these authors
-even accounted for important details such  as the presence of layers within each
-cell in their design optimisation process.
+The  design   study  by  Xue~\etal~\cite{Xue2014}  represents   a  rare  example
+of  a  model-led  design  attempt  performed  in  the  backdrop  of  electrified
+transportation.  In  the  said  work, an  electrochemical  cell  model  \viz~the
+\gls{p2d} model was successfully adapted to perform the design optimisation of a
+\gls{phev}. Although the underlying model operates at the cell-scale, this study
+considers  a pack-level  optimisation through  a series-parallel  combination of
+cells. Furthermore,  an advanced  numerical algorithm  in the  form of  a hybrid
+solver  was  used which  used  a  unique  scheme  of employing  a  gradient-free
+optimiser  in conjunction  with a  gradient-based optimiser.  Albeit a  standout
+example  in the  context  of  vehicular application,  the  aforesaid work  falls
+slightly outside the  scope of this thesis wherein the  design study is strictly
+confined to  be at the  cell level. The  aforementioned work takes  into account
+pack-level constraints such as safety limits as well as energy and power levels.
+Furthermore,  these authors  even accounted  for important  details such  as the
+presence of layers within each cell in their design optimisation process.
 
 The  system-level   constraints  considered  in   Xue~\etal~\cite{Xue2014}  were
 instrumental  in  informing  the  choice  of constraints  in  the  design  study
 presented in \cref{ch:modelbaseddesign}. However, in the aforementioned article,
 the translation from pack-level into  cell-level quantities does not account for
-secondary effects \ie~the influence of layers on pack mass (a quantity that is
-optimised in the said work) is not studied. Simulations conducted as part of the
-work  reported  in \cref{ch:modelbaseddesign}  revealed  that  such effects  are
-non-negligible.
+secondary effects \ie~the  influence of layers on pack mass  (a quantity that is
+optimised in the said publication) is not studied. Simulations conducted as part
+of the  work reported in  \cref{ch:modelbaseddesign} revealed that  such effects
+are non-negligible.
 
 % Furthermore, although  not
 % explicitly mentioned,  it is  assumed that, despite  layer counts  being changed
@@ -224,17 +224,17 @@ optimisation  involved a  multiphysics model  of the  cell wherein  a number  of
 design variables  such as electrode  thicknesses, porosities and  particle sizes
 were considered. The optimisation objectives were to maximise the specific power
 and specific energy  during discharge as well as to  minimise capacity loss. The
-model was solved by using a genetic  algorithm. While this work is certainly the
-first of its  kind to use a formal mathematical  optimisation framework for cell
-design, in the opinion  of this thesis author, the complexity  of the problem is
-excessively high --- both mathematically and computationally. For instance, with
-three  design variables  considered,  it requires  a  careful interpretation  of
-the  resulting pareto  front  to distinguish  their  relative importance.  While
-prima~facie this is not an issue, the question of resolving the pareto front for
-cells  with different  parameter sets  needs to  be addressed.  The optimisation
-algorithm  used  is  an  exotic  genetic  algorithm to  be  run  on  a  parallel
-cluster.  From a  near-term  industrial application  viewpoint,  this scheme  is
-less  attractive since  real-world  constraints, such  as supply-chain  dictated
+model  was solved  by  using a  genetic algorithm.  While  this contribution  is
+certainly  the first  of  its kind  to use  a  formal mathematical  optimisation
+framework for cell design, in the  opinion of this thesis author, the complexity
+of the problem is excessively  high --- both mathematically and computationally.
+For  instance, with  three design  variables considered,  it requires  a careful
+interpretation  of the  resulting  pareto front  to  distinguish their  relative
+importance. While  prima~facie this is not  an issue, the question  of resolving
+the pareto front for cells with  different parameter sets needs to be addressed.
+The optimisation algorithm  used is an exotic  genetic algorithm to be  run on a
+parallel cluster. From a near-term industrial application viewpoint, this scheme
+is less attractive  since real-world constraints, such  as supply-chain dictated
 raw-material  sourcing, typically  restrict  the number  of  degrees of  freedom
 available  for  optimisation.  Nevertheless,  this scheme  is  valuable  from  a
 long-term research perspective and merits attention by researchers interested in
