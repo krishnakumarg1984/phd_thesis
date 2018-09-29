@@ -460,6 +460,15 @@ datasheet.
 
 \input{chapters/spm_analysis/char_sim_table.tex}
 
+
+
+\Cref{fig:capcharspmp2d}  shows  the  voltage  response  of  the  \gls{spm}  and
+\gls{p2d}  models,  which   overlap almost entirely.  It  is  clear  that   both  the  \gls{p2d}
+and  \gls{spm}  models   achieve  a  run-time  of   100~hours.  This  represents
+the   first  visualisation   of  results   produced  by   the  \gls{spm}   model
+equations  discussed  in \cref{subsec:basicspmgoverningeqns} and  its  numerical
+implementation  from \cref{sec:numericalimplementation}.
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics{capacity_match_spm_p2d.pdf}
@@ -472,13 +481,7 @@ datasheet.
     \label{fig:capcharspmp2d}
 \end{figure}
 
-\Cref{fig:capcharspmp2d}  shows  the  voltage  response  of  the  \gls{spm}  and
-\gls{p2d}  models,  which   overlap.  It  is  clear  that   both  the  \gls{p2d}
-and  \gls{spm}  models   achieve  a  run-time  of   100~hours.  This  represents
-the   first  visualisation   of  results   produced  by   the  \gls{spm}   model
-equations  discussed  in \cref{subsec:basicspmgoverningeqns} and  its  numerical
-implementation  from \cref{sec:numericalimplementation}.  The voltage  error  is
-defined as
+The voltage  error  is defined as
 \begin{equation}
     \varepsilon_v = V_{\text{cell}_\text{p2d}} - V_{\text{cell}_\text{spm}}
 \end{equation}
@@ -489,17 +492,20 @@ of  the  overall  error  behaviour   as  evidenced  by  the  standard  deviation
 of  the  error  vector.  The  mean   and  \gls{rms}  error  values  indicate  an
 accuracy of~${\mathcal{O}\left(10\right)\si{\milli\volt}}$.  It should  be noted
 that throughout  the simulation, the  voltage response of the  \gls{spm} remains
-above  that of  \gls{p2d}, thereby  leading  to a  negative value  for the  mean
+slightly above  that of  \gls{p2d}, thereby  leading  to a  negative value  for the  mean
 voltage error. For continuous quantities  such as time-domain simulation outputs
 of physical variables, the \gls{mae} is a suitable error metric and is
-defined as  \begin{equation} \varepsilon_\text{\scriptsize  \glsfmtshort{mae}} =
-\frac{\Sigma_{i=1}^{n}\abs{\varepsilon_i}}{n}  \end{equation} and  is consistent
-with the order of  magnitude of the \gls{rms} and mean error  metrics as well as
-with the standard deviation of the error vector.
+defined as
+\begin{equation} \varepsilon_\text{\scriptsize  \glsfmtshort{mae}} =
+\frac{\Sigma_{i=1}^{n}\abs{\varepsilon_i}}{n}
+\end{equation}
+Here, the numerical value of \gls{mae} is consistent with the order of magnitude
+of the \gls{rms} and  mean error metrics as well as  with the standard deviation
+of the error vector.
 
 Thus,  a common  foundation  for  further simulations  has  been established  by
 confirming  that  the  two  models  indeed  simulate  a  cell  with  a  capacity
-of~\SI{60}{\amphour}.  With  the  cell  parametrisation  discussed,  simulation
+of~\SI{60}{\amphour}.  With  the   cell  parametrisation  discussed,  simulation
 setup  presented and  capacities  validated, the  simulation  results are  fully
 reproducible and are presented next in \cref{subsec:simresultsbasicspm}.
 
