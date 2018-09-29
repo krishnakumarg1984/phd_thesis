@@ -1,3 +1,4 @@
+- Enable all linter tools and check everything
 - check overfull/underfull, and use sloppypar
 - check undefined references
 - check for nbsp for gls
