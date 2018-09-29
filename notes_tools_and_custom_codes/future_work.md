@@ -26,6 +26,7 @@
 - Permissions Summary for lionsimba mesh use
 - check for undefined references
 - generally check and match references
+- edit the path to main.tex in every file
 
 - enhanced spm paper
 - enchanced spm with KF

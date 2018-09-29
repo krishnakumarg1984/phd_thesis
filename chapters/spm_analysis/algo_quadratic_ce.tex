@@ -6,6 +6,7 @@
 
 \begin{algorithm}[!htbp]
     \caption{Quadratic approximation model for spatio-temporal electrolyte concentration}\label{alg:quadraticce}
+    \addtocontents{loa}{\vskip 9pt} % https://latex.org/forum/viewtopic.php?t=6218
     \begin{algorithmic}[1]
         \Require Load profile \Comment{\eg~a \texttt{csv} file of $t$ vs.\ C-rate}
         \Require Electrolyte model parameter set  \Comment{\eg~stored in a struct \texttt{ceparams}}

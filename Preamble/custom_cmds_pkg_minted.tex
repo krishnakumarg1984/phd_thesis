@@ -41,11 +41,14 @@
     label=#3
 }
 
-\pretocmd{\chapter}{\addtocontents{mypyg}{\addvspace{10pt}}}{}{}
+% https://tex.stackexchange.com/questions/193718/list-of-listing-using-tcblistof-vertical-spacing-group-by-chapter
+% \pretocmd{\chapter}{\addtocontents{mypyg}{\addvspace{10pt}}}{}{}
+% \pretocmd{\chapter}{\addtocontents{mypyg}{\addvspace{0pt}}}{}{}
+\pretocmd{\section}{\addtocontents{mypyg}{\addvspace{0pt}}}{}{}
 
-\makeatletter % no indent for entries
-\renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{2.3em}}
-\makeatother
+% \makeatletter % no indent for entries
+% \renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{2.3em}}
+% \makeatother
 
 
 \SetupFloatingEnvironment{listing}{name=Code snippet} % needs new float package
