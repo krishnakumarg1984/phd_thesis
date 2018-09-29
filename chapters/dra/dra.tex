@@ -7,19 +7,12 @@
 \graphicspath{{chapters/dra/figures/}}
 % ----------------------- contents from here ------------------------
 
-\chapter{Computational Analysis and Numerical Reformulation of the \glsfmtshort{dra}}\label{ch:improveddra}
-% \chapter{Analysis of the \glsfmtlong{dra} and Performance Boost through Numerical Reformulation}\label{ch:improveddra}
-% \chapter{Computational Bottleneck Analysis of the \glsfmtshort{dra} and its Mitigation through Numerical Reformulations}\label{ch:improveddra}
-\vspace*{-1em}
-\startcontents[chapters]
-\printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
-
-% \bigskip
-
-\capolettera{T}{his} chapter presents  an analysis and critical  evaluation of a
-computational bottleneck present in  a popular physics-based \gls{rom} framework
-of lithium-ion batteries and proposes  an alternative numerical reformulation to
-mitigate  it\footnote{This  chapter is  based  on  the journal  publication  ---
+\chapter[%
+Computational Analysis and Numerical Reformulation of the \glsfmtshort{dra}
+]%
+{%
+Computational     Analysis     and     Numerical    Reformulation     of     the
+\glsfmtshort{dra}\footnote{This chapter is based  on the journal publication ---
 \fullcite{Gopalakrishnan2017}.  All  intellectual  ideas in  the  aforementioned
 article  are original  contributions of  this thesis  author. All  text, tables,
 figures  and captions  therein were  contributed solely  by this  thesis author.
@@ -27,9 +20,24 @@ Copyright  clearance for  non-commercial  verbatim reproduction  of the  content
 (such as in this thesis) has been secured through the publication agreement with
 the  copyright holder  ASME (see  \cref{ch:permissions}). The  contents in  this
 chapter may be, in full or in part, included verbatim from the said publication.
-This  author wishes  to express  his thankfulness  to Teng  Zhang, co-author  of
-this  article, for  checking  my calculations  and  providing valuable  feedback
-that  helped to  refine  the  manuscript for  that  journal publication.}.  From
+This author wishes to express his  thankfulness to Teng Zhang, co-author of this
+article,  for checking  my  calculations and  providing  valuable feedback  that
+helped to refine the manuscript for that journal publication.}
+}\label{ch:improveddra}
+
+% \chapter{Analysis of the \glsfmtlong{dra} and Performance Boost through Numerical Reformulation}\label{ch:improveddra}
+% \chapter{Computational Bottleneck Analysis of the \glsfmtshort{dra} and its Mitigation through Numerical Reformulations}\label{ch:improveddra}
+
+% \vspace*{-1em}
+\startcontents[chapters]
+\printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
+
+\bigskip
+
+\capolettera{T}{his} chapter presents  an analysis and critical  evaluation of a
+computational bottleneck present in  a popular physics-based \gls{rom} framework
+of lithium-ion batteries and proposes  an alternative numerical reformulation to
+mitigate  it.  From
 the  literature review  presented in  \cref{ch:littreview}, it  may be  recalled
 that  transcendental  transfer functions  of  the  cell's electrochemical  field
 variables  (except for  ionic concentration  and potential  in the  electrolyte)
