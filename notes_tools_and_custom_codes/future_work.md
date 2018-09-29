@@ -1,3 +1,4 @@
+- Cover page
 - word repetition in source files
 - widow/orphan check
 - spellcheck pdf

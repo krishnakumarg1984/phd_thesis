@@ -4,34 +4,38 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
-In   this    section,   the    quadratic   approximation   of    ionic   spatial
-concentration,   that  underpins   the  electrolyte   model  in   many  improved
-\gls{spm}  formulations  is  presented.  The  steps  involved  in  deriving  the
-quadratic   approximation   is  detailed   in \cref{subsec:quadraticmodelderiv}.
-In \cref{subsec:quadraticsimresultsanalysis},  an analysis  of  the weakness  of
-this  model is  performed  based  on the  results  from  applying the  quadratic
-approximation scheme. Mitigation of this critical drawback lead to this author's
-decoupled  spatio-temporal electrolyte  concentration model  structure which  is
-presented next in \cref{sec:newelectrolytemodel}.
+In this section, the quadratic approximation of ionic spatial concentration that
+underpins the electrolyte  model in many of the  improved \gls{spm} formulations
+from  \cref{sec:electrolyteinclusion}   is  presented\footnote{The  mathematical
+derivations  here  represents  the  author's  digested  summary  of  literature,
+and  is  particularly  based  upon  a  portion  of  Deng~\etal~\cite{Deng2018}}.
+The  steps  involved  in  deriving   the  quadratic  approximation  is  detailed
+in  \cref{subsec:quadraticmodelderiv}.  Based  on   the  results  from  applying
+this   quadratic   approximation   scheme,   an   analysis   of   the   weakness
+of  this   model  is  performed   in  \cref{subsec:quadraticsimresultsanalysis}.
+% Mitigation  of   this  critical  drawback   lead  to  this   author's  decoupled
+% spatio-temporal electrolyte concentration model  structure which is presented in
+% \cref{sec:newelectrolytemodel}.
 
 \subsection{Model derivation}\label{subsec:quadraticmodelderiv}
 
 The  schematic  in  \cref{fig:coordsquadapprox}  shows  the  definition  of  the
 co-ordinate  systems  used  in  deriving the  polynomial  approximation  of  the
-electrolyte concentration  profile. The globally defined  $x$~co-ordinate starts
-at  the  negative  current   collector  interface~(${x=0}$)  and  terminates  at
-the  positive current  collector  interface ($x  = l_\text{tot},\,  l_\text{tot}
-=  l_\text{neg}  +  l_\text{sep}   +  l_\text{pos}$).  Three  local  co-ordinate
-systems~$z_\mu$   valid  only   within   their  respective   regions  are   also
-defined.  In particular,  it  must be  noted  that the  direction  of the  local
-$z_\text{pos}$~co-ordinate  axis is  opposite to  that  of the  other two  local
-co-ordinate axes as  well as the global co-ordinate axis.  In subsequent usages,
-the  suffix in~$z_\mu$  is dropped  and  the  reader is  advised  to infer  the
-region  of  validity from  the  usage  context  which  are unambiguous  as  they
-occur  in separate  equations. Furthermore,  the notation  of the  three regions~${\{\text{neg, sep, pos}\}}$ is abbreviated to ${\{n,s,p\}}$~respectively in all
-mathematical expressions.  The author is  convinced that this notation  does not
-detract  from following  the  derivations, but  rather aids  it  by keeping  the
-notations compact.
+electrolyte  concentration   profile.  The  three   regions~${\{\text{neg,  sep,
+pos}\}}$  are  abbreviated  to ${\{n,s,p\}}$~respectively  in  all  mathematical
+expressions. The globally defined $x$~co-ordinate starts at the negative current
+collector interface~(${x=0}$)  and terminates at the  positive current collector
+interface  ($x  = l_\text{tot},\,  \text{where  }  l_\text{tot} =  l_\text{n}  +
+l_\text{s} + l_\text{p}$). Three local co-ordinate systems~$z$ valid only within
+their respective regions are also defined.  In particular, it must be noted that
+the direction of  the local $z_\text{pos}$~co-ordinate axis is  opposite to that
+of the other two local co-ordinate axes as well as the global co-ordinate axis.
+
+% In subsequent usages, the  suffix in~$z_\mu$  is dropped  and  the  reader is  advised  to infer  the region  of  validity from  the  usage  context  which  are unambiguous  as  they occur  in separate  equations.
+
+% The author is  convinced that this notation  does not
+% detract  from following  the  derivations, but  rather aids  it  by keeping  the
+% notations compact.
 
 \begin{figure}[!htbp]
     \captionsetup{singlelinecheck=off}
@@ -55,28 +59,33 @@ notations compact.
     \label{fig:coordsquadapprox}
 \end{figure}
 
-A  standard  quadratic expression  is  chosen  a~priori for  approximating  the
-electrolyte concentration profile within each region.
+A  standard  quadratic  expression  is chosen  a~priori  for  approximating  the
+electrolyte  concentration  profile  within each  region.
+\begin{alignat}{2}  %
+    % \SwapAboveDisplaySkip
+   c_\ensub(z,t) & = a_2(t) z^2  + a_1(t) z + a_0(t) \qquad     &  & 0 \le z \le l_\text{n}\label{eq:cenqquadstart} \\
+   c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad      &  & 0 \le z \le l_\text{s}\label{eq:cesqquadstart} \\
+   c_\epsub(z,t) & =  a_8(t) z^2  + a_7(t)  z  + a_6(t)  \qquad &  & 0  \le z  \le l_\text{p}\label{eq:cepqquadstart}
+\end{alignat}
+The time-dependent coefficient  vector ${\vec{a}(t) = \vect{a_0(t),a_1(t),
+\dots ,a_8(t)}}$ is to be determined\footnotemark.
+\footnotetext{In  rest  of  the   equations,  explicit  time-dependence  of  the
+coefficients  is  dropped  from  the notation.  Similarly,  the  spatio-temporal
+dependence of the electrolyte  concentration functions~$c_\text{e,j}$ is omitted
+in  those circumstances  where  such explicit  notation is  not  crucial to  the
+narrative.}
+
+Applying     boundary     conditions     of    the     electrolyte     diffusion
+equation   from   the   \gls{dfn}   model~(refer   \cref{eq:dfnliquiddiff})   to
+\crefrange{eq:cenqquadstart}{eq:cepqquadstart},  it is  clear that  ${a_1 =  0}$
+and~${a_7 = 0}$. Thus, \crefrange{eq:cenqquadstart}{eq:cepqquadstart} become
 \begin{alignat}{2}
-    c_\ensub(z,t) & = a_2(t) z^2 + a_1(t) z + a_0(t) \qquad &  & 0 \le z \le l_\text{n}\label{eq:cenqquadstart}   \\
-    c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad &  & 0 \le z \le l_\text{s}\label{eq:cesqquadstart}   \\
-    c_\epsub(z,t) & = a_8(t) z^2 + a_7(t) z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}\label{eq:cepqquadstart}
-    \shortintertext{where     the    coefficient     vector    $\vec{a}(t)     =
-        \vect{a_0(t),a_1(t),   \dots  ,a_8(t)}$   is  to   be  determined   at  each
-        time-step\footnotemark.  Applying  boundary  conditions of  the  electrolyte
-        diffusion equation from  the \gls{dfn} model~(refer \cref{eq:dfnliquiddiff})
-        to \crefrange{eq:cenqquadstart}{eq:cepqquadstart},  it  is clear  that  ${a_1 =  0}$ and~${a_7  = 0}$.  Thus, \crefrange{eq:cenqquadstart}{eq:cepqquadstart}
-    become}
     c_\ensub      & = a_2 z^2 + a_0         \qquad          &  & 0 \le z \le l_\text{n}\label{eq:cenquadreduced} \\
     c_\essub      & = a_5 z^2 + a_4 z + a_3 \qquad          &  & 0 \le z \le l_\text{s}\label{eq:cesquadreduced} \\
     c_\epsub      & = a_8 z^2 + a_6         \qquad          &  & 0 \le z \le l_\text{p}\label{eq:cepquadreduced}
 \end{alignat}
-\footnotetext{In rest of  the equations, time-dependence of  the coefficients is
-    dropped from  the notation. It is  implicitly noted that they  are time-varying.
-    Similarly, spatio-temporal dependence of the electrolyte concentration functions~$c_\text{e,j}$ is omitted  in circumstances where such explicit  notation is not
-crucial  for  understanding.} with  the  coefficient  vector being  modified  to~${\vec{a} = \vect{a_0,a_2, \dots ,a_6, a_8}}$.
+with  the  coefficient  vector being  modified  to~${\vec{a} = \vect{a_0,a_2, \dots ,a_6, a_8}}$.
 
-\input{chapters/spm_analysis/dfn_electrolyte_sep_table}
 
 \Cref{tbl:dfnelectrolyteeqnsinsep} lists  the equations and  boundary conditions
 for  phenomena  describing  electrolyte  diffusion  and  charge  balance  within
@@ -85,20 +94,23 @@ are  obtained  by  applying  the  corresponding  electrolyte  equations  of  the
 \gls{dfn}  model  (see \cref{eq:dfnliquiddiff}  and \cref{eq:dfnliquidpotential}
 respectively) to the separator region.
 
+\input{chapters/spm_analysis/dfn_electrolyte_sep_table}
+
 Applying  the  continuity  and  flux  boundary  conditions  of  the  electrolyte
 diffusion  equation from \cref{eq:liquiddiffnsep}  at both  separator
-interfaces
+interfaces,
 \begin{alignat}{2}
+    \SwapAboveDisplaySkip
+    \allowdisplaybreaks
     a_2 l^2_\text{n} + a_0                      & = \hphantom{-}a_3 \qquad                    &  & \text{\footnotesize (continuity at neg/sep interface)} \label{eq:cecontinuitynegsep} \\
     a_5 l^2_\text{s} + a_4 l_\text{s} + a_3     & = \hphantom{-}a_8 l^2_\text{p} + a_6 \qquad &  & \text{\footnotesize (continuity at sep/pos interface)}                               \\
     2 a_2 l_\text{n} D_\effn                    & = \hphantom{-}a_4 D_\effs \qquad            &  & \text{\footnotesize (flux b.c.\ at neg/sep interface)}                               \\
     \left(2 a_5 l_\text{s} + a_4\right) D_\effs & = -2 a_8 l_\text{p} D_\effp \qquad          &  & \text{\footnotesize (flux b.c.\ at sep/pos interface)}\label{eq:quadcefluxseppos}
 \end{alignat}
-Note that the negative sign in \cref{eq:quadcefluxseppos} is due to the specific
-choice of the co-ordinate system used  for the positive electrode region. Due to
-this,  fluxes  at  the  separator/positive  electrode  interface  have  opposing
-directions.
-
+The negative sign in \cref{eq:quadcefluxseppos} is due to the specific
+choice of  the co-ordinate system  used for  the positive electrode  region (see
+\cref{fig:coordsquadapprox}).  Due to  this,  fluxes  at the  separator/positive
+electrode interface have opposing directions.
 Let  $Q_\text{e,j}$  denote  the  number  of moles  of  \ch{Li^+}~ions  in  the
 electrolyte per  unit cross-sectional  area within each  region~$\jinnegseppos$.
 This is  computed as  the product  of
@@ -116,8 +128,8 @@ Applying this to \crefrange{eq:cenquadreduced}{eq:cepquadreduced}
 
 At this stage,  $Q_{\text{e},j}(t)$~are unknown. Since  these are time-dependent
 functions,  the  derivation  naturally  progresses  towards  seeking  a  set  of
-\glspl{ode} that describe a relationship  for their time evolution. We transform
-the  second   order  \glspl{ode}  of \cref{eq:dfnliquiddiff}   (for  electrodes)
+\glspl{ode} that describe a relationship  for their time evolution. Transforming
+the  \engordnumber{2}   order  \glspl{ode}  of \cref{eq:dfnliquiddiff}   (for  electrodes)
 and \cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
 this sequence of steps for the negative electrode region,
@@ -130,16 +142,16 @@ this sequence of steps for the negative electrode region,
         \right) + (1 - t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz
         \Arrow[tikz={text width=3.4cm}]{apply time-derivative operator to the whole \glsfmtshort{lhs}}\\
         \diffp*{\left(\tikzmark{StartBraceA}\varepsilon_\text{n} \int_0^{l_\text{n}}
-        c_\ensub(z,t)\, dz\tikzmark{EndBraceA}\right)}{t} &=  \int_0^{l_\text{n}}
-        \left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 -
-            t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text
-        width=3.4cm}]{apply integral to the \glsfmtshort{rhs}}\\
+c_\ensub(z,t)\, dz\tikzmark{EndBraceA}\right)}{t} &=  \int_0^{l_\text{n}}
+\left(\diffp{}{z}\left(D_\effn \diffp{c_\ensub}{z} \right) + (1 -
+    t^0_\text{+}) a_\snsub j_\text{n}\right)\, dz \Arrow[tikz={text
+width=3.4cm}]{apply integral to the \glsfmtshort{rhs}}\\
         \diff*{Q_\text{e,n}(t)}{t} &= D_\effn \diffp{c_\ensub}{z}{\mathrlap{z=l_\text{n}}} + (1 - t^0_\text{+}) a_\snsub \int_0^{l_\text{n}} j_\text{n}\, dz
     \end{WithArrows}
     \label{eq:negliionmolestoreduce}
 \end{equation}
 \mathcenter
-\InsertUnderBrace[draw=black][aspect=0.26]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
+% \InsertUnderBrace[draw=black][aspect=0.26]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
 
 % \blindtext
 % \AddToShipoutPicture*{\ShowFramePicture}
@@ -183,7 +195,7 @@ which leads to the general expressions  for the cross-sectional molar density of
     \diff*{Q_\text{e,s}}{t} & = 2 a_5 l_\text{s} D_\effs\label{eq:sepliionmolesquadratic}                                                                                                     \\
     \diff*{Q_\text{e,p}}{t} & = 2 a_8 l_\text{p} D_\effp - (1 - t^0_\text{+}) \frac{I}{A F} \label{eq:posliionmolesquadratic}
 \end{align}
-The  initial   ionic  concentration   in  the   electrolyte  are   identical  in
+The  initial   ionic  concentration   in  the   electrolyte  is   identical  in
 all  three  regions  of  the  cell,  assuming  equilibrium  starting  conditions
 \ie~${c_{\text{e,0}_j}  = c_\text{e,0},  \jinnsp}$.  Hence the  initial number  of
 moles of \ch{Li^+} per unit area in each of the three regions is given by
@@ -222,8 +234,9 @@ coupled with the aforementioned \gls{ivp} form a \gls{dae} system.
 
 There are now two choices for proceeding  with solution of the system. The naive
 approach  would be  to  solve  the \gls{dae}  using  advanced \gls{dae}  solvers
-specially designed to handle \mbox{index-1}  semi-explicit systems such as DASSL
-or  DASPK. For  start-stop  type  of input  currents  with discontinuities,  the
+specially designed to handle \mbox{index-1}  semi-explicit systems such as
+DASSL~\cite{Petzolddassl}
+and  DASPK~\cite{VanKeken1995}. For  start-stop  type  of input  currents  with discontinuities,  the
 consistent initialisation of algebraic conditions and derivatives is numerically
 challenging.  All   \gls{dae}  solvers  typically  use   adaptive  time-stepping
 algorithms.  The  feasibility of  using  such  a  complex scheme  for  real-time
@@ -231,10 +244,10 @@ computation is questionable. On the other hand, the overall system can be viewed
 as composed of two numerical subsystems ---
 \begin{enumerate*}[label=\emph{\alph*})]
     \item an independent \gls{ode} system, and
-    \item an independent algebraic system
+    \item an independent algebraic system.
 \end{enumerate*}
-with both these  systems running back to back in  succession using solution from
-the previous time-step.
+Each system  is executed  back to  back in succession  using solutions  from the
+other system from the previous time-step.
 
 To  clarify  the sequence  of  operations,  in  order  to bootstrap  the  model,
 it  is  required  to  compute  $Q_{\text{e},j}(t)$ in  all  three  regions.  The
@@ -243,8 +256,8 @@ at  their initial  value.  The $Q_{\text{e},j}(t)$  thus  solved is  substituted
 into  the  algebraic system  to  yield  the  updated  value of  the  coefficient
 vector~$\vec{a}(t=t_k)$. This new value of the coefficient vector is substituted
 back  into  the  \gls{ode}  system  and  the  process  continues.  Although  the
-continuous simulation of  the overall \gls{dae} is not possible,  this scheme is
-pragmatic from an engineering viewpoint as  the periodic pauses needed to update
+continuous simulation of  the overall \gls{dae} is not accomplished,  this scheme is
+pragmatic from an engineering viewpoint. This is because,  the periodic pauses needed to update
 the intertwined  sub-systems translate  naturally into  fixed time-steps  and is
 well-suited for a \gls{bms} controller operating at a fixed sample rate. This is
 also an effective workaround to mitigate the complexities of having to implement
@@ -259,11 +272,11 @@ in \cref{subsec:quadraticsimresultsanalysis}.
 
 \subsubsection*{Numerical implementation}
 From an analysis point of view,  the quadratic approximation model for computing
-the spatio-temporal evolution  of electrolyte concentration can  be simulated as
-an  independent  subsystem,  and  hence  can be  implemented  numerically  as  a
-standalone module as shown  in \cref{alg:quadraticce}. In practice, this modular
-code is  embedded as  a subroutine  within the  main \gls{spm}  algorithm listed
-in \cref{alg:disctimespm}.
+the  spatio-temporal evolution  of  electrolyte concentration  can be  simulated
+as  an  independent subsystem,  and  hence  can  be implemented  numerically  as
+a  standalone  module as  shown  in  \cref{alg:quadraticce}. In  practice,  this
+modular code  is embedded as  a subroutine within  the main \gls{spm}  loop (see
+\cref{alg:disctimespm}).
 
 \input{chapters/spm_analysis/algo_quadratic_ce}
 
@@ -323,7 +336,7 @@ concentration  values computed  by  the  \gls{p2d} model  is  considered as  the
 reference benchmark. At the negative electrode--current collector interface, the
 ionic  concentration  exhibits  a  few oscillations  of  small  amplitude  owing
 to  the complex  interactions  of  the ionic  phase  with  the porous  electrode
-and  the charge  transfer process  at the  electrode-electrolyte interface.  The
+and  the charge  transfer process  at the  electrode-electrolyte boundary.  The
 concentration  evolution  predicted  by  the quadratic  approximation  model  is
 rather  simplistic  and  is  unable to  capture  this  intricate  time-evolution
 pattern.  This  is because  the  governing  equation predicting  time  evolution
@@ -340,12 +353,12 @@ However,  the  classical  first  order  response  predicated  by  the  quadratic
 approximation model falls short of representing its complete dynamics. Errors of
 similar  magnitude  are present  in  the  ionic  concentration at  both  current
 collector  interfaces, with  a maximum  absolute error  of \approx\SI{250}{\mole
-\per \meter  \cubed}. Similar trends are  exhibited in charging, with  a swapped
-response pattern observed at the two current collector interfaces.
+\per \meter  \cubed}.
+% Similar trends are  exhibited in charging, with  a swapped response pattern observed at the two current collector interfaces.
 
 This  chapter concludes  with a  view that,  while the  spatial accuracy  of the
 quadratic  approximation  model  is  acceptable,  its  temporal  performance  is
 lacklustre. The causal factors for this  mediocre performance is analysed in the
-context of the author's own attempts  in arriving at an enhanced electrolyte and
-is presented next in \cref{ch:newelectrolytemodel}.
+context of  the author's  own attempts  in arriving  at an  enhanced electrolyte
+model and is presented next in \cref{ch:newelectrolytemodel}.
 
