@@ -14,23 +14,23 @@ point. A  number of candidate  solutions have  been proposed in  literature that
 strive to mitigate  this drawback. Merits and drawbacks of  the salient attempts
 are briefly evaluated here.
 
-Even  the earliest  works which  attempt  to include  electrolyte dynamics  into
-the  conventional  \gls{spm} were  published  only  within the  present  decade.
-Schmidt~\etal~\cite{Schmidt2010c} proposed  an infinite-sum  eigenfunction modal
-expansion paradigm for solving for the electrolyte concentration. It was claimed
-that by  accounting for contribution from  only the first two  terms, sufficient
-accuracy may be achieved. Furthermore, an \gls{ode} was proposed for the rate of
-evolution of  the first temporal  mode. The solved electrolyte  concentration is
-then  substituted into  an  approximate analytical  solution  for the  \gls{dfn}
-model's  charge  conservation  \gls{pde} (see  \cref{eq:dfnliquidpotential})  to
-obtain the electrolyte potential. However, the presentation lacks the sufficient
-depth of explanation which hinders reproducibility. For instance, the origin and
-explanation of the approximation terms  in the electrolyte potential solution is
-omitted.  Derivations are  performed  from a  rigorous mathematical  perspective
-without  providing contextual  reference to  cell parameters  or electrochemical
-quantities. Introducing numerical examples would have been a redeeming factor to
-help  keeping the  mathematical  aspects  tractable. This  method  has not  seen
-further uptake for \gls{spm} modelling.
+Even  the  earliest   works  which  attempt  to   include  electrolyte  dynamics
+into  the  conventional  \gls{spm}  were   published  only  within  the  present
+decade. Schmidt~\etal~\cite{Schmidt2010c} proposed an infinite-sum eigenfunction
+modal  expansion  paradigm  to  solve  for  the  electrolyte  concentration.  It
+was  claimed  that by  accounting  for  contribution  from  only the  first  two
+terms, sufficient  accuracies may be  achieved. Furthermore, a  simple \gls{ode}
+was  proposed  for  the rate  of  evolution  of  the  first temporal  mode.  The
+solved  electrolyte  concentration  is  then  substituted  into  an  approximate
+analytical solution for the \gls{dfn} model's charge conservation \gls{pde} (see
+\cref{eq:dfnliquidpotential}) to obtain the  electrolyte potential. However, the
+presentation lacks depth  in the explanation which  hinders reproducibility. For
+instance,  the  origin  and  explanation  of  the  approximation  terms  in  the
+electrolyte  potential solution  is omitted.  Derivations are  performed from  a
+rigorous mathematical perspective without providing contextual reference to cell
+parameters or  electrochemical quantities. Introducing numerical  examples would
+have been a redeeming factor to help keeping the mathematical aspects tractable.
+This method has not seen further uptake for \gls{spm} modelling.
 
 Guo~\etal~\cite{Guo2011a}  presented an  empirical approach  to account  for the
 solution-phase dynamics.  Using standard curve-fitting techniques,  a non-linear
@@ -49,7 +49,7 @@ voltage of  the order  of tens of  millivolts. Secondly,  the current-dependence
 introduced  to account  for the  complex mass  and charge  transport within  the
 electrolyte  places a  disproportionately large  weight on  the accuracy  of the
 curve-fitting process. Non-linear fits as proposed in Guo~\etal{} are inherently
-problematic  in nature  as  the optimisation  routine may  converge  to a  local
+problematic  as  the optimisation  routine may  simply converge  to a  local
 minimum.  The  specific  form  and  nature \eg~the  convexity  of  the  proposed
 hypothesis  function is  not  discussed.  It is  also  not  guaranteed that  the
 same  fitting function  is  applicable  to a  different  cell  with another  set
@@ -61,7 +61,7 @@ microvolts due to a constant contact resistance of the current collectors.
 
 % \fxnote{later on, as a capstone work, mention how I was inspired}
 
-Di   Domenico~\etal{}~\cite{DiDomenico2010}  were   the  first   to  present   a
+Di~Domenico~\etal{}~\cite{DiDomenico2010}  were   the  first   to  present   a
 step-by-step  derivation   of  the   approximate  analytical  solution   to  the
 electrolyte overpotential. The potential drop in the electrolyte is given by
 \begin{equation}\label{eq:electrolytepd}
@@ -71,11 +71,11 @@ and   can   be   substituted    into   the   subtraction   operation   involving
 \cref{eq:posoverpotential}  and  \cref{eq:negoverpotential}   in  computing  the
 overall  overpotential   of  \cref{eq:overpotentialdifference}  and   hence  the
 terminal  voltage. The  effective conductivity  of  the electrolyte  in a  given
-region  \jinpossepneg{},  within  the cell,  is  defined  as~${\kappa_\effj(c_e)
+region  \jinpossepneg{}  within  the cell,  is  defined  as~${\kappa_\effj(c_e)
 =    \kappa(c_e)\,    \varepsilon_j^{\text{brugg}_j}}$.    As    discussed    in
-\cref{subsec:basicspmsimsetup},   the   intrinsic   and  hence   the   effective
-electrolyte conductivity is a function of the concentration of \ch{Li^+} ions in
-the  electrolyte.  Di  Domenico~\etal{}  did  not  discuss  the  spatio-temporal
+\cref{subsec:basicspmsimsetup},   the   intrinsic,   and  hence   the   effective
+electrolyte conductivity is a function of the concentration of \ch{Li^+}~ions in
+the  electrolyte.  Di~Domenico~\etal{}  did  not  discuss  the  spatio-temporal
 calculation  of  electrolyte  concentration.  It   is  likely  that  a  constant
 electrolyte  concentration  at  its  initial  equilibrium  value  was  used.  As
 seen  in \cref{fig:ce1cdischgwithzoom},  significant  spatial  gradients in  the
@@ -89,7 +89,7 @@ higher {C-rates}  and spreads throughout  the thickness of the  electrode. Thus,
 the  assumption  of constant  ionic  concentration  in  the electrolyte  is  not
 true.  Neglecting mass  transport due  to diffusion  implies that  the terms  in
 \cref{eq:electrolytepd} constitute only  a part of the  expression for computing
-the electrolyte  overpotential. Furthermore, Di Domenico~\etal{}  do not present
+the electrolyte  overpotential. Furthermore, Di~Domenico~\etal{}  do not present
 any results of  applying dynamic current profiles. Since the  critical aspect of
 mass transport contribution to electrolyte  overpotential is omitted, this model
 cannot be viewed as a \emph{sufficient} enhancement to the basic \gls{spm}.
@@ -97,7 +97,7 @@ cannot be viewed as a \emph{sufficient} enhancement to the basic \gls{spm}.
 \begin{figure}[!htbp]
     \centering
     \includegraphics{ce_1C_at_various_times.pdf}
-    \caption[Electrolyte conc.\ (time-snapshots) along cell thickness for 1C~discharge]{\ch{Li^+} ion concentration in electrolyte along cell thickness
+    \caption[Electrolyte conc.\ (time-snapshots) along cell thickness for 1C~discharge]{\ch{Li^+}~ion concentration in electrolyte along cell thickness
         at various time-snapshots during a 1C~discharge simulation of the
         \glsfmtshort{p2d} model. A \glsfmtlong{qss} (\glsfmtshort{qss}) spatial
         profile  with inflection point at each separator interface begins to
