@@ -126,14 +126,15 @@ identification problem, which enables us to proceed further.
 \subsection{Linearity analysis of the electrolyte time-evolution subsystems}\label{subsec:linearityanalysis}
 
 \subsubsection*{De-biasing of  input signals}
+
 In the analyses of linearity of systems, it is a recommended practice to de-bias
 the output and input quantities about their mean operating conditions. The input
-signal  in this  case is  the applied  load current~$I(t)$, which  can be  both
+signal  in this  case is  the  applied load  current~$I(t)$, which  can be  both
 positive  (during discharge)  and  negative  (during charge).  The  mean of  the
-training profile is  \SI{-1.167}{\ampere} and that of the  validation profile is
-\SI{-0.3273}{\ampere}. Clearly,  the mean values  are dependent upon  the actual
-current profile used. The appropriately de-biased signal \ie~$\widetilde{I}(t)
-= I(t) - \bar{I}(t)$ is to be used  for training and validation data sets in the
+training  profile is  \SI{-1.167}{\ampere} and  that of  the validation  profile
+is~\SI{-0.3273}{\ampere}. Clearly, the mean values are dependent upon the actual
+current profile used. The appropriately de-biased signal \ie~$\widetilde{I}(t) =
+I(t) - \bar{I}(t)$  is to be used  for training and validation data  sets in the
 system identification procedure. For the purpose  of linearity analysis, it is a
 standard practice to simply apply a step change in input (from zero) and measure
 the output responses, thereby bypassing the de-biasing requirements.
@@ -276,10 +277,11 @@ $\widetilde{Q}_{\text{e,p}_3}$ overlaid with their respective linear combination
 signals. In  the case  of the  subsystem in the  negative electrode  region, the
 transient performance matches  precisely until \approx\SI{450}{\second}, whereas
 that in the positive electrode region exhibits a good matching for approximately
-the  first  \SI{250}{\second}.  However,  for the  horizon  considered  the  two
+the  first~\SI{250}{\second}.  However,  for  the  horizon  considered  the  two
 overlaid plots do not overlap exactly.  Hence, the systems are not truly linear.
-However, the exhibited  behaviour is quite close to linearity,  with the maximum
-absolute  error  in each  region,  even  outside  the initial  transient,  being~$\mathcal{O}(10^{-4})$  --- an  order  of magnitude  lower  than its  individual
+However,  the  exhibited  behaviour  is  quite  close  to  linearity,  with  the
+maximum  absolute error  in each  region,  even outside  the initial  transient,
+being~$\mathcal{O}(10^{-4})$ --- an order of magnitude lower than its individual
 components.  This behaviour  was exhibited  for all  test instances  considered.
 Considering  that for  dynamic  simulation runs,  the  transient performance  is
 paramount  to  the good  performance  of  the  model,  in conjunction  with  the

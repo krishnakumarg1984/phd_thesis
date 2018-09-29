@@ -228,8 +228,7 @@ is better than having no electrolyte model whatsoever as in the basic \gls{spm}.
         (using \cref{eq:electrolytepdwithcenew}) for a  \gls{udds} load profile.
         The overpotential  profile computed  by the system  identification model
         reasonably matches  the profile obtained  by the \gls{p2d} model  with a
-        \glsfirst{mae} of \SI{15.88}{\milli\volt} and  a \glsfirst{rms} error of
-        \SI{24.11}{\milli\volt}.
+        \glsfirst{mae} of \SI{15.88}{\milli\volt} and  a \glsfirst{rms} error of~\SI{24.11}{\milli\volt}.
     }%
     \label{fig:phiedeltacnstudds}
 \end{figure}
@@ -237,11 +236,11 @@ is better than having no electrolyte model whatsoever as in the basic \gls{spm}.
 \Cref{fig:phiedeltacnstudds} shows a comparison of the electrolyte overpotential
 computed by the \gls{p2d} and system identification models for a \gls{udds} load
 profile. The  input current corresponding to  this load profile is  shown in the
-top row  of \cref{fig:uddssimp2dspmresults}. The system identification  model is
+top row  of \cref{fig:uddssimp2dspmresults}. The system  identification model is
 able to  reasonably track  the overpotential profile  computed by  the \gls{p2d}
 model. Unlike the  case of sustained unidirectional current input,  the error in
 this case  remains well-contained. The  \gls{mae} obtained for this  profile was
-\SI{15.88}{\milli\volt}  with  an  \gls{rms} error  of  \SI{24.11}{\milli\volt}.
+\SI{15.88}{\milli\volt}  with  an  \gls{rms}  error  of~\SI{24.11}{\milli\volt}.
 This  corresponds to  \SI{8.19}{\percent} and  \SI{12.44}{\percent} of  the peak
 magnitude of the overpotential (\SI{193.86}{\milli\volt}).
 
@@ -312,7 +311,7 @@ output of the basic \gls{spm} is also considered here.
 
 The  voltage  accuracy of  the  newly  developed  composite \gls{spm}  is  first
 evaluated for  the standard test  case of 1C~discharge current starting  from a
-cell \gls{soc} of \SI{100}{\percent}.
+cell \gls{soc} of~\SI{100}{\percent}.
 
 \begin{figure}[!htbp]
     \centering
@@ -374,12 +373,12 @@ profile upon encountering an ion starvation event at any spatial location.
 This  critical flaw  is  exposed  by the  sustained  application  of any  higher
 current  that  induces  an  ion  starvation at  one  of  the  electrodes  during
 operation.\Cref{fig:2Cionstarvation}  depicts  the  ionic concentration  in  the
-electrolyte  over time  at  both  current collectors  for  a  2C~discharge.  The
-profiles computed  by both  the \gls{p2d} and  system identification  models are
-plotted. For  the system identification  model, the current  collector interface
-at  the  positive electrode  experiences  an  ion  starvation event  at  \approx
-\SI{150}{\second}. The  quadratic spatial  profile used by  this model  does not
-account  for  such  a  reduction  in  the  effective  electrode  thickness.  All
+electrolyte  over  time at  both  current  collectors  for a  2C~discharge.  The
+profiles  computed  by  both  the \gls{p2d}  and  system  identification  models
+are  plotted.  For  the  system  identification  model,  the  current  collector
+interface  at  the  positive  electrode  experiences  an  ion  starvation  event
+at~\approx\SI{150}{\second}. The  quadratic spatial  profile used by  this model
+does not account for such a  reduction in the effective electrode thickness. All
 the  boundary conditions  and coefficients  were formulated  using the  original
 electrode  thickness.  Therefore,  beyond \SI{150}{\second},  the  concentration
 becomes negative which  is not physically meaningful. The author  of this thesis
@@ -442,8 +441,7 @@ conditions warrant such a study for the composite \gls{spm}.
         \end{enumerate*}
         for a constant current discharge at \SI{120}{\ampere} \ie~2C. In the
         system identification mode, ion
-        starvation occurs at the positive current collector interface at \approx
-        \SI{150}{\second}. The quadratic spatial profile used by the system
+        starvation occurs at the positive current collector interface at~\approx\SI{150}{\second}. The quadratic spatial profile used by the system
         identification model spans the entire electrode region and does not
         account for ion depletion scenarios. In this thesis, the author has
         implemented a saturation mechanism in the computer code to prevent the

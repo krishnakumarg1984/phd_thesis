@@ -231,13 +231,13 @@ concluded that the two subsystems are \emph{at-least} of second order.
 \subsubsection*{Estimation of number of poles and zeros}
 
 The  high-frequency  roll-off  in  the   slopes  of  the  Bode  magnitude  plots
-in \cref{fig:initialbodemag} provide clues on the number of poles in the system.
-The  corner  frequency~$\omega_\text{c}$  in  both  cases  appear to  be  around
-\SI{0.15}{\radian\per\second}.  The  high-frequency  slope of  both  systems  is
-\approx\SI{20}{\decibel} per decade,  which implies that they  have at-least one
-more pole than the number of zeros if using a continuous time transfer function.
-For the  corresponding z-domain  transfer function, this  implies that  $n_a \ge
-n_b$.
+in  \cref{fig:initialbodemag}  provide clues  on  the  number  of poles  in  the
+system.  The  corner frequency~$\omega_\text{c}$  in  both  cases appear  to  be
+around~\SI{0.15}{\radian\per\second}. The  high-frequency slope of  both systems
+is \approx\SI{20}{\decibel}  per decade, which  implies that they  have at-least
+one more  pole than  the number  of zeros  if using  a continuous  time transfer
+function. For  the corresponding z-domain  transfer function, this  implies that
+$n_a \ge n_b$.
 
 In the  aspect of estimating the  number and locations of  zeros, the validation
 profile outshines  the training profile. While  the Bode plot obtained  with the
@@ -416,7 +416,7 @@ The final identified transfer functions (for the scaled output) are
         predicted by the identified transfer function closely matches the `true'
         output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
         \glsfmtshort{rms} error of \SI{5.70e-6}{\mole\per\meter\squared} and a
-        \glsfmtshort{mae} of \SI{19.19e-6}{\mole\per\meter\squared}. Note that the
+        \glsfmtshort{mae} of~\SI{19.19e-6}{\mole\per\meter\squared}. Note that the
         transfer function in \cref{eq:finaldisctfneg} was originally obtained by
         scaling the output by 1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the
@@ -442,7 +442,7 @@ impact  on  the  frequency-dependent  dynamics  of  the  subsystem.  The  output
 predicted  by the  identified transfer  function is  virtually indistinguishable
 from  the `true'  output computed  by post-processing  the \gls{p2d}  model with
 an  \glsfmtshort{rms}  error   of  \SI{5.70e-6}{\mole\per\meter\squared}  and  a
-\glsfmtshort{mae} of \SI{19.19e-6}{\mole\per\meter\squared}.  This high accuracy
+\glsfmtshort{mae} of~\SI{19.19e-6}{\mole\per\meter\squared}.  This high accuracy
 of the transfer  function prediction justifies the linearity  assumption for the
 subsystem.  \Cref{fig:tfpredQepval}  presents  the  same  comparison  using  the
 validation input profile for the subsystem in the positive electrode region. The
@@ -461,7 +461,7 @@ clearly illustrated.
         predicted by the identified transfer function closely matches the `true'
         output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
         \glsfmtshort{rms} error of \SI{12.07e-6}{\mole\per\meter\squared} and a
-        \glsfmtshort{mae} of \SI{31.59e-6}{\mole\per\meter\squared}. Note that the
+        \glsfmtshort{mae} of~\SI{31.59e-6}{\mole\per\meter\squared}. Note that the
         transfer function in \cref{eq:finaldisctfpos} was originally obtained by
         scaling the output by 1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the

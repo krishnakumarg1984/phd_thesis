@@ -55,25 +55,25 @@ here applies  to the more  rigorous definition as well.},  and hence need  to be
 mathematically described by an identical family of curves.
 
 Upon a close inspection of the  spatial concentration profile from the \gls{p2d}
-simulation  results shown  in \cref{fig:spatialionicconc1C}, it  is evident  the
+simulation  results shown  in \cref{fig:spatialionicconc1C},  it is  evident the
 electrolyte approximation  functions within the  electrode regions is  of higher
 complexity\textsuperscript{\ref{fn:complexity}} than  the approximation function
 suitable  for  use  in  the  separator  region. Based  on  the  results  of  the
 quadratic  model, it  is  clear  that at  least  two  coefficients are  required
-within the  electrode regions \ie~${n_{\text{c,elec}} \ge 2}$. There  exists an
+within the  electrode regions \ie~${n_{\text{c,elec}}  \ge 2}$. There  exists an
 inhibiting  factor that  prevents  the  use of  a  lower  order function  within
 the  separator. As  per  the  simulation results  of  the  \gls{p2d} model,  the
 time-domain  change  of number  of  moles  per  square  meter in  the  separator
 is  non-zero.  Since  the  time-derivate   of  a  linear  approximation  applied
-to \cref{eq:sepliionmolesquadratic}  is  zero,  this straight-line  equation  is
+to  \cref{eq:sepliionmolesquadratic} is  zero,  this  straight-line equation  is
 immediately ruled out. Among the  non-polynomial mathematical curves tried (such
 as trigonometric, hyperbolic, power series  among others), none could obtain the
 relatively simple shape of the separator function without being forced to reduce
 the  contribution from  one  of  the coefficients  to  below machine  precision.
 This necessitates  the retention  of the  quadratic approximation  function used
-thus  far  (with  no  missing  terms) \ie~${n_\text{c,sep}  =  3}$.  Thus,  the
-overall number  of coefficients in the  best possible approximation shall  be $2
-n_\text{c,elec} + n_\text{c,sep} =  2\cdot2 + 3 = 7$, which  is the total number
+thus  far  (with  no  missing  terms)  \ie~${n_\text{c,sep}  =  3}$.  Thus,  the
+overall number of  coefficients in the best possible  approximation shall be~${2
+n_\text{c,elec} + n_\text{c,sep} = 2\cdot2 + 3  = 7}$, which is the total number
 of electrolyte-specific physical constraints available from the \gls{dfn} model.
 Hence it  can be concluded  that the  quadratic approximation model  does indeed
 make the \emph{best}  use of all of the available  physical equations. The final
