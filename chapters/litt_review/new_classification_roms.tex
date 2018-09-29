@@ -8,19 +8,18 @@ Battery modellers face the classic  conundrum of conjuring physics-based battery
 models that remain amenable for control  applications. The prior attempts by the
 research  community  to  tackle  this  challenge  is  examined  here.  The  term
 `control-oriented model' can  be considered synonymous with  the term \gls{rom}.
-This is  due to the  fact that the  inherent complexity of  physics-based models
-inherently  necessitates the  use of  some  order reduction  strategy for  their
-adoption in  control and real-time  applications. In this  thesis as well  as in
-the  relevant  literature  discussed  here,  these  two  terms  have  been  used
-interchangeably.
+This is due  to the fact that the inherent  complexity of \glspl{pbm} inherently
+necessitates the  use of  some order  reduction strategy  for their  adoption in
+control and  real-time applications. In this  thesis as well as  in the relevant
+literature discussed here, these two terms have been used interchangeably.
 
 Research into  \glspl{rom} is  motivated by  the pressing  need for  a real-time
 model  with accuracy  properties of  full-order \glspl{pbm}  but possessing  the
 computational  simplicity of  equivalent-circuit models  (see \cref{subsec:ecms}
-and \cref{subsec:pbms} for  an overview). A  number of approaches to  reduce the
-computational  complexity of  the  physics-based models  have  been explored  in
-literature. Jokar~\etal~\cite{Jokar2016}  provide a comprehensive review  of the
-various categories of reduced order  physics based battery models. However, this
+and \cref{subsec:pbms}  for an overview). A  number of approaches to  reduce the
+computational complexity  of the \glspl{pbm}  have been explored  in literature.
+Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
+categories of reduced order \glspl{pbm} for lithium ion batteries. However, this
 work  does  not aim  to  classify  models  based on  time-vs-frequency  domains.
 Fan~\etal{}~\cite{Fan2015}  conducted  a  review   of  reduced  order  modelling
 methods, but only provide a generic overview of deriving and implementing models
@@ -235,7 +234,7 @@ linear  combinations of  these  time-domain variables  with suitable  non-linear
 corrections. Yet another advantage of this model order reduction process is that
 the method does not involve any  form of non-linear optimization that is typical
 of other order reduction schemes that attempt a top-down approach of simplifying
-the physics-based model equations. In  particular, the \gls{dra} scheme provides
+the \gls{pbm} equations. In  particular, the \gls{dra} scheme provides
 a deterministic method for selection of the order of the simplified model, which
 is a pioneering  contribution in the field of reduced  order modelling of Li-ion
 cells.
@@ -376,10 +375,10 @@ the IEEE conference paper}
 % algorithm~\cite{Levenberg1944, Marquardt1963}.
 
 
-A common characteristic of  all hybrid models is the lack  of a physical meaning
-to their  model parameters. This  severely limits  the insights offered  by such
-models  into  electrochemical  phenomena  internal  to  the  cell.  The  biggest
-attraction  of  using physics-based  models  is  the possibility  of  predicting
+A  common  characteristic  of all  hybrid  models  is  the  lack of  a  physical
+meaning to  their model  parameters. This severely  limits the  insights offered
+by  such  models  into  electrochemical  phenomena internal  to  the  cell.  The
+biggest  attraction  of  using  \glspl{pbm} is  the  possibility  of  predicting
 quantities such as the \gls{soap} or  phenomena such as cell degradation through
 accurate computation  of the solid  phase surface concentration  and potentials.
 Furthermore,  a model  capable  of  implying a  direct  and causal  relationship
@@ -473,7 +472,7 @@ and  provides a  summary evaluation  of  their relative  merits and  weaknesses.
 state of the art  in the field of single particle  modelling. The author reckons
 that  the  \gls{spm}---reviewed briefly  later  in  this section---is  the  most
 promising  candidate identified  among  these time-domain  models  to nurture  a
-latent potential to facilitate faster adoption of physics based models in online
+latent  potential  to  facilitate  faster  adoption  of  \glspl{pbm}  in  online
 applications.
 
 % Further sections  discuss methodologies and solutions  that aim to
@@ -693,16 +692,15 @@ implementation, state estimation, physical insight}
 \end{figure}
 
 
-From \cref{fig:spiderdiagram}, it is evident  that all physics-based \glspl{rom}
+From \cref{fig:spiderdiagram}, it is  evident that all physics-based \glspl{rom}
 presented thus far entail extensive  parametrisation efforts \fxnote{at the end,
-count  and  substitute  the  canonical  number of  parameters  here}  to  render
-them  suitable for  a practical  application. The  difficulties associated  with
-such  parametrisation,  coupled  with  inherent uncertainties  in  the  obtained
-parameter values act  as a strong deterrent to stakeholders  outside academia to
-adopt  physics-based  models for  online  implementation  in a  \gls{bms}.  This
-motivates the  need for even  further simplified physics-based models.  One such
-modelling  candidate  is briefly  introduced  next  and  is analysed  in  detail
-in \cref{ch:spmanalysis}.
+count and  substitute the canonical  number of  parameters here} to  render them
+suitable  for a  practical application.  The difficulties  associated with  such
+parametrisation, coupled  with inherent uncertainties in  the obtained parameter
+values  act as  a strong  deterrent to  stakeholders outside  academia to  adopt
+\glspl{pbm} for  online implementation in  a \gls{bms}. This motivates  the need
+for even further simplified \glspl{pbm}. One such modelling candidate is briefly
+introduced next and is analysed in detail in \cref{ch:spmanalysis}.
 
 
 Haran~\etal{}~\cite{Haran1998}  proposed a  highly simplified  representation of
@@ -711,10 +709,10 @@ porous electrode  was represented as  a single spherical particle.  This concept
 was adopted for lithium ion batteries  by Ning and Popov~\cite{Ning2004} and has
 since  become quite  popular.  Models employing  this  lumped representation  of
 electrodes are referred to as  \glsfmtlong{spm}s (\gls{spm}s). These models have
-three advantages. Since they involve only a subset of parameters of the original
-\gls{dfn} model,  most of them being  geometric quantities that can  be directly
-measured  without  extensive chemical  or  electrical  testing, \glspl{spm}  are
-easier to parametrise than other physics-based reduced order model. Furthermore,
+three  advantages.  Since they  involve  only  a  subset  of parameters  of  the
+original \gls{dfn}  model, most of them  being geometric quantities that  can be
+directly measured without extensive  chemical or electrical testing, \glspl{spm}
+are  easier to  parametrise than  other physics-based  \glspl{rom}. Furthermore,
 they  are computationally  cheap, especially  when coupled  with the  polynomial
 approximation  for solving  the  solid diffusion  equation  for each  electrode.
 Finally, all model parameters in  the \gls{spm} retain their physical character,
