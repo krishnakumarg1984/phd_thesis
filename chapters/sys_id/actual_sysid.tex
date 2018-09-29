@@ -13,26 +13,27 @@ performs a  forward shift on  its input \ie~$  {q u[k] \longmapsto  u[k+1]} $.
 Similarly, applying the  backward shift operator~$ q^{-1} $  on the input yields
 its value at the previous time-step \ie~$ {q^{-1} u[k] \longmapsto u[k-1]}$.
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics{placeholder_images/example-image-golden.pdf}
-    \caption[Block diagram representing a generic discrete-time \glsfmtshort{lti} system]{%
-        Block  diagram representing  a  generic discrete-time  \glsfmtshort{lti}
-        system. The  control input~$u[k]$ is  acted upon by the  system dynamics~$G[k]$  whereas a  white  noise  input~$e[k]$  is  shaped  by the  noise
-        dynamics~$H[k]$. The  overall output~$y[k]$ consists  of a superposition
-        of the contribution from both these components.
-    }%
-    \label{fig:genericltisyswithnoise}
-\end{figure}
+% \begin{figure}[!htbp]
+%     \centering
+%     \includegraphics{placeholder_images/example-image-golden.pdf}
+%     \caption[Block diagram representing a generic discrete-time \glsfmtshort{lti} system]{%
+%         Block  diagram representing  a  generic discrete-time  \glsfmtshort{lti}
+%         system. The  control input~$u[k]$ is  acted upon by the  system dynamics~$G[k]$  whereas a  white  noise  input~$e[k]$  is  shaped  by the  noise
+%         dynamics~$H[k]$. The  overall output~$y[k]$ consists  of a superposition
+%         of the contribution from both these components.
+%     }%
+%     \label{fig:genericltisyswithnoise}
+% \end{figure}
 
-\Cref{fig:genericltisyswithnoise} shows  a generic \gls{lti} system  wherein the
-measurements are corrupted by noise. The  system dynamics are represented by the
-transfer operator~$G(q)$\footnote{The term transfer  operator in the time domain
-mathematically  corresponds  to the  term  transfer  function in  the  frequency
-domain.  Mathematically,~${G(q) =  G(z)\bigr\rvert_{\mathrlap{z=q}}}$.}  that  acts on  the
-applied  input~$u[k]$,  whereas  the  noise dynamics  are  represented  by  the
-disturbance operator~$H(q)$ that  acts to  filter (or  shape) an  assumed white
-noise input~$e[k]$.
+% \Cref{fig:genericltisyswithnoise} shows
+
+In a generic  \gls{lti} system wherein measurements are corrupted  by noise, The
+system  dynamics are  represented by  the transfer  operator~$G(q)$\footnote{The
+term  transfer operator  in the  time domain  mathematically corresponds  to the
+term  transfer  function  in  the  frequency  domain.  Mathematically,~${G(q)  =
+G(z)\bigr\rvert_{\mathrlap{z=q}}}$.}  that  acts  on the  applied  input~$u[k]$,
+whereas the  noise dynamics are  represented by the  disturbance operator~$H(q)$
+that acts to filter (or shape) an assumed white noise input~$e[k]$.
 
 Assuming linearity and time-invariance throughout, the overall output can be
 written as the linear combination
