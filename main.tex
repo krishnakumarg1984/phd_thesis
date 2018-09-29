@@ -38,7 +38,7 @@ this work.
 
 %: ----------------------- list of figures/tables etc. ------------------------
 \cleardoublepage
-\setstretch{1.15} % 1.1 worked fine
+\setstretch{1.1} % 1.1 worked fine
 \listoffigures
 \cleardoublepage
 \onehalfspacing
@@ -47,7 +47,7 @@ this work.
 % https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
 {\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
 \glsresetall
-\setstretch{1.225} % for glossaries
+\setstretch{1.2} % for glossaries
 \begingroup
 \printglossary[type=acronym,title={List of Acronyms},nonumberlist,style=super]\label{ch:glossary}
 \endgroup
