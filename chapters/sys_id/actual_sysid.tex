@@ -364,7 +364,7 @@ used  to  bring the  order  of  magnitude of  output  data  values to  unity.  A
 well-chosen  scaling factor  is often  vital  to the  convergence of  non-linear
 optimisation algorithms.  Since the system  is linear, this constant  gain shall
 not fundamentally change the dynamics of the  system and can be accounted for by
-using the reciprocal  scaling factor of 0.001 in  numerical implementations. The
+using the reciprocal  scaling factor of~0.001 in  numerical implementations. The
 identification procedure  was carried  out using MATLAB's  System Identification
 Toolbox~\cite{matlabsysidtool}.
 
@@ -411,14 +411,14 @@ The final identified transfer functions (for the scaled output) are
     identified transfer function for training profile]{%
         Time-evolution of~$\widetilde{Q}_{\text{e,n}}$ computed using the
         \glsfmtshort{p2d} model  and the identified transfer function
-        of \cref{eq:finaldisctfneg} (scaled by 0.001) with the synthetic
+        of \cref{eq:finaldisctfneg} (scaled by~0.001) with the synthetic
         training input profile of \cref{fig:sysidtrainingcurrent}. The output
         predicted by the identified transfer function closely matches the `true'
         output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
         \glsfmtshort{rms} error of \SI{5.70e-6}{\mole\per\meter\squared} and a
         \glsfmtshort{mae} of~\SI{19.19e-6}{\mole\per\meter\squared}. Note that the
         transfer function in \cref{eq:finaldisctfneg} was originally obtained by
-        scaling the output by 1000. The transfer function output is
+        scaling the output by~1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the
         predicted response shown here, thereby once again justifying the
         linearity assumption for this subsystem.
@@ -456,14 +456,14 @@ clearly illustrated.
     identified transfer function for training profile]{%
         Time-evolution of~$\widetilde{Q}_{\text{e,p}}$ computed using the
         \glsfmtshort{p2d} model  and the identified transfer function
-        of \cref{eq:finaldisctfpos} (scaled by 0.001) with the synthetic
+        of \cref{eq:finaldisctfpos} (scaled by~0.001) with the synthetic
         validation input profile of \cref{fig:sysidvalidationcurrent}. The output
         predicted by the identified transfer function closely matches the `true'
         output obtained by a high-fidelity \glsfmtshort{p2d} simulation with an
         \glsfmtshort{rms} error of \SI{12.07e-6}{\mole\per\meter\squared} and a
         \glsfmtshort{mae} of~\SI{31.59e-6}{\mole\per\meter\squared}. Note that the
         transfer function in \cref{eq:finaldisctfpos} was originally obtained by
-        scaling the output by 1000. The transfer function output is
+        scaling the output by~1000. The transfer function output is
         multiplied by the reciprocal of the same scaling factor to obtain the
         predicted response shown here, thereby once again confirming the
         linearity of this subsystem.
