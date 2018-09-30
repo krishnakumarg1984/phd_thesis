@@ -14,13 +14,13 @@
 
 \capolettera{I}{n} this  thesis, the  deployment of  physics-based computational
 modelling  of lithium  ion  cells  for electric  vehicle  applications has  been
-rigorously examined with a three-pronged strategy \viz~through their analysis,
-design and implementation. Salient conclusions  drawn from each of these aspects
-are presented  in this  chapter. The \gls{p2d}  implementation of  the \gls{dfn}
-model was used  as the backbone of  all modelling efforts in  this thesis. Based
-upon the  invaluable experience gained during  the course of this  research, and
-specifically from the  findings presented herein, key areas  of \glspl{pbm} that
-can benefit from further study in the future are also identified.
+rigorously examined  with a three-pronged strategy  \viz~through their analysis,
+design and implementation.  The \gls{p2d} implementation of  the \gls{dfn} model
+was  used  as  the  backbone  of  all  modelling  efforts.  Salient  conclusions
+drawn  from each  of these  aspects are  presented in  this chapter.  Based upon
+the  invaluable  experience gained  during  the  course  of this  research,  and
+particularly  from the  findings presented  herein, key  areas in  physics-based
+modelling that can benefit from further study in the future are also identified.
 
 % These are discussed in-line at the appropriate junctures embedded into the narrative.
 
@@ -29,32 +29,34 @@ can benefit from further study in the future are also identified.
 \subsection{Conclusions from the model-based design study}\label{sec:modelbasedconclusion}
 
 \Cref{ch:modelbaseddesign} presented  a computational framework to  optimise the
-number  of electrochemical  layers to  be  used within  a  pouch cell  so as  to
-maximise its usable energy while  meeting specific power demands. In particular,
-this  helped to  construct  a model-based  deterministic  approach to  optimally
-design cells  that can  be subjected  to fast-charging  without the  concerns of
-plating. In  the context of  electric vehicle applications, using  this approach
-has the  potential to alleviate  the two  immediate concerns of  consumers viz{}
-range anxiety and long charging times.
+number  of electrochemical  layers within  a pouch  cell so  as to  maximise its
+usable energy while  meeting specific power demands. In  particular, this helped
+to construct a model-based deterministic approach to optimally design cells that
+can  be subjected  to  fast-charging without  the concerns  of  plating. In  the
+context of electric vehicle applications,  using this approach has the potential
+to alleviate  the two immediate concerns  of consumers \viz{} range  anxiety and
+long charging times.
 
-To facilitate immediate adoption by relevant stakeholders, the concepts presents
-in the aforementioned optimisation framework  has been realised in computer code
-and presented  in the form  of an  open-source design toolbox,  \gls{bold}. This
-toolbox  was  applied to  the  optimal  layer design  of  an  example cell  from
-literature to  obtain two sets  of power-dependent optimal  layer configurations
-for two drivetrains  --- a \gls{bev} and a \gls{phev}.  By suitably adapting the
-numerical values  of parameters to  a real-world cell, model-based  cell designs
-can be  obtained, which can potentially  help to eliminate the  current trend of
-over-engineering of cells using conservative empirical designs.
+To  facilitate  immediate  adoption   by  relevant  stakeholders,  the  concepts
+developed  in  the  optimisation  framework  of  \cref{ch:modelbaseddesign}  was
+realised in  computer code and  presented in the  form of an  open-source design
+toolbox, \gls{bold}. This toolbox was applied  to the optimal layer design of an
+example cell from literature to obtain two sets of power-dependent optimal layer
+configurations for two drivetrains --- a \gls{bev} and a \gls{phev}. By suitably
+adapting the  numerical values of  parameters to a real-world  cell, model-based
+cell  designs can  be  obtained, which  can potentially  help  to eliminate  the
+current trend  of over-engineering of  cells using conservative  empirical layer
+choices.
 
 From a  perspective of technical  advancements to the underlying  \gls{pbm}, the
 standard form  of the \gls{p2d} model  has been suitably modified  to facilitate
 a  direct  application of  input  power  densities.  This was  achieved  through
 reformulation of the boundary conditions on the solid-phase potential \gls{pde}.
 Although  this innate  power input  capability has  been claimed  as purportedly
-developed,  its independent  derivation  and  accessible documentation  provided
-herein shall help  other researchers to apply this in  a straight-forward manner
-for vehicle drivecycles, acceleration tests and power-based charging protocols.
+developed  in  extant  literature,  its independent  derivation  and  accessible
+documentation  provided herein  shall help  other researchers  to apply  this in
+a  straight-forward  manner  for  vehicle drivecycles,  acceleration  tests  and
+power-based charging protocols.
 
 This investigation also  revealed that the fast charging  process determines the
 optimal layer  configuration instead of  either acceleration runs  or drivecycle
@@ -64,25 +66,24 @@ evaluate various  aspects of cell  modelling such as predicting  degradation and
 for advanced control and estimation  algorithms. While validation against such a
 dynamic input profile  is certainly vital, for future  advancements dealing with
 aspects  of  cell  design  or plating-related  degradation,  validation  against
-fast-charging power profiles is absolutely essential.
+fast-charging power profiles is deemed to be absolutely essential.
 
-The  study also  provided important  guidelines about  the role  of the  thermal
+The  study  also  provided  important  guidelines  about  the  role  of  thermal
 environment on cell performance. It became  clear that at very low temperatures,
 a high  number of layers was  required for satisfying a  specific charging power
 level relative  to that  needed at  moderate thermal  environments such  as room
 temperatures. A practical  takeaway from this conclusion is that  it suffices to
 use a low number of layers in  vehicles to be sold in territories with perennial
-moderate  temperature  conditions, which  imply  a  higher \gls{aer}  for  these
-vehicles.
+moderate temperature conditions.
 
 Finally, this design study revealed that the speed at which lithium intercalates
 into the negative  electrode during charging limits the  charge-addition rate to
-the cell and hence to the pack. Lowering the charging times of electric vehicles
-necessitates the  use of  higher charging powers.  However, this  necessitates a
-high  number of  layers to  absorb the  overpotentials and  to provide  adequate
-number of  thermal conduction pathways  (owing to  the higher number  of current
-collectors) to dissipate the additional heat generated. Consequently, this has a
-detrimental effect on the capacity and hence, the \gls{aer} of the vehicle.
+the cell. Lowering  the charging times of electric vehicles  requires the use of
+higher charging  powers. However, this necessitates  a high number of  layers to
+absorb the overpotentials  and to provide adequate number  of thermal conduction
+pathways (owing  to the higher  number of  current collectors) to  dissipate the
+additional heat  generated. Consequently, this  has a detrimental effect  on the
+capacity and hence, the \gls{aer} of the vehicle.
 
 \subsection{Future work informed by  the optimal layer design framework}
 
@@ -104,14 +105,15 @@ the layer  configurations within  cells. In doing  so, certain  assumptions were
 made  that  might have  to  be  revisited  and  potentially relaxed  before  its
 application to real-world cell designs.
 
-For instance, adherence to the specific type of cooling phenomena used \ie~tab
-cooling, is one of  the stronger assumptions used in this  work. The benefits of
-this cooling  type has  been enumerated,  and it is  desirable that  future pack
-designs adopt it. However, the vast majority of battery packs use surface-cooled
-designs. This means  that temperature for all layers within  the pouch shall not
-be the same,  which further implies that  it longer suffices to  simulate just a
-single layer. Therefore,  the framework needs to be suitably  modified to handle
-multiple layer choices concurrently.
+For instance, adherence  to the specific type of cooling  phenomena used \ie~tab
+cooling, is one of the stronger assumptions used in this work. In this work, the
+benefits of  employing this  cooling mechanism  has been  enumerated, and  it is
+desirable that future  pack designs adopt it. However, the  vast majority of the
+current generation of battery packs  use surface-cooled designs. This means that
+temperature for all layers within the pouch shall not be the same, which further
+implies that it longer suffices to  simulate just a single layer. Therefore, the
+framework  needs  to be  suitably  modified  to  handle multiple  layer  choices
+concurrently.
 
 Furthermore,  using surface  cooling shall  invalidate the  assumption of  small
 thermal gradients along the planar axis of  the cell. This means that the lumped
@@ -122,12 +124,13 @@ of the  cell. This electrochemical-thermal  coupling along the  planar direction
 shall necessitate adding another spatial  dimension to the underlying \gls{pbm},
 thereby rendering the  presently used \gls{p2d} model ineffective.  With the aim
 of minimising  the optimising  run-times, future  research may  focus on  how to
-adapt the proposed computational infrastructure from this thesis to handle this.
+suitably adapt the computational infrastructure that was proposed in this thesis
+to account for these considerations.
 
 For  real-world cell  designs, it  is prudent  to examine  the examine  the role
 of  variable  porosities  to  achieve  the balancing  of  active  materials  per
 layer.  Since  the computational  framework  developed  in  this thesis  uses  a
-modular  approach, in  the future,  the  constant volume-fractions  used in  the
+modular  approach, in  the  future  the constant  volume-fractions  used in  the
 methodology  could simply  be replaced  by values  informed by  optimal porosity
 computations. For this purpose, researchers could investigate the feasibility of
 adapting  a suitable  scheme from  the available  pool of  literature that  have
@@ -142,23 +145,27 @@ deployment.
 \section{Analysis of Salient Physics-based \glsfmtlongpl{rom}}
 
 Chapters~\ref{ch:improveddra} and~\ref{ch:spmanalysis} of  this thesis primarily
-focussed on performing an in-depth analysis of two distinct \glspl{pbm} from two
+focussed on performing an in-depth analysis of two distinct \glspl{rom} from two
 distinct perspectives.  In \cref{ch:improveddra}, the hybrid  \gls{rom} obtained
 by  using the  \gls{dra}  is analysed  to  investigate its  \emph{computational}
 bottlenecks. In \cref{ch:spmanalysis}, an in-depth analysis of a niche selection
 of  candidate models  from  the  family of  \glspl{spm}  is  presented from  the
-perspective  of  \emph{modelling accuracy}  \ie~their  ability to  faithfully
-compute  the system-level  quantities  of the  cell such  as  its \gls{soc}  and
-terminal voltage.  The conclusions drawn  from all these analyses  are presented
-here.
+perspective of \emph{modelling accuracy} \ie~their ability to faithfully compute
+the  system-level quantities  of the  cell such  as its  \gls{soc} and  terminal
+voltage. Finally, the early portions of \cref{ch:newelectrolytemodel} provides a
+thorough analysis  of the bottlenecks  of the quadratic approximation  model for
+computing the  spatial profile  of ionic concentration  in the  electrolyte. The
+conclusions drawn  from all aforementioned  analyses are presented  next. Topics
+that may  be of interest to  future researchers engaging with  these \glspl{rom}
+are also proposed.
 
 \subsection{Conclusions from analysis of the \glsfmtshort{dra}-based state-space \glsfmtshort{rom}}
 
-In  \cref{ch:improveddra},  the \gls{svd}  of  a  large Block-Hankel  matrix  is
-identified as a key computational bottleneck in applying the classical \gls{dra}
-procedure for the hybrid \gls{rom} discussed  therein. It is concluded that this
-bottleneck arises due to the slow  dynamics of solid phase diffusion which leads
-to the aforementioned large sized Block-Hankel matrices.
+In \cref{ch:improveddra}, \gls{svd} of a large Block-Hankel matrix is identified
+as a key computational bottleneck  in applying the classical \gls{dra} procedure
+for the hybrid \gls{rom} discussed therein. It is concluded that this bottleneck
+arises due  to the  slow dynamics of  solid phase diffusion  which leads  to the
+aforesaid large sized Block-Hankel matrices.
 
 To mitigate this  bottleneck, an improved \gls{dra} scheme  was presented, whose
 centrepiece is an iterative \gls{svd}  algorithm. This algorithm was obtained as
@@ -168,30 +175,32 @@ demonstrate  a significant  performance improvement  achieved by  using the  new
 method  without trading-off  model  fidelity.  At a  single  operating point  of
 \gls{soc}  and temperature,  for  a  Hankel block  size  of~8000, the  \gls{rom}
 workflow incorporating the improved  \gls{dra} is approximately 100~times faster
-than  that employing  classical \gls{dra}.  On a  standard computer  workstation
+than that employing the classical  \gls{dra}. On a standard computer workstation
 whose  specifications  are  given in  \cref{ch:improveddra},  for  100~operating
 points  (combinations of  10~\gls{soc}  and temperature  values), obtaining  the
 \gls{rom}  required  only 6~hours  using  the  improved \gls{dra},  whereas  the
-classical  \gls{dra} consumed  666~hours  (27~days). Furthermore,  for the  same
-block-size, the  improved \gls{dra} is demonstrated  to be superior in  terms of
-memory efficiency, drastically reducing the memory requirements from 112~GB down
-to  2~GB.  Finally,  the  improved  \gls{dra}  demonstrates  superior  modelling
-accuracy  when implemented  even in  moderately equipped  computing environments
-such as standard consumer-grade laptops.
+classical \gls{dra}  consumed 666~hours~(\approx 27~days). Furthermore,  for the
+same block-size, the improved \gls{dra} is  demonstrated to be superior in terms
+of memory efficiency,  drastically reducing the memory  requirements from 112~GB
+down to  2~GB. Finally, the  improved \gls{dra} demonstrates  improved modelling
+accuracy even  in moderately  equipped computing  environments such  as standard
+consumer-grade laptops.
 
 \subsection{Future outlook for the \glsfmtshort{dra}-based hybrid state-space \glsfmtshort{rom}}
 
 The improved  \gls{dra} method  proposed in  \cref{ch:improveddra} opens  up the
 possibility of  applying the  hybrid \gls{rom}  modelling procedure  to physical
-quantities in other locations within the  cell's geometry \eg~in the middle of
+quantities in  other locations within the  cell's geometry \eg~in the  middle of
 the electrode region,  without being hindered by  computational limitations that
 would  have otherwise  rendered  it intractable.  Furthermore, high  sample-rate
-\glspl{rom} capable  of handling  highly dynamic load  profiles can  be deployed
-in  future  \gls{bms}  applications.  The  proposed  scheme  also  empowers  the
-\gls{rom}  framework to  tackle  other cell  chemistries  with slower  diffusion
-coefficients or  even those with completely  different rate-limiting mechanisms.
-The improved \gls{dra}  method therefore opens up a wide  range of possibilities
-and  prima~facie appears promising.
+\glspl{rom} capable of handling highly dynamic  load profiles can be deployed in
+future \gls{bms} applications.  The proposed scheme also  empowers the \gls{rom}
+framework to tackle other cell chemistries with slower diffusion coefficients or
+even  those with  completely different  rate-limiting mechanisms,  and therefore
+prima~facie, appears to be promising.
+
+% % The improved \gls{dra} method therefore
+% opens up a wide range of possibilities % and prima~facie appears promising.
 
 Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
 streamlining  of  the reduced  order  modelling  workflow through  the  improved
@@ -202,8 +211,8 @@ entries  in  the  matrices  of  the  final  state  space  model  depend  on  the
 linearisation point of \gls{soc} and temperature. This linearisation requirement
 adversely affects the usability of the model for state estimation tasks, wherein
 the \gls{soc} is in fact an unknown quantity and is to be estimated. This cyclic
-dependency  between the  linearisation point  and the  state-estimation quantity
-makes the use of  this model questionable in a demanding  application such as in
+dependency  between  the linearisation  point  and  the state-estimation  entity
+renders this  model questionable for use  in a demanding application  such as in
 embedded \glspl{bms} on-board electric vehicles. Therefore, the immediate future
 step is to analyse  the stability of this internal feedback  loop. Once this has
 been performed,  researchers may consider to  engage in the process  of adapting
@@ -211,8 +220,7 @@ the derivation of this hybrid  state-space \gls{rom} approach to higher C-rates,
 in conjunction  with the numerical  benefits afforded by the  improved \gls{dra}
 developed here.
 
-
-\subsection{Conclusions from analysis of the \glsfmtshort{spm}}
+\subsection{Conclusions from analysis of the \glsfmtshort{spm}} modelling family
 
 In \cref{ch:spmanalysis}, at first, an  in-depth understanding of the principles
 governing the  conventional \gls{spm} (which neglects  electrolyte dynamics) was
