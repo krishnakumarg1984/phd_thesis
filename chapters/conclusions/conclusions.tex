@@ -220,8 +220,58 @@ the derivation of this hybrid  state-space \gls{rom} approach to higher C-rates,
 in conjunction  with the numerical  benefits afforded by the  improved \gls{dra}
 developed here.
 
-\subsection{Conclusions from analysis of the \glsfmtshort{spm}} modelling family
+\subsection{Conclusions from analysis of the \glsfmtshort{spm} family of models}
 
+Based    upon   the    holistic   evaluation    of   various    \glspl{rom}   in
+\cref{ch:littreview},  owing   to  its  simplicity,  the   \gls{spm}  family  of
+models  was  identified  as  the  most promising  modelling  candidate  from  an
+\emph{implementation}  perspective. \Cref{ch:spmanalysis}  provided an  in-depth
+analysis of the strengths and drawbacks of this modelling family.
+
+Results from  simulation of  the basic \gls{spm}  revealed that  two contrasting
+aspects. Firstly, the  \gls{soc} computation of the \gls{spm}  was of acceptable
+accuracy even at moderate C-rates thereby validating the fourth order polynomial
+approximation approach  for capturing  solid phase diffusion  dynamics. However,
+the basic  \gls{spm} suffers  from severe inaccuracies  in computing  the cell's
+terminal voltage  at currents above  0.5C. This dichotomous  behaviour, revealed
+through  this  analysis, has  not  been  explicitly  commented upon  in  present
+literature.  In  particular,  despite  its overarching  simplicity,  it  can  be
+concluded that it is this contrasting  aspect that renders the model unusable as
+the  plant model  for  state  estimation tasks.  This  is  because, the  voltage
+measured  from the  model  in a  feedback  estimator shall  map  to a  radically
+distant \gls{soc} operating point requiring  excessively strong gain factors for
+correcting it adversely affecting the stability of estimators.
+
+% Although the  mitigation of mismatch  between the measured  quantity (terminal
+% voltage) and  the estimated quantity (\gls{soc})  has not been studied  from a
+% stability perspective, perhaps owing to its futility,
+
+Several  research efforts  from literature  that  have attempted  to tackle  the
+voltage inaccuracies  of the  basic \gls{spm}  through inclusion  of electrolyte
+dynamics were also presented in  \cref{ch:spmanalysis}. A critical evaluation of
+each  of  the  salient  efforts  revealed that  a  suitable  approach  that  can
+successfully handle all possible operational scenarios  is yet to be devised. In
+particular, the  existing modelling approaches for  electrolyte inclusion either
+made  far-fetched assumptions  that  were easily  violated  or presented  nearly
+intractable  mathematical  expressions  that  pushed  the  \gls{spm}  closer  in
+computational complexity  to the  \gls{p2d} dynamics.  My analysis  of pertinent
+literature  also  revealed  the  possibility of  re-using  certain  portions  of
+existing work \eg~the electrolyte  overpotential expression, whilst also arguing
+the need  for a fresh  approach to model  other aspects of  electrolyte dynamics
+such as the ionic concentration profile within the cell's thickness.
+
+The  final  section  of  \cref{ch:spmanalysis}  presented  the  assumptions  and
+governing equations of the popular quadratic approximation model for the spatial
+profile of  ionic concentration. The  results obtained by simulating  this model
+reveal that while its spatial  profile computation for a galvanostatic operation
+is of  acceptable accuracy, the temporal  performance of the model  is mediocre.
+Particularly, the time evolution of ionic concentration at the current collector
+interfaces computed by the model fail to capture the intricacies in the temporal
+evolution exhibited by  the \gls{p2d} model's profile.  Furthermore, the spatial
+profile uses  the \gls{qss} approximation  which is violated during  the initial
+transient.
+
+% Revisit the pdf for writing future work on basic spm as well as the advanced
 In \cref{ch:spmanalysis}, at first, an  in-depth understanding of the principles
 governing the  conventional \gls{spm} (which neglects  electrolyte dynamics) was
 presented. In particular, a discrete-time numerical implementation \dots
