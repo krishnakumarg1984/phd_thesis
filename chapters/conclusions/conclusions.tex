@@ -269,12 +269,63 @@ Particularly, the time evolution of ionic concentration at the current collector
 interfaces computed by the model fail to capture the intricacies in the temporal
 evolution exhibited by  the \gls{p2d} model's profile.  Furthermore, the spatial
 profile uses  the \gls{qss} approximation  which is violated during  the initial
-transient.
+transient. Hence, the  most impactful conclusion from the  foregoing analysis is
+that the  basic quadratic approximation  model is unsuitable for  dynamic loads,
+thereby ruling it out for deployment in vehicular applications.
+
+
+\subsection{Proposed analysis routes for the \glsfmtshort{spm} modelling family}
+
+Albeit extensive, the analyses of \glspl{spm}  performed in this thesis is by no
+means complete. It is more appropriate to  say that this author chose to analyse
+\glspl{spm} from  their implementation  perspective, particularly  their voltage
+and \gls{soc}  accuracies in  an open-loop  implementation. However,  a holistic
+evaluation covering  other aspects  are necessary before  their deployment  in a
+vehicular \gls{bms} can be considered. For instance, the observability of models
+must be  proven before  they can  be employed in  the feedback  path of  a state
+estimator. Even  within the  broad stream of  observability analysis,  there are
+several details that  need to be meticulously handled of  which some avenues for
+future exploration are identified.
+
+In the  simplification of the  state-vector of  the basic \gls{spm}  proposed by
+Di~Domenico~\cite{DiDomenico2010}, the bulk concentration  in the two electrodes
+was assumed to be equal  (see \cref{subsec:basicspmstatespace}). This allowed to
+eliminate the bulk concentrations of one of the two electrodes, thereby reducing
+the state  vector to~$\mathbb{R}^{3  \times 1}$. This  assumption hinges  on the
+assumption  that  there is  no  loss  of  cycleable  lithium. However,  such  an
+assumption  is valid  only for  a brand  new cell.  As the  cell ages,  owing to
+various  phenomena such  as parasitic  side reactions  and decomposition  of the
+solid conductive matrix,  this assumption shall no longer  hold true. Therefore,
+analysis  of models  obtained by  augmenting the  basic or  electrolyte-enhanced
+\glspl{spm}  with equations  describing degradation  shall become  critical. Not
+only does this force to retain both bulk concentrations in the state vector, the
+states from the  degradation rate-equations appear in it,  thereby enlarging it.
+In  future  studies, the  effect  of  these  augmented  state variables  on  the
+observability of the system needs to be quantified.
+Warning: Locale seems not configured
+Warning: Locale seems not configured
+
+In this thesis,  only an \emph{isothermal} analysis of  various \glspl{spm} have
+been performed. While this is an important initial step to analyse the strengths
+and weaknesses of  the state of the art incumbent  \gls{spm} models by isolating
+the  purely  electrochemical  aspects,  the  effect  of  temperature  cannot  be
+underplayed. It  is well-known that the  thermal conditions of the  cell affects
+its  electrochemical  and  vice-versa.  Therefore, future  works  shall  benefit
+from  performing  comprehensive   analyses  of  coupled  electrochemical-thermal
+\glspl{spm}. Considering the simplicity of \glspl{spm}, the lumped thermal model
+might be a suitable candidate for it be paired with. Finally, in addition to its
+influence  on the  accuracy of  open-loop  terminal voltage  and \gls{soc},  the
+effect of  temperature on the  observability of the  holistic model needs  to be
+evaluated. Since the cell temperature is available as an additional measurement,
+it is likely to improve the model's observability. However, there is a trade-off
+since this comes at  the cost of increased size of the state  vector. It is also
+worthwhile  to explore  the  inflection point  of this  trade-off  to limit  the
+model's fidelity at  a sufficient level whilst reaping the  maximum gains out of
+the additional temperature measurement.
+
 
 % Revisit the pdf for writing future work on basic spm as well as the advanced
-In \cref{ch:spmanalysis}, at first, an  in-depth understanding of the principles
-governing the  conventional \gls{spm} (which neglects  electrolyte dynamics) was
-presented. In particular, a discrete-time numerical implementation \dots
+In particular, a discrete-time numerical implementation \dots
 
 \section{Closing Remarks}
 
