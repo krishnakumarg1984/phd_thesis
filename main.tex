@@ -8,7 +8,10 @@
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 \frontmatter
-\pagenumbering{arabic} % Imperial College requirement that all pages must be in continuous arabic numbering
+\pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
+\thispagestyle{plain}
+\includepdf[pages=-,pagecommand={}]{coverpage.pdf}
+
 \noindent
 \begin{varwidth}[c]{0.4\textwidth}
     \includegraphics{chapters/backmatter/doclicense-CC-by-nc-nd.pdf}

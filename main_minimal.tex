@@ -3,12 +3,16 @@
 
 \input{Preamble/preamble}  % full preamble, including metadata, documentclass, packages, fonts and custom commands
 \begin{document}
-% \scrollmode
+\scrollmode
 
-\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
+% \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 \frontmatter
 \pagenumbering{arabic} % Imperial College requirement that all pages must be in continuous arabic numbering
+
+\thispagestyle{plain}
+\includepdf[pages=-,pagecommand={}]{coverpage.pdf}
+
 % \noindent
 % \begin{varwidth}[c]{0.4\textwidth}
 %     \includegraphics{chapters/backmatter/doclicense-CC-by-nc-nd.pdf}
@@ -29,44 +33,38 @@
 % this work.
 
 %: ----------------------- table of contents ------------------------
-\cleardoublepage
-\glsunsetall
-% \microtypesetup{protrusion=false} % disables protrusion locally in the document
-% \pdfbookmark[section]{\contentsname}{toc} % with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf % \pdfbookmark[<level>]{<title>}{<dest>}
-% % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks
-% \tableofcontents            % print the table of contents
-%
-% %: ----------------------- list of figures/tables etc. ------------------------
-% \cleardoublepage
-% \listoffigures
-% \cleardoublepage
-% \listoftables
-% \cleardoublepage
-% \listofalgorithms
-% \addcontentsline{toc}{chapter}{List of Algorithms}
-% \cleardoublepage
-% \begingroup
-% \parskip=0pt
-% % \tcblistof[\chapter*]{mypyg}{List of Program Code}  % for minted/tcolorbox algorithms and code
-% \endgroup
-% \cleardoublepage
-\glsresetall
-% \begingroup
-% % \setlength\LTleft{-5pt}
-% % \printglossaries
-\printglossary[type=acronym,title={List of Acronyms},nonumberlist,style=super]\label{ch:glossary} % basic style
-% % \printglossary[type=abbreviation, title={List of Acronyms}]\label{ch:glossary} % basic style
-% % \printglossary[type=acronym, style = superragged3colheader, title={List of Acronyms}]\label{ch:glossary}
-% % \printglossary[type=acronym, style = custom_acronyms,title={List of Acronyms}]\label{ch:glossary}
-% % \printglossary[type=acronym, style = super,title={List of Acronyms}]\label{ch:glossary}
-% \endgroup
-% \microtypesetup{protrusion=true} % re-enables protrusion
+%\renewcommand{\baselinestretch}{0.3}\normalsize
+%\cleardoublepage
+%\glsunsetall
+%\microtypesetup{protrusion=false} % disables protrusion locally in the document
+%\pdfbookmark[section]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
+%\tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
+
+%%: ----------------------- list of figures/tables etc. ------------------------
+%\cleardoublepage
+%\setstretch{1.1} % 1.1 worked fine
+%\listoffigures
+%\cleardoublepage
+%\onehalfspacing
+%\listoftables
+%\cleardoublepage
+%% https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
+%{\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
+%\glsresetall
+%\setstretch{1.2} % for glossaries
+%\begingroup
+%\printglossary[type=acronym,title={List of Acronyms},nonumberlist,style=super]\label{ch:glossary}
+%\endgroup
+%\microtypesetup{protrusion=true} % re-enables protrusion
 
 % Required to maintain continuous arabic numbering
 \makeatletter
 \@mainmattertrue
 \makeatother
 \cleardoublepage
+
+
+\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 % \setcounter{chapter}{0}
 % \input{chapters/introduction/introduction} % Introduction
@@ -83,15 +81,16 @@
 \setcounter{chapter}{6}
 \input{chapters/conclusions/conclusions}   % Conclusions
 
-\backmatter % References
-\begin{footnotesize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
-    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
-    % add bib to toc
-    \cleardoublepage
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\bibname}
-    \printbibliography
-\end{footnotesize}
+\backmatter
+\singlespacing
+% \begin{footnotesize}        % Bibliography/References
+%     \renewcommand{\bibname}{References} % changes the header; default: Bibliography
+%     % add bib to toc
+%     \cleardoublepage
+%     \phantomsection
+%     \addcontentsline{toc}{chapter}{\bibname}
+%     \printbibliography
+% \end{footnotesize}
 
 % Required to maintain continuous arabic numbering
 \makeatletter
@@ -99,11 +98,12 @@
 \makeatother
 \cleardoublepage
 
+% \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 % \begin{appendices} % Using the appendices environment (from appendix package) for more functionality
 %     \crefalias{chapter}{appchap}
 %     % \include{chapters/Appendices/appendix1}
 %     \include{chapters/Appendices/appendix2}
 % \end{appendices}
 
-% \batchmode
+\batchmode
 \end{document}
