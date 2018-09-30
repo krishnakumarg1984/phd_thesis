@@ -348,32 +348,78 @@ author is confident that the genetic programming approach shall indeed
 synthesise an accurate description of the electrolyte's spatio-temporal
 dynamics.
 
+\section{Implementation Aspects of Basic and Electrolyte-Enhanced \glsfmtshort{spm}}
 
-% Revisit the pdf for writing future work on basic spm as well as the advanced
-In particular, a discrete-time numerical implementation \dots
+A driving impetus behind this thesis is to deliver \glspl{rom} amenable  to
+embedded \emph{implementation}. Large portions of \cref{ch:spmanalysis} and
+nearly the entirety of \cref{ch:newelectrolytemodel} were devoted to this study.
+The conclusions that emerged from these implementation efforts are summarised
+here. Future areas of research are also identified in-line.
+
+In \cref{ch:spmanalysis}, the aspects of discrete-time implementation in a
+microcontroller were discussed. In particular, the computation of the
+discrete-time system and input matrices through  the  matrix exponential
+approach is presented. A straightforward conclusion from the discrete-time
+implementation is that they run orders of magnitude faster than their
+continuous-time counterparts. This is owing to the fact that adaptive
+time-stepping integrators are not required and can be replaced by a simple
+matrix-vector multiplication scheme. This implementation detail provides
+necessary starting point for battery researchers to start coding the \glspl{rom}
+discussed herein. Future work in this direction shall benefit from including
+various real-world issues such as accounting for sample delays as well as
+implementing a progressive update scheme for the matrix entries to account for
+degradation effects. Important aspects of numerical implementation arise during
+the design of state estimators. Having a robust open-loop implementation of a
+discrete-time plant model shall facilitate easy implementation of such feedback
+algorithms.
+
+\Cref{ch:newelectrolytemodel} discussed the implementation aspects of \gls{rom}
+from a different perspective --- that of formulating a new electrolyte enhanced
+composite \gls{spm} for embedded implementation. The temporal evolution of
+electrolyte dynamics in the two electrode regions were characterised through
+system identification techniques that have never been tried before in
+literature. The identified model structures are presented in the final form as
+discrete-time difference equations that can be readily incorporated into the
+discrete-time equations developed in \cref{ch:spmanalysis} for the basic
+\gls{spm}. The salient conclusion from this modelling effort is that, system
+identification is indeed a viable candidate for the derivation of \glspl{rom} of
+lithium ion batteries. The improved accuracy of electrolyte concentration
+dynamics relative to the state of the art quadratic approximation model
+corroborates the success of this strategy. Nevertheless, before widespread
+adoption of this technique can be advocated, certain aspects of this approach
+must be examined carefully. For instance, the assumptions of linearity and
+time-invariance must be revisited for higher magnitudes of charge and discharge
+currents. Thermal effects must also be incorporated into the overall system
+identification approach. Machine learning and system identification are two
+complementary approaches to the same task \ie~identification of internal
+dynamics from terminal measurements. Future research could also explore this
+possibility and perhaps a combined system identification/machine learning
+strategy might metamorphose into the approach that powers future generation of
+surrogate \glspl{rom} for electric vehicle applications.
 
 \section{Closing Remarks}
 
-% closing remarks
-% Parametrisation is a problem as well.
-% solid-state diffusion is a problem informed by two chapters. Need advanced
-% materials
-% By  reducing the  time  for final  prototyping
-% through replacement  of expensive  experimental iterations,  cost-effective cell
-% manufacturing paradigms can  be ushered, which can be passed  on to customers of
-% electric vehicles. This in-turn can  help to accelerate the mass-market adoption
-% of electrified transport.
+The feasibility of bringing \glspl{pbm} of lithium batteries into electrified
+transportation has been studied in this thesis from a multi-dimensional
+perspective. Yet, there exists a common underpinning that connects these
+seemingly different routes to enhancement of our extant knowledge --- that of
+parametrising the underlying \gls{pbm}. The number of parameters in any
+\gls{pbm} is excessively large to the point of detracting potential adopters.
+Even without considering degradation effects, obtaining the physical, geometric,
+transport and kinetic parameters of a cell shall require access to specialised
+laboratory equipment that are sometimes exclusive to large scale research
+organisations. The models presented here shall assume a real-world significance
+only upon a successful demonstration of a cost-effective parametrisation
+strategy. This issue is well beyond the scope of this thesis, or indeed any
+single researcher and shall require the concerted effort of the community as a
+whole to tackle it.
 
-% This approach reduces the cost as well as time expenditure required by an
-% automotive OEM. This adds a new xEV to their product range, speeding up  for a
-% cleaner, safer and  decarbonised transport.
-
-% capable of bringing the goal  of physics-based battery model implementation in
-% a high performance real-time \gls{bms}, a step closer to realisation.
-
-
-% % through   . that can  help to unleash  the latent  potential of lithium ion batteries has been studied
-
-% achieve the latent  potential and wide applicability  of the
-% physics-based reduced order Li-ion battery model.
+The next task in the journey to real-world implementation of the advancements
+brought about by this thesis is to  experimentally validate them. However, this
+is contingent upon obtaining a successful parametrisation strategy, and should
+be embarked upon as soon as a robust procedure to identify the physical
+parameters is made available. Nevertheless, this author hopes that through the
+three-pronged approach to cell modelling presented in this thesis, the goal of
+bringing physics-based battery models to electrified transportation has been
+brought a step closer to realisation.
 
