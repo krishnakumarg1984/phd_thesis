@@ -130,7 +130,7 @@ functions,  the  derivation  naturally  progresses  towards  seeking  a  set  of
 the  \engordnumber{2}   order  \glspl{ode}  of \cref{eq:dfnliquiddiff}   (for  electrodes)
 and \cref{eq:liquiddiffnsep}   (for  separator)   to   their  respective   local
 co-ordinates and integrate  once along the thickness of  each region. Performing
-this sequence of steps for the negative electrode region,
+this sequence of steps for the negative electrode region
 \mathleft
 \begin{equation}
     \begin{WithArrows}[b]
@@ -152,11 +152,11 @@ width=3.4cm}]{apply integral to the \glsfmtshort{rhs}}\\
 % \InsertUnderBrace[draw=black][aspect=0.26]{StartBraceA}{EndBraceA}{} % https://tex.stackexchange.com/questions/68526/asymmetric-overbrace
 % \blindtext
 % \AddToShipoutPicture*{\ShowFramePicture}
-
 Performing     the     identical     sequence     of     operations     starting
 from~(\cref{eq:liquiddiffnsep}) for  the separator and~(\cref{eq:dfnliquiddiff})
 for the positive electrode yields
 \begin{align}
+    \SwapAboveDisplaySkip
     \diff*{Q_\text{e,s}(t)}{t} &= D_\effs \diffp{c_\essub}{z}{\mathrlap{z=l_\text{s}}} \label{eq:sepliionmolestoreduce}\\
     \diff*{Q_\text{e,p}(t)}{t} &= D_\effp \diffp{c_\epsub}{z}{\mathrlap{z=l_\text{p}}} + (1 - t^0_\text{+}) a_\spsub \int_0^{l_\text{p}} j_\text{p}\, dz\label{eq:posliionmolestoreduce}
 \end{align}
