@@ -39,8 +39,8 @@
 %\cleardoublepage
 %\glsunsetall
 %\microtypesetup{protrusion=false} % disables protrusion locally in the document
-%\pdfbookmark[section]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
-%\tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
+\pdfbookmark{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
+\tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
 
 %%: ----------------------- list of figures/tables etc. ------------------------
 %\cleardoublepage
