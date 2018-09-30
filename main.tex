@@ -11,6 +11,8 @@
 \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
 \thispagestyle{plain}
 \includepdf[pages=-,pagecommand={}]{coverpage.pdf}
+% https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
+\bookmark[dest={coverpage.pdf.1}]{Title Page}
 
 \noindent
 \begin{varwidth}[c]{0.4\textwidth}
