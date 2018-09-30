@@ -273,6 +273,22 @@ transient. Hence, the  most impactful conclusion from the  foregoing analysis is
 that the  basic quadratic approximation  model is unsuitable for  dynamic loads,
 thereby ruling it out for deployment in vehicular applications.
 
+The initial portions of \cref{ch:newelectrolytemodel} analysed the causal factor
+contributing to the mediocre performance of the quadratic approximation model.
+For this analysis, a genetic programming approach was employed to synthesise
+suitable alternative reduced order equations for modelling the spatial profile
+of the electrolyte concentration. The foregoing analysis helped to reveal that
+given the constraints and interior-point boundary conditions of the underlying
+\gls{dfn} model at the separator interfaces, the number of coefficients used in
+the quadratic spatial profile does indeed make the best use of all available
+equations. The genetic programming approach being able to synthesise suitable
+mathematical structures that can potentially capture the spatial profile
+accurately during both transient and steady state conditions. However, there is
+a shortfall in the number of equations in order to uniquely solve for these
+extra coefficients. The final conclusion that stems from this fact is that, by decoupling
+the spatial and temporal profiles of the electrolyte concentration dynamics, the
+performance of the present state of the art can indeed be improved upon.
+
 
 \subsection{Proposed analysis routes for the \glsfmtshort{spm} modelling family}
 
@@ -302,8 +318,6 @@ only does this force to retain both bulk concentrations in the state vector, the
 states from the  degradation rate-equations appear in it,  thereby enlarging it.
 In  future  studies, the  effect  of  these  augmented  state variables  on  the
 observability of the system needs to be quantified.
-Warning: Locale seems not configured
-Warning: Locale seems not configured
 
 In this thesis,  only an \emph{isothermal} analysis of  various \glspl{spm} have
 been performed. While this is an important initial step to analyse the strengths
@@ -322,6 +336,17 @@ since this comes at  the cost of increased size of the state  vector. It is also
 worthwhile  to explore  the  inflection point  of this  trade-off  to limit  the
 model's fidelity at  a sufficient level whilst reaping the  maximum gains out of
 the additional temperature measurement.
+
+Based upon the conclusion that the performance of any reduced order spatial
+profile model is hamstrung by the equation deficiencies in the underlying
+\gls{dfn} model, it is worthwhile to reproduce the \gls{mggp} approach with a
+different \gls{pbm}. For this future task, it is imperative to choose a model
+that provides additional interior-point conditions \ie{} not just at the
+separator, but perhaps a second order condition within an interior location at
+each electrode. Once such a suitable \gls{pbm} has been identified, this thesis
+author is confident that the genetic programming approach shall indeed
+synthesise an accurate description of the electrolyte's spatio-temporal
+dynamics.
 
 
 % Revisit the pdf for writing future work on basic spm as well as the advanced
