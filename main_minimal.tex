@@ -5,92 +5,39 @@
 \begin{document}
 \scrollmode
 
-% \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
-
 \frontmatter
 \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
-
-% \includepdf[link, linkname=titlepage, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
-% \bookmark[dest={titlepage}]{Title Page}
 
 \includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
 % https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
 % \bookmark[dest={coverpage.pdf.1}]{Title Page}
 
-\chapter*{\centerline{Declaration of Originality}}
-
-\vspace*{-1.5cm}
-
-I declare that the material presented in this thesis is the result of my own
-research except for  specific portions wherein contributions from collaborators
-are acknowledged. Throughout this thesis, references are made to other published
-works and these references are appropriately cited. The material contained in
-this thesis has not been submitted, either in whole or in part, for a degree at
-Imperial College London or any other university.\\[-3em]
-
-\begin{flushright}
-    % \uline{\includegraphics[width=0.3\textwidth]{black_ink_sign_from_jpg}}
-    % \begin{minipage}{0.4\textwidth}
-        % \hspace*{\fill}\includegraphics[width=0.3\textwidth]{black_ink_sign_from_jpg}
-        \begin{tabular}{@{}p{.4in}p{2.1in}@{}}
-            & \includegraphics[angle=-5,width=0.25\textwidth]{black_ink_sign_from_jpg}\\[-2em]
-            Signed: & \hrulefill \\
-                    & Krishnakumar Gopalakrishnan \\
-                    & \monthyeardate\\
-                    & London \\
-        \end{tabular}
-    % \end{minipage}
-\end{flushright}
-
-{\let\clearpage\relax \chapter*{\centerline{Declaration of Copyright}}}
-
-\vspace*{-2cm}
-
-% \noindent
-% \begin{varwidth}[c]{0.4\textwidth}
-%     \includegraphics{chapters/backmatter/doclicense-CC-by-nc-nd.pdf}
-% \end{varwidth}
-% \hfill
-% \begin{varwidth}[c]{0.70\textwidth}
-%     % https://www.imperial.ac.uk/research-and-innovation/support-for-staff/scholarly-communication/open-access/spiral/licences-and-policies/
-%     This  work  is  licensed  under  a  \href{https://creativecommons.org/licenses/by-nc-nd/3.0/}{Creative  Commons  `Attribution-NonCommercial-NoDerivs~3.0  Unported'} licence
-% \end{varwidth}
-
-\bigskip
-\noindent  The copyright  of  this thesis  rests  with the  author  and is  made
-available  under a \textbf{modified}  Creative Commons  Attribution
-Non-Commercial  No Derivatives licence. Except for certain figures specifically
-identified in their captions as copyrighted by this thesis author, researchers
-are free to copy,  distribute or transmit the thesis on the condition  that they
-attribute  it, that  they  do not  use  it for  commercial purposes and that
-they  do not alter, transform or build upon  it. For any reuse or
-redistribution,  researchers must make clear  to others the licence  terms of
-this work.
+\input{chapters/frontmatter/originality_copyright.tex}
 
 %: ----------------------- table of contents ------------------------
-%\renewcommand{\baselinestretch}{0.3}\normalsize
-%\cleardoublepage
-%\glsunsetall
-%\microtypesetup{protrusion=false} % disables protrusion locally in the document
-\pdfbookmark{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
+\renewcommand{\baselinestretch}{0.3}\normalsize
+\cleardoublepage
+\glsunsetall
+\microtypesetup{protrusion=false} % disables protrusion locally in the document
+\pdfbookmark[chapter]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
 \tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
 
-%%: ----------------------- list of figures/tables etc. ------------------------
-%\cleardoublepage
-%\setstretch{1.1} % 1.1 worked fine
-%\listoffigures
-%\cleardoublepage
-%\onehalfspacing
-%\listoftables
-%\cleardoublepage
-%% https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
-%{\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
-%\glsresetall
-%\setstretch{1.2} % for glossaries
-%\begingroup
-%\printglossary[type=acronym,title={List of Acronyms},nonumberlist,style=super]\label{ch:glossary}
-%\endgroup
-%\microtypesetup{protrusion=true} % re-enables protrusion
+%: ----------------------- list of figures/tables etc. ------------------------
+\cleardoublepage
+\setstretch{1.1} % 1.1 worked fine
+\listoffigures
+\cleardoublepage
+\onehalfspacing
+\listoftables
+\cleardoublepage
+% https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
+{\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
+\glsresetall
+\setstretch{1.2} % for glossaries
+\begingroup
+\printglossary[type=acronym,title={List of Acronyms},nonumberlist,style=super]\label{ch:glossary}
+\endgroup
+\microtypesetup{protrusion=true} % re-enables protrusion
 
 % Required to maintain continuous arabic numbering
 \makeatletter
@@ -98,11 +45,9 @@ this work.
 \makeatother
 \cleardoublepage
 
-
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
-
-% \setcounter{chapter}{0}
-% \input{chapters/introduction/introduction} % Introduction
+\setcounter{chapter}{0}
+\input{chapters/introduction/introduction} % Introduction
 % \setcounter{chapter}{1}
 % \input{chapters/litt_review/litt_review}   % Literature Review
 % \setcounter{chapter}{2}
@@ -118,7 +63,7 @@ this work.
 
 \backmatter
 \singlespacing
-% \begin{footnotesize}        % Bibliography/References
+% \begin{footnotesize} % Bibliography/References
 %     \renewcommand{\bibname}{References} % changes the header; default: Bibliography
 %     % add bib to toc
 %     \cleardoublepage
@@ -133,10 +78,11 @@ this work.
 \makeatother
 \cleardoublepage
 
+
 % \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 % \begin{appendices} % Using the appendices environment (from appendix package) for more functionality
 %     \crefalias{chapter}{appchap}
-%     % \include{chapters/Appendices/appendix1}
+%     \include{chapters/Appendices/appendix1}
 %     \include{chapters/Appendices/appendix2}
 % \end{appendices}
 
