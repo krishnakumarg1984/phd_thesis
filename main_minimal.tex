@@ -8,12 +8,43 @@
 % \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 \frontmatter
-\pagenumbering{arabic} % Imperial College requirement that all pages must be in continuous arabic numbering
+\pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
 
-\thispagestyle{plain}
-\includepdf[link,pages=-,pagecommand={}]{coverpage.pdf}
+% \includepdf[link, linkname=titlepage, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
+% \bookmark[dest={titlepage}]{Title Page}
+
+\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
 % https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
-\bookmark[dest={coverpage.pdf.1}]{Title Page}
+% \bookmark[dest={coverpage.pdf.1}]{Title Page}
+
+\chapter*{\centerline{Declaration of Originality}}
+
+\vspace*{-1.5cm}
+
+I declare that the material presented in this thesis is the result of my own
+research except for  specific portions wherein contributions from collaborators
+are acknowledged. Throughout this thesis, references are made to other published
+works and these references are appropriately cited. The material contained in
+this thesis has not been submitted, either in whole or in part, for a degree at
+Imperial College London or any other university.\\[-3em]
+
+\begin{flushright}
+    % \uline{\includegraphics[width=0.3\textwidth]{black_ink_sign_from_jpg}}
+    % \begin{minipage}{0.4\textwidth}
+        % \hspace*{\fill}\includegraphics[width=0.3\textwidth]{black_ink_sign_from_jpg}
+        \begin{tabular}{@{}p{.4in}p{2.1in}@{}}
+            & \includegraphics[angle=-5,width=0.25\textwidth]{black_ink_sign_from_jpg}\\[-2em]
+            Signed: & \hrulefill \\
+                    & Krishnakumar Gopalakrishnan \\
+                    & \monthyeardate\\
+                    & London \\
+        \end{tabular}
+    % \end{minipage}
+\end{flushright}
+
+{\let\clearpage\relax \chapter*{\centerline{Declaration of Copyright}}}
+
+\vspace*{-2cm}
 
 % \noindent
 % \begin{varwidth}[c]{0.4\textwidth}
@@ -22,17 +53,19 @@
 % \hfill
 % \begin{varwidth}[c]{0.70\textwidth}
 %     % https://www.imperial.ac.uk/research-and-innovation/support-for-staff/scholarly-communication/open-access/spiral/licences-and-policies/
-%     This  work  is  licensed  under  a \href{https://creativecommons.org/licenses/by-nc-nd/3.0/}{Creative  Commons  `Attribution-NonCommercial-NoDerivs~3.0  Unported'} licence
+%     This  work  is  licensed  under  a  \href{https://creativecommons.org/licenses/by-nc-nd/3.0/}{Creative  Commons  `Attribution-NonCommercial-NoDerivs~3.0  Unported'} licence
 % \end{varwidth}
 
-% \bigskip
-% \noindent  The copyright  of  this thesis  rests  with the  author  and is  made
-% available  under a  Creative Commons  Attribution Non-Commercial  No Derivatives
-% licence. Researchers are free to copy,  distribute or transmit the thesis on the
-% condition  that they  attribute  it, that  they  do not  use  it for  commercial
-% purposes and that they  do not alter, transform or build upon  it. For any reuse
-% or redistribution,  researchers must make clear  to others the licence  terms of
-% this work.
+\bigskip
+\noindent  The copyright  of  this thesis  rests  with the  author  and is  made
+available  under a \textbf{modified}  Creative Commons  Attribution
+Non-Commercial  No Derivatives licence. Except for certain figures specifically
+identified in their captions as copyrighted by this thesis author, researchers
+are free to copy,  distribute or transmit the thesis on the condition  that they
+attribute  it, that  they  do not  use  it for  commercial purposes and that
+they  do not alter, transform or build upon  it. For any reuse or
+redistribution,  researchers must make clear  to others the licence  terms of
+this work.
 
 %: ----------------------- table of contents ------------------------
 %\renewcommand{\baselinestretch}{0.3}\normalsize
@@ -80,8 +113,8 @@
 % \input{chapters/spm_analysis/spm_analysis} % Analysis of SPM
 % \setcounter{chapter}{5}
 % \input{chapters/sys_id/sys_id}             % New Electrolye Model
-\setcounter{chapter}{6}
-\input{chapters/conclusions/conclusions}   % Conclusions
+% \setcounter{chapter}{6}
+% \input{chapters/conclusions/conclusions}   % Conclusions
 
 \backmatter
 \singlespacing
