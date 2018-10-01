@@ -9,8 +9,11 @@
 
 \frontmatter
 \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
-\thispagestyle{plain}
-\includepdf[pages=-,pagecommand={}]{coverpage.pdf}
+
+% \includepdf[link, linkname=titlepage, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
+% \bookmark[dest={titlepage}]{Title Page}
+
+\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
 % https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
 \bookmark[dest={coverpage.pdf.1}]{Title Page}
 
