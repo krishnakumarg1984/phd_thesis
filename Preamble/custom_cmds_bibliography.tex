@@ -90,3 +90,22 @@
 \def\initial#1{\expandafter\@initial#1\@nil}
 \def\@initial#1#2\@nil{#1\bibinitperiod}
 \makeatother
+
+
+% \makeatletter
+% \DeclareCiteCommand{\longfullcite}
+% {\usebibmacro{prenote}}
+% {\usedriver
+%     {\c@maxnames\blx@maxbibnames\relax
+%     \DeclareNameAlias{sortname}{default}}
+% {\thefield{entrytype}}}
+% {\multicitedelim}
+% {\usebibmacro{postnote}}
+% \makeatother
+
+% \newcommand{\longfullcite}{%
+%     \AtNextCite{\defcounter{maxnames}{99}}%
+% \fullcite}
+
+\newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
+
