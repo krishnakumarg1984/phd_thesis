@@ -12,7 +12,9 @@
 % https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
 % \bookmark[dest={coverpage.pdf.1}]{Title Page}
 
+\newpage\null\thispagestyle{plain}\newpage
 \input{chapters/frontmatter/originality_copyright.tex}
+\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{project_outputs.pdf}
 
 %: ----------------------- table of contents ------------------------
 \renewcommand{\baselinestretch}{0.3}\normalsize
