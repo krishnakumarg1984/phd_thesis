@@ -31,13 +31,16 @@ tools  towards \emph{obtaining}  them.  Hence, neither  of  these works  provide
 an  insight  into  the  rubrics  and   implications  of  the  choice  of  either
 of  these  domains  to  underpin  the \glspl{rom}.  Although  in  principle  the
 transformation between  them is  often a straightforward  mathematical exercise,
-\fxnote{citation(s) needed?}availability  of models for final  implementation in
-the  time domain  aids  immediate  uptake by  industry  for  adoption in  online
-\glspl{bms}. The  treatment of \gls{rom} from  this aspect is so  germane to the
-central hypothesis of  this chapter,\fxnote{``can a simple time  domain model do
-the  job?''} that  the author  of  this thesis  feels compelled  to undertake  a
-simpler  classification  exercise of  the  existing  modelling art,  within  the
-context of their suitability for online implementation.
+% \fxnote{citation(s) needed?}
+availability  of models for final  implementation in the  time domain  aids
+immediate  uptake by  industry  for  adoption in  online \glspl{bms}. The
+treatment of \gls{rom} from  this aspect is so  germane to the central
+hypothesis of  this chapter (that a simple time domain model is the key
+to large scale deployment of \glspl{pbm}),
+% \fxnote{``can a simple time  domain model do the  job?''}
+that  the author  of  this thesis  feels compelled  to undertake  a simpler
+classification  exercise of  the  existing  modelling art,  within  the context
+of their suitability for online implementation.
 
 
 In this discussion,  various modelling methodologies and  their resultant models
@@ -69,8 +72,8 @@ classified as belonging to one of the following categories:
 \end{itemize}
 It is important to distinguish between those models that are derived directly in
 the time  domain versus  those that  are derived first  in the  frequency domain
-and  later  converted  to  time  domain.  \fxnote{enumerate  all  the  desirable
-characteristics and criterion upon which models are to be evaluated}
+and  later  converted  to  time  domain.
+% \fxnote{enumerate  all  the  desirable characteristics and criterion upon which models are to be evaluated}
 
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
@@ -116,8 +119,8 @@ aggressive  trade-offs required  in its  approximation order  so as  to maintain
 high  accuracies.  Those  models  truncated  to very  low  Padé  order  exhibit
 poor  fidelity  and   perform  no  better  than   classical  equivalent  circuit
 models,  although  recent  research  attempts have  focussed  to  mitigate  this
-drawback~\cite{Yuan2017a,Yuan2017}.\fxnote{Should I  discuss how  they mitigated
-this?}
+drawback~\cite{Yuan2017a,Yuan2017}.
+% \fxnote{Should I  discuss how  they mitigated this?}
 
 
 \subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}
@@ -354,8 +357,7 @@ traditional equivalent  circuit models whilst  still retaining their  origins in
 physical principles rather than on empirical curve-fitting.
 
 
-\fxnote{can perhaps talk about SPM converted  to equivalent circuit by Prasad in
-the IEEE conference paper}
+% \fxnote{can perhaps talk about SPM converted  to equivalent circuit by Prasad in the IEEE conference paper}
 
 
 % Removed as per Greg's advice and review/feedback
@@ -410,9 +412,11 @@ parameters such as  solid and electrolyte diffusion  coefficients are attributed
 to the  two electrodes through ad-hoc,  non-verifiable assumptions. Furthermore,
 in  the  aforesaid  article,  notable  discrepancies  exist  in  the  values  of
 parameters such as electrolyte  conductivity (obtained through calculations from
-\gls{eis} measurements)  to that typically reported  in literature. \fxnote{have
-not talked about SPM  inspired eq circuit model. Is it necessary  to do so?. How
-to frame this. There are a few references that belongs to this kind}
+\gls{eis} measurements)  to that typically reported  in literature.
+
+% \fxnote{have not talked  about SPM inspired eq circuit model.  Is it necessary
+% to do so?. How to frame this. There  are a few references that belongs to this
+% kind}
 
 
 It must be acknowledged that presently  there exists no modelling candidate that
@@ -497,10 +501,12 @@ typically strive  to arrive at  a simpler  computational mesh, whilst  aiming to
 retain high  fidelity. It should  be noted that  high node densities  are mainly
 required near the  surface of the spherical particles for  the pseudo dimension.
 Similarly, the clustering  of nodes is desirable near the  separator and current
-collector interfaces along the axial dimension.\fxnote{need to define `axial' at
-the start of  the thesis} Thus, a sizeable number  of order reduction strategies
-in the time  domain seek to adopt non-uniform node  spacing towards lowering the
-aforesaid computational issues\fxnote{citations needed}.
+collector interfaces along the axial dimension.
+% \fxnote{need to define `axial' at the start of  the thesis}
+Thus, a sizeable number  of order reduction strategies in the time  domain seek
+to adopt non-uniform node  spacing towards lowering the aforesaid computational
+issues.
+% \fxnote{citations needed}.
 
 Computationally    efficient     pseudo-spectral    schemes     for    numerical
 solution   of   \glspl{pde}   can   be  employed   by   placing   discretisation
@@ -557,8 +563,8 @@ solutions  produced by  these models  could be  worse than  simpler models  with
 uniform mesh-density. Although  adaptive meshing strategies can  be employed for
 desktop simulation  with minimal effort,  it remains to be  seen if this  can be
 deployed successfully in a resource-constrained  environment such as an embedded
-\gls{bms} controller, and hence is  a candidate for future research.\fxnote{does
-this fit better in the conclusion chapter?}
+\gls{bms} controller, and hence is  a candidate for future research.
+% \fxnote{does this fit better in the conclusion chapter?}
 
 
 The   computational   bottlenecks  arising   due   to   discretisation  in   the
@@ -594,8 +600,9 @@ textbook by Carslaw and  Jaeger~\cite{Carslaw1947} provides detailed derivations
 for obtaining the standard analytical solution to Fick's law of diffusion in the
 context of heat conduction in solids. Liu~\cite{Liu2006} derived this analytical
 solution for the  lithium intercalation process in the solid  phase, taking into
-account  the idiosyncrasies  of porous  electrodes\fxnote{explain about  Olcer's
-pseudo-steady state  stuff}. However, this  expression involves an  infinite sum
+account  the idiosyncrasies  of porous  electrodes.
+% \fxnote{explain about  Olcer's pseudo-steady state  stuff}.
+However, this  expression involves an  infinite sum
 expansion of eigen modes. Guo  and White~\cite{Guo2012} formulated an expression
 for a  truncated approximation of  this solution  to arbitrary number  of terms.
 Furthermore, they demonstrated  the validity of this  approximation by comparing
@@ -607,22 +614,21 @@ computations.  Moreover,  there  has  been  no  extensive  study  comparing  the
 analytical solution to the polynomial  approach. Consequently, this approach has
 not yet gained  widespread popularity in the inherent elimination  of the radial
 dimension that is so  deeply ingrained as a core aspect  of the cell-level order
-reduction  approaches  discussed  here.\fxnote{another method  of  solving  this
-diffusion is the  integral method analysis used by Tanim  etal. Should I mention
-that?. There is  also a comprehensive review by Romero  etal. Furthermore, there
-is a specific review by Zhang and White}
+reduction  approaches  discussed  here.
 
-\fxnote{In the words of Zhang and White, ``The usage of the PSS method is mainly
-affected by the num- ber of summation  terms included. If no summation terms are
-used, the  method degrades to  the low  order polynomial method.  Increasing the
-number of summation terms improves the accu- racy of the method, mostly at short
-times. Our simulation shows that PSS method with two or three summation terms is
-able to  provide accurate results  under a  wide range of  operating conditions.
-More summation  terms require solving  more differ- ential equations  (Eq. (9b))
-and could pose numerical difficulties because of the exponential terms.''}
+% \fxnote{another method  of  solving  this diffusion is the  integral method analysis used by Tanim  etal. Should I mention that?. There is  also a comprehensive review by Romero  etal. Furthermore, there is a specific review by Zhang and White}
 
-\fxnote{There  are  way   too  many  models  that  use   the  proper  orthogonal
-decomposition technique. Should I review these?}
+% \fxnote{In the words of Zhang and White, ``The usage of the PSS method is mainly
+% affected by the num- ber of summation  terms included. If no summation terms are
+% used, the  method degrades to  the low  order polynomial method.  Increasing the
+% number of summation terms improves the accu- racy of the method, mostly at short
+% times. Our simulation shows that PSS method with two or three summation terms is
+% able to  provide accurate results  under a  wide range of  operating conditions.
+% More summation  terms require solving  more differ- ential equations  (Eq. (9b))
+% and could pose numerical difficulties because of the exponential terms.''}
+
+% \fxnote{There  are  way   too  many  models  that  use   the  proper  orthogonal
+% decomposition technique. Should I review these?}
 
 
 The computational  speed-up facilitated  by using polynomial  approximations for
@@ -683,8 +689,9 @@ online applications.
 % implementation, state estimation, physical insight}
 
 It  is evident  that all  physics-based  \glspl{rom} presented  thus far  entail
-extensive parametrisation efforts  \fxnote{at the end, count  and substitute the
-canonical number  of parameters here}  to render  them suitable for  a practical
+extensive parametrisation efforts
+% \fxnote{at the end, count  and substitute the canonical number  of parameters here}
+to render  them suitable for  a practical
 application. The difficulties associated with such parametrisation, coupled with
 inherent  uncertainties  in  the  obtained  parameter values  act  as  a  strong
 deterrent  to stakeholders  outside  academia to  adopt  \glspl{pbm} for  online
