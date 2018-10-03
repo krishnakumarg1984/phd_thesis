@@ -122,8 +122,8 @@ tackle  the current  research  topics  in Li-ion  batteries  such as  increasing
 cycle-life,  improving  operational   safety  and  performance~\cite{Plett2015}.
 Over  the  past two  decades,  efforts  have  been  made to  construct  accurate
 models  to  describe  the  physical, electrical,  thermal,  electrochemical  and
-system-level performance  of Li-ion  cells, leading  to modelling  strategies of
-various  level of  sophistication. For  the  interested reader,  the article  by
+system-level performance of  Li-ion cells, leading to  modelling strategies with
+various  levels of  sophistication. For  the interested  reader, the  article by
 Grazioli~\etal~\cite{Grazioli2016a} provides  a broad introduction to  the topic
 of computational  modelling of  lithium ion batteries.  Large in-roads  into the
 depth of the modelling  art can be made by perusing  comprehensive books on this
@@ -139,8 +139,8 @@ temperature. This implies  that several internal states of the  cell such as its
 \gls{soc}, whose  real-time computation is  vital to the optimal  performance of
 the cell, need to be estimated from these available measurements. Therefore, the
 performance  of  a \gls{bms}  for  tasks  such  as  online state  estimation  is
-dependent upon  the fidelity  of the underlying  cell model  used. Sophisticated
-models of the  cell enable these quantities to be  estimated more accurately and
+dependent upon the  fidelity of the underlying cell  model. Sophisticated models
+of  the  cell enable  these  quantities  to  be  estimated more  accurately  and
 facilitate the implementation  of advanced control algorithms.  Therefore, it is
 imperative  that  the cell  model  used  is suitable  for  being  embedded in  a
 real-time \gls{bms}.
@@ -153,8 +153,8 @@ prediction.  The combined  information from  the model  and measurement  is then
 blended in a suitable way to estimate the cell's \gls{soc}.
 
 More   advanced  models   strive   to  provide   insight   into  various   other
-physico-chemical quantities  that could  affect the health  of the  battery. The
-field of  Li-ion battery modelling can  be classified into two  broad categories
+physico-chemical quantities  that could affect  the cell's health. The  field of
+Li-ion battery modelling can be classified into two broad categories
 ---
 \begin{enumerate*}[label=\roman*)]
     \item empirical/ad-hoc \glspl{ecm}, and
@@ -171,15 +171,15 @@ at loggerheads with each other in terms of their computational complexity.
 capacitors to  model the behaviour  of batteries at their  electrical terminals.
 The cell's  thermal subsystem may  also be  modelled by an  analogous electrical
 circuit. The  parameters of the  circuit are  typically functions of  the cell's
-current, \gls{soc} and  temperature and can be implemented as  a lookup table by
+current, \gls{soc} and  temperature. These can be incorporated as  a lookup table by
 curve-fitting  the model  to experimental  data. Using  such equivalent  circuit
 models, two simple methods are available to compute the cell's \gls{soc} ---
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
-    \item manufacturer-supplied  lookup table or graph of \gls{ocv} versus \gls{soc}, and
-    \item numerically integrating the charge passed in and out of the cell over time, commonly referred to as coulomb counting.
+    \item by using manufacturer-supplied  lookup table or graph of \gls{ocv} versus \gls{soc}, and
+    \item by numerically integrating the charge passed in and out of the cell over time (commonly referred to as coulomb counting).
 \end{enumerate*}
 Both methods are computationally  amenable for small-scale embedded applications
-like  consumer  electronics;  however,  neither  one is  robust  to  handle  the
+such as  consumer  electronics;  however,  neither  one is  robust  to  handle  the
 stringent demands in performance imposed  by modern vehicular applications.
 
 Advanced state estimation algorithms such  as nonlinear Kalman filters may still
@@ -188,7 +188,7 @@ the  cell's  \gls{soc}~\cite{Plett2006,  Sun2011}. However,  the  usefulness  of
 \glspl{ecm} is limited by the fact that their parameters are derived essentially
 by a  curve-fitting process using a  standard set of training  data. Since these
 models are  not based on  any physical phenomena,  their ability to  predict the
-cell's general behaviour  is extremely poor especially when  subjects to current
+cell's general behaviour  is extremely poor especially when  subject to current
 profiles well  outside their training  realm. Another important  disadvantage of
 equivalent circuit  models is that they  do not allow insights  into the various
 internal states of the cell.
@@ -217,19 +217,19 @@ parameters  of the  cell. Usually,  these parameters  are closely  guarded trade
 secrets by cell manufacturers.
 
 In  some  cases, it  may  be  possible to  obtain  a  subset of  these  physical
-parameters  can be  obtained  by dissection  of cells  in  an inert  environment
-followed  by further  characterisation  through specialised  lab equipment.  For
-instance, Ecker~\etal~\cite{Ecker2015} demonstrate  the reverse-engineering of a
-\SI{7.5}{\amphour} pouch cell by Kokam  Ltd.\ to obtain its physical parameters.
-Nevertheless, this is a tedious process and is feasible only with access to such
-specialised lab  equipment. Furthermore, the  results from these  experiments is
-susceptible to characterisation errors as well as cell-to-cell variations due to
-production spread. Therefore, some form of system identification method needs to
-be employed  for estimating the rest  of the physical parameters  required for a
-\gls{pbm}.  Furthermore, it  is  a common  practice to  rely  on published  data
-for  the values  of  certain cell  parameters  that do  not  depend on  physical
-construction, especially for those that remain universally true for a particular
-li-ion chemistry.
+parameters   by  dissecting   cells  in   an  inert   environment  followed   by
+further  characterisation   using  specialised  lab  equipment.   For  instance,
+Ecker~\etal~\cite{Ecker2015}   demonstrate   the    reverse-engineering   of   a
+\SI{7.5}{\amphour} pouch  cell by Kokam  Ltd.\ in  order to obtain  its physical
+parameters. Nevertheless,  this is a tedious  process and is feasible  only with
+access  to  such sophisticated  lab  equipment.  Furthermore, the  results  from
+these  experiments are  susceptible to  characterisation  errors as  well as  to
+cell-to-cell variations due to production spread. Therefore, some form of system
+identification  method needs  to  be employed  for estimating  the  rest of  the
+physical  parameters required  for  a  \gls{pbm}. Furthermore,  it  is a  common
+practice to  rely on published  data for the  values of certain  cell parameters
+that do  not depend on physical  construction, especially for those  that remain
+universally true for a particular Li-ion chemistry.
 
 The challenges involved  in model parametrisation is a research  exercise of its
 own merit and  is not addressed in  this thesis. A redeeming factor  is that the
@@ -240,8 +240,8 @@ can be used in  aiding a deeper understanding of the working of  the cell and in
 answering research  questions that could  otherwise not be answered  with simple
 \glspl{ecm}. One area  of focus of this  thesis is to broach  a less-probed area
 --- exploring  the possibility  of using  a \gls{pbm}  for the  \emph{design} of
-pouch cells used in automotive applications. The author's findings on this topic
-shall be presented in \cref{ch:modelbaseddesign}.
+pouch  cells  used  in  automotive  applications which  shall  be  presented  in
+\cref{ch:modelbaseddesign}.
 
 A major disadvantage of \glspl{pbm} from an implementation point of view is that
 solving for  the model's field  variables is time-consuming. In  particular, the
@@ -251,8 +251,8 @@ Nevertheless,  for   high  performance   applications  such  as   in  automotive
 \glspl{bms}  wherein   state-of-health  monitoring  is  crucial,   there  is  an
 overwhelming  demand for  obtaining insight  into internal  cell variables.  For
 instance, the real-time computation of surface concentration of \ch{Li^0} in the
-solid particles enable  the \gls{bms} to avoid regulate power  flow into and out
-of the cell to proactively avoid plating and degradation of the cell.
+solid particles enable the \gls{bms} to regulate  power flow into and out of the
+cell to proactively avoid plating and degradation of the cell.
 
 In view of this consideration, model  order reduction techniques are seen as key
 enablers that facilitate in porting the first-principles based predictive powers
