@@ -159,7 +159,7 @@ tlmgr install   \
     pdfpages \
     pdfx \
     pgf \
-    pgfornaments \
+    pgfornament \
     pgfplots \
     placeins \
     plex \
