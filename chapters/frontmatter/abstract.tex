@@ -33,46 +33,46 @@ electrochemical  model in  conjunction with  judiciously chosen  exit conditions
 help  to inform  the  number of  layers  needed to  maximise  the cell's  usable
 capacity  whilst  simultaneously  satisfying  the  power  requirements  of  fast
 charging.  The \gls{p2d}  model is  reformulated to  accord it  with the  innate
-ability  to directly  accept power  inputs. The  model-led optimal  layer design
-procedure thus  developed is  plating-aware, extending  the lifetime  of battery
-packs whilst helping to bypass expensive empirical prototyping.
+ability to  accept power  inputs. The model-led  optimal layer  design procedure
+thus developed  is plating-aware, facilitating  the extension of  pack lifetimes
+whilst helping to bypass expensive empirical prototyping.
 
 Owing to its simplicity, the \gls{spm} family of models is deemed to be the most
 promising  \gls{rom} candidate  that  can usher  in the  use  of \glspl{pbm}  in
 electric vehicles.  An in-depth  analysis of the  \gls{spm} reveals  an inherent
 mismatch  between  the accuracies  of  its  voltage and  \gls{soc}  predictions,
 thereby rendering it unsuitable as the  plant model in state-estimation tasks. A
-comprehensive evaluation of the electrolyte-enhanced \glspl{spm} from literature
-reveals  that most  solutions are  either mathematically  intractable or  overly
-simplistic.  For  the  ionic  concentration  in  the  electrolyte,  analysis  of
-the  quadratic  approximation  model,   which  straddles  the  boundary  between
-computational complexity  and mathematical tractability reveals  a poor temporal
-performance, particularly at the  current collector interfaces whilst delivering
-acceptable  levels  of accuracy  in  its  spatial  profile. Application  of  the
-\gls{mggp} technique  exposes that the  causal factor for its  mediocre temporal
-performance  is the  issue of  equation deficiency  of the  underlying \gls{p2d}
-model.
+comprehensive evaluation  of the  salient electrolyte-enhanced  \glspl{spm} from
+literature reveals that most solutions  are either mathematically intractable or
+overly  simplistic. For  the ionic  concentration in  the electrolyte,  analysis
+of  the quadratic  approximation  model, which  straddles  the boundary  between
+computational complexity and mathematical  tractability, reveals a poor temporal
+performance particularly  at the  current collector  interfaces. However,  it is
+capable of  delivering acceptable  levels of accuracy  in computing  the spatial
+profile of ionic concentration. Application  of the \gls{mggp} technique exposes
+that the  causal factor for this  mediocre temporal performance is  the equation
+deficiency of the underlying \gls{p2d} model.
 
 From an implementation perspective, the discrete-time formulation of \glspl{spm}
 is presented  by using the matrix  exponential approach and its  advantages over
 its continuous-time counterparts enumerated.  Despite its inherent shortcomings,
 it  is  deemed  that  operating  within the  confines  of  the  well-established
-foundations  of the  \gls{p2d}  dynamics represents  a  definitive step  forward
-in  bringing the  goal  of  embedding a  \gls{pbm}  into  a vehicular  \gls{bms}
-closer to  fruition. Therefore,  the existing  quadratic approximation  model is
-retained for the electrolyte spatial  concentration, whilst advocating the novel
+foundations of  the \gls{p2d} dynamics  represents a definitive step  forward in
+bringing  into fruition  the goal  of incorporating  \glspl{pbm} into  vehicular
+\glspl{bms}. Therefore,  the existing quadratic approximation  model is retained
+for  the   electrolyte  spatial  concentration,  whilst   advocating  the  novel
 application  of  a  system  identification method  for  its  temporal  dynamics.
 After  establishing  linearity  and  time-invariance  of  the  subsystems  under
 consideration, discrete-time transfer functions of  the number of moles per unit
 area of  lithium ions in each  electrode region is identified  for the pertinent
 range of applied  currents. The identified transfer functions  are then employed
 in a  composite \gls{spm} which  demonstrates superior accuracy compared  to the
-incumbent state of the  art electrolyte-enhanced \gls{spm} thereby demonstrating
+incumbent state of the art electrolyte-enhanced \gls{spm}, thereby demonstrating
 a  substantial accomplishment  from  an implementation  viewpoint. Although  the
-advancements  herein  are  reported  for an  isothermal  implementation  of  the
-models, future enhancements  in the form of thermally  coupled model derivations
-is  advocated. Finally,  the  importance of  parametrisation  of the  underlying
-\gls{pbm} is acknowledged as a crucial task which needs the collective effort of
+advancements herein are reported for an isothermal implementation of the models,
+future  enhancement through  thermally coupled  model derivations  is advocated.
+Finally,  the  importance of  parametrisation  of  the underlying  \gls{pbm}  is
+acknowledged as a  crucial unsolved aspect which needs the  collective effort of
 the battery research community.
 
 
