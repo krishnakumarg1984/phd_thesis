@@ -53,7 +53,7 @@ have  gained  traction  since the  publication  of  Jokar~\etal~\cite{Jokar2016}
 and  Fan~\etal~\cite{Fan2015}. Hence,  the specialised  review of  reduced order
 modelling  literature covered  in this  section  intends to  supplement ---  not
 supplant --- the breadth of research covered between these works. In particular,
-care has been taken to minimize repetition of background art already analysed in
+care has been taken to minimise repetition of background art already analysed in
 these aforementioned review  articles, thereby striving to report  the subset of
 prior research  that is  pertinent to illustrate  the new  classification scheme
 introduced  here.  The  author  does  not  aim  to  adhere  to  a  chronological
@@ -118,7 +118,7 @@ Padé  models  are  typically  limited  to offline  applications  owing  to  the
 aggressive  trade-offs required  in its  approximation order  so as  to maintain
 high  accuracies.  Those  models  truncated  to very  low  Padé  order  exhibit
 poor  fidelity  and   perform  no  better  than   classical  equivalent  circuit
-models,  although  recent  research  attempts have  focussed  to  mitigate  this
+models,  although  recent  research  attempts have  focused  to  mitigate  this
 drawback~\cite{Yuan2017a,Yuan2017}.
 % \fxnote{Should I  discuss how  they mitigated this?}
 
@@ -235,7 +235,7 @@ demonstrated  their high  accuracies relative  to a  benchmark \gls{dfn}  model.
 In  Lee~\etal~\cite{Lee2012,Lee2012a}, the  cell  voltage  was computed  through
 linear  combinations of  these  time-domain variables  with suitable  non-linear
 corrections. Yet another advantage of this model order reduction process is that
-the method does not involve any  form of non-linear optimization that is typical
+the method does not involve any  form of non-linear optimisation that is typical
 of other order reduction schemes that attempt a top-down approach of simplifying
 the \gls{pbm} equations. In  particular, the \gls{dra} scheme provides
 a deterministic method for selection of the order of the simplified model, which
@@ -275,7 +275,7 @@ facilitating  state  estimator  and  controller designs,  it  is  convenient  to
 implement the resultant  state-space model in a  classical numerical computation
 environment   such  as   \textsc{MATLAB}.  Taking   these  into   consideration,
 Rodriguez~\etal{}~\cite{Rodriguez2017}  introduced a  simplified computation  of
-the  electrolyte  concentration  transfer  function  by  applying  the  gls{vop}
+the  electrolyte  concentration  transfer  function  by  applying  the  \gls{vop}
 scheme.  With  this  final  improvement,  the  hybrid  \gls{rom}  implementation
 originally envisaged by Lee~\etal{} can  be considered feature-complete with low
 computational  requirements  during  both model  derivation  and  implementation
@@ -442,7 +442,7 @@ to  reformulate the  original  \gls{p2d}  model equations  towards  the goal  of
 simplifying  them to  as much  extent  as possible.  In contrast  to the  hybrid
 models, all tasks involved in both model derivation and final implementation are
 carried out  entirely within the time  domain. While a subset  of prior research
-has  focussed  only  on  simplifying  certain aspects  of  the  cell's  dynamics
+has  focused  only  on  simplifying  certain aspects  of  the  cell's  dynamics
 \eg~diffusion  in  the two  electrodes,  other  published  works have  aimed  at
 providing a  simplified description of  the time domain evolution  of \emph{all}
 physical quantities of  the cell. An evaluation of the  salient literature based
@@ -705,8 +705,8 @@ porous  electrodes  for the  metal  hydride  cell  chemistry. In  the  aforesaid
 article,  each   porous  electrode  was   represented  as  a   single  spherical
 particle.  This concept  was  adopted  for lithium  ion  batteries  by Ning  and
 Popov~\cite{Ning2004} and has since become  quite popular. Models employing this
-lumped  representation  of  electrodes  are  referred  to  as  \glsfmtlong{spm}s
-(\gls{spm}s).  These  models have  three  advantages.  Since they  involve  only
+lumped  representation  of  electrodes  are referred  to  as  \glsfmtlongpl{spm}
+(\glspl{spm}).  These models  have  three advantages.  Since  they involve  only
 a  subset  of  parameters  of  the   original  \gls{dfn}  model,  most  of  them
 being  geometric quantities  that  can be  directly  measured without  extensive
 chemical  or electrical  testing,  \glspl{spm} are  easier  to parametrise  than

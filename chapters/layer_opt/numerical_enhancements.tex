@@ -58,7 +58,7 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
         The  focus of  this chapter  is to  provide a  ready-to-use solution  to
         industry  that  improves  upon  the present  empirical  designs  through
         optimal  layer   configuration  of  pouch   cells.  There  is   a  clear
-        motivation  to  further  increase  cell capacities  so  as  to  maximize
+        motivation  to  further  increase  cell capacities  so  as  to  maximise
         the  \gls{aer}, as  laid  out  in the  beginning  of  this chapter  (see
         \cref{sec:layeroptintro}).
 
@@ -445,10 +445,10 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     With full-order solid phase diffusion dynamics, applying the \gls{fv} scheme
     (that has been employed in LIONSIMBA~v1.0x (see \cref{sec:platformlionsimba}
     for   a  discussion   of  this   modelling  platform)   to  discretise   all
-    through-thickness \gls{pde}s of the \gls{p2d} model) results in a very large
+    through-thickness \glspl{pde} of the \gls{p2d} model) results in a very large
     system of equations. This  is due to the requirement of  using a high radial
     node density per spherical particle for improved accuracy. Consequently, the
-    computational cost is  high and simulation runtime  becomes prohibitive when
+    computational cost is  high and simulation run-time  becomes prohibitive when
     exploring the search  space of all possible  layer configurations. Moreover,
     with a cell-centered \gls{fv} discretisation,  it is non-trivial to directly
     apply  the ionic  flux boundary  condition  at the  particle surface,  since
@@ -529,7 +529,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     as  usual,  but  instead  evaluated  by  pre-multiplying  the  concentration
     values  at the  collocation  nodes by  a  Chebyshev differentiation  matrix.
     This  particular  aspect  is  responsible  for  the  inherent  reduction  of
-    simulation  runtime  achieved  by  introducing a  spectral  method.  In  the
+    simulation  run-time  achieved  by  introducing a  spectral  method.  In  the
     updated  version  of LIONSIMBA~v2.0  (created  specifically  for this  layer
     optimisation work; see \cref{sec:platformlionsimba}  for a brief overview of
     the  modelling platform),  differentiation matrices  of suitable  dimensions

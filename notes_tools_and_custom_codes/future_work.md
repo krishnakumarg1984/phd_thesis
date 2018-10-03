@@ -1,4 +1,3 @@
-- word repetition in source files
 - widow/orphan check
 - spellcheck pdf
 - Enable all linter tools and check everything

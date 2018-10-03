@@ -32,7 +32,7 @@ symbolic data  mining and is ideally  suited for such symbolic  regression tasks
 coefficients to a  pre-assumed curve as in classical numerical  regression, to a
 given data).
 
-In employing the \gls{mggp} approach, it  is important to recognize that the key
+In employing the \gls{mggp} approach, it  is important to recognise that the key
 criteria that restricts
 \begin{enumerate*}[label=\emph{\alph*})]
     \item the choice of  gene-sequence depth, as well as
@@ -64,7 +64,7 @@ within the  electrode regions \ie~${n_{\text{c,elec}}  \ge 2}$. There  exists an
 inhibiting  factor that  prevents  the  use of  a  lower  order function  within
 the  separator. As  per  the  simulation results  of  the  \gls{p2d} model,  the
 time-domain  change  of number  of  moles  per  square  meter in  the  separator
-is  non-zero.  Since  the  time-derivate   of  a  linear  approximation  applied
+is  non-zero.  Since  the  time-derivative   of  a  linear  approximation  applied
 to  \cref{eq:sepliionmolesquadratic} is  zero,  this  straight-line equation  is
 immediately ruled out. Among the  non-polynomial mathematical curves tried (such
 as trigonometric, hyperbolic, power series  among others), none could obtain the
@@ -92,7 +92,7 @@ concentration behaviour was  sought for. However, the constraints  in the number
 of coefficients that  can be employed results  in a restriction of  the depth of
 gene  mutations as  well  as the  number of  parent/seed  populations. The  best
 equation set  (without strictly  enforcing the aforementioned  hard constraints,
-yet  minimizing  the  distance  to  the constraint  vector)  that  the  symbolic
+yet  minimising  the  distance  to  the constraint  vector)  that  the  symbolic
 regression approach yielded was
 \begin{alignat}{2}
     c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0 \le z \le l_\text{n} \label{eq:cnstrviolneg} \\
@@ -102,7 +102,7 @@ regression approach yielded was
 
 Although \crefrange{eq:cnstrviolneg}{eq:cnstrviolpos}  fit   the  transient  and
 \gls{qss}  profiles  well,  they  violate   the  constraint  on  the  number  of
-coefficients  available resulting  in  an underdetermined  system of  equations.
+coefficients  available resulting  in  an under-determined  system of  equations.
 Both  the least-squares  and  least-norm  solution of  this  system were  tried.
 However, the  results were inferior to  that produced by the  baseline quadratic
 approximation method.
