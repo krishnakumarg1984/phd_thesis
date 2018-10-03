@@ -14,10 +14,14 @@
 
 \newpage\null\thispagestyle{plain}\newpage
 \input{chapters/frontmatter/originality_copyright.tex}
+\cleardoublepage
+\input{chapters/frontmatter/dedication.tex}
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 \input{chapters/frontmatter/abstract.tex}
-\input{chapters/frontmatter/dedication.tex}
+\cleardoublepage
 \includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{project_outputs.pdf}
+% \includepdf[pages=-, pagecommand={\thispagestyle{plain}}]{dedication_new.pdf}
+\cleardoublepage
 
 %: ----------------------- table of contents ------------------------
 \renewcommand{\baselinestretch}{0.3}\normalsize
