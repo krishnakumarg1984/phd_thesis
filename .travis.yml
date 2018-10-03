@@ -7,9 +7,9 @@ notifications:
     on_success: never
 cache:
   directories:
-  - "/tmp/texlive"
-  - "$HOME/.texlive"
-  - "$HOME/.cache/pip"
+  # - "/tmp/texlive"
+  # - "$HOME/.texlive"
+  # - "$HOME/.cache/pip"
 script:
 - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
 - cp icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc /tmp/texlive/texmf-dist/tex/latex/pdfx/

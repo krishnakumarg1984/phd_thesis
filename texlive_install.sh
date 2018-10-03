@@ -159,6 +159,7 @@ tlmgr install   \
     pdfpages \
     pdfx \
     pgf \
+    pgfornaments \
     pgfplots \
     placeins \
     plex \
@@ -169,6 +170,7 @@ tlmgr install   \
     relsize \
     selnolig \
     setspace \
+    shapepar \
     silence \
     siunitx \
     stackengine \
