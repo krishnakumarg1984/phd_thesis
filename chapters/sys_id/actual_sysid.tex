@@ -478,17 +478,16 @@ time-evolution in these regions.
 
 \subsection{Numerical implementation of identified transfer functions}\label{subsec:sysidnumericalimpl}
 
-The  concept of  deploying a  Z-domain  transfer function  may seem  incongruous
-to   the  one   of  the   major  goals   of  this   thesis  \viz~time-domain
-implementation of  \glspl{rom} in an  embedded environment such as  a \gls{bms}.
-While  the  majority of  the  models  is  derived  and implemented  entirely  in
-time-domain, only  the two  time-evolution subsystems  of the  electrolyte seems
-to  deviate  from   this  trajectory.  However,  an  explanation   for  this  is
-provided in \cref{subsec:suitablesysid}.  In particular,  it was  mentioned that
-an  approximation-free  conversion to  time-domain  from  Z-domain exists,  that
-mitigates this  perceived drawback  for these  two sub-systems.  This conversion
-conversion  is  amenable  for  discrete-time implementation  without  any  other
-modifications.
+The concept  of deploying a Z-domain  transfer function may seem  incongruous to
+the  one of  the  major  goals of  this  thesis \viz~time-domain  implementation
+of  \glspl{rom} in  an  embedded  environment such  as  a  \gls{bms}. While  the
+majority  of the  models is  derived  and implemented  entirely in  time-domain,
+only  the two  time-evolution subsystems  of  the electrolyte  seems to  deviate
+from  this  trajectory.  However,  an   explanation  for  this  is  provided  in
+\cref{subsec:suitablesysid}.   In  particular,   it   was   mentioned  that   an
+approximation-free  conversion   to  time-domain  from  Z-domain   exists,  that
+mitigates this perceived drawback for  these two sub-systems. This conversion is
+amenable for discrete-time implementation without any other modifications.
 
 Starting from the generic structure of the identified transfer functions (see \cref{eq:outputwithsysonly}),
 
