@@ -266,22 +266,22 @@ Doyle,  Fuller and  Newman~\cite{Doyle1993,Fuller1994}  developed an  isothermal
 physics-based  porous electrode  model of  the  cell capable  of describing  its
 internal variables such as
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
-    \item potential on the solid particles,
-    \item potential in the electrolyte solution,
-    \item concentration of \ch{Li^0} in the solid particles,
-    \item ionic concentration in the electrolyte solution, and
-    \item molar flux density of lithium at the solid-electrolyte boundary.
+    \item potential on the solid particles~$\phi_\text{s}$,
+    \item potential in the electrolyte solution~$\phi_\text{e}$,
+    \item concentration of \ch{Li^0} in the solid particles~$\c_\text{s}$,
+    \item ionic concentration in the electrolyte solution~$\c_\text{e}$, and
+    \item molar flux density of lithium at the solid-electrolyte boundary~$j$.
 \end{enumerate*}
 The most popular computational implementation  of the \gls{dfn} equations is the
-\gls{p2d} model.  In the  \gls{p2d} implementation, all  field variables  of the
-\gls{dfn} model are  computed at each spatial location  along the axial
-thickness of the  cell. However, the solid concentration  in spherical electrode
-particles is solved in a radial  co-ordinate system that is perpendicular to the
-axial direction. The axial and radial  dimensions are coupled at each particle's
-surface through  the molar flux  density describing  the rate of  pore-wall flux
-that  crosses from  solid  into  electrolyte or  vice-versa.  The equations  and
-boundary conditions for  the \gls{p2d} implementation of the  \gls{dfn} model is
-shown in \cref{tbl:dfneqns}.
+\gls{p2d}  model~\cite{Plett2015}. In  the \gls{p2d}  implementation, all  field
+variables  of  the  \gls{dfn}  model  are  computed  at  each  spatial  location
+along  the axial  thickness of  the cell.  However, the  solid concentration  in
+spherical electrode particles  is solved in a radial co-ordinate  system that is
+perpendicular to  the axial  direction of  the cell's  thickness. The  axial and
+radial dimensions are coupled at each  particle's surface through the molar flux
+density  describing the  rate of  pore-wall flux  that crosses  from solid  into
+electrolyte  or  vice-versa.  The  equations and  boundary  conditions  for  the
+\gls{p2d} implementation of the \gls{dfn} model is shown in \cref{tbl:dfneqns}.
 
 \input{chapters/introduction/dfn_equation_table}
 
@@ -301,24 +301,46 @@ sparsity of  such detailed analysis  of \glspl{rom} in existing  literature (see
 \cref{ch:littreview}),  the  author  of  this  thesis  considers  that  such  an
 analysis, albeit isothermal, is  the need of the hour and  is imperative to gain
 a  deeper  understanding  of  the  performance  boundaries  of  various  popular
-\glspl{rom}.  Further  extensions to  the  analysis  presented here  to  include
-various thermal effects can be considered for future research.
+\glspl{rom}.
+
+% Further  extensions to  the  analysis  presented here  to  include various thermal effects can be considered for future research.
 
 Since temperature  plays a crucial  role in the  operation of cells  and battery
 packs in \glspl{xeV},  an isothermal model is unsuitable for  design purposes. A
 model-based design that does not consider thermal effects is likely to stray far
-from the operating regimen and fail  spectacularly. Hence, it is not suitable to
-use an  isothermal cell model  for informing the design  of cells. On  the other
-hand, considering a  sophisticated thermally coupled model is  unlikely to yield
-significant gains. Firstly, running  fully coupled electrochemical-thermal model
-based simulations  over the  entire design  space is  computationally expensive.
-Secondly,  the design  results of  the model  have to  be anyway  verified using
-a  reasonable  number of  experimental  prototypes.  Taking into  account  these
-considerations it is deemed that, for the design aspect of this thesis, a lumped
-thermal model suffices. This simplified thermal model is bidirectionally coupled
-to the \gls{p2d} equations (see \cref{tbl:dfneqns}) of the electrochemical model
-and  is used  as the  \gls{pbm}  underpinning the  model-based design  discussed
-in \cref{ch:modelbaseddesign}.
+from the operating regimen and fail  spectacularly. On the other hand, including
+a sophisticated thermally coupled model  is unlikely to yield significant gains.
+Firstly, running  fully coupled electrochemical-thermal model  based simulations
+over the entire design space  is computationally expensive. Secondly, the design
+results  of the  model have  to  be anyway  verified using  a reasonable  number
+of  experimental prototypes.  Taking  into account  these  considerations it  is
+deemed  that, for  the design  aspect  of this  thesis, a  lumped thermal  model
+suffices.  This  simplified thermal  model  is  bidirectionally coupled  to  the
+\gls{p2d} equations  (see \cref{tbl:dfneqns})  of the electrochemical  model and
+is  used as  the  \gls{pbm}  underpinning the  model-based  design discussed  in
+\cref{ch:modelbaseddesign}.
+
+The rest of the thesis is organised as follows. \Cref{ch:littreview} presents an
+overview of pertinent modelling art.  The literature on model-based design shall
+be  evaluated  here and  the  present  shortcomings  identified. The  survey  of
+literature  also  considers the  advancements  in  the  field of  reduced  order
+modelling from  their analysis and implementation  perspectives. A computational
+framework  for  optimising the  number  of  layers  within an  automotive  pouch
+cell  is  presented  in  \cref{ch:modelbaseddesign}.  In  \cref{ch:improveddra},
+the  computational   bottlenecks  in   a  specific  \gls{rom}   method  \viz~the
+\gls{dra} is  analysed in  detail and  an improved  alternative is  proposed. In
+\Cref{ch:spmanalysis},  the simplest  time-domain  \gls{pbm},  the \gls{spm}  is
+introduced and  its performance  is analysed. Salient  advancements made  to the
+basic \gls{spm} in the literature  are presented and their shortcoming analysed.
+A discrete-time formulation focusing on  the numerical implementation aspects is
+also  presented. In  \cref{ch:newelectrolytemodel},  the causal  factor for  the
+lacklustre performance of  a state of the art  electrolyte-enhanced \gls{spm} is
+unearthed. \Cref{ch:newelectrolytemodel}  also proposes a new  electrolyte model
+which represents a novel application  of the system identification technique and
+the  superior performance  of  this composite  model  is demonstrated.  Finally,
+\cref{ch:conclusions} highlights the salient conclusions  that can be drawn from
+the findings presented in  this thesis and paves the way  for future research by
+identifying key unsolved tasks in physics-based battery modelling.
 
 % need a symbol Nomenclature
 
