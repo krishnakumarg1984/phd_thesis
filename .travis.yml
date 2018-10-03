@@ -15,9 +15,9 @@ script:
 - cp icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc /tmp/texlive/texmf-dist/tex/latex/pdfx/
 - texhash
 # - latexmk -f --shell-escape --bibtex -pdf -interaction=nonstopmode -halt-on-error main.tex # force making the pdf
-- latexmk -f --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex # force making the pdf
+# - latexmk -f --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex # force making the pdf
 # - latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex
-# - latexmk -f --shell-escape --bibtex -pdf main.tex # debug purposes (be verbose)
+- latexmk -f --shell-escape --bibtex -pdf main.tex # debug purposes (be verbose)
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/main-latest.pdf"
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/historic_versions/main-${TRAVIS_COMMIT}.pdf"
 before_install:
