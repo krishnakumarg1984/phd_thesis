@@ -47,15 +47,15 @@ shall be  mandatory to have  a deeper understanding  of the simulation  tools in
 order  to successfully  employ a  model-led  design, this  can trigger  sweeping
 changes percolating  into the  very core  of the  problem-solving culture  in an
 organisation. Although relatively  at its infancy when it comes  to cell design,
-model-based designs have been applied at  the battery pack-level in the past and
+model-based designs have been applied at the battery pack-level in the past, and
 is therefore not a newcomer to the battery industry in general. In the middle of
-the last  decade, a clarion  call to the industry  to adopt simulation  tools in
+the  last decade,  a clarion  call  for industry  to adopt  simulation tools  in
 battery  engineering was  issued  by Spotnitz~\cite{Spotnitz2005}.  In the  said
 article,  the author  questioned  the anachronistic  industry  trend of  relying
 heavily on `making and testing' rather than aiming to understand the fundamental
 governing equations  and principles  of a  battery and  using this  know-how for
 design. Spotnitz~\cite{Spotnitz2005}  further argues  that using  \glspl{pbm} of
-batteries could provide  reliable understanding of their behaviour,  and that as
+batteries could provide  reliable understanding of their behaviour  and that, as
 the  understanding of  the  community steadily  grows, it  could  bring about  a
 significant speed-up of battery development.
 
@@ -71,34 +71,34 @@ Among  the published  set of  literature, there  is evidence  that computational
 modelling  has  been   successfully  used  to  facilitate   the  development  of
 novel   energy   storage   materials.   The  review   article   by   Islam   and
 Fisher~\cite{Islam2014} provides an  overview of the use  of computer simulation
-into  gaining  a  deeper insight  into  the  working  of  new types  of  cathode
-materials. Meng  and Arroyo-de~Domp~\cite{Meng2009}  also surveyed the  topic of
-using  computational tools  for the  design and  optimisation of  energy storage
-materials. The  computer models  referred to  in these  review articles  are not
-volume-averaged  models  operating at  the  cell-level,  but detailed  ab-initio
-models  constructed using  techniques such  as Density  Functional Theory~(DFT).
-While  it is  heartening  to  see such  comprehensive  studies of  computational
-techniques being applied  to energy storage, there are two  distinct reasons why
-the body of  research reviewed in the aforementioned articles  do not align with
-the goals of  this thesis. Firstly, in the works  reviewed in the aforementioned
-articles, computer simulation is used  primarily to enhance researchers' current
-understanding of these materials that can help to develop the next generation of
-energy  storage  components. The  computational  methods  presented therein  are
-\emph{not}  directly employed  as  design tools.  Secondly,  these articles  use
-computational  modelling to  study structural  properties at  the meso  and nano
-scales.  While  these  are  of  utmost importance  to  researchers  involved  in
-synthesising prototypes of next generation of energy storage materials, they are
-less relevant for production-ready cell-designs  at scale. Since this thesis has
-a  strong  focus on  providing  readily  applicable  solutions to  industry  for
-incumbent lithium  ion chemistries,  it was  decided not  to pursue  the methods
-discussed in the aforementioned works for the design studies discussed herein.
+to gain  a deeper insight  into the working of  new types of  cathode materials.
+Meng  and  Arroyo-de~Domp~\cite{Meng2009}  also  surveyed  the  topic  of  using
+computational tools for the design and optimisation of energy storage materials.
+The computer models referred to in these review articles are not volume-averaged
+models operating  at the cell-level,  but detailed ab-initio  models constructed
+using techniques such as Density Functional Theory~(DFT). While it is heartening
+to see such  comprehensive studies of computational techniques  being applied to
+energy storage, there are two distinct reasons why the body of research reviewed
+in  the aforementioned  articles do  not align  with the  goals of  this thesis.
+Firstly,  in  the  works  reviewed  in  the  aforementioned  articles,  computer
+simulation is  used primarily to  enhance researchers' current  understanding of
+these materials that  can help to develop the next  generation of energy storage
+components. The computational methods  presented therein are \emph{not} directly
+employed as design  tools. Secondly, these articles  use computational modelling
+to study  structural properties  at the  meso and nano  scales. While  these are
+of  utmost importance  to  researchers involved  in  synthesising prototypes  of
+next  generation  of  energy  storage  materials, they  are  less  relevant  for
+production-ready cell-designs at scale. Since this  thesis has a strong focus on
+providing readily  applicable solutions  to industry  for incumbent  lithium ion
+chemistries,  it  was  decided  not  to pursue  the  methods  discussed  in  the
+aforementioned works for the design studies discussed herein.
 
 A      holistic      computational      screening     was      performed      by
 Sendek~\etal~\cite{Sendek2017}  to  study  the  suitability  of  12831~candidate
 materials for their  suitability as solid state  electrolytes in electrochemical
 cells. These  authors cite the  same rationale  of this thesis  author \ie~rapid
-prototyping, as the  motivation behind this model-based  design simulations. The
-study  helped to  narrow the  initial candidate  pool down  to 21~viable  family
+prototyping, as the motivation behind  their model-based design simulations. The
+study helped to  prune the initial candidate pool down  to just 21~viable family
 structures. This effort  serves as a concrete example in  this literature survey
 wherein computer simulation is directly used  as a design tool for components of
 a lithium  ion cell. The  scope of  the aforesaid work  falls into the  realm of
@@ -110,9 +110,9 @@ materials, the framework presented in \cref{ch:modelbaseddesign} computationally
 screens out thousands of layer configurations within a pouch cell.
 
 Curiously,  the  use  of  volume-averaged   models  for  design  simulations  of
-\glspl{pbm} at  the cell-scale has not  yet gained sufficient traction.  This is
-despite the prevalence of the  popular \gls{p2d} implementation of the \gls{dfn}
-model that  in applications such  as degradation analysis  and state-estimation.
+\glspl{pbm}  at the  cell-scale has  not  yet gained  sufficient traction.  This
+is  despite  the prevalence  of  the  popular  \gls{p2d} implementation  of  the
+\gls{dfn}  model in  areas such  as degradation  analysis and  state-estimation.
 Ramadesigan~\etal~\cite{Ramadesigan2012} postulate  that this slow  uptake could
 be attributed to the computational challenges presented by the complex reaction,
 diffusion and kinetics of lithium ion  cells occurring over different length and
@@ -121,34 +121,34 @@ have nevertheless been reported in literature, which are examined next.
 
 \subsection{State of the art in cell-scale model-led design optimisations}
 
-The pioneering  work by Newman~\cite{Newman1995}  was the  first of its  kind to
-develop a scheme to optimise cell  design based on an electrochemical model. The
-two parameters optimised  were electrode thicknesses and  porosities. This study
-makes the assumption that electrode kinetics are fast relative to diffusion, and
-furthermore ignores local concentration  gradients. A reaction-zone model, which
-considers that  reactions occur  in a  narrowly confined area,  was used  as the
-underlying  model. The  separator  thickness was  assumed to  be  fixed and  the
-specific energy of the cell was  maximised. However, the aforesaid work does not
-impose any constraints  on the extent of  specific power that can  be drawn from
-the cell. Nevertheless,  this seminal effort provided the key  guidance to other
-researchers that electrode  thicknesses and porosities can be  considered as the
-critical design  variables to be optimised  for in a cell  design. Building upon
-the foundation  laid by the aforementioned  study, a few other  model-led design
-efforts have  been published. However,  in order  to provide a  focused review,
-only a  subset of  the prior art  that is deemed  pertinent for  the model-based
-design of  \emph{pouch} cells  for \emph{automotive} applications  is considered
-here.
+The  pioneering work  by  Newman~\cite{Newman1995}  was the  first  of its  kind
+to  develop  a scheme  to  optimise  cell  design  based on  an  electrochemical
+model. The two  parameters optimised were electrode  thicknesses and porosities.
+The  aforesaid study  makes  the  assumption that  electrode  kinetics are  fast
+relative to diffusion, and furthermore  ignores local concentration gradients. A
+reaction-zone model, which considers that reactions occur in a narrowly confined
+area, was used  as the underlying model. The separator  thickness was assumed to
+be  fixed and  the  specific energy  of  the cell  was  maximised. However,  the
+aforesaid work does  not impose any constraints on the  extent of specific power
+that can be drawn from the  cell. Nevertheless, this seminal effort provided the
+key guidance to other researchers  that electrode thicknesses and porosities can
+be considered  as the critical  design variables to be  optimised for in  a cell
+design. Building  upon the foundation  laid by  the aforementioned study,  a few
+other model-led design efforts have been published. However, in order to provide
+a focused review,  only a subset of  the prior art that is  deemed pertinent for
+the model-based design of  \emph{pouch} cells for \emph{automotive} applications
+is considered here.
 
 Arora~\etal~\cite{Arora1999}  used an  electrochemical  model  to inform  design
 decisions on cell parameters such as particle size, electrode thickness and mass
 ratio. Furthermore, the model thus obtained was used to optimise the cell design
 against the  risk of lithium  plating. Cells  are susceptible to  plating during
-fast charging and hence a key aspect to consider in the cell design for electric
-vehicles. This  thesis author considers  this contribution  to be a  vanguard in
-model-based  design  for cells  that  is  potentially applicable  for  vehicular
-applications. Nevertheless, the aspect of stacking layers inside pouch cells and
-how this influences the optimisation  of the aforementioned design variables has
-not been studied.
+fast charging and  hence, this is a  key aspect to consider in  their design for
+electric  vehicles. This  thesis  author  considers this  contribution  to be  a
+vanguard  in model-based  design for  cells that  is potentially  applicable for
+vehicular applications. Nevertheless, the aspect of stacking layers inside pouch
+cells  and how  this influences  the optimisation  of the  aforementioned design
+variables has not been studied.
 
 Xue~\etal~\cite{Xue2013}  presented a  simulation based  design study  wherein a
 cell design  was optimised using  a gradient-based algorithm.  Specifically, the
@@ -170,17 +170,19 @@ of  a  model-led  design  attempt  performed  in  the  backdrop  of  electrified
 transportation.  In  the  said  work, an  electrochemical  cell  model  \viz~the
 \gls{p2d} model was successfully adapted to perform the design optimisation of a
 \gls{phev}. Although the underlying model operates at the cell-scale, this study
-considers  a pack-level  optimisation through  a series-parallel  combination of
-cells. Furthermore,  an advanced  numerical algorithm  in the  form of  a hybrid
-solver  was  used which  used  a  unique  scheme  of employing  a  gradient-free
-optimiser  in conjunction  with a  gradient-based optimiser.  Albeit a  standout
-example  in the  context  of  vehicular application,  the  aforesaid work  falls
-slightly outside the  scope of this thesis wherein the  design study is strictly
-confined to  be at the  cell level. The  aforementioned work takes  into account
-pack-level constraints such as safety limits as well as energy and power levels.
-Furthermore,  these authors  even accounted  for important  details such  as the
-presence of layers within each cell in their design optimisation process.
+considers  a  pack-level  optimisation  through  a  series-parallel  combination
+of  cells.  Furthermore, an  advanced  numerical  algorithm  in  the form  of  a
+hybrid  solver was  used. This  solver adopted  a unique  scheme of  employing a
+gradient-free optimiser in conjunction with a gradient-based optimiser. Albeit a
+standout example  in the  context of vehicular  application, the  aforesaid work
+falls slightly  outside the  scope of  this thesis wherein  the design  study is
+strictly confined  to be at  the cell level.
 
+
+The  article  by Xue~\etal~\cite{Xue2014a}  does  take  into account  pack-level
+constraints  such  as  safety  limits  as  well  as  energy  and  power  levels.
+Furthermore,  these authors  even accounted  for important  details such  as the
+presence  of layers  within  each  cell in  their  design optimisation  process.
 The  system-level   constraints  considered  in   Xue~\etal~\cite{Xue2014}  were
 instrumental  in  informing  the  choice  of constraints  in  the  design  study
 presented in \cref{ch:modelbaseddesign}. However, in the aforementioned article,
@@ -198,18 +200,17 @@ are non-negligible.
 
 A critical issue in the approach  by Xue~\etal~\cite{Xue2014} is that the number
 of design variables were excessively large which necessitated the use of complex
-numerical  algorithms.  The  said  work  assumes  that  the  cell  design  shall
-be  an  integral  part  of  the  pack  optimisation.  However,  in  this  thesis
-author's  understanding,  it  appears  that in  real-world  designs,  cells  are
+numerical  algorithms. The  said  work  assumes that  cell  design  shall be  an
+integral part  of pack optimisation.  However, in real-world designs,  cells are
 sourced from a  specialised manufacturer. Furthermore, these  cells are designed
 independently to merely  adhere to certain specifications~\cite{Maksimovic2012}.
 Pack configuration  decisions such  as the choice  of number  of series-parallel
 modules in  the vehicular pack are  undertaken at a system  level in conjunction
 with the  rest of the  drivetrain specifications by vehicle  manufacturers. This
-natural separation of the real-world paradigm  helps to decouple the cell design
-from  the pack  design thereby  drastically reducing  the number  of degrees  of
-freedom and simplifying  the optimisation task. This is a  key assumption in the
-design optimisation study presented in \cref{ch:modelbaseddesign}.
+natural separation  paradigm helps  to decouple  the cell  design from  the pack
+design  thereby  drastically reducing  the  number  of  degrees of  freedom  and
+simplifying  the optimisation  task.  This is  a key  assumption  in the  design
+optimisation study presented in \cref{ch:modelbaseddesign}.
 
 A  comprehensive multi-objective  optimisation for  optimal design  of batteries
 was  recently  proposed  by  Changhong  Liu  and~Lin  Liu~\cite{Liu2017b}.  This
@@ -234,7 +235,7 @@ long-term research perspective and merits attention by researchers interested in
 model-based design.
 
 From the  body of the  relevant literature surveyed here,  it is clear  that the
-issue of optimally  stacking up layers within  a pouch cell, has  not been dealt
+issue of  optimally stacking up  layers within a pouch  cell has not  been dealt
 with in a  systematic manner. Pouch cells  are the most common type  of cells in
 automotive  applications.  Therefore,  optimising  their design  shall  yield  a
 beneficial improvement to the overall driving range and fast charging capability
