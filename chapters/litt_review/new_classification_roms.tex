@@ -4,11 +4,11 @@
 
 \glsreset{rom}
 
-Battery modellers face the classic  conundrum of conjuring physics-based battery
-models that remain amenable for control  applications. The prior attempts by the
+Battery  modellers face  the  classic conundrum  of  conjuring \glspl{pbm}  that
+remain  amenable  for control  applications.  The  prior  attempts made  by  the
 research  community  to  tackle  this  challenge  is  examined  here.  The  term
 `control-oriented model' can  be considered synonymous with  the term \gls{rom}.
-This is due  to the fact that the inherent  complexity of \glspl{pbm} inherently
+This  is  due  to  the  fact  that  the  complexity  of  \glspl{pbm}  inherently
 necessitates the  use of  some order  reduction strategy  for their  adoption in
 control and  real-time applications. In this  thesis as well as  in the relevant
 literature discussed here, these two terms have been used interchangeably.
@@ -17,7 +17,7 @@ Research into  \glspl{rom} is  motivated by  the pressing  need for  a real-time
 model  with accuracy  properties of  full-order \glspl{pbm}  but possessing  the
 computational  simplicity of  equivalent-circuit models  (see \cref{subsec:ecms}
 and \cref{subsec:pbms}  for an overview). A  number of approaches to  reduce the
-computational complexity  of the \glspl{pbm}  have been explored  in literature.
+computational  complexity  of  \glspl{pbm}  have been  explored  in  literature.
 Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
 categories of reduced order \glspl{pbm}  for lithium ion batteries. However, the
 aforesaid  work does  not  aim  to classify  models  based on  time-vs-frequency
@@ -25,22 +25,19 @@ domains.  Fan~\etal{}~\cite{Fan2015}   conducted  a  review  of   reduced  order
 modelling  methods,  but  only  provide  a  generic  overview  of  deriving  and
 implementing models in these dual domains  without an expository analysis of the
 implications  of these  modelling choices.  Unlike Jokar~\etal~\cite{Jokar2016},
-this review  did not aim  to provide a  classification of various  reduced order
-models, but instead  emphasises on a broad survey of  relevant methodologies and
-tools  towards \emph{obtaining}  them.  Hence, neither  of  these works  provide
-an  insight  into  the  rubrics  and   implications  of  the  choice  of  either
-of  these  domains  to  underpin  the \glspl{rom}.  Although  in  principle  the
-transformation between  them is  often a straightforward  mathematical exercise,
-% \fxnote{citation(s) needed?}
-availability  of models for final  implementation in the  time domain  aids
-immediate  uptake by  industry  for  adoption in  online \glspl{bms}. The
-treatment of \gls{rom} from  this aspect is so  germane to the central
-hypothesis of  this chapter (that a simple time domain model is the key
-to large scale deployment of \glspl{pbm}),
-% \fxnote{``can a simple time  domain model do the  job?''}
-that  the author  of  this thesis  feels compelled  to undertake  a simpler
-classification  exercise of  the  existing  modelling art,  within  the context
-of their suitability for online implementation.
+Fan~\etal's review  did not aim to  provide a classification of  various reduced
+order models, but instead emphasises on a broad survey of relevant methodologies
+and tools towards  \emph{obtaining} them. Hence, neither of  these works provide
+an insight into  the rubrics and implications  of the choice of  either of these
+domains to underpin  the \glspl{rom}. Although in  principle, the transformation
+between them is  often a straightforward mathematical  exercise, availability of
+models for  final implementation  in the  time domain  aids immediate  uptake by
+industry for adoption  in online \glspl{bms}. The treatment  of \glspl{rom} from
+this aspect is  so germane to this thesis author's  central hypothesis (a simple
+time domain model is the key to large scale deployment of \glspl{pbm}), that the
+author  of this  thesis feels  compelled to  undertake a  simpler classification
+exercise of the existing modelling art,  within the context of their suitability
+for online implementation.
 
 
 In this discussion,  various modelling methodologies and  their resultant models
@@ -52,11 +49,11 @@ then  prevailing models  to obtain  an updated  view of  the modelling  art that
 have  gained  traction  since the  publication  of  Jokar~\etal~\cite{Jokar2016}
 and  Fan~\etal~\cite{Fan2015}. Hence,  the specialised  review of  reduced order
 modelling  literature covered  in this  section  intends to  supplement ---  not
-supplant --- the breadth of research covered between these works. In particular,
-care has been taken to minimise repetition of background art already analysed in
-these aforementioned review  articles, thereby striving to report  the subset of
-prior research  that is  pertinent to illustrate  the new  classification scheme
-introduced  here.  The  author  does  not  aim  to  adhere  to  a  chronological
+supplant ---  the breadth of  research covered  between the aforesaid  works. In
+particular, care has been taken to minimise repetition of background art already
+analysed in these aforementioned review articles, thereby striving to report the
+subset of prior research that is  pertinent to illustrate the new classification
+scheme introduced  here. The author  does not aim  to adhere to  a chronological
 presentation of such  background works. Instead, salient  \gls{rom} families are
 usually  introduced in  the context  of discussing  their significance  within a
 particular mathematical modelling technique.
@@ -64,7 +61,7 @@ particular mathematical modelling technique.
 
 In the views of this thesis author, physics-based control-oriented models can be
 classified as belonging to one of the following categories:
-\begin{itemize}
+\begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0pt]
     \item Frequency domain \glsfmtshort{rom}s
     \item Quasi-hybrid time/frequency domain \glsfmtshort{rom}s
     \item Hybrid \glsfmtshort{rom}s based on equivalent circuits
@@ -73,16 +70,15 @@ classified as belonging to one of the following categories:
 It is important to distinguish between those models that are derived directly in
 the time  domain versus  those that  are derived first  in the  frequency domain
 and  later  converted  to  time  domain.
-% \fxnote{enumerate  all  the  desirable characteristics and criterion upon which models are to be evaluated}
 
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
-description of physical  phenomena that is lower in  computational complexity by
-an  arbitrary magnitude  than the  original  \gls{dfn} model  can be  considered
-as  a  candidate for  further  investigation.  In  the  absence of  a  canonical
-or  quantitative definition  of  what  constitutes a  reduced  order model,  the
-number of  candidate family of  models to  consider is overwhelmingly  large. In
-practice, the  constraints and  challenges imposed  by the  scope of  this work,
+description  of physical  phenomena that  is lower  in computational  complexity
+by  an   arbitrary  magnitude   than  the  original   \gls{dfn}  model   can  be
+considered  as  a  candidate  for  further  investigation.  In  the  absence  of
+a  canonical  or  quantitative  definition  of  what  constitutes  a  \gls{rom},
+the  number  of  candidate  family  of  models  to  consider  is  overwhelmingly
+large.  In  practice,  the  constraints  imposed by  the  scope  of  this  work,
 \viz~suitability for  real-time implementation,  limits the choice  of candidate
 modelling  families.  For  instance,   models  relying  primarily  on  classical
 finite  difference~\cite{Smith2006}, Galerkin's  approximation~\cite{Dao2012} or
@@ -95,32 +91,30 @@ embedded \gls{bms} controller.
 \subsection{Frequency   domain   \glsfmtshort{rom}s}\label{subsec:freqdomainroms}
 
 Owing  to the  low entry-barrier  for adoption  in a  real-time controller  that
-typically  logs data  samples at  specific time  intervals, this  thesis focuses
-exclusively on models that are cast in a mathematical form directly suitable for
-final implementation  in the time domain.  This choice implies the  exclusion of
-those models that are derived and  implemented entirely in the frequency domain.
-For the sake  of readers interested in frequency domain  methods, the discussion
-here  briefly introduces  salient literature  employing the  Padé approximation
-method that serves as a backbone of a wide variety of frequency domain models.
+typically logs data samples at  specific time intervals, this thesis prioritises
+those models  that are cast in  a mathematical form directly  suitable for final
+implementation in  the time domain. This  choice implies the exclusion  of those
+models that  are derived and implemented  entirely in the frequency  domain. For
+the sake of readers interested in  frequency domain methods, the discussion here
+briefly introduces  salient literature  employing the Padé  approximation method
+that serves as a backbone of a wide variety of frequency domain models.
 
 
-The     transfer     function     oriented    Padé     approximation     method
+The     transfer     function     oriented     Padé     approximation     method
 for    low    order    physics-based     battery    modelling    pioneered    by
 Forman~\etal{}~\cite{Forman2011a}    has   gained    widespread   adoption    in
 the    areas     of    cell     design~\cite{Marcicki2013},    charge-trajectory
 optimisation~\cite{Bashash2010},    controller    design~\cite{Perez2015}    and
 state    estimation~\cite{Marcicki2013,Moura2012}.     Although    Prasad    and
 Rahn~\cite{Prasad2013} present  an online identification  of a subset  of ageing
-parameters  using  a  Padé  model  and a  recursive  least  squares  algorithm,
-specific  implementation  details  such  as  the  transformation  of  the  Padé
-reduced  impedance  to discrete-time  difference  equations  were not  provided.
-Padé  models  are  typically  limited  to offline  applications  owing  to  the
-aggressive  trade-offs required  in its  approximation order  so as  to maintain
-high  accuracies.  Those  models  truncated  to very  low  Padé  order  exhibit
-poor  fidelity  and   perform  no  better  than   classical  equivalent  circuit
-models,  although  recent  research  attempts have  focused  to  mitigate  this
-drawback~\cite{Yuan2017a,Yuan2017}.
-% \fxnote{Should I  discuss how  they mitigated this?}
+parameters using a Padé model and  a recursive least squares algorithm, specific
+implementation details such as the  transformation of the Padé reduced impedance
+to  discrete-time  difference  equations  were not  provided.  Padé  models  are
+typically limited  to offline  applications owing  to the  aggressive trade-offs
+required in  its approximation order  so as  to maintain high  accuracies. Those
+models truncated  to very low  Padé order exhibit  poor fidelity and  perform no
+better  than  classical  equivalent  circuit models,  although  recent  research
+attempts have focused to mitigate this drawback~\cite{Yuan2017a,Yuan2017}.
 
 
 \subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}
@@ -129,24 +123,23 @@ Smith~\etal{}~\cite{Smith2007} pioneered a semi-hybrid approach to reduced order
 modelling and  obtained closed  form expressions  for all  electrochemical field
 variables  in  the frequency  domain  except  for those  describing  electrolyte
 concentration and  potential (which were  solved separately using  the classical
-finite difference discretisation method). To the author's knowledge, this is the
-earliest published  instance wherein all  the dynamics  of the full  order model
-were completely retained  in the frequency domain. This  was facilitated through
-the use of  transcendental transfer functions that helped to  avoid the accuracy
-degradation brought about by truncation  techniques such as Padé approximation.
-In the first  stage of the model  derivation detailed in this  article, a composite
-impedance model for the frequency range of interest from \SIrange{0}{10}{\hertz}
-was  obtained.  This was  then  converted  to  a \engordnumber{12}  order  state
-space  model using  the technique  of residue  grouping and  truncation, thereby
-demonstrating the first instance of the so-called hybrid modelling workflow. The
-\gls{rom} derived  in Smith~\etal{}~\cite{Smith2007}  was capable  of predicting
-the cell's terminal voltage within  \SI{1}{\percent} of the full-order \gls{dfn}
-model.
+finite  difference  discretisation  method).  To the  author's  knowledge,  this
+is  the  earliest published  instance  wherein  all  the  dynamics of  the  full
+order  model  were  completely  retained  in  the  frequency  domain.  This  was
+facilitated through  the use  of transcendental  transfer functions  that helped
+to  avoid  the  accuracy  degradation brought  about  by  truncation  techniques
+such  as  Padé  approximation.  In  the first  stage  of  the  model  derivation
+detailed in  the said  article, a  composite impedance  model for  the frequency
+range  of interest  from  \SIrange{0}{10}{\hertz} was  obtained.  This was  then
+converted to a \engordnumber{12} order state  space model using the technique of
+residue  grouping  and  truncation,  thereby demonstrating  the  first  instance
+of  the   so-called  hybrid  modelling   workflow.  The  \gls{rom}   derived  in
+Smith~\etal{}~\cite{Smith2007}  was capable  of predicting  the cell's  terminal
+voltage within \SI{1}{\percent} of the full-order \gls{dfn} model.
 
 The  modelling  effort by  Smith~\etal{}~\cite{Smith2007}  also  has the  unique
-distinction of  being the first  of its kind  to render a  physics-based battery
-model  suitable  for  implementation  in  the  classical  \gls{lti}  state-space
-formulation
+distinction of being  the first of its  kind to render a  \gls{pbm} suitable for
+implementation in the classical \gls{lti} state-space formulation
 \begin{equation}\label{eq:LTIstatespace}
     % \SwapAboveDisplaySkip
     \begin{aligned}
@@ -155,11 +148,12 @@ formulation
     \end{aligned}
 \end{equation}
 \begin{flalign}
-    \SwapAboveDisplaySkip
+    % \SwapAboveDisplaySkip
     \text{where   }    \mathbf{x}   \in   \mathbb{R}^{n\times   1},\:    A   \in
     \mathbb{R}^{n\times   n},\:   B  \in   \mathbb{R}^{n\times   m},\:\mathbf{y}
     \in  \mathbb{R}^{p\times  1},\:  C   \in  \mathbb{R}^{p\times  n},\:  D  \in
-    \mathbb{R}^{p\times m}\: \text{and }  \mathbf{u} \in \mathbb{R}^{m \times 1}
+    \mathbb{R}^{p\times m}\: \text{and }  \mathbf{u} \in \mathbb{R}^{m \times
+    1}
     && \notag
 \end{flalign}
 that is amenable  for controller design and for  further system-level simulation
@@ -175,22 +169,21 @@ the  observablity of  the model  degrades significantly.  Although Smith~\etal{}
 performed  an  observablity analysis  of  the  model  in a  noise-free  context,
 the  presence of  process noise  (via unmodelled  electrochemical phenomena  and
 parameter uncertainties)  coupled with corruption of  measurement values through
-sensor  noise  in  a  harsh  electrical environment  such  as  in  an  vehicle's
+sensor  noise  in  a  harsh  electrical  environment  such  as  in  a  vehicle's
 drivetrain, makes  this model  unattractive for state  estimation tasks  in such
 embedded applications.
 
 
 Several attempts have been undertaken to  improve and extend the ideas pioneered
 in Smith~\etal{}  For instance,  Lee~\etal{}~\cite{Lee2012a,Lee2012}~addressed a
-critical  missing  aspect  \viz~the derivation  of  transcendental  transfer
-functions  for  both the  electrolyte  concentration  and its  potential.  These
-transfer  functions  were  obtained  by  using  a  Sturm-Liouville  approach  by
-retaining the first five modes of  an eigenfunction expansion procedure which is
-detailed in~\cite{Lee2012,Lee2012a}. To the author's best knowledge, this is the
-first  published  work  wherein  all  electrochemical  field  variables  of  the
-\gls{dfn} model  were considered  for inclusion in  a deterministic  model order
-reduction  procedure whilst  keeping the  derivation entirely  in the  frequency
-domain.
+critical missing aspect \viz~the derivation of transcendental transfer functions
+for  both  the  electrolyte  concentration and  its  potential.  These  transfer
+functions were  obtained by  using a Sturm-Liouville  approach by  retaining the
+first  five modes  of an  eigenfunction  expansion procedure  which is  detailed
+in~\cite{Lee2012,Lee2012a}. To  the author's best  knowledge, this is  the first
+published  work wherein  all electrochemical  field variables  of the  \gls{dfn}
+model were  considered for  inclusion in a  deterministic model  order reduction
+procedure whilst keeping the derivation entirely in the frequency domain.
 
 
 Obtaining closed form expressions for  the electrochemical variables achieved in
@@ -201,15 +194,15 @@ to complete the  model description in the frequency  domain, all electrochemical
 variables  of the  \gls{dfn}  model could  now be  solved  independently at  any
 desired spatial location, in particular at certain crucial locations such as the
 interface of each electrode with  the respective current collector or separator.
-This groundbreaking idea  sharply contrasts with the incumbent state  of the art
-in reduced order modelling. For the simplification of the original \gls{pdae} of
-equations in \cref{tbl:dfneqns}, most order  reduction approaches (excluding the
-\gls{spm} that shall be discussed later) invariably required the solution of all
-electrochemical quantities at multiple node locations along the thickness of the
-cell,  thereby  adding to  the  computational  burden.  This was  a  significant
-deterrent  to the  adoption of  such \glspl{rom},  particularly if  the intended
-purpose of the model  is to simply predict the cell's  terminal voltage or serve
-as the plant model in \gls{soc} estimation applications.
+This groundbreaking idea sharply contrasted with the then incumbent state of the
+art  in  reduced  order  modelling.  For  the  simplification  of  the  original
+\gls{pdae} of  equations in \cref{tbl:dfneqns}, most  order reduction approaches
+(excluding the \gls{spm} that shall  be discussed later) invariably required the
+solution of all electrochemical quantities  at multiple node locations along the
+thickness of  the cell, thereby adding  to the computational burden.  This was a
+significant deterrent to  the adoption of such \glspl{rom},  particularly if the
+intended purpose of  the model is to simply predict  the cell's terminal voltage
+or serve as the plant model in \gls{soc} estimation applications.
 
 
 In the  same publications~\cite{Lee2012a,Lee2012}, Lee~\etal{} also  devised the
@@ -275,11 +268,11 @@ facilitating  state  estimator  and  controller designs,  it  is  convenient  to
 implement the resultant  state-space model in a  classical numerical computation
 environment   such  as   \textsc{MATLAB}.  Taking   these  into   consideration,
 Rodriguez~\etal{}~\cite{Rodriguez2017}  introduced a  simplified computation  of
-the  electrolyte  concentration  transfer  function  by  applying  the  \gls{vop}
+the  electrolyte  concentration  transfer  function by  applying  the  \gls{vop}
 scheme.  With  this  final  improvement,  the  hybrid  \gls{rom}  implementation
 originally envisaged by Lee~\etal{} can  be considered feature-complete with low
 computational  requirements  during  both model  derivation  and  implementation
-phase.
+phases.
 
 
 A  key  drawback  of  the  transcendental  transfer  function  approach  is  the
@@ -312,24 +305,24 @@ analysed in  literature. This  renders the idea  of state-estimation  using such
 run-time interpolated models questionable.
 
 
-The  author of  this thesis  hypothesises  that any  perceivable drawbacks  such
-as  non-smooth  changes  in  \gls{soc}  estimates  arising  from  using  blended
-matrices could  be potentially  mitigated by using  smoothing filters  and other
-ad-hoc  mathematical apparatus.  However, there  exists no  published work  that
-discusses these engineering  aspects or on how to actually  implementing them in
-\glspl{bms}.  Coupled  with  the  absence  of a  theoretical  analysis  of  loop
-stability,  these  models  are  deemed  as  not  being  suitable  for  immediate
-adoption  by  industry, at  least  until  these  aforementioned gaps  have  been
-addressed  satisfactorily.  The non-linear  state  variable  model presented  by
-Guo~\etal{}~\cite{Guo2017} aims  to address this  issue through a  reduced order
-model in  the frequency domain by  eliminating the linearisation phase  from the
-workflow. However, the online solution of  its field variables entails a complex
-prediction-refinement  procedure,  loosely  defined  as  implicit  and  explicit
-solution methods, for each subsystem of  the \gls{dfn} model. The formulation of
-the final model is  not clearly illustrated and in the views  of this author, is
-not easily  comprehensible. In the  absence of  actual source code,  a numerical
-example  or pseudo-code  of the  model reduction  workflow could  have immensely
-helped with the reproducibility of the results claimed in the publication.
+The author  of this thesis hypothesises  that any perceivable drawbacks  such as
+non-smooth changes  in \gls{soc} estimates  arising from using  blended matrices
+could  be potentially  mitigated by  using  smoothing filters  and other  ad-hoc
+mathematical apparatus. However,  there exists no published  work that discusses
+these engineering aspects  or on how to actually implement  them in \glspl{bms}.
+Coupled with  the absence  of a  theoretical analysis  of loop  stability, these
+models are deemed  as not being suitable for immediate  adoption by industry, at
+least until  these aforementioned gaps  have been addressed  satisfactorily. The
+non-linear state variable model  presented by Guo~\etal{}~\cite{Guo2017} aims to
+address this  issue through a \gls{rom}  in the frequency domain  by eliminating
+the linearisation phase  from the workflow. However, the online  solution of its
+field  variables  entails  a complex  prediction-refinement  procedure,  loosely
+defined as  implicit and explicit  solution methods,  for each subsystem  of the
+\gls{dfn} model. The  formulation of the final model is  not clearly illustrated
+and in the views of this author, is not easily comprehensible. In the absence of
+actual source  code, a numerical example  or pseudo-code of the  model reduction
+workflow could  have immensely  helped with the  reproducibility of  the results
+claimed in the publication.
 
 In summary, the  concept of hybrid \glspl{rom} is  certainly promising, although
 more work is required to address the  present gaps, most prominently the need to
@@ -357,26 +350,6 @@ traditional equivalent  circuit models whilst  still retaining their  origins in
 physical principles rather than on empirical curve-fitting.
 
 
-% \fxnote{can perhaps talk about SPM converted  to equivalent circuit by Prasad in the IEEE conference paper}
-
-
-% Removed as per Greg's advice and review/feedback
-
-% \Cref{ch:futurework}   briefly  presents   the   author's   latest  work   and
-% preliminary results  towards obtaining  a similar  physics-informed equivalent
-% circuit  model.  This  modelling  effort   is  a  direct  application  of  the
-% gains  in  computing  efficiency  through  the  application  of  the  improved
-% \gls{dra}  reported  in Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  the
-% detailed  coverage of  which  is performed  in  \cref{ch:chapter3}. This  work
-% intends  to  address  the  hitherto  unexplored  gap  in  impedance  modelling
-% \ie~the  absence   of  an  equivalent   impedance  model  that   accounts  for
-% the  impedance  contribution  from   all  electrochemical  quantities  in  the
-% \gls{p2d}  model.  This  physics-informed  impedance  model  can  be  extended
-% to  fit  parameter  values  of  components  in  an  equivalent  circuit  model
-% \eg~by using  a standard Levenberg-Marquardt non-linear  least squares fitting
-% algorithm~\cite{Levenberg1944, Marquardt1963}.
-
-
 A  common  characteristic  of all  hybrid  models  is  the  lack of  a  physical
 meaning to  their model  parameters. This severely  limits the  insights offered
 by  such  models  into  electrochemical  phenomena internal  to  the  cell.  The
@@ -393,31 +366,26 @@ final model coefficients and their progenitor physical parameter sets is tenuous
 at best.
 
 
-With  goal   of  translating   physical  parameters  into   circuit  components,
-Zhang~\etal{}~\cite{Zhang2017} presented a lumped equivalent circuit model based
-on Padé  approximation and  model truncation. However,  the sensitivity  of the
-final model  values owing to  perturbations in the original  physical parameters
-was not  evaluated. Consequently,  there is  a lack of  clarity in  the relative
-importance  of physical  parameters  and their  influence  on circuit  component
-values.
+With  the  goal of  translating  physical  parameters  of  a cell  into  circuit
+components, Zhang~\etal{}~\cite{Zhang2017} presented a lumped equivalent circuit
+model based on Padé approximation and model truncation. However, the sensitivity
+of  the final  model  values owing  to perturbations  in  the original  physical
+parameters was  not evaluated. Consequently, there  is a lack of  clarity in the
+relative  importance  of physical  parameters  and  their influence  on  circuit
+component values.
 
 
-Merla~\etal{}~\cite{Merla2018} introduced  an equivalent circuit model  that can
-be  parameterised by  attempting a  systematic  decoupling of  the kinetics  and
-diffusion at  both electrodes  and the  electrolyte. Although  these interacting
-phenomena can be complex to resolve  over all length and time-scales, acceptable
-trade-offs in  accuracy was  demonstrated to be  achievable from  a system-level
-simulation  perspective.  A drawback  of  this  approach  is that  key  physical
-parameters such as  solid and electrolyte diffusion  coefficients are attributed
-to the  two electrodes through ad-hoc,  non-verifiable assumptions. Furthermore,
-in  the  aforesaid  article,  notable  discrepancies  exist  in  the  values  of
-parameters such as electrolyte  conductivity (obtained through calculations from
-\gls{eis} measurements)  to that typically reported  in literature.
-
-% \fxnote{have not talked  about SPM inspired eq circuit model.  Is it necessary
-% to do so?. How to frame this. There  are a few references that belongs to this
-% kind}
-
+Merla~\etal{}~\cite{Merla2018} introduced an \gls{ecm}  that can be parametrised
+by attempting  a systematic  decoupling of  the kinetics  and diffusion  at both
+electrodes  and the  electrolyte. Although  these interacting  phenomena can  be
+complex to  resolve over  all length and  time-scales, acceptable  trade-offs in
+accuracy  was  demonstrated to  be  achievable  from a  system-level  simulation
+perspective. A  drawback of this approach  is that key physical  parameters such
+as  solid and  electrolyte  diffusion  coefficients are  attributed  to the  two
+electrodes  through  ad-hoc,  non-verifiable assumptions.  Furthermore,  in  the
+aforesaid article, notable discrepancies exist  in the values of parameters such
+as  electrolyte  conductivity  (obtained  through  calculations  from  \gls{eis}
+measurements) to that typically reported in literature.
 
 It must be acknowledged that presently  there exists no modelling candidate that
 provides  all the  desirable  characteristics  sought after  in  a \gls{rom}  to
@@ -430,10 +398,6 @@ thesis is to  provide a readily usable \gls{rom} that  is immediately deployable
 in an online implementation, the author  concludes that at present, the benefits
 offered by physics-inspired  hybrid equivalent circuit models  do not decisively
 outweigh their drawbacks.
-
-% from,\fxnote{cite  figure}
-% satisfies all \fxnote{give a number here} criterion for
-
 
 \subsection{Time-domain  \glsfmtshort{rom}s}
 
@@ -479,11 +443,6 @@ promising  candidate identified  among  these time-domain  models  to nurture  a
 latent  potential  to  facilitate  faster  adoption  of  \glspl{pbm}  in  online
 applications.
 
-% Further sections  discuss methodologies and solutions  that aim to
-% address the  gaps identified  in this  family of  models. \fxnote{does  this fit
-% better at the end of this section}
-
-
 In the \gls{dfn} model, the evolution of lithium in the solid phase is described
 by the classical  diffusion equation given by  Fick's first law~\cite{Fick1995}.
 In order  to solve for  this concentration profile  in full-order models,  it is
@@ -502,11 +461,9 @@ retain high  fidelity. It should  be noted that  high node densities  are mainly
 required near the  surface of the spherical particles for  the pseudo dimension.
 Similarly, the clustering  of nodes is desirable near the  separator and current
 collector interfaces along the axial dimension.
-% \fxnote{need to define `axial' at the start of  the thesis}
 Thus, a sizeable number  of order reduction strategies in the time  domain seek
 to adopt non-uniform node  spacing towards lowering the aforesaid computational
 issues.
-% \fxnote{citations needed}.
 
 Computationally    efficient     pseudo-spectral    schemes     for    numerical
 solution   of   \glspl{pde}   can   be  employed   by   placing   discretisation
@@ -564,7 +521,6 @@ uniform mesh-density. Although  adaptive meshing strategies can  be employed for
 desktop simulation  with minimal effort,  it remains to be  seen if this  can be
 deployed successfully in a resource-constrained  environment such as an embedded
 \gls{bms} controller, and hence is  a candidate for future research.
-% \fxnote{does this fit better in the conclusion chapter?}
 
 
 The   computational   bottlenecks  arising   due   to   discretisation  in   the
@@ -601,7 +557,6 @@ for obtaining the standard analytical solution to Fick's law of diffusion in the
 context of heat conduction in solids. Liu~\cite{Liu2006} derived this analytical
 solution for the  lithium intercalation process in the solid  phase, taking into
 account  the idiosyncrasies  of porous  electrodes.
-% \fxnote{explain about  Olcer's pseudo-steady state  stuff}.
 However, this  expression involves an  infinite sum
 expansion of eigen modes. Guo  and White~\cite{Guo2012} formulated an expression
 for a  truncated approximation of  this solution  to arbitrary number  of terms.
@@ -615,21 +570,6 @@ analytical solution to the polynomial  approach. Consequently, this approach has
 not yet gained  widespread popularity in the inherent elimination  of the radial
 dimension that is so  deeply ingrained as a core aspect  of the cell-level order
 reduction  approaches  discussed  here.
-
-% \fxnote{another method  of  solving  this diffusion is the  integral method analysis used by Tanim  etal. Should I mention that?. There is  also a comprehensive review by Romero  etal. Furthermore, there is a specific review by Zhang and White}
-
-% \fxnote{In the words of Zhang and White, ``The usage of the PSS method is mainly
-% affected by the num- ber of summation  terms included. If no summation terms are
-% used, the  method degrades to  the low  order polynomial method.  Increasing the
-% number of summation terms improves the accu- racy of the method, mostly at short
-% times. Our simulation shows that PSS method with two or three summation terms is
-% able to  provide accurate results  under a  wide range of  operating conditions.
-% More summation  terms require solving  more differ- ential equations  (Eq. (9b))
-% and could pose numerical difficulties because of the exponential terms.''}
-
-% \fxnote{There  are  way   too  many  models  that  use   the  proper  orthogonal
-% decomposition technique. Should I review these?}
-
 
 The computational  speed-up facilitated  by using polynomial  approximations for
 the  solid  phase diffusion  has  motivated  other  researchers to  extend  this
@@ -646,11 +586,6 @@ particularly suited  to reduced order  modelling of cells with  medium electrode
 thicknesses wherein the  lumped representation of flux density  is not generally
 applicable.
 
-% In this work, the issue of equation deficiency in polynomial representation of
-% the  electrolyte  concentration  was  avoided by  using  a  simpler  quadratic
-% polynomial within the porous electrode regions.
-
-
 One  serious drawback  in Deng~\etal{}~\cite{Deng2018}  is the  use of  a Finite
 Difference approximation for computing the spatial gradients of the \gls{ocp} at
 three electrode locations. This  adversely affects computational performance and
@@ -658,10 +593,6 @@ is not  suitable for online  implementation. Unless  a proven solution  for such
 computational  challenges is  made available,  it is  worthwhile to  continue to
 explore other avenues to identify the  most apropos first candidate for adoption
 in real-time \gls{bms} environments.
-
-% My own efforts  to replace this finite difference calculation  of the gradient
-% with an analytical framework based on  the chain rule of calculus is currently
-% in preliminary stages of development and is presented in \cref{ch:futurework}.
 
 Farag~\etal{}~\cite{Farag2017}  proposed   a  \gls{pwl}  approximation   of  all
 governing equations of the electrochemical  model. Given that straight-line fits
@@ -682,16 +613,8 @@ robustness, before such  \gls{pwl} approaches can gain  widespread acceptance in
 online applications.
 
 
-% \fxnote{Tikz picture here, showing a nice  layout of various models according to
-% the new classification scheme.}
-
-% \fxnote{spider  drawing  on  5  counts---  simplicity,  parametrisation,  online
-% implementation, state estimation, physical insight}
-
 It  is evident  that all  physics-based  \glspl{rom} presented  thus far  entail
-extensive parametrisation efforts
-% \fxnote{at the end, count  and substitute the canonical number  of parameters here}
-to render  them suitable for  a practical
+extensive  parametrisation  efforts to  render  them  suitable for  a  practical
 application. The difficulties associated with such parametrisation, coupled with
 inherent  uncertainties  in  the  obtained  parameter values  act  as  a  strong
 deterrent  to stakeholders  outside  academia to  adopt  \glspl{pbm} for  online
