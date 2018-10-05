@@ -20,6 +20,7 @@ script:
 - latexmk -f --shell-escape --bibtex -pdf main.tex # debug purposes (be verbose)
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/main-latest.pdf"
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/historic_versions/main-${TRAVIS_COMMIT}.pdf"
+- mv main.pdf thesis_${TRAVIS_COMMIT}.pdf
 before_install:
 # - rm -rf /tmp/texlive
 # - rm -rf $HOME/.texlive
@@ -42,3 +43,10 @@ install:
 env:
   global:
     secure: oeNBy31e33khf2pJ9Pcu7jRqkohP6REswQgdtwEHOW/OIcyieNe8ZTn5i81leMhoLCkHdGQH2jZfO10JREJzK+ycOQew5yeQ1/LGtF3kOhjX6322t0WfNMM2/XlJntCiHOGrWp+C0IbqYPisyLmK5Ta3bE5L6VepykRtz1TyQM0dsON8E9J7dZZs7TPbWkTRXabFwip+MygZLugvGkihfgVKgQUU3XXjEd+jrNyDUL1xp9qMdxqASfD2dj9dSEzoQ5qGW4Sp3Paw4AHGaEDfDBbfGYUjJwL2rOchrmUotPYnY57IBPjNrOMeommBGJbZrn4HeSDhdTXOdXMvid7//WRuBzGMmZEJbI+2fshLip2KX3t6dnqF8ynGBmbR1RWqsdCnuiSOekixQPMCBjIMgLDH2AJcE8NGLxRUGhZW/pWSZcvr7ZpGc8liriCwGG6vwwEtQBTyhJMa7Xj+O9UHl1ruYDC+DC17gDLlpHX2G922cappLxSgbJF8NMZEsa7IlUzzadXLE2rTcVLwiNeAlc+WAtHOlPY2gGk+aPF8exRUDi9XqzP6oa9johYkg+EP1zAkN43Ss99FDl1ChQPZnNpLVUSNPfys3XCPlmkSSM8bdgfP0ftz++y59X0Nkyii9A8f7HDgwmzrZav7GeXKZC2z08Looi6SFfDVSEIp2a8=
+file:
+- ./main.pdf
+    skip_cleanup: true
+    on:
+      tags: true
+      branch: master
+
