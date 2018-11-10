@@ -13,31 +13,32 @@ necessitates the  use of  some order  reduction strategy  for their  adoption in
 control and  real-time applications. In this  thesis as well as  in the relevant
 literature discussed here, these two terms have been used interchangeably.
 
-Research into  \glspl{rom} is  motivated by  the pressing  need for  a real-time
-model  with accuracy  properties of  full-order \glspl{pbm}  but possessing  the
-computational  simplicity of  equivalent-circuit models  (see \cref{subsec:ecms}
-and \cref{subsec:pbms}  for an overview). A  number of approaches to  reduce the
-computational  complexity  of  \glspl{pbm}  have been  explored  in  literature.
-Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive review  of  the  various
-categories of reduced order \glspl{pbm}  for lithium ion batteries. However, the
-aforesaid  work does  not  aim  to classify  models  based on  time-vs-frequency
-domains.  Fan~\etal{}~\cite{Fan2015}   conducted  a  review  of   reduced  order
-modelling  methods,  but  only  provide  a  generic  overview  of  deriving  and
-implementing models in these dual domains  without an expository analysis of the
-implications  of these  modelling choices.  Unlike Jokar~\etal~\cite{Jokar2016},
-Fan~\etal's review  did not aim to  provide a classification of  various reduced
-order models, but instead emphasises on a broad survey of relevant methodologies
-and tools towards  \emph{obtaining} them. Hence, neither of  these works provide
-an insight into  the rubrics and implications  of the choice of  either of these
-domains to underpin  the \glspl{rom}. Although in  principle, the transformation
-between them is  often a straightforward mathematical  exercise, availability of
-models for  final implementation  in the  time domain  aids immediate  uptake by
-industry for adoption  in online \glspl{bms}. The treatment  of \glspl{rom} from
-this aspect is  so germane to this thesis author's  central hypothesis (a simple
-time domain model is the key to large scale deployment of \glspl{pbm}), that the
-author  of this  thesis feels  compelled to  undertake a  simpler classification
-exercise of the existing modelling art,  within the context of their suitability
-for online implementation.
+Research   into  \glspl{rom}   is  motivated   by  the   pressing  need   for  a
+real-time  model   with  accuracy  properties  of   full-order  \glspl{pbm}  but
+possessing  the  computational  simplicity  of  equivalent-circuit  models  (see
+\crefrange{subsec:ecms}{subsec:pbms} for  an overview).  A number  of approaches
+to  reduce  the  computational  complexity of  \glspl{pbm}  have  been  explored
+in  literature.  Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive  review
+of  the  various  categories  of  reduced  order  \glspl{pbm}  for  lithium  ion
+batteries.  However,  the  aforesaid  work  does  not  aim  to  classify  models
+based  on  time-vs-frequency  domains.  Fan~\etal{}~\cite{Fan2015}  conducted  a
+review  of  reduced  order  modelling   methods,  but  only  provide  a  generic
+overview of  deriving and implementing models  in these dual domains  without an
+expository  analysis of  the  implications of  these  modelling choices.  Unlike
+Jokar~\etal~\cite{Jokar2016},  Fan~\etal's  review  did  not aim  to  provide  a
+classification  of various  reduced order  models, but  instead emphasises  on a
+broad survey of relevant methodologies  and tools towards \emph{obtaining} them.
+Hence,  neither  of  these  works  provide  an  insight  into  the  rubrics  and
+implications  of  the  choice  of  either  of  these  domains  to  underpin  the
+\glspl{rom}. Although  in principle,  the transformation  between them  is often
+a  straightforward  mathematical  exercise,  availability of  models  for  final
+implementation in the time domain aids immediate uptake by industry for adoption
+in  online \glspl{bms}.  The treatment  of \glspl{rom}  from this  aspect is  so
+germane to this  thesis author's central hypothesis (a simple  time domain model
+is the key  to large scale deployment  of \glspl{pbm}), that the  author of this
+thesis feels  compelled to  undertake a simpler  classification exercise  of the
+existing  modelling art,  within the  context  of their  suitability for  online
+implementation.
 
 
 In this discussion,  various modelling methodologies and  their resultant models
