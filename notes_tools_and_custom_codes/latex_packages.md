@@ -1,8 +1,19 @@
 % vim: nospell
 
+Command-line
+------------
 a2ping utility
+texdef/ latexdef
+
+GUIs
+----
+datatooltk
+
+2up
+abstract
 academicons
 accsup
+addlines
 adigraph
 adjmulticols
 adjustbox
@@ -14,6 +25,7 @@ amssymb
 amsthm
 analogclock
 answers
+appendix
 array
 askinclude
 asyfig
@@ -46,6 +58,7 @@ bm
 bmpsize
 bnumexpr
 bodegraph
+booklet
 bookmark
 booktabs
 boxedminipage2e
@@ -104,6 +117,7 @@ datetime2
 dcolumn
 decorule
 diagbox
+ditaa
 doclicense
 docmute
 docstrip
@@ -118,6 +132,7 @@ dvisvgm utility
 easyfig
 easyformat
 easyreview
+ebook
 efbox
 elements
 embedall
@@ -169,6 +184,7 @@ footnotehyper
 footnoterange
 ftnright
 fullminipage
+fullpage
 fullwidth
 gensymb
 geometry
@@ -183,6 +199,7 @@ graphicx
 graphicxsp
 grfext
 grffile
+grid-system
 hardwrap
 harpoon
 harveyballs
@@ -209,12 +226,14 @@ latexmk
 latexsym
 layout
 layouts
+leading
 lettrine
 limecv
 longfbox
 longfigure
 lscape
 ltcaption
+ltxgrid
 lua-check-hyphen
 luabibentry
 lualvna
@@ -246,6 +265,7 @@ moodle
 morenum
 multiaudience
 multicol
+multilang
 multitoc
 mwe
 natmove
@@ -262,6 +282,7 @@ odsfile
 optional
 overpic
 pagecont
+pagesel
 papermas
 parskip
 passivetex
@@ -287,6 +308,7 @@ physymb
 placeat
 plgplotsable
 polexpr
+preprint bundle - fullpage, authorblk, balance, figcaps,
 printlen
 problsoln
 probsoln
@@ -309,10 +331,12 @@ rotfloat
 rviewport
 scientific-thesis-cover
 sectionbreak
+sectsty
 sesstime
 setspace
 shadowtext
 shellesc
+shorttoc
 show2e
 showexpl
 showhyphens
@@ -346,8 +370,9 @@ tabulary
 tagging
 tcolorbox
 tdclock
-texdef
 textcomp
+threadcol
+thumbs
 tikz-ladder
 tikz-layers
 tikz-linknodes
@@ -360,15 +385,20 @@ titlepic
 titleps
 titlesec
 titletoc
+titling
 tkz-kiviat
 tkz-linknodes
+tocbasic
 tocbibind
 tocdata
 tocloft
+tocstyle (maybe obselete)
 tocvsec2
 todonotes
+topiclongtable
 trig
 turnthepage
+typed-checklist
 typewriter
 typicon
 typoaid
@@ -399,3 +429,5 @@ xwatermark
 xymtex
 yafoot
 yt4pdf
+
+\show
