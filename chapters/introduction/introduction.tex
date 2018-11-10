@@ -71,12 +71,12 @@ the external circuit.
     \label{fig:chargetransferprocess}
 \end{figure}
 
-At fully  charged condition,  the majority  of lithium in  the system  is stored
+At the fully charged condition, the majority  of lithium in the system is stored
 within the negative electrode  microstructure. During discharge, \ch{Li^0}~atoms
 diffuse out of  deep interstitial sites towards the surface  of the particles in
 the  negative  electrode.  At  the  surface  (electrode-electrolyte  interface),
 a  charge-transfer  process  takes  place according  to  Butler-Volmer  kinetics
-\cref{eq:butlervolmer},  leading   to  the   formation  of   \ch{Li^+}~ions  and
+(see  \cref{eq:butlervolmer}), leading  to the  formation of  \ch{Li^+}~ions and
 electrons. The electrons are passed to  the external circuit through the \ch{Cu}
 current collectors  onto which  the conductive matrix  composed of  the negative
 electrode material and binders is  coated. The \ch{Li^+}~ions travel through the
@@ -86,7 +86,7 @@ transfer  reaction  takes  place  at  the  surface  of  the  positive  electrode
 particles, leading to the formation of neutral \ch{Li^0}~atoms that diffuse into
 the positive electrode microstructure.
 
-During  the   charging  process,  the   reverse  phenomena  occur.   lithium  is
+During  the   charging  process,  the   reverse  phenomena  occur.   Lithium  is
 de-intercalated  from  the  positive  electrode and  a  similar  charge-transfer
 happens  at  the surface,  leading  to  the  formation of  \ch{Li^+}~ions  which
 reach  the  negative  electrode  by   passing  through  the  separator.  At  the
@@ -120,10 +120,10 @@ Through accurate model representations  of the electrochemical-thermal behaviour
 of  the cell,  advanced monitoring  and control  strategies can  be deployed  to
 tackle  the current  research  topics  in Li-ion  batteries  such as  increasing
 cycle-life,  improving  operational   safety  and  performance~\cite{Plett2015}.
-Over  the  past two  decades,  efforts  have  been  made to  construct  accurate
-models  to  describe  the  physical, electrical,  thermal,  electrochemical  and
-system-level performance of  Li-ion cells, leading to  modelling strategies with
-various  levels of  sophistication. For  the interested  reader, the  article by
+Over  the past  two  decades, efforts  have  been made  to  construct models  to
+describe  the physical,  electrical, thermal,  electrochemical and  system-level
+performance  of  Li-ion cells,  leading  to  modelling strategies  with  various
+levels  of   sophistication.  For   the  interested   reader,  the   article  by
 Grazioli~\etal~\cite{Grazioli2016a} provides  a broad introduction to  the topic
 of computational  modelling of  lithium ion batteries.  Large in-roads  into the
 depth of the modelling  art can be made by perusing  comprehensive books on this
@@ -148,8 +148,8 @@ real-time \gls{bms}.
 Most battery  models have the primary  goal of accurately predicting  the cell's
 terminal  voltage  at each  time-step.  This  is so  that  the  output from  the
 predictor routine  can be compared  to the  measured voltage and  the difference
-between them  may be used in  a suitable corrector-subroutine to  improve future
-prediction.  The combined  information from  the model  and measurement  is then
+between  them may  be used  in a  suitable corrector  routine to  improve future
+predictions. The  combined information  from the model  and measurement  is then
 blended in a suitable way to estimate the cell's \gls{soc}.
 
 More   advanced  models   strive   to  provide   insight   into  various   other
@@ -179,8 +179,8 @@ models, two simple methods are available to compute the cell's \gls{soc} ---
     \item by numerically integrating the charge passed in and out of the cell over time (commonly referred to as coulomb counting).
 \end{enumerate*}
 Both methods are computationally  amenable for small-scale embedded applications
-such as  consumer  electronics;  however,  neither  one is  robust  to  handle  the
-stringent demands in performance imposed  by modern vehicular applications.
+such as  consumer electronics; however, neither  one is robust enough  to handle
+the stringent demands in performance imposed by modern vehicular applications.
 
 Advanced state estimation algorithms such  as nonlinear Kalman filters may still
 be able to use \glspl{ecm} as the plant model and obtain reasonable estimates of
@@ -225,7 +225,7 @@ parameters. Nevertheless,  this is a tedious  process and is feasible  only with
 access  to  such sophisticated  lab  equipment.  Furthermore, the  results  from
 these  experiments are  susceptible to  characterisation  errors as  well as  to
 cell-to-cell variations due to production spread. Therefore, some form of system
-identification  method needs  to  be employed  for estimating  the  rest of  the
+identification method  needs to be employed  for estimating the majority  of the
 physical  parameters required  for  a  \gls{pbm}. Furthermore,  it  is a  common
 practice to  rely on published  data for the  values of certain  cell parameters
 that do  not depend on physical  construction, especially for those  that remain
@@ -268,8 +268,8 @@ internal variables such as
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
     \item potential on the solid particles~$\phi_\text{s}$,
     \item potential in the electrolyte solution~$\phi_\text{e}$,
-    \item concentration of \ch{Li^0} in the solid particles~$\c_\text{s}$,
-    \item ionic concentration in the electrolyte solution~$\c_\text{e}$, and
+    \item concentration of \ch{Li^0} in the solid particles~$c_\text{s}$,
+    \item ionic concentration in the electrolyte solution~$c_\text{e}$, and
     \item molar flux density of lithium at the solid-electrolyte boundary~$j$.
 \end{enumerate*}
 The most popular computational implementation  of the \gls{dfn} equations is the
@@ -330,17 +330,18 @@ cell  is  presented  in  \cref{ch:modelbaseddesign}.  In  \cref{ch:improveddra},
 the  computational   bottlenecks  in   a  specific  \gls{rom}   method  \viz~the
 \gls{dra} is  analysed in  detail and  an improved  alternative is  proposed. In
 \Cref{ch:spmanalysis},  the simplest  time-domain  \gls{pbm},  the \gls{spm}  is
-introduced and  its performance  is analysed. Salient  advancements made  to the
-basic \gls{spm} in the literature  are presented and their shortcoming analysed.
-A discrete-time formulation focusing on  the numerical implementation aspects is
-also  presented. In  \cref{ch:newelectrolytemodel},  the causal  factor for  the
-lacklustre performance of  a state of the art  electrolyte-enhanced \gls{spm} is
-unearthed. \Cref{ch:newelectrolytemodel}  also proposes a new  electrolyte model
-which represents a novel application  of the system identification technique and
-the  superior performance  of  this composite  model  is demonstrated.  Finally,
-\cref{ch:conclusions} highlights the salient conclusions  that can be drawn from
-the findings presented in  this thesis and paves the way  for future research by
-identifying key unsolved tasks in physics-based battery modelling.
+introduced  and  its  performance  is analysed.  Salient  advancements  made  to
+the  basic \gls{spm}  in the  literature  are presented  and their  shortcomings
+analysed. A  discrete-time formulation focusing on  the numerical implementation
+aspects is  also presented. In \cref{ch:newelectrolytemodel},  the causal factor
+for  the lacklustre  performance  of  a state  of  the art  electrolyte-enhanced
+\gls{spm} is  unearthed. Additionally, \cref{ch:newelectrolytemodel}  proposes a
+new  electrolyte  model which  represents  a  novel  application of  the  system
+identification technique. The superior  performance of this electrolyte-enhanced
+composite \gls{spm}  is demonstrated. Finally,  \cref{ch:conclusions} highlights
+the salient  conclusions that can be  drawn from the findings  presented in this
+thesis and paves  the way for future research by  identifying key unsolved tasks
+in physics-based battery modelling for such automotive applications.
 
 % need a symbol Nomenclature
 
