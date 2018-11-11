@@ -1,0 +1,50 @@
+@Krishna classically tex has no notion of external paper size so in pure latex if you go [a4paper] then the text block is set to the right width for A4 and the left and top margins also, but tex has no notion of physical paper size, in 1982 it would print on whatever size paper you had in your printer and that's all there was too it.
+@Krishna Once you have loaded a package that has driver-specific knowledge so it knows that it is pdftex or latex+dvips
+or xetex+xdvipdfmx or whatever you can (and it does) also insert a \special or set \pdfpageheight or \pageheight or
+whatever is needed for that platform to set the specified physical media to match, that means on-screen previewers can
+size their windows accordingly
+
+@DavidCarlisle thank you for the excellent information
+Do you think we can rightfully term the bxpapersize package as extraneous/superfluous?
+
+@Krishna as i say (after a full 30 seconds inspection of the code) it looks like it is extra features mostly of use for
+japanese (ptex) tex.
+
+@DavidCarlisle cool. Thank you for your help. Much appreciate these pointers.
+
+@Krishna well unlike geometry it doesn't change other page values, and if you don't want to load graphicx or hyperref
+it is an alternative.
+
+@UlrikeFischer and @DavidCarlisle are you both saying that for e.g. if I have a simple letter using the base letter
+class without any geometry, graphics or hyperref packages, the printed output won't be as expected?
+That's a rather profound statement, no?
+
+@Krishna the printed output will depend on your printer driver. The pdf-size can be unexpected - that depends on
+the default of your tex system. My default is A4 and so this shows different values:
+\documentclass{letter}
+\begin{document}
+paperwidth: \the\paperwidth
+
+pdfpagewidth: \the\pdfpagewidth
+\end{document}
+@DavidCarlisle Hans made just an interesting claim about how font design sizes and t-shirt-sizes are connected: "so
+given that when picking up a conference t-shirts at bachotex you have to get one size smaller than you expect, one
+can also assume that the gyre collection designsize is somewhat oversized"
+
+10:50
+@UlrikeFischer That's unbelievable.
+paperwidth: 614.295pt
+pdfpagewidth: 597.50787pt
+
+@Krishna But @DavidCarlisle just tried to explain this to you. Don't say you don't believe him.
+
+@UlrikeFischer "the printed output will depend on your printer driver." Can you please explain this a bit more?
+Well...unbelievable as an idomatic expression. I believed and understood what he said..... But seeing it in
+typeset output reinforced it
+So, it's a good practice to load at least one of these packages bxpapersize, hyperref, graphicx, geometry in all
+documents
+
+@Krishna If you have an a4 paper pdf and sent it to a printer which uses letter formats, the printer driver
+will have to decide if to scale the pdf, or to refuse to print it, or to cut out some margins.
+
+@UlrikeFischer Understood
