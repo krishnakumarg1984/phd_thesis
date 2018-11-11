@@ -159,13 +159,13 @@ implementation in the classical \gls{lti} state-space formulation
     && \notag
 \end{flalign}
 that is amenable  for controller design and for  further system-level simulation
-studies  \eg~as  a component  in the  energy-storage subsystem  of a  (hybrid)
+studies  \eg~as a  component  in  the energy  storage  subsystem  of a  (hybrid)
 electric vehicle drivetrain.
+% an  \gls{xeV} drivetrain.
 
-
-The requirement of  a relatively large number of state  variables (in this case,
-12 states)  for describing  the system's dynamics  dilutes the  effectiveness of
-state estimation algorithms. In the  classical isothermal implementation of this
+The requirement  of a  relatively large  number of  state variables  (12~in this
+case) for  describing the system's  dynamics dilutes the effectiveness  of state
+estimation  algorithms.  In  the  classical isothermal  implementation  of  this
 \gls{rom}, with  the cell's terminal  voltage being the only  measured quantity,
 the  observablity of  the model  degrades significantly.  Although Smith~\etal{}
 performed  an  observablity analysis  of  the  model  in a  noise-free  context,
@@ -196,7 +196,7 @@ to complete the  model description in the frequency  domain, all electrochemical
 variables  of the  \gls{dfn}  model could  now be  solved  independently at  any
 desired spatial location, in particular at certain crucial locations such as the
 interface of each electrode with  the respective current collector or separator.
-This groundbreaking idea sharply contrasted with the then incumbent state of the
+This groundbreaking idea sharply contrasted with the then prevalent state of the
 art  in  reduced  order  modelling.  For  the  simplification  of  the  original
 \gls{pdae} of  equations in \cref{tbl:dfneqns}, most  order reduction approaches
 (excluding the \gls{spm} that shall  be discussed later) invariably required the
@@ -208,9 +208,9 @@ or serve as the plant model in \gls{soc} estimation applications.
 
 
 In the  same publications~\cite{Lee2012a,Lee2012}, Lee~\etal{} also  devised the
-\gls{dra},  a novel  algorithm  to systematically  transform all  transcendental
+\gls{dra},  a  novel  scheme  to  systematically  transform  all  transcendental
 transfer functions to  the time domain so as to  obtain an \gls{lti} state-space
-model  given  by \cref{eq:LTIstatespace}.  The   \gls{dra}  method  retains  the
+model  given  by  \cref{eq:LTIstatespace}.  The  \gls{dra}  method  retains  the
 physical character of the original \gls{dfn}  equations until the very last step
 wherein the matrices governing the  system's dynamics are generated. This yields
 a one-dimensional  discrete-time \gls{rom}  of the cell  that is  entirely based
@@ -258,7 +258,7 @@ this contribution shall be presented in \cref{ch:improveddra} of this thesis.
 
 
 In both the original as well  as the improved \gls{dra}, the eigenfunction modal
-expansion  of electrolyte  concentration transfer  function was  computationally
+expansion  of electrolyte  concentration  transfer  function is  computationally
 intensive.  A  slightly  less  detrimental   disadvantage  with  the  series  of
 transcendental transfer functions associated  with the electrolyte concentration
 was   that  their   derivation  entailed   mathematically  cumbersome   symbolic
@@ -324,7 +324,7 @@ defined as  implicit and explicit  solution methods,  for each subsystem  of the
 and in the views of this author, is not easily comprehensible. In the absence of
 actual source  code, a numerical example  or pseudo-code of the  model reduction
 workflow could  have immensely  helped with the  reproducibility of  the results
-claimed in the publication.
+claimed in the aforesaid publication.
 
 In summary, the  concept of hybrid \glspl{rom} is  certainly promising, although
 more work is required to address the  present gaps, most prominently the need to
@@ -432,9 +432,9 @@ lacks expository  visual information such as  plots of time domain  evolution of
 the internal and terminal variables  for dynamic load profiles. Furthermore, the
 authors  have  not provided  a  tabulated  set  of  physical parameters  of  the
 cell being  simulated which  therefore impedes  reproducibility of  the results.
-Consequently, these methods  have seen a healthy uptake neither  in academia nor
+Consequently, these methods have not seen a healthy uptake either in academia or
 in industry. The  author of this thesis  considers this presentation to  be of a
-cursory  nature  and therefore,  shall  not  be  discussed here.  The  remainder
+cursory nature  and therefore,  it shall  not be  discussed here.  The remainder
 of  this  section discusses  several  popular  families  of time  domain  models
 and  provides a  summary evaluation  of  their relative  merits and  weaknesses.
 \Cref{ch:spmanalysis} presents a formal in-depth  analysis of all aspects of the
