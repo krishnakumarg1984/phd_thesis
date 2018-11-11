@@ -14,8 +14,8 @@ control and  real-time applications. In this  thesis as well as  in the relevant
 literature discussed here, these two terms have been used interchangeably.
 
 Research   into  \glspl{rom}   is  motivated   by  the   pressing  need   for  a
-real-time  model   with  accuracy  properties  of   full-order  \glspl{pbm}  but
-possessing  the  computational  simplicity  of  equivalent-circuit  models  (see
+real-time   model   with   accuracy   properties   of   full-order   \glspl{pbm}
+but   possessing    the   computational    simplicity   of    \glspl{ecm}   (see
 \crefrange{subsec:ecms}{subsec:pbms} for  an overview).  A number  of approaches
 to  reduce  the  computational  complexity of  \glspl{pbm}  have  been  explored
 in  literature.  Jokar~\etal~\cite{Jokar2016}  provide  a  comprehensive  review
@@ -25,7 +25,7 @@ based  on  time-vs-frequency  domains.  Fan~\etal{}~\cite{Fan2015}  conducted  a
 review  of  reduced  order  modelling   methods,  but  only  provide  a  generic
 overview of  deriving and implementing models  in these dual domains  without an
 expository  analysis of  the  implications of  these  modelling choices.  Unlike
-Jokar~\etal~\cite{Jokar2016},  Fan~\etal's  review  did  not aim  to  provide  a
+Jokar~\etal~\cite{Jokar2016}, the review by Fan~\etal{} did not aim to provide a
 classification  of various  reduced order  models, but  instead emphasises  on a
 broad survey of relevant methodologies  and tools towards \emph{obtaining} them.
 Hence,  neither  of  these  works  provide  an  insight  into  the  rubrics  and
@@ -34,8 +34,8 @@ implications  of  the  choice  of  either  of  these  domains  to  underpin  the
 a  straightforward  mathematical  exercise,  availability of  models  for  final
 implementation in the time domain aids immediate uptake by industry for adoption
 in  online \glspl{bms}.  The treatment  of \glspl{rom}  from this  aspect is  so
-germane to this  thesis author's central hypothesis (a simple  time domain model
-is the key  to large scale deployment  of \glspl{pbm}), that the  author of this
+germane to the central hypothesis of this  thesis (a simple time domain model is
+the  key to  large scale  deployment of  \glspl{pbm}), that  the author  of this
 thesis feels  compelled to  undertake a simpler  classification exercise  of the
 existing  modelling art,  within the  context  of their  suitability for  online
 implementation.
@@ -49,20 +49,21 @@ highlight the salient works among the more recent advances and extensions to the
 then  prevailing models  to obtain  an updated  view of  the modelling  art that
 have  gained  traction  since the  publication  of  Jokar~\etal~\cite{Jokar2016}
 and  Fan~\etal~\cite{Fan2015}. Hence,  the specialised  review of  reduced order
-modelling  literature covered  in this  section  intends to  supplement ---  not
-supplant ---  the breadth of  research covered  between the aforesaid  works. In
+modelling  literature  covered  in  this  section  intends  to  supplement,  not
+supplant,  the breadth  of  research  covered between  the  aforesaid works.  In
 particular, care has been taken to minimise repetition of background art already
 analysed in these aforementioned review articles, thereby striving to report the
 subset of prior research that is  pertinent to illustrate the new classification
 scheme introduced  here. The author  does not aim  to adhere to  a chronological
 presentation of such  background works. Instead, salient  \gls{rom} families are
-usually  introduced in  the context  of discussing  their significance  within a
+introduced  in  the  context  of  discussion  of  their  significance  within  a
 particular mathematical modelling technique.
 
 
 In the views of this thesis author, physics-based control-oriented models can be
-classified as belonging to one of the following categories:
-\begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0pt]
+classified as belonging to one of the following categories
+% \begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0pt]
+\begin{itemize}
     \item Frequency domain \glsfmtshort{rom}s
     \item Quasi-hybrid time/frequency domain \glsfmtshort{rom}s
     \item Hybrid \glsfmtshort{rom}s based on equivalent circuits
@@ -75,12 +76,12 @@ and  later  converted  to  time  domain.
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
 description  of physical  phenomena that  is lower  in computational  complexity
-by  an   arbitrary  magnitude   than  the  original   \gls{dfn}  model   can  be
+by  some  arbitrary   magnitude  than  the  original  \gls{dfn}   model  can  be
 considered  as  a  candidate  for  further  investigation.  In  the  absence  of
 a  canonical  or  quantitative  definition  of  what  constitutes  a  \gls{rom},
 the  number  of  candidate  family  of  models  to  consider  is  overwhelmingly
-large.  In  practice,  the  constraints  imposed by  the  scope  of  this  work,
-\viz~suitability for  real-time implementation,  limits the choice  of candidate
+large.  In  practice,  the  constraint  imposed   by  the  scope  of  this  work
+\ie~suitability  for real-time  implementation, limits  the choice  of candidate
 modelling  families.  For  instance,   models  relying  primarily  on  classical
 finite  difference~\cite{Smith2006}, Galerkin's  approximation~\cite{Dao2012} or
 Galerkin's  projection~\cite{Fan2016,Fan2018}  methods  for  transformation  and
@@ -108,14 +109,14 @@ the    areas     of    cell     design~\cite{Marcicki2013},    charge-trajectory
 optimisation~\cite{Bashash2010},    controller    design~\cite{Perez2015}    and
 state    estimation~\cite{Marcicki2013,Moura2012}.     Although    Prasad    and
 Rahn~\cite{Prasad2013} present  an online identification  of a subset  of ageing
-parameters using a Padé model and  a recursive least squares algorithm, specific
-implementation details such as the  transformation of the Padé reduced impedance
-to  discrete-time  difference  equations  were not  provided.  Padé  models  are
-typically limited  to offline  applications owing  to the  aggressive trade-offs
+parameters  using  a Padé  model  and  the  recursive least  squares  algorithm,
+specific implementation details  such as the transformation of  the Padé reduced
+impedance to discrete-time  difference equations were not  provided. Padé models
+are typically limited to offline applications owing to the aggressive trade-offs
 required in  its approximation order  so as  to maintain high  accuracies. Those
 models truncated  to very low  Padé order exhibit  poor fidelity and  perform no
-better  than  classical  equivalent  circuit models,  although  recent  research
-attempts have focused to mitigate this drawback~\cite{Yuan2017a,Yuan2017}.
+better  than  classical  \glspl{ecm},  although recent  research  attempts  have
+focused to mitigate this drawback~\cite{Yuan2017a,Yuan2017}.
 
 
 \subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}
@@ -332,23 +333,24 @@ linearise their equations at certain operating points.
 
 \subsection{Hybrid \glsfmtshort{rom}s based on equivalent circuits}
 
-Physics-inspired                        equivalent                       circuit
-models~\cite{Prasad2012,Prasad2014,Zhang2017,Cheng2017,Merla2018} are a class of
-hybrid  models that  have rapidly  gained  prominence since  the publication  of
-Jokar~\etal~\cite{Jokar2016}  and Fan~\etal~\cite{Fan2015}.  In  this case,  the
-derivation of the relevant model equations is performed in the frequency domain.
-This frequency  domain representation is then  converted to a form  suitable for
-implementation  as  an  equivalent circuit.  Prasad  and  Rahn~\cite{Prasad2014}
-extended their Padé order  reduced model, first presented in~\cite{Prasad2013},
-by converting  their impedance  model into standard  equivalent circuits.  A key
-point  to be  highlighted is  that  these family  of models  do not  necessarily
-strive to  retain the  classical Randles structure~\cite{Randles1947}  for their
-equivalent circuit representation. Instead, the values of the electrical circuit
-components such  as series  resistance and  equivalent capacitance  are obtained
-through  various  mechanisms such  as  \gls{eis}  measurements under  load.  The
-biggest advantage of  such models is that they serve  as drop-in replacements to
-traditional equivalent  circuit models whilst  still retaining their  origins in
-physical principles rather than on empirical curve-fitting.
+Physics-inspired
+\glspl{ecm}~\cite{Prasad2012,Prasad2014,Zhang2017,Cheng2017,Merla2018}
+are a class of hybrid models that have rapidly gained prominence since the
+publication of Jokar~\etal~\cite{Jokar2016} and Fan~\etal~\cite{Fan2015}. In
+this case, the derivation of the relevant model equations is performed in
+the frequency domain. This frequency domain representation is then converted
+to a form suitable for implementation as an equivalent circuit. Prasad
+and Rahn~\cite{Prasad2014} extended their Padé order reduced model, first
+presented in~\cite{Prasad2013}, by converting their impedance model into
+standard equivalent circuits. A key point to be highlighted is that these
+family of models do not necessarily strive to retain the classical Randles
+structure~\cite{Randles1947} for their equivalent circuit representation.
+Instead, the values of the electrical circuit components such as series
+resistance and equivalent capacitance are obtained through various mechanisms
+such as \gls{eis} measurements under load. The biggest advantage of such
+models is that they serve as drop-in replacements to traditional \glspl{ecm}
+whilst still retaining their origins in physical principles rather than on
+empirical curve-fitting.
 
 
 A  common  characteristic  of all  hybrid  models  is  the  lack of  a  physical
@@ -361,19 +363,17 @@ Furthermore,  a model  capable  of  implying a  direct  and causal  relationship
 between a  group of physical  parameters and internal overpotentials  at various
 spatial locations within the cell serves as a powerful tool for in-situ lifetime
 estimation  of batteries.  Although the  circuit components  of physics-informed
-equivalent circuit models and the  state-space models discussed here trace their
-origins to the original parameters of  the \gls{dfn} model, the link between the
-final model coefficients and their progenitor physical parameter sets is tenuous
-at best.
+\glspl{ecm} and the state-space models discussed here trace their origins to the
+original parameters  of the \gls{dfn}  model, the  link between the  final model
+coefficients and their progenitor physical parameter sets is tenuous at best.
 
 
 With  the  goal of  translating  physical  parameters  of  a cell  into  circuit
-components, Zhang~\etal{}~\cite{Zhang2017} presented a lumped equivalent circuit
-model based on Padé approximation and model truncation. However, the sensitivity
-of  the final  model  values owing  to perturbations  in  the original  physical
-parameters was  not evaluated. Consequently, there  is a lack of  clarity in the
-relative  importance  of physical  parameters  and  their influence  on  circuit
-component values.
+components, Zhang~\etal{}~\cite{Zhang2017} presented a lumped \gls{ecm} based on
+Padé approximation and  model truncation. However, the sensitivity  of the final
+model values owing to perturbations in  the original physical parameters was not
+evaluated. Consequently, there  is a lack of clarity in  the relative importance
+of physical parameters and their influence on circuit component values.
 
 
 Merla~\etal{}~\cite{Merla2018} introduced an \gls{ecm}  that can be parametrised
@@ -397,8 +397,8 @@ a  direct  and  causal  relationship  between groups  of  parameters  and  their
 influence on the cell's operational performance.  Since one of the goals of this
 thesis is to  provide a readily usable \gls{rom} that  is immediately deployable
 in an online implementation, the author  concludes that at present, the benefits
-offered by physics-inspired  hybrid equivalent circuit models  do not decisively
-outweigh their drawbacks.
+offered by physics-inspired hybrid \glspl{ecm}  do not decisively outweigh their
+drawbacks.
 
 \subsection{Time-domain  \glsfmtshort{rom}s}
 
@@ -661,5 +661,4 @@ field include
 This research was  performed through an iterative cycle of  analysis, design and
 simulation-based verification  and shall be  elucidated in a  discourse spanning
 two chapters \viz~\cref{ch:spmanalysis} and \cref{ch:newelectrolytemodel}.
-
 
