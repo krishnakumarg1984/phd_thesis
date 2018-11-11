@@ -326,3 +326,5 @@ build_dir/
 *.jar
 
 flattened_flap/
+flattened_dir/
+
