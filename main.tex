@@ -12,7 +12,11 @@
 % https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
 % \bookmark[dest={coverpage.pdf.1}]{Title Page}
 
-\newpage\null\thispagestyle{plain}\newpage
+\newpage\null\thispagestyle{plain}\AddToShipoutPictureBG*{%
+    \put(0,545){%
+              \transparent{0.4}\includegraphics[width=\paperwidth,keepaspectratio]{cloud}%
+                }%
+            }\newpage
 \input{chapters/frontmatter/originality_copyright.tex}
 \cleardoublepage
 \input{chapters/frontmatter/dedication.tex}
