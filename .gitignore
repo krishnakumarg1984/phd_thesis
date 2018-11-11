@@ -323,3 +323,4 @@ build_dir/
 
 *.out.ps
 *.xmpdata
+*.jar
