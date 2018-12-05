@@ -326,6 +326,7 @@ build_dir/
 *.jar
 
 *~
+creationdate.lua
 
 flattened_flap/
 flattened_dir/
