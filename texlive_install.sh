@@ -66,6 +66,7 @@ tlmgr install   \
     csquotes \
     ctablestack \
     datatool \
+    datetime \
     datetime2 \
     dehyph-exptl \
     diffcoeff \
