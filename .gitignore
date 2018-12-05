@@ -327,6 +327,7 @@ build_dir/
 
 *~
 creationdate.lua
+*.icc
 
 flattened_flap/
 flattened_dir/
