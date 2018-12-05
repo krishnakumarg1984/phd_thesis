@@ -71,7 +71,8 @@
     {\usebibmacro{postnote}}
 
 
-\renewcommand*{\mkbibnamefirst}[1]{\edef\firstname{#1}\expandafter\first{\firstname}}
+% \renewcommand*{\mkbibnamefirst}[1]{\edef\firstname{#1}\expandafter\first{\firstname}}
+\renewcommand*{\mkbibnamegiven}[1]{\edef\firstname{#1}\expandafter\first{\firstname}}
 
 \def\bibnamedelima{ }%
 \def\bibnamedelimb{ }%
@@ -108,4 +109,6 @@
 % \fullcite}
 
 \newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
+
+\DeclareBibliographyAlias{software}{online}
 
