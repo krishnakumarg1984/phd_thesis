@@ -84,6 +84,7 @@ tlmgr install   \
     filehook \
     fixme \
     float \
+    fmtcount \
     fontloader-luaotfload \
     fontspec \
     footmisc \
