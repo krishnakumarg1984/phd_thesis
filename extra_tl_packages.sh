@@ -16,7 +16,6 @@ tlmgr install   \
     ccicons \
     chemformula \
     cleveref \
-    colorprofiles \
     csquotes \
     ctablestack \
     datatool \
@@ -31,25 +30,30 @@ tlmgr install   \
     eso-pic \
     etextools \
     etoolbox \
+    fancyvrb \
+    filehook \
     fixme \
     float \
     fmtcount \
     fontspec \
     footmisc \
+    fp \
     framed \
     fvextra \
     gitinfo2 \
     glossaries \
     glossaries-english \
     glossaries-extra \
-    ifluatex \
+    ifmtarg \
     ifplatform \
     impnattypo \
+    koma-script \
     l3kernel \
     l3packages \
     labelschanged \
-    latex \
     latexmk \
+    lineno \
+    listings \
     listofitems \
     lm \
     lm-math \
@@ -70,7 +74,6 @@ tlmgr install   \
     multirow \
     nag \
     nowidow \
-    oberdiek \
     pdfpages \
     pdfx \
     pgf \
@@ -89,11 +92,11 @@ tlmgr install   \
     supertabular \
     tabstackengine \
     tcolorbox \
+    textcase \
     threeparttable \
     titlesec \
     tocbibind \
     todonotes \
-    tools \
     tracklang \
     trimspaces \
     ulem \
@@ -104,6 +107,7 @@ tlmgr install   \
     witharrows \
     xcolor \
     xfor \
+    xifthen \
     xindy \
     xkeyval \
     xmpincl \
