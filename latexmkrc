@@ -52,16 +52,16 @@ $ENV{'TZ'}='Europe/London';
 
 
 # add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
-# add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
+add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
 
-# sub run_makeglossaries {
-#   if ( $silent ) {
-#     system "makeglossaries -q '$_[0]'";
-#   }
-#   else {
-#     system "makeglossaries '$_[0]'";
-#   };
-# }
+sub run_makeglossaries {
+  if ( $silent ) {
+    system "makeglossaries -q $_[0]";
+  }
+  else {
+    system "makeglossaries $_[0]";
+  };
+}
 
 sub asy {return system("asy -o \"$_[0]\" \"$_[0]\"");}
 add_cus_dep("asy","eps",0,"asy");
