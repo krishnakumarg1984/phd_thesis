@@ -10,10 +10,15 @@
 \StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
 
 \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
-\immediate\write18{rm \jobname.xmpdata} % comment out for non-*nix systems
-\begin{filecontents*}{\jobname.xmpdata}
-    \input{Preamble/metadata}
-\end{filecontents*}
+% \immediate\write18{rm \jobname.xmpdata} % comment out for non-*nix systems
+\begingroup\newif\ifmy
+\IfFileExists{./\jobname.xmpdata}{}{\mytrue} % https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists
+\ifmy
+    \begin{filecontents}{\jobname.xmpdata}
+        \input{Preamble/metadata}
+    \end{filecontents}
+\fi\endgroup
+
 
 \PassOptionsToPackage{\pdfxopts}{pdfx}
 \PassOptionsToPackage{table}{xcolor}
