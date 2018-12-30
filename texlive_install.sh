@@ -189,6 +189,7 @@ tlmgr install   \
     tcolorbox \
     tex-gyre \
     tex-gyre-math \
+    texcount \
     textcase \
     threeparttable \
     tikzscale \

@@ -92,6 +92,7 @@ tlmgr install   \
     supertabular \
     tabstackengine \
     tcolorbox \
+	texcount \
     textcase \
     threeparttable \
     titlesec \
