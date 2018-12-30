@@ -4,7 +4,7 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
-\graphicspath{{chapters/dra/figures/}}
+% \graphicspath{{chapters/dra/figures/}}
 % ----------------------- contents from here ------------------------
 
 \chapter[%
@@ -127,7 +127,7 @@ computation steps which hinder the entire reduced-order modelling workflow.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{traditional_dra.pdf}
+    \includegraphics[width=\textwidth]{chapters/dra/figures/traditional_dra.pdf}
     \caption[%
     \glsfmtshort{rom} workflow using the classical \glsfmtshort{dra} scheme
     ]%
@@ -173,7 +173,7 @@ following reasons.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{markov_decay.pdf}
+    \includegraphics{chapters/dra/figures/markov_decay.pdf}
     \caption[Markov parameters of solid surface concentration at positive
     current collector]{Time evolution of Markov parameters of pole-removed transfer
         function corresponding to surface concentration of Li in the solid particle
@@ -462,7 +462,7 @@ pre-allocation and a~priori computation contributes to overall code efficiency.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{new_rom.pdf}
+    \includegraphics[width=\textwidth]{chapters/dra/figures/new_rom.pdf}
     \caption[%
     \glsfmtshort{rom} workflow using the improved \glsfmtshort{dra} scheme
     ]%
@@ -486,7 +486,7 @@ as a drop-in replacement for the classical \gls{dra}.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{svd_compare.pdf}
+    \includegraphics{chapters/dra/figures/svd_compare.pdf}
     \caption[Singular values computed by conventional and
     improved \glsfmtshort{svd} methods]{Comparison of singular values computed by the conventional and
         improved \glsfmtshort{svd} methods. Using the new scheme results in
@@ -532,7 +532,7 @@ improved  \gls{dra} is  dominated by  Markov parameter  computation. Considering
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{ram_usage.pdf}
+    \includegraphics{chapters/dra/figures/ram_usage.pdf}
     \caption[%
     Memory usage of classical and improved \glsfmtshort{dra}
     ]%
@@ -566,7 +566,7 @@ block-size.  In this  case,  the  \gls{cpu} time  is  evenly  split between  the
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{cpu_usage.pdf}
+    \includegraphics{chapters/dra/figures/cpu_usage.pdf}
     \caption{Computation times for classical and improved \glsfmtshort{dra} schemes}
     \label{fig:cputime}
 \end{figure}
@@ -599,7 +599,7 @@ blocks, allowing for capture of \SI{60000}{\second} of Markov parameter data.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{truncated.pdf}
+    \includegraphics{chapters/dra/figures/truncated.pdf}
     \caption{Comparison of singular values computed by conventional and improved
         \glsfmtshort{svd} methods under a practical \glsfmtshort{ram} limit of
     \SI{10}{\giga\byte}}
@@ -621,7 +621,7 @@ of~\SI{1120}{\mole\per\meter\cubed}.   The  \gls{rom}  incorporating   the  new
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{comsol_comparison.pdf}
+    \includegraphics{chapters/dra/figures/comsol_comparison.pdf}
     \caption[%
     Solid surface concentrations at positive electrode/separator interface
     ]%
