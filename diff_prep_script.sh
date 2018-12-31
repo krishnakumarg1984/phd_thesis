@@ -7,7 +7,7 @@ latexdiff --type=CFONTCHBAR --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattyp
 cp latexmkrc ../diff_head_submitted/
 sed -i 's/main/diff/g' ../diff_head_submitted/latexmkrc
 
-cp --parents `find -name \*.xdy` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message:
+cp --parents `find -name \*.xdy` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message: https://serverfault.com/questions/153875/how-to-let-cp-command-dont-fire-an-error-when-source-file-does-not-exist
 cp --parents `find -name \*.PNG` ../diff_head_submitted/
 cp --parents `find -name \*.png` ../diff_head_submitted/
 cp --parents `find -name \*.jpg` ../diff_head_submitted/
@@ -29,7 +29,7 @@ rm -rf ../diff_head_submitted/notes*
 
 # cp latexmkrc ../head_flattened_phd_thesis/
 
-# cp --parents `find -name \*.xdy` ../head_flattened_phd_thesis/ 2>/dev/null || : # If you want to suppress the exit code and the error message:
+# cp --parents `find -name \*.xdy` ../head_flattened_phd_thesis/ 2>/dev/null || : # If you want to suppress the exit code and the error message: https://serverfault.com/questions/153875/how-to-let-cp-command-dont-fire-an-error-when-source-file-does-not-exist
 # cp --parents `find -name \*.PNG` ../head_flattened_phd_thesis/
 # cp --parents `find -name \*.png` ../head_flattened_phd_thesis/
 # cp --parents `find -name \*.jpg` ../head_flattened_phd_thesis/
