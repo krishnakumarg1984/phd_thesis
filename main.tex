@@ -1,103 +1,23 @@
 %! TEX program = lualatex
 % vim:nospell
 
-\input{Preamble/preamble}  % full preamble, including metadata, documentclass, packages, fonts and custom commands
+% Preamble
+% Document metadata, documentclass, packages, fonts and custom commands
+\input{Preamble/preamble}
 \begin{document}
 \scrollmode
 
-\frontmatter
-\pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
+% Frontmatter
+% Cover page, wordcloud, originality declaration, copyright statement, dedication, acknowledgements, abstract, toc, lof, lot, list of algorithms, acronyms, list of symbols)
+\input{frontmatter/frontmatter.tex}
 
-\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
-% https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
-% \bookmark[dest={coverpage.pdf.1}]{Title Page}
+% Mainmatter
+% All chapters from Introduction through Conclusion
+\input{mainmatter.tex}
 
-\newpage\null\thispagestyle{plain}\AddToShipoutPictureBG*{%
-    \put(0,545){%
-              \transparent{0.4}\includegraphics[width=\paperwidth,keepaspectratio]{cloud}%
-                }%
-            }\newpage
-\input{chapters/frontmatter/originality_copyright.tex}
-\cleardoublepage
-\input{chapters/frontmatter/dedication.tex}
-\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
-\input{chapters/frontmatter/abstract.tex}
-\cleardoublepage
-\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{project_outputs.pdf}
-% \includepdf[pages=-, pagecommand={\thispagestyle{plain}}]{dedication_new.pdf}
-\cleardoublepage
-
-%: ----------------------- table of contents ------------------------
-\renewcommand{\baselinestretch}{0.3}\normalsize
-\cleardoublepage
-\glsunsetall
-\microtypesetup{protrusion=false} % disables protrusion locally in the document
-\pdfbookmark[chapter]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
-\tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
-
-%: ----------------------- list of figures/tables etc. ------------------------
-\cleardoublepage
-\setstretch{1.1} % 1.1 worked fine
-\listoffigures
-\cleardoublepage
-\onehalfspacing
-\listoftables
-\cleardoublepage
-% https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
-{\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
-\glsresetall
-\setstretch{1.0} % for glossaries
-\begingroup
-\printglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
-\endgroup
-\microtypesetup{protrusion=true} % re-enables protrusion
-
-% Required to maintain continuous arabic numbering
-\makeatletter
-\@mainmattertrue
-\makeatother
-\cleardoublepage
-
-\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
-\setcounter{chapter}{0}
-\input{chapters/introduction/introduction} % Introduction
-\setcounter{chapter}{1}
-\input{chapters/litt_review/litt_review}   % Literature Review
-\setcounter{chapter}{2}
-\input{chapters/layer_opt/layer_opt}       % Layer Optimisation
-\setcounter{chapter}{3}
-\input{chapters/dra/dra}                   % Improved DRA
-\setcounter{chapter}{4}
-\input{chapters/spm_analysis/spm_analysis} % Analysis of SPM
-\setcounter{chapter}{5}
-\input{chapters/sys_id/sys_id}             % New Electrolye Model
-\setcounter{chapter}{6}
-\input{chapters/conclusions/conclusions}   % Conclusions
-
-\backmatter
-\singlespacing
-\begin{footnotesize} % Bibliography/References
-    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
-    % add bib to toc
-    \cleardoublepage
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\bibname}
-    \printbibliography
-\end{footnotesize}
-
-% Required to maintain continuous arabic numbering
-\makeatletter
-\@mainmattertrue
-\makeatother
-\cleardoublepage
-
-
-% \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
-\begin{appendices} % Using the appendices environment (from appendix package) for more functionality
-    \crefalias{chapter}{appchap}
-    \include{chapters/Appendices/appendix1}
-    \include{chapters/Appendices/appendix2}
-\end{appendices}
+% Backmatter
+% References and appendices (permissions, computer codes etc.)
+\input{backmatter/backmatter.tex}
 
 \batchmode
 \end{document}

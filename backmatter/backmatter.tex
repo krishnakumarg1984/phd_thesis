@@ -1,0 +1,30 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% vim:textwidth=80 fo=cqt
+
+\backmatter
+\singlespacing
+\begin{footnotesize} % Bibliography/References
+    \renewcommand{\bibname}{References} % changes the header; default: Bibliography
+    % add bib to toc
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+    \printbibliography
+\end{footnotesize}
+
+% Required to maintain continuous arabic numbering
+\makeatletter
+\@mainmattertrue
+\makeatother
+\cleardoublepage
+
+
+% \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
+\begin{appendices} % Using the appendices environment (from appendix package) for more functionality
+    \crefalias{chapter}{appchap}
+    \include{backmatter/appendices/appendix1}
+    \include{backmatter/appendices/appendix2}
+\end{appendices}
+
+

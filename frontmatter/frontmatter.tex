@@ -1,0 +1,48 @@
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% vim:textwidth=80 fo=cqt
+
+\frontmatter
+\pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
+
+\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{coverpage.pdf}
+% https://tex.stackexchange.com/questions/284632/include-multiple-pdf-documents-and-create-bookmark-to-first-page
+% \bookmark[dest={coverpage.pdf.1}]{Title Page}
+
+\graphicspath{{frontmatter/figures/}}
+
+\input{frontmatter/wordcloud.tex}
+\input{frontmatter/originality_copyright.tex}
+% \cleardoublepage
+\input{frontmatter/dedication.tex}
+\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
+\input{frontmatter/abstract.tex}
+% \cleardoublepage
+\includepdf[link, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/project_outputs.pdf}
+% \cleardoublepage
+
+%: ----------------------- table of contents ------------------------
+\renewcommand{\baselinestretch}{0.3}\normalsize
+\cleardoublepage
+\glsunsetall
+\microtypesetup{protrusion=false} % disables protrusion locally in the document
+\pdfbookmark[chapter]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
+\tableofcontents            % print the table of contents % \addtocontents{toc}{\protect{\pdfbookmark[1]{\contentsname}{toc}}} % https://tex.stackexchange.com/questions/1820/contents-in-pdf-bookmarks without bookmark package
+
+%: ----------------------- list of figures/tables etc. ------------------------
+\cleardoublepage
+\setstretch{1.1} % 1.1 worked fine
+\listoffigures
+\cleardoublepage
+\onehalfspacing
+\listoftables
+\cleardoublepage
+% https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
+{\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
+\glsresetall
+\setstretch{1.0} % for glossaries
+\begingroup
+\printglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
+\endgroup
+\microtypesetup{protrusion=true} % re-enables protrusion
+

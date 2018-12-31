@@ -1,0 +1,25 @@
+% -*- root: ./main.tex -*-
+%!TEX root = ./main.tex
+% vim:textwidth=80 fo=cqt
+
+% The following code paragraph is required to maintain continuous arabic numbering (Imperial College requirement)
+\makeatletter
+\@mainmattertrue
+\makeatother
+\cleardoublepage
+
+\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
+\setcounter{chapter}{0}
+\input{chapters/introduction/introduction} % Introduction
+\setcounter{chapter}{1}
+\input{chapters/litt_review/litt_review}   % Literature Review
+\setcounter{chapter}{2}
+\input{chapters/layer_opt/layer_opt}       % Layer Optimisation
+\setcounter{chapter}{3}
+\input{chapters/dra/dra}                   % Improved DRA
+\setcounter{chapter}{4}
+\input{chapters/spm_analysis/spm_analysis} % Analysis of SPM
+\setcounter{chapter}{5}
+\input{chapters/sys_id/sys_id}             % New Electrolye Model
+\setcounter{chapter}{6}
+\input{chapters/conclusions/conclusions}   % Conclusions
