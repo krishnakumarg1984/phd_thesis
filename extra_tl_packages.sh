@@ -14,6 +14,7 @@ tlmgr install   \
     cancel \
     caption \
     ccicons \
+    changebar \
     chemformula \
     cleveref \
     csquotes \

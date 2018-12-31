@@ -57,6 +57,7 @@ tlmgr install   \
     caption \
     ccfonts \
     ccicons \
+    changebar \
     changepage \
     chapterfolder \
     chemformula \
