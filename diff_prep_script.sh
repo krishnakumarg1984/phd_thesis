@@ -19,6 +19,7 @@ cp --parents `find -name \*.m` ../diff_head_submitted//
 rm -rf ../diff_head_submitted/notes*
 
 cp frontmatter/project_outputs.pdf ../diff_head_submitted/
+cp frontmatter/coverpage.pdf ../diff_head_submitted/
 cp frontmatter/figures/black_ink_sign_from_jpg.pdf ../diff_head_submitted/
 cp frontmatter/figures/narayam_sanskrit.pdf ../diff_head_submitted/
 cp frontmatter/figures/doclicense-CC-by-nc-nd.pdf ../diff_head_submitted/chapters/backmatter/
