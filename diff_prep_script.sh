@@ -2,7 +2,7 @@
 
 [ -d ../diff_head_submitted ] || mkdir ../diff_head_submitted
 
-latexdiff --type=CFONTCHBAR --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version nonflat_submitted\main.tex phd_thesis\main.tex > diff_head_submitted\diff.tex
+latexdiff -c ld.cfg --type=CULINECHBAR --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version nonflat_submitted\main.tex phd_thesis\main.tex > diff_head_submitted\diff.tex
 
 cp latexmkrc ../diff_head_submitted/
 sed -i 's/main/diff/g' ../diff_head_submitted/latexmkrc
