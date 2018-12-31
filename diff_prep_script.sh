@@ -18,6 +18,9 @@ cp --parents `find -name \*.otf` ../diff_head_submitted/
 cp --parents `find -name \*.m` ../diff_head_submitted//
 rm -rf ../diff_head_submitted/notes*
 
+cp chapters/frontmatter/black_ink_sign_from_jpg.pdf ../diff_head_submitted/
+cp chapters/frontmatter/doclicense-CC-by-nc-nd ../diff_head_submitted/chapters/backmatter/
+
 # find . -name \*.pdf -exec cp {} ../diff_head_submitted \;
 # find . -name \*.PNG -exec cp {} ../diff_head_submitted \;
 # find . -name \*.png -exec cp {} ../diff_head_submitted \;
