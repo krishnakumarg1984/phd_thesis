@@ -15,7 +15,7 @@ if [ ! -d ../diff_head_submitted ]; then
     sed -i 's/main/diff/g' ../diff_head_submitted/latexmkrc
 fi
 
-latexdiff -c ld.cfg --type=CULINECHBAR --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version nonflat_submitted/main.tex phd_thesis/main.tex > diff_head_submitted/diff.tex
+latexdiff -c ld.cfg --type=CULINECHBAR --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
 cp --parents `find -name \*.xdy` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message: https://serverfault.com/questions/153875/how-to-let-cp-command-dont-fire-an-error-when-source-file-does-not-exist
 
