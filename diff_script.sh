@@ -14,6 +14,7 @@ if [ ! -d ../diff_head_submitted ]; then
     mkdir ../diff_head_submitted
     cp latexmkrc ../diff_head_submitted/
     sed -i 's/main/diff/g' ../diff_head_submitted/latexmkrc
+    # echo "\$max_repeat = 10;" >> ../diff_head_submitted/latexmkrc
 fi
 
 cp --parents `find -name \*.PNG` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message
@@ -35,7 +36,11 @@ cp frontmatter/figures/black_ink_sign_from_jpg.pdf ../diff_head_submitted/
 cp frontmatter/figures/narayam_sanskrit.pdf ../diff_head_submitted/
 cp run_diff_latexmk.bat ../diff_head_submitted/
 
+
 latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
+
+# latexdiff -c ld.cfg --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff_changedpages.tex
+
 
 cd ../diff_head_submitted
 
@@ -44,9 +49,20 @@ if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(u
     # ../phd_thesis/run_diff_latexmk.bat  # https://stackoverflow.com/questions/11865085/out-of-a-git-console-how-do-i-execute-a-batch-file-and-then-return-to-git-conso
     start cmd "/C run_diff_latexmk.bat"
 else
-    latexmk -C diff.tex
-    latexmk -f --shell-escape -halt-on-error diff.tex
-    latexmk -f --shell-escape diff.tex
+    if [ -f diff_changedpages.tex]; then
+        latexmk -C diff_changedpages.tex
+        latexmk --shell-escape -halt-on-error diff_changedpages.tex
+        if [ -f diff_changedpages.pdf]; then
+            latexmk -f --shell-escape diff_changedpages.tex
+        fi
+    fi
+    if [ -f diff.tex]; then
+        latexmk -C diff.tex
+        latexmk --shell-escape -halt-on-error diff.tex
+        if [ -f diff.pdf]; then
+            latexmk -f --shell-escape diff.tex
+        fi
+    fi
 fi
 
 cd ../phd_thesis
