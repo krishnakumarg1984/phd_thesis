@@ -15,7 +15,7 @@ if [ ! -d ../diff_head_submitted ]; then
     sed -i 's/main/diff/g' ../diff_head_submitted/latexmkrc
 fi
 
-latexdiff -c ld.cfg  --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff_changes.tex
+# latexdiff -c ld.cfg  --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff_changes.tex
 
 latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
@@ -40,7 +40,7 @@ cp frontmatter/figures/doclicense-CC-by-nc-nd.pdf ../diff_head_submitted/chapter
 cd ../diff_head_submitted
 latexmk -f --shell-escape -halt-on-error diff.tex
 latexmk -f --shell-escape diff.tex
-latexmk -f --shell-escape -halt-on-error diff_changes.tex
-latexmk -f --shell-escape diff_changes.tex
+# latexmk -f --shell-escape -halt-on-error diff_changes.tex
+# latexmk -f --shell-escape diff_changes.tex
 cd ../phd_thesis
 
