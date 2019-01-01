@@ -1,0 +1,1 @@
+latexdiff-vc -c ld.cfg --driver=pdftex --subtype=ZLABEL --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version --only-changes --pdf  --force --run ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff_changes.tex
