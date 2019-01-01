@@ -9,7 +9,7 @@ if [ ! -d ../nonflat_submitted ]; then
     cd ../phd_thesis/
 fi
 
-if [ ! -d ../nonflat_submitted ]; then
+if [ ! -d ../diff_head_submitted ]; then
     mkdir ../diff_head_submitted
     cp latexmkrc ../diff_head_submitted/
     sed -i 's/main/diff/g' ../diff_head_submitted/latexmkrc
