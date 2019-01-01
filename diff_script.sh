@@ -40,7 +40,6 @@ latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --verbose --flatten --
 cd ../diff_head_submitted
 
 if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] || [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
-    # start cmd /c ""latexmk -f --shell-escape -halt-on-error diff.tex"" & ""latexmk -f --shell-escape diff.tex""
     # :
     # ../phd_thesis/run_diff_latexmk.bat  # https://stackoverflow.com/questions/11865085/out-of-a-git-console-how-do-i-execute-a-batch-file-and-then-return-to-git-conso
     start cmd "/C run_diff_latexmk.bat"

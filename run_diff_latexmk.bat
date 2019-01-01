@@ -1,5 +1,6 @@
 latexmk -C diff.tex
+lualatex --shell-escape diff.tex
 latexmk -f --shell-escape -halt-on-error diff.tex
 latexmk -f --shell-escape diff.tex
-sumatrapdf.exe -reuse-instance diff.pdf
+REM sumatrapdf.exe -reuse-instance diff.pdf
 
