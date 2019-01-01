@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#  Must be run from git-bash or cmder bash or some other bash shell. Does not work with windows cmd or powershell
+#  Must be run from a bash shell. Moreover latexdiff must be found by the shell. Does not work with windows cmd or powershell
 if [ ! -d ../nonflat_submitted ]; then
     cd ..
     cp -R phd_thesis/ nonflat_submitted/
