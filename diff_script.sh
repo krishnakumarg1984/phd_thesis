@@ -37,29 +37,34 @@ cp frontmatter/figures/narayam_sanskrit.pdf ../diff_head_submitted/
 cp run_diff_latexmk.bat ../diff_head_submitted/
 
 
-latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
+latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version  ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
-# latexdiff -c ld.cfg --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff_changedpages.tex
+# latexdiff -c ld.cfg --driver=pdftex --subtype=ONLYCHANGEDPAGE --floattype=IDENTICAL --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version  ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff_changedpages.tex
 
 
 cd ../diff_head_submitted
+
+sed -i '/RequirePackage{color}/d' diff.tex
+sed -i 's/{red}/{imperialbrick}/g'  diff.tex
+sed -i 's/{blue}/{imperialblue}/g'  diff.tex
+sed -i 's/\\uwave.*}/}/g' diff.tex
 
 if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] || [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
     # :
     # ../phd_thesis/run_diff_latexmk.bat  # https://stackoverflow.com/questions/11865085/out-of-a-git-console-how-do-i-execute-a-batch-file-and-then-return-to-git-conso
     start cmd "/C run_diff_latexmk.bat"
 else
-    if [ -f diff_changedpages.tex]; then
+    if [ -f diff_changedpages.tex ]; then
         latexmk -C diff_changedpages.tex
-        latexmk --shell-escape -halt-on-error diff_changedpages.tex
-        if [ -f diff_changedpages.pdf]; then
+        latexmk -f --shell-escape -halt-on-error diff_changedpages.tex
+        if [ ! -f diff_changedpages.pdf]; then
             latexmk -f --shell-escape diff_changedpages.tex
         fi
     fi
-    if [ -f diff.tex]; then
+    if  [ -f diff.tex ]; then
         latexmk -C diff.tex
-        latexmk --shell-escape -halt-on-error diff.tex
-        if [ -f diff.pdf]; then
+        latexmk -f --shell-escape -halt-on-error diff.tex
+        if [ ! -f diff.pdf ]; then
             latexmk -f --shell-escape diff.tex
         fi
     fi
