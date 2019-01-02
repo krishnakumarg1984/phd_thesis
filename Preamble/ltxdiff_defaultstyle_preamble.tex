@@ -1,12 +1,11 @@
-%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
-%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+%DIF preamble extension added by latexdiff
+%DIF UNDERLINE preamble
+
 % \RequirePackage[normalem]{ulem} %DIF PREAMBLE % package ulem is already loaded in this document
 % \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\usepackage{soul}
-\definecolor{cbreweryellow}{RGB}{255,247,188}
-\DeclareRobustCommand{\hldel}[1]{{\sethlcolor{cbreweryellow}\hl{#1}}}
 \providecommand{\DIFadd}[1]{{\protect\color{imperialblue}}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{{\protect\color{imperialbrick}\hldel{#1}}}                      %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{imperialbrick}\sout{#1}}} %DIF PREAMBLE
+
 %DIF SAFE PREAMBLE %DIF PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
 \providecommand{\DIFaddend}{} %DIF PREAMBLE
@@ -14,6 +13,7 @@
 \providecommand{\DIFdelend}{} %DIF PREAMBLE
 \providecommand{\DIFmodbegin}{} %DIF PREAMBLE
 \providecommand{\DIFmodend}{} %DIF PREAMBLE
+
 %DIF IDENTICAL PREAMBLE %DIF PREAMBLE
 \providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
 \providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
@@ -21,21 +21,12 @@
 \providecommand{\DIFaddendFL}{\DIFaddend} %DIF PREAMBLE
 \providecommand{\DIFdelbeginFL}{\DIFdelbegin} %DIF PREAMBLE
 \providecommand{\DIFdelendFL}{\DIFdelend} %DIF PREAMBLE
+
 %DIF LISTINGS PREAMBLE %DIF PREAMBLE
 \RequirePackage{listings} %DIF PREAMBLE
-\RequirePackage{color} %DIF PREAMBLE
+% \RequirePackage{color} %DIF PREAMBLE
 \lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
-%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
-  moredelim=[il][\color{imperialbrick}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
-  moredelim=[il][\color{imperialblue}]{\%DIF\ >\ } %DIF PREAMBLE
+    %DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+    moredelim=[il][\color{imperialbrick}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+    moredelim=[il][\color{imperialblue}]{\%DIF\ >\ } %DIF PREAMBLE
 } %DIF PREAMBLE
-%\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
-%	language=DIFcode, %DIF PREAMBLE
-%	basicstyle=\ttfamily, %DIF PREAMBLE
-%	columns=fullflexible, %DIF PREAMBLE
-%	keepspaces=true %DIF PREAMBLE
-%} %DIF PREAMBLE
-%% \lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
-%% \lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
-%%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
-
