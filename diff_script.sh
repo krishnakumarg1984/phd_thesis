@@ -44,6 +44,7 @@ latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --verbose --flatten --
 
 cd ../diff_head_submitted
 
+sed -i '/RequirePackage\[normalem\]/d' diff.tex
 sed -i '/RequirePackage{color}/d' diff.tex
 sed -i 's/{red}/{imperialbrick}/g'  diff.tex
 sed -i 's/{blue}/{imperialblue}/g'  diff.tex
