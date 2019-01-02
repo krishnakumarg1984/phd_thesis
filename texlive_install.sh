@@ -25,12 +25,6 @@ fi
 # Just including texlua so the cache check above works
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
-tlmgr remove --force libertinus-otf
-tlmgr remove --force libertinus
-tlmgr remove --force libertinus-fonts
-tlmgr remove --force libertinus-type1
-tlmgr remove --force libertinust1math
-
 
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
@@ -38,16 +32,9 @@ tlmgr install   \
     aleph \
     algorithmicx \
     algorithms \
-    antt \
     anyfontsize \
-    apalike2 \
     appendix \
-    arev \
     arydshln \
-    auto-pst-pdf \
-    auto-pst-pdf-lua \
-    babel-german \
-    belleek \
     bezos \
     biber \
     biblatex \
@@ -55,15 +42,10 @@ tlmgr install   \
     booktabs \
     cancel \
     caption \
-    ccfonts \
     ccicons \
-    changebar \
-    changepage \
-    chapterfolder \
     chemformula \
     chkfloat \
     cleveref \
-    cmbright \
     csquotes \
     ctablestack \
     datatool \
@@ -74,24 +56,16 @@ tlmgr install   \
     doclicense \
     enumitem \
     environ \
-    epstopdf \
     eso-pic \
-    esstix \
     etextools \
     etoolbox \
-    eulervm \
-    excludeonly \
     fancyvrb \
     filehook \
     fixme \
     float \
     fmtcount \
-    fontloader-luaotfload \
     fontspec \
     footmisc \
-    footnotebackref \
-    fourier \
-    fouriernc \
     fp \
     framed \
     fvextra \
@@ -99,7 +73,6 @@ tlmgr install   \
     glossaries \
     glossaries-english \
     glossaries-extra \
-    glossaries-german \
     hyphen-german \
     ifetex \
     iffont \
@@ -110,55 +83,34 @@ tlmgr install   \
     iftex \
     ifthenx \
     impnattypo \
-    import \
-    isodate \
-    iwona \
-    kerkis \
     koma-script \
-    kurier \
     l3kernel \
     l3packages \
     labelschanged \
+    latexdiff \
     latexmk \
-    libertine \
     lineno \
     listings \
     listofitems \
     lm \
     lm-math \
     logreq \
-    ltxnew \
     luacode \
     lualatex-math \
     lualibs \
     luaotfload \
     luatex85 \
     luatexbase \
-    luatodonotes \
     makecell \
-    marginnote \
-    marvosym \
-    mathdesign \
     mathfixs \
-    mathpazo \
     mathtools \
-    metalogo \
     mfirstuc \
     microtype \
     minted \
-    moreverb \
     ms \
-    mtgreek \
     multirow \
     nag \
-    needspace \
-    newtx \
-    newtxsf \
     nowidow \
-    ntheorem \
-    omega \
-    onlyamsmath \
-    paracol \
     pdfpages \
     pdfx \
     pgf \
@@ -166,57 +118,36 @@ tlmgr install   \
     pgfornament \
     pgfplots \
     placeins \
-    plex \
-    plex-otf \
-    pstricks \
-    pxfonts \
-    realscripts \
-    relsize \
     selnolig \
     setspace \
     shapepar \
     silence \
     siunitx \
     stackengine \
-    stix \
-    stix2-otf \
     subfig \
-    subfiles \
-    subfloat \
     substr \
     supertabular \
-    svg \
     tabstackengine \
     tcolorbox \
-    tex-gyre \
-    tex-gyre-math \
     texcount \
     textcase \
     threeparttable \
-    tikzscale \
     titlesec \
     tocbibind \
     todonotes \
     tracklang \
-    translator \
     trimspaces \
-    txfonts \
-    ucharcat \
     ulem \
     unicode-math \
     units \
     upquote \
     varwidth \
-    was \
     witharrows \
-    wrapfig \
     xcolor \
-    xetex \
     xfor \
     xifthen \
     xindy \
     xkeyval \
-    xltxtra \
     xmpincl \
     xpatch \
     xstring \
