@@ -1,3 +1,5 @@
+\usepackage{soul}
+
 % \RequirePackage[normalem]{ulem} %DIF PREAMBLE % package ulem is already loaded in this document
 % \RequirePackage{color} % color/xcolor is already loaded
 
@@ -9,7 +11,7 @@
 }
 
 \providecommand{\DIFadd}[1]{{\color{blue}{#1}}}       %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{{\color{imperialbrick}\hsout{#1}}}  %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\color{imperialbrick}{\hsout{#1}}}}  %DIF PREAMBLE
 
 %DIF SAFE PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
@@ -33,7 +35,7 @@
 %DIF DIFCODE_UNDERLINE
   moredelim=[il][\color{imperialbrick}\hsout]{\%DIF\ <\ }, %DIF PREAMBLE
   moredelim=[il][\color{blue}]{\%DIF\ >\ } %DIF PREAMBLE
-}
+} %
 \lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
 	language=DIFcode, %DIF PREAMBLE
 	basicstyle=\ttfamily, %DIF PREAMBLE
