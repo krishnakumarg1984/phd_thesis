@@ -1,12 +1,17 @@
-%DIF preamble extension added by latexdiff
-%DIF UNDERLINE preamble
-
 % \RequirePackage[normalem]{ulem} %DIF PREAMBLE % package ulem is already loaded in this document
-% \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\providecommand{\DIFadd}[1]{{\protect\color{imperialblue}}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{{\protect\color{imperialbrick}\sout{#1}}} %DIF PREAMBLE
+% \RequirePackage{color} % color/xcolor is already loaded
 
-%DIF SAFE PREAMBLE %DIF PREAMBLE
+% https://tex.stackexchange.com/questions/5055/latexdiff-error-caused-by-multi-paragraph-sout-paragraph-ended-before-ulon
+\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\newcommand\hsout[1]{\let\helpcmd\sout\parhelp#1\par\relax\relax} %<-- new command
+\long\def\parhelp#1\par#2\relax{%
+    \helpcmd{#1}\ifx\relax#2\else\par\parhelp#2\relax\fi%
+}
+
+\providecommand{\DIFadd}[1]{{\color{blue}{#1}}}       %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\color{imperialbrick}\hsout{#1}}}  %DIF PREAMBLE
+
+%DIF SAFE PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
 \providecommand{\DIFaddend}{} %DIF PREAMBLE
 \providecommand{\DIFdelbegin}{} %DIF PREAMBLE
@@ -14,7 +19,7 @@
 \providecommand{\DIFmodbegin}{} %DIF PREAMBLE
 \providecommand{\DIFmodend}{} %DIF PREAMBLE
 
-%DIF IDENTICAL PREAMBLE %DIF PREAMBLE
+%DIF IDENTICAL PREAMBLE
 \providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
 \providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
 \providecommand{\DIFaddbeginFL}{\DIFaddbegin} %DIF PREAMBLE
@@ -22,11 +27,17 @@
 \providecommand{\DIFdelbeginFL}{\DIFdelbegin} %DIF PREAMBLE
 \providecommand{\DIFdelendFL}{\DIFdelend} %DIF PREAMBLE
 
-%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE
 \RequirePackage{listings} %DIF PREAMBLE
-% \RequirePackage{color} %DIF PREAMBLE
 \lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
-    %DIF DIFCODE_UNDERLINE %DIF PREAMBLE
-    moredelim=[il][\color{imperialbrick}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
-    moredelim=[il][\color{imperialblue}]{\%DIF\ >\ } %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE
+  moredelim=[il][\color{imperialbrick}\hsout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}]{\%DIF\ >\ } %DIF PREAMBLE
+}
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
 } %DIF PREAMBLE
+
