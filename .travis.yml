@@ -1,4 +1,6 @@
 # safelist
+git:
+  depth: false
 branches:
   only:
     - master
