@@ -1,13 +1,13 @@
 %!TEX root = ../main.tex
 % vim: nospell
 
-\usepackage{pdfx}
-% https://tex.stackexchange.com/questions/449470/pdfx-package-incompatibility-with-bookmark-package-when-using-luatex-engine/449508#449508
-\ifluatex
-    \pdftrue
-\fi
+% \usepackage{pdfx}
+% % https://tex.stackexchange.com/questions/449470/pdfx-package-incompatibility-with-bookmark-package-when-using-luatex-engine/449508#449508
+% \ifluatex
+%     \pdftrue
+% \fi
 
-% \usepackage{hyperref} % comment out if using the pdfx package
+\usepackage{hyperref} % comment out if using the pdfx package
 
 \hypersetup{%
     % bookmarks          = true,
@@ -51,7 +51,7 @@
     pdftoolbar         = true,
     plainpages         = false,
     unicode            = true,
-    urlcolor          = [RGB]{0,68,136}, % https://personal.sron.nl/https://personal.sron.nl/pault/#fig:scheme_highcontrastpault/#fig:scheme_highcontrast
+    urlcolor           = [RGB]{0,68,136}, % https://personal.sron.nl/https://personal.sron.nl/pault/#fig:scheme_highcontrastpault/#fig:scheme_highcontrast
 }%
 
 
@@ -61,7 +61,7 @@
 \usepackage{algorithm} % http://ctan.org/pkg/algorithms
 \usepackage{hypcap} % to be loaded after hyperref. fix hyperref links to jump directly to Table or Figure
 
-% \usepackage{pdftexcmds} % not required if using pdfx package
+\usepackage{pdftexcmds} % not required if using pdfx package
 
 \usepackage{glossaries-extra} % should be loaded after hyperref, but before cleveref % consider 'symbols' option
 
