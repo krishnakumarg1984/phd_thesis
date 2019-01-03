@@ -26,6 +26,7 @@ cp --parents `find -name \*.icc` ../diff_head_submitted/ 2>/dev/null || : # If y
 cp --parents `find -name \*.otf` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message
 cp --parents `find -name \*.m` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message
 rm -rf ../diff_head_submitted/notes*
+rm -rf ../diff_head_submitted/main*
 
 cp --parents `find -name \*.xdy` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message: https://serverfault.com/questions/153875/how-to-let-cp-command-dont-fire-an-error-when-source-file-does-not-exist
 
