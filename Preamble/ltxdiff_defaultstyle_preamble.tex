@@ -5,13 +5,29 @@
 
 % https://tex.stackexchange.com/questions/5055/latexdiff-error-caused-by-multi-paragraph-sout-paragraph-ended-before-ulon
 \definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\newcommand\hsout[1]{\let\helpcmd\sout\parhelp#1\par\relax\relax} %<-- new command
-\long\def\parhelp#1\par#2\relax{%
-    \helpcmd{#1}\ifx\relax#2\else\par\parhelp#2\relax\fi%
-}
+% \newcommand\hsout[1]{\let\helpcmd\sout\parhelp#1\par\relax\relax} %<-- new command
+% \long\def\parhelp#1\par#2\relax{%
+%     \helpcmd{#1}\ifx\relax#2\else\par\parhelp#2\relax\fi%
+% }
 
-\providecommand{\DIFadd}[1]{{\color{blue}{#1}}}       %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{{\color{imperialbrick}{\hsout{#1}}}}  %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\color{blue}{#1}}} %DIF PREAMBLE
+% \providecommand{\DIFdel}[1]{{\color{imperialbrick}{\hsout{#1}}}} %DIF PREAMBLE
+
+\newcommand\reduline{%
+    \bgroup\markoverwith
+    {\textcolor{red}{\pgfsetfillopacity{0.2}\rule[-0.5ex]{2pt}{10pt}\pgfsetfillopacity{1}}%
+        \textcolor{red}{\llap{\rule[0.4ex]{2pt}{0.4pt}}\llap{\rule[0.7ex]{2pt}{0.4pt}}}%
+    }%
+\ULon}
+
+% \newcommand\blueuline{%
+%     \bgroup\markoverwith
+%     {\textcolor{blue}{\pgfsetfillopacity{0.2}\rule[-0.5ex]{2pt}{10pt}\pgfsetfillopacity{1}}%
+%     }%
+% \ULon}
+
+\providecommand{\DIFdel}[1]{{\reduline{#1}}} %DIF PREAMBLE
+% \providecommand{\DIFadd}[1]{{\blueuline{#1}}} %DIF PREAMBLE
 
 %DIF SAFE PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
@@ -33,8 +49,10 @@
 \RequirePackage{listings} %DIF PREAMBLE
 \lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
 %DIF DIFCODE_UNDERLINE
-  moredelim=[il][\color{imperialbrick}\hsout]{\%DIF\ <\ }, %DIF PREAMBLE
+  % moredelim=[il][\color{imperialbrick}\hsout]{\%DIF\ <\ }, %DIF PREAMBLE
   moredelim=[il][\color{blue}]{\%DIF\ >\ } %DIF PREAMBLE
+  moredelim=[il][\reduline]{\%DIF\ <\ }, %DIF PREAMBLE
+  % moredelim=[il][\blueuline]{\%DIF\ >\ } %DIF PREAMBLE
 } %
 \lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
 	language=DIFcode, %DIF PREAMBLE
