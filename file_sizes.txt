@@ -1,0 +1,17 @@
+2.1M campbell_krishna_agreement.pdf*
+1.9M asme_copyright.pdf*
+176K co_ord_sys.jpg*
+144K redacted_Deng_copyright.pdf*
+140K bode_mag.pdf*
+132K redacted_Moura_etal_permissions.pdf*
+132K overhang.jpg*
+92K timing_diagram_large.png*
+92K energy_vs_powercell.png*
+68K project_outputs.pdf*
+64K redacted_JES_Torchio_permission_pdf.pdf*
+64K layer_stack2.PNG*
+64K layer_stack.PNG*
+60K redacted_Northrop_permission_pdf.pdf*
+36K fig_CC_discharge_curves.pdf*
+32K timing_diagram_small.PNG*
+20K fv_disc.jpg*
