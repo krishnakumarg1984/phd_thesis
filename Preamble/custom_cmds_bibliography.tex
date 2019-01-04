@@ -4,6 +4,11 @@
 % \addbibresource{backmatter/thesis_refs.bib}
 \ShellEscape{biber --tool backmatter/thesis_refs.bib} % deduplicate bibtex entries
 \addbibresource{backmatter/thesis_refs_bibertool.bib}
+\addbibresource{backmatter/thesis_refs_joint.bib}
+
+% https://brianbuccola.com/how-to-cite-in-latex-without-the-citation-appearing-in-the-bibliography/
+\DeclareBibliographyCategory{ignore}
+\addtocategory{ignore}{Gopalakrishnan2018joint}
 
 \renewcommand*{\bibfont}{\small} % make Bibliography left aligned, not justified
 
@@ -112,3 +117,13 @@
 
 \DeclareBibliographyAlias{software}{online}
 
+% https://tex.stackexchange.com/questions/468623/indicating-joint-first-authorship-through-special-markup-in-biblatex-biber/468634#468634
+\renewcommand*{\mkbibnamefamily}[1]{%
+    \ifitemannotation{jointfirst}
+        {\uline{\textbf{#1}}}
+    {#1}}
+
+\renewcommand*{\mkbibnamegiven}[1]{%
+    \ifitemannotation{jointfirst}
+        {\uline{\textbf{#1}}}
+    {#1}}
