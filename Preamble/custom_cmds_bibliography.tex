@@ -117,13 +117,66 @@
 
 \DeclareBibliographyAlias{software}{online}
 
-% https://tex.stackexchange.com/questions/468623/indicating-joint-first-authorship-through-special-markup-in-biblatex-biber/468634#468634
-\renewcommand*{\mkbibnamefamily}[1]{%
+% % https://tex.stackexchange.com/questions/468623/indicating-joint-first-authorship-through-special-markup-in-biblatex-biber/468634#468634
+
+\newcommand*{\mkbibnamecomplete}[1]{%
     \ifitemannotation{jointfirst}
         {\uline{\textbf{#1}}}
     {#1}}
 
-\renewcommand*{\mkbibnamegiven}[1]{%
-    \ifitemannotation{jointfirst}
-        {\uline{\textbf{#1}}}
-    {#1}}
+\renewbibmacro*{name:family}[4]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \mkbibnamecomplete{%
+       \ifdefvoid{#3}
+         {}
+         {\ifcapital
+            {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+            {\mkbibnameprefix{#3}\isdot}%
+          \ifprefchar{}{\bibnamedelimc}}%
+          \mkbibnamefamily{#1}\isdot}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}
+     \mkbibnamecomplete{%
+       \mkbibnamefamily{#1}\isdot}}}%
+
+\renewbibmacro*{name:given-family}[4]{%
+  \usebibmacro{name:delim}{#2#3#1}%
+  \usebibmacro{name:hook}{#2#3#1}%
+  \mkbibnamecomplete{%
+    \ifdefvoid{#2}{}{\mkbibnamegiven{#2}\isdot\bibnamedelimd}%
+    \ifdefvoid{#3}{}{%
+      \mkbibnameprefix{#3}\isdot
+      \ifprefchar
+        {}
+        {\ifuseprefix{\bibnamedelimc}{\bibnamedelimd}}}%
+    \mkbibnamefamily{#1}\isdot
+    \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}}}
+
+\renewbibmacro*{name:family-given}[4]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \mkbibnamecomplete{%
+       \ifdefvoid{#3}{}{%
+         \ifcapital
+           {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+           {\mkbibnameprefix{#3}\isdot}%
+         \ifprefchar{}{\bibnamedelimc}}%
+       \mkbibnamefamily{#1}\isdot
+       \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}%
+       \ifdefvoid{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamegiven{#2}\isdot}}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}%
+     \mkbibnamecomplete{%
+       \mkbibnamefamily{#1}\isdot
+       \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}%
+       \ifboolexpe{%
+         test {\ifdefvoid{#2}}
+         and
+         test {\ifdefvoid{#3}}}
+         {}
+         {\revsdnamepunct}%
+       \ifdefvoid{#2}{}{\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
+       \ifdefvoid{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}}
