@@ -109,6 +109,7 @@ acs-*.bib
 *.gls
 *.gls-abr
 *.glsdefs
+*.glstex
 
 # gnuplottex
 *-gnuplottex-*
@@ -361,4 +362,5 @@ notes_tools_and_custom_codes/word_count_growth_thesis.png
 
 Thumbs.db
 !backmatter/thesis_refs_joint.bib
+!frontmatter/*.bib
 

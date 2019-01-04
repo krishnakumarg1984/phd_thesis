@@ -51,7 +51,8 @@
 \PassOptionsToPackage{newfloat=true}{minted}
 \PassOptionsToPackage{minted, most}{tcolorbox}
 \PassOptionsToPackage{all}{hypcap}
-\PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
+% \PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
+\PassOptionsToPackage{nomain, acronym, record}{glossaries-extra}
 \PassOptionsToPackage{depth=4, open=true, openlevel=0, numbered=true}{bookmark}
 % \PassOptionsToPackage{nameinlink}{cleveref}
 \PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
@@ -126,10 +127,17 @@
 %---------- end custom commands ----------%
 
 %%%%%%%%%% glossaries-related stuff %%%%%%%%%%%%%%%%%%%%
-\makeglossaries % must be before starting to define any entries for the glossary. And, all new type of glossary (such as for symbols and any other custom glossaries) must be defined before this.
+% \makeglossaries % must be before starting to define any entries for the glossary. And, all new type of glossary (such as for symbols and any other custom glossaries) must be defined before this.
 \glssetcategoryattribute{acronym}{nohyperfirst}{true} % no hyperlink on first use for entries with category=acronym % https://tex.stackexchange.com/questions/434160/line-break-long-glossaries-entry-when-using-hyperref-and-latex-dvips-ps2pdf
 \setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
-\input{frontmatter/acronyms}
+
+\GlsXtrLoadResources[
+src={frontmatter/acronyms},%
+type=acronym,% put these entries in the 'acronym' glossary
+save-locations=false% don't save locations
+]
+
+% \input{frontmatter/acronyms}
 \renewcommand{\glsnamefont}[1]{\textbf{#1}} % to bold-face acronym header with style=super
 
 \usepackage[object=vectorian]{pgfornament}
