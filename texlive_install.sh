@@ -74,6 +74,7 @@ tlmgr install   \
     glossaries-english \
     glossaries-extra \
     hyphen-german \
+    hyperxmp \
     ifetex \
     iffont \
     ifmtarg \

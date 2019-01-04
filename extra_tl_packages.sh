@@ -45,6 +45,7 @@ tlmgr install   \
     glossaries \
     glossaries-english \
     glossaries-extra \
+    hyperxmp \
     ifmtarg \
     ifplatform \
     impnattypo \
