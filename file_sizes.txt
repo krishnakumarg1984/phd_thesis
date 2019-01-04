@@ -1,7 +1,2 @@
-1.9M asme_copyright.pdf*
-144K redacted_Deng_copyright.pdf*
 140K bode_mag.pdf*
-132K redacted_Moura_etal_permissions.pdf*
 68K project_outputs.pdf*
-64K redacted_JES_Torchio_permission_pdf.pdf*
-60K redacted_Northrop_permission_pdf.pdf*
