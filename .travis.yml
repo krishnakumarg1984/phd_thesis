@@ -13,7 +13,8 @@ cache:
   - "$HOME/.texlive"
   - "$HOME/.cache/pip"
 script:
-- bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
+# - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
+- bash dropbox_uploader.sh download gitHeadLocal.gin
 - cp icc_profiles/sRGB_IEC61966-2-1_black_scaled.icc /tmp/texlive/texmf-dist/tex/latex/pdfx/
 - bash diff_script.sh
 - "./dropbox_uploader.sh upload ../diff_head_submitted/diff.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/diffs_from_submitted_pdfs/diff-${TRAVIS_COMMIT}.pdf"

@@ -32,7 +32,7 @@ git --no-pager log -1 --date=short --decorate=short \
 
 # rsync --checksum .git/gitHeadInfo.gin gitHeadLocal.gin
 
-bash dropbox_uploader.sh upload .git/gitHeadInfo.gin Apps/Overleaf/phd_thesis/gitHeadLocal.gin
+# bash dropbox_uploader.sh upload .git/gitHeadInfo.gin Apps/Overleaf/phd_thesis/gitHeadLocal.gin
 
 # only if not using overleaf. Overleaf will unfortunately overwrite this.
 cp .git/gitHeadInfo.gin gitHeadLocal.gin
