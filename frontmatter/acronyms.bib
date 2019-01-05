@@ -1,30 +1,406 @@
-@acronym{xeV,
-  short = {xEV},
-  long  = {Battery Electric/Plug-in Hybrid Electric Vehicle}
+% -*- root: ../main.tex -*-
+%!TEX root = ../main.tex
+% vim: nospell  tw=80
+
+@acronym{adc,
+    short = {ADC},
+    long  = {Analog to Digital Converter}
 }
 
-@acronym{zoh,
-  short = {ZOH},
-  long  = {Zero Order Hold}
+@acronym{aer,
+    short = {AER},
+    long  = {All-Electric Range}
 }
 
-@acronym{vop,
-  short = {VOP},
-  long  = {Variation of Parameters}
+@acronym{armax,
+    short = {ARMAX},
+    long  = {Auto Regressive with Moving Average and Exogenous Inputs}
+}
+
+@acronym{arx,
+    short = {ARX},
+    long  = {Auto Regressive with Exogenous Inputs}
+}
+
+@acronym{bev,
+    short = {BEV},
+    long  = {Battery Electric Vehicle}
+}
+
+@acronym{bms,
+    short = {BMS},
+    long  = {Battery Management System}
+}
+
+@acronym{bold,
+    short = {BOLD},
+    long  = {Battery Optimal Layer Design}
+}
+
+@acronym{cas,
+    short = {CAS},
+    long  = {Computer Algebra System}
+}
+
+@acronym{cccv,
+    short = {CCCV},
+    long  = {Constant Current Constant Voltage}
+}
+
+@acronym{cpu,
+    short = {CPU},
+    long  = {Central Processing Unit}
+}
+
+@acronym{cp,
+    short = {CP},
+    long  = {Constant Power}
+}
+
+@acronym{dac,
+    short = {DAC},
+    long  = {Digital to Analog Converter}
+}
+
+@acronym{dae,
+    short = {DAE},
+    long  = {Differential Algebraic Equation}
+}
+
+@acronym{dfn,
+    short = {DFN},
+    long  = {Doyle-Fuller-Newman}
+}
+
+@acronym{dft,
+    short = {DFT},
+    long  = {Discrete Fourier Transform}
+}
+
+@acronym{dmc,
+    short = {DMC},
+    long  = {Dimethyl Carbonate}
+}
+
+@acronym{dra,
+    short = {DRA},
+    long  = {Discrete-Time Realisation Algorithm}
+}
+
+@acronym{ecm,
+    short = {ECM},
+    long  = {Equivalent Circuit Model}
+}
+
+@acronym{ec,
+    short = {EC},
+    long  = {Ethylene Carbonate}
+}
+
+@acronym{eis,
+    short = {EIS},
+    long  = {Electrochemical Impedance Spectroscopy}
+}
+
+@acronym{emc,
+    short = {EMC},
+    long  = {Ethyl Methyl Carbonate}
+}
+
+@acronym{era,
+    short = {ERA},
+    long  = {Eigensystem Realisation Algorithm}
+}
+
+@acronym{etfe,
+    short = {ETFE},
+    long  = {Empirical Transfer Function Estimate}
+}
+
+@acronym{fdm,
+    short = {FDM},
+    long  = {Finite Difference Method}
+}
+
+@acronym{fft,
+    short = {FFT},
+    long  = {Fast Fourier Transform}
+}
+
+@acronym{frf,
+    short = {FRF},
+    long  = {Frequency Response Function}
+}
+
+@acronym{fv,
+    short = {FV},
+    long  = {Finite Volume}
+}
+
+@acronym{gitt,
+    short = {GITT},
+    long  = {Galvanostatic Intermittent Titration Technique}
+}
+
+@acronym{gpm,
+    short = {GPM},
+    long  = {Galerkin Projection Method}
+}
+
+@acronym{ice,
+    short = {ICE},
+    long  = {Internal Combustion Engine}
+}
+
+@acronym{ima,
+    short = {IMA},
+    long  = {Integral Method Approximation}
+}
+
+@acronym{isr,
+    short = {ISR},
+    long  = {Interrupt Service Routine}
+}
+
+@acronym{ivp,
+    short = {IVP},
+    long  = {Initial Value Problem}
+}
+
+@acronym{iv,
+    short = {IV},
+    long  = {Instrumental Variable}
+}
+
+@acronym{lco,
+    short = {LCO},
+    long  = {Lithium Cobalt Oxide}
+}
+
+@acronym{lfp,
+    short = {LFP},
+    long  = {Lithium Iron Phosphate}
+}
+
+@acronym{lhs,
+    short = {LHS},
+    long  = {Left-Hand Side}
+}
+
+@acronym{lti,
+    short = {LTI},
+    long  = {Linear Time-Invariant}
+}
+
+@acronym{mae,
+    short = {MAE},
+    long  = {Mean Absolute Error}
+}
+
+@acronym{mdl,
+    short = {MDL},
+    long  = {Rissanen's Minimum Description Length}
+}
+
+@acronym{mggp,
+    short = {MGGP},
+    long  = {Multi-Gene Genetic Programming}
+}
+
+@acronym{mimo,
+    short = {MIMO},
+    long  = {Multi Input Multi Output}
+}
+
+@acronym{mpm,
+    short = {MPM},
+    long  = {Markov Parameter Matrix}
+}
+
+@acronym{ocp,
+    short = {OCP},
+    long  = {Open Circuit Potential}
+}
+
+@acronym{ocv,
+    short = {OCV},
+    long  = {Open Circuit Voltage}
+}
+
+@acronym{ode,
+    short = {ODE},
+    long  = {Ordinary Differential Equation}
+}
+
+@acronym{oe,
+    short = {OE},
+    long  = {Output Error}
+}
+
+@acronym{ols,
+    short = {OLS},
+    long  = {Ordinary Least Squares}
+}
+
+@acronym{p2d,
+    short = {P2D},
+    long  = {Pseudo Two-Dimensional}
+}
+
+@acronym{pbm,
+    short = {PBM},
+    long  = {Physics-Based Model}
+}
+
+@acronym{pdae,
+    short = {PDAE},
+    long  = {Partial Differential Algebraic System}
+}
+
+@acronym{pde,
+    short = {PDE},
+    long  = {Partial Differential Equation}
+}
+
+@acronym{phev,
+    short = {PHEV},
+    long  = {Plug-in Hybrid Electric Vehicle}
+}
+
+@acronym{pmsm,
+    short = {PMSM},
+    long  = {Permanent Magnet Synchronous Motor}
+}
+
+@acronym{pp2d,
+    short = {PP2D},
+    long  = {Polynomial Profile P2D}
+}
+
+@acronym{prbs,
+    short = {PRBS},
+    long  = {Pseudorandom Binary Signal}
+}
+
+@acronym{pwl,
+    short = {PWL},
+    long  = {Piecewise Linear}
+}
+
+@acronym{qss,
+    short = {QSS},
+    long  = {Quasi-Steady State}
+}
+
+@acronym{ram,
+    short = {RAM},
+    long  = {Random Access Memory}
+}
+
+@acronym{rbs,
+    short = {RBS},
+    long  = {Random Binary Signal}
+}
+
+@acronym{rgs,
+    short = {RGS},
+    long  = {Random Gaussian Signal}
+}
+
+@acronym{rhs,
+    short = {RHS},
+    long  = {Right-Hand Side}
+}
+
+@acronym{rms,
+    short = {RMS},
+    long  = {Root Mean Square}
+}
+
+@acronym{rom,
+    short = {ROM},
+    long  = {Reduced Order Model}
+}
+
+@acronym{sei,
+    short = {SEI},
+    long  = {Solid-Electrolyte Interphase}
+}
+
+@acronym{simo,
+    short = {SIMO},
+    long  = {Single Input Multiple Output}
+}
+
+@acronym{siso,
+    short = {SISO},
+    long  = {Single Input Single Output}
+}
+
+@acronym{snr,
+    short = {SNR},
+    long  = {Signal to Noise Ratio}
+}
+
+@acronym{soap,
+    short = {SOAP},
+    long  = {State of Available Power}
+}
+
+@acronym{sov,
+    short = {SoV},
+    long  = {Separation of Variables}
+}
+
+@acronym{spdt,
+    short = {SPDT},
+    long  = {Single Pole Double Throw}
+}
+
+@acronym{spm,
+    short = {SPM},
+    long  = {Single Particle Model}
+}
+
+@acronym{ssa,
+    short = {SSA},
+    long  = {Singular Spectrum Analysis}
+}
+
+@acronym{svd,
+    short = {SVD},
+    long  = {Singular Value Decomposition}
 }
 
 @acronym{udds,
-  short = {UDDS},
-  long  = {Urban Dynamometer Driving Schedule}
+    short = {UDDS},
+    long  = {Urban Dynamometer Driving Schedule}
 }
 
+@acronym{vop,
+    short = {VOP},
+    long  = {Variation of Parameters}
+}
 
+@acronym{xeV,
+    short = {xEV},
+    long  = {Battery Electric/Plug-in Hybrid Electric Vehicle}
+}
 
+@acronym{zoh,
+    short = {ZOH},
+    long  = {Zero Order Hold}
+}
 
+@acronym{soc,
+    short = {SOC},
+    long  = {State of Charge},
+    firstplural = {States of Charge (SOCs)}
+}
 
-
-
-
-
-
+@acronym{aic,
+    short = {AIC},
+    long  = {Akaike's Information Criterion},
+    firstplural = {Akaike's Information Criteria}
+}
 
