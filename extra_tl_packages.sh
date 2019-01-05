@@ -7,6 +7,7 @@ tlmgr install   \
     appendix \
     arydshln \
     bezos \
+    bib2gls \
     biber \
     biblatex \
     bigints \
