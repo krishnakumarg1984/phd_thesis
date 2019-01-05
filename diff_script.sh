@@ -46,19 +46,11 @@ latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --packages=amsmath,hyp
 cd ../diff_head_submitted
 
 
-# if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] || [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
-#     dos2unix diff.tex
-# fi
-
 # sed -i '/RequirePackage\[normalem\]/d' diff.tex
 # sed -i '/RequirePackage{color}/d' diff.tex
 # sed -i 's/{red}/{imperialbrick}/g'  diff.tex
 # sed -i 's/{blue}/{imperialblue}/g'  diff.tex
 # sed -i 's/\\uwave.*}/}/g' diff.tex
-
-# if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] || [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
-#     unix2dos diff.tex
-# fi
 
 if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] || [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
     # :
