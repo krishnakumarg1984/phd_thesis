@@ -39,6 +39,7 @@ push @generated_exts, "thm";
 push @generated_exts, "xdy";
 push @generated_exts, "xmpi";
 push @generated_exts, "xmpdata";
+push @generated_exts, "glstex";
 push @generated_exts, 'acn', 'acr', 'alg';
 push @generated_exts, 'glo', 'gls', 'glg';
 
