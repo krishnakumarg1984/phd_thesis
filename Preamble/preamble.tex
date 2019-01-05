@@ -52,7 +52,7 @@
 \PassOptionsToPackage{minted, most}{tcolorbox}
 \PassOptionsToPackage{all}{hypcap}
 % \PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
-\PassOptionsToPackage{nomain, acronym, record}{glossaries-extra}
+\PassOptionsToPackage{nomain, acronym, symbols, record, stylemods={tree}}{glossaries-extra}
 \PassOptionsToPackage{depth=4, open=true, openlevel=0, numbered=true}{bookmark}
 % \PassOptionsToPackage{nameinlink}{cleveref}
 \PassOptionsToPackage{hyphenation, lastparline, nosingleletter}{impnattypo}
@@ -125,18 +125,6 @@
 \input{Preamble/esoteric_text_constructs}
 \input{Preamble/custom_latex_settings}
 %---------- end custom commands ----------%
-
-%%%%%%%%%% glossaries-related stuff %%%%%%%%%%%%%%%%%%%%
-\glssetcategoryattribute{acronym}{nohyperfirst}{true} % no hyperlink on first use for entries with category=acronym % https://tex.stackexchange.com/questions/434160/line-break-long-glossaries-entry-when-using-hyperref-and-latex-dvips-ps2pdf
-\setabbreviationstyle[acronym]{long-short} % applicable only for glossaries-extra.sty
-
-\GlsXtrLoadResources[
-src={frontmatter/acronyms},%
-type=acronym,% put these entries in the 'acronym' glossary
-save-locations=false% don't save locations
-]
-
-\renewcommand{\glsnamefont}[1]{\textbf{#1}} % to bold-face acronym header with style=super
 
 \usepackage[object=vectorian]{pgfornament}
 
