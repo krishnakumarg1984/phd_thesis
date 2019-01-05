@@ -41,11 +41,13 @@ save-locations=false% don't save locations
 ]
 
 % assign titles to group labels:
-\glsxtrsetgrouptitle{latin}{Latin}
-\glsxtrsetgrouptitle{greek}{Greek}
+\glsxtrsetgrouptitle{latin}{List of Latin Symbols}
+\glsxtrsetgrouptitle{greek}{List of Greek Symbols}
+\glsxtrsetgrouptitle{generic}{Other Generic Nomenclature}
 
 \GlsXtrLoadResources[
 src={frontmatter/latin-symbols},
+sort={letter-lowerupper},
 type=symbols,
 selection={all},
 category={same as entry},% set the category to the entry type
@@ -62,6 +64,17 @@ category={same as entry},% set the category to the entry type
 group={greek},% assign group label
 set-widest,% needed for 'alttree' styles
 save-locations=false% don't save locations
+]
+
+\GlsXtrLoadResources[
+src={frontmatter/generic-symbols},
+sort={en-GB},
+type=symbols,
+selection={all},
+category={same as entry},% set the category to the entry type
+group={generic},% assign group label
+set-widest,% needed for 'alttree' styles
+save-locations=false
 ]
 
 \renewcommand{\glsnamefont}[1]{\textbf{#1}} % to bold-face acronym header with style=super
