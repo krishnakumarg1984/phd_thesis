@@ -39,9 +39,12 @@
 \cleardoublepage
 % https://tex.stackexchange.com/questions/69184/remove-blank-page-between-list-of-figures-and-list-of-tables
 {\addcontentsline{toc}{chapter}{List of Algorithms} \listofalgorithms \let\clearpage\relax \addcontentsline{toc}{chapter}{List of Program Code} \begingroup   \tcblistof[\chapter*]{mypyg}{List of Program Code} \endgroup}
-\glsresetall
-\setstretch{1.0} % for glossaries
-\printunsrtglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
-\printunsrtglossary[type=symbols, title={List of Symbols}, style=listgroup]\label{ch:symbols}
+
 \microtypesetup{protrusion=true} % re-enables protrusion
+\glsresetall
+
+\setstretch{1.0} % for acronyms
+\printunsrtglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
+\renewcommand{\baselinestretch}{0.3}\normalsize
+\printunsrtglossary[type=symbols, title={List of Symbols}, style=alttreegroup]\label{ch:symbols}
 

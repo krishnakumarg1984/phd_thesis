@@ -1,2 +1,1 @@
 140K bode_mag.pdf*
-68K project_outputs.pdf*

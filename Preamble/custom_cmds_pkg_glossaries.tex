@@ -20,7 +20,10 @@
 % }
 
 % \renewcommand{\glossarypreamble}{\footnotesize}
-\renewcommand{\glossarypreamble}{\small}
+% \renewcommand{\glossarypreamble}{\small}
+\setglossarypreamble[acronym]{\small}
+\setglossarypreamble[symbols]{\normalsize}
+% \renewcommand\glstreepredesc{\qquad}
 
 % https://tex.stackexchange.com/questions/118182/selectively-turn-off-hyperref-links-for-citations
 \newcommand*{\nolink}[1]{%
@@ -32,6 +35,7 @@
 
 \GlsXtrLoadResources[
 src={frontmatter/acronyms},%
+selection={all},
 type=acronym,% put these entries in the 'acronym' glossary
 save-locations=false% don't save locations
 ]
@@ -43,6 +47,8 @@ save-locations=false% don't save locations
 \GlsXtrLoadResources[
 src={frontmatter/latin-symbols},
 type=symbols,
+selection={all},
+category={same as entry},% set the category to the entry type
 group={latin},% assign group label
 set-widest,% needed for 'alttree' styles
 save-locations=false
@@ -51,9 +57,13 @@ save-locations=false
 \GlsXtrLoadResources[
 src={frontmatter/greek-symbols},% entries in 'greek-symbols.bib'
 type=symbols,% put these entries in the 'symbols' glossary
+selection={all},
+category={same as entry},% set the category to the entry type
 group={greek},% assign group label
 set-widest,% needed for 'alttree' styles
 save-locations=false% don't save locations
 ]
 
 \renewcommand{\glsnamefont}[1]{\textbf{#1}} % to bold-face acronym header with style=super
+\glssetcategoryattribute{symbol}{glossdescfont}{normalsize} % https://tex.stackexchange.com/questions/303888/different-formatting-for-acronyms-and-glossary-entries
+
