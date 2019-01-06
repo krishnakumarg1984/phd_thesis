@@ -2,7 +2,7 @@
 
 @symbol{brugg,
     name={\ensuremath{\mathrm{brugg}}},
-    description={Bruggeman coefficient}
+    description={Bruggeman coefficient (empirical) to account for the tortuosity of a medium}
 }
 
 @symbol{cs,
@@ -86,6 +86,10 @@
     description={Universal gas constant (\si{\joule\per\mol\per\kelvin})}
 }
 
+@symbol{Realspace,
+    name={\ensuremath{\mathbb{R}}},
+    description={Real co-ordinate space}
+}
 
 @symbol{T,
     name={\ensuremath{T}},
@@ -94,7 +98,7 @@
 
 @symbol{I,
     name={\ensuremath{I}},
-    description={Load current applied at the  terminals of the cell (\si{\ampere})}
+    description={Load current applied at the terminals of the cell (\si{\ampere})}
 }
 
 @symbol{A,
@@ -127,7 +131,7 @@
     description={Open circuit potential of the electrode (\si{\volt})}
 }
 
-@symbol{tsink,
+@symbol{Tsink,
     name={\ensuremath{T_\mathrm{sink}}},
     description={Coolant temperature used in tab-cooling of the cell (\si{\kelvin})}
 }
@@ -140,5 +144,80 @@
 @symbol{Eakr,
     name={\ensuremath{E_{\mathrm{a,}k_\mathrm{r}}}},
     description={Activation energy for solid phase reaction rate coefficient (\si{\joule\per\mol})}
+}
+
+@symbol{xvecdot,
+    name={\ensuremath{\mathbf{\dot{x} \in \mathbb{R}^{n \times 1}}}},
+    description={Time derivative of the state vector $\mathbf{x}$ \ie{} $\diff{\mathbf{x}}{t}$ in a state-space formulation}
+}
+
+@symbol{xvec,
+    name={\ensuremath{\mathbf{x} \in \mathbb{R}^{n \times 1}}},
+    description={State vector with `$n$' states following the standard state-space notation}
+}
+
+@symbol{Astate,
+    name={\ensuremath{A \in \mathbb{R}^{n \times n}}},
+    description={System matrix corresponding to `$n$' states following the standard state-space notation}
+}
+
+@symbol{B,
+    name={\ensuremath{B \in \mathbb{R}^{n \times m}}},
+    description={Input matrix corresponding to `$n$' states and `$m$' inputs following the standard state-space notation}
+}
+
+@symbol{u,
+    name={\ensuremath{\mathbf{u} \in \mathbb{R}^{m \times 1}}},
+    description={Input vector with `$m$' inputs following the standard state-space notation}
+}
+
+@symbol{y,
+    name={\ensuremath{\mathbf{y} \in \mathbb{R}^{p \times 1}}},
+    description={Output vector with `$p$' outputs following the standard state-space notation}
+}
+
+@symbol{C,
+    name={\ensuremath{C \in \mathbb{R}^{p \times n}}},
+    description={Output matrix corresponding to `$p$' outputs and `$n$' states following the standard state-space notation}
+}
+
+@symbol{Dstatespacematrix,
+    name={\ensuremath{D \in \mathbb{R}^{p \times m}\ }},
+    description={Output matrix corresponding to `$p$' outputs and `$m$' inputs following the standard state-space notation}
+}
+
+@symbol{nlayers,
+    name={\ensuremath{n}},
+    description={Number of layers \ie{} electrochemical unit-cells accomodated within the cell's pouch}
+}
+
+@symbol{Pwheels,
+    name={\ensuremath{P_\mathrm{w}}},
+    description={Power experienced at the wheels of a (hybrid) electric vehicle (\si{\watt})}
+}
+
+@symbol{vf,
+    name={\ensuremath{v_\mathrm{f}}},
+    description={Final speed to be achieved at the end of the acceleration phase when accelerating a vehicle from standstill (\si{\meter\per\second})}
+}
+
+@symbol{vb,
+    name={\ensuremath{v_\mathrm{b}}},
+    description={Base speed of a (hybrid) electric vehicle \ie{} the speed at which the drivetrain motor switches from the torque-limited region to power-limited region (\si{\meter\per\second})}
+}
+
+@symbol{Pbattacc,
+    name={\ensuremath{P_\mathrm{batt}^\mathrm{acc}}},
+    description={Power demanded at the terminals of the battery pack during acceleration phase of a (hybrid) electric vehicle (\si{\watt})}
+}
+
+@symbol{Pbattfastchg,
+    name={\ensuremath{P_\mathrm{batt}^\mathrm{fastchg}}},
+    description={Power applied at the terminals while fast charging the battery pack of a (hybrid) electric vehicle (\si{\watt})}
+}
+
+@symbol{etadt,
+    name={\ensuremath{\eta_\mathrm{dt}}},
+    description={Overall lumped efficience of the drivetrain components (excluding battery pack) of a (hybrid) electric vehicle}
 }
 
