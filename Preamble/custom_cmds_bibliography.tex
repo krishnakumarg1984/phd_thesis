@@ -121,7 +121,7 @@
 
 \newcommand*{\mkbibnamecomplete}[1]{%
     \ifitemannotation{jointfirst}
-        {\uline{\textbf{#1}}}
+        {\textbf{\uline{#1}}}
     {#1}}
 
 \renewbibmacro*{name:family}[4]{%
@@ -180,3 +180,4 @@
          {\revsdnamepunct}%
        \ifdefvoid{#2}{}{\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
        \ifdefvoid{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}}
+
