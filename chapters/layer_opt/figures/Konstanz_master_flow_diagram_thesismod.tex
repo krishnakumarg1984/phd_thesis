@@ -160,9 +160,9 @@
             \node [scale=0.88,accnode,anchor=west] at (gradepower.north -| InputParamsKeyNode.west) (LionSimbaAcc) {Thermally Coupled\\P2D Simulation \\(discharge)};
             \node [scale=0.85,sourcenode,anchor=south west]  at (scalebysurfacearea.north -| LionSimbaAcc.west) (SimParamsAcc) {Sim. params.\\ for acceleration};
 
-            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of LionSimbaAcc   ,yshift=-5.0mm ] (acctempcheck)             {$ T(t_\mathrm{f})<T_\mathrm {max}$?};
-            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of acctempcheck   ,yshift=-6.1mm ] (accVoltagecheck)          {$ V(t_\mathrm{f})>V_\mathrm {min}$?};
-            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of accVoltagecheck,yshift=-5.8mm ] (accsoccheck)              {$ z(t_\mathrm{f})>z_\mathrm {min}$?};
+            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of LionSimbaAcc   ,yshift=-4.5mm ] (acctempcheck)             {$ T(t_\mathrm{f})<T_\mathrm {max}$?};
+            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of acctempcheck   ,yshift=-5.4mm ] (accVoltagecheck)          {$ V(t_\mathrm{f})>V_\mathrm {min}$?};
+            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of accVoltagecheck,yshift=-5.9mm ] (accsoccheck)              {$ z(t_\mathrm{f})>z_\mathrm {min}$?};
             % \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of accsoccheck    ,yshift=4.0mm ] (searchterminatedcheckacc) {$ L=H-1$?};
 
             \node [sourcenode,anchor=west,minimum height=5mm, minimum width=5mm] at ($(rollpower.south west)!0.5!(gradepower.north west)$) (gradeduplicate) {$Z$};
@@ -184,8 +184,8 @@
             \node [fastchgnode,minimum height=8mm,minimum width=8mm,xshift=15.0mm] at (scalebyncellsfastchg.east |- acccompare) (scalebysurfaceareafastchg) {$\div$};
             \node [scale=0.88,fastchgnode,anchor = west,xshift=7mm] at (scalebysurfaceareafastchg.east |- accspeedselector) (lionsimbafastchg) {Thermally Coupled\\P2D Simulation \\(fast charge)};
             \node [scale=0.8,fastchgnode,diamond,minimum width=3cm,minimum height=3cm,below=of lionsimbafastchg,yshift=2mm] (tempcheckfastchg)     {$T(t)<T_\mathrm{max}$?};
-            \node [scale=0.8,fastchgnode,diamond,minimum width=2.8cm,minimum height=2.8cm,yshift=5mm] at (LionSimbaAcc -| tempcheckfastchg)  (fastchgvoltagecheck)     {$V(t) <  V_{max}$?};
-            \node [scale=0.8,fastchgnode,diamond,minimum width=3cm,minimum height=3cm] at  (acctempcheck -| tempcheckfastchg) (surfaceconccheck)     {$c_s^\ast < c_{s_\mathrm{sat}}$};
+            \node [scale=0.8,fastchgnode,diamond,minimum width=2.8cm,minimum height=2.8cm,yshift=5mm] at (LionSimbaAcc -| tempcheckfastchg)  (fastchgvoltagecheck)     {$V(t) <  V_\mathrm{max}$?};
+            \node [scale=0.8,fastchgnode,diamond,minimum width=3cm,minimum height=3cm] at  (acctempcheck -| tempcheckfastchg) (surfaceconccheck)     {$c_\mathrm{s}^\ast < c_{\mathrm{s,sat}}$};
             \node [scale=0.8,fastchgnode,diamond,minimum width=3cm,minimum height=3cm] at (accVoltagecheck -| surfaceconccheck) (timecheck)     {$t < t_\mathrm{max}$?};
             \node [scale=0.8,fastchgnode,diamond,minimum width=2.8cm,minimum height=2.8cm] at (fastchgvoltagecheck|-accsoccheck) (fastchgtargetcheck)     {$z(t)\ge z^\ast$?};
             \node [scale=0.85,sourcenode,yshift=2mm,anchor=north west] at (lionsimbafastchg.west |- scalebyncellsfastchg.north) (SimParamsFastchg) {Sim. params\\ for fast charge};
@@ -281,7 +281,7 @@
             \draw [->,>=Arc Barb,ultra thick,brick] (startfastchgcalcs) -- node[black,above] {$\scriptscriptstyle P\mathrm{^{fastchg}_{batt}}$} (scalebyncellsfastchg);
             \draw[->] (scalebyncellsfastchg) -| node[near start] {$\scriptstyle{P^\mathrm{fastchg}_\mathrm{cell}}$}($(scalebyncellsfastchg.east)!0.5!(scalebysurfaceareafastchg.west)$) |- (node cs:name= scalebysurfaceareafastchg,angle=155) ;
             \draw[->] (scalebysurfaceareafastchg) -| (node cs:name= lionsimbafastchg,angle=135) node[pos=0.3,above] {$\scriptstyle{p^\mathrm{fastchg}}$};
-            \draw[->] (lionsimbafastchg) -- (tempcheckfastchg) node[left,midway] {\tiny results($t\le t_\mathrm{max}$)};
+            \draw[->] (lionsimbafastchg) -- (tempcheckfastchg) node[left,midway] {\scriptsize results($t\le t_\mathrm{max}$)};
             \draw[->] (tempcheckfastchg) -- (fastchgvoltagecheck)node[midway] {\small yes};;
             \draw[->] (SimParamsFastchg) -- (lionsimbafastchg.north -| SimParamsFastchg);
             \draw[->] (CellParams) -| (node cs:name= lionsimbafastchg,angle=30);
@@ -297,18 +297,18 @@
 
             \node [controlnode,circle,below = 10mm of computeelectrochemicalmass] (cellmass) {$\Sigma$};
             \coordinate (halfbetweenmcellandgain) at ($(cellmass.north)!0.3!(computeelectrochemicalmass.west)$);
-            \node [controlnodeoutput,xshift=0mm] at (halfbetweenmcellandgain -| scalebyncellsfastchg) (cpavg) {\scriptsize Compute $c_\mathrm{avg}$};
+            \node [controlnodeoutput,xshift=0mm] at (halfbetweenmcellandgain -| scalebyncellsfastchg) (cpavg) {\scriptsize{Compute} $c_\mathrm{avg}$};
             \draw[->,darkgreen,thick,name path=cellmasspath] (cellmass) -- (computeelectrochemicalmass) node[very near start,black] {$m_\mathrm{cell}$};
             \draw[->,darkgreen,thick] (cellmass) |- (cpavg);
 
             % \node [sourcesubsetnode,align=left,anchor=south] at (cpavg |- computeelectrochemicalmass) (listofcps){$c_{_\mathrm{Al}},c_{_\mathrm{pos}},c_{_\mathrm{neg}}$\\$c_{_\mathrm{sep}},c_{_\mathrm{Cu}},c_{_\mathrm{LiPF_6}}$};
             % \draw[vecArrow] (listofcps.south) -- (cpavg.north);
 
-            \node [sourcesubsetnode,align=left,anchor=north west,yshift=4mm,inner sep=2pt] at (cpavg |- cellmass.south) (listofcps){$c_{_\mathrm{Al}},c_{_\mathrm{pos}},c_{_\mathrm{neg}}$\\$c_{_\mathrm{sep}},c_{_\mathrm{Cu}},c_{_\mathrm{LiPF_6}}$};
+            \node [sourcesubsetnode,align=left,anchor=north west,xshift=-3mm,yshift=4mm,inner sep=2pt] at (cpavg |- cellmass.south) (listofcps){$c_{_\mathrm{Al}},c_{_\mathrm{pos}},c_{_\mathrm{neg}},c_{_\mathrm{Cu}}$\\$c_{_\mathrm{sep}},c_{_\mathrm{pouch}},c_{_\mathrm{LiPF_6}}$};
             \draw[vecArrow] (listofcps.130) -- (listofcps.130 |- cpavg.south);
 
             \coordinate (halfbetweenmcellandcpavg) at ($(cellmass.east)!0.5!(listofcps.west)$);
-            \node [controlnodeoutput,align=left,below=of cellmass.south west ,xshift=0mm,yshift=0mm,anchor=north west] (computeallmasses){\scriptsize Compute: \\$m_{_\mathrm{Al}},m_{_\mathrm{pos}},m_{_\mathrm{neg}}$\\$m_{_\mathrm{sep}},m_{_\mathrm{Cu}},m_{_\mathrm{LiPF_6}}$};
+            \node [controlnodeoutput,align=left,below=of cellmass.south west ,xshift=-2.25mm,yshift=0mm,anchor=north west,inner sep=1pt] (computeallmasses){\scriptsize Compute: \\$m_{_\mathrm{Al}},m_{_\mathrm{pos}},m_{_\mathrm{neg}},m_{_\mathrm{Cu}}$\\$m_{_\mathrm{sep}},m_{_\mathrm{pouch}},m_{_\mathrm{LiPF_6}}$};
             \draw[vecArrow] (computeallmasses.30) to (computeallmasses.30 |- cpavg.south);
             \draw[vecArrow] (computeallmasses.150) to (computeallmasses.150 |- cellmass.south);
 
@@ -317,19 +317,20 @@
             \draw[->] (facearea) -- (facearea -| computeallmasses.west);
             \draw[->] (facearea) -- (facearea -| computecellarea.east);
             % \draw[->] (computecellarea.west) -| node[very near start,above,xshift=5mm] {$\scriptstyle{A_\mathrm{cell}}$} ($(scalebyncells.west)!0.5!(scalebysurfacearea.east)+(0,-3mm)$) -- ($(scalebysurfacearea.east)+(0,-1mm)$) node[near start,below right] {$\scriptstyle{A_\mathrm{cell}}$};
-            \node[sourcesubsetnode,below =14.9mm of computeallmasses.south west,anchor=center,align=left,minimum width=15mm] (constantdomainlengths) {$\scriptstyle{l_\mathrm{Al}}$\\$\scriptstyle{l_\mathrm{sep}}$\\$\scriptstyle{l_\mathrm{Cu}}$};
+            \node[sourcesubsetnode,below =14.9mm of computeallmasses.south west,anchor=center,align=left,minimum width=12mm,xshift=2mm] (constantdomainlengths) {$\scriptstyle{l_\mathrm{Al}}$\\$\scriptstyle{l_\mathrm{sep}}$\\$\scriptstyle{l_\mathrm{Cu}}$};
             \draw[vecArrow] (constantdomainlengths.65) to (constantdomainlengths.65 |- computeallmasses.south);
-            \node[sourcesubsetnode,anchor=north east,xshift=2mm] at (constantdomainlengths.north -| computeallmasses.east) (epsilons) {$\varepsilon_{\mathrm{pos}}$\\ $\varepsilon_{\mathrm{neg}}$};
+            \node[sourcesubsetnode,anchor=north east,xshift=2mm] at (constantdomainlengths.north -| computeallmasses.east) (epsilons) {$\varepsilon_{\mathrm{s,pos}}$\\ $\varepsilon_{\mathrm{s,neg}}$};
             \draw[vecArrow] (epsilons) to (epsilons |- computeallmasses.south);
             \node[scale=0.7,sourcesubsetnode,below =12mm of computeallmasses,yshift=-15mm] (listofrhos) {$\rho_\mathrm{Al},\rho_\mathrm{pos}$ \\ $\rho_\mathrm{neg}, \rho_\mathrm{sep} $ \\ $\rho_\mathrm{Cu},\rho_\mathrm{pouch} $ \\ $\rho_\mathrm{LiPF_6}$};
             \draw[vecArrow] (listofrhos) to (listofrhos |- computeallmasses.south);
-            \node[scale=1,minimum width=22mm,sourcesubsetnode,yshift=0mm,anchor=north,xshift=0mm] at (computeallmasses.north -| listofcps) (fillerepsilons) {$\varepsilon_\mathrm{fi_{pos}},\varepsilon_\mathrm{fi_{neg}}$};
-            \draw[vecArrow] (fillerepsilons) to (fillerepsilons -| computeallmasses.east);
-            \node[scale=0.9,sourcesubsetnode,yshift=0mm,anchor=south east] at (computeallmasses.south -| fillerepsilons.east) (pouchdimensions) {$L_\mathrm{pouch},W_\mathrm{pouch}$};
+            % \node[scale=1,minimum width=22mm,sourcesubsetnode,yshift=0mm,anchor=north,xshift=0mm] at (computeallmasses.north -| listofcps) (fillerepsilons) {$\varepsilon_\mathrm{fi_{pos}},\varepsilon_\mathrm{fi_{neg}}$};
+            % \draw[vecArrow] (fillerepsilons) to (fillerepsilons -| computeallmasses.east);
+            \node[scale=0.9,sourcesubsetnode,yshift=0mm,xshift=2.25mm] at (computeallmasses -| listofcps) (pouchdimensions) {$ L_\mathrm{pouch},W_\mathrm{pouch}$};
+            % \node[scale=0.9,sourcesubsetnode,yshift=0mm,anchor=south east] at (computeallmasses.south -| fillerepsilons.east) (pouchdimensions) {$L_\mathrm{pouch},W_\mathrm{pouch}$};
             \draw[vecArrow] (pouchdimensions) to (pouchdimensions -| computeallmasses.east);
             \node[controlnodeoutput] at (constantdomainlengths -| facearea) (domainlengths) {Compute:\\$l_\mathrm{neg},l_\mathrm{pos}$};
             \draw[vecArrow] (domainlengths) |- (computeallmasses.190);
-            \node[controlnode,anchor=east] at (domainlengths -| scalebydteff.west) (iterativesearch) {\footnotesize Customised  Binary \\\footnotesize Search Algorithm};
+            \node[controlnode,anchor=east,yshift=-0.8mm] at (domainlengths -| scalebydteff.west) (iterativesearch) {\footnotesize Customised  Binary \\\footnotesize Search Algorithm};
             \node [scale=1.0,controlnode,diamond,minimum width=20mm,minimum height=20mm,yshift=0.0mm,inner sep=0pt] at (iterativesearch -| computecellarea) (searchconverged)             {\scriptsize Search\\\scriptsize Converged?};
             % \node [scale=0.8,controlnode,diamond,minimum width=28mm,minimum height=28mm,yshift=0.0mm ] at (iterativesearch -| scalebydteff) (searchconverged)             {\scriptsize Search\\\scriptsize Converged?};
             \draw[->,orange,very thick] (searchconverged) -- (domainlengths) node [pos=0.3,above,black] {\scriptsize use new $n^{(i)}$} node [very near start,below,black] {no};
@@ -422,7 +423,7 @@
             % \node [accnode,right=of accsoccheck,yshift=-8.0mm] (noptacc) {$n\mathrm{^{acc}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
             \node [accnode,below = of storefeasiblesolution.south west,anchor=west] (noptacc) {$n\mathrm{^{acc}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
             \node [fastchgnode,xshift=0mm,anchor=east] at (noptacc-| computelratio.east) (noptfastchg) {$n\mathrm{^{fastchg}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
-            \node[controlnode,align=center,inner sep=2pt,anchor=east]  at ($(noptfastchg.east)+(27mm,0)$) (exitcondition2) {\scriptsize exit \\ \scriptsize condn.$=2$};
+            \node[controlnode,align=center,inner sep=2pt,anchor=east]  at ($(noptfastchg.east)+(28mm,0)$) (exitcondition2) {\scriptsize exit \\ \scriptsize condn.$=2$};
             \draw [->](fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,right] {\small no} -| (exitcondition2.south);
             \draw  (exitcondition2.north) |- (fastchgtargetcheck.west);
 
