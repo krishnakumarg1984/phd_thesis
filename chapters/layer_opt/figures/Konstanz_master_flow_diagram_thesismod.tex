@@ -139,9 +139,9 @@
             \end{scope}
 
             \node [accnode,below = 12mm of inertialpower] (dragpower)  {\scriptsize Compute \\ $\scriptstyle P_\mathrm{drag}$};
-            \node [sourcenode,above =3mm of dragpower]    (rhocdav)    {\scriptsize  $\scriptstyle \rho,C_\mathrm{d},A_\mathrm{v}$};
+            \node [sourcenode,above =3mm of dragpower]    (rhocdav)    {\scriptsize  $ \rho_\mathrm{air},C_\mathrm{d},A_\mathrm{v}$};
             \node [accnode,below = 12mm of dragpower]     (rollpower)  {\scriptsize Compute \\ $\scriptstyle P_\mathrm{roll}$};
-            \node [sourcenode,above = 3mm of rollpower]   (rollcoeff)  {\scriptsize $\scriptstyle C_\mathrm{r}$};
+            \node [sourcenode,above = 3mm of rollpower]   (rollcoeff)  {\scriptsize $ C_\mathrm{r}$};
 
             % \node [accomparenode,above = of vfmanuf,rotate=0,minimum height=6mm] (acccompare) {$\scriptstyle a_\mathrm{std.}>a_\mathrm{man.}$\scriptsize ?};
 
@@ -160,9 +160,9 @@
             \node [scale=0.88,accnode,anchor=west] at (gradepower.north -| InputParamsKeyNode.west) (LionSimbaAcc) {Thermally Coupled\\P2D Simulation \\(discharge)};
             \node [scale=0.85,sourcenode,anchor=south west]  at (scalebysurfacearea.north -| LionSimbaAcc.west) (SimParamsAcc) {Sim. params.\\ for acceleration};
 
-            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of LionSimbaAcc   ,yshift=-5.0mm ] (acctempcheck)             {$ T(t_f)<T_\mathrm {max}$?};
-            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of acctempcheck   ,yshift=-5.0mm ] (accVoltagecheck)          {$ V(t_f)>V_\mathrm {min}$?};
-            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of accVoltagecheck,yshift=-5.0mm ] (accsoccheck)              {$ z(t_f)>z_\mathrm {min}$?};
+            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of LionSimbaAcc   ,yshift=-5.0mm ] (acctempcheck)             {$ T(t_\mathrm{f})<T_\mathrm {max}$?};
+            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of acctempcheck   ,yshift=-6.1mm ] (accVoltagecheck)          {$ V(t_\mathrm{f})>V_\mathrm {min}$?};
+            \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of accVoltagecheck,yshift=-5.8mm ] (accsoccheck)              {$ z(t_\mathrm{f})>z_\mathrm {min}$?};
             % \node [scale=0.8,accnode,diamond,minimum width=28mm,minimum height=28mm,below=of accsoccheck    ,yshift=4.0mm ] (searchterminatedcheckacc) {$ L=H-1$?};
 
             \node [sourcenode,anchor=west,minimum height=5mm, minimum width=5mm] at ($(rollpower.south west)!0.5!(gradepower.north west)$) (gradeduplicate) {$Z$};
@@ -200,26 +200,26 @@
             \draw[->] (vfmanuf.west) -- ++ (-7.0mm,0);
             \draw[->] (vfsae.west) --   ++ (-7.0mm,0);
 
-            \draw[<-] (inertialpower.west) -- ++(-29.4mm,0) node[near start,above] {$t_f$};
-            \draw[<-] (inertialpower.east) -- ++(23.0mm,0)node[near start] {$v_f$};
+            \draw[<-] (inertialpower.west) -- ++(-29.4mm,0) node[near start,above] {$t_\mathrm{f}$};
+            \draw[<-] (inertialpower.east) -- ++(23.0mm,0)node[near start] {$v_\mathrm{f}$};
             \draw[->] (basespeed) -- (inertialpower);
             \draw[->] (inertialpower.south) -- ++(0,-4mm) -| (sumofpowers);
             % % \draw[->] ($(timeselector.east) + (3mm,0mm)$) |- ((node cs:name= lionsimbaacc,angle=40)+(0,11mm)) -- (node cs:name= lionsimbaacc,angle=40);
             \coordinate (timeselectorextension) at ($(timeselector.east) + (3mm,-1mm)$);
-            \draw[->] (timeselectorextension) -- (timeselectorextension |- rollcoeff.south) -| (node cs:name= LionSimbaAcc,angle=25) node[near end] {$t_f$};
+            \draw[->] (timeselectorextension) -- (timeselectorextension |- rollcoeff.south) -| (node cs:name= LionSimbaAcc,angle=25) node[near end] {$t_\mathrm{f}$};
             % %     % \draw[->] (SimParamsAcc) -- (node cs:name= lionsimbaacc,angle=68);
             \draw[->] (SimParamsAcc.south) -- (SimParamsAcc.south |- LionSimbaAcc.north);
             \draw[->] (CellParams.west) -- ++(-65mm,0) |- node[above,rotate=-90,xshift=-30mm,midway] {\scriptsize Cell Parameters} ($(rollcoeff.north)+(-90mm,-2.5mm)$) -| (node cs:name= LionSimbaAcc,angle=32);
 
             % % \draw[->,double,double distance=2pt,arrows ={-Latex[fill=none,length=1mm]}] (rhocdav) -- (dragpower);
             \draw[vecArrow] (rhocdav) to (dragpower);
-            \draw[->] (sumofpowers) -- (node cs:name= scalebydteff,angle=-12) node[midway,above] {$\scriptstyle{P_w}$};
+            \draw[->] (sumofpowers) -- (node cs:name= scalebydteff,angle=-12) node[midway,above] {$\scriptstyle{P_\mathrm{w}}$};
             % %     % \draw[->] (scalebydteff.west) -- (node cs:name= scalebyncells,angle=-12);
             \draw[->] (scalebydteff.west) -- (scalebyncells) node[midway,above] {$\scriptstyle{P^{\mathrm{acc}}_\mathrm{batt}}$};
             % %     % \draw[->] (ncells) -| ($(node cs:name= scalebyncells,angle=25) + (5mm,0)$) -- (node cs:name= scalebyncells,angle=25); ;
             \draw[->] (scalebyncells)  -| ($(scalebyncells.west)!0.5!(scalebysurfacearea.east)$) |- (node cs:name= scalebysurfacearea,angle=24) node[near start,above=2mm] {$\scriptstyle{P^\mathrm{acc}_\mathrm{cell}}$};
             \draw[->] (scalebysurfacearea.west) -- ($(scalebysurfacearea.west) + (-3mm,0)$) |- (LionSimbaAcc.east) node[pos=0.4,right] {$\scriptstyle{p^\mathrm{acc}}$};
-            \draw[->] (LionSimbaAcc) -- (acctempcheck) node[right,midway] {\tiny results($t_f$)};
+            \draw[->] (LionSimbaAcc) -- (acctempcheck) node[right,midway] {\small results($t_\mathrm{f}$)};
             \draw[->] (acctempcheck) -- (accVoltagecheck) node[midway] {\small yes};
             \draw[->] (accVoltagecheck) -- (accsoccheck)node[midway] {\small yes};
             % \draw[->] (accsoccheck) -- (noptacc)node[midway] {\small yes};
@@ -281,7 +281,7 @@
             \draw [->,>=Arc Barb,ultra thick,brick] (startfastchgcalcs) -- node[black,above] {$\scriptscriptstyle P\mathrm{^{fastchg}_{batt}}$} (scalebyncellsfastchg);
             \draw[->] (scalebyncellsfastchg) -| node[near start] {$\scriptstyle{P^\mathrm{fastchg}_\mathrm{cell}}$}($(scalebyncellsfastchg.east)!0.5!(scalebysurfaceareafastchg.west)$) |- (node cs:name= scalebysurfaceareafastchg,angle=155) ;
             \draw[->] (scalebysurfaceareafastchg) -| (node cs:name= lionsimbafastchg,angle=135) node[pos=0.3,above] {$\scriptstyle{p^\mathrm{fastchg}}$};
-            \draw[->] (lionsimbafastchg) -- (tempcheckfastchg) node[left,midway] {\tiny results($t\le t_{max}$)};
+            \draw[->] (lionsimbafastchg) -- (tempcheckfastchg) node[left,midway] {\tiny results($t\le t_\mathrm{max}$)};
             \draw[->] (tempcheckfastchg) -- (fastchgvoltagecheck)node[midway] {\small yes};;
             \draw[->] (SimParamsFastchg) -- (lionsimbafastchg.north -| SimParamsFastchg);
             \draw[->] (CellParams) -| (node cs:name= lionsimbafastchg,angle=30);
@@ -298,7 +298,7 @@
             \node [controlnode,circle,below = 10mm of computeelectrochemicalmass] (cellmass) {$\Sigma$};
             \coordinate (halfbetweenmcellandgain) at ($(cellmass.north)!0.3!(computeelectrochemicalmass.west)$);
             \node [controlnodeoutput,xshift=0mm] at (halfbetweenmcellandgain -| scalebyncellsfastchg) (cpavg) {\scriptsize Compute $c_\mathrm{avg}$};
-            \draw[->,darkgreen,thick,name path=cellmasspath] (cellmass) -- (computeelectrochemicalmass) node[very near start,black] {$\scriptstyle{m_\mathrm{cell}}$};
+            \draw[->,darkgreen,thick,name path=cellmasspath] (cellmass) -- (computeelectrochemicalmass) node[very near start,black] {$m_\mathrm{cell}$};
             \draw[->,darkgreen,thick] (cellmass) |- (cpavg);
 
             % \node [sourcesubsetnode,align=left,anchor=south] at (cpavg |- computeelectrochemicalmass) (listofcps){$c_{_\mathrm{Al}},c_{_\mathrm{pos}},c_{_\mathrm{neg}}$\\$c_{_\mathrm{sep}},c_{_\mathrm{Cu}},c_{_\mathrm{LiPF_6}}$};
@@ -321,7 +321,7 @@
             \draw[vecArrow] (constantdomainlengths.65) to (constantdomainlengths.65 |- computeallmasses.south);
             \node[sourcesubsetnode,anchor=north east,xshift=2mm] at (constantdomainlengths.north -| computeallmasses.east) (epsilons) {$\varepsilon_{\mathrm{pos}}$\\ $\varepsilon_{\mathrm{neg}}$};
             \draw[vecArrow] (epsilons) to (epsilons |- computeallmasses.south);
-            \node[scale=0.7,sourcesubsetnode,below =12mm of computeallmasses,yshift=-20mm] (listofrhos) {$\rho_\mathrm{Al},\rho_\mathrm{pos},\rho_\mathrm{neg}$\\$\rho_\mathrm{sep},\rho_\mathrm{Cu},\rho_\mathrm{pouch}$};
+            \node[scale=0.7,sourcesubsetnode,below =12mm of computeallmasses,yshift=-15mm] (listofrhos) {$\rho_\mathrm{Al},\rho_\mathrm{pos}$ \\ $\rho_\mathrm{neg}, \rho_\mathrm{sep} $ \\ $\rho_\mathrm{Cu},\rho_\mathrm{pouch} $ \\ $\rho_\mathrm{LiPF_6}$};
             \draw[vecArrow] (listofrhos) to (listofrhos |- computeallmasses.south);
             \node[scale=1,minimum width=22mm,sourcesubsetnode,yshift=0mm,anchor=north,xshift=0mm] at (computeallmasses.north -| listofcps) (fillerepsilons) {$\varepsilon_\mathrm{fi_{pos}},\varepsilon_\mathrm{fi_{neg}}$};
             \draw[vecArrow] (fillerepsilons) to (fillerepsilons -| computeallmasses.east);
