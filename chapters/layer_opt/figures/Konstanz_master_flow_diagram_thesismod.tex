@@ -329,12 +329,13 @@
             \node[scale=0.9,sourcesubsetnode,yshift=0mm] at (computeallmasses.east -| listofcps) (pouchdimensions) {$L_\mathrm{pouch},W_\mathrm{pouch}$};
             \draw[vecArrow] (pouchdimensions) to (pouchdimensions -| computeallmasses.east);
             \node[controlnodeoutput] at (constantdomainlengths -| facearea) (domainlengths) {Compute:\\$l_\mathrm{neg},l_\mathrm{pos}$};
-            \draw[vecArrow] (domainlengths) |- (computeallmasses.190);
+            \draw[vecArrow] (domainlengths) |- (computeallmasses.195);
             \node[controlnode,anchor=east] at (domainlengths -| scalebydteff.west) (iterativesearch) {\footnotesize Customised  Binary \\\footnotesize Search Algorithm};
             \node [scale=1.0,controlnode,diamond,minimum width=20mm,minimum height=20mm,yshift=0.0mm,inner sep=0pt] at (iterativesearch -| computecellarea) (searchconverged)             {\scriptsize Search\\\scriptsize Converged?};
             % \node [scale=0.8,controlnode,diamond,minimum width=28mm,minimum height=28mm,yshift=0.0mm ] at (iterativesearch -| scalebydteff) (searchconverged)             {\scriptsize Search\\\scriptsize Converged?};
             \draw[->,orange,very thick] (searchconverged) -- (domainlengths) node [pos=0.3,above,black] {\scriptsize use new $n^{(i)}$} node [very near start,below,black] {no};
-            \draw[->,orange,very thick] ($(searchconverged.east)+(16.00mm,0)$) |- (computecellarea.-20);
+            \draw[->,orange,very thick] ($(searchconverged.east)+(16.00mm,0)$) |- (computecellarea.-36);
+            \draw[->,orange,very thick] ($(searchconverged.east)+(16.00mm,0)$) |- (computeallmasses.west);
             \draw[vecArrow] (constantdomainlengths) -- (domainlengths);
             \node[sourcesubsetnode,left=of listofrhos,xshift=-3mm,yshift=0mm] (tstack) {$L_\mathrm{stack}$};
             \draw[->] (tstack) |- (domainlengths.-20);
