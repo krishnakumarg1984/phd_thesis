@@ -346,6 +346,46 @@
     description={Thickness of a specific region~$\lambda$ of a unit cell, $\lambda \in \{\mathrm{neg,sep,pos,Al,Cu}\}$~[\si{\meter}]}
 }
 
+@symbol{m,
+    name={\ensuremath{m_\lambda}},
+    description={Mass of each constituent component~$\lambda \in \{\mathrm{neg,sep,pos,Al,Cu,pouch,\ch{LiPF_6}}\}$ for all electrochemical layers within a pouch cell~[\si{\kilogram}]}
+}
+
+@symbol{c,
+    name={\ensuremath{c_\lambda}},
+    description={Specific heat capacity of each component~$\lambda \in \{\mathrm{neg,sep,pos,Al,Cu,pouch,\ch{LiPF_6}}\}$ in a pouch cell~[\si{\joule\per\kilogram\per\kelvin}]}
+}
+
+@symbol{cavg,
+    name={\ensuremath{c_\mathrm{avg}}},
+    description={Lumped (average) specific heat capacity of a pouch cell~[\si{\joule\per\kilogram\per\kelvin}]}
+}
+
+@symbol{mcell,
+    name={\ensuremath{m_\mathrm{cell}}},
+    description={Cell mass, computed as $\sum m_\lambda$~[\si{\kilogram}]}
+}
+
+@symbol{Mallcells,
+    name={\ensuremath{M_\mathrm{cells}}},
+    description={Total mass of all cells in a battery pack~[\si{\kilogram}]}
+}
+
+@symbol{Mo,
+    name={\ensuremath{M_\mathrm{o}}},
+    description={Mass of pack overhead (without cells)~[\si{\kilogram}]}
+}
+
+@symbol{Mp,
+    name={\ensuremath{M_\mathrm{p}}},
+    description={Payload mass for vehicular acceleration test~[\si{\kilogram}]}
+}
+
+@symbol{Mc,
+    name={\ensuremath{M_\mathrm{c}}},
+    description={Mass of the chassis of a (hybrid) electric vehicle~[\si{\kilogram}]}
+}
+
 @symbol{lratio,
     name={\ensuremath{l_\mathrm{ratio}}},
     description={Ratio of thickness of negative electrode to that of positive electrode}
@@ -365,6 +405,17 @@
     name={\ensuremath{T_\mathrm{pouch}}},
     description={Thickness of the pouch material~[\si{\meter}]}
 }
+
+@symbol{Lpouch,
+    name={\ensuremath{L_\mathrm{pouch}}},
+    description={Exterior length of pouch used to accommodate a typical automotive-grade electrochemical cell~[\si{\meter}]}
+}
+
+@symbol{Wpouch,
+    name={\ensuremath{W_\mathrm{pouch}}},
+    description={Exterior width of pouch used to accommodate a typical automotive-grade electrochemical cell~[\si{\meter}]}
+}
+
 
 @symbol{nrefcell,
     name={\ensuremath{n_\mathrm{refcell}}},
@@ -469,5 +520,10 @@
 @symbol{Mv,
     name={\ensuremath{M_\mathrm{v}}},
     description={Total mass of the vehicle~[\si{\kilogram}]}
+}
+
+@symbol{tmax,
+    name={\ensuremath{t_\mathrm{max}}},
+    description={Time limit for fast charging (as per level 3 fast charging specifications)~[\si{\second}]}
 }
 
