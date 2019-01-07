@@ -5,85 +5,120 @@
     description={Bruggeman coefficient (empirical) to account for the tortuosity of a medium}
 }
 
+@symbol{g,
+    name={\ensuremath{g}},
+    description={Acceleration due to gravity~[\si{\meter\per\second\squared}]}
+}
+
+@symbol{accman,
+    name={\ensuremath{a_\mathrm{man.}}},
+    description={Acceleration rate specified by the vehicle manufacturer~[\si{\meter\per\second\squared}]}
+}
+
+@symbol{accstd,
+    name={\ensuremath{a_\mathrm{std.}}},
+    description={Acceleration rate specified by a governing vehicular standard~[\si{\meter\per\second\squared}]}
+}
+
 @symbol{cs,
     name={\ensuremath{c_\mathrm{s}}},
-    description={Concentration of \ch{Li^0} in the solid phase \ie{} electrode (\si{\mol\per\meter\cubed})}
+    description={Concentration of \ch{Li^0} in the solid phase \ie{} electrode~[\si{\mol\per\meter\cubed}]}
 }
 
 @symbol{Ds,
     name={\ensuremath{D_\mathrm{s}}},
-    description={Intrinsic diffusivity of the electrode material (\si{\meter\squared\per\second})}
+    description={Intrinsic diffusivity of the electrode material~[\si{\meter\squared\per\second}]}
 }
 
 @symbol{Dseff,
     name={\ensuremath{D_\mathrm{s,eff}}},
-    description={Effective diffusivity of the solid phase (\si{\meter\squared\per\second})}
+    description={Effective diffusivity of the solid phase~[\si{\meter\squared\per\second}]}
 }
 
 @symbol{r,
     name={\ensuremath{r}},
-    description={Radial dimension \ie{} the continuous co-ordinate along the particle radius where solid phase concentration is to be computed (\si{\meter})}
+    description={Radial dimension \ie{} the continuous co-ordinate along the particle radius where solid phase concentration is to be computed~[\si{\meter}]}
 }
+
+@symbol{rtilde,
+    name={\ensuremath{\widetilde{r}}},
+    description={Radial dimension in the Chebyshev domain~$\widetilde{r} \in [-1, 1]$~[\si{\meter}]}
+}
+
+@symbol{rdel,
+    name={\ensuremath{\Delta r}},
+    description={Spacing between discretisation nodes in the radial direction within each particle~[\si{\meter}]}
+}
+
 
 @symbol{Rp,
     name={\ensuremath{R_p}},
-    description={Representative particle radius of the solid phase as used in the model (\si{\meter})}
+    description={Representative particle radius of the solid phase as used in the model~[\si{\meter}]}
 }
 
 @symbol{j,
     name={\ensuremath{j}},
-    description={Molar flux density at particle surface (\si{\mol\per\meter\squared\per\second})}
+    description={Molar flux density at particle surface~[\si{\mol\per\meter\squared\per\second}]}
 }
 
 @symbol{ce,
     name={\ensuremath{c_\mathrm{e}}},
-    description={Concentration of \ch{Li^+} ions in the electrolyte phase (\si{\mol\per\meter\cubed})}
+    description={Concentration of \ch{Li^+} ions in the electrolyte phase~[\si{\mol\per\meter\cubed}]}
 }
 
 @symbol{t,
     name={\ensuremath{t}},
-    description={time (\si{\second})}
+    description={Time~[\si{\second}]}
 }
 
 @symbol{x,
     name={\ensuremath{x}},
-    description={Axial dimension \ie{} the continuous co-ordinate along the through-thickness direction of the cell (\si{\meter})}
+    description={Axial dimension \ie{} the continuous co-ordinate along the through-thickness direction of the cell~[\si{\meter}]}
+}
+
+@symbol{xdel,
+    name={\ensuremath{\Delta x}},
+    description={Spacing between discretisation nodes in the axial (through-thickness) direction~[\si{\meter}]}
 }
 
 @symbol{D,
     name={\ensuremath{D}},
-    description={Intrinsic ionic diffusivity of the electrolyte (\si{\meter\squared\per\second})}
+    description={Intrinsic ionic diffusivity of the electrolyte~[\si{\meter\squared\per\second}]}
 }
 
 @symbol{Deff,
     name={\ensuremath{D_\mathrm{eff}\enspace}},
-    description={Effective ionic diffusivity of the electrolyte (\si{\meter\squared\per\second})}
+    description={Effective ionic diffusivity of the electrolyte~[\si{\meter\squared\per\second}]}
 }
 
 @symbol{tplus,
-    name={\ensuremath{{t^0_\text{+}}}},
-    description={Transference number of \ch{Li^+} ions with respect to the solvent}
+    name={\ensuremath{{t^0_\mathrm{+}}}},
+    description={Transference number of \ch{Li^+} ions in the electrolyte with respect to the solvent}
 }
 
 @symbol{as,
     name={\ensuremath{a_s}},
-    description={Specific interfacial surface area of the electrode (\si{\meter\squared\per\meter\cubed})}
+    description={Specific interfacial surface area of the electrode~[\si{\meter\squared\per\meter\cubed}]}
+}
+
+@symbol{Av,
+    name={\ensuremath{A_\mathrm{v}}},
+    description={Frontal area of the (hybrid) electric vehicle~[\si{\meter\squared}]}
 }
 
 @symbol{ltot,
     name={\ensuremath{l_\mathrm{tot}}},
-    description={Combined thickness of negative electrode, separator and positive electrode (\si{\meter})}
+    description={Combined thickness of negative electrode, separator and positive electrode~[\si{\meter}]}
 }
 
 @symbol{F,
     name={\ensuremath{F}},
-    description={Faraday constant (\si{\coulomb\per\mol})}
+    description={Faraday constant~[\si{\coulomb\per\mol}]}
 }
-
 
 @symbol{R,
     name={\ensuremath{R}},
-    description={Universal gas constant (\si{\joule\per\mol\per\kelvin})}
+    description={Universal gas constant~[\si{\joule\per\mol\per\kelvin}]}
 }
 
 @symbol{Realspace,
@@ -93,57 +128,92 @@
 
 @symbol{T,
     name={\ensuremath{T}},
-    description={Lumped temperature of the cell (\si{\kelvin})}
+    description={Lumped cell temperature (at time-step~$k$)~[\si{\kelvin}]}
+}
+
+@symbol{Tmax,
+    name={\ensuremath{T_\mathrm{max}}},
+    description={Maximum allowed cell temperature~[\si{\kelvin}]}
+}
+
+@symbol{Tinit,
+    name={\ensuremath{T_\mathrm{init}}},
+    description={Cell temperature at the beginning of acceleration/fast charging~[\si{\kelvin}]}
+}
+
+@symbol{ncells,
+    name={\ensuremath{n_\mathrm{cells}}},
+    description={Overall number of cells in the battery pack}
 }
 
 @symbol{I,
-    name={\ensuremath{I}},
-    description={Load current applied at the terminals of the cell (\si{\ampere})}
+    name={\ensuremath{I,I_k}},
+    description={Load current applied at the terminals of the cell (at time-step~$k$)~[\si{\ampere}]}
 }
 
+@symbol{i,
+    name={\ensuremath{i}},
+    description={Current density experienced by each  electrochemical layer (unit cell)~[\si{\ampere\per\meter\squared}]}
+}
+
+% @symbol{p,
+%     name={\ensuremath{p}},
+%     description={Generic notation for power density experienced by each layer (unit cell)~[\si{\watt\per\meter\squared}]}
+% }
+
 @symbol{A,
-    name={\ensuremath{A}},
-    description={Overall electrochemically active cross-sectional surface area of all cell layers (\si{\meter\squared})}
+    name={\ensuremath{A, A_\mathrm{cell}}},
+    description={Overall electrochemically active cross-sectional surface area of all cell layers~[\si{\meter\squared}]}
+}
+
+@symbol{Aforrefcell,
+    name={\ensuremath{A_\mathrm{refcell}}},
+    description={Overall electrochemically active surface area of the reference cell~[\si{\meter\squared}]}
+}
+
+@symbol{Aperelec,
+    name={\ensuremath{A_\mathrm{elec}}},
+    description={Active cross-sectional surface area per layer \ie{} for a unit cell~[\si{\meter\squared}]}
 }
 
 @symbol{kr,
     name={\ensuremath{k_\mathrm{r}}},
-    description={Intrinsic reaction rate coefficient at the electrode surface (\si{\meter^{2.5}\mol^{0.5}\second^{-1}})}
+    description={Intrinsic reaction rate coefficient at the electrode surface~[\si{\meter^{2.5}\mol^{0.5}\second^{-1}}]}
 }
 
 @symbol{kreff,
     name={\ensuremath{k_\mathrm{r,eff}}},
-    description={Effective reaction rate coefficient at the electrode surface (\si{\meter^{2.5}\mol^{0.5}\second^{-1}})}
+    description={Effective reaction rate coefficient at the electrode surface~[\si{\meter^{2.5}\mol^{0.5}\second^{-1}}]}
 }
 
 @symbol{csmax,
     name={\ensuremath{c_\mathrm{s,max}}},
-    description={Saturation concentration of the electrode (\si{\mol\per\meter\cubed})}
+    description={Saturation concentration of the electrode~[\si{\mol\per\meter\cubed}]}
 }
 
 @symbol{cssurf,
     name={\ensuremath{c_\mathrm{s,surf}}},
-    description={Concentration of \ch{Li^0} at the electrode surface (\si{\mol\per\meter\cubed})}
+    description={Concentration of \ch{Li^0} at the electrode surface~[\si{\mol\per\meter\cubed}]}
 }
 
 @symbol{uocp,
     name={\ensuremath{\mathcal{U}}},
-    description={Open circuit potential of the electrode (\si{\volt})}
+    description={Open circuit potential of the electrode~[\si{\volt}]}
 }
 
-@symbol{Tsink,
+@symbol{Tempsink,
     name={\ensuremath{T_\mathrm{sink}}},
-    description={Coolant temperature used in tab-cooling of the cell (\si{\kelvin})}
+    description={Coolant temperature used in tab-cooling of the cell~[\si{\kelvin}]}
 }
 
 @symbol{Eads,
     name={\ensuremath{E_{\mathrm{a,}D_\mathrm{s}}}},
-    description={Activation energy for solid phase diffusivity (\si{\joule\per\mol})}
+    description={Activation energy for solid phase diffusivity~[\si{\joule\per\mol}]}
 }
 
 @symbol{Eakr,
     name={\ensuremath{E_{\mathrm{a,}k_\mathrm{r}}}},
-    description={Activation energy for solid phase reaction rate coefficient (\si{\joule\per\mol})}
+    description={Activation energy for solid phase reaction rate coefficient~[\si{\joule\per\mol}]}
 }
 
 @symbol{xvecdot,
@@ -153,71 +223,251 @@
 
 @symbol{xvec,
     name={\ensuremath{\mathbf{x} \in \mathbb{R}^{n \times 1}}},
-    description={State vector with `$n$' states following the standard state-space notation}
+    description={State vector with `$n$' states following  standard state-space notation}
 }
 
 @symbol{Astate,
     name={\ensuremath{A \in \mathbb{R}^{n \times n}}},
-    description={System matrix corresponding to `$n$' states following the standard state-space notation}
+    description={System matrix corresponding to `$n$' states following  standard state-space notation}
 }
 
 @symbol{B,
     name={\ensuremath{B \in \mathbb{R}^{n \times m}}},
-    description={Input matrix corresponding to `$n$' states and `$m$' inputs following the standard state-space notation}
+    description={Input matrix corresponding to `$n$' states and `$m$' inputs following  standard state-space notation}
 }
 
 @symbol{u,
     name={\ensuremath{\mathbf{u} \in \mathbb{R}^{m \times 1}}},
-    description={Input vector with `$m$' inputs following the standard state-space notation}
+    description={Input vector with `$m$' inputs following  standard state-space notation}
 }
 
 @symbol{y,
     name={\ensuremath{\mathbf{y} \in \mathbb{R}^{p \times 1}}},
-    description={Output vector with `$p$' outputs following the standard state-space notation}
+    description={Output vector with `$p$' outputs following  standard state-space notation}
 }
 
 @symbol{C,
     name={\ensuremath{C \in \mathbb{R}^{p \times n}}},
-    description={Output matrix corresponding to `$p$' outputs and `$n$' states following the standard state-space notation}
+    description={Output matrix corresponding to `$p$' outputs and `$n$' states following  standard state-space notation}
 }
 
 @symbol{Dstatespacematrix,
     name={\ensuremath{D \in \mathbb{R}^{p \times m}\ }},
-    description={Output matrix corresponding to `$p$' outputs and `$m$' inputs following the standard state-space notation}
+    description={Output matrix corresponding to `$p$' outputs and `$m$' inputs following  standard state-space notation}
 }
 
-@symbol{nlayers,
+@symbol{n,
     name={\ensuremath{n}},
-    description={Number of layers \ie{} electrochemical unit-cells accomodated within the cell's pouch}
+    description={Number of layers \ie{} electrochemical unit-cells within the cell's pouch}
+}
+
+@symbol{ni,
+    name={\ensuremath{n^{(i)}}},
+    description={Layer choice presently being trialled in an iterative search for the optimal value}
+}
+
+@symbol{nmin,
+    name={\ensuremath{n_\mathrm{min}}},
+    description={Lower bound for the search space for the optimal layer search algorithm}
+}
+
+@symbol{nmax,
+    name={\ensuremath{n_\mathrm{max}}},
+    description={Upper bound for the search space for the optimal layer search algorithm}
+}
+
+@symbol{nfeas,
+    name={\ensuremath{n_\mathrm{feas}}},
+    description={An intermediate layer choice during iterative search that achieves success in satisfying acceleration/fast charging power requirements without violating termination criteria and is deemed to be a candidate for the optimal layer value}
 }
 
 @symbol{Pwheels,
     name={\ensuremath{P_\mathrm{w}}},
-    description={Power experienced at the wheels of a (hybrid) electric vehicle (\si{\watt})}
+    description={Power experienced at the wheels of a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
-@symbol{vf,
-    name={\ensuremath{v_\mathrm{f}}},
-    description={Final speed to be achieved at the end of the acceleration phase when accelerating a vehicle from standstill (\si{\meter\per\second})}
+@symbol{Pvehiclemass,
+    name={\ensuremath{P_\mathrm{mass}}},
+    description={Power required to accelerate a vehicle's mass from standstill~[\si{\watt}]}
+}
+
+@symbol{Pvehicledrag,
+    name={\ensuremath{P_\mathrm{drag}}},
+    description={Power required to overcome air resistance to a vehicle's motion~[\si{\watt}]}
+}
+
+@symbol{Pvehicleroll,
+    name={\ensuremath{P_\mathrm{roll}}},
+    description={Power required to overcome rolling resistance to a vehicle's motion~[\si{\watt}]}
+}
+
+@symbol{Pvehiclegrade,
+    name={\ensuremath{P_\mathrm{grade}}},
+    description={Power required to negotiate a road gradient~[\si{\watt}]}
+}
+
+@symbol{vfman,
+    name={\ensuremath{v_\mathrm{f,man.}}},
+    description={Manufacturer-specified final speed to be achieved at the end of acceleration phase~[\si{\meter\per\second}]}
+}
+
+@symbol{tfman,
+    name={\ensuremath{t_\mathrm{f,man.}}},
+    description={Manufacturer-specified acceleration time (from standstill to $v_\mathrm{f,man.}$)~[\si{\second}]}
+}
+
+@symbol{vfstd,
+    name={\ensuremath{v_\mathrm{f,std.}}},
+    description={Final speed to be achieved at the end of acceleration phase as specified by a governing standard~[\si{\meter\per\second}]}
+}
+
+@symbol{tfstd,
+    name={\ensuremath{t_\mathrm{f,std.}}},
+    description={Acceleration time (from standstill to $v_\mathrm{f,std.}$) as specified by a governing standard~[\si{\second}]}
 }
 
 @symbol{vb,
-    name={\ensuremath{v_\mathrm{b}}},
-    description={Base speed of a (hybrid) electric vehicle \ie{} the speed at which the drivetrain motor switches from the torque-limited region to power-limited region (\si{\meter\per\second})}
+    name={\ensuremath{v_\mathrm{b}, v_\mathrm{base}}},
+    description={Base speed of a (hybrid) electric vehicle \ie{} the speed at which the drivetrain motor switches from the torque-limited region to power-limited region~[\si{\meter\per\second}]}
+}
+
+@symbol{noptacc,
+    name={\ensuremath{n_\mathrm{opt}^\mathrm{acc}}},
+    description={Optimal  number of layers that satisfies power demanded during acceleration without violating termination criteria}
+}
+
+@symbol{noptfastchg,
+    name={\ensuremath{n_\mathrm{opt}^\mathrm{fastchg}}},
+    description={Optimal  number of layers that satisfies fast charging requirements without violating termination criteria}
+}
+
+@symbol{l,
+    name={\ensuremath{l_\lambda}},
+    description={Thickness of a specific region~$\lambda$ of a unit cell, $\lambda \in \{\mathrm{neg,sep,pos,Al,Cu}\}$~[\si{\meter}]}
+}
+
+@symbol{lratio,
+    name={\ensuremath{l_\mathrm{ratio}}},
+    description={Ratio of thickness of negative electrode to that of positive electrode}
+}
+
+@symbol{lstack,
+    name={\ensuremath{L_\mathrm{stack}}},
+    description={Combined thickness of all unit cells within a pouch~[\si{\meter}]}
+}
+
+@symbol{hpouch,
+    name={\ensuremath{H_\mathrm{pouch}}},
+    description={Pouch height~[\si{\meter}]}
+}
+
+@symbol{Tpouch,
+    name={\ensuremath{T_\mathrm{pouch}}},
+    description={Thickness of the pouch material~[\si{\meter}]}
+}
+
+@symbol{nrefcell,
+    name={\ensuremath{n_\mathrm{refcell}}},
+    description={Number of layers (unit cells) within the chosen reference cell}
+}
+
+@symbol{Pk,
+    name={\ensuremath{P_k}},
+    description={Power applied to a discrete-time equivalent circuit cell model (at time-step~$k$)~[\si{\watt}]}
+}
+
+@symbol{R0,
+    name={\ensuremath{R_0}},
+    description={Effective series resistance of an equivalent circuit cell model (at time-step~$k$)~[\si{\ohm}]}
+}
+
+@symbol{v,
+    name={\ensuremath{v,v_k, V}},
+    description={Terminal voltage of the cell (at time-step~$k$)~[\si{\volt}]}
+}
+
+@symbol{vmin,
+    name={\ensuremath{V_\mathrm{min}}},
+    description={Lower cut-off voltage of the cell~[\si{\volt}]}
+}
+
+@symbol{vmax,
+    name={\ensuremath{V_\mathrm{max}}},
+    description={Upper cut-off voltage of the cell~[\si{\volt}]}
+}
+
+@symbol{Qn,
+    name={\ensuremath{Q_n}},
+    description={Theoretical capacity of a pouch cell with $n$ layers~[\si{\amphour}]}
+}
+
+@symbol{h,
+    name={\ensuremath{h}},
+    description={Convective heat transfer coefficient~[\si{\watt\per\meter\squared\per\kelvin}]}
+}
+
+@symbol{Nr,
+    name={\ensuremath{N_r}},
+    description={Number of Chebyshev collocation nodes in the radial direction}
+}
+
+@symbol{z,
+    name={\ensuremath{z}},
+    description={State of Charge of the cell}
+}
+
+@symbol{zmin,
+    name={\ensuremath{z_\mathrm{min}}},
+    description={Lower cut-off for the State of Charge of the cell}
+}
+
+@symbol{pacc,
+    name={\ensuremath{P^\mathrm{acc}}},
+    description={Power density experienced by each electrochemical layer (unit cell) during acceleration phase~[\si{\watt\per\meter\squared}]}
+}
+
+@symbol{pfastchg,
+    name={\ensuremath{P^\mathrm{fastchg}}},
+    description={Power density experienced by each electrochemical layer (unit cell) during fast charging~[\si{\watt\per\meter\squared}]}
+}
+
+@symbol{P_cellacc,
+    name={\ensuremath{p_\mathrm{cell}^\mathrm{acc}}},
+    description={Power demanded at the terminals of each cell during the acceleration phase of a (hybrid) electric vehicle~[\si{\watt}]}
+}
+
+@symbol{P_cellfastchg,
+    name={\ensuremath{p_\mathrm{cell}^\mathrm{fastchg}}},
+    description={Power applied at the terminals of each cell while fast charging a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
 @symbol{Pbattacc,
     name={\ensuremath{P_\mathrm{batt}^\mathrm{acc}}},
-    description={Power demanded at the terminals of the battery pack during acceleration phase of a (hybrid) electric vehicle (\si{\watt})}
+    description={Power demanded at the terminals of the battery pack during acceleration phase of a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
 @symbol{Pbattfastchg,
     name={\ensuremath{P_\mathrm{batt}^\mathrm{fastchg}}},
-    description={Power applied at the terminals while fast charging the battery pack of a (hybrid) electric vehicle (\si{\watt})}
+    description={Power applied at the terminals while fast charging the battery pack of a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
-@symbol{etadt,
-    name={\ensuremath{\eta_\mathrm{dt}}},
-    description={Overall lumped efficience of the drivetrain components (excluding battery pack) of a (hybrid) electric vehicle}
+@symbol{Cd,
+    name={\ensuremath{C_\mathrm{d}}},
+    description={Coefficient of drag for the vehicle body}
+}
+
+@symbol{Cr,
+    name={\ensuremath{C_\mathrm{r}}},
+    description={Coefficient of rolling resistance for the vehicle body}
+}
+
+@symbol{Z,
+    name={\ensuremath{Z}},
+    description={Road gradient}
+}
+
+@symbol{Mv,
+    name={\ensuremath{M_\mathrm{v}}},
+    description={Total mass of the vehicle~[\si{\kilogram}]}
 }
 
