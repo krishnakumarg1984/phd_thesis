@@ -1,831 +1,3 @@
-
-Fuel                   Electric                         `  Pbfaastttchg           3-phase             dt                  Gear Box        ÝÑ vf
-            ICE       Generator          3-phase                     ÝÑ Pbaactct  Inverter                                                       Pw
-                                         Rectifier                                                  PMSM
-                                                           Battery                                  Motor
-                                                        ´   Pack
-                                                                                                      b
-
-                                         Series String of 8 Identical Modules:
-
-                      Module     Module  Module            Module  Module         Module    Module        Module
-                          1          2       3                 4       5              6         7             8
-
-                                                                                          :
-                                                                                           BEV pack : 3 parallel strings
-
-                                                                                           PHEV pack : 1 parallel string
-
-                                                                                                 Pos. Electrode           Neg. Electrode
-                                                                                          Pos. Curr. Collector
-12 identical series-  ...                                                                                                           Separator
-connected cells per
-module                                                                                                                                                                                Neg. Curr. Collector
-
-                                                                                            lAl     lpos         lsep     lneg            lCu
-
-                                                                                                    ...                                  x
-
-                                                                                                                          ...
-
-  Figure 3.3§ Schematic depicting the vehicle-to-cell hierarchical overview of a typical electrified
-  powertrain architecture. This represents the system-level context within which the proposed
-  layer optimisation framework has been developed. Two xEV powertrains -- a) a Battery Electric
-  Vehicle (BEV), and b) a series Plug-in Hybrid Electric Vehicle (PHEV) are chosen as examples to
-  demonstrate how the methodology facilitates common module designs for such battery packs.
-
-     §This figure was created by Krishnakumar Gopalakrishnan who asserts copyright, with intellectual
-contributions from and the right to use asserted by Ian D. Campbell.
-
-                                                                 68
-
-                                                            3.3 Scope and Context within xEV Powertrain
-
-              Omitting the components to the left of the battery pack (represented as text boxes with
-          light grey border) shall render a powertrain corresponding to that of a BEV. The proposed
-          layer optimisation methodology is developed and presented in the context of this BEV
-          powertrain. However, being a modular framework, the optimisation methodology may be
-          readily extended to a PHEV powertrain.
-
-              As shown in fig. 3.3, the BEV powertrain typically comprises of -- a) a battery pack,
-          b) a three phase inverter, c) a Permanent Magnet Synchronous Motor (PMSM), d) a gearbox
-          for torque multiplication, and e) the rest of the powertrain (differential shaft and driven
-          wheels). Considering the worst-case scenarios, the power to be handled by the battery pack
-          arises due to -- i) fast charging from the mains bfaastttchg (charge), or ii) acceleration from
-          standstill baactct (discharge). The acceleration power is computed from the power required at
-          the wheels w. The details of this calculation is presented in section 3.5.2. The sign convention
-          used in this chapter is that the charging power is positive (and consequently, the discharging
-          power is negative).
-
-        3.3.2 Pack-level -- strings, modules & cells
-
-          Delving into the battery pack under consideration, this thesis considers a standard modular
-          layout wherein the PHEV pack has one string while the BEV pack has three parallel strings.
-          Within each string, both vehicular platforms employ 8 series-connected modules. Taking
-          cognisance of the benefits of common module design, identical pack modules are assumed
-          across both xEV platforms which is then extrapolated to impose a stronger condition of
-          identical geometry for the constituent cells (see section 3.2.1). The exterior dimensions of the
-          pouch cells under consideration are listed in table 3.2.
-
-              Each module consists of 12 identical series-connected cells denoted by battery circuit
-          symbols (cyan-filled blocks in fig. 3.3). The PHEV pack is smaller and consists of only 1/3rd of
-          the cells in the BEV pack. Assuming that the BEV pack consists of a 96S-3P cell assembly,
-          this implies that the PHEV pack shall conform to a 96S-1P layout. The DC bus voltage is
-          unaltered since both packs have same amount of series cells. The power flow is assumed to be
-          uniformly distributed across all the cells within the pack(s). At first, the power required at the
-          terminals of the pack is computed. From this, a first-order design ball-parking of the layers
-
-                                                                 69
-
-                                                            3.3 Scope and Context within xEV Powertrain
-
-          of the cell is made through a single cell simulation. This process enables reduced simulation
-          run-time with the conditions of one cell assumed to be representative of all cells in the pack.
-
-              While the aforementioned assumption of identical cell conditions across the pack
-          seems infeasible at first glance, three careful considerations have been made to justify this
-          assumption. Firstly, power (and not current) is used as the stimulus to the cell. This implies
-          that, despite the parallel connection of cells (in groups of three cells within each module),
-          each cell experiences the same power. Even across parallel-connected strings, the power
-          handled by each cell shall be the same. This necessitates the modification of the standard DFN
-          model in order to accommodate power inputs which is discussed in section 3.4.2. Secondly,
-          although the current in all cells of a series string remain the same (by virtue of Kirchoff's
-          current law), their terminal voltage levels could drift away from each other and becomes
-          unbalanced over time [3]. This naturally raises questions on the assumption of identical
-          conditions for all cells. However, this voltage unbalance is mitigated with the help of modern
-          Battery Management Systems (BMSs) that employ balancing techniques such as passive
-          bleeder resistors or sophisticated active dc/dc converters. Yet another adverse effect that
-          poses a threat to the assumption of identical conditions is the uneven distribution of cell
-          temperatures. In automotive packs employing natural convection, cells that are physically
-          located innermost in the string tend to get hotter than the outermost cells. Through good
-          thermal management design e.g. forced cooling through circulation of the coolant through
-          conduits grooved into the pack, thermal balance may be achieved. Therefore, it can be argued
-          that, when operating in a well-designed and controlled environment, cell-to-cell deviations
-          are minimised. This justifies the global representation of all cells in the pack through a single-
-          cell simulation, although modifications to the simulation model are deemed necessary to
-          facilitate power inputs.
-
-        3.3.3 Cell-level -- layers, cooling, electrochemical & thermal models
-
-          The illustration at the centre of the bottom row in fig. 3.3 shows a schematic representation of
-          a cell arranged within each module. In practice, the physical layout of cells within a module
-          is slightly more complex. For instance, a typical arrangement consists of groups of 3 parallel
-          cells. However, the illustration in fig. 3.3 suffices to explain the necessary details required for
-          the specific task at hand.
-
-                                                                 70
-
-                                                            3.3 Scope and Context within xEV Powertrain
-
-              Each cell in the pack consists of a number of identical layers . Each layer consists
-          of -- i) a positive current-collector, ii) a positive electrode region, iii) a separator material,
-          iv) a negative electrode region, and v) a negative current-collector. Particular attention is
-          called out in regard to the distribution of temperature within the cell. In the schematic
-          of fig. 3.3 the shading scheme is such that greener tints represent the hotter regions of
-          the cell while bluer tints represent colder regions. Furthermore, heat exchange with the
-          surroundings is also graphically illustrated through cooling plates mounted at the tabs of
-          the cell. This highlights the specific type of cooling assumed viz. tab-cooling as opposed
-          to conventional surface-cooling historically employed for automotive applications. The
-          assumption of tab-cooling is an essential requirement for upholding the validity of the
-          proposed layer optimisation scheme, and therefore warrants further justification.
-
-              An experimental study by Hunt et al. [88] compared tab cooling of cells against
-          conventional surface cooling. It was found that 8 % increase in the usable capacity of pristine
-          cells was achieved with tab cooling relative to that achieved with surface cooling. Secondly,
-          with surface cooling, the loss rate of usable capacity over thousand cycles was nearly thrice
-          of that with tab cooling. This implies that using tab cooling can potentially help to extend the
-          lifetime of the pack by three times. Thirdly, at higher discharge rates, surface cooling resulting
-          in a loss of usable capacity of 9.2 % compared to just 1.2 % for tab cooling. The simulations
-          discussed as part of the optimisation framework reported in section 3.5 are intended to
-          obtain robust cell designs capable of handling worst-case power inputs. In these scenarios,
-          tab cooling is more appropriate. Therefore, this author has no qualms about recommending
-          this specific cooling mechanism to be used in conjunction with the results reported (see
-          section 3.6) by applying the proposed layer optimisation scheme.
-
-              Apart from its aforementioned beneficial effects on cell longevity and performance, with
-          the integral assumption of tab cooling, there exists an important side effect that affects the
-          very core of the numerics of the layer optimisation methodology. Carefully examining the
-          shading scheme used for the schematic in the centre-bottom of fig. 3.3, it is clear that at
-          any vertical co-ordinate in space within the cell, the shading across the entire cell width
-          remains uniform throughout. This implies that each layer along a one-dimensional cross-
-          section of the cell is at the same temperature. Based on the inferences from Hunt et al. [88],
-          with tab cooling, only small thermal gradients are induced in the planar direction. In this
-
-                                                                 71
-
-                                                            3.3 Scope and Context within xEV Powertrain
-
-          unique scenario, the thermal effects within the cell are not large enough to warrant a detailed
-          numerical discretisation. On the other hand, ignoring the temperature distribution of the cell
-          shall not lead to robust cell designs, especially given that design simulations typically involve
-          high magnitudes of power.
-
-              In situations akin to aforementioned circumstances, a lumped thermal model of the cell
-          has been recommended by Pals and Newman [87]. This represents a good trade-off between
-          accuracy and simplicity and hence, is deemed to be appropriate for this design application.
-          A suitable value for the convective heat transfer coefficient  (see table 3.2), comparable
-          to the typical magnitudes in forced air convection, is used to represent the heat transfer
-          from the cell to the environment. The heat exchange area is the combined surface area
-          of the two cooling tabs that are situated at either end of the cell. The temperature of the
-          coolant (a thermal `sink' in thermodynamic terminology) is denoted by sink. In this work,
-          this ambient temperature is held constant during the course of a simulation run, but is allowed
-          to change to different constant values between set of simulations as per relevant vehicle
-          testing standards. The details of this aspect is discussed in section 3.5. The material properties
-          of the constituent components of each layer coupled with the total number of layers used
-          determine the lumped mass and specific heat capacity of the pouch cell. These computations
-          are discussed in sections 3.5.8 and 3.5.9 respectively. The assumption of tab cooling thus
-          leads to this qualitative description of the lumped thermal model to be used for the design
-          simulations. Further quantification by way of relevant model equations and the computation
-          of the constituent parameters of the thermal model is embedded as an integral aspect of the
-          layer optimisation framework and shall be presented in section 3.5.9.
-
-              As a final observation, all layers within the cell are electrically in parallel which implies
-          that their terminal voltages are identical. The current (or power) at the cell terminals is shared
-          equally among each layer. The aforementioned considerations have important ramifications
-          on the cell modelling and helps to drastically simplify it. Specifically, these considerations
-          imply that the electrochemical performance of any one layer is identical to every other
-          layer. Therefore, in conjunction with a lumped thermal model, a standard Pseudo Two-
-          Dimensional (P2D) discretisation of the DFN model suffices to capture the electrochemical
-          behaviour of the entire cell. The bottom-right illustration of fig. 3.3 presents a one-dimensional
-          discretisation of the cell layer across its thickness. The spheres along the axial direction
-
-                                                                 72
-
-                                             3.4 Enhancements/Modifications to Standard DFN Model
-
-          represent computational nodes wherein the solid-phase diffusion equation is to be solved
-          (see section 1.3 for a brief overview). It is this standard DFN model, suitably amended to
-          accept power inputs, that will be the backbone of the electrochemical aspects of the design
-          simulation. The electrochemical model shall be strongly coupled in a bidirectional sense to the
-          lumped thermal model i.e., the temperature of the cell shall influence various cell parameters
-          (see table 3.2) while the overpotentials and currents in the cell shall play a role in the rate of
-          heat generation and cell temperature simultaneously.
-
-              Thus, through a systematic set of simplifying assumptions that are justifiable in a real-
-          world design, the system-level requirements at the pack-level can be suitably scaled down to
-          power-density inputs at the layer level. Having established the contextual setting and scope
-          of this work within the broader landscape of drivetrain optimisation, it is now possible to
-          proceed to the set of numerical enhancements required to be incorporated into the DFN
-          model to handle the specific requirements of this layer optimisation task.
-
-       3.4 Enhancements/Modifications to Standard DFN Model
-
-        3.4.1 Augmentations to parameter set
-
-          Cell capacity and electrochemically active surface area
-
-          The P2D implementation of the standard DFN model lacks certain parameters that are vital to
-          the layer optimisation process. The cell's nominal capacity is a fundamental quantity that gets
-          altered as the number of layers is varied. However, it may be surprising to discover that this
-          parameter is absent in present research literature discussing the P2D model. The rationale
-          behind this glaring omission becomes clear upon closer examination of the model equations
-          presented in table 1.1. These equations do not operate on a cell level, but instead are formulated
-          on a normalised basis. To clarify, only one layer of the cell is being modelled wherein the
-          stimulus driving the model is the applied current density per unit area rather than the total
-          external current. The model to be used in the layer optimisation task therefore faces a unique
-          predicament -- the need to adhere to the present modelling paradigm for compatibility with
-          the status quo whilst being flexible enough to incorporate the cell's capacity as a function of
-          number of layers.
-
-                                                                 73
-
-3.4 Enhancements/Modifications to Standard DFN Model
-
-    To tackle the aforementioned quandary, it is key to realise that the core parameter that
-varies with the number of layers in a pouch cell is the electrochemically active cross-sectional
-surface area cell. Curiously, published literature on physics-based cell modelling do not place
-rigorous emphasis on this key parameter. More often, much to this author's chagrin, this
-parameter is simply listed in a standard table of parameters and is typically sourced from a
-historic parameter-set without further explanation.
-
-    For a pouch cell, the overall electrochemically active surface area can be defined as
-
-cell =  × elec  (3.1)
-
-where  is the number of layers and elec is the active surface area per layer.
-
-Surface area per layer
-
-A literature search reveals that akin to the cell's capacity, there is no information of cross-
-sectional geometry in articles dealing with the P2D implementation of the DFN model. To
-determine the surface area per layer, relying on certain assumptions and present literature, a
-novel methodology is proposed involving a sequence of steps. The process involves selection
-of a real-world cell, and determining its surface area per layer. To the best knowledge of the
-author, this reverse parametrisation process (explained next), mapping from a real-world cell
-to a new P2D parameter, is a unique idea.
-
-          1) Selection of a suitable reference capacity cell
-               This is a crucial first-step towards obtaining a complete parameter set -- particularly to
-
-          determine the surface area per layer.
-               The focus of this chapter is to provide a ready-to-use solution to industry that improves
-
-          upon the present empirical designs through optimal layer configuration of pouch cells. There
-          is a clear motivation to further increase cell capacities so as to maximise the AER, as laid out
-          in the beginning of this chapter (see section 3.1).
-
-               With this guiding principle, as a starting point towards choosing a reference capacity
-          cell, a survey was performed to identify the production BEV with the highest driving range.
-          As of 2018, the Chevrolet Bolt BEV bears this distinction with a range of 383 km as rated by
-          the United States Environmental Protection Agency (EPA). The specifications of its battery
-
-                                                                 74
-
-                  3.4 Enhancements/Modifications to Standard DFN Model
-
-pack is listed in Liu et al. [89]. The battery pack of this BEV consists of 288 cells arranged
-in a 96S-3P configuration, in agreement with the configuration discussed in the drivetrain
-hierarchy of section 3.3.2.
-
-     The Chevrolet Bolt BEV pack has an energy capacity of 60.0 kWh with a nominal pack
-voltage of 350 V [89]. However, for this specific task, the Ah capacity is required. This can be
-obtained as
-
-Ah capacity of reference cell =                     Pack Energy (Wh)                          (3.2)
-
-                                   Nominal pack voltage (V) × No. of cells in parallel
-
-                             =     60000                                                      (3.3)
-
-                                   350 × 3
-
-                             = 57.14 Ah                                                       (3.4)
-
- · DC bus voltage and revised cell capacity
-     Even without a dc/dc boost converter, robust design of the powertrain during brown-
-
-outs should allow for continued operation even with a slightly diminished DC bus voltage
-4­5 % lower than nominal [28]. Considering a maximum permissible dip of 4 % in the bus
-voltage i.e., 336 V, the cell's capacity may be refined as
-
-Ah  capacity  of  reference  cell  =  Lowest  pack    Pack Energy (Wh)          in  parallel  (3.5)
-                                                    voltage (V) × No. of cells
-
-                                      60000
-                                   = 336 × 3                                                  (3.6)
-
-                                   = 59.52 Ah                                                 (3.7)
-
-The reference cell's Ah capacity is therefore rounded to 60 Ah¶.
-
- · Lower cutoff voltage for cells
-     In this layer optimisation work, following the assumptions of section 3.2.1, the overall
-
-pack configuration remains unchanged i.e., independent of number of layers within the
-pouch. This implies that the undervoltage threshold for DC bus voltage throughout this
-work shall remain fixed at 336 V. Therefore, with 96 series connected cells in a string, the
-
-                 ¶In the interest of maintaining consistency, this computed capacity is retained for the cell used in chapters 5
-            and 6 of this thesis. This also explains the use of 60 A for the simulations used for demonstrating energy/power
-            trade-off of section 3.2.3 since this current level corresponds to the 1C-rate of this reference cell.
-
-                                                                 75
-
-3.4 Enhancements/Modifications to Standard DFN Model
-
-lower cut-off voltage for an individual cell is 3.5 V. This value is reported in table 3.2 and
-is used as a termination condition for all simulations as explained in section 3.5.
-
-2) Computation of electrochemically overall active surface area for reference cell
-
-     For the cell properties in tables 3.2 and 5.2, the majority of parameters are sourced from
-Subramanian et al. [90] and Northrop et al. [72]. In Northrop et al. [72], the current density that
-corresponds to a 1C-rate discharge of a cell with this parameter set is reported to be 30 A m-2.
-With the help of carefully designed numerical simulations (very slow discharge with a trickle
-current from fully charged state until charge depletion), this value is refined to 29.23 A m-2.
-
-     The task of determining the electrochemically active overall surface area of the reference
-cell is now straightforward, and is obtained as
-
-                                                             Cell capacity (Ah)   (3.8)
-Overall surface area of reference cell, refcell = 1C-rate density (A m-2)         (3.9)
-                                                                                 (3.10)
-=   60
-   29.23
-
-= 2.053 m2
-
-This value is listed in table 5.2 for use in chapters 5­6, but is not used directly in this layer
-optimisation work. This is because, as the number of layers change, the overall surface area
-changes as per eq. (3.1). However, determining this value is an important initial step in the
-determination of the surface area per layer.
-
-3) Setting the pouch height for the reference cell
-
-     Although the official press release [91] from the manufacturer of the Bolt BEV does
-contain data on the cross-sectional geometry of the cell, it does not report the cell's height.
-Hence, this information needs to be assumed by extrapolation from an alternate source
-wherein the conditions are similar and so that value may be applied for the reference cell.
-
-     The review article by Gröger et al. [92] discusses the state of the art in energy densities of
-electrode materials used in various lithium ion chemistries. At the time of its publication, the
-areal capacity of cells were 2.0 mAh cm-2. These authors recommended an areal capacity
-target of 4.0 mAh cm-2 for future automotive applications. The said publication also considers
-the aspect of stacking layers into pouches of certain geometries. In particular, table IV of
-
-                                                                 76
-
-3.4 Enhancements/Modifications to Standard DFN Model
-
-Gröger et al. [92] considers a pouch of 10 mm height, for which the aforementioned areal
-capacities were calculated.
-
-     In the case of the reference cell under consideration, the areal capacity is
-
-Areal capacity of reference cell  =  60 000 mAh  = 2.92 mAh cm-2  (3.11)
-                                     20 527 cm2
-
-which is close to the desired value in automotive applications as per the recommendations in
-Gröger et al.. Considering that the reference cell is based on the high energy density Chevrolet
-Bolt BEV cell, a pouch height of 10 mm is justifiable for this task and is reported in table 3.2.
-As per the assumptions discussed in section 3.2.1, this value is held constant throughout the
-layer optimisation process.
-
-4) Computation of stack thickness of reference cell
-
-     In a pouch of given height, the available space to accommodate layers therein is restricted
-by a number of factors. For instance, the wiring from the current collectors to the tabs,
-protective elements such as fuses etc. consume physical space. Furthermore, the pouch
-material itself has a finite thickness and hence after accounting for this, the stack thickness
-available for layer placement is lower than the pouch thickness.
-
-Stack thickness, stack = Pouch height - 2 × pouch thickness       (3.12)
-                           = pouch - 2pouch                       (3.13)
-                           = 10.0 - 2 × (160 × 10-3)              (3.14)
-                                                                  (3.15)
-                    stack = 9.68 mm
-
-The computed value of stack thickness is held constant for all layer choices trialled in the
-entire layer optimisation process.
-
-5) Determination of number of layers within reference cell
-     The next step is to determine the number of layers within the reference pouch cell refcell.
-
-The thickness of a complete electrochemical sandwich multiplied by the number of layers
-yields the total stack height
-
-refcell (Al + pos + sep + neg + Cu) = stack                       (3.16)
-
-                                                                 77
-
-3.4 Enhancements/Modifications to Standard DFN Model
-
-     The product of number of layers and the thickness of an electrochemical sandwich cannot
-exceed the overall stack height. This implies that the equality in eq. (3.16) is to be changed
-to an inequality, with the upper bound of the expression on the Left-Hand Side (LHS) of
-eq. (3.16) set to the stack height.
-
-refcell (Al + pos + sep + neg + Cu)  stack                                           (3.17)
-                                                                                     (3.18)
-                      refcell       Al    +  pos                 stack   neg  +  Cu
-                                                                + sep +
-
-     Since fractional layers do not have any physical meaning, the number of layers that
-can be accommodated within any pouch must be an integer quantity. Therefore, refcell is
-computed as the `floor' of the quantity in the Right-Hand Side (RHS) of eq. (3.18)
-
-refcell  =                  stack                                                    (3.19)
-                           + sep +                                                   (3.20)
-              Al   +  pos           neg      +  Cu                                   (3.21)
-
-         =    (15  +  72  +  25  9.68  +  10)   ×               10-3
-                                 + 88
-
-
-refcell = 46
-
-The reference cell is thus determined to consist of 46 layers.
-
-6) Computation of surface area per layer
-
-     Substituting the values of refcell and refcell into eq. (3.1), the electrochemically active
-surface area per layer is obtained as
-
-              elec    =    refcell                                                   (3.22)
-                           refcell                                                   (3.23)
-                                                                                     (3.24)
-                        2.053 m2
-                      =
-
-                            46
-
-                      = 44.63 mm2
-
-     The surface area per layer thus computed is listed in table 3.2 and is held constant across
-all layer choices tried during the layer optimisation process. This assumption is immediately
-justifiable from a physical viewpoint, since the process of assembling layers is performed
-
-                                                                 78
-
-                                   3.4 Enhancements/Modifications to Standard DFN Model
-
-along the axial thickness direction (aligned with pouch height) and is independent of the
-planar (cross-sectional) direction.
-
-3.4.2 Modification of standard DFN model to handle power inputs
-
-As discussed in section 3.3.2, assuming identical cell conditions during operation necessitates
-that the external stimulus to each cell is an applied power value. The cell's terminal voltage
-and current can be viewed as its natural response to this power input. To simulate this
-condition and achieve a model-based optimal layer design, the standard DFN model, which
-conventionally handles current stimuli, has to be suitably modified to accept power inputs.
-
-Plett [13] suggests a methodology for applying power inputs to equivalent circuit models
-
-for simulation at a fixed sample rate. This involves converting the input power  to a
-
-current  using an equivalent series resistance 0. The value of 0 is updated at each time
-
-index  as per eq. (3.25).
-
-                                  -  2 -   40
-                                       20
-                             =                 (3.25)
-
-where  is the cell's terminal voltage at time index , evolved from the applied current up
-to and including the ( - 1)th time step.
-
-    There are two disadvantages in using Plett's simplified approach for the proposed layer
-optimisation study. Firstly, this necessitates the quantification of a lumped electrical resistance
-for a Physics-Based Model (PBM). Such an idea is at loggerheads with the fundamental
-philosophy of PBMs which strive to represent a detailed picture of underlying phenomena, as
-opposed to the system-level terminal behavioural characterisation facilitated by Equivalent
-Circuit Models (ECMs). Translating power to current in this manner also necessitates a two-
-pass conversion between the physical and electrical domains -- a process likely to significantly
-degrade modelling fidelity. Since the results from application of the model shall inform the
-number of layers to be used in a real-world cell design, such loss of fidelity is unacceptable.
-Secondly, the constraint of using fixed interval updates implies that a high-speed adaptive
-time-stepping solver cannot be used for handling this power input condition. This shall slow
-down the simulation speed considerably since the search space of layer combinations to be
-considered is fairly large. Furthermore, the simulations have to be repeated over multiple
-combinations of initial and ambient temperatures which shall significantly slow down the
-
-                                                                 79
-
-        3.4 Enhancements/Modifications to Standard DFN Model
-
-model-based design simulations and offset its advantages over a conventional prototype-
-based design.
-
-    Dees et al. [93] identified the requirement of having a P2D model that can run on applied
-power. However, in the aforementioned work, the relevant equations for reformulation of
-solid-phase boundary conditions are not presented. An independent derivation of reformu-
-lating the P2D model to facilitate an innate power input capability is therefore provided.
-Since the equations are derived for a single layer, the power density, obtained by dividing the
-applied power by the overall active cross-sectional area cell, is used as the driving input.
-
-    In the P2D model, charge conservation in solid phase is given by eq. (1.6), which is revisited
-below. The subsequent two equations pertain to the corresponding boundary conditions. In
-these equations, the current density  represents the applied input.
-
-        (eff     s ( ,   )       =        s (,   )                                  (eq. (1.6) revisited)
-                          )                                                                        (3.26)
-                                                                                                   (3.27)
-eff      s ( ,       )  ||| pos/Alc=c     -
-
-                        neg/Cucc
-
-eff      s ( ,       )  |||pos/sep=       0
-
-                        neg/sep
-
-    Equation (3.28) replaces the boundary condition in eq. (3.26) to use the applied power
-density  to drive the model.
-
-effneg  (s ( ,   )   s ( ,   )         |  -  effpos  (s ( ,   )   s ( ,   )   |  =           (3.28)
-                              )        |                                   )  |
-                                       |                                      |
-                                         =neg/Cucc                                =pos/Alcc
-
-    Eqs. (3.29)­(3.30) represent the constraints pertaining to physical laws and are to be
-satisfied.
-
-                                  -  = 0                                                     (3.29)
-                                       > 0                                                   (3.30)
-
-                                                                 80
-
-                                   3.4 Enhancements/Modifications to Standard DFN Model
-
-Equation (3.29) conveys the condition that the product of the terminal voltage and com-
-puted current density shall equal the externally applied power density, whereas eq. (3.30)
-implies that the cell's terminal voltage shall always remain positive during operation.
-Eqs. (3.28)­(3.30) are then discretised for numerical implementation as follows.
-
-    Figure 3.4 describes a schematic overview of a one-dimensional cell-centred Finite Volume
-(FV) discretisation scheme. Here, evenly spaced nodes are considered to form the support
-mesh along the through-thickness dimension of a layer. Vertical lines denote the edges
-of control volumes whereas the filled circles depict computational nodes where the axial-
-direction variables from table 1.1 are solved.
-
-Figure 3.4 Simplified illustration of a standard cell-centred FV discretisation scheme. Illustra-
-tion reproduced from Torchio et al. [94].
-
-Equation (3.31) represents the weak form of eq. (1.6) applied on the FV mesh for each
-
-control  volume,  wherein  subscripts    and    ±  1  denote  the  th  FV  node  and  its  associated  left
-                                                   2
-
-and right edges respectively.
-
-                               eff  s(, )       |+    1  =  s ()                           (3.31)
-                                                      2
-
-                                                |
-                                                |
-                                                   -  1
-                                                      2
-
-    At this juncture, a simplifying approximation for the solid-phase potentials can be
-considered. In the standard FV scheme, the solution values at the faces (edges of control
-volumes) is obtained by interpolating from the two nearest FV node values. At either extrema
-of this one-dimensional computational domain, a linear extrapolation of the values from the
-first and last nodes can be performed. This increases the accuracy of computations, thereby
-providing good estimates of solid potentials at the two current collector interfaces. However,
-
-                                                                 81
-
-                                   3.4 Enhancements/Modifications to Standard DFN Model
-
-with the increased fidelity comes the penalty of a mathematically complex set of boundary
-
-conditions. When using high node densities in the negative and positive electrode regions
-
-(see  table  3.2),  for  the  two  outermost   control  volumes,    the  values  of     become  small.  With
-                                                                                     2
-
-a reasonably small mesh interval, the potentials at the cell centres can be considered to be
-
-nearly equal to that at their corresponding current collector interfaces. This assumption helps
-
-to keep the resulting mathematical expressions tractable.
-
-    Applying eq. (3.31) to the first control volume (0th node) in the positive electrode and to
-the last control volume (nth node) in the negative electrode,
-
-                                   -effpos s0  +  effpos s1  +   =  spos  0pos                          (3.32)
-                                     pos           pos                                                  (3.33)
-
-                              -effneg s  +     effneg s-1    -   =  sneg  neg
-                                neg              neg
-
-Multiplying eq. (3.32) by s0 and eq. (3.33) by s and subtracting,
-
--effpos s20 - effneg s2 + effpos s0 s1 + effneg s s-1
-      pos           neg            pos                  neg
-
-                                                  +  - spos  0poss0 - sneg  negs = 0 (3.34)
-
-    Two solutions exist for the quadratic equation in eq. (3.34). However, the solid phase
-potential, being a physical quantity of the cell, has a unique solution. Therefore, in order
-to achieve numerical convergence, an additional positivity constraint, the FV-discretised
-equivalent of eq. (3.30), is imposed.
-
-                                                  s0 - s > 0                                            (3.35)
-
-Finally, since the input to the model is the applied power density , the current density within
-each layer , needs to be solved for. This is facilitated by employing the discretised form of
-eq. (3.29). Furthermore, since this equation is mathematically simple, the aforementioned
-assumption of using node values at current collector interfaces is no longer required. Applying
-a linear extrapolation scheme at the outermost control volumes, the algebraic residual
-
-                                                                 82
-
-                                3.4 Enhancements/Modifications to Standard DFN Model
-
-equation is obtained as
-
-                                                                                                       (3.36)
-                          0 =  -
-
-                                  1.5s0 - 0.5s1 + 0.5s-1 - 1.5s-1
-
-The computer code used (LIONSIMBA v2.0, to be discussed in section 3.6.1) employs the
-Differential Algebraic Equation (DAE) solver IDA [95] to handle such algebraic constraints.
-
-    Eqs. (3.34)­(3.36) therefore represents the discretised form of the reformulated boundary
-condition and associated algebraic constraints for the solid phase potential Partial Differential
-Equation (PDE) that can be applied to either electrode to facilitate the use of an input power
-density to the P2D model.
-
-3.4.3 Hybrid spectral-FV scheme
-
-Fast and accurate estimation of the solid phase lithium concentration, particularly its value
-at the surface of electrode particles is an inherent requirement of the layer optimisation
-procedure presented in section 3.5. The high power densities to be handled, particularly
-at low layer counts necessitate this requirement. It has been acknowledged that solid-
-phase concentration calculations employing polynomial approximations lack fidelity at high
-charge/discharge rates [96]. Hence, a conventional full-order solution based on Fick's law of
-diffusion is required for this layer optimisation task.
-
-With full-order solid phase diffusion dynamics, applying the FV scheme (that has been
-
-employed in LIONSIMBA v1.0x (see section 3.6.1 for a discussion of this modelling platform)
-
-to discretise all through-thickness PDEs of the P2D model) results in a very large system
-
-of equations. This is due to the requirement of using a high radial node density per
-
-spherical particle for improved accuracy. Consequently, the computational cost is high and
-
-simulation run-time becomes prohibitive when exploring the search space of all possible
-
-layer configurations. Moreover, with a cell-centered FV discretisation, it is non-trivial to
-
-directly apply the ionic flux boundary condition at the particle surface, since this involves
-
-extrapolation from at least two other nodes within the particle. While such extrapolations
-
-are acceptable in the axial dimension -- particularly with high node densities providing
-
-small  values  of     --  they  are  undesirable  in  the  radial  dimension.  This  is  because  the  cell's
-                   2
-
-Open Circuit Potential (OCP) and terminal voltage strongly depends on the concentration
-
-                                                                 83
-
-         3.4 Enhancements/Modifications to Standard DFN Model
-
-at the particle surface. Spectral methods offer a combination of high accuracy and speed
-while permitting the use of a lower number of radial discretisation nodes. To implement a
-spectral scheme on a non-periodic domain, a Chebyshev discretisation [68] may be applied.
-Bizeray et al. [74] discretised all of the P2D model equations using this approach. However,
-this entails a bi-directional mapping of all field variables between the physical and Chebyshev
-domains, incurring computational overhead.
-
-    For the proposed layer optimisation simulations, a hybrid formulation of the P2D model
-is proposed wherein a standard FV scheme in the axial dimension and a spectral scheme in
-the radial domain are used. Exploiting this natural separation of the axial and radial domains
-enables to -- i) retain the ability to easily couple the molar flux density at the particle surface
-through reformulation of the boundary conditions of the solid diffusion PDE, and ii) solve for
-solid-phase lithium concentration in the Chebyshev domain and locally transform to physical
-domain, without requiring system-wide Chebyshev reformulations. Although the proposed
-implementation does not globally employ a spectral scheme, the combined beneficial effects
-of radial-domain spectral scheme and automatic differentiation of system equations using
-CasADi [97] facilitate rapid simulations, enabling the completion of the layer optimisation in
-a short duration. Eqs. (3.37)­(3.40) detail the steps leading up to the reformulated solid phase
-diffusion and its associated boundary conditions in the Chebyshev domain.
-
-    The r Chebyshev collocation nodes, defined on a 1D mesh in the radial direction, are
-given by eq. (3.37) (see [68]).
-
-                              = 0, 1, ... r   [-1, 1]              (3.37)
- = cos ( ) ,
-
-          r
-
-Assuming constant diffusivity, expanding the derivative in the standard form of the Fickian
-
-spherical diffusion equation (see eq. (1.3)) for each particle, we obtain eq. (3.38), presented
-
-along with its Neumann boundary conditions, eqs. (3.38a) and (3.38b).  is the molar flux
-
-density (mol m-2 s-1) and p is the particle radius (m).
-
-         s     =  seff  (    s  +  2s   )                  [0, p]  (3.38)
-                                     2
-
-      (  s  )= 0                                                   (3.38a)
-                                                                   (3.38b)
-             =0
-
-seff  (  s  )  = -
-
-               =p
-
-                                                                 84
-
-                                                           3.5 Computational Framework
-
-Mapping   [0, p]    [-1, 1],                                         (3.39)
-                                            = p ( + 1)
-                                                 2
-
-    Applying eq. (3.39) to eqs. (3.38)­(3.38b) whilst retaining s in the physical space yields
-eqs. (3.40)­(3.40b).
-
-            s  =4    seff      2                        s  +  2s  )   (3.40)
-                     p2    ( + 1                              2      (3.40a)
-                                                                     (3.40b)
-         (  s  )= 0
-
-               =-1
-
-2  seff  (  s  )= -
-   p
-               =1
-
-    During the iterative solution process, the spatial gradients of solid phase lithium concen-
-tration in eq. (3.40) in this case are not computed through an explicit differentiation procedure
-as usual, but instead evaluated by pre-multiplying the concentration values at the collocation
-nodes by a Chebyshev differentiation matrix. This particular aspect is responsible for the
-inherent reduction of simulation run-time achieved by introducing a spectral method. In the
-updated version of LIONSIMBA v2.0 (created specifically for this layer optimisation work;
-see section 3.6.1 for a brief overview of the modelling platform), differentiation matrices
-of suitable dimensions as well as the Chebyshev collocation nodes are generated using the
-MATLAB function cheb.m distributed along with the book by Trefethen [68].
-
-       3.5 Computational Framework
-
-        3.5.1 Introduction and guidelines for flow diagram traversal
-
-          The methodology adopted by the proposed layer optimisation framework can be explained
-          by using the flow diagram in fig. 3.5. The power handled by the cell during normal operation
-          (evaluated by considering various drivecycles) is much lower than that experienced during
-          acceleration (discharge) and fast-charging (charge) scenarios. Section 3.6 provides a brief
-          summary of the peak and median powers across all standard drivecycles. Therefore, from a
-          design perspective, it is sufficient to consider the power requirements for these two extreme
-
-                                                                 85
-
-                                                                                 3.5 Computational Framework
-
-          cases. Hence, the schematic in fig. 3.5 can be studied by broadly dividing the flow diagram
-          into two parts -- i) an acceleration pathway (primarily consisting of blocks shaded in grey),
-          and ii) a fast-charging pathway (predominantly composed of blocks shaded in cyan).
-
-              As indicated by the legend in fig. 3.5, blocks with a light grey border represent input data/-
-          parameters for computations. Blocks with a standard black border represent computations
-          common to both acceleration and fast charging pathways. The design output is given by the
-          double-bordered block at the bottom centre of fig. 3.5. Other types of blocks and arrows are
-          appropriately listed in the legend key. To aid the understanding of the layer optimisation
-          framework, the reader is encouraged to correlate the narrative in this section with the blocks
-          and arrows in the schematic. The acceleration and fast charging pathways are not amenable
-          for standalone comprehension and are to be parsed in conjunction with the flow of control
-          through the infrastructure blocks as if the entire flow diagram is a single cohesive unit. These
-          `control' blocks, common to both pathways in fig. 3.5, govern how these two pathways are to
-          be traversed with the presently trialled layer choice and quantify the suitable reformulations
-          needed whenever a new layer choice is to be used. The computational aspects covered by
-          these blocks are described in sections 3.5.4­3.5.9.
-
-        3.5.2 Acceleration pathway
-
-          The computations for acceleration-based layer optimisation begins at the anchor block
-          labelled `Start Acc. Calcs.'.
-
-          Determination of acceleration rate, final speed and acceleration time
-
-          The first step is to determine the rate of acceleration to be used for computing the power
-          requirements for accelerating an xEV from standstill. For various other regulatory reasons,
-          vehicular standards for electrified transport are codified by various standardisation bodies
-          (e.g. the SAE J1772 standard [98]). The standards published by these regulatory agencies
-          typically specify a minimum required acceleration rate for the vehicle under consideration
-          to be certified as an electric vehicle. Additionally, vehicle manufacturers often provide their
-          own specifications, which typically exceed these minimum standards. However, for certain
-          classes of electric vehicles such as golf carts, the manufacturer-specified standards might fall
-
-                                                                 86
-
-                                        Figure 3.5 Flow diagram depicting an overview of the proposed layer optimisation methodology                                           "Konstanzmasterflowdiagramthesismod" -- 2018/9/21 -- 20:14 -- page 1 -- #1
-                                     for Li-ion pouch cells.
-                                                                                                                                                           Key                                                                                Cell                                                                    P  fastchg            Pcfealsltchg                Sim. params
-                           This figure was created by Krishnakumar Gopalakrishnan who asserts copyright, with intellectual            Input Data/Parameters                                                                               Parameters                                                                     batt                                          for fast charge
-                       contributions from and the right to use asserted by Ian D. Campbell.
-                                                                                                                                      Standard Computations                                     Start Acc. Calcs.                                                                                        Start Fast-                    1                            pfastchg
-           87                                                                                                                                                                                                                                                                                          Charge Calcs.                ncells
-                                                                                                                                      Fast Charge Computations                                                                                                                                                                                            ÷
-                                                                                                                                                                                                astd. >aman. ?                                                                                                                                                          P2D Simulation
                                                                                                                                       Calcs. producing updated sim.                                                                                                                                                                                                       (fast charge)
                                                                                                                                       params. for given layer                                                                                vbase                                                                                          Acell
                                                                                                                                                                                                                                                                                                                                                                    results(t  tmax )
@@ -930,7 +102,6 @@ is given by eq. (3.41).
           Changing the layer count used within a cell changes its mass. This in-turn affects the mass of
           the pack, which further influences the overall vehicle mass. Hence, for precise computation
 
-                                                                 88
 
                  3.5 Computational Framework
 
@@ -970,7 +141,6 @@ cells =  × cell  (3.42)
           For the presently trialled layer choice , a thermally-coupled P2D simulation is performed
           for a duration of f seconds with the applied power density caeclcl corresponding to the present
 
-                                                                 89
 
                                                                                  3.5 Computational Framework
 
@@ -1010,7 +180,6 @@ cells =  × cell  (3.42)
           level 3 fast charging specifications typically require charging to a target SOC that is typically
           well below 100 % (see table 3.2).
 
-                                                                 90
 
                                                                                  3.5 Computational Framework
 
@@ -1049,7 +218,6 @@ cells =  × cell  (3.42)
               The above process is repeated for different combinations of initial and ambient temper-
           atures (init, sink). The largest successful layer value from all temperature combinations is
 
-                                                                 91
 
                                                                                  3.5 Computational Framework
 
@@ -1089,7 +257,6 @@ cells =  × cell  (3.42)
           exit vector toggles from 0 to 1. Through a systematic bisection of the layer search space, the
           search algorithm speedily converges to the optimal layer value.
 
-                                                                 92
 
                                                                                  3.5 Computational Framework
 
@@ -1129,7 +296,6 @@ cells =  × cell  (3.42)
           However, a naive use of the linear search algorithm is computationally expensive with a
           worst case operation count of (). Therefore, this thesis author recommends the use of the
 
-                                                                 93
 
                                               3.5 Computational Framework
 
@@ -1173,7 +339,6 @@ max     =  max  (  2 (stack  -  Cu)   ,    2stack - Al - Cu  )     (3.44)
           the minimum physically feasible number of layers. Design engineers from industry may opt
           to tweak this to a higher value based on insights gained from present empirical designs.
 
-                                                                 94
 
 3.5 Computational Framework
 
@@ -1208,7 +373,6 @@ reduces to
 ¨e¨le¨c poss,pos = ¨e¨le¨c negs,neg  (3.46)
       poss,pos = negs,neg            (3.47)
 
-                                                                 95
 
                                  3.5 Computational Framework
 
@@ -1250,7 +414,6 @@ in fig. 3.7a, the outermost current collectors are of copper. In the alternative
 shown in fig. 3.7b, a copper current collector occupies one end of the stack while an aluminium
 current collector occupies its other end. The formulae derived here is equally applicable to
 
-                                                                 96
 
                                                                        3.5 Computational Framework
 
@@ -1289,7 +452,6 @@ where
                 (   +1    )  Cu,  if  is odd
                      2
 
-                                                                 97
 
                                       3.5 Computational Framework
 
@@ -1332,7 +494,6 @@ LiPF6 = elec( (1 - fi - ))LiPF6
 
 pouch = 2pouchpouchpouchpouch
 
-                                                                 98
 
                                                           3.6 Results and Discussion
 
@@ -1374,7 +535,6 @@ constant since their corresponding mass values do not vary with the number of la
           methodology itself. The results as such do not stand alone outside of the modelling universe
           with all its inherent assumptions discussed thus far. Presently, the value added by this work
 
-                                                                 99
 
                                                                                        3.6 Results and Discussion
 
@@ -1470,9 +630,7 @@ Initial electrolyte concentration, e,0 (mol m-3)
 
 Parameter                                             Pos                   Sep                          Neg
 
-Nodes, through-thickness (axial), a                   40                    40                           40
 
-Nodes, within spherical particle (radial), r          15                    --                           15
 
 a Calculated in section `Lower cutoff voltage for cells' (also see section 3.4.1) b Assumed c Ref. [98]
 
@@ -1590,10 +748,6 @@ Table 3.5 xEV acceleration test results
 
 (degC)   BEV PHEV
 
-(38,5)   21 55
-(38,49)  21 57
-(25,25)  23 63
-(15,5)   27 69
 
     The specific combinations of temperatures for traversing the thermal design space
 are chosen following the SAE J1772 guidelines. The high power densities resulting from
@@ -1701,9 +855,7 @@ Nom. capacity & charge (Ah) Nom. capacity & charge (Ah)BEV Constant Current Char
                                                                                                                                                                                        q at 110 kW
                             q at 50 A                                                                                                                  Vmax -limited  Capacity-limited q at 135 kW
 
-40                          q at 80 A                                                                                                         40
 
-                            q at 90 A                                                                                                         20
 
 20
 
@@ -1721,7 +873,6 @@ Nom. capacity & charge (Ah) Nom. capacity & charge (Ah)BEV Constant Current Char
                                                                                                                                                                             q at 110 kW
                             q at 50 A                                                                                                                  Vmax -limited        q at 135 kW
 
-40                          q at 80 A                                                                                                         40
 
                             q at 90 A
 
@@ -2253,7 +1404,6 @@ Magnitude  101
            10-1
 
                     10-2
-                               1 2 3 4 5 6 7 8 9 10
                                                           Singular Values
 
 Figure 4.4 Comparison of singular values computed by the conventional and improved SVD
@@ -2273,7 +1423,6 @@ lists the parameters used in the ROM workflow (same as those employed by Lee et 
            Hankel Block Size                       1s
                                                    5
            Discrete-Time Model Sample-Rate,        128 Hz
-           Number of Electrolyte EigenModes        10
 
            Continuous-Time Emulation Frequency, 1
            Desired Number of Singular Values
@@ -2297,11 +1446,9 @@ RAM Usage (GB)  100     Classical SVD Step
                  60     Improved SVD Step
                         Overall (Improved DRA)
 
-                40
 
                                                                                 Practical RAM Limit
 
-                20
 
                 0
 
@@ -2382,7 +1529,6 @@ Value
 
                         10-1
 
-                                    1 2 3 4 5 6 7 8 9 10
                                                                     Singular Values
 
   Figure 4.7 Comparison of singular values computed by conventional and improved SVD
@@ -3782,8 +2928,6 @@ Open circuit potential,  (V)
 
 Parameter                                                         Pos                               Sep                       Neg
 
-Nodes, through-thickness (axial), a                               15                                15                            15
-                                                                                                                                  10
 Nodes, within spherical particle (radial), r                      10                                --
                                                                                                                               (5.58)
 a Ref. [72] b Set to 100 mV above the cell's OCP at 100 % cell SOC c Ref. [90]                                                (5.59)
@@ -4440,7 +3584,6 @@ SOC (%)  75                      SPM
                                          P2d                        0 5000
              0 5000                      SPM
          100                                                     0.3
-          75
 SOC (%)
          50                                              soc(%)  0.2
 
@@ -4524,11 +3667,9 @@ the solid phase concentration with a constant scaling factor. As per the assumpt
            2.95                                                                          SPM
 Vcell (V)   2.5 0                       SOC (%)  50       1000 2000 3000 4000
 
-              3              P2d                 25
 
                              SPM
 
-                   1000 2000 3000 4000           00
 
                                                  0
 
@@ -4569,15 +3710,10 @@ fig. 5.11, the UDDS profile is highly dynamic consisting of many sets of rapid a
 and braking events. Hence, this drivecycle is chosen to provide representative results of the
 model's performance to dynamic inputs.
 
-                      30
 
-              25
 
-speed (ms­1)  20
 
-              15
 
-              10
 
               5
 
@@ -4628,13 +3764,9 @@ Vcell (V)    ­200     200 400 600 800 1000 1200 1400
               3.75
                3.7
               3.65 0
-                50
 
-                48
 
-SOC (%)      46
 
-             44
 
              42 0     200 400 600 800 1000 1200 1400
 
@@ -6043,8 +5175,6 @@ for this system identification task is plotted in fig. 6.1.
                          RBS  Chirp           Periodic RBS
 
 Itrain (A)   120
-               80
-               40
                 0
              ­40
              ­80
@@ -6114,9 +5244,7 @@ incorporating the potential to excite any periodic modes in the system to be ide
 
             120
 
-            80
 
-Itrain (A)  40
 
             0
 
@@ -7322,7 +6450,6 @@ mol m­3  1200                 P2d                mol m­3   950                P2
 
 mol m­3  150                                     mol m­3  150
 
-         75                                               75
 
          0                                                0
           0 200 400 600 800 1000 1200 1400                 0 200 400 600 800 1000 1200 1400
@@ -9114,7 +8241,6 @@ SPM is significantly more accurate than the basic SPM (see table 6.5).
          7525538 [cited on page 128].
 
 [156]  Leonardo K. Maia, Zeynep Güven, Fabio La Mantia and Edwin Zondervan. `Model-based
-       Optimization of Battery Energy Storage Systems'. Computer Aided Chemical Engineering 40
        (Jan. 2017), pp. 2563­2568. issn: 1570-7946. doi: 10.1016/B978-0-444-63965-3.50429-3
        [cited on page 129].
 
@@ -10564,7 +9690,6 @@ It is your         to ensure that the         PDF            of he paper submit 
 
             under  contract
 
-COPYRIGHT          ASSIGNMENT                 to             l. 2. 3.                  45
 The                      Of copyright
 
 The undersiW1ed hereby assigns irrevocably to ASME all worldwße rights under copyright        Paper.
