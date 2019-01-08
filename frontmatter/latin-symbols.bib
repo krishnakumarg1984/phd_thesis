@@ -32,8 +32,8 @@
 
 @symbol{q,
     name={\ensuremath{\bar{q}_\lambda}},
-    description={Volume  averaged concentration  flux \ie{} the  average  change  of  concentration  with  respect  to  the  radial
-position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\second}]}
+    description={Volume averaged concentration flux \ie{} the average change of concentration with respect to the radial
+                 position~\mbox{$r,\ \lambda \in \{\mathrm{neg,pos}\}$}~[\si{\mol\per\meter\squared\per\second}]}
 }
 
 @symbol{Ds,
@@ -53,7 +53,7 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{rtilde,
     name={\ensuremath{\widetilde{r}}},
-    description={Radial dimension in the Chebyshev domain~$\widetilde{r} \in [-1, 1]$~[\si{\meter}]}
+    description={Radial dimension in the Chebyshev domain~\mbox{$\widetilde{r} \in [-1, 1]$}~[\si{\meter}]}
 }
 
 @symbol{rdel,
@@ -147,9 +147,14 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
     description={Real co-ordinate space}
 }
 
+@symbol{zspace,
+    name={\ensuremath{\mathbb{Z}}},
+    description={Set of integers}
+}
+
 @symbol{T,
     name={\ensuremath{T, T_\mathrm{cell}}},
-    description={Lumped cell temperature (at time-step~$k$)~[\si{\kelvin}]}
+    description={Lumped cell temperature (at time-step~\mbox{$k$})~[\si{\kelvin}]}
 }
 
 @symbol{Tmax,
@@ -168,13 +173,13 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 }
 
 @symbol{I,
-    name={\ensuremath{I,I_k}},
-    description={Load current applied at the terminals of the cell (at time-step~$k$)~[\si{\ampere}]}
+    name={\ensuremath{I}},
+    description={Load current applied at the terminals of the cell (at time-step~\mbox{$k$})~[\si{\ampere}]}
 }
 
 @symbol{i,
     name={\ensuremath{i}},
-    description={Current density experienced by each  electrochemical layer (unit cell)~[\si{\ampere\per\meter\squared}]}
+    description={Current density experienced by each electrochemical layer (unit cell)~[\si{\ampere\per\meter\squared}]}
 }
 
 @symbol{p,
@@ -243,42 +248,42 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{xvecdot,
     name={\ensuremath{\mathbf{\dot{x} \in \mathbb{R}^{n \times 1}}}},
-    description={Time derivative of the state vector $\mathbf{x}$ \ie{} $\diff{\mathbf{x}}{t}$ in a state-space formulation}
+    description={Time derivative of the state vector \mbox{$\mathbf{x}$ \ie{} $\diff{\mathbf{x}}{t}$} in a state-space formulation}
 }
 
 @symbol{xvec,
     name={\ensuremath{\mathbf{x} \in \mathbb{R}^{n \times 1}}},
-    description={State vector with `$n$' states following  standard state-space notation}
+    description={State vector with `\mbox{$n$}' states following standard state-space notation}
 }
 
 @symbol{Astate,
     name={\ensuremath{A \in \mathbb{R}^{n \times n}}},
-    description={System matrix corresponding to `$n$' states following  standard state-space notation}
+    description={System matrix corresponding to `\mbox{$n$}' states following standard state-space notation}
 }
 
 @symbol{B,
     name={\ensuremath{B \in \mathbb{R}^{n \times m}}},
-    description={Input matrix corresponding to `$n$' states and `$m$' inputs following  standard state-space notation}
+    description={Input matrix corresponding to `\mbox{$n$' states and `$m$}' inputs following standard state-space notation}
 }
 
 @symbol{u,
     name={\ensuremath{\mathbf{u} \in \mathbb{R}^{m \times 1}}},
-    description={Input vector with `$m$' inputs following  standard state-space notation}
+    description={Input vector with `\mbox{$m$}' inputs following standard state-space notation}
 }
 
 @symbol{y,
     name={\ensuremath{\mathbf{y} \in \mathbb{R}^{p \times 1}}},
-    description={Output vector with `$p$' outputs following  standard state-space notation}
+    description={Output vector with `\mbox{$p$}' outputs following standard state-space notation}
 }
 
 @symbol{C,
     name={\ensuremath{C \in \mathbb{R}^{p \times n}}},
-    description={Output matrix corresponding to `$p$' outputs and `$n$' states following  standard state-space notation}
+    description={Output matrix corresponding to `\mbox{$p$' outputs and `$n$}' states following standard state-space notation}
 }
 
 @symbol{Dstatespacematrix,
     name={\ensuremath{D \in \mathbb{R}^{p \times m}\ }},
-    description={Output matrix corresponding to `$p$' outputs and `$m$' inputs following  standard state-space notation}
+    description={Output matrix corresponding to `\mbox{$p$' outputs and `$m$}' inputs following standard state-space notation}
 }
 
 @symbol{n,
@@ -338,7 +343,7 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{tfman,
     name={\ensuremath{t_\mathrm{f,man.}}},
-    description={Manufacturer-specified acceleration time (from standstill to $v_\mathrm{f,man.}$)~[\si{\second}]}
+    description={Manufacturer-specified acceleration time (from standstill to \mbox{$v_\mathrm{f,man.}$})~[\si{\second}]}
 }
 
 @symbol{vfstd,
@@ -348,7 +353,7 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{tfstd,
     name={\ensuremath{t_\mathrm{f,std.}}},
-    description={Acceleration time (from standstill to $v_\mathrm{f,std.}$) as specified by a governing standard~[\si{\second}]}
+    description={Acceleration time (from standstill to \mbox{$v_\mathrm{f,std.}$}) as specified by a governing standard~[\si{\second}]}
 }
 
 @symbol{vb,
@@ -358,27 +363,27 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{noptacc,
     name={\ensuremath{n_\mathrm{opt}^\mathrm{acc}}},
-    description={Optimal  number of layers that satisfies power demanded during acceleration without violating termination criteria}
+    description={Optimal number of layers that satisfies power demanded during acceleration without violating termination criteria}
 }
 
 @symbol{noptfastchg,
     name={\ensuremath{n_\mathrm{opt}^\mathrm{fastchg}}},
-    description={Optimal  number of layers that satisfies fast charging requirements without violating termination criteria}
+    description={Optimal number of layers that satisfies fast charging requirements without violating termination criteria}
 }
 
 @symbol{l,
     name={\ensuremath{l_\lambda}},
-    description={Thickness of a specific region~$\lambda$ of a unit cell, $\lambda \in \{\mathrm{neg,sep,pos,Al,Cu}\}$~[\si{\meter}]}
+    description={Thickness of a specific region~\mbox{$\lambda$ of a unit cell, $\lambda \in \{\mathrm{neg,sep,pos,Al,Cu}\}$}~[\si{\meter}]}
 }
 
 @symbol{m,
     name={\ensuremath{m_\lambda}},
-    description={Mass of each constituent component~$\lambda \in \{\mathrm{neg,sep,pos,Al,Cu,pouch,\ch{LiPF_6}}\}$ for all electrochemical layers within a pouch cell~[\si{\kilogram}]}
+    description={Mass of each constituent component~\mbox{$\lambda \in \{\mathrm{neg,sep,pos,Al,Cu,pouch,\ch{LiPF_6}}\}$} for all electrochemical layers within a pouch cell~[\si{\kilogram}]}
 }
 
 @symbol{c,
     name={\ensuremath{c_\lambda}},
-    description={Specific heat capacity of each component~$\lambda \in \{\mathrm{neg,sep,pos,Al,Cu,pouch,\ch{LiPF_6}}\}$ in a pouch cell~[\si{\joule\per\kilogram\per\kelvin}]}
+    description={Specific heat capacity of each component~\mbox{$\lambda \in \{\mathrm{neg,sep,pos,Al,Cu,pouch,\ch{LiPF_6}}\}$} in a pouch cell~[\si{\joule\per\kilogram\per\kelvin}]}
 }
 
 @symbol{cavg,
@@ -388,7 +393,7 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{mcell,
     name={\ensuremath{m_\mathrm{cell}}},
-    description={Cell mass, computed as $\sum m_\lambda$~[\si{\kilogram}]}
+    description={Cell mass, computed as \mbox{$\sum m_\lambda$}~[\si{\kilogram}]}
 }
 
 @symbol{Mallcells,
@@ -416,12 +421,12 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
     description={Ratio of thickness of negative electrode to that of positive electrode}
 }
 
-@symbol{lstack,
+@symbol{Lstack,
     name={\ensuremath{L_\mathrm{stack}}},
     description={Combined thickness of all unit cells within a pouch~[\si{\meter}]}
 }
 
-@symbol{hpouch,
+@symbol{Hpouch,
     name={\ensuremath{H_\mathrm{pouch}}},
     description={Pouch height~[\si{\meter}]}
 }
@@ -449,17 +454,17 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{Pk,
     name={\ensuremath{P_k}},
-    description={Power applied to a discrete-time equivalent circuit cell model (at time-step~$k$)~[\si{\watt}]}
+    description={Power applied to a discrete-time equivalent circuit cell model (at time-step~\mbox{$k$})~[\si{\watt}]}
 }
 
 @symbol{R0,
     name={\ensuremath{R_0, R_\mathrm{eq}}},
-    description={Effective series resistance of an equivalent circuit cell model (at time-step~$k$)~[\si{\ohm}]}
+    description={Effective series resistance of an equivalent circuit cell model (at time-step~\mbox{$k$})~[\si{\ohm}]}
 }
 
-@symbol{v,
-    name={\ensuremath{v, V, V_\mathrm{cell}}},
-    description={Terminal voltage of the cell (at time-step~$k$). Also denoted by $v_k$~[\si{\volt}]}
+@symbol{V,
+    name={\ensuremath{V, V_\mathrm{cell}, v}},
+    description={Terminal voltage of the cell (at time-step~\mbox{$k$). Also denoted by $v_k$}~[\si{\volt}]}
 }
 
 @symbol{vmin,
@@ -474,7 +479,7 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{Qn,
     name={\ensuremath{Q_n}},
-    description={Theoretical capacity of a pouch cell with $n$ layers~[\si{\amphour}]}
+    description={Theoretical capacity of a pouch cell with \mbox{$n$} layers~[\si{\amphour}]}
 }
 
 @symbol{h,
@@ -544,7 +549,7 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 
 @symbol{Z,
     name={\ensuremath{Z}},
-    description={Road gradient}
+    description={Gradient of the road on which acceleration test of a (hybrid) electric vehicle is performed}
 }
 
 @symbol{Mv,
@@ -582,10 +587,10 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
     description={Generic notation for a Block-Hankel matrix}
 }
 
-% @symbol{U,
-%     name={\ensuremath{U}},
-%     description={Matrix of output singular vectors}
-% }
+    % @symbol{U,
+    % name={\ensuremath{U}},
+    % description={Matrix of output singular vectors}
+    % }
 
 @symbol{Ts,
     name={\ensuremath{T_\mathrm{s}}},
@@ -595,5 +600,60 @@ position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\
 @symbol{F1,
     name={\ensuremath{F_\mathrm{1}}},
     description={Continuous-Time emulation frequency for formulating the \glsfmtshort{dra}~[\si{\hertz}]}
+}
+
+@symbol{Qej,
+    name={\ensuremath{Q_{\mathrm{e},\lambda}}},
+    description={Moles of \ch{Li^+} ions in the electrolyte for each of the cell regions~\mbox{$\lambda \in \{\mathrm{neg,sep,pos}\}$} per unit cross-sectional area~[\si{\mol\per\meter\squared}]}
+}
+
+@symbol{Qejdebiased,
+    name={\ensuremath{\widetilde{Q}_{\mathrm{e,}\lambda}}},
+    description={Debiased (by removal of initial value) moles of \ch{Li^+} ions in the electrolyte for each of the cell regions~\mbox{$\lambda \in \{\mathrm{neg,pos}\}$} per unit cross-sectional area~[\si{\mol\per\meter\squared}]}
+}
+
+@symbol{avec,
+    name={\ensuremath{\vec{a}}},
+    description={Time-varying coefficient vector for the quadratic spatial approximation model of ionic concentration in electrolyte}
+}
+
+@symbol{ncj,
+    name={\ensuremath{n_{\mathrm{c},\lambda}}},
+    description={Number of coefficients to be chosen for a suitable spatial approximation polynomial model of \ch{Li^+} ions in the electrolyte for each of the cell regions~\mbox{$\lambda \in \{\mathrm{neg,sep,pos}\}$}}
+}
+
+@symbol{Gq,
+    name={\ensuremath{G_q}},
+    description={Generic transfer operator used in system identification to denote system dynamics}
+}
+
+@symbol{Hq,
+    name={\ensuremath{H_q}},
+    description={Generic transfer operator used in system identification to denote disturbance dynamics}
+}
+
+@symbol{ek,
+    name={\ensuremath{e[k]}},
+    description={White noise sequence assumed in system identification}
+}
+
+@symbol{nk,
+    name={\ensuremath{n_k}},
+    description={Number of transport delay samples used in system identification}
+}
+
+@symbol{nb,
+    name={\ensuremath{n_b}},
+    description={Number of feedforward coefficients used in system identification}
+}
+
+@symbol{na,
+    name={\ensuremath{n_a}},
+    description={Number of feedback coefficients used in system identification}
+}
+
+@symbol{Lossfunc,
+    name={\ensuremath{L(\cdot)}},
+    description={Scalar loss function used in non-linear optimisation step of system identification}
 }
 
