@@ -1,5 +1,10 @@
 % Encoding: UTF-8
 
+@symbol{Cd,
+    name={\ensuremath{C_\mathrm{d}}},
+    description={Coefficient of drag for the vehicle body}
+}
+
 @symbol{brugg,
     name={\ensuremath{\mathrm{brugg}}},
     description={Bruggeman coefficient (empirical) to account for the tortuosity of a medium}
@@ -463,16 +468,16 @@
 }
 
 @symbol{V,
-    name={\ensuremath{V, V_\mathrm{cell}, v}},
+    name={\ensuremath{V, V_\mathrm{cell}}},
     description={Terminal voltage of the cell (at time-step~\mbox{$k$). Also denoted by $v_k$}~[\si{\volt}]}
 }
 
-@symbol{vmin,
+@symbol{Vmin,
     name={\ensuremath{V_\mathrm{min}}},
     description={Lower cut-off voltage of the cell~[\si{\volt}]}
 }
 
-@symbol{vmax,
+@symbol{Vmax,
     name={\ensuremath{V_\mathrm{max}}},
     description={Upper cut-off voltage of the cell~[\si{\volt}]}
 }
@@ -524,7 +529,7 @@
 
 @symbol{Pacellfastchg,
     name={\ensuremath{p_\mathrm{cell}^\mathrm{fastchg}}},
-    description={Power applied at the terminals of each cell while fast charging a (hybrid) electric vehicle~[\si{\watt}]}
+    description={Power applied at the cell terminals while fast charging a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
 @symbol{Pbattacc,
@@ -537,11 +542,6 @@
     description={Power applied at the terminals while fast charging the battery pack of a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
-@symbol{Cd,
-    name={\ensuremath{C_\mathrm{d}}},
-    description={Coefficient of drag for the vehicle body}
-}
-
 @symbol{Cr,
     name={\ensuremath{C_\mathrm{r}}},
     description={Coefficient of rolling resistance for the vehicle body}
@@ -549,7 +549,7 @@
 
 @symbol{Z,
     name={\ensuremath{Z}},
-    description={Gradient of the road on which acceleration test of a (hybrid) electric vehicle is performed}
+    description={Gradient of road on which acceleration test of a (hybrid) electric vehicle is performed}
 }
 
 @symbol{Mv,
@@ -629,7 +629,7 @@
 
 @symbol{Hq,
     name={\ensuremath{H_q}},
-    description={Generic transfer operator used in system identification to denote disturbance dynamics}
+    description={Generic transfer operator in system identification for disturbance dynamics}
 }
 
 @symbol{ek,
