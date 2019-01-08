@@ -25,6 +25,17 @@
     description={Concentration of \ch{Li^0} in the solid phase \ie{} electrode~[\si{\mol\per\meter\cubed}]}
 }
 
+@symbol{csbar,
+    name={\ensuremath{\bar{c}_\mathrm{s}}},
+    description={Bulk concentration of \ch{Li^0} in the electrode~[\si{\mol\per\meter\cubed}]}
+}
+
+@symbol{q,
+    name={\ensuremath{\bar{q}_\lambda}},
+    description={Volume  averaged concentration  flux \ie{} the  average  change  of  concentration  with  respect  to  the  radial
+position~$r,\ \lambda \in \{\mathrm{neg,pos}\}$~[\si{\mol\per\meter\squared\per\second}]}
+}
+
 @symbol{Ds,
     name={\ensuremath{D_\mathrm{s}}},
     description={Intrinsic diffusivity of the electrode material~[\si{\meter\squared\per\second}]}
@@ -63,7 +74,7 @@
 
 @symbol{ce,
     name={\ensuremath{c_\mathrm{e}}},
-    description={Concentration of \ch{Li^+} ions in the electrolyte phase~[\si{\mol\per\meter\cubed}]}
+    description={Concentration of \ch{Li^+} ions in the electrolyte~[\si{\mol\per\meter\cubed}]}
 }
 
 @symbol{t,
@@ -106,6 +117,16 @@
     description={Frontal area of the (hybrid) electric vehicle~[\si{\meter\squared}]}
 }
 
+@symbol{Atabs,
+    name={\ensuremath{A_\mathrm{tabs}}},
+    description={Area of the cell tabs~[\si{\meter\squared}]}
+}
+
+@symbol{ce0,
+    name={\ensuremath{c_\mathrm{e,0}}},
+    description={Initial concentration of \ch{Li^+} ions in the electrolyte~[\si{\mol\per\meter\cubed}]}
+}
+
 @symbol{ltot,
     name={\ensuremath{l_\mathrm{tot}}},
     description={Combined thickness of negative electrode, separator and positive electrode~[\si{\meter}]}
@@ -127,7 +148,7 @@
 }
 
 @symbol{T,
-    name={\ensuremath{T}},
+    name={\ensuremath{T, T_\mathrm{cell}}},
     description={Lumped cell temperature (at time-step~$k$)~[\si{\kelvin}]}
 }
 
@@ -156,10 +177,10 @@
     description={Current density experienced by each  electrochemical layer (unit cell)~[\si{\ampere\per\meter\squared}]}
 }
 
-% @symbol{p,
-%     name={\ensuremath{p}},
-%     description={Generic notation for power density experienced by each layer (unit cell)~[\si{\watt\per\meter\squared}]}
-% }
+@symbol{p,
+    name={\ensuremath{p}},
+    description={Generic notation for power density experienced by each layer (unit cell)~[\si{\watt\per\meter\squared}]}
+}
 
 @symbol{A,
     name={\ensuremath{A, A_\mathrm{cell}}},
@@ -192,9 +213,13 @@
 }
 
 @symbol{cssurf,
-    name={\ensuremath{c_\mathrm{s,surf}}},
+    name={\ensuremath{c_\mathrm{s,surf}, c_\mathrm{s,e}}},
     description={Concentration of \ch{Li^0} at the electrode surface~[\si{\mol\per\meter\cubed}]}
 }
+
+@symbol{cssurfstar,
+    name={\ensuremath{c_\mathrm{s}^\ast}},
+    description={Surface concentration of \ch{Li^0} \ie{} same as \gls{cssurf}, but specifically for the negative electrode in the layer optimisation framework for fast charging~[\si{\mol\per\meter\cubed}]} }
 
 @symbol{uocp,
     name={\ensuremath{\mathcal{U}}},
@@ -428,13 +453,13 @@
 }
 
 @symbol{R0,
-    name={\ensuremath{R_0}},
+    name={\ensuremath{R_0, R_\mathrm{eq}}},
     description={Effective series resistance of an equivalent circuit cell model (at time-step~$k$)~[\si{\ohm}]}
 }
 
 @symbol{v,
-    name={\ensuremath{v,v_k, V}},
-    description={Terminal voltage of the cell (at time-step~$k$)~[\si{\volt}]}
+    name={\ensuremath{v, V, V_\mathrm{cell}}},
+    description={Terminal voltage of the cell (at time-step~$k$). Also denoted by $v_k$~[\si{\volt}]}
 }
 
 @symbol{vmin,
@@ -472,6 +497,11 @@
     description={Lower cut-off for the State of Charge of the cell}
 }
 
+@symbol{zmax,
+    name={\ensuremath{z_\mathrm{max}}},
+    description={Upper cut-off for the State of Charge of the cell}
+}
+
 @symbol{pacc,
     name={\ensuremath{P^\mathrm{acc}}},
     description={Power density experienced by each electrochemical layer (unit cell) during acceleration phase~[\si{\watt\per\meter\squared}]}
@@ -482,12 +512,12 @@
     description={Power density experienced by each electrochemical layer (unit cell) during fast charging~[\si{\watt\per\meter\squared}]}
 }
 
-@symbol{P_cellacc,
+@symbol{Pacellacc,
     name={\ensuremath{p_\mathrm{cell}^\mathrm{acc}}},
     description={Power demanded at the terminals of each cell during the acceleration phase of a (hybrid) electric vehicle~[\si{\watt}]}
 }
 
-@symbol{P_cellfastchg,
+@symbol{Pacellfastchg,
     name={\ensuremath{p_\mathrm{cell}^\mathrm{fastchg}}},
     description={Power applied at the terminals of each cell while fast charging a (hybrid) electric vehicle~[\si{\watt}]}
 }
@@ -525,5 +555,45 @@
 @symbol{tmax,
     name={\ensuremath{t_\mathrm{max}}},
     description={Time limit for fast charging (as per level 3 fast charging specifications)~[\si{\second}]}
+}
+
+@symbol{zast,
+    name={\ensuremath{z^\ast}},
+    description={Target State of Charge for fast charging}
+}
+
+@symbol{lce,
+    name={\ensuremath{l_\mathrm{ce}}},
+    description={Sum of thicknesses of the negative and positive electrodes in each layer~[\si{\meter}]}
+}
+
+@symbol{Na,
+    name={\ensuremath{N_\mathrm{a}}},
+    description={Number of FV discretisation nodes in the through-thickness (axial) direction}
+}
+
+@symbol{N,
+    name={\ensuremath{N}},
+    description={Number of samples collected for each Markov parameter}
+}
+
+@symbol{H,
+    name={\ensuremath{H}},
+    description={Generic notation for a Block-Hankel matrix}
+}
+
+% @symbol{U,
+%     name={\ensuremath{U}},
+%     description={Matrix of output singular vectors}
+% }
+
+@symbol{Ts,
+    name={\ensuremath{T_\mathrm{s}}},
+    description={Discrete-Time model sample rate~[\si{\second}]}
+}
+
+@symbol{F1,
+    name={\ensuremath{F_\mathrm{1}}},
+    description={Continuous-Time emulation frequency for formulating the \glsfmtshort{dra}~[\si{\hertz}]}
 }
 
