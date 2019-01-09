@@ -361,7 +361,7 @@ flattened.tex
 notes_tools_and_custom_codes/word_count_growth_thesis.png
 
 Thumbs.db
-!backmatter/thesis_refs_joint.bib
+!backmatter/thesis_refs_extra.bib
 !frontmatter/*.bib
 main-latest.pdf
 *.xdy
