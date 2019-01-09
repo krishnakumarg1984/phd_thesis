@@ -1,4 +1,12 @@
 %!TEX root = ../main.tex
 % vim:nospell ft=tex
 
-\diffset[p-delims = . |, p-nudge = 0]
+% \diffset[p-delims = . |, p-nudge = 0]
+
+\diffdef { p }
+{
+    op-symbol = \partial ,
+    left-delim = \left .,
+    right-delim = \right | ,
+    subscr-nudge = 0 mu
+}
