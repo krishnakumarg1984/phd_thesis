@@ -364,3 +364,5 @@ Thumbs.db
 !backmatter/thesis_refs_joint.bib
 !frontmatter/*.bib
 main-latest.pdf
+*.xdy
+lang/
