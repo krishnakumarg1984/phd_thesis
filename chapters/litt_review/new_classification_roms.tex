@@ -69,9 +69,44 @@ classified as belonging to one of the following categories
     \item Hybrid \glsfmtshort{rom}s based on equivalent circuits
     \item Time-domain \glsfmtshort{rom}s
 \end{itemize}
-It is important to distinguish between those models that are derived directly in
-the time  domain versus  those that  are derived first  in the  frequency domain
-and  later  converted  to  time  domain.
+A common characteristic of all control-oriented models is that their ultimate
+goal is to lower the computational burden of the pertinent physical quantities
+during operation of the cell.  However upon a closer study, the contrasting
+aspects that set them apart become apparent. Understanding the behavioural
+differences that stem from their pedigree is the motive behind distinguishing between those models that are derived directly in
+the time  domain versus  those that  are derived first  in the  frequency
+domain, but  later  converted  to  time  domain.
+
+The classical \mbox{modus operandi} in
+frequency domain modelling is to transform the underlying physical equations
+into the Laplace space (the complex S~plane) followed by a Padé approximation to reduce the number
+of coefficients in the resulting transfer functions. This category of models is
+briefly evaluated in \cref{subsec:freqdomainroms}. At the other end of the
+spectrum are the time-domain \glspl{rom} which typically adopt the strategy of either
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item simplifying the computational mesh used,
+    \item capturing only the salient dynamics of the cell which leads to a smaller parameter set,
+        and/or
+    \item a combination of the two.
+\end{enumerate*}
+The state of the art in these models is studied in \cref{subsec:timedomainroms}.
+An overlapping continuum of mathematical techniques is encountered in the literature discussing the wide assortment of \glspl{rom} spanning the intervening space between these
+extrema. The classification
+presented here reflects this author's opinion on their broad approach to model
+reduction. For instance, equivalent circuits have only a few
+parameters and are an attractive option for the final model
+implementation. In the recent years, there has been an uptrend in the
+efforts employing mathematical methods to generate physics-based equivalent
+circuits, the salient of which are discussed in \cref{subsec:hybridroms}.
+Finally, there exist Quasi-hybrid \glspl{rom} which do not necessarily seek to
+formulate equivalent circuits, but rather seek to arrive at a time domain reduced order
+state-space realisation by proceeding through a series of mathematical transformations
+starting from the frequency domain. The order reduction here is achieved
+through a reduction in the number of \emph{states} and not directly through a
+reduction in number of parameters. These methods typically  use employ
+time-domain and frequency-domain aspects of control theory, such as
+Markov parameters and the Ho-Kalman algorithm. An evaluation of the salient
+hybrid \glspl{rom} from literature is presented in \cref{subsec:hybridroms}.
 
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
@@ -119,7 +154,7 @@ better  than  classical  \glspl{ecm},  although recent  research  attempts  have
 focused to mitigate this drawback~\cite{Yuan2017a,Yuan2017}.
 
 
-\subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}
+\subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}\label{subsec:quasiroms}
 
 Smith~\etal{}~\cite{Smith2007} pioneered a semi-hybrid approach to reduced order
 modelling and  obtained closed  form expressions  for all  electrochemical field
@@ -331,7 +366,7 @@ more work is required to address the  present gaps, most prominently the need to
 linearise their equations at certain operating points.
 
 
-\subsection{Hybrid \glsfmtshort{rom}s based on equivalent circuits}
+\subsection{Hybrid \glsfmtshort{rom}s based on equivalent circuits}\label{subsec:hybridroms}
 
 Physics-inspired
 \glspl{ecm}~\cite{Prasad2012,Prasad2014,Zhang2017,Cheng2017,Merla2018}
@@ -400,7 +435,7 @@ in an online implementation, the author  concludes that at present, the benefits
 offered by physics-inspired hybrid \glspl{ecm}  do not decisively outweigh their
 drawbacks.
 
-\subsection{Time-domain  \glsfmtshort{rom}s}
+\subsection{Time-domain  \glsfmtshort{rom}s}\label{subsec:timedomainroms}
 
 The working rubric of all time domain \glspl{rom} typically consists of attempts
 to  reformulate the  original  \gls{p2d}  model equations  towards  the goal  of
