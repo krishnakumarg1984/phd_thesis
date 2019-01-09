@@ -71,18 +71,19 @@ classified as belonging to one of the following categories
 \end{itemize}
 A common characteristic of all control-oriented models is that their ultimate
 goal is to lower the computational burden of the pertinent physical quantities
-during operation of the cell.  However upon a closer study, the contrasting
+during operation of the cell.  However upon a closer study, a few contrasting
 aspects that set them apart become apparent. Understanding the behavioural
-differences that stem from their pedigree is the motive behind distinguishing between those models that are derived directly in
-the time  domain versus  those that  are derived first  in the  frequency
-domain, but  later  converted  to  time  domain.
+differences that stem from their lineage is the motive behind distinguishing
+between those models that are derived directly in the time  domain versus  those
+that  are derived first  in the  frequency domain, but  later  converted  to
+time  domain.
 
-The classical \mbox{modus operandi} in
-frequency domain modelling is to transform the underlying physical equations
-into the Laplace space (the complex S~plane) followed by a Padé approximation to reduce the number
-of coefficients in the resulting transfer functions. This category of models is
-briefly evaluated in \cref{subsec:freqdomainroms}. At the other end of the
-spectrum are the time-domain \glspl{rom} which typically adopt the strategy of either
+The classical \mbox{modus operandi} in frequency domain modelling is to
+transform the underlying physical equations into the Laplace space (the complex
+S~plane) followed by a Padé approximation to reduce the number of coefficients
+in the resulting transfer functions. This category of models is briefly
+evaluated in \cref{subsec:freqdomainroms}. At the other end of the spectrum are
+the time-domain \glspl{rom} which typically adopt the strategy of either
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
     \item simplifying the computational mesh used,
     \item capturing only the salient dynamics of the cell which leads to a smaller parameter set,
@@ -90,23 +91,24 @@ spectrum are the time-domain \glspl{rom} which typically adopt the strategy of e
     \item a combination of the two.
 \end{enumerate*}
 The state of the art in these models is studied in \cref{subsec:timedomainroms}.
-An overlapping continuum of mathematical techniques is encountered in the literature discussing the wide assortment of \glspl{rom} spanning the intervening space between these
-extrema. The classification
-presented here reflects this author's opinion on their broad approach to model
-reduction. For instance, equivalent circuits have only a few
-parameters and are an attractive option for the final model
-implementation. In the recent years, there has been an uptrend in the
-efforts employing mathematical methods to generate physics-based equivalent
-circuits, the salient of which are discussed in \cref{subsec:hybridroms}.
-Finally, there exist Quasi-hybrid \glspl{rom} which do not necessarily seek to
-formulate equivalent circuits, but rather seek to arrive at a time domain reduced order
-state-space realisation by proceeding through a series of mathematical transformations
-starting from the frequency domain. The order reduction here is achieved
-through a reduction in the number of \emph{states} and not directly through a
-reduction in number of parameters. These methods typically  use employ
-time-domain and frequency-domain aspects of control theory, such as
-Markov parameters and the Ho-Kalman algorithm. An evaluation of the salient
-hybrid \glspl{rom} from literature is presented in \cref{subsec:hybridroms}.
+An overlapping continuum of mathematical techniques is encountered in the
+literature discussing the wide assortment of \glspl{rom} spanning the
+intervening space between these extrema. The classification presented here
+reflects their broad approach to model reduction. For instance, equivalent
+circuits have only a few parameters and are an attractive option from an
+implementation perspective. In recent years, there has been an uptrend in
+published efforts employing mathematical methods to generate physics-based
+equivalent circuits, the salient among which are discussed in
+\cref{subsec:hybridroms}. Finally, there exist Quasi-hybrid \glspl{rom} which do
+not necessarily seek to formulate equivalent circuits, but rather strive to
+arrive at  time domain reduced order state-space realisations by proceeding
+through a series of mathematical transformations starting from the frequency
+domain. In these models, order reduction is typically achieved through a
+reduction in the number of \emph{states} and not directly through a reduction in
+the number of parameters. These methods typically  employ both time-domain and
+frequency-domain aspects of control theory, such as Markov parameters and the
+Ho-Kalman algorithm. An evaluation of the salient quasi-hybrid \glspl{rom} from
+literature is presented in \cref{subsec:quasiroms}.
 
 
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
@@ -344,22 +346,23 @@ run-time interpolated models questionable.
 
 The author  of this thesis hypothesises  that any perceivable drawbacks  such as
 non-smooth changes  in \gls{soc} estimates  arising from using  blended matrices
-could  be potentially  mitigated by  using  smoothing filters  and other  \mbox{ad hoc}
-mathematical apparatus. However,  there exists no published  work that discusses
-these engineering aspects  or on how to actually implement  them in \glspl{bms}.
-Coupled with  the absence  of a  theoretical analysis  of loop  stability, these
-models are deemed  as not being suitable for immediate  adoption by industry, at
-least until  these aforementioned gaps  have been addressed  satisfactorily. The
-non-linear state variable model  presented by Guo~\etal{}~\cite{Guo2017} aims to
-address this  issue through a \gls{rom}  in the frequency domain  by eliminating
-the linearisation phase  from the workflow. However, the online  solution of its
-field  variables  entails  a complex  prediction-refinement  procedure,  loosely
-defined as  implicit and explicit  solution methods,  for each subsystem  of the
-\gls{dfn} model. The  formulation of the final model is  not clearly illustrated
-and in the views of this author, is not easily comprehensible. In the absence of
-actual source  code, a numerical example  or pseudo-code of the  model reduction
-workflow could  have immensely  helped with the  reproducibility of  the results
-claimed in the aforesaid publication.
+could  be potentially  mitigated by  using  smoothing filters  and other
+\mbox{ad hoc} mathematical apparatus. However,  there exists no published  work
+that discusses these engineering aspects  or on how to actually implement  them
+in \glspl{bms}. Coupled with  the absence  of a  theoretical analysis  of loop
+stability, these models are deemed  as not being suitable for immediate
+adoption by industry, at least until  these aforementioned gaps  have been
+addressed  satisfactorily. The non-linear state variable model  presented by
+Guo~\etal{}~\cite{Guo2017} aims to address this  issue through a \gls{rom}  in
+the frequency domain  by eliminating the linearisation phase  from the workflow.
+However, the online  solution of its field  variables  entails  a complex
+prediction-refinement  procedure,  loosely defined as  implicit and explicit
+solution methods,  for each subsystem  of the \gls{dfn} model. The  formulation
+of the final model is  not clearly illustrated and in the views of this author,
+is not easily comprehensible. In the absence of actual source  code, a numerical
+example  or pseudo-code of the  model reduction workflow could  have immensely
+helped with the  reproducibility of  the results claimed in the aforesaid
+publication.
 
 In summary, the  concept of hybrid \glspl{rom} is  certainly promising, although
 more work is required to address the  present gaps, most prominently the need to
@@ -418,10 +421,10 @@ complex to  resolve over  all length and  time-scales, acceptable  trade-offs in
 accuracy  was  demonstrated to  be  achievable  from a  system-level  simulation
 perspective. A  drawback of this approach  is that key physical  parameters such
 as  solid and  electrolyte  diffusion  coefficients are  attributed  to the  two
-electrodes  through  \mbox{ad hoc},  non-verifiable assumptions.  Furthermore,  in  the
-aforesaid article, notable discrepancies exist  in the values of parameters such
-as  electrolyte  conductivity  (obtained  through  calculations  from  \gls{eis}
-measurements) to that typically reported in literature.
+electrodes  through  \mbox{ad hoc},  non-verifiable assumptions.  Furthermore,
+in  the aforesaid article, notable discrepancies exist  in the values of
+parameters such as  electrolyte  conductivity  (obtained  through  calculations
+from  \gls{eis} measurements) to that typically reported in literature.
 
 It must be acknowledged that presently  there exists no modelling candidate that
 provides  all the  desirable  characteristics  sought after  in  a \gls{rom}  to
@@ -436,6 +439,8 @@ offered by physics-inspired hybrid \glspl{ecm}  do not decisively outweigh their
 drawbacks.
 
 \subsection{Time-domain  \glsfmtshort{rom}s}\label{subsec:timedomainroms}
+
+\subsubsection*{General strategies in time-domain reduced order battery modelling}
 
 The working rubric of all time domain \glspl{rom} typically consists of attempts
 to  reformulate the  original  \gls{p2d}  model equations  towards  the goal  of
@@ -468,16 +473,15 @@ the internal and terminal variables  for dynamic load profiles. Furthermore, the
 authors  have  not provided  a  tabulated  set  of  physical parameters  of  the
 cell being  simulated which  therefore impedes  reproducibility of  the results.
 Consequently, these methods have not seen a healthy uptake either in academia or
-in industry. The  author of this thesis  considers this presentation to  be of a
-cursory nature  and therefore,  it shall  not be  discussed here.  The remainder
-of  this  section discusses  several  popular  families  of time  domain  models
-and  provides a  summary evaluation  of  their relative  merits and  weaknesses.
-\Cref{ch:spmanalysis} presents a formal in-depth  analysis of all aspects of the
-state of the art  in the field of single particle  modelling. The author reckons
-that  the  \gls{spm}---reviewed briefly  later  in  this section---is  the  most
-promising  candidate identified  among  these time-domain  models  to nurture  a
-latent  potential  to  facilitate  faster  adoption  of  \glspl{pbm}  in  online
-applications.
+in industry. The  author of this thesis  considers the aforesaid presentation to
+be of a cursory nature  and therefore  shall  not discuss it here.
+
+% \Cref{ch:spmanalysis} presents a formal in-depth  analysis of all aspects of the
+% state of the art  in the field of single particle  modelling. The author reckons
+% that  the  \gls{spm}---reviewed briefly  later  in  this section---is  the  most
+% promising  candidate identified  among  these time-domain  models  to nurture  a
+% latent  potential  to  facilitate  faster  adoption  of  \glspl{pbm}  in  online
+% applications.
 
 In the \gls{dfn} model, the evolution of lithium in the solid phase is described
 by the classical  diffusion equation given by  Fick's first law~\cite{Fick1995}.
@@ -495,11 +499,15 @@ domain and the semi-hybrid/hybrid approaches  discussed thus far, these attempts
 typically strive  to arrive at  a simpler  computational mesh, whilst  aiming to
 retain high  fidelity. It should  be noted that  high node densities  are mainly
 required near the  surface of the spherical particles for  the pseudo dimension.
-Similarly, the clustering  of nodes is desirable near the  separator and current
-collector interfaces along the axial dimension.
-Thus, a sizeable number  of order reduction strategies in the time  domain seek
-to adopt non-uniform node  spacing towards lowering the aforesaid computational
-issues.
+Similarly, it is desirable to have a clustering  of nodes near the  separator
+and current collector interfaces along the axial dimension. Thus, a sizeable
+number  of order reduction strategies in the time  domain seek to adopt
+non-uniform node  spacing towards lowering the aforesaid computational issues.
+The remainder of  this  section discusses  several  popular  families  of time
+domain  models and  provides a  summary evaluation  of  their relative  merits
+and  weaknesses.
+
+\subsubsection*{Overview of prior art in the formulation of time-domain \glspl{rom}}
 
 Computationally    efficient     pseudo-spectral    schemes     for    numerical
 solution   of   \glspl{pde}   can   be  employed   by   placing   discretisation
@@ -509,41 +517,47 @@ functions~\cite{Ferguson1971,Trefethen2000,Boyd2001,Shizgal2015,Dutykh2016}. The
 accuracy of such  schemes extend beyond the algebraic orders  of that achievable
 with  classical Finite  Difference,  Finite Element  or  Finite Volume  Schemes.
 Northrop~\etal{}~\cite{Northrop2011}  pioneered  their  application  in  battery
-modelling  by  employing  Jacobi  polynomials  as  underlying  basis  functions.
-Suthar~\etal{}~\cite{Suthar2014}  replaced  Jacobi  polynomials  with  Chebyshev
-polynomials to  extend the  applicability of the  resulting \gls{rom}  to higher
-C-rates. Bizeray~\etal{}~\cite{Bizeray2015} provide a  detailed treatment of the
-usage  of Chebyshev  discretisation for  the full  \gls{p2d} model  on a  global
-scale \ie~along both the axial and radial directions for all equations of the
-\gls{dfn}  model. A  Lagrangian-like integral  method was  proposed by  Rahn and
-Wang~\cite{Rahn2013}  to  deal  with  electrolyte  and  solid-state  diffusions.
-However, this method works well only at low C-rates.
+modelling  by  employing  Jacobi  polynomials  as  the underlying  basis
+functions.  A  Lagrangian-like integral  method to  describe  diffusion in the
+electrolyte  and  solid phase  was  proposed by  Rahn and Wang~\cite{Rahn2013},
+which however works well only at low C-rates. Suthar~\etal{}~\cite{Suthar2014}
+replaced  the Jacobi  polynomials  originally proposed by
+Northrop~\etal~\cite{Northrop2011} with  Chebyshev polynomials to  help extend
+the  applicability of the  resulting \gls{rom}  to higher C-rates.
+Bizeray~\etal{}~\cite{Bizeray2015} provide a  detailed treatment on the usage of
+Chebyshev  discretisation for  the full  \gls{p2d} model  on a  global scale
+\ie~along both the axial and radial directions for all equations of the
+\gls{dfn}  model.
 
-
-The  reduced  number   of  nodes  as  well  as  their   clustered  placement  at
-the  desired  spatial  locations  facilitated by  these  discretisation  schemes
-lowers  the computational  burdens  of simulating  a  physics-based cell  model.
-In~\cite{Gopalakrishnan2018}, wherein  the author of  this thesis serves  as the
-joint lead author,  a hybrid scheme is proposed which  retains a standard finite
-volume  discretisation  in  the  axial  domain  whilst  adopting  the  Chebyshev
-discretisation  only for  the critical  solid phase  diffusion component  in the
-radial direction. The  details of this work  is presented in the  context of the
-research methodology  on delivering  a model-based  pouch cell  design discussed
-in  \cref{ch:modelbaseddesign}.   In  pseudo-spectral  methods,   the  \gls{p2d}
-equations,  their  boundary conditions  and  corresponding  field variables  are
-mathematically transformed to the Chebyshev  space within which they are solved.
-The  details  of  this  transformation  is  presented  in  the  context  of  the
-author's aforementioned work in \cref{sec:hybridfv-spectral} for the solid-phase
-diffusion equation. Finally,  these solved quantities are converted  back to the
-physical  space through  a corresponding  inverse transformation.  Although this
-bi-directional  transformation is  purely algebraic  in nature,  the requirement
-of  running a  spatially  resolved  model coupled  with  the  overheads of  such
-variable  transformations render  these class  of models  unsuitable for  online
+In  pseudo-spectral  methods, the  reduced  number   of  nodes  as  well  as
+their   clustered  placement  at desirable  spatial  locations  facilitated by
+these  discretisation  schemes lower  the computational  burdens  of simulating
+a  physics-based cell  model. In such schemes, the  \gls{p2d} equations,  their
+boundary conditions  and corresponding  field variables  are mathematically
+transformed to the Chebyshev space within which they are solved. The solved
+quantities are then converted back to the physical  space through  a
+corresponding  inverse transformation. Although this bi-directional
+transformation is  purely algebraic  in nature, the requirement of  running a
+spatially  resolved  model coupled  with  the overheads of  such variable
+transformations render  these class  of models unsuitable for  online
 implementation.  The contribution  of Lee~\etal~\cite{Lee2012a,Lee2012}  \ie~the
 ability to solve for any electrochemical variable at arbitrary spatial locations
 by completely eliminating the need for spatial discretisation assumes particular
 significance in this context.
 
+
+% In~\cite{Gopalakrishnan2018}, wherein  the author of  this thesis serves  as the
+% joint lead author,  a hybrid scheme is proposed which  retains a standard finite
+% volume  discretisation  in  the  axial  domain  whilst  adopting  the  Chebyshev
+% discretisation  only for  the critical  solid phase  diffusion component  in the
+% radial direction. The  details of this work  is presented in the  context of the
+% research methodology  on delivering  a model-based  pouch cell  design discussed
+% in  \cref{ch:modelbaseddesign}.
+
+
+% The  details  of  this  transformation  is presented  in  the  context  of
+% the author's aforementioned work in \cref{sec:hybridfv-spectral} for the
+% solid-phase diffusion equation.
 
 In all  non-uniform discretisation schemes  discussed here, the  implications of
 using  a non-adaptive  support mesh  obtained by  the placement  of nodes  whose
