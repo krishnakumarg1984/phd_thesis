@@ -214,7 +214,7 @@ embedded applications.
 
 
 Several attempts have been undertaken to  improve and extend the ideas pioneered
-in Smith~\etal{}  For instance,  Lee~\etal{}~\cite{Lee2012a,Lee2012}~addressed a
+in Smith~\etal{}  For instance,  Lee~\etal{}~\cite{Lee2012a}~addressed a
 critical missing aspect \viz~the derivation of transcendental transfer functions
 for  both  the  electrolyte  concentration and  its  potential.  These  transfer
 functions were  obtained by  using a Sturm-Liouville  approach by  retaining the
@@ -287,11 +287,12 @@ various  choices  of  initial  \glspl{soc}, temperature  and  C-rates.  Although
 the  final  state  space  model  thus  obtained  is  simple  to  implement,  the
 classical \gls{dra} scheme suffers from significant computational bottlenecks in
 forming the  required block-Hankel  matrices during the  model-derivation phase.
-A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
-structure  of  these  Hankel  matrices   was  proposed  by  this  thesis  author
-\ie~Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers
-the requirements for  computational memory and processing power.  The details of
-this contribution shall be presented in \cref{ch:improveddra} of this thesis.
+
+% A  memory-efficient  version  of  the \gls{dra}  exploiting  the  skew-symmetric
+% structure  of  these  Hankel  matrices   was  proposed  by  this  thesis  author
+% \ie~Gopalakrishnan~\etal{}~\cite{Gopalakrishnan2017},  which drastically  lowers
+% the requirements for  computational memory and processing power.  The details of
+% this contribution shall be presented in \cref{ch:improveddra} of this thesis.
 
 
 In both the original as well  as the improved \gls{dra}, the eigenfunction modal
@@ -364,7 +365,7 @@ example  or pseudo-code of the  model reduction workflow could  have immensely
 helped with the  reproducibility of  the results claimed in the aforesaid
 publication.
 
-In summary, the  concept of hybrid \glspl{rom} is  certainly promising, although
+In summary, the  concept of quasi-hybrid \glspl{rom} is  certainly promising, although
 more work is required to address the  present gaps, most prominently the need to
 linearise their equations at certain operating points.
 
@@ -653,7 +654,7 @@ was proposed and solved through a  genetic algorithm to compute the break-points
 of the \gls{pwl} fit. Since  this computationally intensive step occurs offline,
 it does not  adversely affect the real-time performance of  the model. The final
 \gls{rom}  is implemented  using  standard state-space  matrices. However,  this
-model  also exhibits  the primary  drawback of  all hybrid  modelling approaches
+model  exhibits  the primary  drawback seen in the hybrid  modelling approaches
 \ie~a complete lack of physical  interpretation of its parameters. As with any
 other \gls{rom} involving \gls{soc}-based linearisation points, the stability of
 the model  to uncertainties in  physical parameters is questionable.  A detailed
