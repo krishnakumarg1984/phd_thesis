@@ -1,0 +1,54 @@
+% -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
+
+%{ % begin box to localize effect of arraystretch change
+%\renewcommand{\arraystretch}{1.375}
+%        \toprule
+%        %
+%        Category & \multicolumn{1}{c}{Source} & Key Contributions & Limitations \\
+%        \midrule
+%        \makecell[lt]{Frequency-domain \\ \glspl{rom}} & Forman~\etal~\cite{Forman2011a} & {Pioneered Padé approximation technique for battery modelling} & {Limited to offline applications due to aggressive trade-offs in approximation order} \\
+%        {} & Prasad and Rahn~\cite{Prasad2013} & {Online identification of a few ageing parameters using \gls{rls}} & {Lack of implementation details hampers reproducibility} \\
+
+% \setlength\LTleft{0pt}
+% \setlength\LTright{1cm}
+
+{ % begin box to localize effect of arraystretch change
+\singlespacing
+\renewcommand{\arraystretch}{1.375}
+\small
+\centering
+\begin{ltabulary}[c]{@{} l l L L @{}}
+    \caption
+    [%
+    Interim summary of salient literature on various \glsfmtshortpl{rom} categories
+    ]
+    {%
+        Overview of key contributions and limitations of the salient literature on various
+        categories of \glspl{rom} discussed in \crefrange{subsec:freqdomainroms}{subsec:timedomainroms}.
+    }\\
+    \toprule
+    \multicolumn{1}{c}{Category} & \multicolumn{1}{c}{Source} & Key Contributions & \multicolumn{1}{c}{Limitations} \\        \midrule
+    \endfirsthead
+    \multicolumn{4}{c}%
+    {{\normalsize \bfseries \tablename\ \thetable{} --- \normalfont  continued from previous page}} \\
+    \toprule
+Category & \multicolumn{1}{c}{Source} & Key Contributions & Limitations \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{ r @{}}{{\normalsize  Continued on next page}} \\[-0.5ex]
+\bottomrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\makecell[lt]{Frequency-domain \\ \glspl{rom}} & Forman~\etal~\cite{Forman2011a} & {Pioneered Padé approximation technique for battery modelling} & {Limited to offline applications due to aggressive trade-offs in approximation order} \\
+{} & Prasad and Rahn~\cite{Prasad2013} & {Online identification of a few ageing parameters using \gls{rls}} & {Lack of implementation details hampers reproducibility} \\
+{} & Yuan~\etal~\cite{Yuan2017,Yuan2017a} & {Proposed a high-fidelity low order transfer function type \gls{rom}} & {Being too recent, unproven to rely as the foundation} \\
+\cmidrule(r){1-4}
+\makecell[lt]{Quasi-hybrid \\ \glspl{rom}} & Smith~\etal~\cite{Smith2007} & {Obtained transcendental transfer functions of all field variables except electrolyte concentration and potential, followed by conversion to time domain state-space model } & {Needs a large number of states for capturing system dynamics, which impacts observablity} \\
+
+\end{ltabulary}
+} % end box

@@ -153,6 +153,8 @@ tlmgr install   \
     xmpincl \
     xpatch \
     xstring \
+    tabulary \
+    ltabptch \
     xunicode
 
 # Keep no backups (not required, simply makes cache bigger)
