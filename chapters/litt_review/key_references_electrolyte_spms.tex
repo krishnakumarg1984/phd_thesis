@@ -1,0 +1,60 @@
+ % -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
+
+% \setlength\LTleft{0pt}
+% \setlength\LTright{1cm}
+
+{% begin box to localize effect of arraystretch change
+\setlength{\LTpre}{0pt}
+% \vspace{-4mm}%Put here to reduce too much white space after your table 
+\singlespacing
+\renewcommand{\arraystretch}{1.50}
+\small
+\centering
+\begin{ltabulary}[c]{@{} l l L L @{}}
+    \caption
+    [%
+    Summary of salient literature on electrolyte enhanced \glsfmtshortpl{spm} 
+    ]
+    {%
+    Summary of salient literature on electrolyte enhanced \glsfmtshortpl{spm} 
+    }\label{tbl:spmlassificationlittreviewsummary}\\
+    \toprule
+    \multicolumn{1}{c}{Category} & \multicolumn{1}{c}{Source} & Key Contributions & \makecell[l]{Limitations/ \\ Other Remarks} \\        \midrule
+    \endfirsthead
+    \multicolumn{4}{c}%
+    {{\normalsize \bfseries \tablename\ \thetable{} --- \normalfont  continued from previous page}} \\
+    \toprule
+Category & \multicolumn{1}{c}{Source} & Key Contributions & Limitations \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{ r @{}}{{\normalsize  Continued on next page}} \\[-0.5ex]
+\bottomrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\makecell[lt]{Frequency-domain \\ \glspl{rom}} & Forman~\etal~\cite{Forman2011a} & {Pioneered Padé approximation technique for battery modelling} & {Limited to offline applications due to aggressive trade-offs in approximation order} \\
+{} & Prasad and Rahn~\cite{Prasad2013} & {Online identification of a few ageing parameters using \gls{rls}} & {Lack of implementation details hampers reproducibility} \\
+{} & Yuan~\etal~\cite{Yuan2017,Yuan2017a} & {Proposed a high-fidelity low order transfer function type \gls{rom}} & {Being too recent, unproven to rely as the foundation} \\
+\cmidrule(r){1-4}
+\makecell[lt]{Quasi-hybrid \\ \glspl{rom}} & Smith~\etal~\cite{Smith2007} & {Obtained transcendental transfer functions of all field variables except electrolyte concentration and potential, followed by conversion to time domain state-space model } & {Needs a large number of states for capturing system dynamics, which impacts observability} \\
+{} & Lee~\etal~\cite{Lee2012a} & {Sturm-Liouville approach to obtain transcendental transfer functions of the electrolyte, followed by a novel \gls{dra} scheme for state space implementation} & {Computational bottlenecks owing to large sized Block-Hankel matrices; needs linearisation at specific \gls{soc} breakpoints which raise questions on state estimation} \\
+{} & Rodriguez~\etal~\cite{Rodriguez2017} & {Simplified computation of electrolyte transfer functions through a \gls{vop} scheme} & {\gls{vop} scheme has not seen traction in published literature; Requires linearisation at various breakpoints} \\
+{} & Guo~\etal~\cite{Guo2017} & {Eliminates linearisation from the workflow through a non-linear state variable model} & {Final model formulation is not clearly illustrated; Lack of numerical examples or pseudo-code hinder comprehension}  \\
+\cmidrule(r){1-4}
+\makecell[lt]{Hybrid \glspl{rom} \\ based on \\ equivalent circuits} & Prasad and Rahn~\cite{Prasad2014} & {Pioneered this concept by converting an impedance model into an equivalent circuit}  & {Does not provide a direct relationship between physical parameters and values of circuit components}  \\
+{} & Zhang~\etal~\cite{Zhang2017} & {Lumped \gls{ecm} based on Padé approximation and model truncation}  & {Lacks clarity in the relative importance of physical parameters and their influence on circuit component values}  \\
+{} & Merla~\etal~\cite{Merla2018} & {Systematic decoupling of kinetics and diffusion phenomena, followed by their mapping to circuit components}  & {Discrepancies in a few parameter values compared to those reported in literature}  \\
+\cmidrule(r){1-4}
+\makecell[lt]{Time-domain \glspl{rom} \\ (excluding \glspl{spm})} & Manzie~\etal~\cite{Manzie2015} & {Direct simplification of \glspl{pde} by Hilbert space representation and singular perturbation}  & {No expository visual information and absence of cell parameter set}  \\
+{} & Northrop~\etal~\cite{Northrop2011} & {Pioneered the use of pseudo-spectral schemes in cell modelling using Jacobi polynomials}  & {Applicable only at low C-rates}  \\
+{} & Suthar~\etal~\cite{Suthar2014} & {Used Chebyshev polynomials as basis functions for numerical robustness and hence, to facilitate higher C-rates}  & {Provides only a cursory mention of the scheme;  lacks mathematical details to aid battery modellers}  \\
+{} & Bizeray~\etal~\cite{Bizeray2015} & {Detailed treatment on the usage of Chebyshev discretisation for both the axial \& radial dimensions of a lithium ion cell}  & {Computational burden  of  discretisation in the axial direction is not justified for embedded \gls{bms} applications}  \\
+{} & Subramanian~\etal~\cite{Subramanian2007} & {Pioneered the use of polynomial approximation for solving diffusion in the solid phase}  & {All other field variables were solved using a traditional finite difference method; not amenable to embedded implementation}  \\
+{} & Deng~\etal~\cite{Deng2018} & {Extended the use of polynomials for the molar flux density of the \gls{dfn} model}  & {Finite Difference approximation for the spatial gradients of \gls{ocp} is an adverse side-effect not seen in other polynomial \glspl{rom}}  \\
+
+\end{ltabulary}
+}% end box

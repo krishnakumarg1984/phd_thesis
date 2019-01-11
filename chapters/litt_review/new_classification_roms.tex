@@ -64,10 +64,10 @@ In the views of this thesis author, physics-based control-oriented models can be
 classified as belonging to one of the following categories
 % \begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0pt]
 \begin{itemize}
-    \item Frequency domain \glsfmtshort{rom}s
-    \item Quasi-hybrid time/frequency domain \glsfmtshort{rom}s
-    \item Hybrid \glsfmtshort{rom}s based on equivalent circuits
-    \item Time-domain \glsfmtshort{rom}s
+    \item Frequency domain \glsfmtshortpl{rom}
+    \item Quasi-hybrid time/frequency domain \glsfmtshortpl{rom}
+    \item Hybrid \glsfmtshortpl{rom} based on equivalent circuits
+    \item Time-domain \glsfmtshortpl{rom}
 \end{itemize}
 A common characteristic of all control-oriented models is that their ultimate
 goal is to lower the computational burden of the pertinent physical quantities
@@ -96,7 +96,7 @@ literature discussing the wide assortment of \glspl{rom} spanning the
 intervening space between these extrema. The classification presented here
 reflects their broad approach to model reduction. For instance, equivalent
 circuits have only a few parameters and are an attractive option from an
-implementation perspective. In recent years, there has been an uptrend in
+implementation perspective. In recent years, there has been an up~trend in
 published efforts employing mathematical methods to generate physics-based
 equivalent circuits, the salient among which are discussed in
 \cref{subsec:hybridroms}. Finally, there exist Quasi-hybrid \glspl{rom} which do
@@ -127,7 +127,7 @@ excluded from  further study. This  is done in  view of the  impracticability of
 implementing  such  models in  a  resource-constrained  environment such  as  an
 embedded \gls{bms} controller.
 
-\subsection{Frequency   domain   \glsfmtshort{rom}s}\label{subsec:freqdomainroms}
+\subsection{Frequency   domain   \glsfmtshortpl{rom}}\label{subsec:freqdomainroms}
 
 Owing  to the  low entry-barrier  for adoption  in a  real-time controller  that
 typically logs data samples at  specific time intervals, this thesis prioritises
@@ -156,7 +156,7 @@ better  than  classical  \glspl{ecm},  although recent  research  attempts  have
 focused to mitigate this drawback~\cite{Yuan2017a,Yuan2017}.
 
 
-\subsection{Quasi-hybrid time/frequency domain \glsfmtshort{rom}s}\label{subsec:quasiroms}
+\subsection{Quasi-hybrid time/frequency domain \glsfmtshortpl{rom}}\label{subsec:quasiroms}
 
 Smith~\etal{}~\cite{Smith2007} pioneered a semi-hybrid approach to reduced order
 modelling and  obtained closed  form expressions  for all  electrochemical field
@@ -180,14 +180,12 @@ The  modelling  effort by  Smith~\etal{}~\cite{Smith2007}  also  has the  unique
 distinction of being  the first of its  kind to render a  \gls{pbm} suitable for
 implementation in the classical \gls{lti} state-space formulation
 \begin{equation}\label{eq:LTIstatespace}
-    % \SwapAboveDisplaySkip
     \begin{aligned}
         \dot{\mathbf{x}} &= A\,\mathbf{x} + B\,\mathbf{u} \\
         \mathbf{y} &= C \, \mathbf{x} + D\, \mathbf{u},
     \end{aligned}
 \end{equation}
 \begin{flalign}
-    % \SwapAboveDisplaySkip
     \text{where   }    \mathbf{x}   \in   \mathbb{R}^{n\times   1},\:    A   \in
     \mathbb{R}^{n\times   n},\:   B  \in   \mathbb{R}^{n\times   m},\:\mathbf{y}
     \in  \mathbb{R}^{p\times  1},\:  C   \in  \mathbb{R}^{p\times  n},\:  D  \in
@@ -204,8 +202,8 @@ The requirement  of a  relatively large  number of  state variables  (12~in this
 case) for  describing the system's  dynamics dilutes the effectiveness  of state
 estimation  algorithms.  In  the  classical isothermal  implementation  of  this
 \gls{rom}, with  the cell's terminal  voltage being the only  measured quantity,
-the  observablity of  the model  degrades significantly.  Although Smith~\etal{}
-performed  an  observablity analysis  of  the  model  in a  noise-free  context,
+the  observability of  the model  degrades significantly.  Although Smith~\etal{}
+performed  an  observability analysis  of  the  model  in a  noise-free  context,
 the  presence of  process noise  (via unmodelled  electrochemical phenomena  and
 parameter uncertainties)  coupled with corruption of  measurement values through
 sensor  noise  in  a  harsh  electrical  environment  such  as  in  a  vehicle's
@@ -233,7 +231,7 @@ to complete the  model description in the frequency  domain, all electrochemical
 variables  of the  \gls{dfn}  model could  now be  solved  independently at  any
 desired spatial location, in particular at certain crucial locations such as the
 interface of each electrode with  the respective current collector or separator.
-This groundbreaking idea sharply contrasted with the then prevalent state of the
+This ground~breaking idea sharply contrasted with the then prevalent state of the
 art  in  reduced  order  modelling.  For  the  simplification  of  the  original
 \gls{pdae} of  equations in \cref{tbl:dfneqns}, most  order reduction approaches
 (excluding the \gls{spm} that shall  be discussed later) invariably required the
@@ -370,7 +368,7 @@ more work is required to address the  present gaps, most prominently the need to
 linearise their equations at certain operating points.
 
 
-\subsection{Hybrid \glsfmtshort{rom}s based on equivalent circuits}\label{subsec:hybridroms}
+\subsection{Hybrid \glsfmtshortpl{rom} based on equivalent circuits}\label{subsec:hybridroms}
 
 Physics-inspired
 \glspl{ecm}~\cite{Prasad2012,Prasad2014,Zhang2017,Cheng2017,Merla2018}
@@ -439,7 +437,7 @@ in an online implementation, the author  concludes that at present, the benefits
 offered by physics-inspired hybrid \glspl{ecm}  do not decisively outweigh their
 drawbacks.
 
-\subsection{Time-domain  \glsfmtshort{rom}s}\label{subsec:timedomainroms}
+\subsection{Time-domain  \glsfmtshortpl{rom}}\label{subsec:timedomainroms}
 
 \subsubsection*{General strategies in time-domain reduced order battery modelling}
 
@@ -674,7 +672,6 @@ key contributions and limitations of the salient literature on various
 categories of \glspl{rom} discussed in
 \crefrange{subsec:freqdomainroms}{subsec:timedomainroms}.
 
-% \input{chapters/litt_review/key_references_roms_interim_table}
 \input{chapters/litt_review/key_references_roms_interim_longtable}
 
 
@@ -685,11 +682,11 @@ inherent  uncertainties  in  the  obtained  parameter values  act  as  a  strong
 deterrent  to stakeholders  outside  academia to  adopt  \glspl{pbm} for  online
 implementation  in  a  \gls{bms}.  This  motivates the  need  for  even  further
 simplified \glspl{pbm}. One such modelling  candidate is the \glsfirst{spm}, the
-prior research on which is presented next.
+prior research on which is presented next in \cref{sec:spmlittreview}.
 
 %and is analysed in detail in \cref{ch:spmanalysis}.
 
-\section{Review of Literature on the \glsfmtlong{spm} Family}
+\section{Review of Literature on the \glsfmtlong{spm} Family}\label{sec:spmlittreview}
 
 \subsection{Overview of literature on conventional \glsfmtshortpl{spm}}
 
@@ -717,14 +714,17 @@ predictions~\cite{Santhanagopalan2008a,Safari2009}.   There   have   also   been
 detailed   stand-alone   publications   discussing   various   facets   of   the
 basic   \gls{spm},   such   as    its   inherent   assumptions   and   governing
 equations~\cite{Santhanagopalan2006,Chaturvedi2010}. The basic \gls{spm} suffers
-from  certain major  drawbacks which  are  discussed in  the simulation  results
+from  poor voltage accuracy which  is discussed in  the simulation  results
 presented  in \cref{subsec:simresultsbasicspm}.  Since the  turn of  the decade,
-researchers  have attempted  to  tackle  many of  these  issues  and a  holistic
-discussion of such efforts is presented in \cref{sec:electrolyteinclusion}.
+researchers  have attempted  to  tackle  this issue  and a  holistic
+discussion of such efforts is presented next in \cref{sec:electrolyteinclusion}.
+
+\subsection{State of the art in electrolyte enhanced \glsfmtshortpl{spm}}\label{sec:electrolyteinclusion}
+\input{chapters/litt_review/electrolyte_inclusion.tex}
 
 \subsection{Conclusions}
 
-A survey  of the  most recent  literature dealing with  the \gls{spm}  family of
+A survey  of the  recent  literature dealing with  the \gls{spm}  family of
 models reveals a diminishing rate of advancement in quantifiable improvements to
 the underlying plant model itself. This nearly-static trend can be attributed to
 the general  consensus within the  research community  that these models  may be
@@ -738,17 +738,49 @@ charging~\cite{Perez2017,Perez2017a},    cycling    performance~\cite{Maia2017},
 conversion           to            equivalent           circuits~\cite{Li2017b},
 parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017,Namor2017}, pack-balancing
 studies~\cite{Docimo2018a}  and   observer  design  for   joint  state-parameter
-estimation~\cite{Ascencio2016}. The \gls{spm} approach  was also extended to the
-case of  composite electrodes, leading to  a state estimator design  after basic
-observability  analysis~\cite{Bartlett2015}.   Owing  to  their  simplicity, 
-this author believes that \glspl{spm} hold the highest potential to bring
-physics-based models to embedded \glspl{bms}. With this goal  in view, this thesis seeks to
-resurrect interest in this field by addressing the recent paucity in fundamental
-modelling improvements. 
+estimation~\cite{Ascencio2016}. The \gls{spm} approach  has also been extended
+to the case of  composite electrodes, leading to  a state estimator design 
+after basic observability  analysis~\cite{Bartlett2015}.   Owing  to  their 
+simplicity,  this thesis author believes that \glspl{spm} hold the highest
+potential to bring physics-based models to embedded \glspl{bms}. With this goal 
+in view, this thesis seeks to resurrect interest in \glspl{spm} by addressing the
+recent paucity in fundamental modelling improvements. 
 
 % However, prior to doing  this, a complete analysis
 % identifying the strengths and  weaknesses of the salient  models within the
 % \gls{spm}  family is warranted which is performed in \cref{ch:spmanalysis}.
+
+Based upon the thesis author's experiences in  trying to  replicate the  results
+from the  literature presented in \cref{sec:electrolyteinclusion}, any
+questionable elements in such prior efforts can be  attributed to  inaccuracies
+in  estimating the  spatio-temporal evolution of  electrolyte   concentration. 
+Upon   obtaining  a  good  estimate   of  the electrolyte concentration profile,
+\cref{eq:electrolytepdwithce} is deemed to be satisfactory  for the  electrolyte
+overpotential  computation. Thus,  it can  be concluded that the focus of
+research efforts must be  on accurate determination of the electrolyte
+concentration profile.
+
+Analysing the literature presented in \cref{sec:electrolyteinclusion}, it can be
+seen that the proposed enhancements to computing the  ionic concentration 
+in electrolyte  falls into  one of  the following two categories
+\begin{itemize}[topsep=0pt,partopsep=0pt,itemsep=0pt]
+    \item model description through physical principles followed by mathematical
+        simplification
+    \item fitting of pre-assumed simplified mathematical structures to some
+        physical phenomena
+\end{itemize}
+
+In   the  author's   view,   it   appears  that   using   the  former   approach
+yields  technically  correct,  yet  mathematically  convoluted  expressions  for
+overpotentials that  are fraught with implementation  difficulties. Although the
+latter  approach looks  promising  in  terms of  ease  of implementation,  their
+sub-optimal  performance  and lack  of  wider-applicability  leaves much  to  be
+desired.  Among  the latter  class  of  models,  owing  to its  simplicity,  the
+quadratic (parabolic)  approximation method for electrolyte  concentration is an
+attractive option. It is therefore important  to perform an in-depth analysis of
+this sub-class  of models and  understand their source of  potential weaknesses.
+Such  an analysis  has  yet  not been  performed  in  literature and is
+therefore presented in \cref{sec:quadraticapprox}.
 
 
 This concludes  the author's review of  literature of the various  reduced order
