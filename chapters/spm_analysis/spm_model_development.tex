@@ -186,7 +186,8 @@ As   per  the   assumption  of   uniform   diffusivity  in   the  solid   phase,
     \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 ∇ c_\sj \right)}{r}\label{eq:csdiffusionconstdiffusivity}
     \intertext{Applying the gradient operator of \cref{eq:csdiffusionconstdiffusivity} along
     the radial direction~$r$,}
-    \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r} \right)}{r}\label{eq:csdiffusionfinal}
+    \diffp{c_\sj}{t} &= \frac{D_\sj}{r^2}\diffp*{\left(r^2 \diffp{c_\sj}{r}
+    \right)}{r}\ \text{.}\label{eq:csdiffusionfinal}
 \end{align}
 \Cref{eq:csdiffusionfinal} represents  a mass-balance equation  describing solid
 phase diffusion  in each electrode  and is  identical to the  governing equation
@@ -214,7 +215,7 @@ simplified notation~$j_\nj$. Hence, at the particle surface
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} = -j_\nj
 \end{equation}
 The sign convention chosen here is such that pore-wall flux leaving the particle
-surface is considered to be positive.
+surface is considered to be negative.
 
 Charge   conservation   in   solid   phase    is   applied   to   evaluate   the
 \gls{rhs}  in \cref{eq:csfluxsurface},   a  detailed  derivation  of   which  is
@@ -420,11 +421,13 @@ assumed  to  be  equal.  With charge  transfer  coefficient~${α  =  0.5}$,
     j_\nj = 2 k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)} \sinh\left(\frac{F η_j}{2 R T}\right)
 \end{equation}
 
-The  expression   for  overpotential~$η_j$   can  be   obtained  rearranging by
-\cref{eq:BVwithalphahalf}     whilst     substituting    for     $j_\nj$~from by
-\cref{eq:uniformcurrdensity} and is given                                     by
+The  expression   for  overpotential~$η_j$   for the basic \gls{spm} can  be   obtained  by rearranging 
+\cref{eq:BVwithalphahalf},     substituting    for     $j_\nj$~from by
+\cref{eq:uniformcurrdensity} whilst using the initial electrolyte concentration
+$c_\text{e,0}$ and is given by
 \begin{equation}\label{eq:overpotential_j}
-    η_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A \, l_j a_\sj F k_\jr \sqrt{c_\text{e} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
+    η_j(t) =  \frac{2 R T}{F }\sinh^{-1} \left( \frac{± I(t)}{2 A \, l_j a_\sj F
+    k_\jr \sqrt{c_\text{e,0} c_\sjsurf \left(c_\sjmax - c_\sjsurf\right)}}\right)
 \end{equation}
 
 \subsubsection*{Cell Terminal Voltage}\label{subsec:basicspmcellterminalvoltage}
@@ -622,10 +625,10 @@ voltage is given by expanding \cref{eq:cellterminalvoltagebasic} as
 
 \begin{multline}
     V_\text{cell}(t) = \frac{2 R T}{F }\sinh^{-1} \left( \frac{- I(t)}{2 A
-    l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e} c_\spossurf(t)
+    l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e,0} c_\spossurf(t)
     \left(c_\sposmax - c_\spossurf(t)\right)}}\right) \\
     - \frac{2 R T}{F }\sinh^{-1} \left( \frac{I(t)}{2 A \, l_\text{neg} a_\sneg F
-    k_\negr \sqrt{c_\text{e} c_\snegsurf(t) \left(c_\snegmax - c_\snegsurf(t)\right)}}\right) \\
+    k_\negr \sqrt{c_\text{e,0} c_\snegsurf(t) \left(c_\snegmax - c_\snegsurf(t)\right)}}\right) \\
     + \mathcal{U}_\text{pos}\left(c_\spossurf(t)\right) -
     \mathcal{U}_\text{neg}\left(c_\snegsurf(t)\right)\label{eq:spmbasicoutputvoltagefinal}
 \end{multline}

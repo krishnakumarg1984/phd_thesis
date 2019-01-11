@@ -7,50 +7,13 @@
 % As  discussed in  \cref{sec:classificationscheme},\fxnote{may need  to cross-ref
 % the relevant subsection}
 
-Reducing  the number  of  computational  dimensions in  a  physical model  helps
-in  formulating  their  low  order  approximations,  thereby  facilitating  fast
-evaluations  of  the modelled  quantities.  The  \gls{spm}, originally  used  in
-modelling  the Metal-Hydride  chemistry~\cite{Haran1998}  and  later on  adapted
-for  Li-ion  cells~\cite{Ning2004},  represents  the canonical  apogee  of  such
-dimension-reduction strategies.
+% Reducing  the number  of  computational  dimensions in  a  physical model  helps
+% in  formulating  their  low  order  approximations,  thereby  facilitating  fast
+% evaluations  of  the modelled  quantities.  The  \gls{spm}, originally  used  in
+% modelling  the Metal-Hydride  chemistry~\cite{Haran1998}  and  later on  adapted
+% for  Li-ion  cells~\cite{Ning2004},  represents  the canonical  apogee  of  such
+% dimension-reduction strategies.
 
-
-During  the  initial years  following  its  inception,  the formulation  of  the
-basic \gls{spm}  was discussed extensively within  application-specific contexts
-such  as  \gls{soc}  evaluation~\cite{Santhanagopalan2006a,Santhanagopalan2008},
-parameter    estimation~\cite{Santhanagopalan2007},   and    life   cycle/ageing
-predictions~\cite{Santhanagopalan2008a,Safari2009}.   There   have   also   been
-detailed   stand-alone   publications   discussing   various   facets   of   the
-basic   \gls{spm},   such   as    its   inherent   assumptions   and   governing
-equations~\cite{Santhanagopalan2006,Chaturvedi2010}. The basic \gls{spm} suffers
-from  certain major  drawbacks which  are  discussed in  the simulation  results
-presented  in \cref{subsec:simresultsbasicspm}.  Since the  turn of  the decade,
-researchers  have attempted  to  tackle  many of  these  issues  and a  holistic
-discussion of such efforts is presented in \cref{sec:electrolyteinclusion}.
-
-A survey  of the  most recent  literature dealing with  the \gls{spm}  family of
-models reveals a diminishing rate of advancement in quantifiable improvements to
-the underlying plant model itself. This nearly-static trend can be attributed to
-the general  consensus within the  research community  that these models  may be
-too  simplistic  and  not  of  suitable accuracy  to  warrant  further  studies.
-Other  than a  small  minority  of papers  that  either  propose core  modelling
-improvements  to tackle  their inaccuracies,  or  add new  enhancements such  as
-mechanical-stress  physics~\cite{Li2017a,Li2018b}, latest  work  in this  family
-of  models predominantly  pertains  to  their application  in  areas like  state
-estimation~\cite{Chaochun2018,Lin2017,Tran2017,Moura2017,Zou2016a},      optimal
-charging~\cite{Perez2017,Perez2017a},    cycling    performance~\cite{Maia2017},
-conversion           to            equivalent           circuits~\cite{Li2017b},
-parametrisation~\cite{Li2018,Rajabloo2017,Bizeray2017,Namor2017}, pack-balancing
-studies~\cite{Docimo2018a}  and   observer  design  for   joint  state-parameter
-estimation~\cite{Ascencio2016}. The \gls{spm} approach  was also extended to the
-case of  composite electrodes, leading to  a state estimator design  after basic
-observablity  analysis~\cite{Bartlett2015}.  Owing  to  their  simplicity,  this
-author believes that \glspl{spm} hold the highest potential to bring a \gls{pbm}
-to embedded \glspl{bms}. With this goal  in view, this thesis seeks to resurrect
-interest in this field by addressing the recent paucity in fundamental modelling
-improvements. However, prior to doing  this, a complete analysis identifying the
-strengths and  weaknesses of the salient  models within the \gls{spm}  family is
-warranted.
 
 % A proposed enhancement to the basic \gls{spm} is the main contribution of this
 % author and shall be discussed in \cref{ch:newelectrolytemodel}.

@@ -330,9 +330,10 @@ by \cref{eq:genanalyticctssoln}. Let ${t_0 = k T_s}$ and ${t = (k+1)T_s}$, where
     x(t_0) & = x(kT_s)     & & \equiv x[k] \\
     x(t)   & = x((k+1)T_s) & & \equiv x[k+1]
 \end{alignat}
-Substituting these relationships into \cref{eq:genanalyticctssoln},
+Substituting these relationships into \cref{eq:genanalyticctssoln} yields
 \begin{equation}
-    \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A ((k+1)T_s-τ)}B \mathbf{u}(τ)\,dτ \label{eq:intermediatediscrete}
+    \mathbf{x}[k+1] = e^{A T_s}\mathbf{x}[k] + \int_{k T_s}^{(k+1)T_s}e^{A
+    ((k+1)T_s-τ)}B \mathbf{u}(τ)\,dτ \ \text{.}\label{eq:intermediatediscrete}
 \end{equation}
 With  the  \gls{zoh} scheme  discussed  here,  $u(\tau)$~remains  constant  from~$k  T_s$  to~$(k+1)T_s$,  and  is  equal  to  $u(kT_s)$ \ie~$u[k]$.  Consider  a
 change-of-variable definition  for the dummy  variable of integration  $\tau$ as~${\eta =  (k+1)T_s -  \tau}$. Thus,  $\tau = (k+1)T_s  - \eta$.  Hence, $d  \tau =
