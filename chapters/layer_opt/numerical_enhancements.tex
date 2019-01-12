@@ -503,12 +503,30 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     leading  up to  the reformulated  solid phase  diffusion and  its associated
     boundary conditions in the Chebyshev domain.
 
-    The $N_\text{r}$~Chebyshev   collocation  nodes,  defined  on   a  1D  mesh
-    in   the   radial   direction,  are   given   by   \cref{eq:defineChebNodes}
-    (see~\cite{Trefethen2000}).
+    
+
+    \Cref{fig:chebnodes} depicts the schematic of a standard Chebyshev
+    discretisation. For solving the solid-phase diffusion equation, $N_\text{r}$~Chebyshev   collocation  nodes  defined  on   a  1D  mesh
+    in   the   radial   direction is employed. The nodal co-ordinates are the
+    roots of the Chebyshev polynomials of the first kind and are given   by   \cref{eq:defineChebNodes}
+    (see Trefethen~\cite{Trefethen2000}).
     \begin{equation}\label{eq:defineChebNodes}
         \widetilde{r} = \cos\left(\frac{i\pi}{N_\text{r}}\right), \qquad i = 0, 1, \dots N_\text{r} \quad \widetilde{r} \in [-1, 1]
     \end{equation}
+    
+    \begin{figure}[!htbp]
+        \centering
+        \includegraphics{cheb}
+        \caption[Schematic illustraing Chebyshev discretisation]{Schematic of
+            the discretisation process depicting the generation of
+            Chebyshev collocation nodes. A unit semicircle in the upper
+            quadrants of a standard Cartesian plane is uniformly
+            divided, whose projections on the horizontal co-ordinate axis
+            through the origin yields the location of the Chebyshev nodes.
+        Illustration reproduced from Johnson~\cite{Chebfig2018}.}
+        \label{fig:chebnodes}
+    \end{figure}
+    
     Assuming constant diffusivity, expanding the derivative in the standard form
     of the Fickian spherical diffusion equation (see \cref{eq:dfnsoliddiff}) for
     each particle, we obtain  \cref{eq:quotientappliedpde}, presented along with
@@ -519,8 +537,8 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
     \allowdisplaybreaks
     \begin{subequations}\label{eq:quotientappliedpde}
         \begin{align}
-            \SwapAboveDisplaySkip
-            \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{\partial}{\partial r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref*{eq:quotientappliedpde}}\\
+            % \SwapAboveDisplaySkip
+            \frac{\partial c_\text{s}}{\partial t} &= D^\text{eff}_\text{s} \left( \frac{2}{r} \frac{\partial c_\text{s}}{\partial r} + \frac{\partial^2 c_\text{s}}{\partial r^2} \right) \qquad r \in [0, R_\text{p}]\tag{\ref*{eq:quotientappliedpde}}\\
             \diffp{c_\text{s}}{r}{\mathrlap{r = 0}} &= 0\label{eq:quotientappliedpdeBCcentre}\\
             D^\text{eff}_\text{s}\diffp{c_\text{s}}{r}{\mathrlap{r = R_\text{p}}} &= -j\label{eq:quotientappliedpdeBCsurface}
         \end{align}
