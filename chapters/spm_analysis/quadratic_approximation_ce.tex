@@ -4,15 +4,26 @@
 % content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
-In this section, the quadratic approximation of ionic spatial concentration that
-underpins the electrolyte  model in many of the  improved \gls{spm} formulations
-from  \cref{sec:electrolyteinclusion}   is  presented\footnote{The  mathematical
-derivations  here  represents  the  author's  digested  summary  of  literature,
-and  is  particularly  based  upon  a  portion  of  Deng~\etal~\cite{Deng2018}}.
-The  steps  involved  in  deriving   the  quadratic  approximation  is  detailed
-in  \cref{subsec:quadraticmodelderiv}.  Based  on   the  results  from  applying
-this   quadratic   approximation   scheme,   an   analysis   of   the   weakness
-of  this   model  is  performed   in  \cref{subsec:quadraticsimresultsanalysis}.
+As  evidenced by  the  results from  constant  current  charge, discharge  and
+dynamic  simulation runs presented in \cref{sec:basicspmsimresults},  the basic 
+\gls{spm} suffers  from poor voltage accuracy. The prior art discussed in
+\cref{sec:electrolyteinclusion} aim to tackle this issue through inclusion of
+electrolyte dynamics using various state of the art methods. However, they lack
+in providing an in-depth analysis and expository illustration of the fundamental
+deficiency of the standard \gls{p2d} dynamics, which is uncovered later in
+\cref{subsec:symbolicreg}. This is facilitated through the introduction of the
+quadratic approximation model of ionic spatial concentration in this
+section\footnote{The  mathematical derivations  here  represents  the  author's 
+    digested  summary  of  literature, and  is  particularly  based  upon  a 
+portion  of  Deng~\etal~\cite{Deng2018}}. The quadratic approximation model is
+notable since it serves as the baseline reference for inclusion of electrolyte
+dynamics into an \gls{spm}.
+
+% The  steps  involved  in  deriving   the  quadratic  approximation  is  detailed
+% in  \cref{subsec:quadraticmodelderiv}.  Based  on   the  results  from  applying
+% this   quadratic   approximation   scheme,   an   analysis   of   the   weakness
+% of  this   model  is  performed   in  \cref{subsec:quadraticsimresultsanalysis}.
+
 % Mitigation  of   this  critical  drawback   lead  to  this   author's  decoupled
 % spatio-temporal electrolyte concentration model  structure which is presented in
 % \cref{sec:newelectrolytemodel}.
