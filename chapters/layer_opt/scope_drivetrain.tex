@@ -149,7 +149,7 @@ Therefore,  it  can be  argued  that,  when  operating  in a  well-designed  and
 controlled environment,  cell-to-cell deviations  are minimised.  This justifies
 the  global representation  of  all  cells in  the  pack  through a  single-cell
 simulation, although modifications to the  simulation model are deemed necessary
-to facilitate power inputs.
+to facilitate power inputs and is discussed in \cref{sec:innatepowerinput}.
 
 
 % Since  thermal effects  need to  be considered  for robust  cell design,
@@ -164,25 +164,29 @@ consists  of  groups   of  3~parallel  cells.  However,   the  illustration  in
 \cref{fig:fig_PowertrainSchematic}  suffices to  explain  the necessary  details
 required for the specific task at hand.
 
-Each cell in the pack consists of a number of identical layers~$n$. Each layer
-consists of ---
+Each cell in the pack consists of a number of identical layers~$n$. The words
+`layer' and `unit-cell' are used interchangeably in this thesis to denote a
+single basic electrochemical unit consisting of ---
 \begin{enumerate*}[label=\roman*)]
     \item a~positive current-collector,
     \item a~positive electrode region,
     \item a~separator material,
     \item a~negative electrode region, and
-    \item a~negative current-collector.
+    \item a~negative current-collector~(see \cref{fig:chargetransferprocess}).
 \end{enumerate*}
 Particular attention is called out in  regard to the distribution of temperature
 within  the cell.  In  the schematic  of \cref{fig:fig_PowertrainSchematic}  the
 shading scheme  is such that greener  tints represent the hotter  regions of the
-cell while bluer tints represent colder regions. Furthermore, heat exchange with
-the surroundings is also graphically  illustrated through cooling plates mounted
-at the tabs  of the cell. This  highlights the specific type  of cooling assumed
-\viz~\emph{tab-cooling}  as  opposed to  conventional  \emph{surface-cooling}
-historically employed for automotive applications. The assumption of tab-cooling
-is an  essential requirement for  upholding the  validity of the  proposed layer
-optimisation scheme, and therefore warrants further justification.
+cell while bluer tints represent colder regions. The temperature distribution
+within the cell as indicated by this shading scheme is consistent with that
+reported in literature~\cite{Veth2014,Bazinski2014,Zhao2018}. Furthermore, heat
+exchange with the surroundings is also graphically  illustrated through cooling
+plates mounted at the tabs  of the cell. This  highlights the specific type  of
+cooling assumed \viz~\emph{tab-cooling}  as  opposed to  conventional 
+\emph{surface-cooling} historically employed for automotive applications. The
+assumption of tab-cooling is an  essential requirement for  upholding the 
+validity of the  proposed layer optimisation scheme, and therefore warrants
+further justification.
 
 An  experimental  study  by   Hunt~\etal~\cite{Hunt2016}  compared  tab  cooling
 of  cells  against conventional  surface  cooling.  It  was found  that  \approx
@@ -231,15 +235,16 @@ ambient temperature is held constant during  the course of a simulation run, but
 is allowed  to change to  different constant  values between set  of simulations
 as  per relevant  vehicle  testing  standards. The  details  of  this aspect  is
 discussed  in  \cref{sec:layeroptframework}.  The  material  properties  of  the
-constituent components  of each layer  coupled with  the total number  of layers
-used  determine  the  lumped  mass  and specific  heat  capacity  of  the  pouch
-cell.  These  computations  are  discussed  in  sections~\ref{sec:massofonecell}
-and~\ref{sec:spheat} respectively. The  assumption of tab cooling  thus leads to
-this qualitative  description of  the lumped  thermal model to  be used  for the
-design simulations.  Further quantification by  way of relevant  model equations
-and  the computation  of  the constituent  parameters of  the  thermal model  is
-embedded as an integral aspect of  the layer optimisation framework and shall be
-presented in \cref{sec:spheat}.
+constituent components  of each layer  coupled with  the total number  of
+layers are used  to determine  the  lumped  mass  and specific  heat  capacity 
+of  the  pouch cell.  These  computations  are  discussed  in 
+sections~\ref{sec:massofonecell} and~\ref{sec:spheat} respectively. The 
+assumption of tab cooling  thus leads to this qualitative  description of  the
+lumped  thermal model to  be used  for the design simulations.  Further
+quantification by  way of relevant  model equations and  the computation  of 
+the constituent  parameters of  the  thermal model  is embedded as an integral
+aspect of  the layer optimisation framework and shall be presented in
+\cref{sec:spheat}.
 
 As a final observation, all layers  within the cell are electrically in parallel
 which implies that their terminal voltages are identical. The current (or power)

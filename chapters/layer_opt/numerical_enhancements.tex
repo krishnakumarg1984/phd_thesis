@@ -6,20 +6,21 @@
 
 \subsubsection*{Cell capacity and electrochemically active surface area}
 
-The  \gls{p2d} implementation  of  the standard  \gls{dfn}  model lacks  certain
-parameters that are vital to the  layer optimisation process. The cell's nominal
-capacity is a fundamental quantity that gets  altered as the number of layers is
-varied. However, it may be surprising  to discover that this parameter is absent
-in present  research literature  discussing the  \gls{p2d} model.  The rationale
-behind this glaring omission becomes clear  upon closer examination of the model
-equations presented in  \cref{tbl:dfneqns}. These equations do not  operate on a
-cell level, but  instead are formulated on a normalised  basis. To clarify, only
-one layer of the  cell is being modelled wherein the  stimulus driving the model
-is  the applied  current  \emph{density per  unit area}  rather  than the  total
-external current. The model to be  used in the layer optimisation task therefore
-faces  a unique  predicament ---  the need  to adhere  to the  present modelling
-paradigm for compatibility  with the status quo whilst being  flexible enough to
-incorporate the cell's capacity as a function of number of layers.
+The  \glsfirst{p2d} implementation  of  the standard  \glsfirst{dfn}  model
+lacks  certain parameters that are vital to the  layer optimisation process. The
+cell's nominal capacity is a fundamental quantity that gets  altered as the
+number of layers is varied. However, it may be surprising  to discover that this
+parameter is absent in the  research literature  discussing the  \gls{p2d}
+model.  The rationale behind this glaring omission becomes clear  upon closer
+examination of the model equations presented in  \cref{tbl:dfneqns}. These
+equations do not  operate on a cell level, but  instead are formulated on a
+normalised  basis. To clarify, only one layer of the  cell is being modelled
+wherein the  stimulus driving the model is  the applied  current  \emph{density
+per  unit area}  rather  than the  total external current. The model to be  used
+in the layer optimisation task therefore faces  a unique  predicament ---  the
+need  to adhere  to the  present modelling paradigm for compatibility  with the
+\mbox{status quo} whilst being  flexible enough to incorporate the cell's
+capacity as a function of number of layers.
 
 To  tackle  the  aforementioned  quandary,  it   is  key  to  realise  that  the
 core  parameter  that  varies  with  the  number  of  layers  in  a  pouch  cell
@@ -42,11 +43,12 @@ per layer.
 A  literature search  reveals that  akin  to the  cell's capacity,  there is  no
 information of cross-sectional  geometry in articles dealing  with the \gls{p2d}
 implementation of the \gls{dfn} model. To  determine the surface area per layer,
-relying on  certain assumptions and  present literature, a novel  methodology is
-proposed involving  a sequence  of steps.  The process  involves selection  of a
-real-world  cell, and  determining  its  surface area  per  layer.  To the  best
-knowledge of the author, this  reverse parametrisation process (explained next),
-mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
+relying on  certain assumptions and  the recent literature, a novel  methodology
+is proposed involving  a sequence  of steps.  The process  involves the
+selection  of a real-world  cell, and  determining  its  surface area  per 
+layer.  To the  best knowledge of the author, this  reverse parametrisation
+process (explained next), mapping from a real-world cell to a new \gls{p2d}
+parameter, is a unique idea.
 
 \begin{enumerate}[ label=\textbf{\arabic*}), leftmargin=0pt, itemindent=20pt, labelwidth=15pt, labelsep=5pt, listparindent=0.7cm, align=left]
     \item \hypertarget{refcellselection}{\textbf{Selection of a suitable reference capacity cell}}
@@ -59,7 +61,7 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
         industry  that  improves  upon  the present  empirical  designs  through
         optimal  layer   configuration  of  pouch   cells.  There  is   a  clear
         motivation  to  further  increase  cell capacities  so  as  to  maximise
-        the  \gls{aer}, as  laid  out  in the  beginning  of  this chapter  (see
+        the  \glsfirst{aer}, as  laid  out  in the  beginning  of  this chapter  (see
         \cref{sec:layeroptintro}).
 
         With  this guiding  principle, as  a starting  point towards  choosing a
@@ -104,7 +106,8 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
                 also   explains   the   use    of   \SI{60}{\ampere}   for   the
                 simulations  used for  demonstrating  energy/power trade-off  of
                 \cref{sec:energypowertradeoffdemo}  since   this  current  level
-                corresponds to the 1C-rate of this reference cell.}.
+                corresponds to the 1C-rate of this reference cell.}. The 1C-rate
+                of this reference cell is therefore \SI{60}{\ampere}.
 
             \item \hypertarget{celllowercutoff}{\textbf{Lower cutoff voltage for cells}}
 
@@ -138,7 +141,8 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
         The  task of  determining the  electrochemically active  overall surface
         area of the reference cell is now straightforward, and is obtained as
         \begin{align}
-            \text{Overall surface area of reference cell}, A_\text{refcell} &= \frac{\text{Cell capacity (\si{\amphour})}}{\text{1C-rate density (\si{\ampere\per\meter\squared})}} \\
+            \text{Overall surface area of reference cell}, A_\text{refcell} &=
+            \frac{\text{1C-rate for the reference cell (\si{\ampere})}}{\text{1C-rate density (\si{\ampere\per\meter\squared})}} \\
                                                                             &= \frac{60}{29.23} \\
                                                                             &= \SI{2.053}{\meter\squared}
         \end{align}
@@ -163,13 +167,13 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
         materials    used   in    various    lithium    ion   chemistries.    At
         the    time    of   its    publication,    the    areal   capacity    of
         cells  were~\approx\SI{2.0}{\milli\amphour\per\centi\meter\squared}.
-        These    authors   recommended    an    areal    capacity   target    of
-        \SI{4.0}{\milli\amphour\per\centi\meter\squared}  for future  automotive
-        applications. The said publication also considers the aspect of stacking
-        layers  into  pouches  of   certain  geometries.  In  particular,  table
-        \romanletter{4}  of Gr\"oger~\etal~\cite{Groger2015}  considers a  pouch
-        of  \SI{10}{\milli\meter} height,  for  which  the aforementioned  areal
-        capacities were calculated.
+        Gr\"oger and colleagues   recommended    an    areal    capacity  
+        target    of \SI{4.0}{\milli\amphour\per\centi\meter\squared}  for
+        future  automotive applications. The said publication also considers the
+        aspect of stacking layers  into  pouches  of   certain  geometries.  In 
+        particular,  table \romanletter{4}  of Gr\"oger~\etal~\cite{Groger2015} 
+        considers a  pouch of  \SI{10}{\milli\meter} height,  for  which  the
+        aforementioned  areal capacities were calculated.
 
         In       the        case       of       the        reference       cell
         under       consideration,       the      areal       capacity       is
@@ -180,19 +184,31 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
         the recommendations  in Gr\"oger~\etal.  Considering that  the reference
         cell is based on the high  energy density Chevrolet Bolt \gls{bev} cell,
         a pouch height of \SI{10}{\milli\meter} is justifiable for this task and
-        is reported  in \cref{tbl:lcoSimParamslayeropt}. As per  the assumptions
-        discussed  in  \cref{subsec:layeroptassumptions},  this  value  is  held
-        constant throughout the layer optimisation process.
+        is reported  in \cref{tbl:lcoSimParamslayeropt}. This numerical value is
+        comparable to that of commercially available cells for automotive
+        applications. For instance, a \SI{56.3}{\amphour} cell with a pouch
+        height of \SI{7.91}{\milli\meter} is manufactured by the Automotive Energy
+        Supply Corporation~\cite{aesccell} while a \SI{63}{\amphour} pouch cell with
+        a pouch height of \SI{11.0}{\milli\meter} is available from Kokam
+        Inc.~\cite{Kokam60ahcell}. Therefore, it is reasonable to use a value of
+        \SI{10.0}{\milli\meter} for this \SI{60}{\amphour} reference cell. As
+        per  the assumptions discussed  in  \cref{subsec:layeroptassumptions}, 
+        this  value  is  held constant throughout the layer optimisation
+        process.
 
     \item \hypertarget{stackthickness}{\textbf{Computation of stack thickness of reference cell}}
 
-        In a  pouch of given height,  the available space to  accommodate layers
-        therein is restricted  by a number of factors. For  instance, the wiring
-        from the  current collectors  to the tabs,  protective elements  such as
-        fuses  etc.\ consume  physical  space. Furthermore,  the pouch  material
-        itself has a  finite thickness and hence after accounting  for this, the
-        stack thickness  available for layer  placement is lower than  the pouch
-        thickness.
+        % In a  pouch of given height,  the available space to  accommodate layers
+        % therein is restricted  by a number of factors. For  instance, the wiring
+        % from the  current collectors  to the tabs and  protective elements  such
+        % as fuses  etc.\ consume  physical  space. Furthermore,  
+        
+        The pouch 
+        material itself has a  finite thickness (a value of
+        \SI{160}{\milli\meter} is used here; see table note $g$ for this
+        entry in \cref{tbl:lcoSimParamslayeropt}) and hence after accounting 
+        for this, the stack thickness  available for placement of unit cells is
+        smaller than  the pouch thickness.
         \begin{align}
             \text{Stack thickness}, L_\text{stack} & = \text{Pouch height} - 2\times \text{pouch thickness} \\
                                                    & = H_\text{pouch} - 2 T_\text{pouch}                    \\
@@ -240,8 +256,9 @@ mapping from a real-world cell to a new \gls{p2d} parameter, is a unique idea.
         per layer is obtained as
         \begin{align}
             A_\text{elec} & = \frac{A_\text{refcell}}{n_\text{refcell}} \\
-            {}            & = \frac{\SI{2.053}{\meter\squared}}{46}     \\
-            {}            & = \SI{44.63}{\milli\meter\squared}
+            {}            & = \frac{\SI{2.053e6}{\meter\squared}}{46}     \\
+            {}            & = \SI{44630.43}{\milli\meter\squared}\\
+            A_\text{elec} & = \SI{44.63e-3}{\meter\squared} 
         \end{align}
 
         The   surface   area   per   layer    thus   computed   is   listed   in
@@ -304,13 +321,17 @@ obtained by  dividing the  applied power by  the overall  active cross-sectional
 area~$A_\text{cell}$, is used as the driving input.
 
 In  the  \gls{p2d}  model,  charge  conservation in  solid  phase  is  given  by
-\cref{eq:solidchargeconserve},  which is  revisited  below.  The subsequent  two
-equations pertain to the corresponding  boundary conditions. In these equations,
-the current density~$i$ represents the applied input.
+\cref{eq:solidchargeconserve},  which is  revisited  below.  
+\Crefrange{eq:solidchargeconservecurrBC}{eq:solidchargeconservezeroBC} represent
+the corresponding  boundary conditions. In these equations, the current
+density~$i$ represents the applied input, $\sigma_\text{eff}$~the effective
+electronic conductivity and $a_\text{s}$~the specific interfacial surface area
+of an electrode respectively, $j\, $~the molar flux density of lithium at the
+electrode surface and $\phi_\text{s}$ the solid phase potential.
 \begin{align}
     \frac{\partial}{\partial x} \left(\sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \right) &= a_\text{s} F j(x,t) \tag{\cref{eq:solidchargeconserve} revisited}\\
     \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\mathrlap{\substack{x_\text{pos/Alcc}\\x_\text{neg/Cucc}}}} \qquad &= -i\label{eq:solidchargeconservecurrBC}\\
-    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\mathrlap{\substack{x_\text{pos/sep}\\x_\text{neg/sep}}}} \qquad &= 0
+    \sigma_{\text{eff}} \frac{\partial \phi_\text{s}(x,t)}{\partial x} \bigg|_{\mathrlap{\substack{x_\text{pos/sep}\\x_\text{neg/sep}}}} \qquad &= 0\label{eq:solidchargeconservezeroBC}
 \end{align}
 
 \Cref{eq:undiscretisedPhiSpowerBC}   replaces   the    boundary   condition   in
@@ -324,7 +345,7 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
         \sigma_{\text{eff}_\text{pos}} \left( \phi_\text{s}(x,t) \frac{\partial \phi_\text{s}(x,t)}{\partial x} \right)\Bigg\rvert_{\mathrlap{x=x_\text{pos/Alcc}}} = p
     \end{equation}
 
-    \Crefrange{eq:ctspowerconstraint}{eq:cellpositivity}  represent the  constraints
+    \Crefrange{eq:ctspowerconstraint}{eq:cellpositivity}  represent constraints
     pertaining to physical laws and are to be satisfied.
     \begin{align}
 	    vi  - p & = 0 \label{eq:ctspowerconstraint} \\
