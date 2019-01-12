@@ -269,14 +269,15 @@ complex expression  in Luo~\etal~\cite{Luo2013},  which originally  consisted of
 six  coefficients  $p_1$~through~$p_6$  to  just two,  and  elimination  of  the
 aforementioned time-constants. However,  to the disappointment of  the author of
 this thesis, the claim that truncation  to~$n=2$ terms is sufficient to describe
-the dynamics  proved to be  optimistic for the  parameter set considered.  In my
-attempts  to reproduce  this work,  an arbitrary  scaling factor  was needed  to
-correct for the electrolyte potential  drop and match the \gls{p2d} simulations.
-The requirement for such scaling factors  whose physical origins are not clearly
-identifiable lends to scepticism on  the model's robustness. Furthermore, it was
-found that  this value  needed to  be hand-tuned  for each  parameter-set. Until
-these gaps are addressed clearly, it  is worth seeking other viable alternatives
-to model the electrolyte dynamics of the cell.
+the dynamics  proved to be  optimistic for the  parameter set considered.  In
+the thesis author's efforts to reproduce  the aforesaid work,  an arbitrary 
+scaling factor  was needed  to correct for the electrolyte potential  drop and
+match the \gls{p2d} simulations. The requirement for such scaling factors  whose
+physical origins are not clearly identifiable lends to scepticism on  the
+model's robustness. Furthermore, it was found that  this value  needed to  be
+hand-tuned  for each  parameter-set. Until these gaps are addressed clearly, it 
+is worth seeking other viable alternatives to model the electrolyte dynamics of
+the cell.
 
 After  completing  the  simulations  with  the  aforementioned  scaling  factors
 and  continuing  in  the  quest  for other  alternatives,  the  author  of  this
@@ -335,17 +336,18 @@ electrolyte dynamics using  the \gls{gpm} which achieves  an acceptable accuracy
 in terminal voltage performance. Although these authors claim that the \gls{gpm}
 is computationally  \emph{cheaper} than  other model order  reduction techniques
 such as proper orthogonal decomposition  and balanced truncation, this claim has
-not been substantiated. The sole comparison of \gls{cpu} times presented in this
-work  only compares  the  \gls{gpm} against  the  classical \gls{fdm}.  Although
-an  impressive  computational speed  is  achieved,  it  is unclear  whether  the
-model equations,  particularly those involving solutions  of non-linear integral
-expressions  resulting from  applying the  Galerkin's  method can  be solved  in
-real-time for  embedded implementation.  It appears that  the \gls{gpm}  is more
-suitable for desktop simulations. In  congruence with my scepticism, the authors
-of Fan~\etal~\cite{Fan2016} have  not claimed the suitability of  their work for
-online/embedded  application  in a  \gls{bms}.  Therefore,  as per  this  thesis
-authors' stance  explained in \cref{sec:classificationscheme},  models employing
-such methods are deemed to be not in alignment with the goals of this thesis.
+not been substantiated. The sole comparison of \gls{cpu} times presented in the
+said work  only contrasts  the  \gls{gpm} against  the  classical \gls{fdm}. 
+Although an  impressive  computational speed  is  achieved,  it  is unclear 
+whether  the model equations,  particularly those involving solutions  of
+non-linear integral expressions  resulting from  applying the  Galerkin's 
+method can  be solved  in real-time for  embedded implementation.  It appears
+that  the \gls{gpm}  is more suitable for desktop simulations. In  congruence
+with this thesis author's scepticism, Fan~\etal~\cite{Fan2016} have  not claimed
+the suitability of  their work for online/embedded  application  in a 
+\gls{bms}.  Therefore,  in accordance with the stance  taken in
+\cref{sec:classificationscheme},  models employing such methods are deemed to be
+not in alignment with the goals of this thesis.
 
 Moura~\etal~\cite{Moura2017} proposed an improved \gls{spm} by simply augmenting
 the  conventional  \gls{spm}  with  a simplified  form  of  electrolyte-specific

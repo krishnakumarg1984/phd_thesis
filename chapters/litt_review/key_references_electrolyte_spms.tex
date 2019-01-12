@@ -7,7 +7,6 @@
 {% begin box to localize effect of arraystretch change
 % \setlength\tymin{.25\textwidth}
 \setlength{\LTpre}{0pt}
-% \vspace{-4mm}%Put here to reduce too much white space after your table 
 \singlespacing
 \renewcommand{\arraystretch}{1.50}
 \small
@@ -35,9 +34,13 @@
     \bottomrule
     \endlastfoot
 
-    Schmidt~\etal~\cite{Schmidt2010c} & {Electrolyte concentration solved by an eigenfunction expansion for spatial profile and an \gls{ode} solution for temporal dynamics} & {Excessive theoretical empphasis without regular contextual references to cell modelling, which hinders reproducibility} \\
+    Schmidt~\etal~\cite{Schmidt2010c} & {Electrolyte concentration solved by an eigenfunction expansion for spatial profile and an \gls{ode} solution for temporal dynamics} & {Excessive theoretical emphasis without regular contextual references to cell modelling, which hinders reproducibility} \\
     Guo~\etal~\cite{Guo2011a} & {Non-linear resistance as a function of current and temperature to capture electrolyte overpotential} & {Empirical approach which is difficult to generalise across parameter sets since large corrections of the order of a few \si{\milli\volt} become essential; Non-linear optimisation may converge to a local minimum} \\
     Di~Domenico~\etal~\cite{DiDomenico2010} & {First to present an approximate analytical solution for electrolyte overpotential} & {Lacks discussion on spatio-temporal calculation of ionic concentration; presumably used constant initial value which is problematic with sustained unidirectional currents} \\
-    Guduru~\etal~\cite{DiDomenico2010} & {Pioneered an analytical solution for the spatio-temporal evolution of electrolyte concentration using the \glsfirst{sov} method} & {The derived analytical solution is applicable only for galvanostatic discharge; assumption of near instantaneous establishment of \gls{qss} hinders extensions using \gls{pwl} approximations} \\
+    Guduru~\etal~\cite{DiDomenico2010} & {Pioneered an analytical solution for the spatio-temporal evolution of electrolyte concentration using the \glsfirst{sov} method} & {The derived analytical solution is applicable only for galvanostatic discharge; assumption of near instantaneous establishment of \gls{qss} hinders extensions using \gls{pwl} approximations while trigonometric computations at each time-step impacts embedded applicability} \\
+    Prada~\etal~\cite{Prada2012} & {First to incorporate polarisation due to ionic diffusion in the expression for electrolyte overpotential} & {The solution of spatio-temporal ionic concentration is not detailed. However, post-computation of this term, the equation in Prada~\etal~\cite{Prada2012} is widely used for the electrolyte overpotential contribution to cell terminal voltage} \\
+    Rahimian~\etal~\cite{KhaleghiRahimian2013} & {Cubic polynomials for spatial approximation of electrolyte concentration and demonstrated satisfactory accuracy for currents up to 5C} & {Limited by the issue of equation deficiency in the \gls{p2d} model; proposed workaround involves computations at additional interior points which is determined by an expensive placement optimisation algorithm} \\
+    Luo~\etal~\cite{Luo2013,Luo2013a} & {Derived a modified parabolic  approximation (with exponential scaling functions) for electrolyte spatial concentration profile} & {Computation of time constants of the exponential scaling functions is not explained; improvements over a standard quadratic approximation model is not elucidated} \\
+    Tanim~\etal~\cite{Tanim2014} & {Derived transfer functions for ionic concentration distribution and electrolyte overpotential using \glsfmtlong{ima}} & {Coefficients of transfer functions are excessively long and mathematically intractable; Is based upon many high entropy expressions whose analytical derivations are omitted} \\
 \end{ltabulary}
 }% end box
