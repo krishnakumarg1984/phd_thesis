@@ -20,6 +20,9 @@ ymax=1050,
 ylabel style={font=\color{white!15!black}},
 ylabel={$c_e\, (\mathrm{mol\, m}^{-3})$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$c_\mathrm{e}(x,t)$},
+title style={yshift=-1.5ex,},
 legend style={at={(0.03,0.03)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]
@@ -286,6 +289,9 @@ ymax=1200,
 ylabel style={font=\color{white!15!black}},
 ylabel={$c_e\, (\mathrm{mol\, m}^{-3})$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$c_\mathrm{e}(x,t)$},
+title style={yshift=-1.5ex,},
 legend style={at={(0.03,0.03)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]
@@ -585,6 +591,9 @@ ymax=2000,
 ylabel style={font=\color{white!15!black}},
 ylabel={$c_e\, (\mathrm{mol\, m}^{-3})$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$c_\mathrm{e}(x,t)$},
+title style={yshift=-1.5ex,},
 legend style={at={(0.03,0.03)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]
@@ -921,6 +930,9 @@ ymax=2000,
 ylabel style={font=\color{white!15!black}},
 ylabel={$c_e\, (\mathrm{mol\, m}^{-3})$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$c_\mathrm{e}(x,t)$},
+title style={yshift=-1.5ex,},
 legend style={at={(0.03,0.03)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]
@@ -1255,6 +1267,9 @@ ymax=2000,
 ylabel style={font=\color{white!15!black}},
 ylabel={$c_e\, (\mathrm{mol\, m}^{-3})$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$c_\mathrm{e}(x,t)$},
+title style={yshift=-1.5ex,},
 legend style={at={(0.03,0.03)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]
@@ -1578,6 +1593,9 @@ ymax=2000,
 ylabel style={font=\color{white!15!black}},
 ylabel={$c_e\, (\mathrm{mol\, m}^{-3})$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$c_\mathrm{e}(x,t)$},
+title style={yshift=-1.5ex,},
 legend style={at={(0.03,0.03)}, anchor=south west, legend cell align=left, align=left, fill=none, draw=none},
 yticklabel style={/pgf/number format/1000 sep=, /pgf/number format/precision=2, /pgf/number format/fixed, }
 ]

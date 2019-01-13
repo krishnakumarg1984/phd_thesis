@@ -76,7 +76,7 @@ recorded  data until  cut-offs  were hit.  \eg~starting at  \SI{90}{\percent}
 upper  cut-off voltage  shall be  hit  sooner leaving  a smaller  set of  logged
 simulation data.}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{time_invariance.pdf}
     \caption[Demonstration of time-invariance of~$Q_\text{e,n}(t)$ and
@@ -108,14 +108,15 @@ training    sequence   that    was   synthesised    by   this    thesis   author
 (top row  of the  central column)  produces the  outputs~$Q_{\text{e,n}_1}\!(t)$
 and  $Q_{\text{e,p}_1}\!(t)$  shown  in  the   top  left  and  top  right  plots
 respectively.  When  the delayed  version  of  this  input sequence  ${u_2(t)  =
-u_1(t-\tau)}$ (middle row, middle column) is  applied, it results in the outputs~$Q_{\text{e,n}_2}\!(t)$  and  $Q_{\text{e,p}_2}\!(t)$  to  its  left  and  right
-respectively.  Following the  steps  of the  test  procedure, subtracting  these
-outputs from the correspondingly delayed versions of their original counterparts
-result in  zero residuals, thereby  proving time-invariance of  these subsystems
-under these representative test conditions. The residual sequences in the bottom
-row of plots are of~$\mathcal{O}(10^{-15})$ and arise due to numerical roundoffs
-that occur  when operating close  to the noise  floor of the  machine's floating
-point units.
+u_1(t-\tau)}$ (middle row, middle column) is  applied, it results in the
+outputs~$Q_{\text{e,n}_2}\!(t)$  and  $Q_{\text{e,p}_2}\!(t)$  to  its  left 
+and  right respectively.  Following the  steps  of the  test  procedure,
+subtracting  these outputs from the correspondingly delayed versions of their
+original counterparts result in  zero residuals, thereby  proving
+time-invariance of  these subsystems under these representative test conditions.
+The residual sequences in the bottom row of plots are of~$\mathcal{O}(10^{-15})$
+and arise due to numerical roundoffs that occur  when operating close  to the
+noise  floor of the  machine's floating point units.
 
 Similar to  the case demonstrated  here, all  tests for time-invariance  for all
 permutations of  the chosen operating  conditions passed successfully  \ie~the

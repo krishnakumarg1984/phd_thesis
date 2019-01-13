@@ -83,19 +83,19 @@ through the \gls{mggp} approach described next.
 
 The GPTIPS2  toolbox uses a variety  of heuristic algorithms from  the theory of
 \gls{mggp}  to hypothesise  a suitable  equation structure  for the  data to  be
-fitted.  The dataset  consisted of  the  simulation results  from the  \gls{p2d}
-model,  in particular  the  values  of electrolyte  concentration  at the  three
-different cell  regions captured  at various snapshots  of time.  Both transient
-and  \gls{qss} data  were  fed into  this  symbolic data  mining  process and  a
-single all-encompassing  family of curves  capable of capturing  the electrolyte
-concentration behaviour was  sought for. However, the constraints  in the number
-of coefficients that  can be employed results  in a restriction of  the depth of
-gene  mutations as  well  as the  number of  parent/seed  populations. The  best
-equation set  (without strictly  enforcing the aforementioned  hard constraints,
-yet  minimising  the  distance  to  the constraint  vector)  that  the  symbolic
-regression approach yielded was
+fitted.  The dataset  consisted of  %the  simulation results  from the  \gls{p2d} model,  in particular  the  values  of
+electrolyte  concentration  at the  three cell  regions captured  at various
+snapshots  of time.  Both transient and  \gls{qss} data  were  fed into  this
+symbolic data  mining  process and  a single all-encompassing  family of curves
+capable of capturing  the electrolyte concentration behaviour was  sought for.
+However, the constraints  in the number of coefficients that  can be employed
+results  in a restriction of  the depth of gene  mutations as  well  as the
+number of  parent/seed  populations. The  best equation set  (without strictly
+enforcing the aforementioned  hard constraints, yet  minimising  the  distance
+to  the constraint  vector)  that  the  symbolic regression approach yielded was
 \begin{alignat}{2}
-    c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0 \le z \le l_\text{n} \label{eq:cnstrviolneg} \\
+    c_\ensub(z,t) & = a_2(t) \cosh z^2 + a_1(t) \sinh z + a_0(t) \qquad &  & 0
+    \le z \le l_\text{n} \label{eq:cnstrviolneg} \\
     c_\essub(z,t) & = a_5(t) z^2 + a_4(t) z + a_3(t) \qquad             &  & 0 \le z \le l_\text{s}                         \\
     c_\epsub(z,t) & = a_8(t) \cosh z^2 + a_7(t) \sinh z + a_6(t) \qquad &  & 0 \le z \le l_\text{p}\label{eq:cnstrviolpos}
 \end{alignat}
@@ -119,14 +119,14 @@ was merely at par to the baseline quadratic approximation model. This raised the
 prospect of  employing a  blended approach, wherein  a model  changeover between
 the  transient  and \gls{qss}  was  contemplated.  However,  since there  is  no
 precise definition  of what constitutes  the transient phase of  the electrolyte
-concentration response, this  approach required some \mbox{ad hoc}  timing criteria for
-correctly  transitioning  between  the  two \gls{mggp}  equation  sets.  Further
-complications arise  during dynamic input conditions,  wherein the concentration
-profiles are mostly in a state of  flux and could linger for longer durations at
-the contiguous  boundary between  transient-like and  \gls{qss}-like behaviours.
-In  the  interest  of  reproducibility  across  different  cell-chemistries  and
-corresponding parameter sets, the proposed blended model transition approach was
-not further pursued.
+concentration response, this  approach required some \mbox{ad hoc}  timing
+criteria for correctly  transitioning  between  the  two \gls{mggp}  equation
+sets.  Further complications arise  during dynamic input conditions,  wherein
+the concentration profiles are mostly in a state of  flux and could linger for
+longer durations at the contiguous  boundary between  transient-like and
+\gls{qss}-like behaviours. In  the  interest  of  reproducibility  across
+different  cell-chemistries  and corresponding parameter sets, the proposed
+blended model transition approach was not further pursued.
 
 Overall,  the  long  and  arduous  process of  symbolic  regression  was  not  a
 definitive  success in  this  case  mainly due  to  the  limitation of  equation
