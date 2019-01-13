@@ -1,0 +1,26 @@
+% -*- root: ../../main.tex -*-
+%!TEX root = ../../main.tex
+% this file is called up by main.tex
+% content in this file will be fed into the main document
+% vim:textwidth=180 fo=cqt conceallevel=0
+
+\begin{table}[!htbp]
+    \centering
+    \caption[Error statistics for 1C galvanostatic discharge comparing quadratic \& system-id models]{Summary of error statistics comparing the performance of quadratic
+        approximation and system identification models. The input is a 1C~constant current discharge applied for the first 30~minutes starting at \SI{100}{\percent} cell
+    \gls{soc}.  The metric being compared is the absolute value of the concentration difference with respect to the \glsfmtshort{p2d} model at the two current collector interfaces.}
+    \label{tbl:galvanostaticerrormetricsquadtfce}
+    \begin{tabular}{@{} l S[table-format=3.2] S[table-format=3.2] S[table-format=3.2] S[table-format=3.2] @{}}
+        \toprule
+        \multirow{2}[2]{*}{\makecell{Error  statistic \\ (\si{\mole\per\meter\cubed})}} & \multicolumn{2}{c}{$\big\lvert \varepsilon_{c_\text{e}} \big \rvert$ at Neg/CC} &
+        \multicolumn{2}{c}{$\big\lvert \varepsilon_{c_\text{e}} \big \rvert$ at Pos/CC} \\
+        \cmidrule(lr){2-3} \cmidrule(l){4-5}
+        {} & {Quadratic} & {SysID} & {Quadratic} & {SysID} \\
+        \midrule
+        Max                & 133.80 & 39.51 & 276.33 & 194.27 \\
+        Mean               & 48.16  & 29.56 & 227.92 & 146.53 \\
+        Median             & 25.60  & 30.17 & 218.96 & 173.14 \\
+        Standard Deviation & 36.94  & 8.22  & 29.71  & 55.79  \\
+        \bottomrule
+    \end{tabular}
+\end{table}

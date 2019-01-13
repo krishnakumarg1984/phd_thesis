@@ -189,6 +189,12 @@ the electrolyte  concentration. While this  profile is ideally suited  to excite
 the system's  dynamics, it  fails to  capture the large  signal behaviour.  As a
 topic  of future  research,  perhaps a  spatially-coupled system  identification
 could be attempted to handle this issue.
+\Cref{tbl:galvanostaticerrormetricsquadtfce} provides a summary of error
+statistics for the transient phase, thereby helping to compare the performance
+of the quadratic and system identification models against the benchmark
+\gls{p2d} simulation results.
+
+\input{chapters/sys_id/ce_error_table_const_1c}
 
 The  main  implication of  these  results  is  that  the identified  models  are
 primarily suitable for  transient \ie~dynamic load profiles,  which is typical
@@ -199,6 +205,7 @@ rely on  these identified electrolyte  models. However, this exclusion  does not
 seriously hamper the model's wider applicability since a simple coulomb-counting
 approach with  a high-precision \gls{adc} is  much more accurate than  any other
 \gls{pbm} in this particular scenario.
+
 
 Although constant  current discharge is  not a practical use-case  for vehicular
 batteries, performing this benchmark evaluation  has helped in understanding the
