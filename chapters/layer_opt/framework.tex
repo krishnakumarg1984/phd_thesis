@@ -262,10 +262,12 @@ the  narrative describing  the  fast charging  pathway.
 
 Finally, the  maximum of the  layer choices across all  temperature combinations
 from the  acceleration and  fast charging  scenarios is  deemed as  the globally
-optimal  number of  layers  to be  used  for this  model-led  cell design.  This
-concludes the overall narrative describing the layer optimisation framework. The
-results obtained by applying this methodology to a specific numerical example is
-presented next in \cref{sec:resultslayeropt}.
+optimal  number of  layers  to be  used  for this  model-led  cell design. The
+maximum value is chosen because, if any smaller layer count is used to construct
+the cell, that design shall fail to satisfy its power requirements without
+violating at least one termination criterion. Hence, the worst case runs across
+all desired thermal scenario under which the cell is intended to operate shall
+inform the final design choice.
 
 % Do not forget to quote the value of cs_sat from layer opt paper table and show
 % calculation inline. Might even go into the code
@@ -584,9 +586,12 @@ simulations  used to  determine  the optimal  layer  configurations. The  cell's
 temperature~$T_\text{cell}(t)$ is also obtained from this lumped thermal model.
 \begin{align}
 	m_\text{cell} c_\text{avg} \frac{dT_\text{cell}}{dt} &= -h A_\text{tabs} \left( T_\text{cell}(t) - T_\text{sink} \right) + Q_\text{pol} & \label{eq:thermalmodel}\\
-	Q_\text{pol} &= A_\text{cell} \abs{i}\cdot \abs{U - V} & \tag{\ref{eq:thermalmodel}a}\\
-	U &= U_\text{pos}(\theta_\text{pos})\big|_{\mathrlap{x = x_\text{pos/Alcc}}} \qquad - U_\text{neg}(\theta_\text{neg})\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}b}\\
-	V &= \phi_\text{s}\big|_{\mathrlap{x = x_\text{pos/Alcc}}} \qquad - \phi_\text{s}\big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}c}
+	Q_\text{pol} &= A_\text{cell} \cdot \abs{\mkern1mu i \mkern3mu}\cdot \abs{U - V} & \tag{\ref{eq:thermalmodel}a}\\
+	U &= U_\text{pos}(\theta_\text{pos})\bigg|_{\mathrlap{x =
+	    x_\text{pos/Alcc}}} -
+	    U_\text{neg}(\theta_\text{neg})\bigg|_{\mathrlap{x =
+	x_\text{neg/Cucc}}} & \tag{\ref{eq:thermalmodel}b}\\
+	V &= \phi_\text{s}\Big|_{\mathrlap{x = x_\text{pos/Alcc}}} \qquad - \phi_\text{s}\Big|_{x = x_\text{neg/Cucc}} & \tag{\ref{eq:thermalmodel}c}
 \end{align}
 
 The   average   specific   heat   of    the   cell~$c_\text{avg}$   used   in
@@ -601,4 +606,8 @@ number of layers~$n$ by substituting the appropriate layer-dependent mass values
 computed  in  \crefrange{eq:mj}{eq:cumass}.  The  latter  two  terms  \ie~the
 specific heats of the electrolyte material and the pouch are held constant since
 their corresponding mass values do not vary with the number of layers used.
+
+This concludes the overall narrative describing the layer optimisation
+framework. The results obtained by applying this methodology to a specific
+numerical example is presented in \cref{sec:resultslayeropt}.
 
