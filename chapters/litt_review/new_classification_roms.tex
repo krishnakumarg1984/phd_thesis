@@ -136,7 +136,10 @@ implementation in  the time domain. This  choice implies the exclusion  of those
 models that  are derived and implemented  entirely in the frequency  domain. For
 the sake of readers interested in  frequency domain methods, the discussion here
 briefly introduces  salient literature  employing the Padé  approximation method
-that serves as a backbone of a wide variety of frequency domain models.
+that serves as a backbone of a wide variety of frequency domain models. ``A Padé
+approximant is the `best' approximation of a function by a rational function of
+given order --- under this technique, the approximant's power series agrees with
+the power series of the function it is approximating"~\cite{padewiki}.
 
 
 The     transfer     function     oriented     Padé     approximation     method
@@ -696,15 +699,13 @@ article,  each   porous  electrode  was   represented  as  a   single  spherical
 particle.  This concept  was  adopted  for lithium  ion  batteries  by Ning  and
 Popov~\cite{Ning2004} and has since become  quite popular. Models employing this
 lumped  representation  of  electrodes  are referred  to  as  \glsfmtlongpl{spm}
-(\glspl{spm}).  These models  have  three advantages.  Since  they involve  only
-a  subset  of  parameters  of  the   original  \gls{dfn}  model,  most  of  them
-being  geometric quantities  that  can be  directly  measured without  extensive
-chemical  or electrical  testing,  \glspl{spm} are  easier  to parametrise  than
-other physics-based  \glspl{rom}. Furthermore,  they are  computationally cheap,
-especially when coupled with the  polynomial approximation for solving the solid
-diffusion  equation for  each electrode.  Finally, all  model parameters  in the
-\gls{spm}  retain their  physical character,  aiding in  a direct  and intuitive
-understanding of physical parameters on the cell's operation.
+(\glspl{spm}).  These models  have  three advantages.  Firstly,  \glspl{spm}
+involve  only a  subset  of  parameters  of  the   original  \gls{dfn}  model.
+Furthermore,  they are  computationally cheap, especially when coupled with the 
+polynomial approximation for solving the solid diffusion  equation for  each
+electrode.  Finally, all  model parameters  in the \gls{spm}  retain their 
+physical character,  aiding in  a direct  and intuitive understanding of
+physical parameters on the cell's operation.
 
 During  the  initial years  following  its  inception,  the formulation  of  the
 basic \gls{spm}  was discussed extensively within  application-specific contexts
@@ -789,16 +790,19 @@ study,  it was  possible to  make  an informed  choice to  pursue the  \gls{spm}
 approach  for further  research.  In particular,  it came  to  light that  there
 has  been  no systematic  analysis  of  the  state  of the  art  \gls{spm}-based
 approach with  a view  to quantify their  performance boundaries.  This author's
-contributions to  the time-domain  implementation-focus reduced  order modelling
+contributions to  the time domain  implementation-oriented reduced  order modelling
 field include
 \begin{itemize}[noitemsep,topsep=0pt, before={\vspace*{-0.25\baselineskip}}]
-    \item a thorough analysis of the existing \gls{spm} variants ranging from the rudimentary to the sophisticated
-    \item enumeration of issues plaguing each \gls{spm} variant, including current state of the art
-    \item further evaluation of literature on the current tactics to overcome the current challenges along with their associated drawbacks
+    \item performing a thorough analysis of the basic \gls{spm} and the quadratic
+        approximation concentration model for inclusion of electrolyte dynamics
+        into it
+    \item identifying the issues plaguing each of the aforementioned models
     \item conducting a  wide range of hypotheses-driven trials in an attempt to enhance  the basic \gls{spm} (some of which did not yield the desired
-        improvements), and
+        improvements)
+    \item Obtaining an electrolyte-enhanced composite \gls{spm} through system
+        identification, and
     \item arriving at  a  feasible  approach  capable  of  moulding  the
-        \gls{spm}  framework into  a  readily implementable  solution in
+        \gls{spm}  framework into  a  readily implementable  solution for
         electric vehicle applications
 \end{itemize}
 This research was  performed through an iterative cycle of  analysis, design and
