@@ -148,33 +148,36 @@ This section aims to provide a  qualitative description of the effect of varying
 the number of layers  within a pouch cell and presents  the motivation to embark
 upon this layer optimisation effort.
 
-Given the  assumptions listed in \cref{subsec:layeroptassumptions},  it is clear
-that  changing the  number  of layers  in  a pouch  of  fixed thickness  results
-in  different  absolute  electrode  thicknesses.   This  in  turn,  affects  the
-electrochemical-thermal behaviour  of the  cell. Having a  low number  of layers
-means  that the  proportion of  energy-storing  materials within  the volume  is
-higher, leading  to greater nominal capacity.  However, owing to the  large time
-constants necessary for  lithium ions to diffuse through thick  domains, not all
-of this stored energy might be available for utilisation. With thick electrodes,
-the power  handling capability  of the  cell suffers  since lithium  deficits at
-electrode surfaces shall lead to the collapse of its terminal voltage.
+Based upon the  discussion in \cref{subsec:layeroptassumptions},  it is clear
+that  by changing the choice of layer counts accommodated within  a pouch  of
+fixed height, the thicknesses of the two electrodes within each unit cell has to
+be suitably recomputed.   Such use of different electrode thicknesses imply that
+the electrochemical-thermal behaviour  of a cell constructed with one particular
+layer count shall be different from those employing any other layer count. With
+very few layers, thicker electrodes can be used. This implies that a higher
+utilisation of the available pouch volume can be used towards energy storage
+leading to higher theoretical capacity for these cells. Based  on the 
+discussion thus far,  using low layer counts to construct cells may seem
+appealing for range extension of \glspl{xeV}. However, prior to this, certain
+application-specific aspects of designing cells for automotive packs must be
+duly considered.
 
-Prima~facie,  based  on the  above  discussion,  although  it appears  that  the
-absolute lowest possible  number of layers (\ie~one layer)  is the best choice
-for maximising  driving range, there  exist two  other goals that  conflict with
-this design  intent. Firstly, there must  be a minimum electrode  active surface
-area  to  handle the  power  demands,  and hence,  a  minimum  number of  layers
-typically far  greater than one. Higher  power capability is achieved  by way of
-larger electrode surface  area and higher electrical  and thermal conductivities
-owing to the presence of more current collectors. Secondly, the acceptable limit
-on  lifetime  degradation of  cells  places  an  upper  bound on  the  allowable
-temperature rise during vehicle operation. Increasing the number of layers has a
-two-fold mitigating effect on the  temperature-rise experienced by the cell. The
-\emph{power  density} within  each  layer  is diminished  due  to the  increased
-available  surface area,  leading to  reduced ohmic  heat generation  within the
-cell. With  each layer requiring a  Al-Cu current-collector pair, the  number of
-heat conduction  pathways increases  linearly with the  number of  layers. Thus,
-increasing the number of layers has a beneficial effect on pack lifetime.
+Thick electrodes resulting from using low layer counts present an increased
+impedance for the diffusion of lithium ions through their microporous structure,
+which implies that when operating under even moderate external loads, the cell
+may hit voltage cutoffs before all the stored energy can be extracted. Thus,
+with ultra low layer designs, the power handling capability of the cell suffers.
+The requirement of evenly distributing  the external load power  over the
+available active surface area without inducing large overpotentials necessitates
+a certain minimum number of layers.  With higher layer counts, the increased
+active surface area translates to a reduced  power density, which in-turn leads
+to a lower rate of heat generation. Furthermore, with increased layer counts,
+the fraction of pouch volume occupied by current collectors is proportionately
+higher. This leads to more conduction pathways to help channel heat generated
+away from the cell's interior which helps in faster cooling. With high layer
+counts, this aspect of lower heat generation coupled with its faster removal
+leads to an overall reduction in cell's temperature, which helps to extend the
+pack's lifetime owing to a reduced degradation rate.
 
 \begin{figure}[!tbp]
     \centering
