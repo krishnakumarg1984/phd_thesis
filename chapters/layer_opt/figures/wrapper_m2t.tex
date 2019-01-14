@@ -1,0 +1,40 @@
+% vim:nospell
+
+\RequirePackage{luatex85,shellesc} % unified shell-escape interface
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[12pt,a4paper,oneside,openright]{book}
+
+% \input{../../Preamble/standard_preamble} % packages
+
+% Comment this paragraph if using multiple plots/subplots
+% \usepackage{fontspec} % load after graphicx
+% \usepackage[warnings-off={mathtools-colon}]{unicode-math}
+% \input{../../Preamble/font_selection.tex} % for text-fonts only
+% \setmathfont[bold-style=ISO]{Libertinus Math} % https://github.com/libertinus-fonts/libertinus/issues/20
+
+% %% using mathastext
+% \usepackage[no-math]{fontspec} % load after graphicx
+% \input{../../Preamble/font_selection.tex} % for text-fonts only
+% \usepackage[italic]{mathastext}
+
+%% poor man's substitute using pdflatex
+% \usepackage[sb]{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+% \usepackage[varqu,varl]{zi4}% inconsolata for mono, not LibertineMono
+% \usepackage{amsthm} % libertinust1math loads amsmath
+% \usepackage{libertinust1math} % slanted integrals, by default
+% \usepackage[scr=boondoxo,bb=boondox]{mathalfa} %Omit bb=boondox for default libertinus bb
+% \usepackage{mathastext}
+
+\input{../../../Preamble/tikz_stuff}
+% \input{../../Preamble/hyperref_related}
+
+\begin{document}
+
+\centering
+
+\includetikz{tikz_fig_CC_discharge_curves}
+
+\end{document}

@@ -1,0 +1,33 @@
+% vim: set nospell nowrap textwidth=0 wrapmargin=0 formatoptions-=t:
+\RequirePackage[l2tabu,orthodox]{nag}
+\documentclass[9pt]{standalone}
+\usepackage{lmodern}
+\usepackage[paperwidth=182mm,paperheight=220mm,margin=0.02in,heightrounded,landscape]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning, fit, calc, arrows.meta, intersections, backgrounds, shapes, decorations.pathreplacing, decorations.markings}
+\usepackage{mathtools}
+\usepackage{circuitikz}
+\usepackage[center,pdflatex,frame]{crop}
+
+% define layers
+\pgfdeclarelayer{foreground}
+\pgfdeclarelayer{background}
+% tell TikZ how to stack them (back to front)
+\pgfsetlayers{background,main,foreground}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
+
+%% you may also want the following commands
+%\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth
+\begin{document}
+\input{tikz_fig_CC_discharge_curves.tex}
+\end{document}

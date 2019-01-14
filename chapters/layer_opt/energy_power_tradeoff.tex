@@ -109,22 +109,24 @@ This  modularity  in the  design  approach  enables  to keep  such  system-level
 parameters constant.
 
 A further assumption  in this study is  that the overall height of  the pouch is
-held constant. In  the absence of this constraint, any  arbitrary pouch size can
-be chosen,  leading to an  infinite-dimensional optimisation problem  wherein no
-unique optimality  criterion exists.  This assumption is  in-fact enforced  by a
-current  trend  in the  automotive  industry  \viz~adoption  of  common-module
-designs wherein  the physical  dimensions of  the pack  are chosen  a~priori and
-modularising the  pack helps in  tailoring them  suitably to cater  to different
-market segments. Extending this philosophy down to the cell level, it is easy to
-visualise the  benefits of  having cells of  identical exterior  dimensions. For
-instance, having a  common inventory helps a vehicle manufacturer  to keep costs
-in check  for subsequent designs  \eg~for  derivative model families  of their
-product  portfolio. This  means that,  for  any layer  choice to  be tried,  the
-constituent components  of the cell is  to be arranged and  contained within the
-same  pouch  (of  fixed  exterior  dimensions).  This  naturally  leads  to  the
-assumption that the  thickness of the pouch material used  shall remain constant
+held constant at~\SI{10}{\milli\meter}. The rationale behind choosing this
+specific pouch height is  discussed in  \cref{sec:surfareaperlayer}. In  the
+absence of this constraint, any arbitrary pouch size can be chosen,  leading to
+an  infinite-dimensional optimisation problem  wherein no unique optimality 
+criterion exists.  This assumption is  in-fact enforced  by a current  trend  in
+the  automotive industry  \viz~adoption  of  common-module designs wherein  the
+physical dimensions of  the pack  are chosen  a~priori and modularising the 
+pack helps in  tailoring them  suitably to cater  to different market segments.
+Extending this philosophy down to the cell level, it is easy to visualise the 
+benefits of having cells of  identical exterior  dimensions. For instance,
+having a  common inventory helps a vehicle manufacturer  to keep costs in check 
+for subsequent designs  \eg~for  derivative model families  of their product 
+portfolio. This means that,  for  any layer  choice to  be tried,  the
+constituent components of the cell is  to be arranged and  contained within the
+same  pouch  (of  fixed exterior  dimensions).  This  naturally  leads  to  the
+assumption that the thickness of the pouch material used  shall remain constant
 throughout, which in-turn implies that the overall height of the electrochemical
-stack  within the  pouch is  constant. The  detailed calculations  of the  stack
+stack  within the pouch is  constant. The  detailed calculations  of the  stack
 height is presented in \cref{sec:surfareaperlayer}.
 
 The  current collectors  and the  separator  in each  electrochemical layer  are
@@ -156,7 +158,7 @@ the electrochemical-thermal behaviour  of a cell constructed with one particular
 layer count shall be different from those employing any other layer count. With
 very few layers, thicker electrodes can be used. This implies that a higher
 utilisation of the available pouch volume can be used towards energy storage
-leading to higher theoretical capacity for these cells. Based  on the 
+leading to higher theoretical capacity for these cells. Based  on the
 discussion thus far,  using low layer counts to construct cells may seem
 appealing for range extension of \glspl{xeV}. However, prior to this, certain
 application-specific aspects of designing cells for automotive packs must be
@@ -266,9 +268,9 @@ of   applied    current   is   explained    in   the   section    dealing   with
 
 
 \begin{figure}[!bp]
-    \begin{minipage}[t]{\textwidth}
+    % \begin{minipage}[t]{\textwidth}
         \centering
-        \includegraphics[trim=4 4 2 4,clip]{fig_CC_discharge_curves.pdf}
+        \includegraphics{fig_CC_discharge_curves.pdf}
         \captionsetup{labelsep=note}
         \caption
         [%
@@ -288,15 +290,12 @@ of   applied    current   is   explained    in   the   section    dealing   with
             configuration~(${n = 90}$).
         }%
         \label{fig:fig_CC_discharge_curves}
-        \mpfootnotes[1]
-        % \footnotetext{{The   rationale  behind  choosing   this  specific
-        %         magnitude  of  applied  current  is   explained  in  the  section  dealing  with
-        % \hyperlink{refcellselection}{selection of a  suitable reference capacity cell} (also see \cref{sec:surfareaperlayer}).}}
+        % \mpfootnotes[1]
 
-        \footnote{This figure was created by \mbox{Ian D.\ Campbell} who asserts copyright,
-            with intellectual contributions from and the right to use asserted by
-        \mbox{Krishnakumar Gopalakrishnan}.}
-    \end{minipage}
+        % \footnote{This figure was created by \mbox{Ian D.\ Campbell} who asserts copyright,
+        %     with intellectual contributions from and the right to use asserted by
+        % \mbox{Krishnakumar Gopalakrishnan}.}
+    % \end{minipage}
 \end{figure}
 
 As  seen  in \cref{fig:fig_CC_discharge_curves},  during  the  initial phase  of
@@ -321,19 +320,20 @@ total  stored energy  in cells  with low  layer counts  is much  higher, only  a
 fraction  of it  is usable.  This  aspects introduces  non-trivial dynamics  (as
 discussed below) to an otherwise linear optimisation task.
 
-For  instance,  when~${n  =  10}$,  the terminal  voltage  of  the cell  collapses
-instantaneously, reaching cut-off  voltage whilst its \gls{soc}  remains as high
-as~\SI{96}{\percent}. At very low layer  counts, the thickness of each electrode
-is high. This presents a high resistance  to the flow of charges thereby leading
-to  high overpotential  drops  within the  cell. The  usable  energy under  this
-\SI{60}{\ampere} galvanostatic  discharge for various layer  choices is compared
-in \cref{tbl:CC_discharge_curves_table}. It can be  seen that for very low layer
-counts,  the usable  energy that  can be  extracted is  minuscule, albeit  their
-theoretical  capacity~$Q_n$  are  in-fact  the highest.  The  usable  energy  in
-\SI{}{\watthour} reported in \cref{tbl:CC_discharge_curves_table} is obtained by
-multiplying the integral  of the area under each discharge  curve by the applied
-current  (\SI{60}{\ampere})  with  the  appropriate  scaling  of  the  time-base
-(\ie~conversion from minutes to hours).
+For  instance,  when~${n  =  10}$,  the terminal  voltage  of  the cell 
+collapses almost instantaneously, reaching cut-off  voltage whilst its \gls{soc}
+remains as high as~\SI{96}{\percent}. At very low layer  counts, the thickness
+of each electrode is high. This presents a high resistance  to the flow of
+charges thereby leading to  high overpotential  drops  within the  cell. The 
+usable  energy under  this \SI{60}{\ampere} galvanostatic  discharge for various
+layer  choices is compared in \cref{tbl:CC_discharge_curves_table}. It can be 
+seen that for very low layer counts,  the usable  energy that  can be  extracted
+is  minuscule, albeit  their theoretical  capacity~$Q_n$  are  in-fact  the
+highest. The  usable  energy  in \SI{}{\watthour} reported in
+\cref{tbl:CC_discharge_curves_table} is obtained by multiplying the integral  of
+the area under each discharge  curve by the applied current  (\SI{60}{\ampere}) 
+with  the  appropriate  scaling  of  the  time-base (\ie~conversion from minutes
+to hours).
 
 \input{chapters/layer_opt/CC_discharge_curves_table.tex}
 

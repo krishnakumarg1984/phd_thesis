@@ -14,15 +14,15 @@
     }%
     \label{tbl:CC_discharge_curves_table}
     \centering
-    \begin{tabular}{@{} S[table-format=2.0] S[table-format=1.2] S[table-format=2.2]  S[table-format=3.2] S[table-format=2.2] @{}}
+    \begin{tabular}{@{} S[table-format=2.0] S[table-format=1.2] S[table-format=2.2]  S[table-format=3.2] S[table-format=2.2] S[table-format=2.2] @{}}
         \toprule
-        \multicolumn{1}{@{} l}{$n$} &  \multicolumn{1}{c}{\footnotesize C-rate} & \multicolumn{1}{c}{\footnotesize \makecell{Theoretical \\ Capacity  (\si{Ah})}} & \multicolumn{1}{c}{\footnotesize \makecell{Usable \\ Energy \si{(Wh)}}} & \multicolumn{1}{c @{}}{\footnotesize \makecell{Remaining \\ SOC  (\si{\percent})}} \\
+        \multicolumn{1}{@{} l}{$n$} &  \multicolumn{1}{c}{\footnotesize C-rate} & \multicolumn{1}{c}{\footnotesize \makecell{Theoretical \\ Capacity  (\si{Ah})}} & \multicolumn{1}{c}{\footnotesize \makecell{Usable \\ Energy \si{(Wh)}}} & \multicolumn{1}{c @{}}{\footnotesize \makecell{Remaining \\ SOC  (\si{\percent})}} & \multicolumn{1}{c @{}}{\footnotesize \makecell{Resistance at \\ cutoff  (\si{\milli\ohm})}} \\
         \midrule
-        90 & 1.24 & 48.25 & 166.46 & 9.84  \\
-        70 & 1.11 & 53.99 & 184.80 & 10.26 \\
-        50 & 1.00 & 59.73 & 195.47 & 13.51 \\
-        30 & 0.92 & 65.47 & 101.20 & 58.95 \\
-        10 & 0.84 & 71.21 & 10.15  & 96.22 \\
+        90 & 1.24 & 48.25 & 166.46 & 9.84  & 0.97  \\
+        70 & 1.11 & 53.99 & 184.80 & 10.26 & 1.35  \\
+        50 & 1.00 & 59.73 & 195.47 & 13.51 & 3.44  \\
+        30 & 0.92 & 65.47 & 101.20 & 58.95 & 10.24 \\
+        10 & 0.84 & 71.21 & 10.15  & 96.22 & 11.18 \\
         \bottomrule
     \end{tabular}
 \end{table}
