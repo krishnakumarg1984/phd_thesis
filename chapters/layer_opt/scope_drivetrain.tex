@@ -99,12 +99,12 @@ negative).
 
 Delving  into the  battery pack  under  consideration, this  thesis considers  a
 standard  modular  layout wherein  the  \gls{phev}  pack  has one  string  while
-the  \gls{bev}  pack  has  three  parallel strings in congruence with a
-contemporary pack design. Within  each  string,  both vehicular  platforms
-employ  8~series-connected  modules.  Taking cognisance  of the  benefits  of
-common  module  design,  identical  pack modules  are  assumed across  both 
-\gls{xeV}  platforms  which  is  then  extrapolated  to  impose  a stronger 
-condition  of  identical  geometry  for  the  constituent  cells  (see
+the  \gls{bev}  pack  has  three  parallel strings, in congruence with a
+contemporary pack design~\cite{Liu2016a}.  Within  each  string,  both vehicular
+platforms employ  8~series-connected  modules.  Taking cognisance  of the 
+benefits  of common  module  design,  identical  pack modules  are  assumed
+across  both  \gls{xeV}  platforms  which  is  then  extrapolated  to  impose  a
+stronger  condition  of  identical  geometry  for  the  constituent  cells  (see
 \cref{subsec:layeroptassumptions}). The  exterior dimensions of the  pouch cells
 under consideration are listed in \cref{tbl:lcoSimParamslayeropt}.
 
@@ -130,9 +130,10 @@ seems infeasible at first glance, three careful considerations have been made to
 justify  this assumption.  Firstly,  power  (and not  current)  is  used as  the
 stimulus to the cell. This  implies that, despite the \emph{parallel} connection
 of cells  (in groups of three  cells within each module),  each cell experiences
-the same  power. Even  across parallel-connected strings,  the power  handled by
-each cell shall be the same.  This necessitates the modification of the standard
-\gls{dfn}  model in  order to  accommodate power  inputs which  is discussed  in
+the same  power,~$p_\text{cell}= \frac{P_\text{batt}}{n_\text{cells}}$. Even 
+across parallel-connected strings,  the power  handled by each cell shall be the
+same.  This necessitates the modification of the standard \gls{dfn}  model in 
+order to  accommodate power  inputs which  is discussed  in
 \cref{sec:innatepowerinput}. Secondly,  although the current  in all cells  of a
 \emph{series}  string remain  the same  (by virtue  of Kirchoff's  current law),
 their  terminal voltage  levels could  drift away  from each  other and  becomes
@@ -212,15 +213,17 @@ important side effect  that affects the very  core of the numerics  of the layer
 optimisation methodology.  Carefully examining the  shading scheme used  for the
 schematic  in the  centre-bottom  of  \cref{fig:fig_PowertrainSchematic}, it  is
 clear that  at any vertical  co-ordinate in space  within the cell,  the shading
-across the entire cell width remains  uniform throughout. This implies that each
-layer  along  a  one-dimensional  cross-section  of the  cell  is  at  the  same
-temperature. Based  on the inferences from  Hunt~\etal~\cite{Hunt2016}, with tab
-cooling, only  small thermal gradients are  induced in the planar  direction. In
-this unique scenario,  the thermal effects within the cell  are not large enough
-to warrant a detailed numerical discretisation.  On the other hand, ignoring the
-temperature distribution  of the  cell shall  not lead  to robust  cell designs,
-especially given  that design simulations  typically involve high  magnitudes of
-power.
+across the entire cell width remains  uniform throughout. Furthermore, it has
+been reported in literature that the thermal gradients established within a unit
+cell are relatively small and may be safely ignored~\cite{PlettECE5710_07}. 
+These imply that each layer  along  a  one-dimensional  cross-section  of the 
+cell  is  at  the  same temperature. Based  on the inferences from 
+Hunt~\etal~\cite{Hunt2016}, with tab cooling, only  small thermal gradients are 
+induced in the planar  direction. In this unique scenario,  the thermal effects
+within the cell  are not large enough to warrant a detailed numerical
+discretisation.  On the other hand, ignoring the temperature distribution  of
+the  cell shall  not lead  to robust  cell designs, especially given  that
+design simulations  typically involve high  magnitudes of power.
 
 In  situations akin  to  aforementioned circumstances,  a  lumped thermal  model
 of  the cell  has  been  recommended by  Pals  and Newman~\cite{Pals1995}.  This

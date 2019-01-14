@@ -162,7 +162,7 @@ Based upon the simulation results of \cref{tbl:accResults},  for satisfying
 acceleration power requirements, ${n = 27}$ and ${n=69}$ represent the optimal
 layer choices for the \gls{bev} and \gls{phev} platforms respectively .
 
-\subsection{Fast-charging studies}
+\subsection{Fast-charging studies}\label{sec:fastchgresults}
 
 \begin{figure}[p]
     \begin{minipage}[t]{\textwidth}
@@ -220,10 +220,29 @@ electrodes  are thinner,  thereby allowing  faster diffusion  of lithium  in the
 solid  particles  and  avoiding  steep concentration  gradients  in  them.  This
 suggests that the number of layers must be large enough to prevent plating.
 
+The computation of the cell's nominal capacity as a function of the number of
+layers merits explanation. The overall capacity of each of the two individual
+electrodes is obtained as follows (suitably adapted from
+Plett~\cite{PlettECE5710_03} to account for the concept of layers)
+\begin{align}
+    Q_\text{neg} &= n A_\text{elec} F l_\text{neg} \varepsilon_\sneg c_\snegmax \abs{\theta_{{\SI{100}{\percent}_\text{neg}}} \! - \theta_{{\SI{0}{\percent}_\text{neg}}} } \label{eq:capacityneg} \\
+    Q_\text{pos} &= n A_\text{elec} F l_\text{pos} \varepsilon_\spos c_\sposmax \abs{\theta_{{\SI{100}{\percent}_\text{pos}}} \! - \theta_{{\SI{0}{\percent}_\text{pos}}} } \label{eq:capacitypos}
+\end{align}
+The cell's nominal capacity is the lower of the electrode capacities \ie{} $Q_n
+= \min(Q_\text{neg},Q_\text{pos})$. Considering non-constant parts (barring
+$n$) of \crefrange{eq:capacityneg}{eq:capacitypos} and applying \cref{eq:electrodeCapequalarea}, it is clear that the quantities to be
+compared are the two product terms~$c_\snegmax
+\abs{\theta_{{\SI{100}{\percent}_\text{neg}}} \! -
+\theta_{{\SI{0}{\percent}_\text{neg}}}}$ and 
+$c_\sposmax \abs{\theta_{{\SI{100}{\percent}_\text{pos}}} \! -
+\theta_{{\SI{0}{\percent}_\text{pos}}}}$. Substituting the numerical values
+from \cref{tbl:lcoSimParamsSPMp2d}, it is seen that the negative electrode is
+the limiting electrode for cell \ie{} $Q_n = Q_\text{neg}$.
+
 \Cref{fig:fig_CapacityQuadrants} shows the nominal  capacity of cells and charge
 passed versus  the number of  layers during fast  charging. In these  plots, the
-theoretical  capacity~$Q_\text{n}$ of  the cell  versus the  layer count~$n$  is
-represented by the linear downward-sloping line.
+nominal  capacity~$Q_\text{n}$ of  the cell  versus the  layer count~$n$  is
+represented by the linear downward-sloping line. 
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}

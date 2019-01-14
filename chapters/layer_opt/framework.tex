@@ -234,7 +234,7 @@ continually evaluated against various termination criteria.
 \begin{enumerate}
     \item the maximum possible values of cell temperature~$T_\text{max}$,
     \item the maximum allowed terminal voltage~$V_\text{max}$, and
-    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$\c_\text{s,sat}$
+    \item the surface concentration~$c_\text{s}^{\ast}$ not to exceed the saturation concentration~$c_\text{s,sat}$
 \end{enumerate}
 
 If any  of these three criteria  are violated, the simulation  immediately stops
@@ -309,8 +309,8 @@ If all  the fast-charging  termination criteria are  successfully met,  the exit
 condition is  set to  a value  of~1. For  violating any  of the  following three
 failure conditions (see \cref{sec:fastchgpathway}) \viz~exceeding
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
-    \item upper cutoff temperature  and/or,
-    \item upper cutoff voltage and/or
+    \item upper cutoff temperature,  or
+    \item upper cutoff voltage, or
     \item the maximum allowed charging despite encountering surface saturation,
 \end{enumerate*}
 the exit condition is  assigned the value of~0. The search  array is bisected by
@@ -319,16 +319,17 @@ criterion is  violated, then  the presently  trialled layer  choice is  deemed a
 success and the exit condition is set to~1. The search space is narrowed down by
 using the current layer choice as the new upper bound.
 
-However,  there exists  an additional  third possibility  for the  fast charging
-case.  If the  aforementioned termination  criteria  are not  violated, but  the
-charging process fails to meet  the target \gls{soc} specification, this implies
-that the number of layers used is too high (see \cref{fig:fig_CapacityQuadrants}
-and \cref{sec:resultslayeropt} for  a brief explanation of this  case). The exit
-condition corresponding to this failure mode is assigned a value of~2. Thus, the
-search vector in this bespoke strategy  consists of three distinct numbered exit
-conditions. Despite being a failure, from  the perspective of narrowing down the
-search space,  exit condition~2 is treated  in the same way  as exit condition~1
-\ie~the trialled layer choice is deemed to be too high.
+However,  there exists  possible scenarios of needing to assign a  third exit
+condition  for the  fast charging case.  If the  aforementioned termination 
+criteria  are not  violated, but  the charging process fails to meet  the target
+\gls{soc} specification, this implies that the number of layers used is too high
+(see \cref{fig:fig_CapacityQuadrants} and \cref{sec:resultslayeropt} for  a
+brief explanation of this  case). The exit condition corresponding to this
+failure mode is assigned a value of~2. Thus, the search vector in this bespoke
+strategy  consists of three distinct numbered exit conditions. Despite being a
+failure, from  the perspective of narrowing down the search space,  exit
+condition~2 is treated  in the same way  as the  first exit condition \ie~the
+trialled layer choice is deemed to be too high.
 
 Akin to the acceleration pathway, the  optimal layer choice for fast charging is
 deemed to be at the critical transition point wherein the exit condition toggles
@@ -556,26 +557,33 @@ time the trialled number of layers~$n$ is updated by the search algorithm.
 
 The mass of the cell varies as a  function of number of layers. This is because,
 the thicknesses  of the  two electrodes  within each layer  changes each  time a
-different layer choice is simulated. For a given layer choice~$n$, the cell mass
-is computed as per \cref{eq:cellmass}.
+different layer choice is used. Following the discussion in
+\cref{sec:electroderatio}, for computing masses of the constituent components of
+a cell, the anode overhang is neglected. Therefore, the common cross-sectional
+area~$A_\text{elec}$ is used for all calculations. For a given layer choice~$n$,
+the cell mass is computed as per \cref{eq:cellmass}.
 \begin{subequations}\label{eq:cellmass}
-\begin{align}
-     m_\mathrm{cell} &= \sum\limits_{j}m_j + m_\mathrm{Al} + m_\mathrm{Cu} + m_\mathrm{LiPF_6} + m_\mathrm{pouch}, \; j \in  \{\text{pos, sep, neg}\}\tag{\ref*{eq:cellmass}}\\
-     m_j &=   A_\mathrm{elec}  L_j \varepsilon_j\rho_j\label{eq:mj}\\
-      m_\text{Al} &=   A_\mathrm{elec}  L_\text{Al} \rho_\text{Al}\label{eq:Almass}\\
-      m_\text{Cu} &=   A_\mathrm{elec}  L_\text{Cu} \rho_\text{Cu}\label{eq:cumass}\\
-      m_\mathrm{LiPF_6} &=   A_\mathrm{elec} \biggl(\sum\limits_{j} L_j (1-
-      \varepsilon_{\text{fi}_j}-\varepsilon_j)\biggr)\rho_\mathrm{LiPF_6}\label{eq:lipf6mass} \\
-      m_\mathrm{pouch} &= 2H_\mathrm{pouch} L_\mathrm{pouch} W_\mathrm{pouch}
-      \rho_\mathrm{pouch}\label{eq:pouchmass}
- \end{align}
+    \begin{align}
+        m_\mathrm{cell} &= \sum\limits_{j}m_j + m_\mathrm{Al} + m_\mathrm{Cu} + m_\mathrm{LiPF_6} + m_\mathrm{pouch}, \; j \in  \{\text{pos, sep, neg}\}\tag{\ref*{eq:cellmass}}\\
+        m_j &=   A_\mathrm{elec}  L_j \varepsilon_j\rho_j\label{eq:mj}\\
+        m_\text{Al} &=   A_\mathrm{elec}  L_\text{Al} \rho_\text{Al}\label{eq:Almass}\\
+        m_\text{Cu} &=   A_\mathrm{elec}  L_\text{Cu} \rho_\text{Cu}\label{eq:cumass}\\
+        m_\mathrm{LiPF_6} &=   A_\mathrm{elec} \biggl(\sum\limits_{j} L_j (1-
+        \varepsilon_{\text{fi}_j}-\varepsilon_j)\biggr)\rho_\mathrm{LiPF_6}\label{eq:lipf6mass} \\
+            m_\mathrm{pouch} &= 2H_\mathrm{pouch} L_\mathrm{pouch} W_\mathrm{pouch}
+            \rho_\mathrm{pouch}\label{eq:pouchmass}
+    \end{align}
 \end{subequations}
 
+% \Cref{eq:cellmass}   consists   of  both   constant   components   as  well   as
+% components   that  vary   with  the   number  of   layers.  For   instance,  the
+% mass  of  the  electrolyte~$m_\text{LiPF6}$  as   well  as  that  of  the  pouch
+% material~$m_\text{pouch}$ are constants and are computed only once. 
 
-\Cref{eq:cellmass}   consists   of  both   constant   components   as  well   as
-components   that  vary   with  the   number  of   layers.  For   instance,  the
-mass  of  the  electrolyte~$m_\text{LiPF6}$  as   well  as  that  of  the  pouch
-material~$m_\text{pouch}$ are constants and are computed only once.
+Owing to lack of information on their thickness, the mass of the cell's tabs has
+been omitted in \cref{eq:cellmass}. However, upon availability of the relevant
+data, this may be easily incorporated through an equation analogous to
+\cref{eq:pouchmass}.
 
 \subsection{Computation of layer-dependent cell specific heat}\label{sec:spheat}
 

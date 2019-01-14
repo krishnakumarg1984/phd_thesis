@@ -136,7 +136,9 @@ parameter, is a unique idea.
         reported to be~\approx\SI{30}{\ampere\per\meter\squared}. With the help
         of carefully designed numerical simulations  (very slow discharge with a
         trickle current from  fully charged state until  charge depletion), this
-        value is refined to~\SI{29.23}{\ampere\per\meter\squared}.
+        value is refined to~\SI{29.23}{\ampere\per\meter\squared}, so as to
+        match the residual stoichiometries in both electrodes to that quoted in
+        Northrop~\etal~\cite{Northrop2011}.
 
         The  task of  determining the  electrochemically active  overall surface
         area of the reference cell is now straightforward, and is obtained as
@@ -316,9 +318,13 @@ model that  can run on applied  power. However, in the  aforementioned work, the
 relevant equations for reformulation of  solid-phase boundary conditions are not
 presented. An  independent derivation  of reformulating  the \gls{p2d}  model to
 facilitate  an  innate  power  input capability  is  therefore  provided.  Since
-the  equations  are  derived  for  a single  layer,  the  power  \emph{density},
+the  equations  are  derived  for  a single  layer,  the  power
+\emph{density}~$p$,
 obtained by  dividing the  applied power by  the overall  active cross-sectional
 area~$A_\text{cell}$, is used as the driving input.
+\begin{equation}
+    p = \frac{p_\text{cell}}{A_\text{cell}} = \frac{p_\text{cell}}{n A_\text{elec}}
+\end{equation}
 
 In  the  \gls{p2d}  model,  charge  conservation in  solid  phase  is  given  by
 \cref{eq:solidchargeconserve},  which is  revisited  below.  
@@ -430,8 +436,8 @@ x}\right)\Bigg\rvert_{\mathrlap{x=x_\text{neg/Cucc}}}  -
 	    \phi_{\text{s}_0} - \phi_{\text{s}_n} > 0
     \end{equation}
     Finally,   since   the  input   to   the   model   is  the   applied   power
-    density~$p$,  the  current  density  within  each  layer~$i$,  needs  to  be
-    solved  for.  This   is  facilitated  by  employing   the  discretised  form
+    density~$p$, in addition to the cell's terminal voltage, the  current
+    density  within  each  layer~$i$ at each time-step needs  to  be solved.  This   is  facilitated  by  employing   the  discretised  form
     of  \cref{eq:ctspowerconstraint}.   Furthermore,  since  this   equation  is
     mathematically simple, the aforementioned assumption of using node values at
     current  collector  interfaces is  no  longer  required. Applying  a  linear
