@@ -36,7 +36,7 @@ cp frontmatter/figures/black_ink_sign_from_jpg.pdf ../diff_head_submitted/
 cp frontmatter/figures/narayam_sanskrit.pdf ../diff_head_submitted/
 cp run_diff_latexmk.bat ../diff_head_submitted/
 
-latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --packages=amsmath,hyperref,siunitx,cleveref,glossaries,chemformula --exclude-textcmd="section,subsection,subsubsection" --verbose --flatten --math-markup=3 --graphics-markup=3 --enable-citation-markup -L submitted_version -L latest_version -p Preamble/ltxdiff_defaultstyle_preamble.tex ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
+latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --packages=amsmath,hyperref,siunitx,cleveref,glossaries,chemformula --exclude-textcmd="section,subsection,subsubsection" --verbose --flatten --math-markup=3 --graphics-markup=2 --enable-citation-markup -L submitted_version -L latest_version -p Preamble/ltxdiff_defaultstyle_preamble.tex ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
 # latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --packages=amsmath,hyperref,siunitx,cleveref,glossaries,chemformula --exclude-textcmd="section,subsection" --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version  ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
