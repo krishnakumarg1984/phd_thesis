@@ -158,11 +158,12 @@ are also proposed.
 
 \subsection{Conclusions from analysis of the \glsfmtshort{dra}-based state-space \glsfmtshort{rom}}
 
-In \cref{ch:improveddra}, \gls{svd} of a large Block-Hankel matrix is identified
-as a key computational bottleneck  in applying the classical \gls{dra} procedure
-for the hybrid \gls{rom} discussed therein. It is concluded that this bottleneck
-arises due  to the  slow dynamics of  solid phase diffusion  which leads  to the
-aforesaid large sized Block-Hankel matrices.
+In \cref{ch:improveddra}, \gls{svd} of a large Block-Hankel matrix, of the order
+of \SI{27}{\giga\byte} is identified as a key computational bottleneck  in
+applying the classical \gls{dra} procedure for the hybrid \gls{rom} discussed
+therein. It is concluded that this bottleneck arises due  to the  slow dynamics
+of  solid phase diffusion  which leads  to the aforesaid large sized
+Block-Hankel matrices.
 
 To mitigate this  bottleneck, an improved \gls{dra} scheme  was presented, whose
 centrepiece is an iterative \gls{svd}  algorithm. This algorithm was obtained as
@@ -199,15 +200,15 @@ prima~facie, appears to be promising.
 % % The improved \gls{dra} method therefore
 % opens up a wide range of possibilities % and prima~facie appears promising.
 
-Despite   the  aforementioned   euphoric   possibilities   facilitated  by   the
-streamlining  of  the reduced  order  modelling  workflow through  the  improved
-\gls{dra},  there  exists a  fundamental  deficiency  in this  hybrid  modelling
-approach  that impede  its near-term  adoption in  state estimation  tasks. This
-aspect was already discussed in \cref{ch:littreview} and is reiterated here. The
-entries  in  the  matrices  of  the  final  state  space  model  depend  on  the
-linearisation point of \gls{soc} and temperature. This linearisation requirement
-adversely affects the usability of the model for state estimation tasks, wherein
-the \gls{soc} is in fact an unknown quantity and is to be estimated. This cyclic
+Despite   the  benefits facilitated  by   the streamlining  of  the reduced 
+order  modelling  workflow through  the  improved \gls{dra},  there  exists a 
+fundamental  deficiency  in this  hybrid  modelling approach  that impede  its
+near-term  adoption in  state estimation  tasks. This aspect was already
+discussed in \cref{ch:littreview} and is reiterated here. The entries  in  the 
+matrices  of  the  final  state  space  model  depend  on  the linearisation
+point of \gls{soc} and temperature. This linearisation requirement adversely
+affects the usability of the model for state estimation tasks, wherein the
+\gls{soc} is in fact an unknown quantity and is to be estimated. This cyclic
 dependency  between  the linearisation  point  and  the state-estimation  entity
 renders this  model questionable for use  in a demanding application  such as in
 embedded \glspl{bms} on-board electric vehicles. Therefore, the immediate future
