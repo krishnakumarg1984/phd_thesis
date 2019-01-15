@@ -54,7 +54,7 @@ for this mediocre temporal performance is the equation deficiency of the
 underlying P2D model.
 
 From an implementation perspective, the discrete-time formulation of SPMs is
-presented by using the matrix exponential approach and its advantages over its
+presented using the matrix exponential approach and its advantages over its
 continuous-time counterparts enumerated. Despite its inherent shortcomings, it
 is deemed that operating within the confines of the well-established foundations
 of the P2D dynamics represents a definitive step forward in bringing into
