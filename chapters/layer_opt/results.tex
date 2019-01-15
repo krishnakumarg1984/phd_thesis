@@ -70,7 +70,7 @@ be  significantly  lower  than that  experienced during  the  two  extreme cases
 of  discharging and  charging \viz~\emph{acceleration} and \emph{fast  charging}
 respectively. This conclusion was arrived at after analysing the power demands
 of four different drivecycles
---- 
+---
 \begin{enumerate*}[label=\itshape\alph*\upshape)]
     \item \glsfirst{udds},
     \item \gls{nedc},
@@ -79,18 +79,18 @@ of four different drivecycles
 \end{enumerate*}
 \SI{50.83}{\kilo\watt} is the highest peak  discharge power while
 \SI{14.20}{\kilo\watt} is  the highest median  discharge power encountered
-across all the drivecycles considered. Even  with the  assumption that 
-\SI{100}{\percent}  of braking  energy  can be  recovered, the  highest peak 
+across all the drivecycles considered. Even  with the  assumption that
+\SI{100}{\percent}  of braking  energy  can be  recovered, the  highest peak
 and  median  charging  powers  are  only  \SI{43.13}{\kilo\watt}  and
 \SI{26.03}{\kilo\watt}  respectively across all these drivecycles.
 
 The   discharging  and   charging  powers   experienced  by   the  pack   with
-the same reference cell during acceleration and  fast charge  are significantly 
-higher than  those experienced with  any  standard  drivecycle.  Considering 
+the same reference cell during acceleration and  fast charge  are significantly
+higher than  those experienced with  any  standard  drivecycle.  Considering
 the  acceleration  parameters  in \cref{tbl:CommonVehicleParams} for  the
-\gls{bev}  pack, \SI{181.45}{\kilo\watt} is   the  power   requirement  for  
-acceleration  of   a  fixed   vehicle  mass on   a   flat  road   surface.  
-Four   distinct  fast-charging   power   levels \viz~\SI{50}{\kilo\watt},  
+\gls{bev}  pack, \SI{181.45}{\kilo\watt} is   the  power   requirement  for
+acceleration  of   a  fixed   vehicle  mass on   a   flat  road   surface.
+Four   distinct  fast-charging   power   levels \viz~\SI{50}{\kilo\watt},
 \SI{80}{\kilo\watt},  \SI{110}{\kilo\watt}   and \SI{130}{\kilo\watt}  are
 considered  in this  study.  This is  in adherence  to the  minimum  and maximum
 values  of  level~3  rating  as suggested  by  Yilmaz
@@ -145,7 +145,7 @@ for this acceleration study was \SI{24}{\minute}.
 
 \input{chapters/layer_opt/acc_results_table}
 
-The following discussion is applicable for both vehicular platforms. The 
+The following discussion is applicable for both vehicular platforms. The
 specific combinations  of temperatures  for traversing  the thermal  design
 space are  chosen following the  SAE~J1772 guidelines. High  power densities
 result from  using very low numbers of layers. For instance, with $n=1$, the
@@ -156,18 +156,18 @@ As $n$ increases, the overall electrochemically active surface area available to
 absorb the externally power increases. This, in-turn leads to lower power
 densities and proportionally lower overpotentials.
 
-At higher initial temperatures, owing to the  reduction in  overpotentials, a 
+At higher initial temperatures, owing to the  reduction in  overpotentials, a
 larger  voltage overhead  is available  to accommodate the  internal
 polarisation  drop. This, in-turn, implies that smaller layer counts suffice to
 satisfy acceleration power demands for higher values of $T_\text{init}$. For all
-temperature combinations, the largest deviation from~$T_\text{init}$ 
+temperature combinations, the largest deviation from~$T_\text{init}$
 experienced by the \gls{bev} cell is a \SI{0.48}{\degreeCelsius} increase. This
 is because the acceleration event, wherein the highest magnitude of discharge
 powers get applied, are of a  short duration. Consequently, it can be  concluded
 that a single isolated acceleration event does not heat the \gls{bev} battery
 pack, and therefore the cell  temperature remains close to that of  the initial
 value. The \gls{phev} cell  experiences higher  power levels  and although  its
-temperature increases  much  higher  than  the corresponding  \gls{bev}  cell, 
+temperature increases  much  higher  than  the corresponding  \gls{bev}  cell,
 the  maximum temperature  during acceleration  remains  well below  the  upper
 cutoff  limit for all thermal scenarios considered. Finally, even  for the worst
 case simulation  run, the cell's  \gls{soc} is depleted only by  a maximum of
@@ -175,7 +175,7 @@ case simulation  run, the cell's  \gls{soc} is depleted only by  a maximum of
 the \gls{phev} cell.
 
 The foregoing  discussion reveals  that the lower cut-off  voltage strongly
-influences  the optimal layer   configuration  for   acceleration  tests.  
+influences  the optimal layer   configuration  for   acceleration  tests.
 Based upon the simulation results of \cref{tbl:accResults},  for satisfying
 acceleration power requirements, ${n = 27}$ and ${n=69}$ represent the optimal
 layer choices for the \gls{bev} and \gls{phev} platforms respectively for the
@@ -215,7 +215,7 @@ the  temperature  combination~${(T_\text{init},T_\text{sink})  =  (15,  5)
 represents the  least number of  layers required to  fast charge the  pack under
 \gls{cp} conditions until  the target \gls{soc} is reached.  The charging scheme
 additionally considers the constraint that the cell temperature must stay
-within~${T_\text{max}=  \SI{55}{\degreeCelsius}}$. Furthermore,  its voltage 
+within~${T_\text{max}=  \SI{55}{\degreeCelsius}}$. Furthermore,  its voltage
 must remain less than or equal  to~${V_\text{max} = \SI{4.22}{\volt}}$. Finally,
 the charging algorithm is plating-aware \ie~the charging stops as soon as the
 concentration at the particle surface reaches the maximum possible concentration
@@ -252,7 +252,7 @@ The cell's nominal capacity is the lower of the electrode capacities \ie{} $Q_n
 $n$) of \crefrange{eq:capacityneg}{eq:capacitypos} and applying \cref{eq:electrodeCapequalarea}, it is clear that the quantities to be
 compared are the two product terms~$c_\snegmax
 \abs{\theta_{{\SI{100}{\percent}_\text{neg}}} \! -
-\theta_{{\SI{0}{\percent}_\text{neg}}}}$ and 
+\theta_{{\SI{0}{\percent}_\text{neg}}}}$ and
 $c_\sposmax \abs{\theta_{{\SI{100}{\percent}_\text{pos}}} \! -
 \theta_{{\SI{0}{\percent}_\text{pos}}}}$. Substituting the numerical values
 from \cref{tbl:lcoSimParamsSPMp2d}, it is seen that the negative electrode is
@@ -261,7 +261,7 @@ the limiting electrode for cell \ie{} $Q_n = Q_\text{neg}$.
 \Cref{fig:fig_CapacityQuadrants} shows the nominal  capacity of cells and charge
 passed versus  the number of  layers during fast  charging. In these  plots, the
 nominal  capacity~$Q_\text{n}$ of  the cell  versus the  layer count~$n$  is
-represented by the linear downward-sloping line. 
+represented by the linear downward-sloping line.
 
 \begin{figure}[!bp]
     \begin{minipage}[t]{\textwidth}
@@ -299,14 +299,14 @@ reason  for  the failure  of  these  layer choices.  This  is  indicated by  the
 narrow \mbox{$V_\text{max}$-limited} region in \cref{fig:fig_CapacityQuadrants}.
 For an intermediate range of  layer choices, the rate of power-density  drop
 with layer count begins to flatten, thereby leading  to a plating-limited
-region. For these layer choices, the  surface concentration starts to exceed 
+region. For these layer choices, the  surface concentration starts to exceed
 the saturation value before any  thermal or voltage  limits are reached.
 Finally,  further increasing the layer count beyond  an intermediate optimal
 value leads to  a linear drop in the cell's  charge accepting  capability.
 During fast  charging with  the chosen power levels, although these layer
-choices  do not reach the thermal, voltage or concentration  limits,  they  are 
+choices  do not reach the thermal, voltage or concentration  limits,  they  are
 unable  to attain  the  target  \gls{soc}  of \SI{80}{\percent}. This is simply
-due to the lower nominal capacity of the these cells.  There is  no  benefit 
+due to the lower nominal capacity of the these cells.  There is  no  benefit
 whatsoever in  designing  cells  in this  region.
 \Cref{fig:fig_CapacityQuadrants} provides  clues to  the design engineer  on the
 degree  of optimisation  that can  be achieved  by careful  design choices.  For
@@ -317,21 +317,22 @@ application's demands.
 
 
 From  the results  discussed thus  far, it  is evident  that it  is the  thermal
-environment  that  governs   the  overall globally optimal  layer configuration 
+environment  that  governs   the  overall globally optimal  layer configuration
 to to be used for cell design in  both acceleration and fast charging studies
 and across both vehicular platforms. For all charging powers simulated,
-$n^\text{fastchg}_\text{opt}$~is the highest for the coldest temperature 
+$n^\text{fastchg}_\text{opt}$~is the highest for the coldest temperature
 combination~${(T_\text{init},T_\text{sink}) =  (15, 5) \si{\degreeCelsius}}$.
 This is due to  the slow rate of electrochemical reaction and diffusion  at cold
 temperatures. The thinner  electrodes from  using higher layer count enable
 fast charging without saturating the surface of the electrode particles. For the
-fast charging scenarios considered here,  the optimal number of layers to use 
+fast charging scenarios considered here,  the optimal number of layers to use
 is 89~for the \gls{bev} cell and  153~for the \gls{phev} cell. The globally
 optimal  layer choice to be  used for cell design  is therefore the higher of
 the two values corresponding  to acceleration and fast charging cases.
 
 Therefore, this model-based design framework recommends the use of 89~layers for
 the cells to be  used in the \gls{bev} platform and 153~layers  for the cells to
-be used in the \gls{phev} platform.  This concludes the discussion of results of
-this chapter as well as all design-related aspects of this thesis.
+be used in the \gls{phev} platform.
+
+% This concludes the discussion of results of this chapter as well as all design-related aspects of this thesis.
 

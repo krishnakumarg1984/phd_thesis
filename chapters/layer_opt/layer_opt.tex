@@ -58,8 +58,52 @@
 \section{Results and Discussion}\label{sec:resultslayeropt}
 \input{chapters/layer_opt/results}
 
+\section{Conclusions}
 
-% \section{Conclusion}
+A methodology to design the number of layers within pouch cells so as to
+maximise their energy density whilst simultaneously being capable of high
+charge-acceptance rate at the plating boundary has been developed. The proposed
+methodology may be employed by designers of \gls{xeV} powertrains to mitigate
+the inefficiencies that plague the iterative experimental designs for each
+powertrain in a vehicle manufacturer's product portfolio.  The methodology
+discussed in this chapter also paves the way to incorporate common module
+designs for packs through layer optimisation. By suitably changing the number of
+layers within a cell, while keeping the exterior module geometry unchanged,
+shall lead to cost reduction and lower the time for derivative product designs.
+
+A mathematical procedure to adapt the standard galvanostatic-driven \gls{p2d}
+model to accept direct power inputs has been elucidated. This reformulation is
+based on a quadratic boundary condition for the discretised solid-phase charge
+conservation equation, coupled with a positivity constraint on the cell's
+terminal voltage and an algebraic residual equation. A key numerical aspect of
+the \glspl{pbm} used in this work is the incorporation of a hybrid
+pseudo-spectral/Finite Volume scheme, wherein the solid phase diffusion equation
+is solved in the Chebyshev domain while a finite volume discretisation is
+employed for rest of the axial-direction \glspl{pde}. This hybrid combination
+helps to achieve fast simulation runs without sacrificing model fidelity.
+
+The methodology proposed here for pouch cells may be considered for application
+to cells of other form factors with suitable modifications. While considering
+the cylindrical form factor, instead of a discrete set of layers, the electrode
+sheets are wound into one continuous jelly roll and placed inside a cylindrical
+can.  A suitable mathematical curve such as the logarithmic spiral could be
+employed wherein the number of turns could be used as a proxy for the layer
+count. The optimisation problem is also simplified to a certain extent since the
+cylindrical can's dimensions have already been standardised across the
+automotive battery industry. However, certain additional challenges could arise
+in directly translating the assumptions of the cooling methodology employed. For
+instance, a three dimensional discretisation of the thermal grid is not uncommon
+for cylindrical form factors, which requires careful considerations for
+bidirectionally coupling to the electrochemical model. Any differences in power
+densities at the interior of the core versus the extremities of the electrode
+spirals need to be accounted for.
+
+This concludes the design-oriented aspects of the thesis. Next,
+\cref{ch:improveddra} deals with the aspects of analysing the computational
+bottlenecks present in one of the notable \glspl{rom} and proposes a mitigation
+strategy for them.
+
+
 
 % The outcome is that a ready to  use tool is made available to validate empirical
 % layer choices.  In the  absence of  access to  cell manufacturing  facilities to
