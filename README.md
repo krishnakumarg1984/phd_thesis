@@ -9,7 +9,7 @@
 
 The realisation of Physics-Based Models (PBMs) of lithium ion cells in the
 Battery Management Systems (BMSs) of electric vehicles is studied through a
-three-pronged strategy -- analysis, design and implementation. The survey of
+three-pronged strategy &ndash; analysis, design and implementation. The survey of
 literature undertaken in the backdrop of this broad landscape reveals a dearth
 of model-based designs for automotive-grade pouch cells, which is therefore
 addressed in this work. Perusal of prior art in reduced-order battery modelling
@@ -24,7 +24,7 @@ underpinning all research presented herein.
 A computational framework to optimise the number of electrochemical layers
 within a pouch cell is developed. The chosen optimality criterion specifically
 addresses the two most pertinent issues that currently hinder the mass-market
-adoption of electric vehicles -- range anxiety and fast charging. Driven by the
+adoption of electric vehicles &ndash; range anxiety and fast charging. Driven by the
 need for a balanced capacity loading at both electrodes, a deterministic
 criterion for computation of electrode thicknesses is formulated. The search
 space of layer choices across all thermal scenarios is traversed with the least
@@ -70,7 +70,7 @@ transfer functions of the number of moles per unit area of lithium ions in each
 electrode region is identified for the pertinent range of applied currents. The
 identified transfer functions are then employed in a composite SPM which
 demonstrates superior accuracy compared to the incumbent state of the art
-electrolyte- enhanced SPM, thereby demonstrating a substantial accomplishment
+electrolyte-enhanced SPM, thereby demonstrating a substantial accomplishment
 from an implementation viewpoint. Although the advancements herein are reported
 for an isothermal implementation of the models, future enhancement through
 thermally coupled model derivations is advocated. Finally, the importance of
