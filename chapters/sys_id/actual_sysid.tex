@@ -42,14 +42,14 @@ the number  of feedforward coefficients  and ${(n_a,n_d)}$, the number  of feedb
 coefficients in $G(q)$ and $H(q)$ respectively.
 
 
-In  this  system  identification  task  at hand,  the  output  measurements  are
-collected from a  \emph{noise-free} simulation of the \gls{p2d}  model \ie~the
-disturbance transfer operator in \cref{eq:outputwithsysandnoise} is zero
-\begin{align}
-    y[k] &= G(q)u[k] + \cancelto{0}{H(q)}e[k]
-\shortintertext{Hence, the time-domain output  reduces  to}
-y[k] &= G(q)u[k] \label{eq:outputwithsysonly}
-\end{align}
+% In  this  system  identification  task  at hand,  the  output  measurements  are
+% collected from a  \emph{noise-free} simulation of the \gls{p2d}  model \ie~the
+% disturbance transfer operator in \cref{eq:outputwithsysandnoise} is zero
+% \begin{align}
+%     y[k] &= G(q)u[k] + \cancelto{0}{H(q)}e[k]
+% \shortintertext{Hence, the time-domain output  reduces  to}
+% y[k] &= G(q)u[k] \label{eq:outputwithsysonly}
+% \end{align}
 
 Thus, the system identification task becomes one that of estimating
 \begin{enumerate}
@@ -58,10 +58,21 @@ Thus, the system identification task becomes one that of estimating
     \item The zeros themselves~${b_1, b_2, \dots b_{n_b}}$.
     \item The number of feedback coefficients (poles)~$n_a$.
     \item The pole locations~${a_1, a_2 \dots a_{n_a}}$.
+    \item The coefficients of the noise filter~$H(q)$\footnote{In the \gls{armax} estimation of non-linear dynamics, the
+noise-filter is capable of returning non-zero coefficients even if the
+identification data set is obtained from a \gls{noise-free} simulation of the
+\gls{p2d} model as is the case here. However, as a first-order approximation, in
+the interest of simplicity and considering that this work serves as an
+introduction to the application of system identification to \glspl{spm}, this thesis author errs on
+the side of making the linearity assumption, which is valid only for low
+C-rates, whilst acknowledging that this
+limitation could be relaxed by incorporating the coefficients of the
+noise-filter~$H(q)$ in the future. For the rest of this work, only the
+coefficients of the linear plant dynamics~$G(q)$ are estimated.}.
 \end{enumerate}
 for  each  of  the  two  transfer operators~$G_1(q)$  and  $G_2(q)$  \ie~the
 electrolyte  time-evolution subsystems  in the  negative and  positive electrode
-region respectively.
+region respectively. 
 
 \subsection{Estimation of transport delay}
 

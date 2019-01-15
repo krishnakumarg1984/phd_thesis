@@ -20,14 +20,15 @@ Before discussing the shape characteristics of the input sequence, its magnitude
 must be established.  The various specially prepared input  sequence families do
 not  share a  common definition  for their  magnitudes. A  guiding principle  in
 system  identification is  that  it  is important  to  have  the input  signal's
-magnitude  to  be  representative  of standard  operating  conditions.  Although
-standardised  drive  cycle  profiles  are  available,  from  which  a  speed  to
-current mapping  can be  performed, it  is impossible  to predict  a~priori, the
-specific  amplitudes of  currents  that  the cell  may  undergo under  real-life
-load  conditions.  Without  further  deterministic information,  the  author  of
-this  thesis  chose to  interpret  magnitude  as  being  the peak  amplitude  of
-the  input  current profile.  As  seen  in \cref{fig:uddssimp2dspmresults},  the
-representative  \gls{udds}  drivecycle  input  profile  corresponds  to  a  peak
+magnitude  to  be  representative  of standard  operating  conditions if the
+system is linear.  Although standardised  drive  cycle  profiles  are
+available,  from  which  a  speed  to current mapping  can be  performed, it  is
+impossible  to predict  a~priori, the specific  amplitudes of  currents  that
+the cell  may  undergo under  real-life load  conditions.  Without  further
+deterministic information,  the  author  of this  thesis  chose to  interpret
+magnitude  as  being  the peak  amplitude  of the  input  current profile.  As
+seen  in \cref{fig:uddssimp2dspmresults},  the representative  \gls{udds}
+drivecycle  input  profile  corresponds  to  a  peak
 of~3C~\ie~\SI{180}{\ampere}.  Following   the  standard  principles   of  system
 identification, it is desirable  for the inputs to the system  to lie along some
 measure  of  central tendency.  This  is  to  enable  the identified  system  to
@@ -102,10 +103,12 @@ of the system  and shall not generalise well to  real-world datasets outside the
 training realm. Hence, having an  independent validation current profile for the
 task at hand is of paramount importance.
 
-For the system identification task at  hand, the characteristic waveforms of the
-validation profile were deliberately conjured to be differ vastly from that used
-in training the model. The  validation profile consists of the following
-sequence
+% For the system identification task at  hand, the characteristic waveforms of the
+% validation profile were deliberately conjured to be differ vastly from that used
+% in training the model.
+
+The  validation profile visualised in \cref{fig:sysidvalidationcurrent} consists
+of the following sequence
 \begin{enumerate}
     \item Periodic \gls{rgs} with 4~periods of \SI{200}{\second} each\quad (0--\SI{799}{\second})
     \item \gls{prbs} for emulating white noise \ie~with a flat power spectra
@@ -114,10 +117,10 @@ sequence
         various fundamental frequencies added together\quad (1000--\SI{1199}{\second})
 \end{enumerate}
 
-Overall,  the validation  profile has  been designed  to cover  a wide  range of
-frequencies  akin to  the  training  profile, but  differing  completely in  its
-time-domain appearance.  The specific  validation current  profile used  in this
-system identification is shown in \cref{fig:sysidvalidationcurrent}.
+% Overall,  the validation  profile has  been designed  to cover  a wide  range of
+% frequencies  akin to  the  training  profile, but  differing  completely in  its
+% time-domain appearance.  The specific  validation current  profile used  in this
+% system identification is shown in \cref{fig:sysidvalidationcurrent}.
 
 \begin{figure}[!htbp]
     \centering
