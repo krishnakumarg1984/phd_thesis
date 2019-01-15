@@ -29,19 +29,28 @@ represented  by  a sphere.  Hence,  the  concentration  of lithium  within  each
 electrode~$c_{\text{s}_j}$,~\jinnegpos{}  is  only  a  function  of  the  radial
 position~$r_j$,~\jinnegpos{}  and  the  time~$t$.   The  surface  area  of  each
 representative sphere is scaled appropriately,  such that they are equivalent to
-the  active area  of the  corresponding  porous electrodes.  Thus the  \gls{spm}
-accounts  for  the  reduced  volume-fraction  arising  due  to  the  microporous
-structure  of  the   solid  phase  and  hence,  the  storage   capacity  of  the
-representative  particles  match  that  of  the  corresponding  electrodes.  The
-overarching  assumption  of  the  \gls{spm} modelling  philosophy  is  that  the
-electrochemical performance of these representative electrodes are sufficient to
-model the behaviour of the cell at its terminals. The \gls{spm} thus employs the
-coarsest possible spatial  discretisation of the cell's thickness  with the goal
-of minimising computational burden.
+the  active area~$A_\text{elec}$  of the  corresponding  porous electrodes. 
+Thus the  \gls{spm} accounts  for  the  reduced  volume-fraction  arising  due 
+to  the  microporous structure  of  the   solid  phase  and  hence,  the 
+storage   capacity  of  the representative  particles  match  that  of  the 
+corresponding  electrodes.  The overarching  assumption  of  the  \gls{spm}
+modelling  philosophy  is  that  the electrochemical performance of these
+representative electrodes are sufficient to model the voltage behaviour of the
+cell at its terminals. The \gls{spm} thus employs the coarsest possible spatial 
+discretisation of the cell's thickness  with the goal of minimising
+computational burden.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{spm_geometry}
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics{spm_geometry}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \node[fill=mourablue,inner sep=0pt,outer sep=0pt] at (0.265,0.045) {\scriptsize $\text{p}_\text{n}$};
+            \node[minimum height=3mm, minimum width=2mm,fill=mourablue,inner sep=2pt,outer sep=2pt] at (0.27,0.09) {};
+            \node[fill=mouraorange,inner sep=0pt,outer sep=0pt] at (0.785,0.045) {\scriptsize $\text{p}_\text{p}$};
+            \node[minimum height=3mm, minimum width=2mm,fill=mouraorange,inner sep=2pt,outer sep=2pt] at (0.80,0.085) {};
+        \end{scope}
+    \end{tikzpicture}
     \caption[Schematic illustration depicting geometrical origins of the
     \glsfmtshort{spm}]
     {%
@@ -50,7 +59,7 @@ of minimising computational burden.
         discretisation of one electrochemical layer of a  pouch cell.  The
         active material of each porous electrode is represented by one
         representative spherical particle, thus entirely eliminating the spatial
-        dimension along the axial direction. Illustration reproduced
+        dimension along the axial direction. Illustration adapted
         from Moura~\etal~\cite{Moura2012}.
     }%
     \label{fig:sandwichtospm}
@@ -241,13 +250,17 @@ The \gls{soc} of the cell can be obtained from the bulk concentration of lithium
 in  either the  negative  or  positive electrode.  By  convention, the  negative
 electrode is used.
 \begin{equation}\label{eq:socinitialdefn}
-    z(t) = \frac{3}{c_\snegmax}∫_0^{R_\pneg}r^2 c_\sneg (r,t)\, dr
+    z(t) = \frac{3}{c_\snegmax}∫_0^{R_\pneg}r^2 c_{s_\text{neg}} (r,t)\, dr
 \end{equation}
+
 Given an  initial cell  \gls{soc}~${z(0) = z_0}$  at rest,  the equilibrium
 concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
     c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(θ_\maxj - θ_\minj \right) + θ_\minj \bigg]
 \end{equation}
+where $\theta_\maxj$ and $\theta_\minj$ represent the stoichiometry of the
+electrode at \SI{100}{\percent}~gls{soc} and \SI{0}{\percent}~\gls{soc}
+respectively.
 
 \Cref{eq:csdiffusionfinal},          its         corresponding          boundary
 conditions~\eqref{eq:csfluxcentre} and~\eqref{eq:csfluxsurfacefinal}  along with

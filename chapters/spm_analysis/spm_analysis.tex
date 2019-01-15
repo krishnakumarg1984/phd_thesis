@@ -35,3 +35,38 @@
 \section{Quadratic Approximation of Ionic Spatial Concentration}\label{sec:quadraticapprox}
 \input{chapters/spm_analysis/quadratic_approximation_ce.tex}
 
+\section{Conclusion}
+
+This chapter dealt with the in-depth analysis of ---
+\begin{enumerate*}[label=\itshape\alph*\upshape)]
+    \item the basic \gls{spm} and
+    \item an electrolyte-enhanced \gls{spm} employing the quadratic spatial approximation model for ionic concentration.
+\end{enumerate*}
+Simulation results for  the basic \gls{spm}  reveal that   while its  \gls{soc}
+computation is of acceptable accuracy even at moderate C-rates, it suffers from
+poor performance in the prediction of terminal voltage at currents above  0.5C.
+This renders the model unusable as the  plant model  for  state estimation tasks
+since the  voltage measured from the  model  in a  feedback estimator shall  map
+to a   distant \gls{soc} operating point.
+
+% Although the  mitigation of mismatch  between the measured  quantity (terminal
+% voltage) and  the estimated quantity (\gls{soc})  has not been studied  from a
+% stability perspective, perhaps owing to its futility,
+
+The  assumptions  and governing equations of the popular quadratic approximation
+model for the spatial profile of  ionic concentration was presented. Simulation
+results reveal that while its spatial  profile computation for a galvanostatic
+operation is of  acceptable accuracy, the temporal  performance of the model  is
+mediocre. In particular, the time evolution of ionic concentration at the
+current collector interfaces computed by the model fail to capture the
+intricacies in the temporal evolution exhibited by  the \gls{p2d} model's
+profile.
+
+This chapter concludes with a view that accuracy of the quadratic approximation
+model needs to be improved upon before deployment in applications involving
+highly dynamic load profiles such as a vehicular \gls{bms}. In
+\cref{ch:newelectrolytemodel}, the causal factors for the  lacklustre
+performance of the quadratic approximation model is analysed in the context of
+the author's  own attempts  in arriving  at an improved representation of
+electrolyte spatial dynamics through system identification.
+
