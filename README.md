@@ -2,7 +2,5 @@
 
 ### Architecture
 
-![Schematic depicting the vehicle-to-cell hierarchical overview of a typical electrified powertrain architecture](chapters/layer_opt/figures/drivetrain.png = 1010x624)
-<img src="chapters/layer_opt/figures/drivetrain.png" alt="Schematic depicting the vehicle-to-cell hierarchical overview of a typical electrified powertrain architecture" width="1010" height="624" />
-
-![Schematic depicting the basic construction of a lithium ion unit cell](/chapters/introduction/figures/cell_sandwich_svg.svg)
+<img src="chapters/layer_opt/figures/drivetrain.png" alt="Schematic depicting the vehicle-to-cell hierarchical overview of a typical electrified powertrain architecture" width="505" height="312" />
+<img src="/chapters/introduction/figures/cell_sandwich_svg.svg" alt="Schematic depicting the basic construction of a lithium ion unit cell" width="250" height="250" />
