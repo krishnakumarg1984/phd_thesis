@@ -389,7 +389,7 @@
             % \draw[name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-10mm,0) node[midway,above] {\small no} -| ++(0,-151.75mm) -| (bisectupwards.south);
             \draw [name path=failurepathfastchg] (tempcheckfastchg.west) -- ++(-9mm,0) node[midway,above] {\small no} |- ($(accsoccheck.south)+(0,-9mm)$);
             \draw (fastchgvoltagecheck.west) -- ++(-9.3mm,0) node[midway,above] {\small no} ;
-            % \draw (fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,left] {\small no} -- ($(accsoccheck.south)+(0,-9mm)$);
+            \draw (fastchgtargetcheck.south) -- ++(0,-9.10mm) node[midway,left] {\small no} -- ($(accsoccheck.south)+(0,-9mm)$);
             % \draw (fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,left] {\small no} -- ($(accsoccheck.south)+(222mm,-9mm)$) |- node[midway,left] {\small no} (fastchgtargetcheck.west);
 
             \path [name path=timeoutpath] (timecheck.west) -- ++(-5mm,0);
@@ -424,9 +424,9 @@
             % \node [accnode,right=of accsoccheck,yshift=-8.0mm] (noptacc) {$n\mathrm{^{acc}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
             \node [accnode,below = of storefeasiblesolution.south west,anchor=west] (noptacc) {$n\mathrm{^{acc}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
             \node [fastchgnode,xshift=0mm,anchor=east] at (noptacc-| computelratio.east) (noptfastchg) {$n\mathrm{^{fastchg}_{opt}}(T^{(k)}_\mathrm{init},T^{(k)}_\mathrm{sink})=n_\mathrm{feas}$};
-            \node[controlnode,align=center,inner sep=2pt,anchor=east]  at ($(noptfastchg.east)+(29.5mm,0)$) (exitcondition2) {\scriptsize exit \\ \scriptsize condn.$=2$};
-            \draw [->](fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,right] {\small no} -| (exitcondition2.south);
-            \draw  (exitcondition2.north) |- (fastchgtargetcheck.west);
+            % \node[fastchgnode,align=center,inner sep=2pt,anchor=east]  at ($(noptfastchg.east)+(29.5mm,0)$) (exitcondition2) {\scriptsize exit \\ \scriptsize condn.$=2$};
+            % \draw [->](fastchgtargetcheck.south) -- ++(0,-9.3mm) node[midway,right] {\small no} -| (exitcondition2.south);
+            % \draw  (exitcondition2.north) |- (fastchgtargetcheck.west);
 
             \draw [->] (searchconverged.south) -- node [right] {\small yes} ++(0,-12.0mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-11.5mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-3mm) -| (noptacc.50);
             \draw [->] (searchconverged.south) -- node [right] {\small yes} ++(0,-12.0mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-11.5mm) arc [start angle=90,end angle=270,radius=1mm] -- ++(0,-3mm) -| (noptfastchg.140);
