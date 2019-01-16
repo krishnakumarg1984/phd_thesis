@@ -349,7 +349,8 @@ either side of the \gls{p2d} model, it  is appropriate to use the absolute value
 of their errors with respect to the  \gls{p2d} benchmark to compare them. In the
 bottom  plot,  the  percentage  deviation  of the  absolute  error  of  the  two
 \glspl{rom} is shown. The statistics of this deviation is quantified
-in \cref{tbl:errorsummarycntcurrdischgallspms}.
+in \cref{tbl:errorsummarycntcurrdischgallspms} which additionally includes the
+performance metrics from the quadratic approximation \gls{spm}.
 
 \input{chapters/sys_id/final_spm_1C_error_table}
 
@@ -465,16 +466,17 @@ of   \SI{180}{\ampere}  \ie~3C  (see \cref{fig:uddssimp2dspmresults}).   The
 voltage   profiles  computed   by  the   basic  \gls{spm}   and  the   benchmark
 \gls{p2d}  model   is  also  overlaid   (top  plot).  The   percentage  absolute
 error  of  the  two  \glspl{rom}  relative  to  the  \gls{p2d}  model  is  shown
-in  the  bottom  plot.  Clearly,  it  is  seen  that  the  terminal  voltage  of
-the  composite  \gls{spm}   is  significantly  more  accurate   than  the  basic
-\gls{spm}  (see \cref{tbl:errorsummaryuddsdischgallspms}).   For  instance,  the
+in  the  bottom  plot.  It  is  seen  that  the  terminal  voltage  of
+the  composite  \gls{spm}   is  more  accurate   than  the  basic
+\gls{spm}  (see \cref{tbl:errorsummaryuddsdischgallspms}, which additionally
+includes the performance metrics from the quadratic \gls{spm}).   For  instance,  the
 voltage  profile  computed by  composite  \gls{spm}  matches the  complex  shape
 characteristics  of the  \gls{p2d} model  while remaining  very close  to it  in
 magnitude.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
-    \includegraphics{composite_spm_vcell_udds.pdf}
+    \includegraphics[width=0.6375\textwidth]{composite_spm_vcell_udds-crop.pdf}
     \caption[%
     Terminal voltage output of --- \emph{a}) the \glsfmtshort{p2d} model, \emph{b}) the
     basic \glsfmtshort{spm}, and \emph{c}) the composite \glsfmtshort{spm} for a
@@ -502,4 +504,5 @@ magnitude.
 % Conclude the chapter  by saying that everything is now  in time domain. Suitable
 % for direct  implementation. Concludes the  implementation aspect of  the thesis.
 % Can now be used as the plant model in EKF and other applications.
+
 
