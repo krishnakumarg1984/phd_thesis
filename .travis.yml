@@ -9,8 +9,8 @@ notifications:
     on_success: never
 cache:
   directories:
-  - "/tmp/texlive"
-  - "$HOME/.texlive"
+  /* - "/tmp/texlive" */
+  /* - "$HOME/.texlive" */
   - "$HOME/.cache/pip"
 script:
 # - bash dropbox_uploader.sh download Apps/Overleaf/phd_thesis/gitHeadLocal.gin gitHeadLocal.gin
