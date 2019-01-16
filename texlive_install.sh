@@ -29,6 +29,7 @@ tlmgr install luatex
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
 tlmgr install   \
+    addlines \
     aleph \
     algorithmicx \
     algorithms \
@@ -44,6 +45,7 @@ tlmgr install   \
     cancel \
     caption \
     ccicons \
+    changepage \
     chemformula \
     chkfloat \
     cleveref \
