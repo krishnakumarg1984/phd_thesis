@@ -101,7 +101,7 @@ Delving  into the  battery pack  under  consideration, this  thesis considers  a
 standard  modular  layout wherein  the  \gls{phev}  pack  has one  string  while
 the  \gls{bev}  pack  has  three  parallel strings, in congruence with a
 contemporary pack design~\cite{Liu2016a}.  Within  each  string,  both vehicular
-platforms employ  8~series-connected  modules.  Taking cognisance  of the 
+platforms employ  8~series-connected  modules.  Taking cognisance  of the
 benefits  of common  module  design,  identical  pack modules  are  assumed
 across  both  \gls{xeV}  platforms  which  is  then  extrapolated  to  impose  a
 stronger  condition  of  identical  geometry  for  the  constituent  cells  (see
@@ -130,19 +130,23 @@ seems infeasible at first glance, three careful considerations have been made to
 justify  this assumption.  Firstly,  power  (and not  current)  is  used as  the
 stimulus to the cell. This  implies that, despite the \emph{parallel} connection
 of cells  (in groups of three  cells within each module),  each cell experiences
-the same  power,~$p_\text{cell}= \frac{P_\text{batt}}{n_\text{cells}}$. Even 
+the same  power,~$p_\text{cell}= \frac{P_\text{batt}}{n_\text{cells}}$. Even
 across parallel-connected strings,  the power  handled by each cell shall be the
-same.  This necessitates the modification of the standard \gls{dfn}  model in 
+same.  This necessitates the modification of the standard \gls{dfn}  model in
 order to  accommodate power  inputs which  is discussed  in
-\cref{sec:innatepowerinput}. Secondly,  although the current  in all cells  of a
-\emph{series}  string remain  the same  (by virtue  of Kirchoff's  current law),
-their  terminal voltage  levels could  drift away  from each  other and  becomes
-unbalanced over  time~\cite{Andrea2010}. This naturally raises  questions on the
-assumption  of  identical  conditions  for  all  cells.  However,  this  voltage
+\cref{sec:innatepowerinput}. Such a modification assumes particular significance
+in the context of making the model amenable to a charging scheme wherein the
+control algorithm in a modern grid charger's power electronics enable it to
+continuously operate close to its power-delivery limits with suitable voltage
+feedback from the battery pack. Secondly, although the current  in all cells  of
+a \emph{series}  string remain the same (by virtue  of Kirchoff's  current law),
+their  terminal voltage  levels could drift away  from each  other and  becomes
+unbalanced over time~\cite{Andrea2010}. This naturally raises  questions on the
+assumption  of identical  conditions  for  all  cells.  However,  this  voltage
 unbalance is mitigated with the help of modern \glspl{bms} that employ balancing
-techniques  such as  passive  bleeder resistors  or  sophisticated active  dc/dc
+techniques such as  passive  bleeder resistors  or  sophisticated active  dc/dc
 converters. Yet another adverse effect that  poses a threat to the assumption of
-identical  conditions  is  the  uneven distribution  of  cell  temperatures.  In
+identical conditions  is  the  uneven distribution  of  cell  temperatures.  In
 automotive packs employing natural convection, cells that are physically located
 innermost in  the string tend  to get hotter  than the outermost  cells. Through
 good thermal management  design \eg~forced cooling through  circulation of the
@@ -184,9 +188,9 @@ within the cell as indicated by this shading scheme is consistent with that
 reported in literature~\cite{Veth2014,Bazinski2014,Zhao2018}. Furthermore, heat
 exchange with the surroundings is also graphically  illustrated through cooling
 plates mounted at the tabs  of the cell. This  highlights the specific type  of
-cooling assumed \viz~\emph{tab-cooling}  as  opposed to  conventional 
+cooling assumed \viz~\emph{tab-cooling}  as  opposed to  conventional
 \emph{surface-cooling} historically employed for automotive applications. The
-assumption of tab-cooling is an  essential requirement for  upholding the 
+assumption of tab-cooling is an  essential requirement for  upholding the
 validity of the  proposed layer optimisation scheme, and therefore warrants
 further justification.
 
@@ -215,10 +219,10 @@ schematic  in the  centre-bottom  of  \cref{fig:fig_PowertrainSchematic}, it  is
 clear that  at any vertical  co-ordinate in space  within the cell,  the shading
 across the entire cell width remains  uniform throughout. Furthermore, it has
 been reported in literature that the thermal gradients established within a unit
-cell are relatively small and may be safely ignored~\cite{PlettECE5710_07}. 
-These imply that each layer  along  a  one-dimensional  cross-section  of the 
-cell  is  at  the  same temperature. Based  on the inferences from 
-Hunt~\etal~\cite{Hunt2016}, with tab cooling, only  small thermal gradients are 
+cell are relatively small and may be safely ignored~\cite{PlettECE5710_07}.
+These imply that each layer  along  a  one-dimensional  cross-section  of the
+cell  is  at  the  same temperature. Based  on the inferences from
+Hunt~\etal~\cite{Hunt2016}, with tab cooling, only  small thermal gradients are
 induced in the planar  direction. In this unique scenario,  the thermal effects
 within the cell  are not large enough to warrant a detailed numerical
 discretisation.  On the other hand, ignoring the temperature distribution  of
@@ -240,12 +244,12 @@ is allowed  to change to  different constant  values between set  of simulations
 as  per relevant  vehicle  testing  standards. The  details  of  this aspect  is
 discussed  in  \cref{sec:layeroptframework}.  The  material  properties  of  the
 constituent components  of each layer  coupled with  the total number  of
-layers are used  to determine  the  lumped  mass  and specific  heat  capacity 
-of  the  pouch cell.  These  computations  are  discussed  in 
-sections~\ref{sec:massofonecell} and~\ref{sec:spheat} respectively. The 
+layers are used  to determine  the  lumped  mass  and specific  heat  capacity
+of  the  pouch cell.  These  computations  are  discussed  in
+sections~\ref{sec:massofonecell} and~\ref{sec:spheat} respectively. The
 assumption of tab cooling  thus leads to this qualitative  description of  the
 lumped  thermal model to  be used  for the design simulations.  Further
-quantification by  way of relevant  model equations and  the computation  of 
+quantification by  way of relevant  model equations and  the computation  of
 the constituent  parameters of  the  thermal model  is embedded as an integral
 aspect of  the layer optimisation framework and shall be presented in
 \cref{sec:spheat}.
