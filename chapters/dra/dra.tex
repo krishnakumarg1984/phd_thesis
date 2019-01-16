@@ -34,6 +34,7 @@ helped to refine the manuscript for that journal publication.}
 
 \bigskip
 
+\newpage
 \capolettera{T}{his}  chapter  presents  an  analysis  and  critical  evaluation
 of  a computational  bottleneck  present in  a  popular physics-based  \gls{rom}
 framework  of  lithium-ion  batteries  and  proposes  an  alternative  numerical
@@ -51,7 +52,7 @@ approach~\cite{Pryce1993}.
 In order to arrive at a  \gls{lti} state-space representation of the system (see
 \cref{eq:LTIstatespace})  for embedded  implementation, Lee~\etal{}  devised the
 \gls{dra}, a numerical procedure  to systematically transform all transcendental
-transfer functions  to the time domain.  A special property of  the \gls{dra} is
+transfer functions  to the time domain. A special property of  the \gls{dra} is
 that it  retains the physical nature  of the original \gls{dfn}  equations until
 the very  last step  wherein the  matrices governing  the system's  dynamics are
 generated. This  yields a  one-dimensional discrete-time  \gls{rom} of  the cell
@@ -72,27 +73,34 @@ certain conditions  as discussed in  \cref{sec:size-of-the}, owing to  the large
 size  of  the  Block-Hankel  matrix,   the  \gls{dra}  computation  is  rendered
 intractable. This issue has been acknowledged by the original authors themselves
 in~\cite{Lee2012,Plett2015}.  In  this  chapter, this  computational  bottleneck
-is  analysed  and an  improved  scheme  is proposed.  \Cref{sec:Analysis-of-the}
-discusses an analytical evaluation of  the massive computing requirements of the
-original  \gls{dra} method.  Redundancies and  inefficiencies in  this step  are
-enumerated  and the  high  computational  costs are  deemed  as unnecessary.  In
-\cref{sec:Efficient-Computation-of}, a fast  computational approach is presented
-which  significantly reduces  both  the  memory and  computational  time of  the
-\gls{rom}  workflow. \Cref{sec:Results}  summarises  the  results obtained  from
-applying the  new workflow presented in  \cref{sec:Efficient-Computation-of}, by
-comparing and contrasting the much smaller computational requirements of the new
-method  with the  original  \gls{dra} scheme.  The  improved modelling  accuracy
-achieved  by  this  proposed  method when  deployed  under  resource-constrained
-computing environments, is also highlighted.
+is  analysed  and an  improved  scheme  is proposed\footnote{In the views of
+    this thesis author, it is difficult to succinctly summarise the mathematical
+    derivations involved in the long sequence of modelling steps  of the
+    \gls{dra} \ie{} obtaining transcendental transfer functions followed by the
+    Ho-Kalman algorithm for state-space realisation. Extraction of salient
+    equations from published works do not have the ability to convey the essence
+    of the method in a standalone manner, and risks the introduction of a slew
+    of new notation and symbols. Therefore, this chapter needs to be viewed as a
+    continuum to the basic \gls{dra} presentation, a detailed presentation of
+which is available in the textbook by Plett~\cite{Plett2015}.}.  \Cref{sec:Analysis-of-the}
+discusses an analytical evaluation of  the massive computing requirements of
+the original  \gls{dra} method.  Redundancies and  inefficiencies in  this
+step  are enumerated  and the high  computational  costs are  deemed  as
+unnecessary.  In \cref{sec:Efficient-Computation-of}, a fast  computational
+approach is presented which  significantly reduces  both  the  memory and
+computational time of  the \gls{rom}  workflow. \Cref{sec:Results}
+summarises  the  results obtained  from applying the  new workflow presented
+in  \cref{sec:Efficient-Computation-of}, by comparing and contrasting the
+much smaller computational requirements of the new method  with the
+original  \gls{dra} scheme.  The  improved modelling  accuracy achieved  by
+this  proposed  method when  deployed  under  resource-constrained computing
+environments, is also highlighted.
 
 \section{Analysis of the Computational Bottlenecks of the \glsfmtshort{dra}}\label{sec:Analysis-of-the}
 
 The \gls{rom}  proposed by  Lee~\etal{} aims  for the  simplified representation
-of  the  \glsfirst{p2d}  volume-averaged  continuum  model  proposed  by  Doyle,
-Fuller   and   Newman~\cite{Doyle1993a,Fuller1994}\footnote{hereafter   referred
-    interchangeably in  this thesis  by the two  acronyms ---  \glsfmtshort{dfn} and
-\glsfmtshort{p2d}.}.
-
+of  the  \glsfirst{p2d}  volume-averaged  \gls{p2d} implementation of the continuum  model  proposed  by  Doyle,
+Fuller   and   Newman~\cite{Doyle1993,Fuller1994}.
 
 The   block   diagram   in  \cref{fig:traditional_ROM_Workflow}   depicts   this
 thesis  author's   summary  presentation  of  the   overall  modelling  workflow
@@ -116,12 +124,38 @@ computed\footnote{A  ubiquitous concept  in linear  systems and  control theory,
 Markov parameters  represent the discrete-time  unit pulse response of  a linear
 system.}.  They  form the  entries  of  a Block-Hankel  matrix~\cite{Ljung1998},
 wherein each block  element is a column  vector of the set  of Markov parameters
-at  a  given  time-step.  A  key  computation  in  the  Ho-Kalman  algorithm  is
-the  \glsfirst{svd}  of this  Block-Hankel  matrix.  A  wide separation  in  the
-magnitude  drop  between  successive  singular  values serves  as  a  guide  for
-the  modeller in  choosing  a suitable  reduced order  to  represent the  entire
-dynamics  of  the  system.  The   analyses  of  this  thesis  author,  presented
-in \cref{subsec:Traditional-DRA--Memory}  and \cref{subsec:Traditional-DRA--CPU}
+at  a  given  time-step as shown in \cref{eq:blockhankel}.
+\begin{equation}\label{eq:blockhankel}
+    H = \begin{bmatrix}
+        g_1    & g_2 & \dots  & g_n    \\
+        g_2    & g_3 & {}     & {}     \\
+        \vdots & {}  & \ddots & \vdots \\
+        g_n    & {}  & \dots  & g_{2n-1}
+    \end{bmatrix}
+\end{equation}
+where $g_k$ represents the  Markov parameter of the system at time-index $k$.
+Each entry $g_k$ is a column vector for \gls{simo} systems. For the lithium ion
+battery application proposed by Lee~\etal~\cite{Lee2012a},the Markov parameters of the system
+correspond to transcendental transfer functions of each of the following quantities to
+the applied current
+\begin{enumerate}[itemsep=0pt]
+    \item  Solid phase potential
+    \item  Electrolyte potential
+    \item  Solid phase concentration
+    \item  Electrolyte concentration
+    \item  Molar flux density
+    \item  Overpotential 
+    \item  solid-electrolyte potential difference
+\end{enumerate}
+at four different spatial locations --- the two current collectors and the two
+separator interfaces.
+
+A  key  computation  in  the  Ho-Kalman  algorithm  is the  \glsfirst{svd}  of
+this  Block-Hankel  matrix.  A  wide separation  in  the magnitude  drop
+between  successive  singular  values serves  as  a  guide  for the  modeller in
+choosing  a suitable  reduced order  to  represent the  entire dynamics  of  the
+system.  The   analyses  of  this  thesis  author,  presented in
+\cref{subsec:Traditional-DRA--Memory}  and \cref{subsec:Traditional-DRA--CPU}
 reveal major inefficiencies in both the Block-Hankel formation and the \gls{svd}
 computation steps which hinder the entire reduced-order modelling workflow.
 
