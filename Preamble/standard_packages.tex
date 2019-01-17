@@ -19,10 +19,8 @@
 \usepackage{caption}     % for improved layout of figure captions with extra margin, smaller font than text
 \usepackage{checkend}
 
-% \usepackage[datesep=/,useregional]{datetime2}
 \usepackage{datetime}
-\usepackage[datesep=/,style=ddmmyyyy]{datetime2} % must be loaded before gitinfo2
-% \DTMsetdatestyle{en-GB-numeric}
+\usepackage{datetime2}   % must be loaded before gitinfo2
 \usepackage{diffcoeff}   % looks pretty useful for any math-oriented document. Leaving it here
 
 \usepackage{engord}      % an alternative is to use the fmtcount package
@@ -46,21 +44,19 @@
 \usepackage{multicol}
 \usepackage{multirow}
 
-\usepackage[section]{placeins} % Defines a \FloatBarrier command
+\usepackage{placeins}    % Defines a \FloatBarrier command
 
-% \usepackage{rotating} % defines a sidewaystable environment
-% \usepackage{pdflscape}
 \usepackage{lscape}
 \usepackage{longtable}
-\usepackage{setspace} % Define line spacing
+\usepackage{setspace}    % Define line spacing
 
 \usepackage{siunitx}
 \usepackage{subcaption}
 
-\usepackage{titlesec}  % typically for thesis use;
-\usepackage{titletoc}  % typically for thesis use;
+\usepackage{titlesec}    % typically for thesis use;
+\usepackage{titletoc}    % typically for thesis use;
 \usepackage{threeparttable}
-\usepackage{tocbibind} % typically for thesis use; correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
+\usepackage{tocbibind}   % typically for thesis use; correct page numbers for bib in TOC, nottoc suppresses an entry for TOC itself
 \usepackage{tabulary}
 \usepackage{ltcaption}
 \usepackage{ltabptch}
@@ -72,9 +68,9 @@
 \usepackage{witharrows}
 
 \usepackage{xfrac}
-\usepackage{xpatch} % example use; helpful to replace parens with brackets for backreferencing with biblatex
+\usepackage{xpatch}      % an example of usage is to replace parens with brackets for backreferences (in bibliography) with biblatex
 
-% ---------- unused packages (but potentially useful) ----------
+% ---------- unused packages (but potentially useful for any general article/document) ----------
 % \usepackage[backend=biber, style=ieee, sortlocale=en_GB, maxbibnames=50, url=true, doi=true, eprint=true ]{biblatex}
 % \usepackage{blindtext}
 % \usepackage{chkfloat}
@@ -100,4 +96,6 @@
 % \usepackage{tabularx}
 % \usepackage[table]{xcolor} % loaded by pdfx package (if used) cannot explicitly load colortbl package either before or after
 % \usepackage{url}
+% \usepackage{rotating} % defines a sidewaystable environment
+% \usepackage{pdflscape}
 

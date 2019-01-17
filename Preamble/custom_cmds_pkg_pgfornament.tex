@@ -1,0 +1,15 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+\newcommand{\eachpageornament}{%
+    \begin{tikzpicture}[remember picture, overlay,color=imperialbrick]
+        \node[anchor=north west] at (current page.north west){%
+        \pgfornament[width=2cm]{63}};
+        \node[anchor=north east] at (current page.north east){%
+        \pgfornament[width=2cm,symmetry=v]{63}};
+        \node[anchor=south west] at (current page.south west){%
+        \pgfornament[width=2cm,symmetry=h]{63}};
+        \node[anchor=south east] at (current page.south east){%
+        \pgfornament[width=2cm,symmetry=c]{63}};
+    \end{tikzpicture}
+}

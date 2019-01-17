@@ -30,15 +30,18 @@
 \PassOptionsToPackage{makeroom}{cancel}
 \PassOptionsToPackage{backend=biber, style=numeric-comp, sorting=none, citestyle=numeric-comp, maxbibnames=50, url=true, doi=true, eprint=false, backref=true, backrefstyle=three}{biblatex}
 \PassOptionsToPackage{margin=10pt, font=small, labelfont={bf}, labelsep=quad}{caption}
+% \PassOptionsToPackage{datesep=/,useregional}{datetime2}
+\PassOptionsToPackage{datesep=/,style=ddmmyyyy}{datetime2}
 \PassOptionsToPackage{type={CC}, modifier={by-nc-nd}, version={4.0}}{doclicense}
 \PassOptionsToPackage{normal}{engord}
 \PassOptionsToPackage{inline}{enumitem}
 \PassOptionsToPackage{draft}{fixme}
 \PassOptionsToPackage{bottom}{footmisc}
 \PassOptionsToPackage{luatex, paper=a4paper, hmarginratio=1:1, vmarginratio=1:1, scale=0.75}{geometry}
-\PassOptionsToPackage{local, markifdraft}{gitinfo2}
+\PassOptionsToPackage{local, markifdraft}{gitinfo2} % comment this & uncomment below line to have a document footer with VCS stamping
 % \PassOptionsToPackage{local, mark}{gitinfo2}
 \PassOptionsToPackage{frac, vfrac, multskip}{mathfixs}
+\PassOptionsToPackage{object=vectorian}{pgfornament}
 \PassOptionsToPackage{section}{placeins}
 \PassOptionsToPackage{separate-uncertainty = true, multi-part-units=single, detect-all}{siunitx}
 \PassOptionsToPackage{nottoc}{tocbibind}
@@ -51,7 +54,6 @@
 \PassOptionsToPackage{newfloat=true}{minted}
 \PassOptionsToPackage{minted, most}{tcolorbox}
 \PassOptionsToPackage{all}{hypcap}
-% \PassOptionsToPackage{nomain, acronym, xindy}{glossaries-extra}
 \PassOptionsToPackage{nomain, acronym, symbols, record, stylemods={tree}, numberedsection=nameref}{glossaries-extra}
 \PassOptionsToPackage{depth=4, open=true, openlevel=0, numbered=true}{bookmark}
 % \PassOptionsToPackage{nameinlink}{cleveref}
@@ -62,7 +64,6 @@
 
 %%%%%%%%%% list of packages to be loaded %%%%%%%%%%
 
-% uncommment any commented packages before final submission
 \usepackage{afterpage}
 \usepackage{algpseudocode}  % http://ctan.org/pkg/algorithmicx
 \usepackage{bigints}
@@ -70,7 +71,7 @@
 \usepackage{pdfpages}
 \usepackage{tabstackengine} % stackmath macro uses this package
 
-\input{Preamble/standard_packages} % a bit specific to luatex; also includes biblatex
+\input{Preamble/standard_packages} % minor customised package collection for a thesis written in luatex; loads biblatex; Suitable for a general journal with suitable pruning
 
 \usepackage{unicode-math} % fontspec after graphicx and babel; https://tex.stackexchange.com/questions/188222/problem-with-babel-and-fontspec; no-math option (math-handling is left to unicode-math); silent to suppress all warnings (even in log file)
 \input{Preamble/custom_cmds_unicode_fontselection} % selection of unicode text and math fonts
@@ -84,7 +85,12 @@
 \usepackage{minted}
 \usepackage{tcolorbox}
 \usepackage{csquotes}    % The fvextra package is loaded by minted, so you should load minted before csquotes; has a strong dependency with biblatex
+
+% NOTE: Chemformula & pgfornament load tikz. Tikz is needed for a few other macros/custom commands in this preamble/document.
+% Hence, if chemistry macros or fancy ornaments are not required (like the majority of general documents), please uncomment these lines & load tikz and any required tikzlibraries directly
 \usepackage{chemformula} % uses tikz arrows
+\usepackage{pgfornament}
+%%
 
 \input{Preamble/hyperref_related_packages}  % hyperref, nameref, algoriothm, hypcap, bookmark, glossaries, cleveref, showframe
 \usepackage{doclicense}
@@ -92,7 +98,12 @@
 \usepackage{impnattypo}
 \usepackage{nowidow}
 
-%---------- end of package loading ----------%
+\usepackage{shapepar}
+% \usepackage{eso-pic}    % not required if using the gitinfo2 package, since eso-pic is already loaded by it
+\usepackage{transparent}
+\usepackage{addlines}
+
+%---------- end of package loading ---------%
 
 
 %---------- begin custom commands ----------%
@@ -113,6 +124,7 @@
 \input{Preamble/custom_cmds_pkg_gitinfo2}
 \input{Preamble/custom_cmds_pkg_glossaries.tex}
 \input{Preamble/custom_cmds_pkg_minted}
+\input{Preamble/custom_cmds_pkg_pgfornament}
 \input{Preamble/custom_cmds_pkg_silence}
 \input{Preamble/custom_cmds_pkg_siunitx}
 \input{Preamble/custom_cmds_pkg_titlesec}
@@ -125,25 +137,4 @@
 \input{Preamble/esoteric_text_constructs}
 \input{Preamble/custom_latex_settings}
 %---------- end custom commands ----------%
-
-\usepackage[object=vectorian]{pgfornament}
-
-\newcommand{\eachpageornament}{%
-    \begin{tikzpicture}[remember picture, overlay,color=imperialbrick]
-        \node[anchor=north west] at (current page.north west){%
-            \pgfornament[width=2cm]{63}};
-        \node[anchor=north east] at (current page.north east){%
-            \pgfornament[width=2cm,symmetry=v]{63}};
-        \node[anchor=south west] at (current page.south west){%
-            \pgfornament[width=2cm,symmetry=h]{63}};
-        \node[anchor=south east] at (current page.south east){%
-            \pgfornament[width=2cm,symmetry=c]{63}};
-        \end{tikzpicture}
-    }
-
-\usepackage{shapepar}
-
-% \usepackage{eso-pic} % already loaded by the gitinfo2 package
-\usepackage{transparent}
-\usepackage{addlines}
 
