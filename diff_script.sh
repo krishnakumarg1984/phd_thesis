@@ -5,8 +5,8 @@ if [ ! -d ../nonflat_submitted ]; then
     cd ..
     cp -R phd_thesis/ nonflat_submitted/
     cd nonflat_submitted/
-    # git checkout -f 383e7c8 # with gitinfo2 footer. The -f flag helps to force checkout to facilitate local uncommitted changes to the repo (like testing this script)
-    git checkout -f 0f26b11 # without footer.  The -f flag helps to force checkout to facilitate local uncommitted changes to the repo (like testing this script)
+    git checkout -f 383e7c8 # with gitinfo2 footer. The -f flag helps to force checkout to facilitate local uncommitted changes to the repo (like testing this script)
+    # git checkout -f 0f26b11 # without footer.  The -f flag helps to force checkout to facilitate local uncommitted changes to the repo (like testing this script)
     cd ../phd_thesis/
 fi
 
