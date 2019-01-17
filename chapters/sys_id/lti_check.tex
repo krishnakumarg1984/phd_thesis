@@ -5,11 +5,11 @@
 % vim:textwidth=80 fo=cqt
 
 
-The      transfer     function      identification     techniques      mentioned
-in \cref{sec:introblackboxsysid} are  applicable only for \gls{lti}  systems. At
+The      transfer     function      identification     techniques      listed
+in \cref{sec:introblackboxsysid} work best for \gls{lti}  systems. At
 first glance,  this seems to  be overly restrictive  for the system(s)  at hand.
-When  considered  as  a  single  macroscopic  entity,  a  lithium  ion  battery,
-exhibits  overall non-linear  characteristics,  particularly due  to the  strong
+When  treated  as  a  single  macroscopic  entity,  a  lithium  ion  battery,
+exhibits  overall non-linear  characteristics,  particularly due  to strong
 non-linearities in
 \begin{enumerate*}[label=\emph{\alph*})]
     \item the Butler-Volmer reaction kinetics (see \cref{eq:butlervolmer}), and
@@ -45,7 +45,7 @@ electrolytic  diffusion and  conductivity. Yet  another cause  of time-dependent
 behavioural change  is the drift  in parameter values. However,  these phenomena
 are  typically  one or  mode  orders  of  magnitude  slower than  the  \gls{p2d}
 dynamics.
-% \fxnote{citation needed}
+
 This separation  of time-scales imply that, in
 practice they can be decoupled. Therefore, separate models can be identified for
 the faster and slower processes. A  suitable model-blending approach can then be
@@ -115,7 +115,7 @@ subtracting  these outputs from the correspondingly delayed versions of their
 original counterparts result in  zero residuals, thereby  proving
 time-invariance of  these subsystems under these representative test conditions.
 The residual sequences in the bottom row of plots are of~$\mathcal{O}(10^{-15})$
-and arise due to numerical roundoffs that occur  when operating close  to the
+and arise due to numerical round-offs that occur  when operating close  to the
 noise  floor of the  machine's floating point units.
 
 Similar to  the case demonstrated  here, all  tests for time-invariance  for all
@@ -160,7 +160,7 @@ simulations, even  at~$\pm$5C, the overall  number of moles of  \ch{Li^+} in any
 cell region exhibited  a maximum change of less than  \SI{15}{\percent} from its
 initial value. Thus,  the de-biased output variables  for system identification~$\widetilde{Q}_{\text{e,}j}(t)$ can be obtained  by subtracting their respective
 initial values~$Q_{\text{e,}j}(0)$ (see \cref{eq:Qeninit} and \cref{eq:Qepinit})
-from~$Q_{\text{e,}j}(t)$.
+from~$Q_{\text{e,}j}(t)$
 \begin{align}
     \widetilde{Q}_\text{e,n}(t) & = {Q}_\text{e,n}(t) - {Q}_\text{e,n}(0) \\
     \widetilde{Q}_\text{e,p}(t) & = {Q}_\text{e,p}(t) - {Q}_\text{e,p}(0)
@@ -179,7 +179,7 @@ the lecture notes on  system identification by Plett~\cite{PlettECE5560_02}. The
 steps involved therein  are reproduced here after being suitably  adapted to the
 notation of the subsystems at hand. This is essentially a recipe for testing the
 superposition principle.
-\begin{enumerate}
+\begin{enumerate}[topsep=-3pt,itemsep=1pt,partopsep=-3pt, parsep=1pt]
     \item Apply input profile~$I_1(t)$ to the system and obtain outputs~$\widetilde{Q}_{\text{e,n}_1}\!(t)$ and~$\widetilde{Q}_{\text{e,p}_1}\!(t)$.
     \item Apply a different profile~$I_2(t)$ to the system and obtain outputs~$\widetilde{Q}_{\text{e,n}_2}\!(t)$ and~$\widetilde{Q}_{\text{e,n}_2}\!(t)$.
     \item Now apply an input profile~$I_3(t) = \alpha I_1(t) + \beta I_2(t)$ and obtain a corresponding set of outputs~$\widetilde{Q}_{\text{e,n}_3}\!(t)$ and $\widetilde{Q}_{\text{e,n}_3}\!(t)$.
@@ -188,7 +188,8 @@ superposition principle.
             \widetilde{Q}_{\text{e,n}_2}\!(t)}$ and
             ${\widetilde{Q}_{\text{e,p}_3}\!(t) = \alpha\,
                 \widetilde{Q}_{\text{e,p}_1}\!(t) + \beta \,
-            \widetilde{Q}_{\text{e,p}_2}\!(t)}$ for all possible~$\{\alpha,\beta\}$ as well as for choice of input signals~$\{I_1(t),I_2(t)\}$, then the systems are linear.
+            \widetilde{Q}_{\text{e,p}_2}\!(t)}$ for all
+            possible~$\{\alpha,\beta\}$ and for all choice of input signals~$\{I_1(t),I_2(t)\}$, then the systems are linear.
 \end{enumerate}
 
 As   in   the  time-invariance   test,   the   same   set  of   five   different
@@ -204,8 +205,8 @@ profiles ---
 \begin{enumerate*}[label=\emph{\alph*})]
     \item step input with a constant current 1C~discharge,
     \item step input with a constant current discharge at~C/5,
-    \item step input with a constant current 1C~charge,
-    \item step input with a constant current charge at~C/5,
+    \item step input with a constant current 1C~charge, and
+    \item step input with a constant current charge at~C/5.
     % \item de-biased training profile used in system identification (see \cref{fig:sysidtrainingcurrent}), and
     % \item de-biased validation profile used in system identification (see \cref{fig:sysidvalidationcurrent}).
 \end{enumerate*}

@@ -1,7 +1,5 @@
 % -*- root: ../../main.tex -*-
 %!TEX root = ../../main.tex
-% this file is called up by main.tex
-% content in this file will be fed into the main document
 % vim:textwidth=80 fo=cqt
 
 \graphicspath{{chapters/sys_id/figures/}}
@@ -9,13 +7,10 @@
 
 \clearpage
 \chapter{Implementing a New Electrolyte Model for Augmentation of the Basic \glsfmtshort{spm}}\label{ch:newelectrolytemodel}
+% \addlines
+\vspace*{-5mm}
 \startcontents[chapters]
 \printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
-
-% A suitable  family of models from  the broad category of  reduced-order models
-% is  identified  as  a  promising  candidate  for  implementation  in  controls
-% applications.
-\bigskip
 
 \input{chapters/sys_id/intro_to_newelec_model_chapter}
 
@@ -28,6 +23,8 @@
 \section{Brief Introduction to System Identification}\label{subsec:introsysid}
 \input{chapters/sys_id/sysid_intro}
 
+
+\vspace*{-5mm}
 \section{Overview of Black Box System Identification}\label{sec:introblackboxsysid}
 \input{chapters/sys_id/black_box_sysid_overview}
 

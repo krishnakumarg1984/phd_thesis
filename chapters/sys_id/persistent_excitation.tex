@@ -41,11 +41,12 @@ considerations,  the  peak amplitude  of  the  input  current  was fixed  at  2C
 
 \subsection{Training current profile}\label{subsec:trainingprofile}
 
+% \addlines[1]
 Since not much prior  information is available about the poles  and zeros of the
 electrolyte subsystem(s)  in question, a wide  variety of special waveforms  with a
 sampling interval of \SI{1}{\second} were used for the current perturbation used
 in this system identification task. The specific input sequence consisted of
-\begin{enumerate}
+\begin{enumerate}[topsep=1.25pt,itemsep=1.25pt,partopsep=1.25pt, parsep=1.25pt]
     \item \gls{rbs}\quad (0--\SI{199}{\second})
     \item `Chirp' \ie~a swept cosine signal from 0--\SI{100}{\milli\hertz}\quad (200--\SI{799}{\second})
     \item Periodic \glsfmtlong{rbs} with a period of~\SI{200}{\second} and 2~such periods\quad (800--\SI{1199}{\second})
@@ -78,6 +79,7 @@ to excite any periodic modes in the system to be identified.}
     \label{fig:sysidtrainingcurrent}
 \end{figure}
 
+\vspace*{-3.75mm}
 \subsection{Validation current profile}
 
 For the  purposes of identification,  the \gls{p2d}  model is considered  as the
@@ -91,6 +93,7 @@ quantities  $Q_\text{e,n}$ and  $Q_\text{e,p}$  are chosen  as  the outputs  for
 system  identification and  a  transfer  function model  is  fitted  as per  the
 evaluation procedure discussed in \cref{sec:actualsysid}.
 
+\addlines
 As with  any classical  curve fitting  (numerical regression)  procedure, system
 identification is also  prone to overfitting the training data.  In general, the
 `best' transfer  function that identifies the  given system is the  lowest order
@@ -102,20 +105,20 @@ any bounds. However,  such a model shall not have  truly identified the dynamics
 of the system  and shall not generalise well to  real-world datasets outside the
 training realm. Hence, having an  independent validation current profile for the
 task at hand is of paramount importance.
-
-% For the system identification task at  hand, the characteristic waveforms of the
-% validation profile were deliberately conjured to be differ vastly from that used
-% in training the model.
-
 The  validation profile visualised in \cref{fig:sysidvalidationcurrent} consists
 of the following sequence
-\begin{enumerate}
+\begin{enumerate}[topsep=-3pt,itemsep=1.25pt,partopsep=-3pt, parsep=1.25pt]
     \item Periodic \gls{rgs} with 4~periods of \SI{200}{\second} each\quad (0--\SI{799}{\second})
     \item \gls{prbs} for emulating white noise \ie~with a flat power spectra
         across the frequency spectrum\quad (800--\SI{999}{\second})
     \item Multi-sine signal \ie~a signal consisting of sinusoids at
         various fundamental frequencies added together\quad (1000--\SI{1199}{\second})
 \end{enumerate}
+
+
+% For the system identification task at  hand, the characteristic waveforms of the
+% validation profile were deliberately conjured to be differ vastly from that used
+% in training the model.
 
 % Overall,  the validation  profile has  been designed  to cover  a wide  range of
 % frequencies  akin to  the  training  profile, but  differing  completely in  its
@@ -127,7 +130,7 @@ of the following sequence
     \includegraphics{sysid_validation_input.pdf}
     \captionsetup{singlelinecheck=off}
     \caption[Input current profile used as the validation set for system
-    identification]{Input current profile used as the validation set for system
+    identification]{Input current profile used as validation set for system
         identification. The sequence consists of
         \begin{enumerate*}[label=\emph{\alph*})]
             \item a \glsfmtlong{rgs},
@@ -137,7 +140,7 @@ of the following sequence
         The overall sequence  is intended to emulate the flat  power spectrum of
         white noise (with the \glsfmtshort{prbs}) and excite any poles and zeros
         within~\mbox{3$\sigma$} spread  of the  \glsfmtshort{rgs} mean.  The multisine
-        signal is  swept is composed  of sinusoids with  fundamental frequencies
+        signal is composed  of sinusoids with  fundamental frequencies
         from \SI{100}{\milli\hertz}  up to the Nyquist  frequency. Its amplitude
         variation  across the  frequency spectrum  increases the  probability to
         capture the  system's modes that  were possibly missed by  the preceding
@@ -146,8 +149,8 @@ of the following sequence
     \label{fig:sysidvalidationcurrent}
 \end{figure}
 
-\textsc{MATLAB} code  that can be used  to generate the training  and validation
-input profiles is shown in \cref{codesnippet:trainvalidsysidinput}.
+The \textsc{MATLAB} code  used for generating the training and validation input
+profiles is given in \cref{codesnippet:trainvalidsysidinput}.
 
 \begin{listing}[!htbp]
 \begin{minted}[mathescape,autogobble,bgcolor=mintedbg,escapeinside=||,texcomments=true]{matlab}

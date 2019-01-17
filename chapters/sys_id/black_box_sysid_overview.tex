@@ -10,14 +10,16 @@ Black-box system identification techniques are composed of the following ---
      \item parametric methods.
  \end{enumerate*}
 
+\vspace*{-3mm}
 \subsection{Non-parametric methods}
+\addlines
 Non-parametric methods do not seek  a pre-assumed mathematical structure for the
 system. They  aim to  directly estimate  the very  kernel of  what characterises
 every system \viz~the Markov parameters in the time-domain  and the \gls{frf}
 in the frequency domain, thereby requiring \emph{infinite} number of data points
 for  their representation.  Major non-parametric  system identification  methods
-include:
-\begin{itemize}[topsep=0pt]
+include
+\begin{itemize}[topsep=-5pt,itemsep=-1pt,partopsep=-5pt, parsep=-1pt]
     \item Identification in time domain
         \begin{itemize}
 
@@ -26,7 +28,7 @@ include:
 
         \end{itemize}
     \item Identification in frequency domain \ie~of the \gls{frf}
-        \begin{enumerate}
+        \begin{enumerate}[topsep=1.25pt,itemsep=1.25pt,partopsep=1.25pt, parsep=1.25pt]
 
             \item   Direct   estimation    through   input-output   statistical
                 cross-correlation.
@@ -48,17 +50,17 @@ well-known mathematical  constructs that  are and widely  applicable to  a large
 variety of inputs.  It is important to recognise that,  in contrast to white-box
 system identification, the salient coefficients/properties of these mathematical
 structures \emph{do  not,} in any way  correspond to physical properties  of the
-system under consideration. Major parametric system identification methods use:
-\begin{itemize}
+system under consideration. Major parametric system identification methods use
+\begin{itemize}[topsep=-5pt,itemsep=-1pt,partopsep=-5pt, parsep=-1pt]
     \item Transfer-function based frequency domain model structures
-        \begin{enumerate}
+        \begin{enumerate}[topsep=1.25pt,itemsep=1.25pt,partopsep=1.25pt, parsep=1.25pt]
             \item \gls{oe} model
             \item \gls{arx} model
             \item \gls{armax} model
             \item Box-Jenkins (BJ) model
         \end{enumerate}
     \item State-space time-domain model structures
-        \begin{enumerate}
+        \begin{enumerate}[topsep=1.25pt,itemsep=1.25pt,partopsep=1.25pt, parsep=1.25pt]
             \item Ho-Kalman realisation
             \item \gls{era} realisation
             \item Deterministic and stochastic \emph{subspace} structures
@@ -66,7 +68,6 @@ system under consideration. Major parametric system identification methods use:
 \end{itemize}
 
 \subsection{Investigation of suitable system identification methodology}\label{subsec:suitablesysid}
-% \subsubsection*{Ill-suitability of non-parametric methods}
 Among   the   various   system    identification   techniques   mentioned,   the
 non-parametric   methods    have   some    serious   drawbacks.    As   outlined
 in \cref{subsec:sysidbackground}, the author is inspired  by the trait of having
@@ -111,6 +112,7 @@ they are  to be embedded. This  conundrum is resolved by  closely inspecting the
 model's scope  and its tractability for  conversion to time domain  as explained
 next.
 
+\addlines[1]
 It  is  worth remembering  that,  as  per \cref{subsec:freqdomainroms}, for  the
 reduced order  modelling of the  \emph{entire cell}, all frequency  domain model
 groups were considered  as out of scope  of this thesis specifically  due to the
