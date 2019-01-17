@@ -1,0 +1,191 @@
+     _           _       _ _
+ ___| |_ ___ ___| |_ ___|_| |_ ___ ___
+|  _|   | -_|  _| '_|  _| |  _| -_|_ -|
+|___|_|_|___|___|_,_|___|_|_| |___|___|
+
+checkcites.lua -- a reference checker script (v2.0)
+Copyright (c) 2012, 2017, Enrico Gregorio, Paulo Roberto Massa Cereda
+
+Great, I found 218 citations in 1 file. I also found 2 bibliography files.
+Let me check these files and extract the references. Please wait a moment.
+
+Fantastic, I found 382 references in 2 bibliography files. Please wait a
+moment while the reports are generated.
+
+--------------------------------------------------------------------------
+Report of unused references in your TeX document (that is, references
+present in bibliography files, but not cited in the TeX source file)
+--------------------------------------------------------------------------
+
+Unused references in your TeX document: 164
+=> Ahmed2014
+=> AmericanAutomaticControlCouncil2014a
+=> Andersson2013
+=> Appiah2016
+=> Appiah2016a
+=> Arora1999a
+=> Arora2016
+=> Astaneh2018
+=> Atlung1979
+=> Baba2014
+=> Bartlett2015b
+=> Bartlett2013
+=> Bauer2017
+=> Bitzer2014
+=> Broussely2001
+=> Cai2011
+=> Cai2012
+=> Cai2010
+=> Cai2009
+=> JLRCatapult2017
+=> Gopalakrishnan2018
+=> IanUKES2018
+=> CampbellMunster
+=> CampbellFPC2017
+=> Carey1975
+=> Chen2010
+=> Chen2010a
+=> Chen1996
+=> Chen1994
+=> choi2012
+=> Chu2002
+=> Danner2016
+=> Danner2016a
+=> De2013
+=> Dey2014
+=> Dey2015a
+=> Dey2018
+=> Dey2015
+=> Dey2014a
+=> Diab2017
+=> Docimo2014
+=> DOYLE1997
+=> Doyle2003
+=> Doyle2003a
+=> Doyle1995a
+=> Doyle1995
+=> Dubarry2017
+=> Edouard2016
+=> Emadi2017
+=> etachari2011
+=> Fan2017
+=> Fang2013
+=> Fang2014
+=> Farmann2015
+=> Fellner2000
+=> Golmon2012a
+=> Golmon2014
+=> Golmon2012
+=> goodenough2014
+=> Gopalakrishnan2018b
+=> Gopalakrishnan2018a
+=> Gopalakrishnan2016a
+=> Gopalakrishnan2016
+=> GOTO2016
+=> Guo2015
+=> Han2015
+=> Han2015b
+=> Heubner2018
+=> Hong2016
+=> Hong2018
+=> Hosseinzadeh2018
+=> Hosseinzadeh2017
+=> Howey2013
+=> Hunt2015
+=> Ikeshita2016
+=> Jarrett2011
+=> Kehs2014
+=> Kemper2015
+=> Kenney2012
+=> Klein2013
+=> Lee2018
+=> Legrand2014
+=> Levenberg1944
+=> Lewerenz2017
+=> Li2016a
+=> Li2014b
+=> Li2017c
+=> Limoge2018
+=> Lin2016
+=> Liu2015
+=> Liu2017d
+=> Liu2017c
+=> Liu2017
+=> Liu2017a
+=> Lopez2015dens
+=> Lu2013
+=> Malifarge2018
+=> Marcicki2013a
+=> Marcicki2012a
+=> Marcicki2013c
+=> Marquardt1963
+=> matlab1760mathworks
+=> HybridElectricVehiclesMi
+=> Moura2013
+=> Nejad2016
+=> Nelson2002
+=> Newman1995a
+=> NewmanElectrochemSys
+=> Olcer1965
+=> Olcer1964
+=> Onesto2017
+=> Ouyang2015
+=> Perez2015a
+=> Perkins2012
+=> Petzl2014
+=> Pramanik2016
+=> Rahimian2012
+=> Rahimian2011
+=> Rahman2016
+=> Rahn
+=> Rahna
+=> Rahn2013a
+=> Ramadesigan2012a
+=> Romero-Becerril2011
+=> Sabbah2008
+=> Salvadori2015
+=> Samadi2012
+=> Samadi2013
+=> Santhanagopalan2010
+=> Sarwar2016a
+=> Sarwar2016
+=> scrosati2010
+=> SenthilKumar2013
+=> Smith2006a
+=> Speltino2009
+=> Srinivasan2004
+=> Stetzel2015
+=> Subramanian2001b
+=> Tang2017
+=> Tang2017a
+=> Tang2015b
+=> Tanim2015a
+=> Tanim2015b
+=> Tatsukawa2014
+=> Thackeray2012
+=> Tran2016
+=> Tran2018
+=> Uhlmann2015
+=> Verbrugge1997a
+=> Vlad2015
+=> Vlad2015a
+=> Wang2015
+=> Wood2011b
+=> Xue2013a
+=> Yang2017
+=> YazamiECS2003
+=> Yu2012
+=> Yu2012a
+=> Yu2013
+=> Yu2013a
+=> Zhang2014
+=> Zhao2017a
+=> Zheng2012
+=> Gopalakrishnan2018jointmore
+
+--------------------------------------------------------------------------
+Report of undefined references in your TeX document (that is, references
+cited in the TeX source file, but not present in the bibliography files)
+--------------------------------------------------------------------------
+
+Undefined references in your TeX document: 0
