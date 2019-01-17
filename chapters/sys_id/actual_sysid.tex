@@ -22,8 +22,7 @@ G(z)\bigr\rvert_{\mathrlap{z=q}}}$.}  that  acts  on the  applied  input~$u[k]$,
 whereas the  noise dynamics are  represented by the  disturbance operator~$H(q)$
 that acts to filter (or shape) an assumed white noise input~$e[k]$.
 
-Assuming linearity and time-invariance throughout, the overall output can be
-written as the linear combination
+The overall output can be written as the linear combination
 \begin{equation}\label{eq:outputwithsysandnoise}
     % \SwapAboveDisplaySkip
     y[k] = G(q)u[k] + H(q)e[k]
@@ -34,7 +33,7 @@ operators describing the dynamics of the system and disturbance respectively.
 ${A(q), B(q), C(q) \text{ and } D(q)}$ are rational polynomials in~$q$. The two transfer
 operators~$G(q)$ and $H(q)$ can be represented by
 \begin{align}
-    G(q) &= q^{-n_k}\frac{b_1q^{-1} + \dots  + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots  + a_{n_a}q^{-{n_a}}} \\
+    G(q) &= q^{-n_k}\frac{b_1q^{-1} + \dots  + b_{n_b}q^{-{n_b}}}{1 + a_1q^{-1} + \dots  + a_{n_a}q^{-{n_a}}} \label{eq:Gqoperatorrational} \\
     H(q) &= q^{-n_l}\frac{c_1q^{-1} + \dots  + c_{n_c}q^{-{n_c}}}{1 + d_1q^{-1} + \dots  + d_{n_d}q^{-{n_d}}}
 \end{align}
 where ${(n_k,n_l)}$ represent  the number of transport  delay samples, $(n_b,n_c)$
@@ -271,7 +270,7 @@ For any model structure used, its error can be defined as
     % \SwapAboveDisplaySkip
     \varepsilon[k]      & = y[k] - \hat{y}_\text{m}[k] \label{eq:sysiderroronlyk}\\
     \shortintertext{where $y[k]$ are true measurements and}
-    \hat{y}_\text{m}[k] & = G(q)u[k] \tag{\cref{eq:outputwithsysonly} revisited}
+    \hat{y}_\text{m}[k] & = G(q)u[k] \tag{\cref{eq:outputwithsysandnoise} with $H(q)$ set to 0}
 \end{align}
 are the model outputs obtained by the assumed transfer operator~$G(q)$ (which is
 to be determined).
@@ -491,7 +490,7 @@ approximation-free  conversion   to  time-domain  from  Z-domain   exists,  that
 mitigates this perceived drawback for  these two sub-systems. This conversion is
 amenable for discrete-time implementation without any other modifications.
 
-Starting from the generic structure of the identified transfer functions (see \cref{eq:outputwithsysonly}),
+Starting from the generic structure of the identified transfer functions (see \cref{eq:Gqoperatorrational}),
 
 \begin{DispWithArrows}[fleqn,mathindent=0cm,jot=2ex,%
     ,xoffset=-4mm
