@@ -100,6 +100,7 @@ simulation data.}.
 \end{figure}
 % The outputs $Q_\text{e,n}$ and $Q_\text{e,p}$ are shown to the left and right of the applied input.
 
+\addlines[0.5]
 \Cref{fig:timeinvariance}  demonstrates the  time-invariance  of the  subsystems
 considered  at  an  initial  \gls{soc} of  \SI{50}{\percent}  for  a  time-delay
 of   \SI{130}{\second}   using   the  highly   dynamic   system   identification
@@ -109,7 +110,7 @@ training    sequence   that    was   synthesised    by   this    thesis   author
 and  $Q_{\text{e,p}_1}\!(t)$  shown  in  the   top  left  and  top  right  plots
 respectively.  When  the delayed  version  of  this  input sequence  ${u_2(t)  =
 u_1(t-\tau)}$ (middle row, middle column) is  applied, it results in the
-outputs~$Q_{\text{e,n}_2}\!(t)$  and  $Q_{\text{e,p}_2}\!(t)$  to  its  left 
+outputs~$Q_{\text{e,n}_2}\!(t)$  and  $Q_{\text{e,p}_2}\!(t)$  to  its  left
 and  right respectively.  Following the  steps  of the  test  procedure,
 subtracting  these outputs from the correspondingly delayed versions of their
 original counterparts result in  zero residuals, thereby  proving
@@ -231,9 +232,9 @@ first-order Taylor  expansion about this  operating window. The  discussion thus
 far  has fully  established  all  the conditions  for  conducting  the test  for
 linearity.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{linearity_proof}
+    \includegraphics[width=0.95\textwidth]{linearity_proof}
     \caption[Illustration of linearity test for the
     \protect{$\widetilde{Q}_{\text{e,n}}$} and
     \protect{$\widetilde{Q}_{\text{e,p}}$} subsystems]{Illustration of one
@@ -278,18 +279,18 @@ is linear.
 
 The   plots   in  the   third   row   show  $\widetilde{Q}_{\text{e,n}_3}$   and
 $\widetilde{Q}_{\text{e,p}_3}$ overlaid with their respective linear combination
-signals. In  the case  of the  subsystem in the  negative electrode  region, the
-transient performance matches  precisely until \approx\SI{450}{\second}, whereas
-that in the positive electrode region exhibits a good matching for approximately
-the  first~\SI{250}{\second}.  However,  for  the  horizon  considered  the  two
+signals. For the  subsystem in the  negative electrode  region, the transient
+performance matches  precisely until \approx\SI{450}{\second}, whereas that for
+the positive electrode region exhibits a good matching for approximately the
+first~\SI{250}{\second}.  However,  for  the  horizon  considered  the  two
 overlaid plots do not overlap exactly.  Hence, the systems are not truly linear.
 However,  the  exhibited  behaviour  is  quite  close  to  linearity,  with  the
-maximum  absolute error  in each  region,  even outside  the initial  transient,
-being~$\mathcal{O}(10^{-4})$ --- an order of magnitude lower than its individual
-components.  This behaviour  was exhibited  for all  test instances  considered.
+maximum  absolute error  in each  region being~$\mathcal{O}(10^{-4})$  even past
+the initial  transient, which is an order of magnitude lower than its individual
+components.  This behaviour  was exhibited  for all  test instances considered.
 Considering  that for  dynamic  simulation runs,  the  transient performance  is
 paramount  to  the good  performance  of  the  model,  in conjunction  with  the
-aforementioned  low error  metric,  these  subsystems can  be  considered to  be
+aforementioned  low error  metric,  these  subsystems can be  considered to  be
 \emph{approximately} linear.
 
 Based  on  the  analysis  presented   here,  \gls{lti}  behaviour  for  the  two

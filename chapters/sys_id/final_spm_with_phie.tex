@@ -187,6 +187,7 @@ obtained from the \gls{p2d} model.
     \label{fig:phiedeltacnst1C}
 \end{figure}
 
+\addlines
 \Cref{fig:phiedeltacnst1C} shows  a comparison of the  electrolyte overpotential
 computed  by   the  \gls{p2d}  and   system  identification  models  for   a  1C~discharge. There  is a discrepancy  in the  initial offset of  the overpotential
 value.  However,  this  cannot  be  attributed   to  the  use  of  the  constant
@@ -200,6 +201,7 @@ Thus, it can be  concluded that this initial mismatch is due  to the presence of
 some  other unmodelled  phenomena  that  affects the  DC  offset of  electrolyte
 overpotential, and is not arising due to the approximations used by this author.
 
+\addlines
 In \cref{fig:phiedeltacnst1C},   the  shape   of   the   transient  profile   of
 overpotential  computed  by  the  system identification  model  closely  matches
 that  of the  \gls{p2d} model.  This validates  that the  newly developed  model
@@ -214,6 +216,16 @@ overpotential   accuracy  is   reached   from  this   constant  current   study.
 Nevertheless, even for  constant current loads, using the  newly developed model
 is better than having no electrolyte model whatsoever as in the basic \gls{spm}.
 
+\Cref{fig:phiedeltacnstudds} shows a comparison of the electrolyte overpotential
+computed by the \gls{p2d} and system identification models for a \gls{udds} load
+profile. The  input current corresponding to  this load profile is  shown in the
+top row  of \cref{fig:uddssimp2dspmresults}. The system  identification model is
+able to  reasonably track  the overpotential profile  computed by  the \gls{p2d}
+model. Unlike the  case of sustained unidirectional current input,  the error in
+this case  remains well-contained. The  \gls{mae} obtained for this  profile was
+\SI{15.88}{\milli\volt}  with  an  \gls{rms}  error  of~\SI{24.11}{\milli\volt}.
+This  corresponds to  \SI{8.19}{\percent} and  \SI{12.44}{\percent} of  the peak
+magnitude of the overpotential (\SI{193.86}{\milli\volt}).
 
 \begin{figure}[!htbp]
     \centering
@@ -227,22 +239,11 @@ is better than having no electrolyte model whatsoever as in the basic \gls{spm}.
         \gls{p2d}     model    and     the    system     identification    model
         (using \cref{eq:electrolytepdwithcenew}) for a  \gls{udds} load profile.
         The overpotential  profile computed  by the system  identification model
-        reasonably matches  the profile obtained  by the \gls{p2d} model  with a
+        reasonably matches  that obtained  by the \gls{p2d} model  with a
         \glsfirst{mae} of \SI{15.88}{\milli\volt} and  a \glsfirst{rms} error of~\SI{24.11}{\milli\volt}.
     }%
     \label{fig:phiedeltacnstudds}
 \end{figure}
-
-\Cref{fig:phiedeltacnstudds} shows a comparison of the electrolyte overpotential
-computed by the \gls{p2d} and system identification models for a \gls{udds} load
-profile. The  input current corresponding to  this load profile is  shown in the
-top row  of \cref{fig:uddssimp2dspmresults}. The system  identification model is
-able to  reasonably track  the overpotential profile  computed by  the \gls{p2d}
-model. Unlike the  case of sustained unidirectional current input,  the error in
-this case  remains well-contained. The  \gls{mae} obtained for this  profile was
-\SI{15.88}{\milli\volt}  with  an  \gls{rms}  error  of~\SI{24.11}{\milli\volt}.
-This  corresponds to  \SI{8.19}{\percent} and  \SI{12.44}{\percent} of  the peak
-magnitude of the overpotential (\SI{193.86}{\milli\volt}).
 
 Hence, it can be concluded  that the electrolyte overpotential computation using
 the system identification  model provides an acceptable  performance for dynamic
@@ -252,6 +253,7 @@ resulting composite \gls{spm}.
 
 \subsection{Terminal voltage computation of composite \glsfmtshort{spm}}
 
+\addlines[0.5]
 In \cref{subsec:simresultsbasicspm}, it  was shown that in  the basic \gls{spm},
 the computation of the cell's \gls{soc}  is of sufficient accuracy. However, its
 terminal  voltage  strongly deviates  from  the  true  value  as computed  by  a
@@ -281,6 +283,7 @@ V_\text{cell} &= η_\text{pos} - η_\text{neg} + \underbrace{ϕ_\epos -
 U_\text{neg}\label{eq:intermediatevoltagewithphie}
 \end{align}
 
+\addlines[0.5]
 Substituting for ${\Delta \phi_\text{e}}$ from \cref{eq:electrolytepdwithcenew} in
 into \cref{eq:intermediatevoltagewithphie},  and  expanding  each of  its  terms
 (see derivation of \cref{eq:spmbasicoutputvoltagefinal}  for details), the final
@@ -313,7 +316,7 @@ The  voltage  accuracy of  the  newly  developed  composite \gls{spm}  is  first
 evaluated for  the standard test  case of 1C~discharge current starting  from a
 cell \gls{soc} of~\SI{100}{\percent}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics{composite_spm_vcell_1C.pdf}
     \caption[%
@@ -386,46 +389,6 @@ becomes negative which  is not physically meaningful. The author  of this thesis
 has implemented a saturation mechanism in the code that detects an ion depletion
 event and prevents the concentrations from becoming negative.
 
-Implementing  this  hard   lower  bound  of  zero  for   the  ion  concentration
-does    not   mitigate    the   problems    associated   with    computing   the
-electrolyte   overpotential.   Specifically,  computational   difficulties   are
-encountered    when   computing    the    concentration   dependent    diffusion
-overpotential \cref{eq:electrolytepdwithcenew}. In the case  of ion depletion at
-the positive  current collector,  the argument of  the logarithmic  term becomes
-zero which leads to a non-feasible computation~($-\infty$). Ion depletion at the
-negative current collector  is equally detrimental to  the computation. However,
-this scenario has  a lower probability owing to the  low C-rates during charging
-operation (see \cref{subsec:basicspmsimsetup}).  Furthermore, in the  absence of
-the lower  bound of zero  for the  concentrations, complex numbers  are obtained
-from  the logarithmic  term, which  lead to  physically erroneous  overpotential
-calculations. An  alternative is  to simply omit  the diffusion  impedance term.
-However, since  this term is  responsible for  the large-signal dynamics  of the
-overpotential (see \cref{fig:contributiontophiefromtwoterms}), omitting this and
-reverting to  a simple ohmic  resistance contribution shall lead  to significant
-errors  in  the electrolyte  overpotential,  and  consequently in  the  terminal
-voltage.  Finally, setting  the diffusion  impedance to  zero at  the transition
-boundary of ion starvation is also not a feasible solution. This is because, the
-sudden inflection in  the trajectory of the terminal voltage  shall induce large
-errors in any state estimation algorithms that depend on the composite \gls{spm}
-as the plant model.
-
-The  difficulties  encountered  in electrolyte  overpotential  computations  for
-ion  depletion scenarios  have  not  yet been  discussed  in  the literature  by
-the  research  community that  use  such  quadratic approximation  models.  This
-thesis author  therefore assumes that  such a  scenario had not  been previously
-encountered  for  the  parameter  set  and C-rate  combinations  used  by  those
-researchers. Despite the  fact that this phenomenon might be  an artefact of the
-idiosyncrasies of the  parameter set used here, it  is nevertheless questionable
-to not  have mathematically adapted  the parabolic  profile to such  events. The
-aspect  of rendering  the model  robust to  such vagaries  is currently  an open
-problem in the field and can be the subject of future research. It can therefore
-be concluded that  this composite \gls{spm} is \emph{unsuitable}  in its present
-form for  sustained constant current  discharge at higher C-rates.  Despite this
-setback due  to deficiencies in  the mathematical formulation of  the underlying
-spatial profile, the superior performance  of the system identification model in
-the computation  of ionic  concentrations and overpotentials  for \emph{dynamic}
-conditions warrant such a study for the composite \gls{spm}.
-
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{problematic_2C_conc.pdf}
@@ -453,8 +416,53 @@ conditions warrant such a study for the composite \gls{spm}.
     \label{fig:2Cionstarvation}
 \end{figure}
 
+\addlines[0.5]
+Implementing  this  hard   lower  bound  of  zero  for   the  ion  concentration
+does    not   mitigate    the   problems    associated   with    computing   the
+electrolyte   overpotential.   Specifically,  computational   difficulties   are
+encountered    when   computing    the    concentration   dependent    diffusion
+overpotential \cref{eq:electrolytepdwithcenew}. In the case  of ion depletion at
+the positive  current collector,  the argument of  the logarithmic  term becomes
+zero which leads to a non-feasible computation~($-\infty$). Ion depletion at the
+negative current collector  is equally detrimental to  the computation. However,
+this scenario has  a lower probability owing to the  low C-rates during charging
+operation (see \cref{subsec:basicspmsimsetup}).  Furthermore, in the  absence of
+the lower  bound of zero  for the  concentrations, complex numbers  are obtained
+from  the logarithmic  term, which  lead to  physically erroneous  overpotential
+calculations. An  alternative is  to simply omit  the diffusion  impedance term.
+However, since  this term is  responsible for  the large-signal dynamics  of the
+overpotential (see \cref{fig:contributiontophiefromtwoterms}), omitting this and
+reverting to  a simple ohmic  resistance contribution shall lead  to significant
+errors  in  the electrolyte  overpotential,  and  consequently in  the  terminal
+voltage.  Finally, setting  the diffusion  impedance to  zero at  the transition
+boundary of ion starvation is also not a feasible solution. This is because, the
+sudden inflection in  the trajectory of the terminal voltage  shall induce large
+errors in any state estimation algorithms that depend on the composite \gls{spm}
+as the plant model.
+
+\addlines[0.5]
+The  difficulties  encountered  in electrolyte  overpotential  computations  for
+ion  depletion scenarios  have  not  yet been  discussed  in  the literature  by
+the  research  community that  use  such  quadratic approximation  models.  This
+thesis author  therefore assumes that  such a  scenario had not  been previously
+encountered  for  the  parameter  set  and C-rate  combinations  used  by  those
+researchers. Despite the  fact that this phenomenon might be  an artefact of the
+idiosyncrasies of the  parameter set used here, it  is nevertheless questionable
+to not  have mathematically adapted  the parabolic  profile to such  events. The
+aspect  of rendering  the model  robust to  such vagaries  is currently  an open
+problem in the field and can be the subject of future research. It can therefore
+be concluded that  this composite \gls{spm} is \emph{unsuitable}  in its present
+form for  sustained constant current  discharge at higher C-rates.  Despite this
+setback due  to deficiencies in  the mathematical formulation of  the underlying
+spatial profile, the superior performance  of the system identification model in
+the computation  of ionic  concentrations and overpotentials  for \emph{dynamic}
+conditions warrant such a study for the composite \gls{spm}.
+
+
+
 \subsubsection*{Dynamic Load Conditions}
 
+\addlines[0.5]
 In  order to  evaluate the  performance of  the composite  \gls{spm} to  dynamic
 inputs, the  input profile  corresponding to  the \gls{udds}  drivecycle profile
 in \cref{fig:uddssimp2dspmresults}  with  a  peak current  of  \SI{180}{\ampere}
@@ -498,11 +506,7 @@ magnitude.
 
 \input{chapters/sys_id/final_spm_udds_error_table}
 
-
-
-
 % Conclude the chapter  by saying that everything is now  in time domain. Suitable
 % for direct  implementation. Concludes the  implementation aspect of  the thesis.
 % Can now be used as the plant model in EKF and other applications.
-
 

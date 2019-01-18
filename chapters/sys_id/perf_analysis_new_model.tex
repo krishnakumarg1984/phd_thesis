@@ -28,7 +28,7 @@ each of the three approaches ---
     \item the newly developed system identification model(s).
 \end{enumerate*}
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{tf_quadratic_ce_approx_spatial.pdf}
     \caption[Spatial distribution of ionic concentration in
@@ -74,6 +74,27 @@ in \cref{subsubsec:simresultsbaselinequad}.   Therefore  it   is  important   to
 ascertain whether a noteworthy improvement  was achieved using the model arrived
 at using the system identification procedure.
 
+
+\Cref{fig:temporalcetfquadratic}   shows  time-evolution   of  ionic
+concentrations at the current collector  interfaces of the negative and positive
+electrodes for a 1C~discharge. Concentration profiles computed
+by the three approaches ---
+\begin{enumerate*}[label=\roman*)]
+    \item \glsfmtshort{p2d} model,
+    \item quadratic approximation model and the
+    \item newly developed system identification model(s)
+\end{enumerate*}
+are overlaid in the top row of  plots, wherein the left hand side corresponds to
+the  current collector  interface  at  the negative  electrode  while the  right
+hand  side  corresponds  to  that  at  the  positive  electrode.  The  plots  in
+the bottom  row of \cref{fig:temporalcetfquadratic}  show the  time-evolution of
+the  absolute  value  of  their  errors. The  concentration  error  of  each  of
+the  two  \glspl{rom}  is  defined  with  respect  to  the  benchmark  \gls{p2d}
+model  \ie~$\varepsilon_{c_{\text{e,}j}(t)}   =  c_{\text{e,}j_\text{ROM}}  -
+c_{\text{e,}j_\text{p2d}}(t)$. The  absolute value  of the  error is  plotted so
+that  the magnitude  of the  error can  be visualised  better, aiding  immediate
+comparisons based on the plots.
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{tf_quad_ce_at_cc_1Cdischg}
@@ -99,26 +120,6 @@ at using the system identification procedure.
 }%
 \label{fig:temporalcetfquadratic}
 \end{figure}
-
-\Cref{fig:temporalcetfquadratic}   shows  the   time-evolution   of  the   ionic
-concentrations at the current collector  interfaces of the negative and positive
-electrodes for a 1C~discharge. The  concentration profiles computed
-by the three approaches ---
-\begin{enumerate*}[label=\roman*)]
-    \item \glsfmtshort{p2d} model,
-    \item quadratic approximation model and the
-    \item newly developed system identification model(s)
-\end{enumerate*}
-are overlaid in the top row of  plots, wherein the left hand side corresponds to
-the  current collector  interface  at  the negative  electrode  while the  right
-hand  side  corresponds  to  that  at  the  positive  electrode.  The  plots  in
-the bottom  row of \cref{fig:temporalcetfquadratic}  show the  time-evolution of
-the  absolute  value  of  their  errors. The  concentration  error  of  each  of
-the  two  \glspl{rom}  is  defined  with  respect  to  the  benchmark  \gls{p2d}
-model  \ie~$\varepsilon_{c_{\text{e,}j}(t)}   =  c_{\text{e,}j_\text{ROM}}  -
-c_{\text{e,}j_\text{p2d}}(t)$. The  absolute value  of the  error is  plotted so
-that  the magnitude  of the  error can  be visualised  better, aiding  immediate
-comparisons based on the plots.
 
 For both  current collectors,  the newly  developed system  identification model
 outperforms  the  quadratic  approximation  model during  the  transient  phase.
