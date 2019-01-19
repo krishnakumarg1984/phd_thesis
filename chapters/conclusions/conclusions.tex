@@ -4,8 +4,11 @@
 
 \clearpage
 \chapter{Conclusions}\label{ch:conclusions}
+\renewcommand{\baselinestretch}{0.8}\normalsize
+\vspace*{-10mm}
 \startcontents[chapters]
-\printcontents[chapters]{}{1}{\setcounter{tocdepth}{1}}
+\printcontents[chapters]{}{1}{\setcounter{tocdepth}{2}}
+\setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
 \bigskip
 
@@ -24,6 +27,8 @@ modelling that can benefit from further study in the future are also identified.
 \section{\glsfmtlongpl{pbm} as a Design Tool}
 
 \subsection{Conclusions from the model-based design study}\label{sec:modelbasedconclusion}
+
+\addlines[0.5]
 
 \Cref{ch:modelbaseddesign} presented  a computational framework to  optimise the
 number  of electrochemical  layers within  a pouch  cell so  as to  maximise its
@@ -84,6 +89,7 @@ capacity and hence, the \gls{aer} of the vehicle.
 
 \subsection{Future work informed by  the optimal layer design framework}
 
+\addlines[0.5]
 As     a     direct     inference     of     the     final     conclusion     in
 \cref{sec:modelbasedconclusion}, assuming that  the electric grid infrastructure
 is  adequately equipped  to cope  with  the surge  in future  power demands  for
@@ -157,13 +163,14 @@ that may  be of interest to  future researchers engaging with  these \glspl{rom}
 are also proposed.
 
 \subsection{Conclusions from analysis of the \glsfmtshort{dra}-based state-space \glsfmtshort{rom}}
+\addlines[0.5]
 
 In \cref{ch:improveddra}, \gls{svd} of a large Block-Hankel
-matrix~(\approx\SI{27}{\giga\byte}) is identified as a key computational
-bottleneck  in applying the classical \gls{dra} procedure for the hybrid
-\gls{rom} discussed therein. It is concluded that this bottleneck arises due  to
-the  slow dynamics of  solid phase diffusion  which leads  to the aforesaid
-large sized Block-Hankel matrices.
+matrix~(\approx\SI{27}{\giga\byte}) was identified as a computational bottleneck
+in applying the classical \gls{dra} scheme for the hybrid \gls{rom} discussed
+therein. It is concluded that this bottleneck arises due  to the  slow dynamics
+of  solid phase diffusion  which leads  to the aforesaid large sized
+Block-Hankel matrices.
 
 To mitigate this  bottleneck, an improved \gls{dra} scheme  was presented, whose
 centrepiece is an iterative \gls{svd}  algorithm. This algorithm was obtained as
@@ -187,12 +194,12 @@ consumer-grade laptops.
 \subsection{Future outlook for the \glsfmtshort{dra}-based hybrid state-space \glsfmtshort{rom}}
 
 The improved  \gls{dra} method  proposed in  \cref{ch:improveddra} opens  up the
-possibility of  applying the  hybrid \gls{rom}  modelling procedure  to physical
-quantities in  other locations within the  cell's geometry \eg~in the  middle of
-the electrode region,  without being hindered by  computational limitations that
-would  have otherwise  rendered  it intractable.  Furthermore, high  sample-rate
-\glspl{rom} capable of handling highly dynamic  load profiles can be deployed in
-future \gls{bms} applications.  The proposed scheme also  empowers the \gls{rom}
+possibility of  applying this hybrid \gls{rom}  for physical quantities in other
+locations within the  cell's geometry \eg~in the  middle of the electrode
+region,  without being hindered by  computational limitations that would  have
+otherwise  rendered  it intractable.  Furthermore, high  sample-rate \glspl{rom}
+capable of handling highly dynamic  load profiles can be deployed in future
+\gls{bms} applications.  The proposed scheme also  empowers the \gls{rom}
 framework to tackle other cell chemistries with slower diffusion coefficients or
 even  those with  completely different  rate-limiting mechanisms,  and therefore
 prima~facie, appears to be promising.
@@ -200,11 +207,11 @@ prima~facie, appears to be promising.
 % % The improved \gls{dra} method therefore
 % opens up a wide range of possibilities % and prima~facie appears promising.
 
-Despite   the  benefits facilitated  by   the streamlining  of  the reduced 
-order  modelling  workflow through  the  improved \gls{dra},  there  exists a 
+Despite   the  benefits facilitated  by   the streamlining  of  the reduced
+order  modelling  workflow through  the  improved \gls{dra},  there  exists a
 fundamental  deficiency  in this  hybrid  modelling approach  that impede  its
 near-term  adoption in  state estimation  tasks. This aspect was already
-discussed in \cref{ch:littreview} and is reiterated here. The entries  in  the 
+discussed in \cref{ch:littreview} and is reiterated here. The entries  in  the
 matrices  of  the  final  state  space  model  depend  on  the linearisation
 point of \gls{soc} and temperature. This linearisation requirement adversely
 affects the usability of the model for state estimation tasks, wherein the
@@ -260,14 +267,14 @@ electrolyte dynamics such as the ionic concentration profile within the cell's
 thickness.
 
 The  final  section  of  \cref{ch:spmanalysis}  presented  the  assumptions  and
-governing equations of the popular quadratic approximation model for the spatial
-profile of  ionic concentration. The  results obtained by simulating  this model
-reveal that while its spatial  profile computation for a galvanostatic operation
-is of  acceptable accuracy, the temporal  performance of the model  is mediocre.
-Particularly, the time evolution of ionic concentration at the current collector
-interfaces computed by the model fail to capture the intricacies in the temporal
-evolution exhibited by  the \gls{p2d} model's profile.  Furthermore, the spatial
-profile uses  the \gls{qss} approximation  which is violated during  the initial
+governing equations of the quadratic approximation model for the spatial profile
+of  ionic concentration. The  results obtained by simulating  this model reveal
+that while its spatial  profile computation for a galvanostatic operation is of 
+acceptable accuracy, its temporal  performance is mediocre. Particularly, the
+time evolution of ionic concentration at the current collector interfaces
+computed by the model fail to capture the intricacies in the temporal evolution
+exhibited by  the \gls{p2d} model's profile.  Furthermore, the spatial profile
+uses  the \gls{qss} approximation  which is violated during  the initial
 transient. Hence, the  most impactful conclusion from the  foregoing analysis is
 that the  basic quadratic approximation  model is unsuitable for  dynamic loads,
 thereby ruling it out for deployment in vehicular applications.
@@ -348,6 +355,7 @@ synthesise an accurate description of the electrolyte's spatio-temporal
 dynamics.
 
 \section{Implementation Aspects of Basic and Composite \glsfmtshort{spm}}
+% \addlines[-2]
 
 A driving impetus behind this thesis is to deliver \glspl{rom} amenable  to
 embedded \emph{implementation}. Large portions of \cref{ch:spmanalysis} and
