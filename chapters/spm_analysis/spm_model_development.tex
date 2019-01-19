@@ -211,7 +211,7 @@ be zero.
 \begin{equation}\label{eq:csfluxcentre}
     \diffp{c_\sj}{r}{\mathrlap{r=0}} = 0
 \end{equation}
-
+\addlines[0.5]
 Diffusion in the solid phase is driven by concentration gradients induced due to
 intercalation flux  density at the  particle surface  \ie~the surface  of each
 particle experiences a pore-wall flux density driven by reaction kinetics. Based
@@ -220,9 +220,12 @@ spatial dependence of this molar  flux density~$j_\nj(x,t)$ is eliminated and it
 can  therefore  be  represented  as~$j_\nj(t)$,~\jinnegpos{}. For  the  sake  of
 brevity,  its  explicit temporal  dependence  is  also  omitted resulting  in  a
 simplified notation~$j_\nj$. Hence, at the particle surface
+{%
+\setlength{\abovedisplayskip}{5pt}
 \begin{equation}\label{eq:csfluxsurface}
     D_\sj\diffp{c_\sj}{r}{\mathrlap{r=R_\pj}} = -j_\nj
 \end{equation}
+}%
 The sign convention chosen here is such that pore-wall flux leaving the particle
 surface is considered to be negative.
 
@@ -246,7 +249,7 @@ the number  of electrons  transferred during the  reaction. However,  since this
 thesis only  discusses lithium-ion  chemistries where~$n=1$, this  is implicitly
 conveyed and shall be omitted for all potential occurrences.
 
-The \gls{soc} of the cell can be obtained from the bulk concentration of lithium
+The cell's \gls{soc} can be obtained from the bulk concentration of lithium
 in  either the  negative  or  positive electrode.  By  convention, the  negative
 electrode is used.
 \begin{equation}\label{eq:socinitialdefn}
@@ -258,9 +261,8 @@ concentration of \ch{Li^0} in the two individual electrodes can be computed as
 \begin{equation}\label{eq:csfluxinitialcondition}
     c_\sj(r,0) = c_\sjmax \, \bigg[z_0 \left(θ_\maxj - θ_\minj \right) + θ_\minj \bigg]
 \end{equation}
-where $\theta_\maxj$ and $\theta_\minj$ represent the stoichiometry of the
-electrode at \SI{100}{\percent}~gls{soc} and \SI{0}{\percent}~\gls{soc}
-respectively.
+where $\theta_\maxj$ and $\theta_\minj$ are the electrode stoichiometries at
+\SI{100}{\percent}~\gls{soc} and \SI{0}{\percent}~\gls{soc} respectively.
 
 \Cref{eq:csdiffusionfinal},          its         corresponding          boundary
 conditions~\eqref{eq:csfluxcentre} and~\eqref{eq:csfluxsurfacefinal}  along with
@@ -330,6 +332,7 @@ concentration~$c_\sj(r,t)$ is a quartic function of the radial co-ordinate~$r$.
     c_\sj(r,t) = a(t) + b(t)\left(\frac{r}{R_\pj}\right)^2 + d(t) \left(\frac{r}{R_\pj}\right)^4
 \end{equation}
 
+\addlines[0.5]
 The    detailed   derivation    of   the    coefficients~${a(t),    b(t)
 \text{ and } c(t)}$     is     provided    in     Subramanian~\etal{}~\cite{Subramanian2005}.
 \Cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}    summarise   the
@@ -338,6 +341,7 @@ approximation of \cref{eq:fourthorderpoly}  to the system of  equations given by
 \cref{eq:csdiffusionfinal,eq:csfluxcentre,eq:csfluxsurfacefinal}.
 \begingroup
 \allowdisplaybreaks
+\setlength{\abovedisplayskip}{5pt}
 \begin{align}
     \diff*{\mean{c}_\sj}{t} + 3\frac{j_\nj}{R_\pj}                                                &=0 \label{eq:csmeanevolution} \\
     \diff*{\mean{q}_j}{t} + 30\frac{D_\sj}{R_\pj^2}\mean{q}_j + \frac{45}{2}\frac{j_\nj}{R_\pj^2} &=0 \label{eq:qmeanevolution}\\
@@ -381,9 +385,6 @@ At   the   end   of    this   dimension-reduction   step,   spatial   dependence
 is   completely  eliminated,   yielding   a  zero-order   (in  space)   physical
 model    whose    dynamics   are    described    by    the   \gls{dae}    system
 of \cref{eq:csmeanevolution,eq:qmeanevolution,eq:csurffromcsavg}.
-
-% Thermodynamics, kinetics and state-space formulation  of the model are presented
-% next in \cref{subsec:basicspmthermodynamics}.
 
 \subsubsection*{Equilibrium Thermodynamics}\label{subsec:basicspmthermodynamics}
 
@@ -579,8 +580,8 @@ Furthermore, Di~Domenico~\etal{}~\cite{DiDomenico2010}  show that  the diffusion
 dynamics of the  bulk concentrations can be algebraically  related through their
 stoichiometric factors as
 \begin{equation}\label{eq:csposbulkfromcsnegbulk}
-    \mean{c}_\spos(t) = c_\sposmax \, \bigg[\frac{\mean{c}_\sneg(t)- θ_\minneg
-    c_\snegmax}{\left(θ_\maxneg - θ_\minneg\right)c_\snegmax} \left(θ_\maxpos - θ_\minpos \right) + θ_\minpos \bigg]
+    \mean{c}_\spos(t) = c_\sposmax \, \left[\frac{\mean{c}_\sneg(t)- θ_\minneg
+    c_\snegmax}{\left(θ_\maxneg - θ_\minneg\right)c_\snegmax} \left(θ_\maxpos - θ_\minpos \right) + θ_\minpos \right]
 \end{equation}
 
 Hence, it  is possible  to eliminate the  bulk concentration of  any one  of the
@@ -635,7 +636,6 @@ The output  equation given by \cref{eq:spmoutputeqn} includes  a non-zero direct
 feedthrough dependency  of the voltage  on the input current,  thereby modelling
 the resistive component of the cell's  impedance. The full expression for output
 voltage is given by expanding \cref{eq:cellterminalvoltagebasic} as
-
 \begin{multline}
     V_\text{cell}(t) = \frac{2 R T}{F }\sinh^{-1} \left( \frac{- I(t)}{2 A
     l_\text{pos} a_\spos F k_\posr \sqrt{c_\text{e,0} c_\spossurf(t)

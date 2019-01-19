@@ -23,7 +23,6 @@ contents    in   this    section   overlap    with   \cref{sec:p2daugmentations}
 and      represents     a      joint     effort      with     \mbox{Ian      D.\
 Campbell}.}}\label{subsec:spmp2dparametrisation}
 
-\input{chapters/spm_analysis/cell_params_table}
 
 \Cref{tbl:lcoSimParamsSPMp2d} lists  the simulation  parameters of  an \gls{lco}
 cell  whose positive  and negative  electrodes are  \ch{LiCoO_2} and  \ch{LiC_6}
@@ -37,6 +36,8 @@ thermodynamic, kinetic  and transport properties  of the cell have  been sourced
 from  Subramanian~\etal{}~\cite{Subramanian2009}. The  significance  of each  of
 the  parameters  in  the  context  of the  modelling  assumptions  discussed  in
 \cref{subsec:basicspmassumptions} is examined.
+
+\input{chapters/spm_analysis/cell_params_table}
 
 The simulation parameters that are applicable exclusively to the \gls{p2d} model
 are shown as  highlighted text in \cref{tbl:lcoSimParamsSPMp2d}. It  can be seen
@@ -298,7 +299,7 @@ for electrolyte conductivity was obtained as
 	+ \left(\num{-6.96e-5} + \num{2.8e-8} c_\text{e}{(x,t)})T(t)^2\right)^2
 \end{multline}
 
-\begin{figure}[!htbp]
+\begin{figure}[!tbp]
     \centering
     \includegraphics{m2t_kappa_ce_T.pdf}
     \caption[Surface plot of electrolyte conductivity]
@@ -685,6 +686,7 @@ performance to dynamic inputs.
     \label{fig:uddsspeedvstimecycle}
 \end{figure}
 
+\addlines
 In  an  all-electric  drivetrain  wherein  lithium  ion  batteries  provide  the
 propulsion power, the speed profile can be suitably converted to a corresponding
 current  profile  experienced by  the  cell  through  the application  of  basic
