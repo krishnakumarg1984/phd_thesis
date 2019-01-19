@@ -4,10 +4,14 @@
 % content in this file will be fed into the main document
 % vim:nospell
 
-\begin{table}[!htbp]
+% \begin{table}[!htbp]
+{%
+\renewcommand{\arraystretch}{0.8}
+\begin{table}[H]
     \caption[Error-metrics summary of basic \glsfmtshort{spm} for \glsfmtshort{udds} current profile]{Summary of error
         metrics  of the basic \glsfmtshort{spm} with  \glsfmtshort{udds} input profile.}
     \label{tbl:errorsummaryuddsdischgspmp2d}
+    \vspace*{-0.75mm}
     \centering
     \begin{tabular}{@{} l S S @{}} \toprule
         {Error metric} & {$\varepsilon_v\, (\si{\milli\volt})$} & {$\varepsilon_\text{soc}\, (\si{\percent})$} \\ \midrule
@@ -16,3 +20,5 @@
         {\gls{rms}}    & 25.88                                  & 0.06                                         \\ \bottomrule
     \end{tabular}
 \end{table}
+}%
+
