@@ -10,7 +10,7 @@
 \printcontents[chapters]{}{1}{\setcounter{tocdepth}{2}}
 \setstretch{1.348361657291667} % golden-ratio stretch (1.2 x 1.348 = 1.618)
 
-\bigskip
+\vspace*{\fill}
 
 \capolettera{I}{n} this  thesis, the  deployment of  physics-based computational
 modelling  of lithium  ion  cells  for electric  vehicle  applications has  been
@@ -168,10 +168,11 @@ are also proposed.
 In \cref{ch:improveddra}, \gls{svd} of a large Block-Hankel
 matrix~(\approx\SI{27}{\giga\byte}) was identified as a computational bottleneck
 in applying the classical \gls{dra} scheme for the hybrid \gls{rom} discussed
-therein. It is concluded that this bottleneck arises due  to the  slow dynamics
+therein. It is concluded that this bottleneck arises due  to slow dynamics
 of  solid phase diffusion  which leads  to the aforesaid large sized
-Block-Hankel matrices.
+Block-Hankel matrix.
 
+% \addlines[1.5]
 To mitigate this  bottleneck, an improved \gls{dra} scheme  was presented, whose
 centrepiece is an iterative \gls{svd}  algorithm. This algorithm was obtained as
 a  combination of  the Golyandina-Usevich  and Lanczos  algorithms discussed  in
