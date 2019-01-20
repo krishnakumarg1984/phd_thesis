@@ -61,8 +61,8 @@ particular mathematical modelling technique.
 
 % \addlines[2]
 In the views of this thesis author, physics-based control-oriented models can be
-classified as belonging to one of the following categories \pagebreak %
-\begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0pt]
+classified as belonging to one of the following categories %
+\begin{itemize}[topsep=5pt, partopsep=5pt, parsep=5pt, itemsep=5pt]
     \item Frequency domain \glsfmtshortpl{rom}
     \item Quasi-hybrid time/frequency domain \glsfmtshortpl{rom}
     \item Hybrid \glsfmtshortpl{rom} based on equivalent circuits
@@ -111,6 +111,7 @@ Ho-Kalman algorithm. An evaluation of the salient quasi-hybrid \glspl{rom} from
 literature is presented in \cref{subsec:quasiroms}.
 
 
+\addlines[-0.5]
 In  principle, any  modelling  method  that yields  a  time domain  mathematical
 description  of physical  phenomena that  is lower  in computational  complexity
 by  some  arbitrary   magnitude  than  the  original  \gls{dfn}   model  can  be
@@ -296,6 +297,7 @@ forming the  required block-Hankel  matrices during the  model-derivation phase.
 % this contribution shall be presented in \cref{ch:improveddra} of this thesis.
 
 
+\addlines[0.5]
 In both the original as well  as the improved \gls{dra}, the eigenfunction modal
 expansion  of electrolyte  concentration  transfer  function is  computationally
 intensive.  A  slightly  less  detrimental   disadvantage  with  the  series  of
@@ -466,7 +468,7 @@ of models against  the prevalent art. Comparing with the  typical published work
 in  this field,  it  is not  clear  on how  such  models distinguish  themselves
 uniquely within the broader landscape of reduced order battery modelling.
 
-
+\addlines[0.5]
 A few mathematical  techniques for \gls{pde} simplification in  the time domain,
 such as Hilbert space representation and singular perturbation, were applied for
 cell  modelling in  Manzie~\etal~\cite{Manzie2015}. However,  their presentation
@@ -510,7 +512,9 @@ domain  models and  provides a  summary evaluation  of  their relative  merits
 and  weaknesses.
 
 \subsubsection*{Overview of prior art in the formulation of time-domain \glspl{rom}}
+% \vspace*{-2mm}
 
+% \addlines[0.5]
 Computationally    efficient     pseudo-spectral    schemes     for    numerical
 solution   of   \glspl{pde}   can   be  employed   by   placing   discretisation
 nodes    at    orthogonal    collocation     points    obtained    by    solving
@@ -597,7 +601,7 @@ convincingly demonstrated  the application  of polynomial approximation  for the
 solid  phase  diffusion equation  in  the  numerical  simulation of  a  complete
 \gls{dfn} cell model.
 
-
+% \addlines[1.5]
 Using  polynomial  approximation  for  the  solid  phase  concentration  results
 in  a  drastic reduction  in  the  number of  \glspl{dae}  needed  to solve  the
 full  model since  now  discretisation  needs to  be  performed  only along  the
@@ -675,8 +679,10 @@ key contributions and limitations of the salient literature on various
 categories of \glspl{rom} discussed in
 \crefrange{subsec:freqdomainroms}{subsec:timedomainroms}.
 
+% \vspace*{-5mm}
+% \vfill
 \input{chapters/litt_review/key_references_roms_interim_longtable}
-
+\pagebreak
 
 It  is evident  that all  physics-based  \glspl{rom} presented  thus far  entail
 extensive  parametrisation  efforts to  render  them  suitable for  a  practical
