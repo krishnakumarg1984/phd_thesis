@@ -71,6 +71,7 @@ developed. Therefore, in this work, the study is restricted to constant porosity
 values, whilst  acknowledging variable porosity  designs as an  important aspect
 for future studies.
 
+\addlines[-0.5]
 At  the system  level, the  efficiency  of the  drivetrain is  considered to  be
 constant. The  drivetrain of  an electric  vehicle consists of  a whole  host of
 electrical and mechanical components such as power electronics, electric motors,
@@ -181,7 +182,22 @@ counts, this aspect of lower heat generation coupled with its faster removal
 leads to an overall reduction in cell's temperature, which helps to extend the
 pack's lifetime owing to a reduced degradation rate.
 
-\begin{figure}[!tbp]
+
+In summary,  for very low number  of layers, there exists  more active material,
+leading  to a  high  energy  capacity. However,  the  reaction  surface area  is
+diminished proportionately leading to lower power capability. Furthermore, owing
+to the presence  of very thick electrodes, the current  density within the solid
+conductive  matrix shall  not  be  homogeneous~\cite{Pals1995}, nullifying  some
+fundamental modelling assumptions of the  standard \gls{dfn} model. On the other
+hand,  very  high  number  of  layers  imply  vanishingly  thin  electrodes  and
+correspondingly  less  active material  accommodated  within  the cell,  thereby
+resulting  in  a lower  energy  capacity.  \Cref{fig:energyvspowercell} shows  a
+qualitative comparison of the construction of one layer of an energy cell versus
+power cell which illustrates all the aspects discussed thus far.
+
+% \addlines
+
+\begin{figure}[!htbp]
     \centering
     \includegraphics{energy_vs_powercell}
     \caption[%
@@ -203,18 +219,6 @@ pack's lifetime owing to a reduced degradation rate.
     \label{fig:energyvspowercell}
 \end{figure}
 
-In summary,  for very low number  of layers, there exists  more active material,
-leading  to a  high  energy  capacity. However,  the  reaction  surface area  is
-diminished proportionately leading to lower power capability. Furthermore, owing
-to the presence  of very thick electrodes, the current  density within the solid
-conductive  matrix shall  not  be  homogeneous~\cite{Pals1995}, nullifying  some
-fundamental modelling assumptions of the  standard \gls{dfn} model. On the other
-hand,  very  high  number  of  layers  imply  vanishingly  thin  electrodes  and
-correspondingly  less  active material  accommodated  within  the cell,  thereby
-resulting  in  a lower  energy  capacity.  \Cref{fig:energyvspowercell} shows  a
-qualitative comparison of the construction of one layer of an energy cell versus
-power cell which helps to illustrate all the aspects discussed thus far.
-
 
 
 Therefore, there exists  a research question on what constitutes  the best layer
@@ -225,7 +229,7 @@ set of power input/output conditions to the cell. This niche problem has not yet
 been  tackled by  researchers  and therefore  motivates the  need  to perform  a
 careful design study which is documented in this chapter.
 
-\FloatBarrier
+% \FloatBarrier
 
 \subsection{Quantitative demonstration of energy/power trade-off}\label{sec:energypowertradeoffdemo}
 
@@ -252,6 +256,7 @@ but  instead  calculated  for  every  layer  choice  by  keeping  the  ratio  of
 their  relative  thicknesses  constant.  This   aspect  shall  be  explained  in
 \cref{sec:electroderatio}.
 
+% \addlines[0.5]
 \Cref{fig:fig_CC_discharge_curves}  illustrates  the  influence  of  the  number
 of  layers   on  the  energy   and  power   capability  of  the   example  cell.
 Starting  at  \SI{100}{\percent}  \gls{soc},  a constant  current  discharge  of
