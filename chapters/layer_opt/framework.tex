@@ -129,7 +129,7 @@ Changing  the layer  count used  within a  cell changes  its mass.  This in-turn
 affects the mass of the pack, which further influences the overall vehicle mass.
 Hence, for  precise computation  of~$P_\text{mass}$ in  \cref{eq:masspower}, the
 vehicle's  mass is  computed  as a  function  of number  of  layers within  each
-cell~$n$.
+cell.
 
 In  the  schematic  of \cref{fig:fig_strategy_schematic},  this  layer-dependent
 calculation of  mass of all cells  in the pack~$M_\text{cells}$ is  shown by the
@@ -175,7 +175,7 @@ For  the  presently trialled  layer  choice~$n$,  a thermally-coupled  \gls{p2d}
 simulation is performed for a duration  of $t_\text{f}$~seconds with the applied
 power  density~$p^\text{acc}_\text{cell}$  corresponding  to  the present  layer
 choice  as input  to  the  model. When  the  simulation  terminates, the  cell's
-condition is compared against three criteria
+condition is compared against the following three criteria:
 \begin{enumerate}
     \item the maximum possible values of cell temperature~$T_\text{max}$,
     \item the minimum allowed terminal voltage~$V_\text{min}$, and
@@ -415,15 +415,14 @@ Equating  the active material volume of both electrodes,
 \end{equation}
 
 While  stacking the  layers  within a  pouch cell,  for  the negative  electrode
-layers, there exists  an extra overhang of~${(<~\SI{2}{mm})}$ with  respect to the
-positive  electrode layers.  \Cref{fig:anodeoverhangpouchcell}  shows a  CT~scan
-depicting the two-dimensional longitudinal-sections with a close-up view of this
-overhang region. This is a design feature  and helps to avoid plating of lithium
-at the edges.
+layers, there exists  an extra overhang of~${(<~\SI{2}{mm})}$ with  respect to
+the positive  electrode layers.  \Cref{fig:anodeoverhangpouchcell}  shows a 
+CT~scan depicting the two-dimensional longitudinal-sections with a close-up view
+of this overhang region. This is a design feature  to prevent plating  of lithium at the edges.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{overhang}
+    \includegraphics[width=0.7\textwidth]{overhang}
     \caption[Stacking of layers within a pouch cell showing overhang of negative
     electrode]
     {CT~scan showing the two-dimensional longitudinal-sections from the edge of
@@ -434,14 +433,19 @@ at the edges.
     \label{fig:anodeoverhangpouchcell}
 \end{figure}
 
-Neglecting   overhangs    of   the    negative   electrode    (typically   below
-$\SI{2}{\milli\meter}$    to    avoid    plating    at    the    edges),    both
+% \addlines
+Neglecting   overhangs    of   the    negative   electrode    (typically   $<
+\SI{2}{\milli\meter}$),    both
 electrodes  have  the   same  cross-sectional  area~$A_\text{elec}$.  Therefore,
 \cref{eq:electrodeCapacity} reduces to
+{%
+\setlength{\abovedisplayskip}{5pt}
 \begin{align}
+    % \SwapAboveDisplaySkip
     \cancel{A_\text{elec}}l_\text{pos}  \varepsilon_\text{s,pos} & = \cancel{A_\text{elec}}l_\text{neg}  \varepsilon_\text{s,neg}  \\
     l_\text{pos}  \varepsilon_\text{s,pos}                       & = l_\text{neg}  \varepsilon_\text{s,neg}\label{eq:electrodeCapequalarea}
 \end{align}
+}%
 
 % For    the     reference    cell     under    consideration,     the    length
 % and    breadth    of    the    cell's   pouch    is    obtained    from    the
@@ -464,6 +468,7 @@ ratio~$l_\text{ratio}$ is therefore obtained as
 
 \subsection{Computation of electrode thicknesses per layer}
 
+\addlines[0.5]
 In  this section,  a deterministic  way to  compute the  thickness of  electrode
 materials is  present. In  the views  of this thesis  author, this  represents a
 departure from  the norm wherein electrode  thicknesses are designed on  a trial
@@ -550,7 +555,7 @@ $l_\text{ratio}$ and performing simple algebraic manipulations.
     l_\text{neg} &= l_\text{ce} - l_\text{pos}\label{eq:lneg}
 \end{align}
 
-The   values   of   the   two  electrode   thicknesses   thus   obtained   using
+The   two  electrode   thicknesses   thus   obtained   using
 \Crefrange{eq:lpos}{eq:lneg}  are used  as computational  domain lengths  in the
 \gls{p2d} simulations. Therefore,  these thicknesses have to  be recomputed each
 time the trialled number of layers~$n$ is updated by the search algorithm.

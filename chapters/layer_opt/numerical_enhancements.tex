@@ -98,6 +98,7 @@ parameter, is a unique idea.
                     {}                                              & = \frac{60000}{336 \times 3}                                                                                           \\
                     {}                                              & = \SI{59.52}{\amphour}
                 \end{align}
+
                 The  reference   cell's  \si{\amphour}  capacity   is  therefore
                 rounded  to \textbf{\SI{60}{\amphour}}\footnote{In  the interest
                 of   maintaining   consistency,   this  computed   capacity   is
@@ -107,7 +108,7 @@ parameter, is a unique idea.
                 simulations  used for  demonstrating  energy/power trade-off  of
                 \cref{sec:energypowertradeoffdemo}  since   this  current  level
                 corresponds to the 1C-rate of this reference cell.}. The 1C-rate
-                of this reference cell is therefore \SI{60}{\ampere}.
+                of this reference cell is therefore \SI{60}{\ampere}.\pagebreak
 
             \item \hypertarget{celllowercutoff}{\textbf{Lower cutoff voltage for cells}}
 
@@ -157,6 +158,7 @@ parameter, is a unique idea.
 
     \item \textbf{Setting the pouch height for the reference cell}
 
+        \addlines
         Although  the   official  press   release~\cite{GMBoltBatteryDims}  from
         the  manufacturer  of  the  Bolt  \gls{bev} does  contain  data  on  the
         cross-sectional  geometry of  the cell,  it does  not report  the cell's
@@ -173,7 +175,7 @@ parameter, is a unique idea.
         target    of \SI{4.0}{\milli\amphour\per\centi\meter\squared}  for
         future  automotive applications. The said publication also considers the
         aspect of stacking layers  into  pouches  of   certain  geometries.  In 
-        particular,  table \romanletter{4}  of Gr\"oger~\etal~\cite{Groger2015} 
+        particular,  table~\romanletter{4}  of Gr\"oger~\etal~\cite{Groger2015} 
         considers a  pouch of  \SI{10}{\milli\meter} height,  for  which  the
         aforementioned  areal capacities were calculated.
 
@@ -256,12 +258,15 @@ parameter, is a unique idea.
         Substituting  the values  of~$n_\text{refcell}$ and  $A_\text{refcell}$
         into  \cref{eq:overallarea}, the  electrochemically active  surface area
         per layer is obtained as
+        \begingroup
+        \allowdisplaybreaks
         \begin{align}
             A_\text{elec} & = \frac{A_\text{refcell}}{n_\text{refcell}} \\
-            {}            & = \frac{\SI{2.053e6}{\meter\squared}}{46}     \\
-            {}            & = \SI{44630.43}{\milli\meter\squared}\\
-            A_\text{elec} & = \SI{44.63e-3}{\meter\squared} 
+            A_\text{elec} & = \frac{\SI{2.053e6}{\meter\squared}}{46}   \\
+            {}            & = \SI{44630.43}{\milli\meter\squared}       \\
+            {}            & = \SI{44.63e-3}{\meter\squared}
         \end{align}
+        \endgroup
 
         The   surface   area   per   layer    thus   computed   is   listed   in
         \cref{tbl:lcoSimParamslayeropt} and  is held  constant across  all layer

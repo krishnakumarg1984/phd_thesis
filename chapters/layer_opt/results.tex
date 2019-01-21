@@ -175,7 +175,7 @@ case simulation  run, the cell's  \gls{soc} is depleted only by  a maximum of
 the \gls{phev} cell.
 
 The foregoing  discussion reveals  that the lower cut-off  voltage strongly
-influences  the optimal layer   configuration  for   acceleration  tests.
+influences  the optimal layer   value  for   acceleration  tests.
 Based upon the simulation results of \cref{tbl:accResults},  for satisfying
 acceleration power requirements, ${n = 27}$ and ${n=69}$ represent the optimal
 layer choices for the \gls{bev} and \gls{phev} platforms respectively for the
@@ -299,21 +299,19 @@ reason  for  the failure  of  these  layer choices.  This  is  indicated by  the
 narrow \mbox{$V_\text{max}$-limited} region in \cref{fig:fig_CapacityQuadrants}.
 For an intermediate range of  layer choices, the rate of power-density  drop
 with layer count begins to flatten, thereby leading  to a plating-limited
-region. For these layer choices, the  surface concentration starts to exceed
-the saturation value before any  thermal or voltage  limits are reached.
-Finally,  further increasing the layer count beyond  an intermediate optimal
-value leads to  a linear drop in the cell's  charge accepting  capability.
-During fast  charging with  the chosen power levels, although these layer
-choices  do not reach the thermal, voltage or concentration  limits,  they  are
-unable  to attain  the  target  \gls{soc}  of \SI{80}{\percent}. This is simply
-due to the lower nominal capacity of the these cells.  There is  no  benefit
-whatsoever in  designing  cells  in this  region.
-\Cref{fig:fig_CapacityQuadrants} provides  clues to  the design engineer  on the
-degree  of optimisation  that can  be achieved  by careful  design choices.  For
-instance, by tuning certain design parameters, such as using electrode materials
-capable  of  operating at  higher  plating  voltage  or with  higher  saturation
-concentration, the optimisation  point can be appropriately adjusted  as per the
-application's demands.
+region. For these layer choices, the  surface concentration starts to exceed the
+saturation value before any  thermal or voltage  limits are reached. Finally,
+further increasing the layer count beyond  an intermediate optimal value leads
+to  a linear drop in the cell's  charge accepting  capability. During fast
+charging with  the chosen power levels, although these layer choices  do not
+reach the thermal, voltage or concentration  limits,  they  are unable  to
+attain  the  target  \gls{soc}  of \SI{80}{\percent}. This is simply due to the
+lower nominal capacity of the these cells.  There is  no  benefit in choosing
+layers  in this  region. \Cref{fig:fig_CapacityQuadrants} provides clues
+on the degree  of optimisation  that can  be achieved  by
+careful  design choices.  For instance, by using electrode materials capable  of  operating at  higher plating 
+voltage  or with  higher  saturation concentration, the optimisation point can
+be appropriately adjusted.
 
 
 From  the results  discussed thus  far, it  is evident  that it  is the  thermal
@@ -323,16 +321,15 @@ and across both vehicular platforms. For all charging powers simulated,
 $n^\text{fastchg}_\text{opt}$~is the highest for the coldest temperature
 combination~${(T_\text{init},T_\text{sink}) =  (15, 5) \si{\degreeCelsius}}$.
 This is due to  the slow rate of electrochemical reaction and diffusion  at cold
-temperatures. The thinner  electrodes from  using higher layer count enable
-fast charging without saturating the surface of the electrode particles. For the
-fast charging scenarios considered here,  the optimal number of layers to use
-is 89~for the \gls{bev} cell and  153~for the \gls{phev} cell. The globally
-optimal  layer choice to be  used for cell design  is therefore the higher of
-the two values corresponding  to acceleration and fast charging cases.
-
-Therefore, this model-based design framework recommends the use of 89~layers for
-the cells to be  used in the \gls{bev} platform and 153~layers  for the cells to
-be used in the \gls{phev} platform.
+temperatures. The thinner  electrodes from  using higher layer count enable fast
+charging without saturating the surface of the electrode particles. For the fast
+charging scenarios considered here,  the optimal number of layers to use is
+89~for the \gls{bev} cell and  153~for the \gls{phev} cell. The globally optimal
+layer choice to be  used for cell design  is therefore the higher of the two
+values corresponding  to acceleration and fast charging cases. Therefore, this
+model-based design framework recommends choosing 89~layers for the cells to be 
+used in the \gls{bev} platform and 153~layers  for those to be used in the
+\gls{phev} platform.
 
 % This concludes the discussion of results of this chapter as well as all design-related aspects of this thesis.
 
