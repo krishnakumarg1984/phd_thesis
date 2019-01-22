@@ -41,7 +41,10 @@
 %:------------------ End of table of contents/lof/lot/loa etc.----------
 
 \setstretch{1.0} % for acronyms
+{%
+\setlength{\glsdescwidth}{0.8\textwidth}
 \printunsrtglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
+}%
 \renewcommand{\baselinestretch}{0.3}\normalsize
 \printunsrtglossary[type=symbols, title={List of Symbols}, style=alttreegroup]\label{ch:symbols}
 
