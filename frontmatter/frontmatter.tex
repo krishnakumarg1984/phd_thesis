@@ -8,7 +8,7 @@
 
 
 % Title page
-% \pdfbookmark[chapter]{Title Page}{coverpage} 
+% \pdfbookmark[chapter]{Title Page}{coverpage}
 \includepdf[link, linkname=coverpage, addtotoc={1,chapter,0,Title Page,coverpage}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/coverpage.pdf}
 
 \input{frontmatter/wordcloud.tex}
@@ -40,9 +40,10 @@
 \glsresetall
 %:------------------ End of table of contents/lof/lot/loa etc.----------
 
-\setstretch{1.0} % for acronyms
+% \setstretch{1.0} % for acronyms
+\setstretch{1.025}
 {%
-\setlength{\glsdescwidth}{0.8\textwidth}
+\setlength{\glsdescwidth}{0.99\textwidth}
 \printunsrtglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
 }%
 \renewcommand{\baselinestretch}{0.3}\normalsize
