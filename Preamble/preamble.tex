@@ -9,18 +9,18 @@
 \RequirePackage{xstring}
 \StrBetween{\luatexbanner}{\detokenize{n }}{\detokenize{.0 (}}[\luatexversionused] % obtain luatex version used
 
-% \providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
+\providecommand{\pdfxopts}{a-3b,pdf17} % may use options such as a-1a. a-1b
 
-% \begingroup\newif\ifmy
-% \IfFileExists{./\jobname.xmpdata}{}{\mytrue} % https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists
-% \ifmy
-%     \begin{filecontents}{\jobname.xmpdata}
-%         \input{Preamble/metadata}
-%     \end{filecontents}
-% \fi\endgroup
+\begingroup\newif\ifmy
+\IfFileExists{./\jobname.xmpdata}{}{\mytrue} % https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists
+\ifmy
+    \begin{filecontents}{\jobname.xmpdata}
+        \input{Preamble/metadata}
+    \end{filecontents}
+\fi\endgroup
 
 
-% \PassOptionsToPackage{\pdfxopts}{pdfx}
+\PassOptionsToPackage{\pdfxopts}{pdfx}
 \PassOptionsToPackage{table}{xcolor}
 \PassOptionsToPackage{luatex}{pdflscape}
 \PassOptionsToPackage{pdfa,pdfencoding=auto,psdextra}{hyperref}
