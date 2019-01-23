@@ -143,6 +143,7 @@
 \makeatletter
 \definecolor{noprogress}{gray}{0.85} % colour 1
 \definecolor{progressed}{gray}{0.65} % colour 2
+\newif\if@Krishna@pbar@active@
 \NewDocumentCommand{\ProgressBar}%>>>
   { O{\Krishna@pbar@o} D<>{\Krishna@pbar@l} O{\Krishna@pbar@h} O{\Krishna@pbar@k} }{%
   \bgroup
@@ -194,19 +195,24 @@
   \immediate\write\@auxout{%
     \gdef\noexpand\Krishna@pbar@start{\the\value{page}}%
   }%
+  \global\@Krishna@pbar@active@true
 }%<<<
 \def\Krishna@pbar@end{1}
 \newcommand*{\EndOfProgress}{%>>>
-  \xdef\Krishna@pbar@end{\the\value{page}}%
-  \immediate\write\@auxout{%
-    \gdef\noexpand\Krishna@pbar@end{\the\value{page}}%
-  }%
+  \afterpage
+    {%
+      \xdef\Krishna@pbar@end{\the\value{page}}%
+      \immediate\write\@auxout
+        {%
+          \gdef\noexpand\Krishna@pbar@end{\the\value{page}}%
+        }%
+      \global\@Krishna@pbar@active@false
+    }%
 }%<<<
 \SetProgressBar{l}{\paperwidth}{2ex}{-2ex}
+\AddToShipoutPictureBG
+  {\if@Krishna@pbar@active@\AtPageLowerLeft{\ProgressBar}\fi}
 \makeatother
-
-\AddToShipoutPictureBG{\AtPageLowerLeft{\ProgressBar}}
-
 
 
 %Beginning of the interesting part
