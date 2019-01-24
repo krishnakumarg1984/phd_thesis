@@ -71,6 +71,8 @@ tlmgr install   \
     makecell \
     mathfixs \
     mathtools \
+    metalogo \
+    metalogox \
     mfirstuc \
     microtype \
     minted \
