@@ -28,8 +28,6 @@ cp --parents `find -name \*.m` ../diff_head_submitted/ 2>/dev/null || : # If you
 rm -rf ../diff_head_submitted/notes*
 rm -rf ../diff_head_submitted/main*
 
-cp --parents `find -name \*.xdy` ../diff_head_submitted/ 2>/dev/null || : # If you want to suppress the exit code and the error message: https://serverfault.com/questions/153875/how-to-let-cp-command-dont-fire-an-error-when-source-file-does-not-exist
-
 cp frontmatter/project_outputs.pdf ../diff_head_submitted/
 cp frontmatter/coverpage.pdf ../diff_head_submitted/
 cp frontmatter/figures/black_ink_sign_from_jpg.pdf ../diff_head_submitted/
@@ -38,30 +36,21 @@ cp run_diff_latexmk.bat ../diff_head_submitted/
 
 latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --packages=amsmath,hyperref,siunitx,cleveref,glossaries,chemformula --exclude-textcmd="section,subsection,subsubsection" --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version -p Preamble/ltxdiff_defaultstyle_preamble.tex ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
-# latexdiff -c ld.cfg --driver=pdftex --floattype=IDENTICAL --packages=amsmath,hyperref,siunitx,cleveref,glossaries,chemformula --exclude-textcmd="section,subsection" --verbose --flatten --math-markup=3 --graphics-markup=0 --enable-citation-markup -L submitted_version -L latest_version  ../nonflat_submitted/main.tex main.tex > ../diff_head_submitted/diff.tex
 
 cd ../diff_head_submitted
 
-if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] || [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
-    # :
-    # ../phd_thesis/run_diff_latexmk.bat  # https://stackoverflow.com/questions/11865085/out-of-a-git-console-how-do-i-execute-a-batch-file-and-then-return-to-git-conso
-    # start cmd "/C run_diff_latexmk.bat"
-    latexmk -C diff.tex
-    latexmk -f --shell-escape diff.tex
-else
-    if [ -f diff_changedpages.tex ]; then
-        latexmk -C diff_changedpages.tex
-        latexmk -f --shell-escape -halt-on-error diff_changedpages.tex
-        if [ ! -f diff_changedpages.pdf]; then
-            latexmk -f --shell-escape diff_changedpages.tex
-        fi
+if [ -f diff_changedpages.tex ]; then
+    latexmk -C diff_changedpages.tex
+    latexmk -f --shell-escape -halt-on-error diff_changedpages.tex
+    if [ ! -f diff_changedpages.pdf]; then
+        latexmk -f --shell-escape diff_changedpages.tex
     fi
-    if  [ -f diff.tex ]; then
-        latexmk -C diff.tex
-        latexmk -f --shell-escape -halt-on-error diff.tex
-        if [ ! -f diff.pdf ]; then
-            latexmk -f --shell-escape diff.tex
-        fi
+fi
+if  [ -f diff.tex ]; then
+    latexmk -C diff.tex
+    latexmk -f --shell-escape -halt-on-error diff.tex
+    if [ ! -f diff.pdf ]; then
+        latexmk -f --shell-escape diff.tex
     fi
 fi
 
