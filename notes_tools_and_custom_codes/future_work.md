@@ -1,20 +1,5 @@
-- widow/orphan check
-- Enable all linter tools and check everything
 - check overfull/underfull, and use sloppypar
-- check undefined references
-- biblatex check files 
-- list of symbols
-- thumbpdf
-- xmpinclude (hyperxmp)
-- binary tree 
-- returntogrid
-- colophon
-- fix underfull and overfull h and vboxes
-- textsc for C-rate, especially uses like 1C
-- cite colorbrewer2
-- mendeley citation export is a problem. Switch to jabref if needed
-- check citations especially since biblatex cleanup was very intrusive
-- verapdf for pdfa validation
+- compress using pdfsizeopt with multivalent if possible
 - lualvna
 - titleps
 - generally check and match references
@@ -34,3 +19,15 @@
 - physics-informed eq circuit model
 - lionsimba as energy/power/resistance inputs
 * Scaled Newman Model with model equations
+
+- widow/orphan check
+- Enable all linter tools and check everything
+- check undefined references
+- biblatex check files 
+- xmpinclude (hyperxmp)
+- colophon
+
+
+- binary tree 
+- returntogrid
+- thumbpdf

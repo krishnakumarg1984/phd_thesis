@@ -251,6 +251,8 @@ mcexam
 mdframed
 memoir
 menukeys
+metalogo
+metalogox
 mhchem
 microtype
 midfloat
