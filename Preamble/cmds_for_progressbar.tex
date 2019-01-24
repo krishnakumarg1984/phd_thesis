@@ -1,0 +1,77 @@
+%!TEX root = ../main.tex
+% vim:nospell ft=tex
+
+\makeatletter
+\definecolor{noprogress}{gray}{0.85} % colour 1
+\definecolor{progressed}{gray}{0.65} % colour 2
+\newif\if@Krishna@pbar@active@
+\NewDocumentCommand{\ProgressBar}%>>>
+  { O{\Krishna@pbar@o} D<>{\Krishna@pbar@l} O{\Krishna@pbar@h} O{\Krishna@pbar@k} }{%
+  \bgroup
+  \makebox[0pt][#1]{\parbox[t][0pt][t]{#2}{%
+    \@tempdimb=#2\relax
+    \kern#4\relax
+    \pgfmathparse{%
+      \Krishna@pbar@end == \Krishna@pbar@start ? 0 :
+      (\the\value{page}-\Krishna@pbar@start)%
+      /(\Krishna@pbar@end == \Krishna@pbar@start ? 1 : \Krishna@pbar@end-\Krishna@pbar@start)}%
+    \@tempdimb=\pgfmathresult\@tempdimb\relax
+    \ifdim\@tempdimb<0pt
+      {\color{noprogress}\rule{#2}{#3}}
+    \else
+      {\color{cbrewerintergray}\rule{\@tempdimb}{ #3 }}%
+      {\color{noprogress}%
+        \rule{\dimexpr #2 -\@tempdimb\relax}{ #3 }}%
+    \fi
+  }}%
+  \egroup
+}%<<<
+\NewDocumentCommand{\SetProgressBar}{ s m m m m }{%>>>
+  \IfBooleanTF{#1}{\let\Krishna@temp\def}{\let\Krishna@temp\gdef}%
+  \def\Krishna@tempb{*}%
+  \def\Krishna@tempa{#2}%
+  \ifx\Krishna@tempa\Krishna@tempb
+  \else
+    \Krishna@temp\Krishna@pbar@o{#2}%
+  \fi
+  \def\Krishna@tempa{#3}%
+  \ifx\Krishna@tempa\Krishna@tempb
+  \else
+    \Krishna@temp\Krishna@pbar@l{#3}%
+  \fi
+  \def\Krishna@tempa{#4}%
+  \ifx\Krishna@tempa\Krishna@tempb
+  \else
+    \Krishna@temp\Krishna@pbar@h{#4}%
+  \fi
+  \def\Krishna@tempa{#5}%
+  \ifx\Krishna@tempa\Krishna@tempb
+  \else
+    \Krishna@temp\Krishna@pbar@k{#5}%
+  \fi
+}%<<<
+\def\Krishna@pbar@start{0}
+\newcommand*{\StartOfProgress}{%>>>
+  \xdef\Krishna@pbar@start{\the\value{page}}%
+  \immediate\write\@auxout{%
+    \gdef\noexpand\Krishna@pbar@start{\the\value{page}}%
+  }%
+  \global\@Krishna@pbar@active@true
+}%<<<
+\def\Krishna@pbar@end{1}
+\newcommand*{\EndOfProgress}{%>>>
+  \afterpage
+    {%
+      \xdef\Krishna@pbar@end{\the\value{page}}%
+      \immediate\write\@auxout
+        {%
+          \gdef\noexpand\Krishna@pbar@end{\the\value{page}}%
+        }%
+      \global\@Krishna@pbar@active@false
+    }%
+}%<<<
+\SetProgressBar{l}{\paperwidth}{2ex}{-2ex}
+\AddToShipoutPictureBG
+  {\if@Krishna@pbar@active@\AtPageLowerLeft{\ProgressBar}\fi}
+\makeatother
+
