@@ -11,7 +11,7 @@
 \usetikzlibrary{decorations.pathreplacing, decorations.markings,decorations.pathmorphing}
 % \usetikzlibrary{decorations}
 \usepackage[paperwidth=17.1cm,paperheight=10.568603cm,margin=0in,heightrounded]{geometry}
-\usepackage{mathabx}
+% \usepackage{mathabx}
 \usepackage[center,frame]{crop}
 \usetikzlibrary{circuits.ee.IEC}
 \usetikzlibrary{shadings}
@@ -187,7 +187,7 @@
             \begin{scope}[on background layer]
                 \node [outer sep=0pt,draw=imperialblue,rounded corners,fit=(posterminal)(negterminal),transform shape=false,fill=lightblue,opacity=0.4,inner sep=2pt,minimum height=47mm,minimum width=12mm] (cellsinmodule) {};
             \end{scope}
-            \draw [semithick,decorate,decoration={brace,raise=2pt,amplitude=4mm},xshift=0pt,yshift=0pt] (cellsinmodule.south west) to node[rotate=0,yshift=0mm,xshift=-5mm, text width=30mm] {12 identical series-connected batteries per module} (cellsinmodule.north west);
+            \draw [semithick,decorate,decoration={brace,raise=2pt,amplitude=3.5mm},xshift=0pt,yshift=0pt] (cellsinmodule.south west) to node[rotate=0,yshift=0mm,xshift=-5mm, text width=30mm] {12 identical series-connected batteries per module} (cellsinmodule.north west);
             \node[xshift=3.7cm] at (cellsinmodule.east) (batteryannotation) {Battery} ;
 
             \draw [densely dashed,imperialblue] (loopmodule7.south west) -- (cellsinmodule.north west);
