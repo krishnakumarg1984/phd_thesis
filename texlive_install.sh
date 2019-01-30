@@ -54,6 +54,7 @@ tlmgr install   \
     datatool \
     datetime \
     datetime2 \
+    draftwatermark \
     dehyph-exptl \
     diffcoeff \
     doclicense \
@@ -62,6 +63,7 @@ tlmgr install   \
     eso-pic \
     etextools \
     etoolbox \
+    everypage \
     fancyvrb \
     filehook \
     fixme \
