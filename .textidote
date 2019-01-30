@@ -1,3 +1,0 @@
---html --read-all
---clean --map map.txt
---check en main.tex

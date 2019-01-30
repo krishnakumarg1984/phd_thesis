@@ -1,8 +1,11 @@
 %!TEX root = ../main.tex
 % vim:nospell ft=tex
 
+% https://tex.stackexchange.com/questions/32819/draw-box-with-colored-background-and-linebreaks-which-adjusts-to-the-text-width
+\newcommand\MyCBox[1]{%
+      \colorbox{cbrewerfourclssor}{\begin{varwidth}{\dimexpr\linewidth-2\fboxsep}#1\end{varwidth}}}
+
 \renewcommand{\gitMarkFormat}{\color{imperialraspberry} \small}
-% \renewcommand{\gitMark}{Git branch: '\gitBranch'\, \textbullet{}\, Commit SHA: \fbox{\texttt{\textbf{\gitAbbrevHash{}}}} \textbullet{}\, Last commit: \gitReln{} \gitAuthorIsoDate \\ }
-\renewcommand{\gitMark}{Author: {Krishnakumar Gopalakrishnan}\, \textbullet{}\, Commit SHA: \fbox{\texttt{\textbf{\gitAbbrevHash{}}}} \textbullet{}\, Last commit: \gitReln{} \gitAuthorIsoDate \\ Typeset by \StrBehind{\luatexbanner}{\detokenize{This is}}{}  engine using the \LaTeX{} macro format}
-\renewcommand{\gitMarkPref}{[Draft]}
+\renewcommand{\gitMark}{Author: {Krishnakumar Gopalakrishnan}, Imperial College London\, \textbullet{}\, \MyCBox{Confidential (Under Embargo)} \\ Typeset by \StrBehind{\luatexbanner}{\detokenize{This is}}{}  engine using the \LaTeX{} macro format}
+\renewcommand{\gitMarkPref}{PhD Thesis}
 

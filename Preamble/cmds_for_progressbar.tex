@@ -17,10 +17,10 @@
       /(\Krishna@pbar@end == \Krishna@pbar@start ? 1 : \Krishna@pbar@end-\Krishna@pbar@start)}%
     \@tempdimb=\pgfmathresult\@tempdimb\relax
     \ifdim\@tempdimb<0pt
-      {\color{noprogress}\rule{#2}{#3}}
+      {\color{cbrewerintergray}\rule{#2}{#3}}
     \else
-      {\color{cbrewerintergray}\rule{\@tempdimb}{ #3 }}%
-      {\color{noprogress}%
+      {\color{cbrewerdarkgray}\rule{\@tempdimb}{ #3 }}%
+      {\color{cbrewerintergray}%
         \rule{\dimexpr #2 -\@tempdimb\relax}{ #3 }}%
     \fi
   }}%

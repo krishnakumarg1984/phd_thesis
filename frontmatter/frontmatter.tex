@@ -6,6 +6,7 @@
 \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
 \graphicspath{{frontmatter/figures/}}
 
+\makeatletter\@sc@wm@stampfalse\makeatother
 
 % Title page
 % \pdfbookmark[chapter]{Title Page}{coverpage}
@@ -24,6 +25,7 @@
 %: ----------------- Table of contents/lof/lot/loa etc. ------------------------
 \renewcommand{\baselinestretch}{0.3}\normalsize % for toc
 \cleardoublepage
+\makeatletter\@sc@wm@stamptrue\makeatother
 \glsunsetall
 \microtypesetup{protrusion=false} % disables protrusion locally in the document for typesetting of toc-type matter
 \pdfbookmark[chapter]{\contentsname}{toc} % \pdfbookmark[<level>]{<title>}{<dest>} with bookmark package. https://tex.stackexchange.com/questions/65544/how-to-link-table-of-contents-in-thesis-pdf
@@ -49,5 +51,4 @@
 }%
 \renewcommand{\baselinestretch}{0.3}\normalsize
 \printunsrtglossary[type=symbols, title={List of Symbols}, style=alttreegroup]\label{ch:symbols}
-
 
