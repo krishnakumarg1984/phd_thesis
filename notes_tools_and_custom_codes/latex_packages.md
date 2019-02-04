@@ -9,6 +9,9 @@ GUIs
 ----
 datatooltk
 
+Packages
+--------
+
 2up
 abstract
 academicons
@@ -40,7 +43,7 @@ auto-pst-pdf-lua
 autobreak
 autonum
 auxhook
-babel
+babel (always load and also use suitable language options)
 background
 backref
 balance
@@ -107,6 +110,7 @@ cooltooltips
 copyrightbox
 crbox
 crop
+csquotes
 csvsimple
 currfile
 cuted
@@ -151,6 +155,7 @@ eqparbox
 errata
 esami
 esint
+eso-pic
 etoc
 eucal
 exam
@@ -161,9 +166,11 @@ extract
 fancybox
 fancyhdr
 fancypar
+fancyref
 fancyslides
 fancytabs
 fetchcls
+fgruler
 filecontents
 filehook
 filemod
@@ -178,6 +185,8 @@ fnbreak
 fncychap
 fnpct
 fontawesome5
+fontenc
+footmisc
 footmisx
 footnotebackref
 footnotehyper
@@ -186,10 +195,12 @@ ftnright
 fullminipage
 fullpage
 fullwidth
+gene-logic
 gensymb
 geometry
 ghab
 gincltex
+gitinfo2
 glossaries
 glossaries-accsup
 glossaries-extra
@@ -212,6 +223,7 @@ hypgotoe
 impnattypo
 incgraph
 indentfirst
+inputenc
 intopdf
 invoice2
 isodoc
@@ -231,6 +243,7 @@ lettrine
 limecv
 longfbox
 longfigure
+longtable
 lscape
 ltcaption
 ltxgrid
@@ -268,6 +281,7 @@ morenum
 multiaudience
 multicol
 multilang
+multirow
 multitoc
 mwe
 natmove
@@ -279,6 +293,7 @@ nopageno
 notes2bib
 notespage
 nowidow
+ntheorem
 ocgx
 odsfile
 optional
@@ -308,6 +323,7 @@ photo
 physics
 physymb
 placeat
+placeins
 plgplotsable
 polexpr
 preprint bundle - fullpage, authorblk, balance, figcaps,
@@ -362,6 +378,7 @@ stfloats
 subcaption
 subdepth
 subfiles
+svn-multi
 syntonly
 systeme
 tableof
@@ -373,8 +390,11 @@ tagging
 tcolorbox
 tdclock
 textcomp
+textmerg
 threadcol
+threeparttable
 thumbs
+tikz
 tikz-ladder
 tikz-layers
 tikz-linknodes
@@ -397,7 +417,6 @@ tocloft
 tocstyle (maybe obselete)
 tocvsec2
 todonotes
-topiclongtable
 trig
 turnthepage
 typed-checklist
