@@ -30,6 +30,7 @@ analogclock
 answers
 appendix
 array
+arydshln
 askinclude
 asyfig
 asypictureb
@@ -96,10 +97,12 @@ circuitikz
 cleveref
 clrdblpg
 clrstrip
+cluttex
 codesection
 colonequals
 colortbl
 comma
+commedit
 comment
 comment_io
 concepts
@@ -449,6 +452,8 @@ xurl
 xwatermark
 xymtex
 yafoot
+ycbook
+yhmath
 yt4pdf
 
 \show
