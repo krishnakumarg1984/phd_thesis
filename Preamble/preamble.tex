@@ -77,6 +77,7 @@
 \input{Preamble/custom_cmds_unicode_fontselection} % selection of unicode text and math fonts
 
 \usepackage{ragged2e}   % should be loaded after the body font and size have been established
+\usepackage{luatexbase} % temporary workaround for TL2018 freeze period. https://tex.stackexchange.com/questions/476740/microtype-error-with-lualatex-attempt-to-call-field-warning-a-nil-value/476742?noredirect=1#comment1204316_476742
 \usepackage{microtype}  % if using option babel=true, babel must be loaded before microtype; microtype must be loaded after font selection (after fontspec)
 
 \usepackage{selnolig}   % luatex package;  should go after loading babel
