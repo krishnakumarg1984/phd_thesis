@@ -19,3 +19,8 @@
 
 % \renewcommand{\headrulewidth}{\iffloatpage{0pt}{0.4pt}}
 
+\def\myackchapter#1{%
+    \chapter*{\vspace{-1.75in} #1 \hfill}
+    \addcontentsline{toc}{chapter}{#1}%
+    \markright{#1}%
+}

@@ -2,10 +2,12 @@
 %!TEX root = ../main.tex
 % vim:textwidth=80 fo=cqt
 
-\chapter*{Abstract\hfill}
-\addcontentsline{toc}{chapter}{Abstract}
+\myackchapter{Abstract}
+% \addcontentsline{toc}{chapter}{Abstract}
 
-\vspace*{-1cm}
+\vspace*{-10mm}
+
+\addlines[0.5]
 
 The  realisation of  \glspl{pbm}  of lithium  ion cells  in  the \glspl{bms}  of
 electric  vehicles is  studied through  a three-pronged  strategy ---  analysis,
@@ -37,6 +39,17 @@ ability to  accept power  inputs. The model-led  optimal layer  design procedure
 thus developed  is plating-aware, facilitating  the extension of  pack lifetimes
 whilst helping to bypass expensive empirical prototyping.
 
+The computational bottleneck in the \glspl{dra} scheme for obtaining a
+state-space \gls{rom} is analysed and an improved alternative is proposed. It is
+revealed that the \gls{svd} of the large Block–Hankel matrix formed by the
+Markov parameters of the system is a key inefficient step. A streamlined
+approach that bypasses the redundant Block–Hankel matrix formation is presented
+as a drop-in replacement. Comparisons with existing  scheme demonstrates a
+significant reduction in computation time and memory usage brought about by the
+new method. The improved modelling accuracy of the new scheme in a
+resource-constrained computing environment is also demonstrated.
+
+
 Owing to its simplicity, the \gls{spm} family of models is deemed to be the most
 promising  \gls{rom} candidate  that  can usher  in the  use  of \glspl{pbm}  in
 electric vehicles.  An in-depth  analysis of the  \gls{spm} reveals  an inherent
@@ -52,6 +65,8 @@ capable of  delivering acceptable  levels of accuracy  in computing  the spatial
 profile of ionic concentration. Application  of the \gls{mggp} technique exposes
 that the  causal factor for this  mediocre temporal performance is  the equation
 deficiency of the underlying \gls{p2d} model.
+
+\addlines[1.5]
 
 From an implementation perspective, the discrete-time formulation of \glspl{spm}
 is presented  using the matrix  exponential approach and its  advantages over
