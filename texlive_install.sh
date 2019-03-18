@@ -76,8 +76,8 @@ tlmgr install   \
     glossaries \
     glossaries-english \
     glossaries-extra \
-    hyphen-german \
     hyperxmp \
+    hyphen-german \
     ifetex \
     iffont \
     ifmtarg \
@@ -99,6 +99,7 @@ tlmgr install   \
     lm \
     lm-math \
     logreq \
+    ltabptch \
     luacode \
     lualatex-math \
     lualibs \
@@ -124,6 +125,7 @@ tlmgr install   \
     pgfornament \
     pgfplots \
     placeins \
+    qrcode \
     selnolig \
     setspace \
     shapepar \
@@ -134,6 +136,7 @@ tlmgr install   \
     substr \
     supertabular \
     tabstackengine \
+    tabulary \
     tcolorbox \
     texcount \
     textcase \
@@ -157,8 +160,7 @@ tlmgr install   \
     xmpincl \
     xpatch \
     xstring \
-    tabulary \
-    ltabptch \
+    xurl \
     xunicode
 
 # Keep no backups (not required, simply makes cache bigger)

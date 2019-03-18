@@ -10,7 +10,9 @@
     \cleardoublepage
     \phantomsection
     \addcontentsline{toc}{chapter}{\bibname}
+    \newgeometry{bottom=1.1in} % https://tex.stackexchange.com/questions/161773/top-margin-of-bibliography
     \printbibliography[notcategory=ignore]
+    \restoregeometry
 \end{footnotesize}
 
 % Required to maintain continuous arabic numbering

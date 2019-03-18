@@ -6,10 +6,7 @@
 % \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
 \graphicspath{{frontmatter/figures/}}
 
-
-% Title page
-% \pdfbookmark[chapter]{Title Page}{coverpage}
-\includepdf[link, linkname=coverpage, addtotoc={1,chapter,0,Title Page,coverpage}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/coverpage.pdf}
+\includepdf[link, linkname=coverpage, addtotoc={1,chapter,0,Title Page,coverpage}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/coverpage.pdf} % Title page
 
 \input{frontmatter/wordcloud.tex}
 \input{frontmatter/originality_copyright.tex}
@@ -20,15 +17,14 @@
 \newpage
 \thispagestyle{plain} % empty
 \mbox{}
-\includepdf[link, linkname=acknowledgements, addtotoc={1,chapter,0,Acknowledgements,acknowledgements}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/acknowledgements.pdf}
-
+\setstretch{1.348361657291667}   % golden-ratio stretch (1.2 x 1.348 = 1.618)
+\input{frontmatter/acknowledgements.tex}
 \newpage
 \thispagestyle{plain} % empty
 \mbox{}
-\setstretch{1.348361657291667}   % golden-ratio stretch (1.2 x 1.348 = 1.618)
 \input{frontmatter/abstract.tex}
 
-\includepdf[link, linkname=projectoutputs, addtotoc={1,chapter,0,Project outputs,projectoutputs}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/project_outputs.pdf}
+\includepdf[link, linkname=projectoutputs, addtotoc={1,chapter,0,Project Outputs,projectoutputs}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/project_outputs.pdf}
 
 %: ----------------- Table of contents/lof/lot/loa etc. ------------------------
 \renewcommand{\baselinestretch}{0.3}\normalsize % for toc
