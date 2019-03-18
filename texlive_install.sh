@@ -33,6 +33,7 @@ tlmgr install   \
     aleph \
     background \
     calc \
+    everypage \
     ifthen \
     algorithmicx \
     algorithms \
