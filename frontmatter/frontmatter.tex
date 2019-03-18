@@ -3,7 +3,7 @@
 % vim:textwidth=120 fo=cqt
 
 \frontmatter
-\pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
+% \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
 \graphicspath{{frontmatter/figures/}}
 
 
@@ -13,9 +13,18 @@
 
 \input{frontmatter/wordcloud.tex}
 \input{frontmatter/originality_copyright.tex}
+\newpage
+\thispagestyle{plain} % empty
+\mbox{}
 \input{frontmatter/dedication.tex}
+\newpage
+\thispagestyle{plain} % empty
+\mbox{}
 \includepdf[link, linkname=acknowledgements, addtotoc={1,chapter,0,Acknowledgements,acknowledgements}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/acknowledgements.pdf}
 
+\newpage
+\thispagestyle{plain} % empty
+\mbox{}
 \setstretch{1.348361657291667}   % golden-ratio stretch (1.2 x 1.348 = 1.618)
 \input{frontmatter/abstract.tex}
 
