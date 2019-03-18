@@ -2,6 +2,9 @@
 %!TEX root = ../../main.tex
 % vim:textwidth=80 fo=cqt
 
+\newpage
+\thispagestyle{plain} % empty
+\mbox{}
 \graphicspath{{chapters/introduction/figures/}}
 \clearpage
 \chapter{Introduction}\label{ch:intro}
@@ -9,66 +12,44 @@
 \printcontents[chapters]{}{1}{\setcounter{tocdepth}{2}}
 
 \bigskip
-% \addlines[-0.5]
-% \addlines[-1]
 \vspace*{5mm}
 
 \capolettera{T}{ightening} emissions  regulations in various  industrial sectors
 have led  to a renewed interest  in sustainable energy sources  in recent years.
 In  particular,  the  burgeoning  demand  for  clean  energy  has  prompted  the
 automotive and  consumer electronics industries  to explore advanced  methods of
-energy storage~\cite{Weiss2011}. Li-ion batteries are  seen  as  key enablers 
-in this  quest due  to  the attractiveness  of their  high energy  and power 
+energy storage~\cite{Weiss2011}. Li-ion batteries are  seen  as  key enablers
+in this  quest due  to  the attractiveness  of their  high energy  and power
 densities compared  to  other competing  non-conventional energy  storage
 technologies~\cite{Ibrahim2008}.  However, with this  surge  in energy  storage
-demands  comes  stricter  requirements  for  their  longevity,  performance, 
-and adhesion  to  safety  requirements,  particularly  for  adoption  in 
+demands  comes  stricter  requirements  for  their  longevity,  performance,
+and adhesion  to  safety  requirements,  particularly  for  adoption  in
 mainstream transport  electrification~\cite{Andrea2010}.  In  contrast to  other
-incumbent technologies,  lithium-ion batteries  have several  advantages such 
-as high  energy density,  long life-cycles,  low internal  resistance, low 
-self-discharge, long cycle life,  fast charge  and discharge 
+incumbent technologies,  lithium-ion batteries  have several  advantages such
+as high  energy density,  long life-cycles,  low internal  resistance, low
+self-discharge, long cycle life,  fast charge  and discharge
 cycles~\cite{Reddy2011,Plett2015}. This makes them the preferred choice for
 storage and on-demand retrieval of energy in modern consumer electronics
 and~\glspl{xeV}.
 
 
-% \footnote{The term(s) `cell(s)'
-% and  `battery(ies)' are  used interchangeably  in this  thesis. Technically,  an
-% electrochemical cell is the smallest  self-contained unit (housed in a packaging
-% with terminal connectors) that is capable of both storing and delivering energy.
-% A battery (also referred to as a battery  `pack') is made up of a group of cells
-% arranged  in  a  custom  configuration to  meet  certain  system-level  voltage,
-% current and  power demands.  The focal  point of  this thesis  is a  single cell
-% (a  discussion of  what  this  entails is  provided  shortly hereafter,  thereby
-% narrowing  down the  geometrical scope  of large  portions of  this thesis  to a
-% precisely defined unit). Scaling of various  quantities from the pack level down
-% to  the  cell  level  is  discussed  wherever  appropriate.}  
-
-% Different type of cells - Prismatic,  pouch and cylindrical. How pouch cells are
-% used in automotive industry acknowledge Tesla, but cite counter citations. Layer
-% photos etc
-
-% Precise definition of cell unit
-% \section{Geomtery}
-% C-rate definition
-
 \section{Working Principle}\label{subsec:liionchemistry}
 
 This section  provides a  brief overview of  the essential  chemistry principles
-that  helps  to  describe the  working  principle  of  a  lithium ion  battery 
+that  helps  to  describe the  working  principle  of  a  lithium ion  battery
 and represents the author's digested summary  of the introductory concepts
 presented in Plett~\cite{Plett2015}.
 
 \Cref{fig:chargetransferprocess} depicts the construction of one electrochemical
 layer of a lithium ion unit cell. The positive electrode consists of porous
-particles of  Lithium-Transition  Metal  Oxide  (MO)  compounds.  The  negative 
+particles of  Lithium-Transition  Metal  Oxide  (MO)  compounds.  The  negative
 electrode typically employs some variant of microporous graphite. The porous
 nature of the electrodes provide pathways for lithium  ion conduction through
-the electrolyte. Due  to  the  special  construction  of the  electrode 
-structure,  there  exist interstitial  sites  which act  as  intercalation 
+the electrolyte. Due  to  the  special  construction  of the  electrode
+structure,  there  exist interstitial  sites  which act  as  intercalation
 spots for  lithium  shuttling between the two electrodes. The electrolyte, which
 floods the cell, helps in the conduction of \ch{Li^+}~ions. The separator
-membrane allows the passage of these ions  between  the  two  electrodes,  but 
+membrane allows the passage of these ions  between  the  two  electrodes,  but
 prevents  internal  short-circuit  by inhibiting electronic  conduction through
 it. The  current collectors facilitate passage of electrons generated during the
 charge transfer at particle surface to the external circuit.
@@ -224,8 +205,8 @@ evolution of  internal states of  the cell  such as the concentration of lithium
 in the two electrodes during its operation with arbitrary current  profiles.
 Precise knowledge of such internal states \eg{} the concentration of lithium at
 the electrode surfaces, can help to design control strategies to prevent
-degradation due to lithium plating.  The difficulty with  the physics-based 
-modelling approach  lies with  obtaining the values  of all  the physical, 
+degradation due to lithium plating.  The difficulty with  the physics-based
+modelling approach  lies with  obtaining the values  of all  the physical,
 geometric, electrochemical,  thermal and  kinetic parameters  of the  cell.
 Usually,  these parameters  are closely  guarded trade secrets by cell
 manufacturers.
@@ -251,12 +232,12 @@ available, \glspl{pbm} can be used in  aiding a deeper understanding of the
 working of  the cell and in answering research  questions that could  otherwise
 not be answered  with simple \glspl{ecm}. One area  of focus of this  thesis is
 to broach  a less-probed area --- exploring  the possibility  of using  a
-\gls{pbm}  for the  \emph{design} of pouch  cells  used  in  automotive 
+\gls{pbm}  for the  \emph{design} of pouch  cells  used  in  automotive
 applications which  shall  be  presented  in \cref{ch:modelbaseddesign}.
 
 % A redeeming factor  is that the task of  parametrisation is a  one-off problem
-% that  appears early in  the model deployment  stage,  after which  the  rewards 
-% of  superior performance  of  the \glspl{pbm} can be reaped. 
+% that  appears early in  the model deployment  stage,  after which  the  rewards
+% of  superior performance  of  the \glspl{pbm} can be reaped.
 
 A major disadvantage of \glspl{pbm} from an implementation point of view is that
 solving for  the model's field  variables is time-consuming. In  particular, the
@@ -330,7 +311,7 @@ from the operating regimen and fail  spectacularly. On the other hand, including
 a sophisticated thermally coupled model  is unlikely to yield significant gains.
 Firstly, running  fully coupled electrochemical-thermal model  based simulations
 over the entire design space  is computationally expensive. Secondly, the design
-results  of the  model have  to  be verified using  a reasonable  number of 
+results  of the  model have  to  be verified using  a reasonable  number of
 experimental prototypes.  Taking  into account  these  considerations it  is
 deemed  that, for  the design  aspect  of this  thesis, a  lumped thermal  model
 suffices.  This  simplified thermal  model  is  bidirectionally coupled  to  the
