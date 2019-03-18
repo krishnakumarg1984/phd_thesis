@@ -6,17 +6,12 @@
 \pagenumbering{arabic} % Imperial College requirement is that all pages must be in continuous arabic numbering
 \graphicspath{{frontmatter/figures/}}
 
-
-% Title page
-% \pdfbookmark[chapter]{Title Page}{coverpage}
-\includepdf[link, linkname=coverpage, addtotoc={1,chapter,0,Title Page,coverpage}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/coverpage.pdf}
+\includepdf[link, linkname=coverpage, addtotoc={1,chapter,0,Title Page,coverpage}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/coverpage.pdf} % Title page
 
 \input{frontmatter/wordcloud.tex}
 \input{frontmatter/originality_copyright.tex}
 \input{frontmatter/dedication.tex}
 \input{frontmatter/acknowledgements.tex}
-
-\setstretch{1.348361657291667}   % golden-ratio stretch (1.2 x 1.348 = 1.618)
 \input{frontmatter/abstract.tex}
 
 \includepdf[link, linkname=projectoutputs, addtotoc={1,chapter,0,Project outputs,projectoutputs}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/project_outputs.pdf}
