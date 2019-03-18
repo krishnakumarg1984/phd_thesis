@@ -4,6 +4,7 @@ git:
 branches:
   only:
     - master
+    - print_version
 notifications:
   email:
     on_success: never
@@ -53,4 +54,5 @@ file:
 on:
   tags: true
     branch:master
+    branch:print_version
 

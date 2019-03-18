@@ -31,6 +31,9 @@ tlmgr install luatex
 tlmgr install   \
     addlines \
     aleph \
+    background \
+    calc \
+    ifthen \
     algorithmicx \
     algorithms \
     anyfontsize \
