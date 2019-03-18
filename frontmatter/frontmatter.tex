@@ -19,9 +19,9 @@
 \mbox{}
 \setstretch{1.348361657291667}   % golden-ratio stretch (1.2 x 1.348 = 1.618)
 \input{frontmatter/acknowledgements.tex}
-\newpage
-\thispagestyle{plain} % empty
-\mbox{}
+% \newpage
+% \thispagestyle{plain} % empty
+% \mbox{}
 \input{frontmatter/abstract.tex}
 
 \includepdf[link, linkname=projectoutputs, addtotoc={1,chapter,0,Project Outputs,projectoutputs}, pages=-, pagecommand={\thispagestyle{plain}}]{frontmatter/project_outputs.pdf}
@@ -37,9 +37,9 @@
 \setstretch{1.1} % for lof
 \listoffigures
 \cleardoublepage
-\newpage
-\thispagestyle{plain} % empty
-\mbox{}
+% \newpage
+% \thispagestyle{plain} % empty
+% \mbox{}
 \onehalfspacing  % for lot
 \listoftables
 \cleardoublepage
@@ -53,15 +53,15 @@
 \setstretch{1.025}
 {%
 \setlength{\glsdescwidth}{0.99\textwidth}
-\newpage
-\thispagestyle{plain} % empty
-\mbox{}
+% \newpage
+% \thispagestyle{plain} % empty
+% \mbox{}
 \printunsrtglossary[type=acronym, title={List of Acronyms}, nonumberlist, style=super]\label{ch:glossary}
 }%
 \renewcommand{\baselinestretch}{0.3}\normalsize
-\newpage
-\thispagestyle{plain} % empty
-\mbox{}
+% \newpage
+% \thispagestyle{plain} % empty
+% \mbox{}
 \printunsrtglossary[type=symbols, title={List of Symbols}, style=alttreegroup]\label{ch:symbols}
 
 
