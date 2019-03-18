@@ -125,6 +125,7 @@ tlmgr install   \
     pgfornament \
     pgfplots \
     placeins \
+    qrcode \
     selnolig \
     setspace \
     shapepar \
