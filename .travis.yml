@@ -20,8 +20,8 @@ script:
 # - "./dropbox_uploader.sh upload ../diff_head_submitted/diff.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/diffs_from_submitted_pdfs/diff-${TRAVIS_COMMIT}.pdf"
 # - latexmk -f --shell-escape --bibtex -pdf -interaction=nonstopmode -halt-on-error main.tex # force making the pdf
 # - latexmk -f --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex # force making the pdf
-- latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex
-# - latexmk -f --shell-escape --bibtex -pdf main.tex # debug purposes (be verbose)
+# - latexmk --shell-escape --bibtex -pdf -quiet -silent -interaction=batchmode -halt-on-error main.tex
+- latexmk -f --shell-escape --bibtex -pdf main.tex # debug purposes (be verbose)
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/main-latest.pdf"
 - "./dropbox_uploader.sh upload main.pdf Apps/phd_thesis_CI_build_output/${TRAVIS_BRANCH}/historic_versions/main-${TRAVIS_COMMIT}.pdf"
 - mv main.pdf thesis_${TRAVIS_COMMIT}.pdf
