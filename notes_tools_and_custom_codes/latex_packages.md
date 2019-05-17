@@ -50,6 +50,7 @@ backref
 balance
 bchart
 bib2gls
+bibexport
 biblatex
 biblatex-ext
 biblatex-publist
@@ -100,6 +101,7 @@ clrstrip
 cluttex
 codesection
 colonequals
+coloremoji
 colortbl
 comma
 commedit
@@ -136,6 +138,7 @@ draftwatermark
 drawstack
 dropcap?
 dvisvgm utility
+ean13isbn
 easyfig
 easyformat
 easyreview
@@ -304,6 +307,7 @@ overpic
 pagecont
 pagesel
 papermas
+parallel
 parskip
 passivetex
 pax
@@ -314,7 +318,7 @@ pdflatexpicscale
 pdflscape
 pdfoverlay
 pdfpages
-Pdfprivacy
+pdfprivacy
 pdfreview
 perpage for makesorted
 pgfornaments
@@ -405,6 +409,7 @@ tikz-relay
 tikz-sfc
 tikz-timing
 tikzscale
+tikzsymbols
 titlefoot
 titlepic
 titleps
@@ -455,5 +460,6 @@ yafoot
 ycbook
 yhmath
 yt4pdf
+zwpagelayout
 
 \show
