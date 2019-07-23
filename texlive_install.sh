@@ -31,25 +31,24 @@ tlmgr install luatex
 tlmgr install   \
     addlines \
     aleph \
-    background \
-    calc \
-    everypage \
-    ifthen \
     algorithmicx \
     algorithms \
     anyfontsize \
     appendix \
     arydshln \
+    background \
     bezos \
     bib2gls \
     biber \
     biblatex \
     bigints \
     booktabs \
+    calc \
     cancel \
     caption \
     ccicons \
     changepage \
+    checkend \
     chemformula \
     chkfloat \
     cleveref \
@@ -66,6 +65,7 @@ tlmgr install   \
     eso-pic \
     etextools \
     etoolbox \
+    everypage \
     fancyvrb \
     filehook \
     fixme \
@@ -89,6 +89,7 @@ tlmgr install   \
     ifplatform \
     ifsym \
     iftex \
+    ifthen \
     ifthenx \
     impnattypo \
     koma-script \
