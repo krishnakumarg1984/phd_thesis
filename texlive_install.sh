@@ -47,6 +47,7 @@ tlmgr install   \
     ccicons \
     changepage \
     chemformula \
+    checkend \
     chkfloat \
     cleveref \
     csquotes \
