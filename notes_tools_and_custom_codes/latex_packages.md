@@ -15,6 +15,7 @@ Packages
 2up
 abstract
 academicons
+accents
 accsup
 addlines
 adigraph
@@ -29,10 +30,13 @@ amsthm
 analogclock
 answers
 appendix
+arabicfront
 array
+arraycols
 arydshln
 askinclude
 asyfig
+asymptote
 asypictureb
 atbegshi
 attachfile
@@ -44,6 +48,7 @@ auto-pst-pdf-lua
 autobreak
 autonum
 auxhook
+awesomebox
 babel (always load and also use suitable language options)
 background
 backref
@@ -53,6 +58,7 @@ bib2gls
 bibexport
 biblatex
 biblatex-ext
+biblatex-ieee
 biblatex-publist
 bigfoot
 bigintcalc
@@ -81,6 +87,7 @@ centernot
 cesenaexam
 cfr-lm
 changebar?
+changelog
 changepage
 changes
 chappg
@@ -99,6 +106,7 @@ cleveref
 clrdblpg
 clrstrip
 cluttex
+codeanatomy
 codesection
 colonequals
 coloremoji
@@ -145,6 +153,7 @@ easyreview
 ebook
 efbox
 elements
+elsarticle
 embedall
 embedfile
 embrac
@@ -156,6 +165,7 @@ enumitem
 epsdice
 epstopdf-pkg
 eqexam
+eqexpl
 eqnnumwarn
 eqparbox
 errata
@@ -206,6 +216,7 @@ gensymb
 geometry
 ghab
 gincltex
+gitfile-info
 gitinfo2
 glossaries
 glossaries-accsup
@@ -256,11 +267,13 @@ ltxgrid
 lua-check-hyphen
 luabibentry
 lualvna
+make4ht
 makecell
 manyfoot
 marginfit
 markdown
 marvosym
+mathcommand
 mathexam
 mathfixs
 mathfont
@@ -280,6 +293,7 @@ minidocument
 minitoc
 minorrevision
 minted
+mismath
 mleftright
 mmap
 moodle
@@ -321,6 +335,7 @@ pdfpages
 pdfprivacy
 pdfreview
 perpage for makesorted
+pgfmorepages
 pgfornaments
 pgfplots
 pgfplotstable
@@ -339,6 +354,7 @@ problsoln
 probsoln
 progressbar
 proofread
+pseudo
 pythonhighlight
 qrcode
 qtree
@@ -353,6 +369,7 @@ rmannot
 romanbarpagenumber
 rotating
 rotfloat
+rulerbox
 rviewport
 scientific-thesis-cover
 sectionbreak
@@ -373,7 +390,9 @@ siunitx
 skmath
 smartdiagram
 soul
+soulpos
 soulutf8
+spacingtricks
 spalign
 spreadtab
 srcredact
@@ -384,7 +403,9 @@ statmath
 stfloats
 subcaption
 subdepth
+subdocs
 subfiles
+subtext
 svn-multi
 syntonly
 systeme
@@ -396,18 +417,23 @@ tabulary
 tagging
 tcolorbox
 tdclock
+tensind
+texdoc
 textcomp
 textmerg
+textpos
 threadcol
 threeparttable
 thumbs
 tikz
+tikz-imagelabels
 tikz-ladder
 tikz-layers
 tikz-linknodes
 tikz-relay
 tikz-sfc
 tikz-timing
+tikzmark
 tikzscale
 tikzsymbols
 titlefoot
@@ -425,6 +451,7 @@ tocloft
 tocstyle (maybe obselete)
 tocvsec2
 todonotes
+topiclongtable
 trig
 turnthepage
 typed-checklist
@@ -441,6 +468,7 @@ verbatim
 versions
 vwcol
 wallpaper
+widetable
 windows-and-orphans
 witharrows
 wrapfig
